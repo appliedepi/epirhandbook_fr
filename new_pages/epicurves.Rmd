@@ -226,7 +226,7 @@ Vous trouverez ci-dessous des exemples de l'aspect des différents intervalles l
 # Créez les objets d'incidence (avec différents intervalles)
 ##############################
 # Hebdomadaire (semaine du lundi par défaut)
-epi_wk <- incidence(linelist, "date_onset", interval = "weeks")
+epi_wk <- incidence(linelist, "date_onset", interval = 1)
 
 # Semaine du dimanche
 epi_Sun_wk <- incidence(linelist, "date_onset", interval = "epiweeks")
@@ -246,10 +246,10 @@ epi_year <- incidence(linelist, "date_onset", interval = "year")
 
 # Tracez les objets d'incidence (+ titres pour plus de clarté)
 ############################
-plot(epi_wk)+ labs(title = "Monday weeks")
+plot(epi_wk)+ labs(title = "Daily")
 plot(epi_Sun_wk)+ labs(title = "Sunday weeks")
-plot(epi_2wk)+ labs(title = "2 (Monday) weeks")
-plot(epi_month)+ labs(title = "Month")
+plot(epi_2wk)+ labs(title = "Monday Weeks")
+plot(epi_month)+ labs(title = "Months")
 plot(epi_quarter)+ labs(title = "Quarters")
 plot(epi_year)+ labs(title = "Years")
 
@@ -288,11 +288,22 @@ age_outbreak <- incidence(
   groups = "age_cat") #, # age_cat est défini comme un groupe
   #na_as_group = TRUE) # les valeurs manquantes se voient attribuer leur propre groupe
 
+
 # Tracez l'objet d'incidence groupée
-plot(
-  age_outbreak, # objet d'incidence avec age_cat comme groupe
-  fill = age_outbreak$age_cat)+ # age_cat est utilisé pour la couleur de remplissage des barres (doit avoir été défini comme une colonne de groupes ci-dessus)
-labs(fill = "Age Category") # change le titre de la légende de "age_cat" par défaut (c'est une modification de ggplot2)
+
+ggplot(age_outbreak) +                                    # objet d'incidence avec age_cat comme groupe
+     geom_col(aes(date_index, count, fill = age_cat)) + # age_cat est utilisé pour la couleur de remplissage des barres (doit avoir été défini comme une colonne de groupes ci-dessus)
+     labs(fill = "Age Category",                        # change le titre de la légende de "age_cat" par défaut (c'est une modification de ggplot2)
+          y = "Date",
+          x = "Count") +
+     theme_bw()
+
+# Tracez l'objet d'incidence groupée
+#plot(
+#  age_outbreak # objet d'incidence avec age_cat comme groupe
+#  )+  age_cat est utilisé pour la couleur de remplissage des barres (doit avoir été défini comme une colonne de groupes ci-dessus)
+#labs(fill = "Age Category") # change le titre de la légende de "age_cat" par défaut (c'est une modification de ggplot2)
+
 ```
 <span style="color : darkgreen ;">**_ATTENTION:_** Changez le titre de la légende en ajoutant `+` la commande **ggplot2** `labs(fill = "your title")` à votre graphe **incidence2**.</span>  
 
@@ -307,10 +318,18 @@ monthly_gender <- incidence(
  groups = "gender" # définit le genre comme colonne de regroupement
 )
 
-plot(
-  monthly_gender, # objet d'incidence
-  fill = monthly_gender$gender, # affichage de barres colorées par sexe
-  stack = FALSE) # côte à côte (non empilées)
+ggplot(monthly_gender) + # objet d'incidence
+     geom_col(aes(date_index, count, fill = gender), # affichage de barres colorées par sexe
+              position = "dodge") +  # côte à côte (non empilées)
+     labs(fill = "Gender", 
+          x = "Date", 
+          y = "Count")
+                 
+#plot(
+#  monthly_gender, # objet d'incidence
+#  fill = "gender", # affichage de barres colorées par sexe
+#  stack = FALSE) # côte à côte (non empilées)
+
 ``` 
 
 Vous pouvez définir l'argument `na_as_group = ` à FALSE dans la commande `incidence()` pour supprimer les lignes avec des valeurs manquantes du graphique.  
@@ -358,15 +377,26 @@ Si vous commencez votre analyse avec des données de comptage quotidiennes comme
 ```{r}
 epi_counts <- incidence( # créer un objet d'incidence hebdomadaire
   count_data, # ensemble de données avec les comptes agrégés par jour
-  date_index = date_hospitalisation, # colonne avec les dates
-  count = n_cases, # colonne avec les comptages
+  date_index = "date_hospitalisation", # colonne avec les dates
+  counts = "n_cases", # colonne avec les comptages
   interval = "week", # agréger les comptages quotidiens jusqu'aux semaines
-  groups = hospital # groupe par hôpital
+  groups = "hospital" # groupe par hôpital
   )
 
+
+ggplot(epi_counts) + # objet d'incidence
+     geom_col(aes(date_index, count, fill = hospital) # affichage de barres colorées par hôpital
+             ) +  
+     labs(fill = "Hospital", 
+          x = "Date", 
+          y = "Count") +
+     theme_bw()
+                 
+
+
 # Tracez la courbe d'incidence hebdomadaire de l'épi, avec des barres empilées par hôpital.
-plot(epi_counts, # objet incidence
-     fill = hospital) # colorer les barres par hôpital
+#plot(epi_counts, # objet incidence
+#     fill = hospital) # colorer les barres par hôpital
 ```
 
 
@@ -386,16 +416,21 @@ Ci-dessous, nous avons défini les deux colonnes `hospital` et `outcome` comme c
 ```{r, warning=F, message=F}
 epi_wks_hosp_out <- incidence(
   linelist, # ensemble de données
-  date_index = date_onset, # colonne de date
+  date_index = "date_onset", # colonne de date
   interval = "month", # barres mensuelles  
-  groups = c(outcome, hospital) # le résultat et l'hôpital sont données comme colonnes de regroupement
+  groups = c("outcome", "hospital") # le résultat et l'hôpital sont données comme colonnes de regroupement
   )
 
-# tracer
-incidence2::facet_plot(
-  epi_wks_hosp_out, # objet incidence
-  facets = hospital, # colonne de facettes
-  fill = outcome) # colonne de remplissage
+
+
+ggplot(epi_wks_hosp_out) + 
+     geom_col(aes(date_index, count, fill = outcome )) +
+     facet_wrap(~hospital) + 
+     labs(fill = "Outcome", 
+          y = "Count", 
+          x = "Date") +
+     theme_bw()
+     
 
 ```
 
@@ -474,25 +509,41 @@ central_data <- linelist %>%
 # créez un objet d'incidence en utilisant les données filtrées
 central_outbreak <- incidence(
   central_data,
-  date_index = date_onset,
+  date_index = "date_onset",
   interval = "week",
-  groups = outcome)
+  groups = "outcome")
+
+
+ggplot(central_outbreak) + 
+     geom_col(aes(x = date_index, y = count, fill =  outcome), # couleur de la boéte/barre
+              alpha = 0.7, # transparence 
+              color = "grey") +  #bordure de la boîte
+     
+     labs(title = "Cases at Central Hospital", #titre
+          x = "Week of onset",  # étiquette de l'axe des x
+          y = "Count", # étiquette de l'axe des y
+          fill = "Outcome") + 
+     theme_bw() +
+     theme(legend.position="top") # légende en haut de page
+     
+
 
 # tracer l'objet incidence
-plot(
-  central_outbreak,
-  fill = outcome, # couleur de la boéte/barre
-  legend = "top", # légende en haut de page
-  title = "Cas à l'hôpital central", # titre
-  xlab = "Semaine d'apparition", # étiquette de l'axe des x
-  ylab = "Incidence", # étiquette de l'axe des y
-  show_cases = TRUE, # afficher chaque cas comme une boîte individuelle
-  alpha = 0.7, # transparence 
-  border = "grey", # bordure de la boîte
-  angle = 30, # angle des étiquettes de date
-  centre_dates = FALSE, # étiquettes de date au bord de la barre
-  date_format = "%a %d %b %Y\n(Week %W)" # ajuste la façon dont les dates sont affichôes
-  )
+#plot(
+#  central_outbreak,
+#  fill = outcome, # couleur de la boéte/barre
+#  legend = "top", # légende en haut de page
+#  title = "Cas à l'hôpital central", # titre
+#  xlab = "Semaine d'apparition", # étiquette de l'axe des x
+#  ylab = "Incidence", # étiquette de l'axe des y
+#  show_cases = TRUE, # afficher chaque cas comme une boîte individuelle
+#  alpha = 0.7, # transparence 
+#  border = "grey", # bordure de la boîte
+#  angle = 30, # angle des étiquettes de date
+#  centre_dates = FALSE, # étiquettes de date au bord de la barre
+#  date_format = "%a %d %b %Y\n(Week %W)" # ajuste la façon dont les dates sont affichôes
+ # )
+
 ```
 
 Pour ajuster davantage l'apparence du graphique, consultez la section ci-dessous sur les modifications avec `ggplot()`.  
@@ -518,48 +569,59 @@ central_data <- linelist %>%
 # créez un objet d'incidence en utilisant les données filtrées
 central_outbreak <- incidence(
   central_data,
-  date_index = date_onset,
+  date_index = "date_onset",
   interval = "week",
-  groups = c(outcome))
+  groups = c("outcome"))
 
-# tracer l'objet incidence
-plot(
-  central_outbreak,
-  fill = outcome, # couleur de la boîte/barre
-  legend = "top", # légende sur le dessus
-  title = "Cas à l'hôpital central", # titre
-  xlab = "Semaine d'apparition", # étiquette de l'axe des x
-  ylab = "Incidence", # étiquette de l'axe des y
-  show_cases = TRUE, # afficher chaque cas comme une boîte individuelle
-  alpha = 0.7, # transparence 
-  border = "grey", # bordure de la boîte
-  centre_dates = FALSE,                   
-  date_format = "%a %d %b\n%Y (Week %W)", 
-  angle = 30 # angle des étiquettes de date
-  )+
-  
-  scale_y_continuous(
-    breaks = seq(from = 0, to = 30, by = 5), # spécifie les incréments de l'axe des y par 5
-    expand = c(0,0))+ # supprime l'espace excédentaire en dessous de 0 sur l'axe des y
+ggplot(central_outbreak) + 
+     geom_col(aes(x = as.Date(date_index), y = count, fill =  outcome), # couleur de la boéte/barre
+              alpha = 0.7, # transparence 
+              color = "grey") +  #bordure de la boîte
+     scale_y_continuous(
+          breaks = seq(from = 0, to = 30, by = 5), # spécifie les incréments de l'axe des y par 5
+    expand = c(0,0)) + # supprime l'espace excédentaire en dessous de 0 sur l'axe des y 
+     scale_x_date(date_labels = "%a %d %b\n%Y (Week %W)") +
   
   # ajouter une légende dynamique
-  labs(
-    fill = "Résultat pour le patient", # Titre de la légende
-    caption = stringr::str_glue( # légende dynamique - voir la page sur les caractères et les chaîne de caractères pour plus de détails
+  
+  # ajuster le caractère gras et la position de la légende
+      theme_bw() +
+      theme(
+    legend.position="top",
+    axis.title = element_text(size = 12, face = "bold"), # titres des axes plus grands et plus gras
+    axis.text = element_text(size = 10, face = "bold"), # taille du texte de l'axe et gras
+    plot.caption = element_text(hjust = 0, face = "italic"), # déplacer la légende vers la gauche
+    axis.text.x = element_text(angle = 30, hjust=1)) +
+     
+     labs( 
+          title = "Cas à l'hôpital central", # titre
+          x = "Semaine d'apparition", # étiquette de l'axe des x
+          y = "Incidence", # étiquette de l'axe des y
+          fill = "Résultat pour le patient", # Titre de la légende
+          caption = stringr::str_glue( # légende dynamique - voir la page sur les caractères et les chaîne de caractères pour plus de détails
       "n = {central_cases} de l'hôpital central
       L'apparition des cas va de {earliest_date} à {latest_date}. {missing_onset} cas n'ont pas de date d'apparition et ne sont pas représentés ici.",
       central_cases = nrow(central_data),
       earliest_date = format(min(central_data$date_onset, na.rm=T), format = '%a %d %b %Y'),
       latest_date = format(max(central_data$date_onset, na.rm=T), format = '%a %d %b %Y'),      
-      missing_onset = nrow(central_data %>% filter(is.na(date_onset)))))+
-  
-  # ajuster le caractère gras et la position de la légende
-  theme(
-    axis.title = element_text(size = 12, face = "bold"), # titres des axes plus grands et plus gras
-    axis.text = element_text(size = 10, face = "bold"), # taille du texte de l'axe et gras
-    plot.caption = element_text(hjust = 0, face = "italic") # déplacer la légende vers la gauche
-  )
-  
+      missing_onset = nrow(central_data %>% filter(is.na(date_onset)))))
+
+
+# tracer l'objet incidence
+#plot(
+#  central_outbreak,
+#  fill = outcome, # couleur de la boîte/barre
+#  legend = "top", # légende sur le dessus
+#  title = "Cas à l'hôpital central", # titre
+#  xlab = "Semaine d'apparition", # étiquette de l'axe des x
+#  ylab = "Incidence", # étiquette de l'axe des y
+#  show_cases = TRUE, # afficher chaque cas comme une boîte individuelle
+#  alpha = 0.7, # transparence 
+#  border = "grey", # bordure de la boîte
+#  centre_dates = FALSE,                   
+#  date_format = "%a %d %b\n%Y (Week %W)", 
+#  angle = 30 # angle des étiquettes de date
+#  )
 ```
 
 
@@ -575,12 +637,12 @@ Fournissez le nom d'une palette prédéfinie à l'argument `col_pal = ` dans `pl
 # créez un objet incidence, avec des données groupées par catégorie d'âge  
 age_outbreak <- incidence(
   linelist,
-  date_index = date_onset, # date d'apparition pour l'axe des x
+  date_index = "date_onset", # date d'apparition pour l'axe des x
   interval = "week", # agrégation hebdomadaire des cas
-  groups = age_cat)
+  groups = "age_cat")
 
 # tracer l'épicurve avec la palette par défaut
-plot(age_outbreak, fill = age_cat, title = "'vibrant' incidence2 palette par défaut")
+#plot(age_outbreak, fill = age_cat, title = "'vibrant' incidence2 palette par défaut")
 
 # tracer avec une palette de couleurs différente
 #plot(age_outbreak, fill = age_cat, col_pal = muted, title = "'muted' incidence2 palette")
@@ -590,15 +652,15 @@ Vous pouvez également utiliser l'une des palettes **base** de R (mettez le nom 
 
 ```{r out.width = c('50%', '50%'), fig.show='hold', warning = F, message = F}
 # tracer avec la palette R de base
-plot(age_outbreak, fill = age_cat, col_pal = heat.colors, title = "base R heat.colors palette")
+#plot(age_outbreak, fill = age_cat, col_pal = heat.colors, title = "base R heat.colors palette")
 
 # tracé avec la palette R de base
-plot(age_outbreak, fill = age_cat, col_pal = rainbow, title = "base R rainbow palette")
+#plot(age_outbreak, fill = age_cat, col_pal = rainbow, title = "base R rainbow palette")
 ```
 
 Vous pouvez également ajouter une palette de couleurs à partir du paquet **viridis** ou du paquet **RColorBrewer**. Vous devez d'abord charger ces paquets, puis ajouter leurs fonctions respectives `scale_fill_*()` avec un `+`, comme indiqué ci-dessous.
 
-```{r out.width = c('50%', '50%'), fig.show='hold', warning = F, message = F}
+```{r out.width = c('50%', '50%'), fig.show='hold', warning = F, message = F, eval=F}
 pacman::p_load(RColorBrewer, viridis)
 
 # tracer avec une palette de couleurs
@@ -621,7 +683,7 @@ plot(age_outbreak, fill = age_cat, title = "RColorBrewer palette")+
 
 Pour spécifier les couleurs manuellement, ajoutez la fonction **ggplot2** `scale_fill_manual()` à la fonction `plot()` avec un `+` et fournissez le vecteur de noms de couleurs ou de codes HEX à l'argument `values = `. Le nombre de couleurs listées doit étre égal au nombre de groupes. Faites attention si les valeurs manquantes sont un groupe - elles peuvent étre converties en une valeur de caractère comme "Missing" pendant votre préparation de données avec la fonction `fct_explicit_na()` comme expliqué dans la page sur [les facteurs](#factors).  
 
-```{r out.width = c('50%', '50%'), fig.show='hold', warning=F, message=F}
+```{r out.width = c('50%', '50%'), fig.show='hold', warning=F, message=F, eval=F}
 # couleurs manuelles
 plot(age_outbreak, fill = age_cat, title = "Manually-specified colors")+
   scale_fill_manual(
@@ -644,7 +706,7 @@ Pour ajuster l'ordre d'apparition des groupes (sur le graphe et dans la légende
 
 Tout d'abord, voyons une épicurve hebdomadaire par hôpital avec l'ordre par défaut :  
 
-```{r, message=F, warning=F}
+```{r, message=F, warning=F, eval=F}
 # ORIGINAL - hôpital PAS comme facteur
 ###################################
 
@@ -671,7 +733,7 @@ Maintenant, pour ajuster l'ordre de sorte que "Missing" et "Other" soient en hau
 
 
 
-```{r, message=F, warning=F}
+```{r, message=F, warning=F, eval=F}
 # MODIFIED - l'hôpital comme facteur
 ###############################
 
@@ -721,8 +783,8 @@ Vous pouvez supprimer toutes les lignes de grille en ajoutant la commande **ggpl
 # fabrique un objet d'incidence
 a <- incidence(
   central_data,
-  date_index = date_onset,
-  interval = "Monday weeks"
+  date_index = "date_onset",
+  interval = "weekly"
 )
 
 # Lignes de grille par défaut
@@ -751,7 +813,7 @@ Vous pouvez facilement produire un graphique de l'incidence cumulée en passant 
 # fabrique un objet d'incidence hebdomadaire
 wkly_inci <- incidence(
   linelist,
-  date_index = date_onset,
+  date_index = "date_onset",
   interval = "week")
 
 # tracer l'incidence cumulée
@@ -770,11 +832,11 @@ Vous pouvez ajouter une moyenne glissante à un graphique **incidence2** facilem
 ```{r, warning=F, message=F}
 rolling_avg <- incidence( # make incidence object
   linelist,
-  date_index = date_onset,
+  date_index = "date_onset",
   interval = "week",
-  groups = gender) %>% 
+  groups = "gender") %>% 
   
-  i2extras::add_rolling_average(before = 6) # ajouter des moyennes glissantes (dans ce cas, par sexe)
+  i2extras::add_rolling_average(6) # ajouter des moyennes glissantes (dans ce cas, par sexe)
 
 # tracer
 plot(rolling_avg, n.breaks = 3) # facettes automatiquement car moyenne glissante sur les groupes
@@ -978,7 +1040,7 @@ ggplot(data = central_data) +
     subtitle = "Notez l'alignement des barres, des lignes de grille verticales et des étiquettes d'axe sur les semaines du lundi",
     x = "Semaine d'apparition des symptômes",
     y = "Incidence hebdomadaire des cas signalés",
-    caption = stringr::str_glue("n = {nrow(central_data)} de Central Hospital ; Les occurrences de cas ranges de {format(min(central_data$date_onset, na. rm=T), format = '%a %d %b %Y')} à {format(max(central_data$date_onset, na.rm=T), format = '%a %d %b %Y')}{nrow(central_data %>% filter(is.na(date_onset)))} cas dont la date d'apparition est manquante et qui ne sont pas indiqués"))
+    caption = stringr::str_glue("n = {nrow(central_data)} de Central Hospital ; Les occurrences de cas ranges de {format(min(central_data$date_onset, na.rm=T), format = '%a %d %b %Y')} à {format(max(central_data$date_onset, na.rm=T), format = '%a %d %b %Y')}{nrow(central_data %>% filter(is.na(date_onset)))} cas dont la date d'apparition est manquante et qui ne sont pas indiqués"))
 ```
 
 
@@ -1111,7 +1173,7 @@ ggplot(plot_data) + # Utiliser le NOUVEL ensemble de données avec les hôpitaux
   geom_histogram(
     mapping = aes(x = date_onset,
         group = hospital, # cas groupés par hôpital
-        fill = hôpital), # remplissage des barres (couleur) par hôpital
+        fill = hospital), # remplissage des barres (couleur) par hôpital
     
     breaks = weekly_breaks_all, # séquence de pauses hebdomadaires du lundi pour toute l'épidémie, définie en haut de la section ggplot
     
@@ -1132,7 +1194,7 @@ ggplot(plot_data) + # Utiliser le NOUVEL ensemble de données avec les hôpitaux
   scale_fill_manual(
     values = c("grey", "beige", "black", "orange", "blue", "brown"),
     labels = c("St. Mark's Maternity Hospital (SMMH)" = "St.Marks"),
-    nom = "Hospital")+ 
+    name = "Hospital")+ 
   
   # thèmes esthétiques
   theme_minimal()+ # simplifier le fond du graphique
@@ -1295,7 +1357,7 @@ ggplot(central_data) +
   
   labs(
     title = "MAL ALIGNÉ",
-    sous-titre = " ! ATTENTION : Les barres de 7 jours commencent le jeudi avec le premier cas.\n Grandes lignes de grille et étiquettes de date au 1er de chaque mois.\n Lignes de grille mineures chaque lundi.")
+    subtitle = " ! ATTENTION : Les barres de 7 jours commencent le jeudi avec le premier cas.\n Grandes lignes de grille et étiquettes de date au 1er de chaque mois.\n Lignes de grille mineures chaque lundi.")
 
 
 
@@ -1318,8 +1380,8 @@ ggplot(central_data) +
     expand = c(0,0)) + # Suppression de l'espace excédentaire sous l'axe des x, mise à plat des données 
   
   labs(
-    titre = "MAL ALIGNÉ",
-    sous-titre = " ! ATTENTION : Les barres de 7 jours commencent le jeudi avec le premier cas\nLes lignes de grille principales et les étiquettes de date au 1er de chaque mois\nLes lignes de grille mineures sont hebdomadaires le lundi\nNotez l'espacement inégal de certaines lignes de grille et les tics non alignés avec les barres"
+    title = "MAL ALIGNÉ",
+    subtitle = " ! ATTENTION : Les barres de 7 jours commencent le jeudi avec le premier cas\nLes lignes de grille principales et les étiquettes de date au 1er de chaque mois\nLes lignes de grille mineures sont hebdomadaires le lundi\nNotez l'espacement inégal de certaines lignes de grille et les tics non alignés avec les barres"
     )
 
 
@@ -1613,7 +1675,7 @@ Les étiquettes des graphiques à facettes peuvent étre modifiées par les "ét
 Faites une étiquette comme celle-ci, en utilisant la fonction `as_labeller()` de **ggplot2**. Puis fournissez l'étiqueteuse à l'argument `labeller = ` de `facet_wrap()` comme indiqué ci-dessous.  
 
 ```{r, class.source = 'fold-show'}
-mes_labels <- as_labeller(c(
+my_labels <- as_labeller(c(
      "0-4" = "0-4 ans",
      "5-9" = "5-9 ans",
      "10-14" = "10-14 ans",
@@ -1676,7 +1738,7 @@ ggplot(central_data) +
     fill = "Catégorie d'âge", # fournir un nouveau titre pour la légende
     x = "Semaine d'apparition des symptômes",
     y = "Cas incidents hebdomadaires signalés",
-    caption = stringr::str_glue("n = {nrow(central_data)} from Central Hospital ; Case onsets range from {format(min(central_data$date_onset, na. rm=T), format = '%a %d %b %Y')} à {format(max(central_data$date_onset, na.rm=T), format = '%a %d %b %Y')}{nrow(central_data %>% filter(is.na(date_onset)))} cas dont la date d'apparition est manquante et qui ne sont pas indiqués"))
+    caption = stringr::str_glue("n = {nrow(central_data)} from Central Hospital ; Case onsets range from {format(min(central_data$date_onset, na.rm=T), format = '%a %d %b %Y')} à {format(max(central_data$date_onset, na.rm=T), format = '%a %d %b %Y')}{nrow(central_data %>% filter(is.na(date_onset)))} cas dont la date d'apparition est manquante et qui ne sont pas indiqués"))
 ```
 
 Voir ce [lien](https://ggplot2.tidyverse.org/reference/labellers.html) pour plus d'informations sur les étiqueteuses.  
@@ -1739,7 +1801,7 @@ ggplot(central_data) +
     fill = "Catégorie d'âge", # fournit un nouveau titre pour la légende
     x = "Semaine d'apparition des symptômes",
     y = "Cas incidents hebdomadaires signalés",
-    caption = stringr::str_glue("n = {nrow(central_data)} from Central Hospital ; Case onsets range from {format(min(central_data$date_onset, na. rm=T), format = '%a %d %b %Y')} à {format(max(central_data$date_onset, na.rm=T), format = '%a %d %b %Y')}{nrow(central_data %>% filter(is.na(date_onset)))} cas dont la date d'apparition est manquante et qui ne sont pas indiqués"))
+    caption = stringr::str_glue("n = {nrow(central_data)} from Central Hospital ; Case onsets range from {format(min(central_data$date_onset, na.rm=T), format = '%a %d %b %Y')} à {format(max(central_data$date_onset, na.rm=T), format = '%a %d %b %Y')}{nrow(central_data %>% filter(is.na(date_onset)))} cas dont la date d'apparition est manquante et qui ne sont pas indiqués"))
 ```
 
 
@@ -1827,7 +1889,7 @@ ggplot(central_data2) +
        x = "Semaine d'apparition des symptômes",
        y = "Cas incidents hebdomadaires signalés",
        caption = stringr::str_glue("n = {nrow(central_data)} from Central Hospital ; Case onsets range from
-                                   {format(min(central_data$date_onset, na. rm=T), format = '%a %d %b %Y')} à
+                                   {format(min(central_data$date_onset, na.rm=T), format = '%a %d %b %Y')} à
                                    {format(max(central_data$date_onset, na.rm=T), format = '%a %d %b %Y')}\n{nrow(central_data %>% filter(is.na(date_onset)))} cas dont la date d'apparition est manquante et qui ne sont pas indiqués"))
 
 ```
@@ -2019,7 +2081,7 @@ ggplot(central_weekly) +
   theme_bw() +
   theme(strip.placement = "outside", # placement des étiquettes de facettes
         strip.background = element_rect(fill = NA, # facet labels no fill grey border
-                                        couleur = "gris50"),
+                                        color = "gray50"),
         panel.spacing = unit(0, "cm"))+ # pas d'espace entre les panneaux de facettes
   labs(title = "Étiquettes d'année imbriquées, bordure d'étiquette grise")
 
@@ -2210,7 +2272,7 @@ plot_cases <- ggplot()+
 plot_cumulative <- ggplot()+
   geom_line(
     data = cumulative_case_counts,
-    aes(x = date_onset, y = cumulative_case_counts),
+    aes(x = date_onset, y = cumulative_cases),
     size = 2,
     color = "blue")+
   scale_y_continuous(

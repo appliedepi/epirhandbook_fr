@@ -3,10 +3,7 @@
 <!-- ======================================================= -->
 ## Aperçu { }
 
-Cet onglet démontre l'utilisation de plusieurs paquets pour l'analyse des séries temporelles. 
-Il s'appuie principalement sur les paquets de la famille [**tidyverts**](https://tidyverts.org/) 
-mais utilise également le paquet RECON [**trending**](https://github.com/reconhub/trending) 
-pour ajuster des modèles qui sont plus appropriés à l'épidémiologie des maladies infectieuses. 
+Cet onglet démontre l'utilisation de plusieurs paquets pour l'analyse des séries temporelles. Il s'appuie principalement sur les paquets de la famille [**tidyverts**](https://tidyverts.org/) mais utilise également le paquet RECON [**trending**](https://github.com/reconhub/trending) pour ajuster des modèles qui sont plus appropriés à l'épidémiologie des maladies infectieuses. 
 
 Notez que dans l'exemple ci-dessous, nous utilisons un ensemble de données provenant du paquet **surveillance**. sur Campylobacter en Allemagne (voir le [chapitre sur les données](#data_used), du manuel pour plus de détails). Cependant, si vous vouliez exécuter le même code sur un ensemble de données avec plusieurs pays ou d'autres strates, il y a un exemple de code pour cela dans le fichier [r4epis github repo](https://github.com/R4EPI/epitsa). 
 
@@ -104,7 +101,7 @@ Pour les besoins de la démonstration, nous allons présenter le code R permetta
 Si vous n'êtes pas sûr des coordonnées d'un lieu pour lequel vous voulez télécharger des données, vous pouvez utiliser le paquet **tmaptools** pour extraire les coordonnées des cartes routières ouvertes. Une autre option est le paquet [**photon**](https://github.com/rCarto/photon)
 mais il n'a pas encore été publié sur CRAN. **photon** fournit plus de données contextuelles lorsqu'il y a plusieurs correspondances pour votre recherche. 
 
-```{r données_météo, eval = FALSE}
+```{r weather_data, eval = FALSE}
 
 ## récupérer les coordonnées de l'emplacement
 coords <- geocode_OSM("Germany", geometry = "point")
@@ -178,7 +175,7 @@ data <- stars::read_stars(file_paths)
 
 Une fois que ces fichiers ont été importés en tant qu'objet `data`, nous allons les convertir en un cadre de données.  
 
-```{r}
+```{r, warning=FALSE, message = FALSE}
 ## conversion en cadre de données 
 temp_data <- as_tibble(data) %>% 
   ## ajouter des variables et corriger les unités
@@ -509,10 +506,10 @@ fitted_model <- trending::fit(model, data.frame(counts))
 ### calculer les intervalles de confiance et les intervalles de prédiction 
 observed <- predict(fitted_model, simulate_pi = FALSE)
 
-
+estimate_res <- data.frame(observed$result)
 
 ## Tracez votre régression 
-ggplot(data = observed, aes(x = epiweek)) + 
+ggplot(data = estimate_res, aes(x = epiweek)) + 
   ## ajouter une ligne pour l'estimation du modèle
   geom_line(aes(y = estimate),
             col = "red") + 
@@ -540,32 +537,32 @@ Ce que nous voyons ci-dessous, c'est que nous n'expliquons pas toutes les variat
 ```{r, warning=F, message=F}
 
 ## calculate the residuals 
-observed <- observed %>% 
-  mutate(resid = residuals(fitted_model$fitted_model, type = "response"))
+estimate_res <- estimate_res %>% 
+  mutate(resid = fitted_model$result[[1]]$residuals)
 
 ## are the residuals fairly constant over time (if not: outbreaks? change in practice?)
-observed %>%
+estimate_res %>%
   ggplot(aes(x = epiweek, y = resid)) +
   geom_line() +
   geom_point() + 
   labs(x = "epiweek", y = "Residuals")
 
 ## is there autocorelation in the residuals (is there a pattern to the error?)  
-observed %>% 
+estimate_res %>% 
   as_tsibble(index = epiweek) %>% 
   ACF(resid, lag_max = 52) %>% 
   autoplot()
 
 ## are residuals normally distributed (are under or over estimating?)  
-observed %>%
+estimate_res %>%
   ggplot(aes(x = resid)) +
-  geom_histogram(binwidth = 100) +
+  geom_histogram(binwidth = 0.01) +
   geom_rug() +
   labs(y = "count") 
   
 ## compare observed counts to their residuals 
   ## should also be no pattern 
-observed %>%
+estimate_res %>%
   ggplot(aes(x = estimate, y = resid)) +
   geom_point() +
   labs(x = "Fitted", y = "Residuals")
@@ -574,7 +571,7 @@ observed %>%
 ## H0 is that residuals are from a white-noise series (i.e. random)
 ## test for independence 
 ## if p value significant then non-random
-Box.test(result$resid, type = "Ljung-Box")
+Box.test(estimate_res$resid, type = "Ljung-Box")
 
 ```
 
@@ -693,7 +690,7 @@ observed <- predict(fitted_model, simulate_pi = FALSE)
 ```
 
 
-Pour étudier les termes individuels, nous pouvons extraire la régression binomiale négative originale du paquet **trending** en utilisant `get_model()` et la passer au fonction `tidy()` du paquetage **broom** pour récupérer les estimations exponentielles et lesintervalles de confiance associés.  
+Pour étudier les termes individuels, nous pouvons extraire la régression binomiale négative originale du paquet **trending** en utilisant `get_fitted_model()` et la passer au fonction `tidy()` du paquetage **broom** pour récupérer les estimations exponentielles et lesintervalles de confiance associés.  
 
 Ce que cela nous montre est que la température décalée, après avoir contrôlé la tendance et la saisonnalité, est similaire au nombre de cas (estimation ~ 1) et significativement associée. 
 Cela suggère qu'il pourrait s'agir d'une bonne variable à utiliser pour prédire le nombre de cas futurs (les prévisions climatiques étant facilement accessibles).
@@ -702,19 +699,20 @@ Cela suggère qu'il pourrait s'agir d'une bonne variable à utiliser pour prédi
 
 fitted_model %>% 
   ## extraire la régression binomiale négative originale
-  get_model() %>% 
+  get_fitted_model() #%>% 
   ## obtenir un cadre de données ordonné des résultats
-  broom::tidy(exponentiate = TRUE, 
-       conf.int = TRUE)
+  #broom::tidy(exponentiate = TRUE, 
+  #     conf.int = TRUE)
 ```
 
 Une rapide inspection visuelle du modèle montre qu'il pourrait faire un meilleur travail pour d'estimer le nombre de cas observés. 
 
 ```{r plot_nb_reg_bivar, warning=F, message=F}
 
-
+estimate_res <- data.frame(observed$result)
+     
 ## Tracez votre régression 
-ggplot(data = observed, aes(x = epiweek)) + 
+ggplot(data = estimate_res, aes(x = epiweek)) + 
   ## ajouter une ligne pour l'estimation du modèle
   geom_line(aes(y = estimate),
             col = "red") + 
@@ -738,24 +736,24 @@ Nous examinons à nouveau les résidus pour voir si notre modèle s'adapte bien 
 
 ```{r}
 ## calculer les résidus 
-observed <- observed %>% 
+estimate_res <- estimate_res %>% 
   mutate(resid = case_int - estimate)
 
 ## les résidus sont-ils assez constants dans le temps (si non : épidémies ? changement de pratique ?)
-observed %>%
+estimate_res %>%
   ggplot(aes(x = epiweek, y = resid)) +
   geom_line() +
   geom_point() + 
   labs(x = "epiweek", y = "Residuals")
 
 ## Y a-t-il une autocorrélation dans les résidus (y a-t-il un modèle d'erreur ?) ?  
-observed %>% 
+estimate_res %>% 
   as_tsibble(index = epiweek) %>% 
   ACF(resid, lag_max = 52) %>% 
   autoplot()
 
 ## les résidus sont-ils normalement distribués (y a-t-il sous-estimation ou surestimation ?)  
-observed %>%
+estimate_res %>%
   ggplot(aes(x = resid)) +
   geom_histogram(binwidth = 100) +
   geom_rug() +
@@ -763,7 +761,7 @@ observed %>%
   
 ## comparer les comptages observés à leurs résidus 
   ## il ne devrait pas y avoir de modèle 
-observed %>%
+estimate_res %>%
   ggplot(aes(x = estimate, y = resid)) +
   geom_point() +
   labs(x = "Fitted", y = "Residuals")
@@ -772,7 +770,7 @@ observed %>%
 ## H0 est que les résidus proviennent d'une série à bruit blanc (c'est-à-dire aléatoire)
 ## Test d'indépendance 
 ### si la valeur p est significative alors non aléatoire
-Box.test(observed$resid, type = "Ljung-Box")
+Box.test(estimate_res$resid, type = "Ljung-Box")
 
 ```
 
@@ -920,7 +918,7 @@ forecast <- fitted_model %>%
   predict(data.frame(pred_data), simulate_pi = FALSE)
 
 ## combiner les ensembles de données de base et prédits
-observed <- bind_rows(observed, forecast)
+observed <- bind_rows(observed$result, forecast$result)
 
 ```
 
@@ -944,7 +942,7 @@ ggplot(data = observed, aes(x = epiweek)) +
   geom_point(
     data = filter(observed, case_int > upper_pi), 
     aes(y = case_int), 
-    couleur = "red", 
+    color = "red", 
     size = 2) + 
   ## ajouter une ligne verticale et une étiquette pour montrer où la prévision a commencé
   geom_vline(
@@ -1100,8 +1098,9 @@ forecasts <- purrr::map(unique(case_roll$.id),
   
   # prévoir avec les données que l'on veut prédire avec 
   forecasts <- fitted_model %>% 
-    predict(data.frame(pred_data), simulate_pi = FALSE) %>% 
-    ## garder seulement la semaine et l'estimation de la prévision
+    predict(data.frame(pred_data), simulate_pi = FALSE) 
+ forecasts <- data.frame(forecasts$result[[1]]) %>% 
+      ## garder seulement la semaine et l'estimation de la prévision
     select(epiweek, estimate)
     
   }
@@ -1361,11 +1360,14 @@ fitted_model <- trending::fit(model, data.frame(counts))
 observed <- predict(fitted_model, simulate_pi = FALSE)
 
 
+```
 
+
+```{r table_regression, eval = FALSE, echo = TRUE}
 ## Afficher les estimations et le pourcentage de changement dans un tableau
 fitted_model %>% 
   ## extraire la régression binomiale négative originale
-  get_model() %>% 
+  get_fitted_model() %>% 
   ## obtenir un cadre de données ordonné des résultats
   tidy(exponentiate = TRUE, 
        conf.int = TRUE) %>% ### ne conserve que les valeurs d'intervention 
@@ -1395,7 +1397,9 @@ Comme précédemment, nous pouvons visualiser les résultats de la régression.
 
 ```{r plot_interrupted}
 
-ggplot(observed, aes(x = epiweek)) + 
+estimate_res <- data.frame(observed$result)
+
+ggplot(estimate_res, aes(x = epiweek)) + 
   ## ajouter le nombre de cas observés sous forme de ligne
   geom_line(aes(y = case_int, colour = "Observed")) + 
   ## ajout d'une ligne pour l'estimation du modèle
@@ -1411,7 +1415,7 @@ ggplot(observed, aes(x = epiweek)) +
   annotate(geom = "text", 
            label = "Intervention", 
            x = intervention_week, 
-           y = max(observed$upper_pi), 
+           y = max(estimate_res$upper_pi), 
            angle = 90, 
            vjust = 1
            ) + 

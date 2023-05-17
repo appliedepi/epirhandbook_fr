@@ -1,0 +1,452 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <title>52 Tableau de données | The Epidemiologist R Handbook</title>
+
+    <meta name="author" content="the handbook team" />
+  
+   <meta name="description" content="The Epi R Handbook est un manuel de référence sur l’utilisation de R en épidémiologie appliquée et santé publique." />
+   <meta name="generator" content="placeholder" />
+  <meta property="og:title" content="52 Tableau de données | The Epidemiologist R Handbook" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="The Epi R Handbook est un manuel de référence sur l’utilisation de R en épidémiologie appliquée et santé publique." />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="52 Tableau de données | The Epidemiologist R Handbook" />
+  
+  <meta name="twitter:description" content="The Epi R Handbook est un manuel de référence sur l’utilisation de R en épidémiologie appliquée et santé publique." />
+  
+  <!-- JS -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script>
+  <script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script>
+    <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet" />
+    <script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script>
+    <script src="libs/bs3compat-0.4.2/transition.js"></script>
+    <script src="libs/bs3compat-0.4.2/tabs.js"></script>
+    <script src="libs/bs3compat-0.4.2/bs3compat.js"></script>
+    <link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet" />
+    <script src="libs/bs4_book-1.0.0/bs4_book.js"></script>
+    <script src="libs/htmlwidgets-1.6.2/htmlwidgets.js"></script>
+    <link href="libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet" />
+    <script src="libs/datatables-binding-0.27/datatables.js"></script>
+    <link href="libs/dt-core-1.12.1/css/jquery.dataTables.min.css" rel="stylesheet" />
+    <link href="libs/dt-core-1.12.1/css/jquery.dataTables.extra.css" rel="stylesheet" />
+    <script src="libs/dt-core-1.12.1/js/jquery.dataTables.min.js"></script>
+    <link href="libs/nouislider-7.0.10/jquery.nouislider.min.css" rel="stylesheet" />
+    <script src="libs/nouislider-7.0.10/jquery.nouislider.min.js"></script>
+    <link href="libs/selectize-0.12.0/selectize.bootstrap3.css" rel="stylesheet" />
+    <script src="libs/selectize-0.12.0/selectize.min.js"></script>
+    <link href="libs/crosstalk-1.2.0/css/crosstalk.min.css" rel="stylesheet" />
+    <script src="libs/crosstalk-1.2.0/js/crosstalk.min.js"></script>
+    <script src="libs/kePrint-0.0.1/kePrint.js"></script>
+    <link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
+    <link href="libs/tabwid-1.1.3/tabwid.css" rel="stylesheet" />
+    <script src="libs/tabwid-1.1.3/tabwid.js"></script>
+    <link href="libs/leaflet-1.3.1/leaflet.css" rel="stylesheet" />
+    <script src="libs/leaflet-1.3.1/leaflet.js"></script>
+    <link href="libs/leafletfix-1.0.0/leafletfix.css" rel="stylesheet" />
+    <script src="libs/proj4-2.6.2/proj4.min.js"></script>
+    <script src="libs/Proj4Leaflet-1.0.1/proj4leaflet.js"></script>
+    <link href="libs/rstudio_leaflet-1.3.1/rstudio_leaflet.css" rel="stylesheet" />
+    <script src="libs/leaflet-binding-2.1.2/leaflet.js"></script>
+    <script src="libs/leaflet-providers-1.9.0/leaflet-providers_1.9.0.js"></script>
+    <script src="libs/leaflet-providers-plugin-2.1.2/leaflet-providers-plugin.js"></script>
+    <script src="libs/viz-1.8.2/viz.js"></script>
+    <link href="libs/DiagrammeR-styles-0.2/styles.css" rel="stylesheet" />
+    <script src="libs/grViz-binding-1.0.9/grViz.js"></script>
+    <script src="libs/d3-4.5.0/d3.min.js"></script>
+    <script src="libs/sankey-1/sankey.js"></script>
+    <script src="libs/sankeyNetwork-binding-0.4/sankeyNetwork.js"></script>
+    <script src="libs/plotly-binding-4.10.1/plotly.js"></script>
+    <script src="libs/typedarray-0.1/typedarray.min.js"></script>
+    <link href="libs/plotly-htmlwidgets-css-2.11.1/plotly-htmlwidgets.css" rel="stylesheet" />
+    <script src="libs/plotly-main-2.11.1/plotly-latest.min.js"></script>
+    <link href="libs/vis-9.1.0/vis-network.min.css" rel="stylesheet" />
+    <script src="libs/vis-9.1.0/vis-network.min.js"></script>
+    <script src="libs/visNetwork-binding-2.1.2/visNetwork.js"></script>
+    <link href="libs/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" />
+    <script src="libs/plotly-basic-2.11.1/plotly-basic-2.11.1.min.js"></script>
+    <script src="libs/plotly-cartesian-2.11.1/plotly-cartesian-2.11.1.min.js"></script>
+    <script src="libs/proj4js-2.3.15/proj4.js"></script>
+    <link href="libs/highcharts-9.3.1/css/motion.css" rel="stylesheet" />
+    <script src="libs/highcharts-9.3.1/highcharts.js"></script>
+    <script src="libs/highcharts-9.3.1/highcharts-3d.js"></script>
+    <script src="libs/highcharts-9.3.1/highcharts-more.js"></script>
+    <script src="libs/highcharts-9.3.1/modules/stock.js"></script>
+    <script src="libs/highcharts-9.3.1/modules/map.js"></script>
+    <script src="libs/highcharts-9.3.1/modules/data.js"></script>
+    <script src="libs/highcharts-9.3.1/modules/exporting.js"></script>
+    <script src="libs/highcharts-9.3.1/modules/offline-exporting.js"></script>
+    <script src="libs/highcharts-9.3.1/modules/drilldown.js"></script>
+    <script src="libs/highcharts-9.3.1/modules/item-series.js"></script>
+    <script src="libs/highcharts-9.3.1/modules/overlapping-datalabels.js"></script>
+    <script src="libs/highcharts-9.3.1/modules/annotations.js"></script>
+    <script src="libs/highcharts-9.3.1/modules/export-data.js"></script>
+    <script src="libs/highcharts-9.3.1/modules/funnel.js"></script>
+    <script src="libs/highcharts-9.3.1/modules/heatmap.js"></script>
+    <script src="libs/highcharts-9.3.1/modules/treemap.js"></script>
+    <script src="libs/highcharts-9.3.1/modules/sankey.js"></script>
+    <script src="libs/highcharts-9.3.1/modules/dependency-wheel.js"></script>
+    <script src="libs/highcharts-9.3.1/modules/organization.js"></script>
+    <script src="libs/highcharts-9.3.1/modules/solid-gauge.js"></script>
+    <script src="libs/highcharts-9.3.1/modules/streamgraph.js"></script>
+    <script src="libs/highcharts-9.3.1/modules/sunburst.js"></script>
+    <script src="libs/highcharts-9.3.1/modules/vector.js"></script>
+    <script src="libs/highcharts-9.3.1/modules/wordcloud.js"></script>
+    <script src="libs/highcharts-9.3.1/modules/xrange.js"></script>
+    <script src="libs/highcharts-9.3.1/modules/tilemap.js"></script>
+    <script src="libs/highcharts-9.3.1/modules/venn.js"></script>
+    <script src="libs/highcharts-9.3.1/modules/gantt.js"></script>
+    <script src="libs/highcharts-9.3.1/modules/timeline.js"></script>
+    <script src="libs/highcharts-9.3.1/modules/parallel-coordinates.js"></script>
+    <script src="libs/highcharts-9.3.1/modules/bullet.js"></script>
+    <script src="libs/highcharts-9.3.1/modules/coloraxis.js"></script>
+    <script src="libs/highcharts-9.3.1/modules/dumbbell.js"></script>
+    <script src="libs/highcharts-9.3.1/modules/lollipop.js"></script>
+    <script src="libs/highcharts-9.3.1/modules/series-label.js"></script>
+    <script src="libs/highcharts-9.3.1/plugins/motion.js"></script>
+    <script src="libs/highcharts-9.3.1/custom/reset.js"></script>
+    <script src="libs/highcharts-9.3.1/modules/boost.js"></script>
+    <script src="libs/highchart-binding-0.9.4/highchart.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script>
+
+  <!-- CSS -->
+  <style type="text/css">
+    
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  </style>
+      <link rel="stylesheet" href="style_bs4.css" />
+  
+</head>
+
+<body data-spy="scroll" data-target="#toc">
+
+<div class="container-fluid">
+<div class="row">
+  <header class="col-sm-12 col-lg-3 sidebar sidebar-book">
+    <a class="sr-only sr-only-focusable" href="#content">Skip to main content</a>
+
+    <div class="d-flex align-items-start justify-content-between">
+      <h1>
+        <a href="index.html" title="">The Epidemiologist R Handbook</a>
+      </h1>
+      <button class="btn btn-outline-primary d-lg-none ml-2 mt-1" type="button" data-toggle="collapse" data-target="#main-nav" aria-expanded="true" aria-controls="main-nav"><i class="fas fa-bars"></i><span class="sr-only">Show table of contents</span></button>
+    </div>
+
+    <div id="main-nav" class="collapse-lg">
+      <form role="search">
+        <input id="search" class="form-control" type="search" placeholder="Search" aria-label="Search">
+      </form>
+
+      <nav aria-label="Table of contents">
+        <h2>Table of contents</h2>
+        <div id="book-toc"></div>
+
+        <div class="book-extra">
+          <p><a id="book-repo" href="#">View book source <i class="fab fa-github"></i></a></li></p>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main class="col-sm-12 col-md-9 col-lg-7" id="content">
+<div id="data_table" class="section level1" number="52">
+<h1><span class="header-section-number">52</span> Tableau de données</h1>
+<p>Le manuel se concentre sur les fonctions verbales <strong>dplyr</strong> et l’opérateur pipe <strong>magrittr</strong> <code>%&gt;%</code> comme méthode pour nettoyer et regrouper les données, mais le paquet <strong>data.table</strong> offre une méthode alternative que vous pourriez rencontrer dans votre carrière R.</p>
+<!-- ======================================================= -->
+<div id="intro-aux-tableaux-de-données" class="section level2" number="52.1">
+<h2><span class="header-section-number">52.1</span> Intro aux tableaux de données</h2>
+<p>Une table de données est une structure de données bidimensionnelle comme un cadre de données qui permet d’effectuer des opérations de regroupement complexes. La syntaxe data.table est structurée de manière à ce que les opérations puissent être effectuées sur les lignes, les colonnes et les groupes.</p>
+<p>La structure est <strong>DT[i, j, by]</strong>, séparée par 3 parties : les arguments <strong>i, j</strong> et <strong>by</strong>. L’argument <strong>i</strong> permet de sous-dimensionner les lignes requises, l’argument <strong>j</strong> permet d’opérer sur les colonnes et l’argument <strong>by</strong> permet d’opérer sur les colonnes par groupes.</p>
+<p>Cette page abordera les sujets suivants :</p>
+<ul>
+<li>Importation de données et utilisation de <code>fread()</code> et <code>fwrite()</code>.</li>
+<li>Sélection et filtrage des lignes en utilisant l’argument <strong>i</strong>.</li>
+<li>Utilisation des fonctions d’aide <code>%like%</code>, <code>%chin%</code>, <code>%between%</code>.</li>
+<li>Sélection et calcul sur les colonnes à l’aide de l’argument <strong>j</strong>.</li>
+<li>Calculer par groupes avec l’argument <strong>by</strong></li>
+<li>Ajouter et mettre à jour des données dans des tableaux de données en utilisant <code>:=</code></li>
+</ul>
+<!-- ======================================================= -->
+</div>
+<div id="load-packages-and-import-data" class="section level2" number="52.2">
+<h2><span class="header-section-number">52.2</span> Load packages and import data</h2>
+</div>
+<div id="chargement-des-paquets-et-importation-des-données" class="section level2" number="52.3">
+<h2><span class="header-section-number">52.3</span> Chargement des paquets et importation des données</h2>
+<div id="charger-des-paquets" class="section level3 unnumbered">
+<h3>Charger des paquets</h3>
+<p>En utilisant la fonction <code>p_load()</code> de <strong>pacman</strong>, nous chargeons (et installons si nécessaire) les paquets nécessaires à cette analyse.</p>
+<div class="sourceCode" id="cb2011"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2011-1"><a href="data_table.html#cb2011-1" aria-hidden="true" tabindex="-1"></a>pacman<span class="sc">::</span><span class="fu">p_load</span>(</span>
+<span id="cb2011-2"><a href="data_table.html#cb2011-2" aria-hidden="true" tabindex="-1"></a>  rio, <span class="co"># pour importer les données</span></span>
+<span id="cb2011-3"><a href="data_table.html#cb2011-3" aria-hidden="true" tabindex="-1"></a>  data.table, <span class="co"># pour regrouper et nettoyer les données</span></span>
+<span id="cb2011-4"><a href="data_table.html#cb2011-4" aria-hidden="true" tabindex="-1"></a>  tidyverse, <span class="co"># permet d&#39;utiliser la fonction pipe (%&gt;%) dans ce chapitre</span></span>
+<span id="cb2011-5"><a href="data_table.html#cb2011-5" aria-hidden="true" tabindex="-1"></a>  here </span>
+<span id="cb2011-6"><a href="data_table.html#cb2011-6" aria-hidden="true" tabindex="-1"></a>  ) </span></code></pre></div>
+</div>
+<div id="importer-les-données-6" class="section level3 unnumbered">
+<h3>Importer les données</h3>
+<p>Cette page va explorer certaines des fonctions principales de <strong>data.table</strong> en utilisant la liste de cas référencée tout au long du manuel.</p>
+<p>Nous importons le jeu de données des cas d’une épidémie d’Ebola simulée. Si vous souhaitez télécharger les données pour les suivre pas à pas, consultez les instructions de la page [Donwload book and data]. L’ensemble de données est importé à l’aide de la fonction <code>import()</code> du paquet <strong>rio</strong>. Voir la page [Import and export] pour les différentes manières d’importer des données. A partir de là, nous utilisons <code>data.table()</code> pour convertir le cadre de données en un tableau de données.</p>
+<div class="sourceCode" id="cb2012"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2012-1"><a href="data_table.html#cb2012-1" aria-hidden="true" tabindex="-1"></a>linelist <span class="ot">&lt;-</span> rio<span class="sc">::</span><span class="fu">import</span>(<span class="fu">here</span>(<span class="st">&quot;data&quot;</span>, <span class="st">&quot;linelist_cleaned.xlsx&quot;</span>)) <span class="sc">%&gt;%</span> <span class="fu">data.table</span>()</span></code></pre></div>
+<p>La fonction <code>fread()</code> est utilisée pour importer directement des fichiers délimités réguliers, tels que les fichiers .csv, vers un format de table de données. Cette fonction, et sa contrepartie, <code>fwrite()</code>, utilisée pour écrire les tables de données comme des fichiers délimités réguliers, sont des options très rapides et efficaces en termes de calcul pour les grandes bases de données.</p>
+<p>Les 20 premières lignes de <code>linelist</code> :</p>
+<p>Les commandes de base de R, telles que <code>dim()</code>, utilisées pour les cadres de données, peuvent également être utilisées pour les tableaux de données.</p>
+<div class="sourceCode" id="cb2013"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2013-1"><a href="data_table.html#cb2013-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(linelist) <span class="co">#donne le nombre de lignes et de colonnes du tableau de données</span></span></code></pre></div>
+<pre><code>## [1] 5888   30</code></pre>
+<!-- ======================================================= -->
+</div>
+</div>
+<div id="largument-i-sélection-et-filtrage-des-lignes" class="section level2" number="52.4">
+<h2><span class="header-section-number">52.4</span> L’argument i: sélection et filtrage des lignes</h2>
+<p>En rappelant la structure <strong>DT[i, j, by]</strong>, nous pouvons filtrer les lignes en utilisant soit des numéros de ligne, soit des expressions logiques. L’argument i est le premier ; par conséquent, la syntaxe <strong>DT[i]</strong> ou <strong>DT[i,]</strong> peut être utilisée.</p>
+<p>Le premier exemple récupère les 5 premières lignes de la table de données, le deuxième exemple sous-entend que les cas sont âgés de 18 ans ou plus, et le troisième exemple sous-entend que les cas âgés de 18 ans ou plus mais non diagnostiqués à l’hôpital central :</p>
+<div class="sourceCode" id="cb2015"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2015-1"><a href="data_table.html#cb2015-1" aria-hidden="true" tabindex="-1"></a>linelist[<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>] <span class="co">#renvoie la 1ère à la 5ème ligne</span></span>
+<span id="cb2015-2"><a href="data_table.html#cb2015-2" aria-hidden="true" tabindex="-1"></a>linelist[age <span class="sc">&gt;=</span> <span class="dv">18</span>] <span class="co">#sous-entend les cas égaux ou supérieurs à 18 ans</span></span>
+<span id="cb2015-3"><a href="data_table.html#cb2015-3" aria-hidden="true" tabindex="-1"></a>linelist[age <span class="sc">&gt;=</span> <span class="dv">18</span> <span class="sc">&amp;</span> hospital <span class="sc">!=</span> <span class="st">&quot;Central Hospital&quot;</span>] <span class="co">#subset les cas égaux ou supérieurs à 18 ans mais non diagnostiqués à Central Hospital</span></span></code></pre></div>
+<p>L’utilisation de .N dans l’argument i représente le nombre total de lignes dans la table de données. Cela peut être utilisé pour effectuer un sous-ensemble sur le nombre de lignes :</p>
+<div class="sourceCode" id="cb2016"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2016-1"><a href="data_table.html#cb2016-1" aria-hidden="true" tabindex="-1"></a>linelist[.N] <span class="co">#renvoie la dernière ligne</span></span>
+<span id="cb2016-2"><a href="data_table.html#cb2016-2" aria-hidden="true" tabindex="-1"></a>linelist[<span class="dv">15</span> <span class="sc">:</span>.N] <span class="co">#renvoie la 15ème à la dernière ligne</span></span></code></pre></div>
+<div id="utilisation-de-fonctions-daide-pour-le-filtrage" class="section level3 unnumbered">
+<h3>Utilisation de fonctions d’aide pour le filtrage</h3>
+<p>Le tableau de données utilise des fonctions d’aide qui facilitent le sous-ensemble des lignes. La fonction <code>%like%</code> est utilisée pour faire correspondre un motif dans une colonne, <code>%chin%</code> est utilisée pour faire correspondre un caractère spécifique, et la fonction d’aide <code>%between%</code> est utilisée pour faire correspondre des colonnes numériques dans une plage prédéfinie.</p>
+<p>Dans les exemples suivants, nous :
+* filtrons les lignes où la variable hospital contient “Hospital”.
+* filtrons les lignes où le résultat est “Recover” ou “Death”.
+* filtrons les lignes dans la tranche d’âge 40-60 ans</p>
+<div class="sourceCode" id="cb2017"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2017-1"><a href="data_table.html#cb2017-1" aria-hidden="true" tabindex="-1"></a>linelist[hospital <span class="sc">%like%</span> <span class="st">&quot;Hospital&quot;</span>] <span class="co">#filtre les lignes où la variable hospital contient &quot;Hospital&quot;</span></span>
+<span id="cb2017-2"><a href="data_table.html#cb2017-2" aria-hidden="true" tabindex="-1"></a>linelist[outcome <span class="sc">%chin%</span> <span class="fu">c</span>(<span class="st">&quot;Recover&quot;</span>, <span class="st">&quot;Death&quot;</span>)] <span class="co">#filtre les lignes où l&#39;issue est &quot;Recover&quot; ou &quot;Death&quot;.</span></span>
+<span id="cb2017-3"><a href="data_table.html#cb2017-3" aria-hidden="true" tabindex="-1"></a>linelist[age <span class="sc">%between%</span> <span class="fu">c</span>(<span class="dv">40</span>, <span class="dv">60</span>)] <span class="co">#filtre les lignes dans la tranche d&#39;âge 40-60</span></span>
+<span id="cb2017-4"><a href="data_table.html#cb2017-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2017-5"><a href="data_table.html#cb2017-5" aria-hidden="true" tabindex="-1"></a><span class="co">#%between% doit prendre un vecteur de longueur 2, tandis que %chin% peut prendre des vecteurs de longueur &gt;= 1</span></span></code></pre></div>
+</div>
+</div>
+<div id="largument-j-sélection-et-calcul-sur-les-colonnes" class="section level2" number="52.5">
+<h2><span class="header-section-number">52.5</span> L’argument j: sélection et calcul sur les colonnes</h2>
+<p>En utilisant la structure <strong>DT[i, j, by]</strong>, nous pouvons sélectionner des colonnes en utilisant des nombres ou des noms. L’argument <strong>j</strong> est le second ; on utilise donc la syntaxe <strong>DT[, j]</strong>. Pour faciliter les calculs sur l’argument <strong>j</strong>, la colonne est enveloppée en utilisant soit <code>list()</code> soit <code>.()</code>.</p>
+<div id="sélection-de-colonnes" class="section level3 unnumbered">
+<h3>Sélection de colonnes</h3>
+<p>Le premier exemple récupère les première, troisième et cinquième colonnes de la table de données, le deuxième exemple sélectionne toutes les colonnes à l’exception des colonnes taille, poids et sexe. Le troisième exemple utilise la terminaison <code>.()</code> pour sélectionner les colonnes <strong>identification du cas</strong> et <strong>résultat</strong>.</p>
+<div class="sourceCode" id="cb2018"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2018-1"><a href="data_table.html#cb2018-1" aria-hidden="true" tabindex="-1"></a>linelist[ , <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">3</span>,<span class="dv">5</span>)]</span>
+<span id="cb2018-2"><a href="data_table.html#cb2018-2" aria-hidden="true" tabindex="-1"></a>linelist[ , <span class="sc">-</span><span class="fu">c</span>(<span class="st">&quot;gender&quot;</span>, <span class="st">&quot;age&quot;</span>, <span class="st">&quot;wt_kg&quot;</span>, <span class="st">&quot;ht_cm&quot;</span>)]</span>
+<span id="cb2018-3"><a href="data_table.html#cb2018-3" aria-hidden="true" tabindex="-1"></a>linelist[ , <span class="fu">list</span>(case_id, outcome)] <span class="co">#linelist[ , .(case_id, outcome)] fonctionne tout aussi bien</span></span></code></pre></div>
+</div>
+<div id="calcul-sur-les-colonnes" class="section level3 unnumbered">
+<h3>Calcul sur les colonnes</h3>
+<p>En combinant les arguments <strong>i</strong> et <strong>j</strong>, il est possible de filtrer les lignes et de calculer sur les colonnes. L’utilisation de <strong>.N</strong> dans l’argument <strong>j</strong> représente également le nombre total de lignes dans le tableau de données et peut être utile pour retourner le nombre de lignes après le filtrage des lignes.</p>
+<p>Dans les exemples suivants, nous :
+* Comptons le nombre de cas qui sont restés plus de 7 jours à l’hôpital.
+* Calculer l’âge moyen des cas qui sont décédés à l’hôpital militaire.
+* Calculer l’écart-type, la médiane et l’âge moyen des cas qui se sont rétablis à l’hôpital central.</p>
+<div class="sourceCode" id="cb2019"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2019-1"><a href="data_table.html#cb2019-1" aria-hidden="true" tabindex="-1"></a>linelist[days_onset_hosp <span class="sc">&gt;</span> <span class="dv">7</span> , .N]</span></code></pre></div>
+<pre><code>## [1] 189</code></pre>
+<div class="sourceCode" id="cb2021"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2021-1"><a href="data_table.html#cb2021-1" aria-hidden="true" tabindex="-1"></a>linelist[hospital <span class="sc">%like%</span> <span class="st">&quot;Military&quot;</span> <span class="sc">&amp;</span> outcome <span class="sc">%chin%</span> <span class="st">&quot;Death&quot;</span>, .(<span class="fu">mean</span>(age, <span class="at">na.rm =</span> T))] <span class="co">#na.rm = T supprime les valeurs N/A</span></span></code></pre></div>
+<pre><code>##         V1
+## 1: 15.9084</code></pre>
+<div class="sourceCode" id="cb2023"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2023-1"><a href="data_table.html#cb2023-1" aria-hidden="true" tabindex="-1"></a>linelist[hospital <span class="sc">==</span> <span class="st">&quot;Central Hospital&quot;</span> <span class="sc">&amp;</span> outcome <span class="sc">==</span> <span class="st">&quot;Recover&quot;</span>, </span>
+<span id="cb2023-2"><a href="data_table.html#cb2023-2" aria-hidden="true" tabindex="-1"></a>                 .(<span class="at">mean_age =</span> <span class="fu">mean</span>(age, <span class="at">na.rm =</span> T),</span>
+<span id="cb2023-3"><a href="data_table.html#cb2023-3" aria-hidden="true" tabindex="-1"></a>                   <span class="at">median_age =</span> <span class="fu">median</span>(age, <span class="at">na.rm =</span> T),</span>
+<span id="cb2023-4"><a href="data_table.html#cb2023-4" aria-hidden="true" tabindex="-1"></a>                   <span class="at">sd_age =</span> <span class="fu">sd</span>(age, <span class="at">na.rm =</span> T))] <span class="co">#cette syntaxe n&#39;utilise pas les fonctions d&#39;aide mais fonctionne tout aussi bien</span></span></code></pre></div>
+<pre><code>##    mean_age median_age   sd_age
+## 1: 16.85185         14 12.93857</code></pre>
+<p>N’oubliez pas que l’utilisation de la terminaison .() dans l’argument j facilite le calcul, renvoie un tableau de données et permet de nommer les colonnes.</p>
+</div>
+</div>
+<div id="largument-by-calcul-par-groupes" class="section level2" number="52.6">
+<h2><span class="header-section-number">52.6</span> L’argument by : calcul par groupes</h2>
+<p>L’argument <strong>by</strong> est le troisième argument de la structure <strong>DT[i, j, by]</strong>. L’argument <strong>by</strong> accepte à la fois un vecteur de caractères et la syntaxe <code>list()</code> ou <code>.()</code>. L’utilisation de la syntaxe <code>.()</code> dans l’argument <strong>by</strong> permet de renommer les colonnes à la volée.</p>
+<p>Dans les exemples suivants, nous :<br />
+* regroupons le nombre de cas par hôpital
+* dans les cas de 18 ans ou plus, calculer la taille et le poids moyens des cas selon le sexe et selon qu’ils sont guéris ou décédés
+* dans les admissions qui ont duré plus de 7 jours, compter le nombre de cas selon le mois d’admission et l’hôpital où ils ont été admis.</p>
+<div class="sourceCode" id="cb2025"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2025-1"><a href="data_table.html#cb2025-1" aria-hidden="true" tabindex="-1"></a>linelist[, .N, .(hospital)] <span class="co">#le nombre de cas par hôpital</span></span></code></pre></div>
+<pre><code>##                                hospital    N
+## 1:                                Other  885
+## 2:                              Missing 1469
+## 3: St. Mark&#39;s Maternity Hospital (SMMH)  422
+## 4:                        Port Hospital 1762
+## 5:                    Military Hospital  896
+## 6:                     Central Hospital  454</code></pre>
+<div class="sourceCode" id="cb2027"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2027-1"><a href="data_table.html#cb2027-1" aria-hidden="true" tabindex="-1"></a>linelist[age <span class="sc">&gt;</span> <span class="dv">18</span>, .(<span class="at">mean_wt =</span> <span class="fu">mean</span>(wt_kg, <span class="at">na.rm =</span> T),</span>
+<span id="cb2027-2"><a href="data_table.html#cb2027-2" aria-hidden="true" tabindex="-1"></a>                             <span class="at">mean_ht =</span> <span class="fu">mean</span>(ht_cm, <span class="at">na.rm =</span> T)), .(gender, outcome)] <span class="co">#NAs représentent les catégories pour lesquelles les données sont manquantes</span></span></code></pre></div>
+<pre><code>##    gender outcome  mean_wt  mean_ht
+## 1:      m Recover 71.90227 178.1977
+## 2:      f   Death 63.27273 159.9448
+## 3:      m   Death 71.61770 175.4726
+## 4:      f    &lt;NA&gt; 64.49375 162.7875
+## 5:      m    &lt;NA&gt; 72.65505 176.9686
+## 6:      f Recover 62.86498 159.2996
+## 7:   &lt;NA&gt; Recover 67.21429 175.2143
+## 8:   &lt;NA&gt;   Death 69.16667 170.7917
+## 9:   &lt;NA&gt;    &lt;NA&gt; 70.25000 175.5000</code></pre>
+<div class="sourceCode" id="cb2029"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2029-1"><a href="data_table.html#cb2029-1" aria-hidden="true" tabindex="-1"></a>linelist[days_onset_hosp <span class="sc">&gt;</span> <span class="dv">7</span>, .N, .(<span class="at">month =</span> <span class="fu">month</span>(date_hospitalisation), hospital)]</span></code></pre></div>
+<pre><code>##     month                             hospital  N
+##  1:     5                    Military Hospital  3
+##  2:     6                        Port Hospital  4
+##  3:     7                        Port Hospital  8
+##  4:     8 St. Mark&#39;s Maternity Hospital (SMMH)  5
+##  5:     8                    Military Hospital  9
+##  6:     8                                Other 10
+##  7:     8                        Port Hospital 10
+##  8:     9                        Port Hospital 28
+##  9:     9                              Missing 27
+## 10:     9                     Central Hospital 10
+## 11:     9 St. Mark&#39;s Maternity Hospital (SMMH)  6
+## 12:    10                              Missing  2
+## 13:    10                    Military Hospital  3
+## 14:     3                        Port Hospital  1
+## 15:     4                    Military Hospital  1
+## 16:     5                                Other  2
+## 17:     5                     Central Hospital  1
+## 18:     5                              Missing  1
+## 19:     6                              Missing  7
+## 20:     6 St. Mark&#39;s Maternity Hospital (SMMH)  2
+## 21:     6                    Military Hospital  1
+## 22:     7                    Military Hospital  3
+## 23:     7                                Other  1
+## 24:     7                              Missing  2
+## 25:     7 St. Mark&#39;s Maternity Hospital (SMMH)  1
+## 26:     8                     Central Hospital  2
+## 27:     8                              Missing  6
+## 28:     9                                Other  9
+## 29:     9                    Military Hospital 11
+## 30:    10                        Port Hospital  3
+## 31:    10                                Other  4
+## 32:    10 St. Mark&#39;s Maternity Hospital (SMMH)  1
+## 33:    10                     Central Hospital  1
+## 34:    11                              Missing  2
+## 35:    11                        Port Hospital  1
+## 36:    12                        Port Hospital  1
+##     month                             hospital  N</code></pre>
+<p>Data.table permet également d’enchaîner les expressions comme suit :</p>
+<div class="sourceCode" id="cb2031"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2031-1"><a href="data_table.html#cb2031-1" aria-hidden="true" tabindex="-1"></a>linelist[, .N, .(hospital)][<span class="fu">order</span>(<span class="sc">-</span>N)][<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>] <span class="co">#La première sélectionne tous les cas par hôpital, la deuxième ordonne les cas par ordre décroissant, la troisième sous-ensemble les 3 hôpitaux ayant le plus grand nombre de cas.</span></span></code></pre></div>
+<pre><code>##             hospital    N
+## 1:     Port Hospital 1762
+## 2:           Missing 1469
+## 3: Military Hospital  896</code></pre>
+<p>Dans ces exemples, nous partons du principe qu’une ligne du tableau de données correspond à un nouveau cas, et nous pouvons donc utiliser la fonction <strong>.N</strong> pour représenter le nombre de lignes du tableau de données. Une autre fonction utile pour représenter le nombre de cas uniques est <code>uniqueN()</code>, qui retourne le nombre de valeurs uniques dans une entrée donnée. Ceci est illustré ici :</p>
+<div class="sourceCode" id="cb2033"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2033-1"><a href="data_table.html#cb2033-1" aria-hidden="true" tabindex="-1"></a>linelist[, .(<span class="fu">uniqueN</span>(gender))] <span class="co">#souvenez-vous que .() dans l&#39;argument j renvoie un tableau de données</span></span></code></pre></div>
+<pre><code>##    V1
+## 1:  3</code></pre>
+<p>La réponse est 3, car les valeurs uniques de la colonne sexe sont m, f et N/A. Comparez avec la fonction R de base <code>unique()</code>, qui renvoie toutes les valeurs uniques dans une entrée donnée :</p>
+<div class="sourceCode" id="cb2035"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2035-1"><a href="data_table.html#cb2035-1" aria-hidden="true" tabindex="-1"></a>linelist[, .(<span class="fu">unique</span>(gender))]</span></code></pre></div>
+<pre><code>##      V1
+## 1:    m
+## 2:    f
+## 3: &lt;NA&gt;</code></pre>
+<p>Pour trouver le nombre de cas uniques dans un mois donné, nous écririons ce qui suit :</p>
+<div class="sourceCode" id="cb2037"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2037-1"><a href="data_table.html#cb2037-1" aria-hidden="true" tabindex="-1"></a>linelist[, .(<span class="fu">uniqueN</span>(case_id)), .(<span class="at">month =</span> <span class="fu">month</span>(date_hospitalisation))]</span></code></pre></div>
+<pre><code>##     month   V1
+##  1:     5   62
+##  2:     6  100
+##  3:     7  198
+##  4:     8  509
+##  5:     9 1170
+##  6:    10 1228
+##  7:    11  813
+##  8:    12  576
+##  9:     1  434
+## 10:     2  310
+## 11:     3  290
+## 12:     4  198</code></pre>
+</div>
+<div id="ajout-et-mise-à-jour-des-tables-de-données" class="section level2" number="52.7">
+<h2><span class="header-section-number">52.7</span> Ajout et mise à jour des tables de données</h2>
+<p>L’opérateur <code>:=</code> est utilisé pour ajouter ou mettre à jour des données dans une table de données. L’ajout de colonnes à votre table de données peut se faire de la manière suivante :</p>
+<div class="sourceCode" id="cb2039"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2039-1"><a href="data_table.html#cb2039-1" aria-hidden="true" tabindex="-1"></a>linelist[, adult <span class="sc">:</span><span class="er">=</span> age <span class="sc">&gt;=</span> <span class="dv">18</span>] <span class="co">#ajoute une colonne</span></span>
+<span id="cb2039-2"><a href="data_table.html#cb2039-2" aria-hidden="true" tabindex="-1"></a>linelist[, <span class="fu">c</span>(<span class="st">&quot;child&quot;</span>, <span class="st">&quot;wt_lbs&quot;</span>) <span class="sc">:</span><span class="er">=</span> .(age <span class="sc">&lt;</span> <span class="dv">18</span>, wt_kg<span class="sc">*</span><span class="fl">2.204</span>)] <span class="co">#pour ajouter plusieurs colonnes, il faut utiliser la syntaxe c(&quot;&quot;) et list() ou .()</span></span>
+<span id="cb2039-3"><a href="data_table.html#cb2039-3" aria-hidden="true" tabindex="-1"></a>linelist[, <span class="st">`</span><span class="at">:=</span><span class="st">`</span> (<span class="at">bmi_in_range =</span> (bmi <span class="sc">&gt;</span> <span class="dv">16</span> <span class="sc">&amp;</span> bmi <span class="sc">&lt;</span> <span class="dv">40</span>),</span>
+<span id="cb2039-4"><a href="data_table.html#cb2039-4" aria-hidden="true" tabindex="-1"></a>                         <span class="at">no_infector_source_data =</span> <span class="fu">is.na</span>(infector) <span class="sc">|</span> <span class="fu">is.na</span>(source))] <span class="co">#Cette méthode utilise := comme un opérateur fonctionnel `:=`.</span></span>
+<span id="cb2039-5"><a href="data_table.html#cb2039-5" aria-hidden="true" tabindex="-1"></a>linelist[, adult <span class="sc">:</span><span class="er">=</span> <span class="cn">NULL</span>] <span class="co">#supprime la colonne</span></span></code></pre></div>
+<p>Des agrégations plus complexes dépassent le cadre de ce chapitre d’introduction, mais l’idée est de fournir une alternative populaire et viable à <strong>dplyr</strong> pour regrouper et nettoyer les données. Le package <strong>data.table</strong> est un excellent package qui permet d’obtenir un code soigné et lisible.</p>
+</div>
+<div id="ressources-32" class="section level2" number="52.8">
+<h2><span class="header-section-number">52.8</span> Ressources</h2>
+<p>Voici quelques ressources utiles pour plus d’informations :
+* <a href="https://cran.r-project.org/web/packages/data.table/vignettes/datatable-intro.html" class="uri">https://cran.r-project.org/web/packages/data.table/vignettes/datatable-intro.html</a>
+* <a href="https://github.com/Rdatatable/data.table" class="uri">https://github.com/Rdatatable/data.table</a>
+* <a href="https://s3.amazonaws.com/assets.datacamp.com/img/blog/data+table+cheat+sheet.pdf" class="uri">https://s3.amazonaws.com/assets.datacamp.com/img/blog/data+table+cheat+sheet.pdf</a>
+* <a href="https://www.machinelearningplus.com/data-manipulation/datatable-in-r-complete-guide/" class="uri">https://www.machinelearningplus.com/data-manipulation/datatable-in-r-complete-guide/</a>
+* <a href="https://www.datacamp.com/community/tutorials/data-table-r-tutorial" class="uri">https://www.datacamp.com/community/tutorials/data-table-r-tutorial</a></p>
+<p>Vous pouvez exécuter n’importe quelle fonction de synthèse sur des données groupées ; voir la Cheat Sheet ici pour plus d’informations :
+<a href="https://s3.amazonaws.com/assets.datacamp.com/blog_assets/datatable_Cheat_Sheet_R.pdf" class="uri">https://s3.amazonaws.com/assets.datacamp.com/blog_assets/datatable_Cheat_Sheet_R.pdf</a></p>
+
+</div>
+</div>
+  </main>
+
+  <div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
+    <nav id="toc" data-toggle="toc" aria-label="On this page">
+      <h2>On this page</h2>
+      <div id="book-on-this-page"></div>
+
+      <div class="book-extra">
+        <ul class="list-unstyled">
+          <li><a id="book-source" href="#">View source <i class="fab fa-github"></i></a></li>
+          <li><a id="book-edit" href="#">Edit this page <i class="fab fa-github"></i></a></li>
+        </ul>
+      </div>
+    </nav>
+  </div>
+
+</div>
+</div> <!-- .container -->
+
+<footer class="bg-primary text-light mt-5">
+  <div class="container"><div class="row">
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>"<strong>The Epidemiologist R Handbook</strong>" was written by the handbook team. It was last built on 2023-05-17.</p>
+  </div>
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>This book was built by the <a class="text-light" href="https://bookdown.org">bookdown</a> R package.</p>
+  </div>
+
+</div></div>
+</footer>
+
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+<script type="text/x-mathjax-config">const popovers = document.querySelectorAll('a.footnote-ref[data-toggle="popover"]');
+for (let popover of popovers) {
+  const div = document.createElement('div');
+  div.setAttribute('style', 'position: absolute; top: 0, left:0; width:0, height:0, overflow: hidden; visibility: hidden;');
+  div.innerHTML = popover.getAttribute('data-content');
+
+  var has_math = div.querySelector("span.math");
+  if (has_math) {
+    document.body.appendChild(div);
+    MathJax.Hub.Queue(["Typeset", MathJax.Hub, div]);
+    MathJax.Hub.Queue(function() {
+      popover.setAttribute('data-content', div.innerHTML);
+      document.body.removeChild(div);
+    })
+  }
+}
+</script>
+</body>
+
+</html>

@@ -1,0 +1,786 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <title>34 Pyramides démographiques et échelles de Likert | The Epidemiologist R Handbook</title>
+
+    <meta name="author" content="the handbook team" />
+  
+   <meta name="description" content="The Epi R Handbook est un manuel de référence sur l’utilisation de R en épidémiologie appliquée et santé publique." />
+   <meta name="generator" content="placeholder" />
+  <meta property="og:title" content="34 Pyramides démographiques et échelles de Likert | The Epidemiologist R Handbook" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="The Epi R Handbook est un manuel de référence sur l’utilisation de R en épidémiologie appliquée et santé publique." />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="34 Pyramides démographiques et échelles de Likert | The Epidemiologist R Handbook" />
+  
+  <meta name="twitter:description" content="The Epi R Handbook est un manuel de référence sur l’utilisation de R en épidémiologie appliquée et santé publique." />
+  
+  <!-- JS -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script>
+  <script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script>
+    <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet" />
+    <script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script>
+    <script src="libs/bs3compat-0.4.2/transition.js"></script>
+    <script src="libs/bs3compat-0.4.2/tabs.js"></script>
+    <script src="libs/bs3compat-0.4.2/bs3compat.js"></script>
+    <link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet" />
+    <script src="libs/bs4_book-1.0.0/bs4_book.js"></script>
+    <script src="libs/htmlwidgets-1.6.2/htmlwidgets.js"></script>
+    <link href="libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet" />
+    <script src="libs/datatables-binding-0.27/datatables.js"></script>
+    <link href="libs/dt-core-1.12.1/css/jquery.dataTables.min.css" rel="stylesheet" />
+    <link href="libs/dt-core-1.12.1/css/jquery.dataTables.extra.css" rel="stylesheet" />
+    <script src="libs/dt-core-1.12.1/js/jquery.dataTables.min.js"></script>
+    <link href="libs/nouislider-7.0.10/jquery.nouislider.min.css" rel="stylesheet" />
+    <script src="libs/nouislider-7.0.10/jquery.nouislider.min.js"></script>
+    <link href="libs/selectize-0.12.0/selectize.bootstrap3.css" rel="stylesheet" />
+    <script src="libs/selectize-0.12.0/selectize.min.js"></script>
+    <link href="libs/crosstalk-1.2.0/css/crosstalk.min.css" rel="stylesheet" />
+    <script src="libs/crosstalk-1.2.0/js/crosstalk.min.js"></script>
+    <script src="libs/kePrint-0.0.1/kePrint.js"></script>
+    <link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
+    <link href="libs/tabwid-1.1.3/tabwid.css" rel="stylesheet" />
+    <script src="libs/tabwid-1.1.3/tabwid.js"></script>
+    <link href="libs/leaflet-1.3.1/leaflet.css" rel="stylesheet" />
+    <script src="libs/leaflet-1.3.1/leaflet.js"></script>
+    <link href="libs/leafletfix-1.0.0/leafletfix.css" rel="stylesheet" />
+    <script src="libs/proj4-2.6.2/proj4.min.js"></script>
+    <script src="libs/Proj4Leaflet-1.0.1/proj4leaflet.js"></script>
+    <link href="libs/rstudio_leaflet-1.3.1/rstudio_leaflet.css" rel="stylesheet" />
+    <script src="libs/leaflet-binding-2.1.2/leaflet.js"></script>
+    <script src="libs/leaflet-providers-1.9.0/leaflet-providers_1.9.0.js"></script>
+    <script src="libs/leaflet-providers-plugin-2.1.2/leaflet-providers-plugin.js"></script>
+    <script src="libs/viz-1.8.2/viz.js"></script>
+    <link href="libs/DiagrammeR-styles-0.2/styles.css" rel="stylesheet" />
+    <script src="libs/grViz-binding-1.0.9/grViz.js"></script>
+    <script src="libs/d3-4.5.0/d3.min.js"></script>
+    <script src="libs/sankey-1/sankey.js"></script>
+    <script src="libs/sankeyNetwork-binding-0.4/sankeyNetwork.js"></script>
+    <script src="libs/plotly-binding-4.10.1/plotly.js"></script>
+    <script src="libs/typedarray-0.1/typedarray.min.js"></script>
+    <link href="libs/plotly-htmlwidgets-css-2.11.1/plotly-htmlwidgets.css" rel="stylesheet" />
+    <script src="libs/plotly-main-2.11.1/plotly-latest.min.js"></script>
+    <link href="libs/vis-9.1.0/vis-network.min.css" rel="stylesheet" />
+    <script src="libs/vis-9.1.0/vis-network.min.js"></script>
+    <script src="libs/visNetwork-binding-2.1.2/visNetwork.js"></script>
+    <link href="libs/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" />
+    <script src="libs/plotly-basic-2.11.1/plotly-basic-2.11.1.min.js"></script>
+    <script src="libs/plotly-cartesian-2.11.1/plotly-cartesian-2.11.1.min.js"></script>
+    <script src="libs/proj4js-2.3.15/proj4.js"></script>
+    <link href="libs/highcharts-9.3.1/css/motion.css" rel="stylesheet" />
+    <script src="libs/highcharts-9.3.1/highcharts.js"></script>
+    <script src="libs/highcharts-9.3.1/highcharts-3d.js"></script>
+    <script src="libs/highcharts-9.3.1/highcharts-more.js"></script>
+    <script src="libs/highcharts-9.3.1/modules/stock.js"></script>
+    <script src="libs/highcharts-9.3.1/modules/map.js"></script>
+    <script src="libs/highcharts-9.3.1/modules/data.js"></script>
+    <script src="libs/highcharts-9.3.1/modules/exporting.js"></script>
+    <script src="libs/highcharts-9.3.1/modules/offline-exporting.js"></script>
+    <script src="libs/highcharts-9.3.1/modules/drilldown.js"></script>
+    <script src="libs/highcharts-9.3.1/modules/item-series.js"></script>
+    <script src="libs/highcharts-9.3.1/modules/overlapping-datalabels.js"></script>
+    <script src="libs/highcharts-9.3.1/modules/annotations.js"></script>
+    <script src="libs/highcharts-9.3.1/modules/export-data.js"></script>
+    <script src="libs/highcharts-9.3.1/modules/funnel.js"></script>
+    <script src="libs/highcharts-9.3.1/modules/heatmap.js"></script>
+    <script src="libs/highcharts-9.3.1/modules/treemap.js"></script>
+    <script src="libs/highcharts-9.3.1/modules/sankey.js"></script>
+    <script src="libs/highcharts-9.3.1/modules/dependency-wheel.js"></script>
+    <script src="libs/highcharts-9.3.1/modules/organization.js"></script>
+    <script src="libs/highcharts-9.3.1/modules/solid-gauge.js"></script>
+    <script src="libs/highcharts-9.3.1/modules/streamgraph.js"></script>
+    <script src="libs/highcharts-9.3.1/modules/sunburst.js"></script>
+    <script src="libs/highcharts-9.3.1/modules/vector.js"></script>
+    <script src="libs/highcharts-9.3.1/modules/wordcloud.js"></script>
+    <script src="libs/highcharts-9.3.1/modules/xrange.js"></script>
+    <script src="libs/highcharts-9.3.1/modules/tilemap.js"></script>
+    <script src="libs/highcharts-9.3.1/modules/venn.js"></script>
+    <script src="libs/highcharts-9.3.1/modules/gantt.js"></script>
+    <script src="libs/highcharts-9.3.1/modules/timeline.js"></script>
+    <script src="libs/highcharts-9.3.1/modules/parallel-coordinates.js"></script>
+    <script src="libs/highcharts-9.3.1/modules/bullet.js"></script>
+    <script src="libs/highcharts-9.3.1/modules/coloraxis.js"></script>
+    <script src="libs/highcharts-9.3.1/modules/dumbbell.js"></script>
+    <script src="libs/highcharts-9.3.1/modules/lollipop.js"></script>
+    <script src="libs/highcharts-9.3.1/modules/series-label.js"></script>
+    <script src="libs/highcharts-9.3.1/plugins/motion.js"></script>
+    <script src="libs/highcharts-9.3.1/custom/reset.js"></script>
+    <script src="libs/highcharts-9.3.1/modules/boost.js"></script>
+    <script src="libs/highchart-binding-0.9.4/highchart.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script>
+
+  <!-- CSS -->
+  <style type="text/css">
+    
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  </style>
+      <link rel="stylesheet" href="style_bs4.css" />
+  
+</head>
+
+<body data-spy="scroll" data-target="#toc">
+
+<div class="container-fluid">
+<div class="row">
+  <header class="col-sm-12 col-lg-3 sidebar sidebar-book">
+    <a class="sr-only sr-only-focusable" href="#content">Skip to main content</a>
+
+    <div class="d-flex align-items-start justify-content-between">
+      <h1>
+        <a href="index.html" title="">The Epidemiologist R Handbook</a>
+      </h1>
+      <button class="btn btn-outline-primary d-lg-none ml-2 mt-1" type="button" data-toggle="collapse" data-target="#main-nav" aria-expanded="true" aria-controls="main-nav"><i class="fas fa-bars"></i><span class="sr-only">Show table of contents</span></button>
+    </div>
+
+    <div id="main-nav" class="collapse-lg">
+      <form role="search">
+        <input id="search" class="form-control" type="search" placeholder="Search" aria-label="Search">
+      </form>
+
+      <nav aria-label="Table of contents">
+        <h2>Table of contents</h2>
+        <div id="book-toc"></div>
+
+        <div class="book-extra">
+          <p><a id="book-repo" href="#">View book source <i class="fab fa-github"></i></a></li></p>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main class="col-sm-12 col-md-9 col-lg-7" id="content">
+<div id="age_pyramid" class="section level1" number="34">
+<h1><span class="header-section-number">34</span> Pyramides démographiques et échelles de Likert</h1>
+<p><img src="images/pop_pyramid_baseline.png" width="50%" /><img src="images/likert.png" width="50%" /></p>
+<p>Les pyramides démographiques sont utiles pour montrer les distributions d’âge et de sexe. Un code similaire peut être utilisé pour visualiser les résultats de questions d’enquête de type Likert (par exemple, “Tout à fait d’accord”, “D’accord”, “Neutre”, “Pas d’accord”, “Pas du tout d’accord”). Dans cette page, nous couvrons les points suivants :</p>
+<ul>
+<li>Des pyramides rapides et faciles à réaliser grâce au package <strong>apyramid</strong><br />
+</li>
+<li>Des pyramides plus personnalisables grâce à <code>ggplot()</code><br />
+</li>
+<li>Affichage de données démographiques “de référence” à l’arrière-plan de la pyramide<br />
+</li>
+<li>Utilisation de graphiques de type pyramide pour afficher d’autres types de données (par exemple, les réponses à des questions d’enquête de type <strong>Likert</strong>).</li>
+</ul>
+<!-- ======================================================= -->
+<div id="preparation-4" class="section level2" number="34.1">
+<h2><span class="header-section-number">34.1</span> Preparation</h2>
+<div id="charger-les-packages-2" class="section level3 unnumbered">
+<h3>Charger les packages</h3>
+<p>Ce morceau de code montre le chargement des packages nécessaires aux analyses. Dans ce manuel, nous mettons l’accent sur <code>p_load()</code> de <strong>pacman</strong>, qui installe le package si nécessaire et le charge pour l’utiliser. Vous pouvez également charger les packages installés avec <code>library()</code> à partir de la <strong>base</strong> R. Voir la page sur <a href="#basics">les bases de R</a> pour plus d’informations sur les packages R.</p>
+<div class="sourceCode" id="cb1628"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1628-1"><a href="age_pyramid.html#cb1628-1" aria-hidden="true" tabindex="-1"></a>pacman<span class="sc">::</span><span class="fu">p_load</span>(rio,       <span class="co"># Pour importer les données</span></span>
+<span id="cb1628-2"><a href="age_pyramid.html#cb1628-2" aria-hidden="true" tabindex="-1"></a>               here,      <span class="co"># Pour localiser les fichiers</span></span>
+<span id="cb1628-3"><a href="age_pyramid.html#cb1628-3" aria-hidden="true" tabindex="-1"></a>               tidyverse, <span class="co"># Pour nettoyer, traiter et représenter les données (inclut le package ggplot2)</span></span>
+<span id="cb1628-4"><a href="age_pyramid.html#cb1628-4" aria-hidden="true" tabindex="-1"></a>               apyramid,  <span class="co"># Un package dédié à la création de pyramides des âges</span></span>
+<span id="cb1628-5"><a href="age_pyramid.html#cb1628-5" aria-hidden="true" tabindex="-1"></a>               janitor,   <span class="co"># Tableaux et nettoyage des données</span></span>
+<span id="cb1628-6"><a href="age_pyramid.html#cb1628-6" aria-hidden="true" tabindex="-1"></a>               stringr)   <span class="co"># Pour travailler avec des chaînes de caractères pour les titres, les légendes, etc.</span></span></code></pre></div>
+</div>
+<div id="importer-les-données-3" class="section level3 unnumbered">
+<h3>Importer les données</h3>
+<p>Pour commencer, nous importons la liste de cas nettoyée d’une épidémie d’Ebola simulée. Si vous voulez le faire en même temps, <a href='https://github.com/epirhandbook/Epi_R_handbook/raw/master/data/case_linelists/linelist_cleaned.rds' class='download-button'>cliquez pour télécharger la liste des cas “nettoyée”.</a> (sous le format .rds). Importez des données à l’aide de la fonction <code>import()</code> du package <strong>rio</strong> (elle gère de nombreux types de fichiers tels que .xlsx, .csv, .rds - voir la page <a href="#importing">Importation et exportation</a> pour plus de détails).</p>
+<div class="sourceCode" id="cb1629"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1629-1"><a href="age_pyramid.html#cb1629-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Importer la liste des cas dans R</span></span>
+<span id="cb1629-2"><a href="age_pyramid.html#cb1629-2" aria-hidden="true" tabindex="-1"></a>linelist <span class="ot">&lt;-</span> <span class="fu">import</span>(<span class="st">&quot;linelist_cleaned.rds&quot;</span>)</span></code></pre></div>
+<p>Les 50 premières lignes de la liste des cas sont affichées ci-dessous.</p>
+<div class="datatables html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-1a21921b2ba4ccdc5d84" style="width:100%;height:auto;"></div>
+<script type="application/json" data-for="htmlwidget-1a21921b2ba4ccdc5d84">{"x":{"filter":"top","vertical":false,"filterHTML":"<tr>\n  <td data-type=\"character\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"number\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n    <div style=\"display: none;position: absolute;width: 200px;opacity: 1\">\n      <div data-min=\"2\" data-max=\"13\"><\/div>\n      <span style=\"float: left;\"><\/span>\n      <span style=\"float: right;\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"date\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n    <div style=\"display: none;position: absolute;width: 200px;opacity: 1\">\n      <div data-min=\"1399075200000\" data-max=\"1406419200000\"><\/div>\n      <span style=\"float: left;\"><\/span>\n      <span style=\"float: right;\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"date\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n    <div style=\"display: none;position: absolute;width: 200px;opacity: 1\">\n      <div data-min=\"1399939200000\" data-max=\"1407024000000\"><\/div>\n      <span style=\"float: left;\"><\/span>\n      <span style=\"float: right;\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"date\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n    <div style=\"display: none;position: absolute;width: 200px;opacity: 1\">\n      <div data-min=\"1400025600000\" data-max=\"1407110400000\"><\/div>\n      <span style=\"float: left;\"><\/span>\n      <span style=\"float: right;\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"date\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n    <div style=\"display: none;position: absolute;width: 200px;opacity: 1\">\n      <div data-min=\"1400371200000\" data-max=\"1410566400000\"><\/div>\n      <span style=\"float: left;\"><\/span>\n      <span style=\"float: right;\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"character\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"character\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"number\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n    <div style=\"display: none;position: absolute;width: 200px;opacity: 1\">\n      <div data-min=\"0\" data-max=\"67\"><\/div>\n      <span style=\"float: left;\"><\/span>\n      <span style=\"float: right;\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"character\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\" disabled=\"\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"number\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n    <div style=\"display: none;position: absolute;width: 200px;opacity: 1\">\n      <div data-min=\"0\" data-max=\"67\"><\/div>\n      <span style=\"float: left;\"><\/span>\n      <span style=\"float: right;\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"factor\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n    <div style=\"width: 100%; display: none;\">\n      <select multiple=\"multiple\" style=\"width: 100%;\" data-options=\"[&quot;0-4&quot;,&quot;5-9&quot;,&quot;10-14&quot;,&quot;15-19&quot;,&quot;20-29&quot;,&quot;30-49&quot;,&quot;50-69&quot;,&quot;70+&quot;]\"><\/select>\n    <\/div>\n  <\/td>\n  <td data-type=\"factor\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n    <div style=\"width: 100%; display: none;\">\n      <select multiple=\"multiple\" style=\"width: 100%;\" data-options=\"[&quot;0-4&quot;,&quot;5-9&quot;,&quot;10-14&quot;,&quot;15-19&quot;,&quot;20-24&quot;,&quot;25-29&quot;,&quot;30-34&quot;,&quot;35-39&quot;,&quot;40-44&quot;,&quot;45-49&quot;,&quot;50-54&quot;,&quot;55-59&quot;,&quot;60-64&quot;,&quot;65-69&quot;,&quot;70-74&quot;,&quot;75-79&quot;,&quot;80-84&quot;,&quot;85+&quot;]\"><\/select>\n    <\/div>\n  <\/td>\n  <td data-type=\"character\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"number\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n    <div style=\"display: none;position: absolute;width: 200px;opacity: 1\">\n      <div data-min=\"-13.2697246824573\" data-max=\"-13.209391925612\" data-scale=\"13\"><\/div>\n      <span style=\"float: left;\"><\/span>\n      <span style=\"float: right;\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"number\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n    <div style=\"display: none;position: absolute;width: 200px;opacity: 1\">\n      <div data-min=\"8.45171855856465\" data-max=\"8.48802917129884\" data-scale=\"14\"><\/div>\n      <span style=\"float: left;\"><\/span>\n      <span style=\"float: right;\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"character\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"character\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"number\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n    <div style=\"display: none;position: absolute;width: 200px;opacity: 1\">\n      <div data-min=\"0\" data-max=\"100\"><\/div>\n      <span style=\"float: left;\"><\/span>\n      <span style=\"float: right;\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"number\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n    <div style=\"display: none;position: absolute;width: 200px;opacity: 1\">\n      <div data-min=\"11\" data-max=\"241\"><\/div>\n      <span style=\"float: left;\"><\/span>\n      <span style=\"float: right;\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"number\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n    <div style=\"display: none;position: absolute;width: 200px;opacity: 1\">\n      <div data-min=\"20\" data-max=\"24\"><\/div>\n      <span style=\"float: left;\"><\/span>\n      <span style=\"float: right;\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"character\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"character\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"character\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"character\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"character\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"number\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n    <div style=\"display: none;position: absolute;width: 200px;opacity: 1\">\n      <div data-min=\"35.9\" data-max=\"38\" data-scale=\"1\"><\/div>\n      <span style=\"float: left;\"><\/span>\n      <span style=\"float: right;\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"character\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"number\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n    <div style=\"display: none;position: absolute;width: 200px;opacity: 1\">\n      <div data-min=\"0\" data-max=\"428.994082840237\" data-scale=\"14\"><\/div>\n      <span style=\"float: left;\"><\/span>\n      <span style=\"float: right;\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"number\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n    <div style=\"display: none;position: absolute;width: 200px;opacity: 1\">\n      <div data-min=\"0\" data-max=\"2\"><\/div>\n      <span style=\"float: left;\"><\/span>\n      <span style=\"float: right;\"><\/span>\n    <\/div>\n  <\/td>\n<\/tr>","data":[["5fe599","8689b7","11f8ea","b8812a","893f25","be99c8","07e3e8","369449","f393b4","1389ca","2978ac","57a565","fc15ef","2eaa9a","bbfa93","c97dd9","f50e8a","3a7673","7f5a01","ddddee","99e8fa","567136","9371a9","bc2adf","403057","8bd1e8","f327be","42e1a9","90e5fe","959170","8ebf6e","e56412","6d788e","a47529","67be4e","da8ecb","148f18","2cb9a5","f5c142","70a9fe","3ad520","062638","c76676","baacc1","497372","23e499","38cc4a","3789ee","c71dcd","6b70f0"],[4,4,2,3,3,3,4,4,4,4,4,4,6,5,6,9,10,8,7,6,7,6,8,6,10,8,6,12,5,8,7,9,11,5,8,5,6,11,7,9,7,8,9,12,13,9,8,10,8,7],["2014-05-08",null,null,"2014-05-04","2014-05-18","2014-05-03","2014-05-22","2014-05-28",null,null,"2014-05-30","2014-05-28","2014-06-14","2014-06-07","2014-06-09",null,null,null,"2014-06-23","2014-06-18","2014-06-24",null,null,"2014-07-03",null,"2014-07-10","2014-06-14",null,"2014-06-18","2014-06-29","2014-07-02","2014-07-12","2014-07-12","2014-06-13","2014-07-15","2014-06-20",null,null,"2014-07-20",null,"2014-07-12","2014-07-19","2014-07-18","2014-07-18","2014-07-27",null,"2014-07-19","2014-07-26","2014-07-24",null],["2014-05-13","2014-05-13","2014-05-16","2014-05-18","2014-05-21","2014-05-22","2014-05-27","2014-06-02","2014-06-05","2014-06-05","2014-06-06","2014-06-13","2014-06-16","2014-06-17","2014-06-18","2014-06-19","2014-06-22","2014-06-23","2014-06-25","2014-06-26","2014-06-28","2014-07-02","2014-07-08","2014-07-09","2014-07-09","2014-07-10","2014-07-12","2014-07-12","2014-07-13","2014-07-13","2014-07-14","2014-07-15","2014-07-16","2014-07-17","2014-07-17","2014-07-18","2014-07-19","2014-07-22","2014-07-22","2014-07-24","2014-07-24","2014-07-25","2014-07-25","2014-07-27","2014-07-29","2014-07-30",null,"2014-08-01","2014-08-02","2014-08-03"],["2014-05-15","2014-05-14","2014-05-18","2014-05-20","2014-05-22","2014-05-23","2014-05-29","2014-06-03","2014-06-06","2014-06-07","2014-06-08","2014-06-15","2014-06-17","2014-06-17","2014-06-20","2014-06-19","2014-06-23","2014-06-24","2014-06-27","2014-06-28","2014-06-29","2014-07-03","2014-07-09","2014-07-09","2014-07-11","2014-07-11","2014-07-13","2014-07-14","2014-07-14","2014-07-13","2014-07-14","2014-07-17","2014-07-17","2014-07-18","2014-07-19","2014-07-20","2014-07-20","2014-07-22","2014-07-24","2014-07-26","2014-07-24","2014-07-27","2014-07-25","2014-07-27","2014-07-31","2014-08-01","2014-08-03","2014-08-02","2014-08-02","2014-08-04"],[null,"2014-05-18","2014-05-30",null,"2014-05-29","2014-05-24","2014-06-01","2014-06-07","2014-06-18","2014-06-09","2014-06-15",null,"2014-07-09",null,"2014-06-30","2014-07-11","2014-07-01","2014-06-25","2014-07-06","2014-07-02","2014-07-09","2014-07-07","2014-07-20",null,"2014-07-22","2014-07-16","2014-07-14","2014-07-20","2014-07-16","2014-07-19","2014-07-27","2014-07-19",null,"2014-07-26","2014-08-14","2014-08-01","2014-07-23","2014-08-28","2014-07-28","2014-07-19",null,"2014-08-03",null,null,null,"2014-08-06","2014-08-21","2014-09-13","2014-08-04",null],[null,"Recover","Recover",null,"Recover","Recover","Recover","Death","Recover","Death","Death","Death","Recover","Recover",null,"Recover",null,null,"Death","Death","Recover",null,null,null,"Death",null,"Death","Death",null,"Death","Recover","Death","Recover","Death","Recover",null,"Death","Recover","Recover","Death",null,null,"Death","Death","Death","Death","Recover",null,"Death","Death"],["m","f","m","f","m","f","f","f","m","f","m","m","m","f","f","m","f","f","f","f","m","m","f","m","f","m","m","f","m","f","f","f","m","m","f","m","f","f","f","m","f","m","f","m","m","f","m","f","m","m"],[2,3,56,18,3,16,16,0,61,27,12,42,19,7,7,13,35,17,11,11,19,54,14,28,6,3,31,6,67,14,10,21,20,45,1,12,3,15,20,36,7,13,14,3,10,1,0,20,26,14],["years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years"],[2,3,56,18,3,16,16,0,61,27,12,42,19,7,7,13,35,17,11,11,19,54,14,28,6,3,31,6,67,14,10,21,20,45,1,12,3,15,20,36,7,13,14,3,10,1,0,20,26,14],["0-4","0-4","50-69","15-19","0-4","15-19","15-19","0-4","50-69","20-29","10-14","30-49","15-19","5-9","5-9","10-14","30-49","15-19","10-14","10-14","15-19","50-69","10-14","20-29","5-9","0-4","30-49","5-9","50-69","10-14","10-14","20-29","20-29","30-49","0-4","10-14","0-4","15-19","20-29","30-49","5-9","10-14","10-14","0-4","10-14","0-4","0-4","20-29","20-29","10-14"],["0-4","0-4","55-59","15-19","0-4","15-19","15-19","0-4","60-64","25-29","10-14","40-44","15-19","5-9","5-9","10-14","35-39","15-19","10-14","10-14","15-19","50-54","10-14","25-29","5-9","0-4","30-34","5-9","65-69","10-14","10-14","20-24","20-24","45-49","0-4","10-14","0-4","15-19","20-24","35-39","5-9","10-14","10-14","0-4","10-14","0-4","0-4","20-24","25-29","10-14"],["Other","Missing","St. Mark's Maternity Hospital (SMMH)","Port Hospital","Military Hospital","Port Hospital","Missing","Missing","Missing","Missing","Port Hospital","Military Hospital","Missing","Missing","Other","Port Hospital","Port Hospital","Port Hospital","Missing","Other","Port Hospital","Port Hospital","St. Mark's Maternity Hospital (SMMH)","Missing","Other","Missing","St. Mark's Maternity Hospital (SMMH)","Military Hospital","Port Hospital","Central Hospital","Military Hospital","Central Hospital","Missing","Military Hospital","Other","Missing","Missing","Port Hospital","Port Hospital","Port Hospital","Missing","Central Hospital","Military Hospital","Other","Other","Other","Missing","St. Mark's Maternity Hospital (SMMH)","St. Mark's Maternity Hospital (SMMH)","Missing"],[-13.2157351064963,-13.2152339775486,-13.212910703914,-13.2363711169728,-13.2228638912441,-13.222625321098,-13.2331547837254,-13.2320975453153,-13.2225511595637,-13.2572163655863,-13.2206286746001,-13.253989309478,-13.2385127873491,-13.209391925612,-13.2157278814899,-13.2243437095992,-13.2336087079551,-13.21422143145,-13.2339681355349,-13.2535640411465,-13.2250089377786,-13.2160657166043,-13.2680671272333,-13.2266742923612,-13.2160179088168,-13.2482584611565,-13.2156319199566,-13.2142410663192,-13.2614879104088,-13.2452992638476,-13.2630592726116,-13.2343341712241,-13.2199077448676,-13.2227293309912,-13.2343062806506,-13.218781651651,-13.2483677722899,-13.2097478342339,-13.2680867723786,-13.2587535457526,-13.262635786914,-13.2697246824573,-13.2209026809759,-13.2330734719715,-13.2680923666905,-13.2547212675054,-13.2573683214693,-13.2137356012883,-13.2175973322257,-13.2486407324245],[8.46897295100924,8.45171855856465,8.46481700596819,8.4754761613651,8.46082377490923,8.46183062600728,8.46272931462646,8.46144367534271,8.46191259217774,8.47292327643506,8.48401630165138,8.45837125340844,8.47761705512509,8.47570184950483,8.47779946878972,8.47145134147474,8.47804840685363,8.48528034195779,8.46957530395867,8.45957352078114,8.47404889511544,8.48802917129884,8.473437335922,8.48408263734462,8.46242233645879,8.47026822126572,8.46398447480533,8.4641347894342,8.45623094629607,8.48334624336805,8.47493999153642,8.47832062438022,8.4693933891765,8.48480589906514,8.47121232619015,8.48438437371817,8.48466158574339,8.47714159984428,8.46238127010609,8.45568597813113,8.4632880274758,8.47940722413856,8.46353857052336,8.46178968158864,8.47508713872833,8.45825808128071,8.4532568143863,8.4732571907655,8.47911586641933,8.48480340615605],["f547d6",null,null,"f90f5f","11f8ea","aec8ec","893f25","133ee7",null,null,"996f3a","133ee7","37a6f6","9f6884","4802b1",null,null,null,"a75c7f","8e104d","ab634e",null,null,"b799eb",null,"5d9e4d","a15e13",null,"ea3740","beb26e","567136","894024","36e2e7","a2086d","7baf73","eb2277",null,null,"d6584f",null,"312ecf","52ea64","cfd79c","d145b7","174288",null,"53608c","3b096b","f5c142",null],["other",null,null,"other","other","other","other","other",null,null,"other","other","other","other","other",null,null,null,"other","other","other",null,null,"other",null,"other","other",null,"other","funeral","other","funeral","other","other","other","funeral",null,null,"other",null,"other","other","other","other","other",null,"funeral","other","other",null],[27,25,91,41,36,56,47,0,86,69,67,84,68,44,34,66,78,47,53,47,71,86,53,69,38,46,68,37,100,56,50,57,65,72,29,69,37,48,54,71,47,61,47,35,53,16,13,59,69,67],[48,59,238,135,71,116,87,11,226,174,112,186,174,90,91,152,214,137,117,131,150,241,131,161,80,69,188,66,233,142,110,182,164,214,26,157,39,154,133,168,100,125,123,67,134,31,36,125,183,169],[22,22,21,23,23,21,21,22,22,22,22,22,22,21,23,22,23,21,22,23,21,23,21,24,23,22,24,23,20,24,24,20,24,21,22,21,23,22,23,23,23,22,23,22,22,22,23,22,22,22],["no",null,null,"no","no","no",null,"no","no","no","no","no","no","no","no","no","no","no",null,"no","no","no","no","no",null,"no","no","no",null,null,"no","no",null,"no","no",null,null,"no","no",null,"no","no",null,"no","no","no","no","no","no",null],["no",null,null,"no","no","no",null,"no","no","no","no","no","no","no","no","no","yes","no",null,"no","no","no","yes","no",null,"no","no","yes",null,null,"no","no",null,"no","no",null,null,"no","no",null,"no","no",null,"no","yes","no","no","no","no",null],["yes",null,null,"no","yes","yes",null,"yes","yes","yes","yes","yes","yes","yes","yes","yes","yes","yes",null,"yes","yes","yes","yes","yes",null,"yes","yes","yes",null,null,"yes","yes",null,"yes","yes",null,null,"yes","yes",null,"yes","yes",null,"yes","yes","yes","yes","yes","no",null],["no",null,null,"no","no","no",null,"no","no","no","no","no","no","no","no","yes","no","no",null,"no","no","no","no","no",null,"no","no","no",null,null,"no","no",null,"no","no",null,null,"yes","yes",null,"no","no",null,"no","no","no","no","no","no",null],["yes",null,null,"no","yes","yes",null,"yes","yes","no","yes","no","no","no","yes","no","no","no",null,"no","yes","no","no","no",null,"no","no","no",null,null,"no","yes",null,"yes","yes",null,null,"yes","yes",null,"yes","yes",null,"yes","yes","no","yes","yes","yes",null],[36.8,36.9,36.9,36.8,36.9,37.6,37.3,37,36.4,35.9,36.5,36.9,36.5,37.1,36.5,37.3,37,38,38,36,37,36.7,36.9,36.5,37,36.5,37.6,36.6,36.6,36.2,36.4,37.1,37.5,37.5,37.4,36.9,36.4,37.3,37,37.8,36.5,37.5,36.7,37,37.3,36.6,36.5,36.6,37.6,36.8],[null,"09:36","16:48","11:22","12:60","14:13","14:33","09:25","11:16","10:55","16:03","11:14","12:42","11:06","09:10","08:45",null,"15:41","13:34","18:58","12:43","16:33","14:29","07:18","08:11","16:32","16:17","07:32","17:45",null,"13:24","14:43","02:33","11:36","17:28","16:27",null,"20:49",null,"11:38","14:25","13:42","21:22","13:33","19:06","17:14","20:09",null,"10:23","09:09"],[117.1875,71.8184429761563,16.0652496292635,22.4965706447188,71.4144019043841,41.6171224732461,62.0953890870657,0,16.8376536925366,22.7903289734443,53.4119897959184,24.2802636142907,22.4600343506408,54.320987654321,41.0578432556455,28.5664819944598,17.0320552013276,25.0412914912888,38.7172182043977,27.3876813705495,31.5555555555556,14.8069075945662,30.8839811199813,26.6193433895297,59.375,96.6183574879227,19.2394748755093,84.9403122130395,18.4199377406104,27.7722674072605,41.3223140495868,17.2080666586161,24.1671624033314,15.7218971089178,428.994082840237,27.9930220292912,243.261012491782,20.2395007589813,30.527446435638,25.15589569161,47,39.04,31.0661643201798,77.9683671196257,29.5165961238583,166.493236212279,100.308641975309,37.76,20.6037803457852,23.458562375267],[2,1,2,2,1,1,2,1,1,2,2,2,1,0,2,0,1,1,2,2,1,1,1,0,2,1,1,2,1,0,0,2,1,1,2,2,1,0,2,2,0,2,0,0,2,2,null,1,0,1]],"container":"<table class=\"white-space: nowrap\">\n  <thead>\n    <tr>\n      <th>case_id<\/th>\n      <th>generation<\/th>\n      <th>date_infection<\/th>\n      <th>date_onset<\/th>\n      <th>date_hospitalisation<\/th>\n      <th>date_outcome<\/th>\n      <th>outcome<\/th>\n      <th>gender<\/th>\n      <th>age<\/th>\n      <th>age_unit<\/th>\n      <th>age_years<\/th>\n      <th>age_cat<\/th>\n      <th>age_cat5<\/th>\n      <th>hospital<\/th>\n      <th>lon<\/th>\n      <th>lat<\/th>\n      <th>infector<\/th>\n      <th>source<\/th>\n      <th>wt_kg<\/th>\n      <th>ht_cm<\/th>\n      <th>ct_blood<\/th>\n      <th>fever<\/th>\n      <th>chills<\/th>\n      <th>cough<\/th>\n      <th>aches<\/th>\n      <th>vomit<\/th>\n      <th>temp<\/th>\n      <th>time_admission<\/th>\n      <th>bmi<\/th>\n      <th>days_onset_hosp<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"pageLength":5,"scrollX":true,"columnDefs":[{"className":"dt-right","targets":[1,8,10,14,15,18,19,20,26,28,29]}],"order":[],"autoWidth":false,"orderClasses":false,"orderCellsTop":true,"lengthMenu":[5,10,25,50,100]},"selection":{"mode":"multiple","selected":null,"target":"row","selectable":null}},"evals":[],"jsHooks":[]}</script>
+</div>
+<div id="nettoyage" class="section level3 unnumbered">
+<h3>Nettoyage</h3>
+<p>Pour réaliser une pyramide démographique traditionnelle par âge/sexe, les données doivent d’abord être nettoyées de la manière suivante :</p>
+<ul>
+<li><p>La colonne sexe doit être nettoyée.</p></li>
+<li><p>Selon votre méthode, l’âge doit être stocké soit sous forme numérique, soit dans une colonne de catégorie d’âge.</p></li>
+</ul>
+<p>Si vous utilisez des catégories d’âge, les valeurs de la colonne doivent être ordonnées correctement, soit par défaut en alphanumérique, soit intentionnellement en convertissant en facteur de classe.</p>
+<p>Ci-dessous nous utilisons <code>tabyl()</code> du package <strong>janitor</strong> pour inspecter les colonnes <code>gender</code> et <code>age_cat5</code>.</p>
+<div class="sourceCode" id="cb1630"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1630-1"><a href="age_pyramid.html#cb1630-1" aria-hidden="true" tabindex="-1"></a>linelist <span class="sc">%&gt;%</span> </span>
+<span id="cb1630-2"><a href="age_pyramid.html#cb1630-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tabyl</span>(age_cat5, gender)</span></code></pre></div>
+<pre><code>##  age_cat5   f   m NA_
+##       0-4 640 416  39
+##       5-9 641 412  42
+##     10-14 518 383  40
+##     15-19 359 364  20
+##     20-24 305 316  17
+##     25-29 163 259  13
+##     30-34 104 213   9
+##     35-39  42 157   3
+##     40-44  25 107   1
+##     45-49   8  80   5
+##     50-54   2  37   1
+##     55-59   0  30   0
+##     60-64   0  12   0
+##     65-69   0  12   1
+##     70-74   0   4   0
+##     75-79   0   0   1
+##     80-84   0   1   0
+##       85+   0   0   0
+##      &lt;NA&gt;   0   0  86</code></pre>
+<p>Nous effectuons également un rapide histogramme sur la colonne <code>age</code> pour nous assurer qu’elle est propre et correctement classée :</p>
+<div class="sourceCode" id="cb1632"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1632-1"><a href="age_pyramid.html#cb1632-1" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(linelist<span class="sc">$</span>age)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-1221-1.png" width="672" /></p>
+<!-- ======================================================= -->
+</div>
+</div>
+<div id="le-package-apyramid" class="section level2" number="34.2">
+<h2><span class="header-section-number">34.2</span> Le package <strong>apyramid</strong></h2>
+<p>Le package <strong>apyramid</strong> est un produit du projet <a href="https://r4epis.netlify.com/">R4Epis</a>. Vous pouvez en savoir plus sur ce paquet <a href="https://cran.r-project.org/web/packages/apyramid/vignettes/intro.html">ici</a>. Il vous permet de réaliser rapidement une pyramide des âges. Pour des situations plus nuancées, voir la section ci-dessous <a href="age_pyramid.html#demo_pyr_gg">utilisez <code>ggplot()</code></a>. Vous pouvez en savoir plus sur le package <strong>apyramid</strong> dans sa page d’aide en entrant <code>?age_pyramid</code> dans votre console R.</p>
+<div id="données-sous-forme-de-liste-des-cas" class="section level3 unnumbered">
+<h3>Données sous forme de liste des cas</h3>
+<p>En utilisant l’ensemble de données <code>linelist</code> nettoyées, nous pouvons créer une pyramide des âges avec une simple commande <code>age_pyramid()</code>. Dans cette commande :</p>
+<ul>
+<li><p>Le paramètre <code>data =</code> est défini comme le tableau de données linelist.</p></li>
+<li><p>Le paramètre <code>age_group =</code> (pour l’axe des ordonnées) est défini comme le nom de la colonne d’âge catégorique (entre guillemets).</p></li>
+<li><p>Le paramètre <code>split_by =</code> (pour l’axe des abscisses) est défini comme la colonne sexe.</p></li>
+</ul>
+<div class="sourceCode" id="cb1633"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1633-1"><a href="age_pyramid.html#cb1633-1" aria-hidden="true" tabindex="-1"></a>apyramid<span class="sc">::</span><span class="fu">age_pyramid</span>(<span class="at">data =</span> linelist,</span>
+<span id="cb1633-2"><a href="age_pyramid.html#cb1633-2" aria-hidden="true" tabindex="-1"></a>                      <span class="at">age_group =</span> <span class="st">&quot;age_cat5&quot;</span>,</span>
+<span id="cb1633-3"><a href="age_pyramid.html#cb1633-3" aria-hidden="true" tabindex="-1"></a>                      <span class="at">split_by =</span> <span class="st">&quot;gender&quot;</span>)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-1222-1.png" width="672" /></p>
+<p>La pyramide peut être affichée avec le pourcentage de tous les cas sur l’axe des abscisses, au lieu du nombre, en incluant <code>proportional = TRUE</code>.</p>
+<div class="sourceCode" id="cb1634"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1634-1"><a href="age_pyramid.html#cb1634-1" aria-hidden="true" tabindex="-1"></a>apyramid<span class="sc">::</span><span class="fu">age_pyramid</span>(<span class="at">data =</span> linelist,</span>
+<span id="cb1634-2"><a href="age_pyramid.html#cb1634-2" aria-hidden="true" tabindex="-1"></a>                      <span class="at">age_group =</span> <span class="st">&quot;age_cat5&quot;</span>,</span>
+<span id="cb1634-3"><a href="age_pyramid.html#cb1634-3" aria-hidden="true" tabindex="-1"></a>                      <span class="at">split_by =</span> <span class="st">&quot;gender&quot;</span>,</span>
+<span id="cb1634-4"><a href="age_pyramid.html#cb1634-4" aria-hidden="true" tabindex="-1"></a>                      <span class="at">proportional =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-1223-1.png" width="672" /></p>
+<p>Lors de l’utilisation du package <strong>apyramid</strong>, si la colonne <code>split_by</code> est binaire (par exemple homme/femme, ou oui/non), le résultat apparaîtra comme une pyramide. Cependant, s’il y a plus de deux valeurs dans la colonne <code>split_by</code> (sans compter <code>NA</code>), la pyramide apparaîtra comme un diagramme à barres à facettes avec des barres grises dans le “fond” indiquant la plage des données non facettées pour ce groupe d’âge. Dans ce cas, les valeurs de <code>split_by =</code> apparaîtront comme des libellés en haut de chaque panneau de facettes. Par exemple, voici ce qui se passe si la colonne <code>hospital</code> est attribuée à <code>split_by =</code>.</p>
+<div class="sourceCode" id="cb1635"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1635-1"><a href="age_pyramid.html#cb1635-1" aria-hidden="true" tabindex="-1"></a>apyramid<span class="sc">::</span><span class="fu">age_pyramid</span>(<span class="at">data =</span> linelist,</span>
+<span id="cb1635-2"><a href="age_pyramid.html#cb1635-2" aria-hidden="true" tabindex="-1"></a>                      <span class="at">age_group =</span> <span class="st">&quot;age_cat5&quot;</span>,</span>
+<span id="cb1635-3"><a href="age_pyramid.html#cb1635-3" aria-hidden="true" tabindex="-1"></a>                      <span class="at">split_by =</span> <span class="st">&quot;hospital&quot;</span>)  </span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-1224-1.png" width="672" /></p>
+<div id="valeurs-manquantes-2" class="section level4 unnumbered">
+<h4>Valeurs manquantes</h4>
+<p>Les lignes qui ont des valeurs manquantes <code>NA</code> dans les colonnes <code>split_by =</code> ou <code>age_group =</code>, si elles sont codées comme <code>NA</code>, ne déclencheront pas les facettes indiquées ci-dessus. Par défaut, ces lignes ne seront pas affichées. Cependant, vous pouvez demander à ce qu’elle apparaissent dans un graphique à barres adjacent et en tant que groupe d’âge distinct en haut, en spécifiant <code>na.rm = FALSE</code>.</p>
+<div class="sourceCode" id="cb1636"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1636-1"><a href="age_pyramid.html#cb1636-1" aria-hidden="true" tabindex="-1"></a>apyramid<span class="sc">::</span><span class="fu">age_pyramid</span>(<span class="at">data =</span> linelist,</span>
+<span id="cb1636-2"><a href="age_pyramid.html#cb1636-2" aria-hidden="true" tabindex="-1"></a>                      <span class="at">age_group =</span> <span class="st">&quot;age_cat5&quot;</span>,</span>
+<span id="cb1636-3"><a href="age_pyramid.html#cb1636-3" aria-hidden="true" tabindex="-1"></a>                      <span class="at">split_by =</span> <span class="st">&quot;gender&quot;</span>,</span>
+<span id="cb1636-4"><a href="age_pyramid.html#cb1636-4" aria-hidden="true" tabindex="-1"></a>                      <span class="at">na.rm =</span> <span class="cn">FALSE</span>)         <span class="co"># Montre les patients dont l&#39;âge ou le sexe est manquant</span></span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-1225-1.png" width="672" /></p>
+</div>
+<div id="proportions-couleurs-et-attributs-graphiques" class="section level4 unnumbered">
+<h4>Proportions, couleurs et attributs graphiques</h4>
+<p>Par défaut, les barres affichent les nombres (pas les pourcentages), une ligne en pointillés au milieu de chaque groupe est affichée, et les couleurs sont vertes/violettes. Chacun de ces paramètres peut être ajusté, comme indiqué ci-dessous :</p>
+<p>Vous pouvez également ajouter des commandes ggplot() supplémentaires au graphique en utilisant la syntaxe standard de <code>ggplot()</code> “+”, comme des attributs graphiques et des ajustements de libellés :</p>
+<div class="sourceCode" id="cb1637"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1637-1"><a href="age_pyramid.html#cb1637-1" aria-hidden="true" tabindex="-1"></a>apyramid<span class="sc">::</span><span class="fu">age_pyramid</span>(</span>
+<span id="cb1637-2"><a href="age_pyramid.html#cb1637-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">data =</span> linelist,</span>
+<span id="cb1637-3"><a href="age_pyramid.html#cb1637-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">age_group =</span> <span class="st">&quot;age_cat5&quot;</span>,</span>
+<span id="cb1637-4"><a href="age_pyramid.html#cb1637-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">split_by =</span> <span class="st">&quot;gender&quot;</span>,</span>
+<span id="cb1637-5"><a href="age_pyramid.html#cb1637-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">proportional =</span> <span class="cn">TRUE</span>,              <span class="co"># afficher les pourcentages, pas les chiffres</span></span>
+<span id="cb1637-6"><a href="age_pyramid.html#cb1637-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">show_midpoint =</span> <span class="cn">FALSE</span>,            <span class="co"># supprimer la ligne du milieu de la barre</span></span>
+<span id="cb1637-7"><a href="age_pyramid.html#cb1637-7" aria-hidden="true" tabindex="-1"></a>  <span class="co">#pal = c(&quot;orange&quot;, &quot;purple&quot;)      # permet de préciser des couleurs alternatives (mais pas des libellés différents)</span></span>
+<span id="cb1637-8"><a href="age_pyramid.html#cb1637-8" aria-hidden="true" tabindex="-1"></a>  )<span class="sc">+</span>                 </span>
+<span id="cb1637-9"><a href="age_pyramid.html#cb1637-9" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb1637-10"><a href="age_pyramid.html#cb1637-10" aria-hidden="true" tabindex="-1"></a>  <span class="co"># commandes supplémentaires de ggplot</span></span>
+<span id="cb1637-11"><a href="age_pyramid.html#cb1637-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()<span class="sc">+</span>                               <span class="co"># simplifier le fond</span></span>
+<span id="cb1637-12"><a href="age_pyramid.html#cb1637-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_manual</span>(                             <span class="co"># préciser des couleurs ET des libellés</span></span>
+<span id="cb1637-13"><a href="age_pyramid.html#cb1637-13" aria-hidden="true" tabindex="-1"></a>    <span class="at">values =</span> <span class="fu">c</span>(<span class="st">&quot;orange&quot;</span>, <span class="st">&quot;purple&quot;</span>),              </span>
+<span id="cb1637-14"><a href="age_pyramid.html#cb1637-14" aria-hidden="true" tabindex="-1"></a>    <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">&quot;m&quot;</span> <span class="ot">=</span> <span class="st">&quot;Male&quot;</span>, <span class="st">&quot;f&quot;</span> <span class="ot">=</span> <span class="st">&quot;Female&quot;</span>))<span class="sc">+</span></span>
+<span id="cb1637-15"><a href="age_pyramid.html#cb1637-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">y =</span> <span class="st">&quot;Percent of all cases&quot;</span>,              <span class="co"># les libellés x et y sont inversées</span></span>
+<span id="cb1637-16"><a href="age_pyramid.html#cb1637-16" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">&quot;Age categories&quot;</span>,                          </span>
+<span id="cb1637-17"><a href="age_pyramid.html#cb1637-17" aria-hidden="true" tabindex="-1"></a>       <span class="at">fill =</span> <span class="st">&quot;Gender&quot;</span>, </span>
+<span id="cb1637-18"><a href="age_pyramid.html#cb1637-18" aria-hidden="true" tabindex="-1"></a>       <span class="at">caption =</span> <span class="st">&quot;My data source and caption here&quot;</span>,</span>
+<span id="cb1637-19"><a href="age_pyramid.html#cb1637-19" aria-hidden="true" tabindex="-1"></a>       <span class="at">title =</span> <span class="st">&quot;Title of my plot&quot;</span>,</span>
+<span id="cb1637-20"><a href="age_pyramid.html#cb1637-20" aria-hidden="true" tabindex="-1"></a>       <span class="at">subtitle =</span> <span class="st">&quot;Subtitle with </span><span class="sc">\n</span><span class="st"> a second line...&quot;</span>)<span class="sc">+</span></span>
+<span id="cb1637-21"><a href="age_pyramid.html#cb1637-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(</span>
+<span id="cb1637-22"><a href="age_pyramid.html#cb1637-22" aria-hidden="true" tabindex="-1"></a>    <span class="at">legend.position =</span> <span class="st">&quot;bottom&quot;</span>,                          <span class="co"># légende en bas</span></span>
+<span id="cb1637-23"><a href="age_pyramid.html#cb1637-23" aria-hidden="true" tabindex="-1"></a>    <span class="at">axis.text =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">10</span>, <span class="at">face =</span> <span class="st">&quot;bold&quot;</span>),  <span class="co"># polices/tailles</span></span>
+<span id="cb1637-24"><a href="age_pyramid.html#cb1637-24" aria-hidden="true" tabindex="-1"></a>    <span class="at">axis.title =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">12</span>, <span class="at">face =</span> <span class="st">&quot;bold&quot;</span>))</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-1226-1.png" width="672" /></p>
+</div>
+</div>
+<div id="données-aggrégées" class="section level3 unnumbered">
+<h3>Données aggrégées</h3>
+<p>Les exemples ci-dessus supposent que vos données sont au format de liste de cas, avec une ligne par observation. Si vos données sont déjà agrégées par catégorie d’âge, vous pouvez toujours utiliser le package <strong>apyramid</strong>, comme indiqué ci-dessous.</p>
+<p>Pour la démonstration, nous agrégeons les données de la liste de cas en nombre de cas par catégorie d’âge et par sexe, dans un format “large”. Cela fera comme si vos données étaient aggrégées dès le départ. Pour en savoir plus sur le <a href="grouping_data.html#grouping_data">Regroupement des données</a> et le <a href="pivoting_data.html#pivoting_data">Pivotage des données</a>, consultez leurs pages respectives.</p>
+<div class="sourceCode" id="cb1638"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1638-1"><a href="age_pyramid.html#cb1638-1" aria-hidden="true" tabindex="-1"></a>demo_agg <span class="ot">&lt;-</span> linelist <span class="sc">%&gt;%</span> </span>
+<span id="cb1638-2"><a href="age_pyramid.html#cb1638-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(age_cat5, gender, <span class="at">name =</span> <span class="st">&quot;cases&quot;</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb1638-3"><a href="age_pyramid.html#cb1638-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_wider</span>(</span>
+<span id="cb1638-4"><a href="age_pyramid.html#cb1638-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">id_cols =</span> age_cat5,</span>
+<span id="cb1638-5"><a href="age_pyramid.html#cb1638-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">names_from =</span> gender,</span>
+<span id="cb1638-6"><a href="age_pyramid.html#cb1638-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">values_from =</span> cases) <span class="sc">%&gt;%</span> </span>
+<span id="cb1638-7"><a href="age_pyramid.html#cb1638-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="st">`</span><span class="at">missing_gender</span><span class="st">`</span> <span class="ot">=</span> <span class="st">`</span><span class="at">NA</span><span class="st">`</span>)</span></code></pre></div>
+<p>…ce qui fait que le jeu de données ressemble à ceci : avec des colonnes pour la catégorie d’âge, et le nombre d’hommes, le nombre de femmes, et le nombre de valeurs manquantes.</p>
+<div class="datatables html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-01ae36d04beb6b0f471a" style="width:100%;height:auto;"></div>
+<script type="application/json" data-for="htmlwidget-01ae36d04beb6b0f471a">{"x":{"filter":"none","vertical":false,"data":[["0-4","5-9","10-14","15-19","20-24","25-29","30-34","35-39","40-44","45-49","50-54","55-59","60-64","65-69","70-74","75-79","80-84",null],[640,641,518,359,305,163,104,42,25,8,2,null,null,null,null,null,null,null],[416,412,383,364,316,259,213,157,107,80,37,30,12,12,4,null,1,null],[39,42,40,20,17,13,9,3,1,5,1,null,null,1,null,1,null,86]],"container":"<table class=\"white-space: nowrap\">\n  <thead>\n    <tr>\n      <th>age_cat5<\/th>\n      <th>f<\/th>\n      <th>m<\/th>\n      <th>missing_gender<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"pageLength":5,"scrollX":true,"columnDefs":[{"className":"dt-right","targets":[1,2,3]}],"order":[],"autoWidth":false,"orderClasses":false,"lengthMenu":[5,10,25,50,100]},"selection":{"mode":"multiple","selected":null,"target":"row","selectable":null}},"evals":[],"jsHooks":[]}</script>
+<p>Pour préparer ces données pour la pyramide des âges, nous allons faire pivoter les données pour qu’elles soient “longues” avec la fonction <code>pivot_longer()</code> de <strong>dplyr</strong>. Ceci est dû au fait que <code>ggplot()</code> préfère généralement les données “longues”, et <strong>apyramid</strong> utilise <code>ggplot()</code>.</p>
+<div class="sourceCode" id="cb1639"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1639-1"><a href="age_pyramid.html#cb1639-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Faire pivoter les données agrégées afin qu&#39;elles soient &quot;longues&quot;</span></span>
+<span id="cb1639-2"><a href="age_pyramid.html#cb1639-2" aria-hidden="true" tabindex="-1"></a>demo_agg_long <span class="ot">&lt;-</span> demo_agg <span class="sc">%&gt;%</span> </span>
+<span id="cb1639-3"><a href="age_pyramid.html#cb1639-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(</span>
+<span id="cb1639-4"><a href="age_pyramid.html#cb1639-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">col =</span> <span class="fu">c</span>(f, m, missing_gender),            <span class="co"># Colonnes à &quot;allonger&quot;</span></span>
+<span id="cb1639-5"><a href="age_pyramid.html#cb1639-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">names_to =</span> <span class="st">&quot;gender&quot;</span>,                <span class="co"># Nom de la nouvelle colonne de catégorie</span></span>
+<span id="cb1639-6"><a href="age_pyramid.html#cb1639-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">values_to =</span> <span class="st">&quot;counts&quot;</span>) <span class="sc">%&gt;%</span>           <span class="co"># Nom pour la nouvelle colonne de comptage</span></span>
+<span id="cb1639-7"><a href="age_pyramid.html#cb1639-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb1639-8"><a href="age_pyramid.html#cb1639-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">gender =</span> <span class="fu">na_if</span>(gender, <span class="st">&quot;missing_gender&quot;</span>)) <span class="co"># On convertit  &quot;missing_gender&quot; en NA</span></span></code></pre></div>
+<div class="datatables html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-58a49e15fe478228c6aa" style="width:100%;height:auto;"></div>
+<script type="application/json" data-for="htmlwidget-58a49e15fe478228c6aa">{"x":{"filter":"top","vertical":false,"filterHTML":"<tr>\n  <td data-type=\"factor\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n    <div style=\"width: 100%; display: none;\">\n      <select multiple=\"multiple\" style=\"width: 100%;\" data-options=\"[&quot;0-4&quot;,&quot;5-9&quot;,&quot;10-14&quot;,&quot;15-19&quot;,&quot;20-24&quot;,&quot;25-29&quot;,&quot;30-34&quot;,&quot;35-39&quot;,&quot;40-44&quot;,&quot;45-49&quot;,&quot;50-54&quot;,&quot;55-59&quot;,&quot;60-64&quot;,&quot;65-69&quot;,&quot;70-74&quot;,&quot;75-79&quot;,&quot;80-84&quot;,&quot;85+&quot;]\"><\/select>\n    <\/div>\n  <\/td>\n  <td data-type=\"character\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"integer\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n    <div style=\"display: none;position: absolute;width: 200px;opacity: 1\">\n      <div data-min=\"1\" data-max=\"641\"><\/div>\n      <span style=\"float: left;\"><\/span>\n      <span style=\"float: right;\"><\/span>\n    <\/div>\n  <\/td>\n<\/tr>","data":[["0-4","0-4","0-4","5-9","5-9","5-9","10-14","10-14","10-14","15-19","15-19","15-19","20-24","20-24","20-24","25-29","25-29","25-29","30-34","30-34","30-34","35-39","35-39","35-39","40-44","40-44","40-44","45-49","45-49","45-49","50-54","50-54","50-54","55-59","55-59","55-59","60-64","60-64","60-64","65-69","65-69","65-69","70-74","70-74","70-74","75-79","75-79","75-79","80-84","80-84","80-84",null,null,null],["f","m",null,"f","m",null,"f","m",null,"f","m",null,"f","m",null,"f","m",null,"f","m",null,"f","m",null,"f","m",null,"f","m",null,"f","m",null,"f","m",null,"f","m",null,"f","m",null,"f","m",null,"f","m",null,"f","m",null,"f","m",null],[640,416,39,641,412,42,518,383,40,359,364,20,305,316,17,163,259,13,104,213,9,42,157,3,25,107,1,8,80,5,2,37,1,null,30,null,null,12,null,null,12,1,null,4,null,null,null,1,null,1,null,null,null,86]],"container":"<table class=\"white-space: nowrap\">\n  <thead>\n    <tr>\n      <th>age_cat5<\/th>\n      <th>gender<\/th>\n      <th>counts<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"pageLength":5,"scrollX":true,"columnDefs":[{"className":"dt-right","targets":2}],"order":[],"autoWidth":false,"orderClasses":false,"orderCellsTop":true,"lengthMenu":[5,10,25,50,100]},"selection":{"mode":"multiple","selected":null,"target":"row","selectable":null}},"evals":[],"jsHooks":[]}</script>
+<p>Utilisez ensuite les arguments <code>split_by =</code> et <code>count =</code> de <code>age_pyramid()</code> pour spécifier les colonnes respectives dans les données :</p>
+<div class="sourceCode" id="cb1640"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1640-1"><a href="age_pyramid.html#cb1640-1" aria-hidden="true" tabindex="-1"></a>apyramid<span class="sc">::</span><span class="fu">age_pyramid</span>(<span class="at">data =</span> demo_agg_long,</span>
+<span id="cb1640-2"><a href="age_pyramid.html#cb1640-2" aria-hidden="true" tabindex="-1"></a>                      <span class="at">age_group =</span> <span class="st">&quot;age_cat5&quot;</span>,<span class="co"># Nom de la colonne pour la catégorie d&#39;âge</span></span>
+<span id="cb1640-3"><a href="age_pyramid.html#cb1640-3" aria-hidden="true" tabindex="-1"></a>                      <span class="at">split_by =</span> <span class="st">&quot;gender&quot;</span>,   <span class="co"># Nom de la colonne pour le sexe</span></span>
+<span id="cb1640-4"><a href="age_pyramid.html#cb1640-4" aria-hidden="true" tabindex="-1"></a>                      <span class="at">count =</span> <span class="st">&quot;counts&quot;</span>)      <span class="co"># Nom de la colonne pour le nombre de cas</span></span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-1231-1.png" width="672" /></p>
+<p>Notez dans l’exemple ci-dessus que l’ordre des facteurs “m” et “f” est différent (pyramide inversée). Pour ajuster l’ordre, vous devez redéfinir le sexe dans les données agrégées comme un facteur et ordonner les niveaux comme vous le souhaitez. Voir la page <a href="factors.html#factors">Facteurs</a>.</p>
+<!-- ======================================================= -->
+</div>
+</div>
+<div id="demo_pyr_gg" class="section level2" number="34.3">
+<h2><span class="header-section-number">34.3</span> <code>ggplot()</code></h2>
+<p>L’utilisation de <code>ggplot()</code> pour construire votre pyramide des âges offre plus de flexibilité, mais demande plus d’efforts et de compréhension du fonctionnement de <code>ggplot()</code>. Il est également plus facile de faire des erreurs accidentelles.</p>
+<p>Pour utiliser <code>ggplot()</code> afin de créer des pyramides démographiques, vous devez créer deux diagrammes à barres (un pour chaque sexe), convertir les valeurs de l’un des diagrammes en valeurs négatives, et enfin inverser les axes x et y pour afficher les diagrammes à barres verticalement, leurs bases se rejoignant au milieu du diagramme.</p>
+<div id="préparation-18" class="section level3 unnumbered">
+<h3>Préparation</h3>
+<p>Cette approche utilise une colonne d’âge sous forme <em>numérique</em>, et non la colonne <em>catégorielle</em> <code>age_cat5</code>. Nous allons donc vérifier que la classe de cette colonne est bien numérique.</p>
+<div class="sourceCode" id="cb1641"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1641-1"><a href="age_pyramid.html#cb1641-1" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(linelist<span class="sc">$</span>age)</span></code></pre></div>
+<pre><code>## [1] &quot;numeric&quot;</code></pre>
+<p>Vous pourriez utiliser la même logique ci-dessous pour construire une pyramide à partir de données catégorielles en utilisant <code>geom_col()</code> au lieu de <code>geom_histogram()</code>.</p>
+<!-- ======================================================= -->
+</div>
+<div id="construction-du-graphe" class="section level3 unnumbered">
+<h3>Construction du graphe</h3>
+<p>Tout d’abord, il faut comprendre que pour réaliser une telle pyramide à l’aide de <code>ggplot()</code>, l’approche est la suivante :</p>
+<ul>
+<li><p>Dans la fonction <code>ggplot()</code>, créez deux histogrammes en utilisant la colonne numérique de l’âge. Créez-en un pour chacune des deux valeurs de regroupement (dans ce cas, les sexes masculin et féminin). Pour ce faire, les données de chaque histogramme sont spécifiées dans leurs commandes <code>geom_histogram()</code> respectives, avec les filtres respectifs appliqués à <code>linelist</code>.</p></li>
+<li><p>Un graphique aura des valeurs de comptage positives, tandis que l’autre aura ses comptages convertis en valeurs négatives - cela crée la “pyramide” avec la valeur 0 au milieu du graphique. Les valeurs négatives sont créées en utilisant un terme spécial de <strong>ggplot2</strong> <code>..count..</code> et en les multipliant par -1.</p></li>
+<li><p>La commande <code>coord_flip()</code> permute les axes X et Y, ce qui a pour effet de rendre les graphiques verticaux et de créer la pyramide.</p></li>
+<li><p>Enfin, les étiquettes des valeurs de l’axe des comptes doivent être modifiées pour qu’elles apparaissent comme des comptes “positifs” des deux côtés de la pyramide (bien que les valeurs sous-jacentes d’un côté soient négatives).</p></li>
+</ul>
+<p>Une version <strong>simple</strong> de cette méthode, utilisant <code>geom_histogram()</code>, est présentée ci-dessous :</p>
+<div class="sourceCode" id="cb1643"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1643-1"><a href="age_pyramid.html#cb1643-1" aria-hidden="true" tabindex="-1"></a>  <span class="co"># commencer le ggplot</span></span>
+<span id="cb1643-2"><a href="age_pyramid.html#cb1643-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> age, <span class="at">fill =</span> gender)) <span class="sc">+</span></span>
+<span id="cb1643-3"><a href="age_pyramid.html#cb1643-3" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb1643-4"><a href="age_pyramid.html#cb1643-4" aria-hidden="true" tabindex="-1"></a>  <span class="co"># histogramme femmes</span></span>
+<span id="cb1643-5"><a href="age_pyramid.html#cb1643-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">data =</span> linelist <span class="sc">%&gt;%</span> <span class="fu">filter</span>(gender <span class="sc">==</span> <span class="st">&quot;f&quot;</span>),</span>
+<span id="cb1643-6"><a href="age_pyramid.html#cb1643-6" aria-hidden="true" tabindex="-1"></a>                 <span class="at">breaks =</span> <span class="fu">seq</span>(<span class="dv">0</span>,<span class="dv">85</span>,<span class="dv">5</span>),</span>
+<span id="cb1643-7"><a href="age_pyramid.html#cb1643-7" aria-hidden="true" tabindex="-1"></a>                 <span class="at">colour =</span> <span class="st">&quot;white&quot;</span>) <span class="sc">+</span></span>
+<span id="cb1643-8"><a href="age_pyramid.html#cb1643-8" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb1643-9"><a href="age_pyramid.html#cb1643-9" aria-hidden="true" tabindex="-1"></a>  <span class="co"># histogramme hommes (valeurs converties en négatif)</span></span>
+<span id="cb1643-10"><a href="age_pyramid.html#cb1643-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">data =</span> linelist <span class="sc">%&gt;%</span> <span class="fu">filter</span>(gender <span class="sc">==</span> <span class="st">&quot;m&quot;</span>),</span>
+<span id="cb1643-11"><a href="age_pyramid.html#cb1643-11" aria-hidden="true" tabindex="-1"></a>                 <span class="at">breaks =</span> <span class="fu">seq</span>(<span class="dv">0</span>,<span class="dv">85</span>,<span class="dv">5</span>),</span>
+<span id="cb1643-12"><a href="age_pyramid.html#cb1643-12" aria-hidden="true" tabindex="-1"></a>                 <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">y =</span> ..count..<span class="sc">*</span>(<span class="sc">-</span><span class="dv">1</span>)),</span>
+<span id="cb1643-13"><a href="age_pyramid.html#cb1643-13" aria-hidden="true" tabindex="-1"></a>                 <span class="at">colour =</span> <span class="st">&quot;white&quot;</span>) <span class="sc">+</span></span>
+<span id="cb1643-14"><a href="age_pyramid.html#cb1643-14" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb1643-15"><a href="age_pyramid.html#cb1643-15" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Inversion des axes X et Y</span></span>
+<span id="cb1643-16"><a href="age_pyramid.html#cb1643-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_flip</span>() <span class="sc">+</span></span>
+<span id="cb1643-17"><a href="age_pyramid.html#cb1643-17" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb1643-18"><a href="age_pyramid.html#cb1643-18" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Ajustement de l&#39;échelle de l&#39;axe des nombres de cas</span></span>
+<span id="cb1643-19"><a href="age_pyramid.html#cb1643-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">limits =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="dv">600</span>, <span class="dv">900</span>),</span>
+<span id="cb1643-20"><a href="age_pyramid.html#cb1643-20" aria-hidden="true" tabindex="-1"></a>                     <span class="at">breaks =</span> <span class="fu">seq</span>(<span class="sc">-</span><span class="dv">600</span>,<span class="dv">900</span>,<span class="dv">100</span>),</span>
+<span id="cb1643-21"><a href="age_pyramid.html#cb1643-21" aria-hidden="true" tabindex="-1"></a>                     <span class="at">labels =</span> <span class="fu">abs</span>(<span class="fu">seq</span>(<span class="sc">-</span><span class="dv">600</span>, <span class="dv">900</span>, <span class="dv">100</span>)))</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-1233-1.png" width="672" /></p>
+<p><span style="color: red;"><strong><em>DANGER:</em></strong> Si les <strong>limites</strong> de votre axe de nombre de cas sont trop basses, et qu’une barre de compte les dépasse, la barre disparaîtra entièrement ou sera artificiellement raccourcie ! Faites attention à ce phénomène si vous analysez des données qui sont régulièrement mises à jour. Pour éviter cela, les limites de votre axe de comptage doivent s’ajuster automatiquement à vos données, comme ci-dessous</span></p>
+<p>Il y a beaucoup de choses que vous pouvez changer/ajoutez à cette version simple :</p>
+<ul>
+<li>Ajuster automatiquement l’échelle de l’axe des comptes à vos données (éviter les erreurs discutées dans l’avertissement ci-dessous).<br />
+</li>
+<li>Spécifier manuellement les couleurs et les étiquettes de légende</li>
+</ul>
+<p><strong>Convertir les nombre de cas en pourcentages</strong></p>
+<p>Pour convertir les nombres de cas en pourcentages (du total), faites-le dans vos données avant de les représenter. Ci-dessous, nous obtenons les comptes d’âge et de sexe, puis on utilise <code>ungroup()</code>, et enfin <code>mutate()</code> pour créer de nouvelles colonnes de pourcentage. Si vous voulez des pourcentages par sexe, sautez l’étape de dégroupage.</p>
+<div class="sourceCode" id="cb1644"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1644-1"><a href="age_pyramid.html#cb1644-1" aria-hidden="true" tabindex="-1"></a><span class="co"># créer un jeu de données avec la proportion du total</span></span>
+<span id="cb1644-2"><a href="age_pyramid.html#cb1644-2" aria-hidden="true" tabindex="-1"></a>pyramid_data <span class="ot">&lt;-</span> linelist <span class="sc">%&gt;%</span></span>
+<span id="cb1644-3"><a href="age_pyramid.html#cb1644-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(age_cat5,</span>
+<span id="cb1644-4"><a href="age_pyramid.html#cb1644-4" aria-hidden="true" tabindex="-1"></a>        gender,</span>
+<span id="cb1644-5"><a href="age_pyramid.html#cb1644-5" aria-hidden="true" tabindex="-1"></a>        <span class="at">name =</span> <span class="st">&quot;counts&quot;</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb1644-6"><a href="age_pyramid.html#cb1644-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ungroup</span>() <span class="sc">%&gt;%</span>                 <span class="co"># dégrouper de sorte à ce que les pourcentages ne soit pas par groupe</span></span>
+<span id="cb1644-7"><a href="age_pyramid.html#cb1644-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">percent =</span> <span class="fu">round</span>(<span class="dv">100</span><span class="sc">*</span>(counts <span class="sc">/</span> <span class="fu">sum</span>(counts, <span class="at">na.rm=</span>T)), <span class="at">digits =</span> <span class="dv">1</span>), </span>
+<span id="cb1644-8"><a href="age_pyramid.html#cb1644-8" aria-hidden="true" tabindex="-1"></a>         <span class="at">percent =</span> <span class="fu">case_when</span>(</span>
+<span id="cb1644-9"><a href="age_pyramid.html#cb1644-9" aria-hidden="true" tabindex="-1"></a>            gender <span class="sc">==</span> <span class="st">&quot;f&quot;</span> <span class="sc">~</span> percent,</span>
+<span id="cb1644-10"><a href="age_pyramid.html#cb1644-10" aria-hidden="true" tabindex="-1"></a>            gender <span class="sc">==</span> <span class="st">&quot;m&quot;</span> <span class="sc">~</span> <span class="sc">-</span>percent,     <span class="co"># convertir les hommes en négatif</span></span>
+<span id="cb1644-11"><a href="age_pyramid.html#cb1644-11" aria-hidden="true" tabindex="-1"></a>            <span class="cn">TRUE</span>          <span class="sc">~</span> <span class="cn">NA_real_</span>))    <span class="co"># les valeur NA doivent aussi être numériques</span></span></code></pre></div>
+<p>Il est important de noter que nous enregistrons les valeurs max et min afin de connaître les limites de l’échelle. Elles seront utilisées dans la commande <code>ggplot()</code> ci-dessous.</p>
+<div class="sourceCode" id="cb1645"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1645-1"><a href="age_pyramid.html#cb1645-1" aria-hidden="true" tabindex="-1"></a>max_per <span class="ot">&lt;-</span> <span class="fu">max</span>(pyramid_data<span class="sc">$</span>percent, <span class="at">na.rm=</span>T)</span>
+<span id="cb1645-2"><a href="age_pyramid.html#cb1645-2" aria-hidden="true" tabindex="-1"></a>min_per <span class="ot">&lt;-</span> <span class="fu">min</span>(pyramid_data<span class="sc">$</span>percent, <span class="at">na.rm=</span>T)</span>
+<span id="cb1645-3"><a href="age_pyramid.html#cb1645-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1645-4"><a href="age_pyramid.html#cb1645-4" aria-hidden="true" tabindex="-1"></a>max_per</span></code></pre></div>
+<pre><code>## [1] 10.9</code></pre>
+<div class="sourceCode" id="cb1647"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1647-1"><a href="age_pyramid.html#cb1647-1" aria-hidden="true" tabindex="-1"></a>min_per</span></code></pre></div>
+<pre><code>## [1] -7.1</code></pre>
+<p>Enfin, nous effectuons le <code>ggplot()</code> sur les données en pourcentage. Nous spécifions <code>scale_y_continuous()</code> pour étendre les longueurs prédéfinies dans chaque direction (“positive” et “négative”). Nous utilisons <code>floor()</code> et <code>ceiling()</code> pour arrondir les décimales dans la direction appropriée (vers le bas ou vers le haut) pour le côté de l’axe.</p>
+<div class="sourceCode" id="cb1649"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1649-1"><a href="age_pyramid.html#cb1649-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Commencer le ggplot</span></span>
+<span id="cb1649-2"><a href="age_pyramid.html#cb1649-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>()<span class="sc">+</span>  <span class="co"># par défaut l&#39;axe X est l&#39;âge en années;</span></span>
+<span id="cb1649-3"><a href="age_pyramid.html#cb1649-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1649-4"><a href="age_pyramid.html#cb1649-4" aria-hidden="true" tabindex="-1"></a>  <span class="co"># graphe des données des cas</span></span>
+<span id="cb1649-5"><a href="age_pyramid.html#cb1649-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>(<span class="at">data =</span> pyramid_data,</span>
+<span id="cb1649-6"><a href="age_pyramid.html#cb1649-6" aria-hidden="true" tabindex="-1"></a>           <span class="at">mapping =</span> <span class="fu">aes</span>(</span>
+<span id="cb1649-7"><a href="age_pyramid.html#cb1649-7" aria-hidden="true" tabindex="-1"></a>             <span class="at">x =</span> age_cat5,</span>
+<span id="cb1649-8"><a href="age_pyramid.html#cb1649-8" aria-hidden="true" tabindex="-1"></a>             <span class="at">y =</span> percent,</span>
+<span id="cb1649-9"><a href="age_pyramid.html#cb1649-9" aria-hidden="true" tabindex="-1"></a>             <span class="at">fill =</span> gender),         </span>
+<span id="cb1649-10"><a href="age_pyramid.html#cb1649-10" aria-hidden="true" tabindex="-1"></a>           <span class="at">colour =</span> <span class="st">&quot;white&quot;</span>)<span class="sc">+</span>       <span class="co"># contour blanc autour de chaque barre</span></span>
+<span id="cb1649-11"><a href="age_pyramid.html#cb1649-11" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb1649-12"><a href="age_pyramid.html#cb1649-12" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Inverser les axes X et Y pour rendre la pyramide verticale</span></span>
+<span id="cb1649-13"><a href="age_pyramid.html#cb1649-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_flip</span>()<span class="sc">+</span></span>
+<span id="cb1649-14"><a href="age_pyramid.html#cb1649-14" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb1649-15"><a href="age_pyramid.html#cb1649-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1649-16"><a href="age_pyramid.html#cb1649-16" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Ajuster les échelles des axes</span></span>
+<span id="cb1649-17"><a href="age_pyramid.html#cb1649-17" aria-hidden="true" tabindex="-1"></a>  <span class="co"># scale_x_continuous(breaks = seq(0,100,5), labels = seq(0,100,5)) +</span></span>
+<span id="cb1649-18"><a href="age_pyramid.html#cb1649-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(</span>
+<span id="cb1649-19"><a href="age_pyramid.html#cb1649-19" aria-hidden="true" tabindex="-1"></a>    <span class="at">limits =</span> <span class="fu">c</span>(min_per, max_per),</span>
+<span id="cb1649-20"><a href="age_pyramid.html#cb1649-20" aria-hidden="true" tabindex="-1"></a>    <span class="at">breaks =</span> <span class="fu">seq</span>(<span class="at">from =</span> <span class="fu">floor</span>(min_per),                <span class="co"># suite des valeurs deux par deux</span></span>
+<span id="cb1649-21"><a href="age_pyramid.html#cb1649-21" aria-hidden="true" tabindex="-1"></a>                 <span class="at">to =</span> <span class="fu">ceiling</span>(max_per),</span>
+<span id="cb1649-22"><a href="age_pyramid.html#cb1649-22" aria-hidden="true" tabindex="-1"></a>                 <span class="at">by =</span> <span class="dv">2</span>),</span>
+<span id="cb1649-23"><a href="age_pyramid.html#cb1649-23" aria-hidden="true" tabindex="-1"></a>    <span class="at">labels =</span> <span class="fu">paste0</span>(<span class="fu">abs</span>(<span class="fu">seq</span>(<span class="at">from =</span> <span class="fu">floor</span>(min_per),     <span class="co"># suite des valeurs absolues deux par deux, avec &quot;%&quot;</span></span>
+<span id="cb1649-24"><a href="age_pyramid.html#cb1649-24" aria-hidden="true" tabindex="-1"></a>                            <span class="at">to =</span> <span class="fu">ceiling</span>(max_per),</span>
+<span id="cb1649-25"><a href="age_pyramid.html#cb1649-25" aria-hidden="true" tabindex="-1"></a>                            <span class="at">by =</span> <span class="dv">2</span>)),</span>
+<span id="cb1649-26"><a href="age_pyramid.html#cb1649-26" aria-hidden="true" tabindex="-1"></a>                    <span class="st">&quot;%&quot;</span>))<span class="sc">+</span>  </span>
+<span id="cb1649-27"><a href="age_pyramid.html#cb1649-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1649-28"><a href="age_pyramid.html#cb1649-28" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Préciser manuellement les couleurs et les étiquettes</span></span>
+<span id="cb1649-29"><a href="age_pyramid.html#cb1649-29" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_manual</span>(</span>
+<span id="cb1649-30"><a href="age_pyramid.html#cb1649-30" aria-hidden="true" tabindex="-1"></a>    <span class="at">values =</span> <span class="fu">c</span>(<span class="st">&quot;f&quot;</span> <span class="ot">=</span> <span class="st">&quot;orange&quot;</span>,</span>
+<span id="cb1649-31"><a href="age_pyramid.html#cb1649-31" aria-hidden="true" tabindex="-1"></a>               <span class="st">&quot;m&quot;</span> <span class="ot">=</span> <span class="st">&quot;darkgreen&quot;</span>),</span>
+<span id="cb1649-32"><a href="age_pyramid.html#cb1649-32" aria-hidden="true" tabindex="-1"></a>    <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">&quot;Female&quot;</span>, <span class="st">&quot;Male&quot;</span>)) <span class="sc">+</span></span>
+<span id="cb1649-33"><a href="age_pyramid.html#cb1649-33" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb1649-34"><a href="age_pyramid.html#cb1649-34" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Etiqueter les valeur (en se rappellant que X et Y sont inversés)</span></span>
+<span id="cb1649-35"><a href="age_pyramid.html#cb1649-35" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb1649-36"><a href="age_pyramid.html#cb1649-36" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">&quot;Age and gender of cases&quot;</span>,</span>
+<span id="cb1649-37"><a href="age_pyramid.html#cb1649-37" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">&quot;Age group&quot;</span>,</span>
+<span id="cb1649-38"><a href="age_pyramid.html#cb1649-38" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">&quot;Percent of total&quot;</span>,</span>
+<span id="cb1649-39"><a href="age_pyramid.html#cb1649-39" aria-hidden="true" tabindex="-1"></a>    <span class="at">fill =</span> <span class="cn">NULL</span>,</span>
+<span id="cb1649-40"><a href="age_pyramid.html#cb1649-40" aria-hidden="true" tabindex="-1"></a>    <span class="at">caption =</span> stringr<span class="sc">::</span><span class="fu">str_glue</span>(<span class="st">&quot;Data are from linelist </span><span class="sc">\n</span><span class="st">n = {nrow(linelist)} (age or sex missing for {sum(is.na(linelist$gender) | is.na(linelist$age_years))} cases) </span><span class="sc">\n</span><span class="st">Data as of: {format(Sys.Date(), &#39;%d %b %Y&#39;)}&quot;</span>)) <span class="sc">+</span></span>
+<span id="cb1649-41"><a href="age_pyramid.html#cb1649-41" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb1649-42"><a href="age_pyramid.html#cb1649-42" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Attributs graphiques et élements du thème</span></span>
+<span id="cb1649-43"><a href="age_pyramid.html#cb1649-43" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(</span>
+<span id="cb1649-44"><a href="age_pyramid.html#cb1649-44" aria-hidden="true" tabindex="-1"></a>    <span class="at">panel.grid.major =</span> <span class="fu">element_blank</span>(),</span>
+<span id="cb1649-45"><a href="age_pyramid.html#cb1649-45" aria-hidden="true" tabindex="-1"></a>    <span class="at">panel.grid.minor =</span> <span class="fu">element_blank</span>(),</span>
+<span id="cb1649-46"><a href="age_pyramid.html#cb1649-46" aria-hidden="true" tabindex="-1"></a>    <span class="at">panel.background =</span> <span class="fu">element_blank</span>(),</span>
+<span id="cb1649-47"><a href="age_pyramid.html#cb1649-47" aria-hidden="true" tabindex="-1"></a>    <span class="at">axis.line =</span> <span class="fu">element_line</span>(<span class="at">colour =</span> <span class="st">&quot;black&quot;</span>),</span>
+<span id="cb1649-48"><a href="age_pyramid.html#cb1649-48" aria-hidden="true" tabindex="-1"></a>    <span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">hjust =</span> <span class="fl">0.5</span>), </span>
+<span id="cb1649-49"><a href="age_pyramid.html#cb1649-49" aria-hidden="true" tabindex="-1"></a>    <span class="at">plot.caption =</span> <span class="fu">element_text</span>(<span class="at">hjust=</span><span class="dv">0</span>, <span class="at">size=</span><span class="dv">11</span>, <span class="at">face =</span> <span class="st">&quot;italic&quot;</span>)</span>
+<span id="cb1649-50"><a href="age_pyramid.html#cb1649-50" aria-hidden="true" tabindex="-1"></a>    )</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-1236-1.png" width="672" /></p>
+<!-- ======================================================= -->
+</div>
+<div id="comparer-à-une-référence" class="section level3 unnumbered">
+<h3>Comparer à une référence</h3>
+<p>Grâce à la flexibilité de <code>ggplot()</code>, vous pouvez avoir une deuxième couche de barres en arrière-plan qui représente la pyramide des âges “réelle” ou “de référence”. Cela peut fournir une visualisation agréable pour comparer les données observées avec les données de référence.</p>
+<p>Importez et visualisez les données de population (voir la page <a href="download_book_data.html#download_book_data">Télécharger le manuel et les données</a>) :</p>
+<div class="sourceCode" id="cb1650"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1650-1"><a href="age_pyramid.html#cb1650-1" aria-hidden="true" tabindex="-1"></a><span class="co"># i Import des données démographiques d&#39;une population</span></span>
+<span id="cb1650-2"><a href="age_pyramid.html#cb1650-2" aria-hidden="true" tabindex="-1"></a>pop <span class="ot">&lt;-</span> rio<span class="sc">::</span><span class="fu">import</span>(<span class="st">&quot;country_demographics.csv&quot;</span>)</span></code></pre></div>
+<div class="datatables html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-47d80f0124f0fde01941" style="width:100%;height:auto;"></div>
+<script type="application/json" data-for="htmlwidget-47d80f0124f0fde01941">{"x":{"filter":"none","vertical":false,"data":[["0-4","5-9","10-14","15-19","20-24","25-29","30-34","35-39","40-44","45-49","50-54","55-59","60-64","65-69","70-74","75-79","80-84","85+"],[7828087,6705882,5601230,4576430,3734111,3111651,2571215,2121247,1735468,1418749,1145345,900239,685141,500248,347093,202240,94325,40402],[7674675,6592449,5522555,4533885,3726537,3118040,2592416,2150490,1771213,1459439,1193903,956070,745682,563894,416543,258538,130479,64656]],"container":"<table class=\"white-space: nowrap\">\n  <thead>\n    <tr>\n      <th>age_cat5<\/th>\n      <th>m<\/th>\n      <th>f<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"pageLength":10,"scrollX":true,"columnDefs":[{"className":"dt-right","targets":[1,2]}],"order":[],"autoWidth":false,"orderClasses":false},"selection":{"mode":"multiple","selected":null,"target":"row","selectable":null}},"evals":[],"jsHooks":[]}</script>
+<p>Tout d’abord, quelques étapes de gestion des données :</p>
+<p>Nous enregistrons ici l’ordre des catégories d’âge que nous voulons voir apparaître. En raison de certaines bizarreries dans l’implémentation de <code>ggplot()</code>, dans ce scénario spécifique, il est plus facile de stocker ces données comme un vecteur de caractères et de les utiliser plus tard dans la fonction graphique.</p>
+<div class="sourceCode" id="cb1651"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1651-1"><a href="age_pyramid.html#cb1651-1" aria-hidden="true" tabindex="-1"></a><span class="co"># enregistrer les niveaux d&#39;âge catégoriel corrects</span></span>
+<span id="cb1651-2"><a href="age_pyramid.html#cb1651-2" aria-hidden="true" tabindex="-1"></a>age_levels <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;0-4&quot;</span>,<span class="st">&quot;5-9&quot;</span>, <span class="st">&quot;10-14&quot;</span>, <span class="st">&quot;15-19&quot;</span>, <span class="st">&quot;20-24&quot;</span>,</span>
+<span id="cb1651-3"><a href="age_pyramid.html#cb1651-3" aria-hidden="true" tabindex="-1"></a>                <span class="st">&quot;25-29&quot;</span>,<span class="st">&quot;30-34&quot;</span>, <span class="st">&quot;35-39&quot;</span>, <span class="st">&quot;40-44&quot;</span>, <span class="st">&quot;45-49&quot;</span>,</span>
+<span id="cb1651-4"><a href="age_pyramid.html#cb1651-4" aria-hidden="true" tabindex="-1"></a>                <span class="st">&quot;50-54&quot;</span>, <span class="st">&quot;55-59&quot;</span>, <span class="st">&quot;60-64&quot;</span>, <span class="st">&quot;65-69&quot;</span>, <span class="st">&quot;70-74&quot;</span>,</span>
+<span id="cb1651-5"><a href="age_pyramid.html#cb1651-5" aria-hidden="true" tabindex="-1"></a>                <span class="st">&quot;75-79&quot;</span>, <span class="st">&quot;80-84&quot;</span>, <span class="st">&quot;85+&quot;</span>)</span></code></pre></div>
+<p>Combinez les données de population et de cas à l’aide de la fonction du paquet <strong>dplyr</strong>, <code>bind_rows()</code> :</p>
+<ul>
+<li>Tout d’abord, assurez-vous qu’elles ont <em>exactement les mêmes</em> noms de colonnes, valeurs de catégories d’âge et valeurs de sexe.<br />
+</li>
+<li>Faites en sorte qu’ils aient la même structure de données : colonnes de catégorie d’âge, de sexe, de nombre et de pourcentage du total.<br />
+</li>
+<li>Liez-les ensemble, l’un au-dessus de l’autre (<code>bind_rows()</code>).</li>
+</ul>
+<div class="sourceCode" id="cb1652"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1652-1"><a href="age_pyramid.html#cb1652-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Créer/transformer les données de population, avec le pourcentage du total</span></span>
+<span id="cb1652-2"><a href="age_pyramid.html#cb1652-2" aria-hidden="true" tabindex="-1"></a><span class="do">########################################################</span></span>
+<span id="cb1652-3"><a href="age_pyramid.html#cb1652-3" aria-hidden="true" tabindex="-1"></a>pop_data <span class="ot">&lt;-</span> pop <span class="sc">%&gt;%</span> </span>
+<span id="cb1652-4"><a href="age_pyramid.html#cb1652-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(      <span class="co"># On faire &quot;pivoter&quot; la colonne sexe à l&#39;aide de pivot_longer</span></span>
+<span id="cb1652-5"><a href="age_pyramid.html#cb1652-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">cols =</span> <span class="fu">c</span>(m, f),</span>
+<span id="cb1652-6"><a href="age_pyramid.html#cb1652-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">names_to =</span> <span class="st">&quot;gender&quot;</span>,</span>
+<span id="cb1652-7"><a href="age_pyramid.html#cb1652-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">values_to =</span> <span class="st">&quot;counts&quot;</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb1652-8"><a href="age_pyramid.html#cb1652-8" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb1652-9"><a href="age_pyramid.html#cb1652-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb1652-10"><a href="age_pyramid.html#cb1652-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">percent  =</span> <span class="fu">round</span>(<span class="dv">100</span><span class="sc">*</span>(counts <span class="sc">/</span> <span class="fu">sum</span>(counts, <span class="at">na.rm=</span>T)),<span class="dv">1</span>),  <span class="co"># % du total</span></span>
+<span id="cb1652-11"><a href="age_pyramid.html#cb1652-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">percent  =</span> <span class="fu">case_when</span>(                                                        </span>
+<span id="cb1652-12"><a href="age_pyramid.html#cb1652-12" aria-hidden="true" tabindex="-1"></a>     gender <span class="sc">==</span> <span class="st">&quot;f&quot;</span> <span class="sc">~</span> percent,</span>
+<span id="cb1652-13"><a href="age_pyramid.html#cb1652-13" aria-hidden="true" tabindex="-1"></a>     gender <span class="sc">==</span> <span class="st">&quot;m&quot;</span> <span class="sc">~</span> <span class="sc">-</span>percent,               <span class="co"># Pour les hommes on converti le pourcentage en négatif</span></span>
+<span id="cb1652-14"><a href="age_pyramid.html#cb1652-14" aria-hidden="true" tabindex="-1"></a>     <span class="cn">TRUE</span>          <span class="sc">~</span> <span class="cn">NA_real_</span>))</span></code></pre></div>
+<p>Examiner les données de population modifiées</p>
+<div class="datatables html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-ff3c6e652d285017ef3a" style="width:100%;height:auto;"></div>
+<script type="application/json" data-for="htmlwidget-ff3c6e652d285017ef3a">{"x":{"filter":"none","vertical":false,"data":[["0-4","0-4","5-9","5-9","10-14","10-14","15-19","15-19","20-24","20-24","25-29","25-29","30-34","30-34","35-39","35-39","40-44","40-44","45-49","45-49","50-54","50-54","55-59","55-59","60-64","60-64","65-69","65-69","70-74","70-74","75-79","75-79","80-84","80-84","85+","85+"],["m","f","m","f","m","f","m","f","m","f","m","f","m","f","m","f","m","f","m","f","m","f","m","f","m","f","m","f","m","f","m","f","m","f","m","f"],[7828087,7674675,6705882,6592449,5601230,5522555,4576430,4533885,3734111,3726537,3111651,3118040,2571215,2592416,2121247,2150490,1735468,1771213,1418749,1459439,1145345,1193903,900239,956070,685141,745682,500248,563894,347093,416543,202240,258538,94325,130479,40402,64656],[-9,8.8,-7.7,7.6,-6.5,6.4,-5.3,5.2,-4.3,4.3,-3.6,3.6,-3,3,-2.4,2.5,-2,2,-1.6,1.7,-1.3,1.4,-1,1.1,-0.8,0.9,-0.6,0.6,-0.4,0.5,-0.2,0.3,-0.1,0.2,-0,0.1]],"container":"<table class=\"white-space: nowrap\">\n  <thead>\n    <tr>\n      <th>age_cat5<\/th>\n      <th>gender<\/th>\n      <th>counts<\/th>\n      <th>percent<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"pageLength":5,"scrollX":true,"columnDefs":[{"className":"dt-right","targets":[2,3]}],"order":[],"autoWidth":false,"orderClasses":false,"lengthMenu":[5,10,25,50,100]},"selection":{"mode":"multiple","selected":null,"target":"row","selectable":null}},"evals":[],"jsHooks":[]}</script>
+<p>On peut maintenant faire la même chose pour les données des cas. C’est légèrement différent car elle commence par les lignes de cas et non par des totaux.</p>
+<div class="sourceCode" id="cb1653"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1653-1"><a href="age_pyramid.html#cb1653-1" aria-hidden="true" tabindex="-1"></a><span class="co"># créer des données sur les cas par âge/sexe, avec le pourcentage du total</span></span>
+<span id="cb1653-2"><a href="age_pyramid.html#cb1653-2" aria-hidden="true" tabindex="-1"></a><span class="do">#######################################################</span></span>
+<span id="cb1653-3"><a href="age_pyramid.html#cb1653-3" aria-hidden="true" tabindex="-1"></a>case_data <span class="ot">&lt;-</span> linelist <span class="sc">%&gt;%</span></span>
+<span id="cb1653-4"><a href="age_pyramid.html#cb1653-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(age_cat5, gender, <span class="at">name =</span> <span class="st">&quot;counts&quot;</span>) <span class="sc">%&gt;%</span>  <span class="co"># nombre par groupes age-sexe</span></span>
+<span id="cb1653-5"><a href="age_pyramid.html#cb1653-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ungroup</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb1653-6"><a href="age_pyramid.html#cb1653-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb1653-7"><a href="age_pyramid.html#cb1653-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">percent =</span> <span class="fu">round</span>(<span class="dv">100</span><span class="sc">*</span>(counts <span class="sc">/</span> <span class="fu">sum</span>(counts, <span class="at">na.rm=</span>T)),<span class="dv">1</span>),  <span class="co"># calculer le % du total pour les groupes d&#39;âge et de sexe</span></span>
+<span id="cb1653-8"><a href="age_pyramid.html#cb1653-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">percent =</span> <span class="fu">case_when</span>(                                     <span class="co"># our les hommes on converti le pourcentage en négatif</span></span>
+<span id="cb1653-9"><a href="age_pyramid.html#cb1653-9" aria-hidden="true" tabindex="-1"></a>      gender <span class="sc">==</span> <span class="st">&quot;f&quot;</span> <span class="sc">~</span> percent,</span>
+<span id="cb1653-10"><a href="age_pyramid.html#cb1653-10" aria-hidden="true" tabindex="-1"></a>      gender <span class="sc">==</span> <span class="st">&quot;m&quot;</span> <span class="sc">~</span> <span class="sc">-</span>percent,</span>
+<span id="cb1653-11"><a href="age_pyramid.html#cb1653-11" aria-hidden="true" tabindex="-1"></a>      <span class="cn">TRUE</span>          <span class="sc">~</span> <span class="cn">NA_real_</span>))</span></code></pre></div>
+<p>Examiner les données des cas modifiées</p>
+<div class="datatables html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-be720c3d1e7a37de6d23" style="width:100%;height:auto;"></div>
+<script type="application/json" data-for="htmlwidget-be720c3d1e7a37de6d23">{"x":{"filter":"none","vertical":false,"data":[["0-4","0-4","0-4","5-9","5-9","5-9","10-14","10-14","10-14","15-19","15-19","15-19","20-24","20-24","20-24","25-29","25-29","25-29","30-34","30-34","30-34","35-39","35-39","35-39","40-44","40-44","40-44","45-49","45-49","45-49","50-54","50-54","50-54","55-59","60-64","65-69","65-69","70-74","75-79","80-84",null],["f","m",null,"f","m",null,"f","m",null,"f","m",null,"f","m",null,"f","m",null,"f","m",null,"f","m",null,"f","m",null,"f","m",null,"f","m",null,"m","m","m",null,"m",null,"m",null],[640,416,39,641,412,42,518,383,40,359,364,20,305,316,17,163,259,13,104,213,9,42,157,3,25,107,1,8,80,5,2,37,1,30,12,12,1,4,1,1,86],[10.9,-7.1,null,10.9,-7,null,8.8,-6.5,null,6.1,-6.2,null,5.2,-5.4,null,2.8,-4.4,null,1.8,-3.6,null,0.7,-2.7,null,0.4,-1.8,null,0.1,-1.4,null,0,-0.6,null,-0.5,-0.2,-0.2,null,-0.1,null,-0,null]],"container":"<table class=\"white-space: nowrap\">\n  <thead>\n    <tr>\n      <th>age_cat5<\/th>\n      <th>gender<\/th>\n      <th>counts<\/th>\n      <th>percent<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"pageLength":5,"scrollX":true,"columnDefs":[{"className":"dt-right","targets":[2,3]}],"order":[],"autoWidth":false,"orderClasses":false,"lengthMenu":[5,10,25,50,100]},"selection":{"mode":"multiple","selected":null,"target":"row","selectable":null}},"evals":[],"jsHooks":[]}</script>
+<p>Les deux jeux de données sont maintenant combinés, l’un au-dessus de l’autre (ils ont les mêmes noms de colonnes). Nous pouvons “nommer” chaque jeux de données, et utiliser l’argument <code>.id =</code> pour créer une nouvelle colonne “data_source” qui indiquera de quel cadre de données chaque ligne provient. Nous pouvons utiliser cette colonne pour filtrer dans la fonction <code>ggplot()</code>.</p>
+<div class="sourceCode" id="cb1654"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1654-1"><a href="age_pyramid.html#cb1654-1" aria-hidden="true" tabindex="-1"></a><span class="co"># combiner les données de cas et de population (mêmes noms de colonnes, valeurs age_cat et valeurs de sexe)</span></span>
+<span id="cb1654-2"><a href="age_pyramid.html#cb1654-2" aria-hidden="true" tabindex="-1"></a>pyramid_data <span class="ot">&lt;-</span> <span class="fu">bind_rows</span>(<span class="st">&quot;cases&quot;</span> <span class="ot">=</span> case_data, <span class="st">&quot;population&quot;</span> <span class="ot">=</span> pop_data, <span class="at">.id =</span> <span class="st">&quot;data_source&quot;</span>)</span></code></pre></div>
+<p>Enregistre les valeurs maximales et minimales en pourcentage, utilisées dans la fonction de traçage pour définir l’étendue du tracé (et ne pas couper les barres !).</p>
+<div class="sourceCode" id="cb1655"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1655-1"><a href="age_pyramid.html#cb1655-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Définir l&#39;étendue de l&#39;axe des pourcentages, utilisé pour les limites du graphe.</span></span>
+<span id="cb1655-2"><a href="age_pyramid.html#cb1655-2" aria-hidden="true" tabindex="-1"></a>max_per <span class="ot">&lt;-</span> <span class="fu">max</span>(pyramid_data<span class="sc">$</span>percent, <span class="at">na.rm=</span>T)</span>
+<span id="cb1655-3"><a href="age_pyramid.html#cb1655-3" aria-hidden="true" tabindex="-1"></a>min_per <span class="ot">&lt;-</span> <span class="fu">min</span>(pyramid_data<span class="sc">$</span>percent, <span class="at">na.rm=</span>T)</span></code></pre></div>
+<p>Le graphique est maintenant réalisé avec <code>ggplot()</code> :</p>
+<ul>
+<li>Un graphique en barres des données de population (barres plus larges et plus transparentes)</li>
+<li>Un histogramme des données de cas (petites barres, plus solides)</li>
+</ul>
+<div class="sourceCode" id="cb1656"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1656-1"><a href="age_pyramid.html#cb1656-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Entamer le ggplot</span></span>
+<span id="cb1656-2"><a href="age_pyramid.html#cb1656-2" aria-hidden="true" tabindex="-1"></a><span class="do">##############</span></span>
+<span id="cb1656-3"><a href="age_pyramid.html#cb1656-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>()<span class="sc">+</span>  <span class="co"># l&#39;axe des x par défaut est l&#39;âge en années;</span></span>
+<span id="cb1656-4"><a href="age_pyramid.html#cb1656-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1656-5"><a href="age_pyramid.html#cb1656-5" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Graphe des données de population</span></span>
+<span id="cb1656-6"><a href="age_pyramid.html#cb1656-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>(</span>
+<span id="cb1656-7"><a href="age_pyramid.html#cb1656-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">data =</span> pyramid_data <span class="sc">%&gt;%</span> <span class="fu">filter</span>(data_source <span class="sc">==</span> <span class="st">&quot;population&quot;</span>),</span>
+<span id="cb1656-8"><a href="age_pyramid.html#cb1656-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">mapping =</span> <span class="fu">aes</span>(</span>
+<span id="cb1656-9"><a href="age_pyramid.html#cb1656-9" aria-hidden="true" tabindex="-1"></a>      <span class="at">x =</span> age_cat5,</span>
+<span id="cb1656-10"><a href="age_pyramid.html#cb1656-10" aria-hidden="true" tabindex="-1"></a>      <span class="at">y =</span> percent,</span>
+<span id="cb1656-11"><a href="age_pyramid.html#cb1656-11" aria-hidden="true" tabindex="-1"></a>      <span class="at">fill =</span> gender),</span>
+<span id="cb1656-12"><a href="age_pyramid.html#cb1656-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">colour =</span> <span class="st">&quot;black&quot;</span>,                               <span class="co"># Contour noir autour des barres</span></span>
+<span id="cb1656-13"><a href="age_pyramid.html#cb1656-13" aria-hidden="true" tabindex="-1"></a>    <span class="at">alpha =</span> <span class="fl">0.2</span>,                                    <span class="co"># plus transparent</span></span>
+<span id="cb1656-14"><a href="age_pyramid.html#cb1656-14" aria-hidden="true" tabindex="-1"></a>    <span class="at">width =</span> <span class="dv">1</span>)<span class="sc">+</span>                                     <span class="co"># plein largeur</span></span>
+<span id="cb1656-15"><a href="age_pyramid.html#cb1656-15" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb1656-16"><a href="age_pyramid.html#cb1656-16" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Graphe des données des cas</span></span>
+<span id="cb1656-17"><a href="age_pyramid.html#cb1656-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>(</span>
+<span id="cb1656-18"><a href="age_pyramid.html#cb1656-18" aria-hidden="true" tabindex="-1"></a>    <span class="at">data =</span> pyramid_data <span class="sc">%&gt;%</span> <span class="fu">filter</span>(data_source <span class="sc">==</span> <span class="st">&quot;cases&quot;</span>), </span>
+<span id="cb1656-19"><a href="age_pyramid.html#cb1656-19" aria-hidden="true" tabindex="-1"></a>    <span class="at">mapping =</span> <span class="fu">aes</span>(</span>
+<span id="cb1656-20"><a href="age_pyramid.html#cb1656-20" aria-hidden="true" tabindex="-1"></a>      <span class="at">x =</span> age_cat5,                               <span class="co"># Catégorie d&#39;âge comme axes des x d&#39;origine</span></span>
+<span id="cb1656-21"><a href="age_pyramid.html#cb1656-21" aria-hidden="true" tabindex="-1"></a>      <span class="at">y =</span> percent,                                <span class="co"># % comme axe des Y d&#39;origine</span></span>
+<span id="cb1656-22"><a href="age_pyramid.html#cb1656-22" aria-hidden="true" tabindex="-1"></a>      <span class="at">fill =</span> gender),                             <span class="co"># Couleur de remplissage des barres en fonctio ns du sexe</span></span>
+<span id="cb1656-23"><a href="age_pyramid.html#cb1656-23" aria-hidden="true" tabindex="-1"></a>    <span class="at">colour =</span> <span class="st">&quot;black&quot;</span>,                               <span class="co"># Contour noir autour des barres</span></span>
+<span id="cb1656-24"><a href="age_pyramid.html#cb1656-24" aria-hidden="true" tabindex="-1"></a>    <span class="at">alpha =</span> <span class="dv">1</span>,                                      <span class="co"># pas transparent </span></span>
+<span id="cb1656-25"><a href="age_pyramid.html#cb1656-25" aria-hidden="true" tabindex="-1"></a>    <span class="at">width =</span> <span class="fl">0.3</span>)<span class="sc">+</span>                                   <span class="co"># largeur réduite</span></span>
+<span id="cb1656-26"><a href="age_pyramid.html#cb1656-26" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb1656-27"><a href="age_pyramid.html#cb1656-27" aria-hidden="true" tabindex="-1"></a>  <span class="co"># inversersion des axes X et Y pour rendre la pyramide verticale</span></span>
+<span id="cb1656-28"><a href="age_pyramid.html#cb1656-28" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_flip</span>()<span class="sc">+</span></span>
+<span id="cb1656-29"><a href="age_pyramid.html#cb1656-29" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb1656-30"><a href="age_pyramid.html#cb1656-30" aria-hidden="true" tabindex="-1"></a>  <span class="co"># s&#39;assurer à la main que l&#39;axe de l&#39;âge est ordonné correctement</span></span>
+<span id="cb1656-31"><a href="age_pyramid.html#cb1656-31" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_discrete</span>(<span class="at">limits =</span> age_levels)<span class="sc">+</span>     <span class="co"># défini dans le morceua de code ci-dessus</span></span>
+<span id="cb1656-32"><a href="age_pyramid.html#cb1656-32" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb1656-33"><a href="age_pyramid.html#cb1656-33" aria-hidden="true" tabindex="-1"></a>  <span class="co"># définir l&#39;axe des pourcentages </span></span>
+<span id="cb1656-34"><a href="age_pyramid.html#cb1656-34" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(</span>
+<span id="cb1656-35"><a href="age_pyramid.html#cb1656-35" aria-hidden="true" tabindex="-1"></a>    <span class="at">limits =</span> <span class="fu">c</span>(min_per, max_per),                                          <span class="co"># Le min et le max sont définis ci-dessus</span></span>
+<span id="cb1656-36"><a href="age_pyramid.html#cb1656-36" aria-hidden="true" tabindex="-1"></a>    <span class="at">breaks =</span> <span class="fu">seq</span>(<span class="fu">floor</span>(min_per), <span class="fu">ceiling</span>(max_per), <span class="at">by =</span> <span class="dv">2</span>),                <span class="co">#  De min_per (pourcentage minimum) à max_per (pourcentage maximum) par 2 </span></span>
+<span id="cb1656-37"><a href="age_pyramid.html#cb1656-37" aria-hidden="true" tabindex="-1"></a>    <span class="at">labels =</span> <span class="fu">paste0</span>(                                                       <span class="co"># Pour les libellés, coller ensemble... </span></span>
+<span id="cb1656-38"><a href="age_pyramid.html#cb1656-38" aria-hidden="true" tabindex="-1"></a>              <span class="fu">abs</span>(<span class="fu">seq</span>(<span class="fu">floor</span>(min_per), <span class="fu">ceiling</span>(max_per), <span class="at">by =</span> <span class="dv">2</span>)), <span class="st">&quot;%&quot;</span>))<span class="sc">+</span>                                                  </span>
+<span id="cb1656-39"><a href="age_pyramid.html#cb1656-39" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1656-40"><a href="age_pyramid.html#cb1656-40" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Définir manuellement les couleurs et les étiquettes de légende</span></span>
+<span id="cb1656-41"><a href="age_pyramid.html#cb1656-41" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_manual</span>(</span>
+<span id="cb1656-42"><a href="age_pyramid.html#cb1656-42" aria-hidden="true" tabindex="-1"></a>    <span class="at">values =</span> <span class="fu">c</span>(<span class="st">&quot;f&quot;</span> <span class="ot">=</span> <span class="st">&quot;orange&quot;</span>,         <span class="co"># attribuer des couleurs aux valeurs des données</span></span>
+<span id="cb1656-43"><a href="age_pyramid.html#cb1656-43" aria-hidden="true" tabindex="-1"></a>               <span class="st">&quot;m&quot;</span> <span class="ot">=</span> <span class="st">&quot;darkgreen&quot;</span>),</span>
+<span id="cb1656-44"><a href="age_pyramid.html#cb1656-44" aria-hidden="true" tabindex="-1"></a>    <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">&quot;f&quot;</span> <span class="ot">=</span> <span class="st">&quot;Female&quot;</span>,</span>
+<span id="cb1656-45"><a href="age_pyramid.html#cb1656-45" aria-hidden="true" tabindex="-1"></a>               <span class="st">&quot;m&quot;</span><span class="ot">=</span> <span class="st">&quot;Male&quot;</span>),      <span class="co"># modifier les libellés qui apparaissent dans la légende, noté l&#39;ordre</span></span>
+<span id="cb1656-46"><a href="age_pyramid.html#cb1656-46" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb1656-47"><a href="age_pyramid.html#cb1656-47" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1656-48"><a href="age_pyramid.html#cb1656-48" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Ajouter au graphes les libellés et les titres </span></span>
+<span id="cb1656-49"><a href="age_pyramid.html#cb1656-49" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb1656-50"><a href="age_pyramid.html#cb1656-50" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">&quot;Case age and gender distribution,</span><span class="sc">\n</span><span class="st">as compared to baseline population&quot;</span>,</span>
+<span id="cb1656-51"><a href="age_pyramid.html#cb1656-51" aria-hidden="true" tabindex="-1"></a>    <span class="at">subtitle =</span> <span class="st">&quot;&quot;</span>,</span>
+<span id="cb1656-52"><a href="age_pyramid.html#cb1656-52" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">&quot;Age category&quot;</span>,</span>
+<span id="cb1656-53"><a href="age_pyramid.html#cb1656-53" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">&quot;Percent of total&quot;</span>,</span>
+<span id="cb1656-54"><a href="age_pyramid.html#cb1656-54" aria-hidden="true" tabindex="-1"></a>    <span class="at">fill =</span> <span class="cn">NULL</span>,</span>
+<span id="cb1656-55"><a href="age_pyramid.html#cb1656-55" aria-hidden="true" tabindex="-1"></a>    <span class="at">caption =</span> stringr<span class="sc">::</span><span class="fu">str_glue</span>(<span class="st">&quot;Cases shown on top of country demographic baseline</span><span class="sc">\n</span><span class="st">Case data are from linelist, n = {nrow(linelist)}</span><span class="sc">\n</span><span class="st">Age or gender missing for {sum(is.na(linelist$gender) | is.na(linelist$age_years))} cases</span><span class="sc">\n</span><span class="st">Case data as of: {format(max(linelist$date_onset, na.rm=T), &#39;%d %b %Y&#39;)}&quot;</span>)) <span class="sc">+</span></span>
+<span id="cb1656-56"><a href="age_pyramid.html#cb1656-56" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb1656-57"><a href="age_pyramid.html#cb1656-57" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Paramètres graphiques optionnels</span></span>
+<span id="cb1656-58"><a href="age_pyramid.html#cb1656-58" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(</span>
+<span id="cb1656-59"><a href="age_pyramid.html#cb1656-59" aria-hidden="true" tabindex="-1"></a>    <span class="at">legend.position =</span> <span class="st">&quot;bottom&quot;</span>,                             <span class="co"># Deplacer la légende en bas du graphe</span></span>
+<span id="cb1656-60"><a href="age_pyramid.html#cb1656-60" aria-hidden="true" tabindex="-1"></a>    <span class="at">panel.grid.major =</span> <span class="fu">element_blank</span>(),</span>
+<span id="cb1656-61"><a href="age_pyramid.html#cb1656-61" aria-hidden="true" tabindex="-1"></a>    <span class="at">panel.grid.minor =</span> <span class="fu">element_blank</span>(),</span>
+<span id="cb1656-62"><a href="age_pyramid.html#cb1656-62" aria-hidden="true" tabindex="-1"></a>    <span class="at">panel.background =</span> <span class="fu">element_blank</span>(),</span>
+<span id="cb1656-63"><a href="age_pyramid.html#cb1656-63" aria-hidden="true" tabindex="-1"></a>    <span class="at">axis.line =</span> <span class="fu">element_line</span>(<span class="at">colour =</span> <span class="st">&quot;black&quot;</span>),</span>
+<span id="cb1656-64"><a href="age_pyramid.html#cb1656-64" aria-hidden="true" tabindex="-1"></a>    <span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">hjust =</span> <span class="dv">0</span>), </span>
+<span id="cb1656-65"><a href="age_pyramid.html#cb1656-65" aria-hidden="true" tabindex="-1"></a>    <span class="at">plot.caption =</span> <span class="fu">element_text</span>(<span class="at">hjust=</span><span class="dv">0</span>, <span class="at">size=</span><span class="dv">11</span>, <span class="at">face =</span> <span class="st">&quot;italic&quot;</span>))</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-1247-1.png" width="672" /></p>
+<!-- ======================================================= -->
+</div>
+</div>
+<div id="échelle-de-likert" class="section level2" number="34.4">
+<h2><span class="header-section-number">34.4</span> Échelle de Likert</h2>
+<p>Les techniques utilisées pour réaliser une pyramide des âges avec <code>ggplot()</code> peuvent également être utilisées pour réaliser des graphiques de données d’enquêtes à échelle de Likert.</p>
+<p>Importez les données (voir la page <a href="download_book_data.html#download_book_data">Télécharger le manuel et les données</a> si vous le souhaitez).</p>
+<div class="sourceCode" id="cb1657"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1657-1"><a href="age_pyramid.html#cb1657-1" aria-hidden="true" tabindex="-1"></a><span class="co"># importer les données de réponse de l&#39;enquête likert</span></span>
+<span id="cb1657-2"><a href="age_pyramid.html#cb1657-2" aria-hidden="true" tabindex="-1"></a>likert_data <span class="ot">&lt;-</span> rio<span class="sc">::</span><span class="fu">import</span>(<span class="st">&quot;likert_data.csv&quot;</span>)</span></code></pre></div>
+<p>Commencez avec des données qui ressemblent à ceci, avec une classification catégorielle de chaque répondant (<code>statut</code>) et leurs réponses à 8 questions sur une échelle de type Likert à 4 points (“Très mauvais”, “Mauvais”, “Bon”, “Très bon”).</p>
+<div class="datatables html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-12446e852f36e07715e7" style="width:100%;height:auto;"></div>
+<script type="application/json" data-for="htmlwidget-12446e852f36e07715e7">{"x":{"filter":"top","vertical":false,"filterHTML":"<tr>\n  <td data-type=\"character\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"character\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"character\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"character\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"character\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"character\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"character\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"character\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"character\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n  <\/td>\n<\/tr>","data":[["Senior","Junior","Intermediate","Intermediate","Senior","Junior","Senior","Senior","Senior","Senior","Senior","Junior","Senior","Junior","Senior","Junior","Intermediate","Intermediate","Junior","Senior","Senior","Junior","Senior","Senior","Junior","Intermediate","Junior","Senior","Intermediate","Senior","Senior","Junior","Intermediate","Senior","Intermediate","Junior","Senior","Junior"],["Very Good","Very Good","Good","Good","Very Good","Good","Very Good","Good","Good","Good","Good","Good","Good","Good","Very Good","Good","Poor","Very Good","Very Good","Not applicable","Very Good","Good","Very Good","Very Good","Very Good","Very Good","Good","Good","Very Good","Very Good","Not applicable","Good","Very Good","Good","Good","Good","Not applicable","Good"],["Very Good","Very Good","Good","Poor","Very Poor","Very Good","Very Good","Good","Very Good","Very Good","Very Good","Very Good","Good","Very Good","Very Good","Good","Poor","Good","Very Good","Very Good","Very Good","Good","Very Good","Very Good","Very Good","Good","Good","Poor","Very Good","Very Good","Not applicable","Good","Very Good","Very Good","Good","Very Good","Good","Good"],["Good","Very Good","Good","Poor","Good","Good","Very Good","Very Good","Very Good","Good","Very Good","Very Good","Poor","Good","Good","Good","Good","Very Good","Very Good","Very Good","Very Good","Good","Very Good","Good","Very Good","Good","Poor","Poor","Very Good","Very Good","Not applicable","Good","Very Good","Good","Good","Good","Good","Good"],["Very Poor","Very Good","Very Good","Very Poor","Poor","Very Poor","","Very Good","Very Poor","Very Poor","Very Poor","Good","Very Poor","Very Good","Good","","Very Poor","Very Poor","Good","Poor","Very Poor","Good","Good","Very Poor","Very Poor","Good","Good","Good","Very Poor","Very Poor","Very Poor","Good","Good","Good","Good","Very Poor","Good","Good"],["Not applicable","Very Good","Not applicable","Not applicable","Poor","Not applicable","","Poor","Not applicable","Poor","Not applicable","Good","Not applicable","Poor","Good","","Not applicable","Not applicable","Very Good","Poor","Not applicable","Good","Poor","Not applicable","Not applicable","Good","Good","Poor","Not applicable","Very Poor","Not applicable","Poor","Good","Good","Poor","Not applicable","Poor","Good"],["Not applicable","Very Good","Not applicable","Not applicable","Very Poor","Not applicable","","Not applicable","Not applicable","Not applicable","Not applicable","Good","Not applicable","Poor","Good","","Not applicable","Not applicable","Good","Good","Not applicable","Good","Poor","Good","Not applicable","Very Good","Very Good","Good","Not applicable","Not applicable","Not applicable","Good","Good","Good","Good","Not applicable","Good","Not applicable"],["Very Good","Very Good","Good","Good","Good","Good","","Very Good","Not applicable","Very Good","Good","Good","Poor","Good","Good","Poor","Very Good","Good","Good","Very Good","Good","Good","Good","Good","Good","Very Good","Good","Poor","Very Good","Very Good","Not applicable","Very Good","Good","Poor","Good","Poor","Not applicable","Good"],["Very Good","Very Good","Good","Good","Good","Good","Very Good","Very Good","Good","Very Good","Good","Very Good","Good","Very Good","Good","Poor","Very Good","Good","Good","Very Good","Very Good","Good","Good","Good","Very Good","Poor","Good","Poor","Very Good","Very Good","Not applicable","Good","Good","Good","Good","Poor","Not applicable","Good"]],"container":"<table class=\"white-space: nowrap\">\n  <thead>\n    <tr>\n      <th>status<\/th>\n      <th>Q1<\/th>\n      <th>Q2<\/th>\n      <th>Q3<\/th>\n      <th>Q4<\/th>\n      <th>Q5<\/th>\n      <th>Q6<\/th>\n      <th>Q7<\/th>\n      <th>Q8<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"pageLength":10,"scrollX":true,"columnDefs":[],"order":[],"autoWidth":false,"orderClasses":false,"orderCellsTop":true},"selection":{"mode":"multiple","selected":null,"target":"row","selectable":null}},"evals":[],"jsHooks":[]}</script>
+<p>Tout d’abord, quelques étapes de gestion des données :</p>
+<ul>
+<li>Pivoter les données afin qu’elles soient “longues” plutôt que “larges”</li>
+<li>Créer une nouvelle colonne <code>direction</code> qui indique si une réponse était globalement “positive” ou “négative”</li>
+<li>Définisser l’ordre du niveau de Facteur pour la colonne <code>status</code> et la colonne <code>Response</code></li>
+<li>Enregistrez la valeur maximale pour que les limites du graphique soient appropriées.</li>
+</ul>
+<div class="sourceCode" id="cb1658"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1658-1"><a href="age_pyramid.html#cb1658-1" aria-hidden="true" tabindex="-1"></a>melted <span class="ot">&lt;-</span> likert_data <span class="sc">%&gt;%</span> </span>
+<span id="cb1658-2"><a href="age_pyramid.html#cb1658-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(</span>
+<span id="cb1658-3"><a href="age_pyramid.html#cb1658-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">cols =</span> Q1<span class="sc">:</span>Q8,</span>
+<span id="cb1658-4"><a href="age_pyramid.html#cb1658-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">names_to =</span> <span class="st">&quot;Question&quot;</span>,</span>
+<span id="cb1658-5"><a href="age_pyramid.html#cb1658-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">values_to =</span> <span class="st">&quot;Response&quot;</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb1658-6"><a href="age_pyramid.html#cb1658-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb1658-7"><a href="age_pyramid.html#cb1658-7" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb1658-8"><a href="age_pyramid.html#cb1658-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">direction =</span> <span class="fu">case_when</span>(</span>
+<span id="cb1658-9"><a href="age_pyramid.html#cb1658-9" aria-hidden="true" tabindex="-1"></a>      Response <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">&quot;Poor&quot;</span>,<span class="st">&quot;Very Poor&quot;</span>)  <span class="sc">~</span> <span class="st">&quot;Negative&quot;</span>,</span>
+<span id="cb1658-10"><a href="age_pyramid.html#cb1658-10" aria-hidden="true" tabindex="-1"></a>      Response <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">&quot;Good&quot;</span>, <span class="st">&quot;Very Good&quot;</span>) <span class="sc">~</span> <span class="st">&quot;Positive&quot;</span>,</span>
+<span id="cb1658-11"><a href="age_pyramid.html#cb1658-11" aria-hidden="true" tabindex="-1"></a>      <span class="cn">TRUE</span>                                 <span class="sc">~</span> <span class="st">&quot;Unknown&quot;</span>),</span>
+<span id="cb1658-12"><a href="age_pyramid.html#cb1658-12" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb1658-13"><a href="age_pyramid.html#cb1658-13" aria-hidden="true" tabindex="-1"></a>    <span class="at">status =</span> <span class="fu">fct_relevel</span>(status, <span class="st">&quot;Junior&quot;</span>, <span class="st">&quot;Intermediate&quot;</span>, <span class="st">&quot;Senior&quot;</span>),</span>
+<span id="cb1658-14"><a href="age_pyramid.html#cb1658-14" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb1658-15"><a href="age_pyramid.html#cb1658-15" aria-hidden="true" tabindex="-1"></a>    <span class="co"># On inverse  &#39;Very Poor&#39; et &#39;Poor&#39; pour que l&#39;ordre soit le bon</span></span>
+<span id="cb1658-16"><a href="age_pyramid.html#cb1658-16" aria-hidden="true" tabindex="-1"></a>    <span class="at">Response =</span> <span class="fu">fct_relevel</span>(Response, <span class="st">&quot;Very Good&quot;</span>, <span class="st">&quot;Good&quot;</span>, <span class="st">&quot;Very Poor&quot;</span>, <span class="st">&quot;Poor&quot;</span>)) </span>
+<span id="cb1658-17"><a href="age_pyramid.html#cb1658-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1658-18"><a href="age_pyramid.html#cb1658-18" aria-hidden="true" tabindex="-1"></a><span class="co"># Permet d&#39;obtenir la plus grande valeur pour les limites d&#39;échelle</span></span>
+<span id="cb1658-19"><a href="age_pyramid.html#cb1658-19" aria-hidden="true" tabindex="-1"></a>melted_max <span class="ot">&lt;-</span> melted <span class="sc">%&gt;%</span> </span>
+<span id="cb1658-20"><a href="age_pyramid.html#cb1658-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(status, Question) <span class="sc">%&gt;%</span> <span class="co"># nombre de ligne</span></span>
+<span id="cb1658-21"><a href="age_pyramid.html#cb1658-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pull</span>(n) <span class="sc">%&gt;%</span>                 <span class="co"># Colonne &#39;n&#39;</span></span>
+<span id="cb1658-22"><a href="age_pyramid.html#cb1658-22" aria-hidden="true" tabindex="-1"></a>  <span class="fu">max</span>(<span class="at">na.rm=</span>T)                <span class="co"># Maximum</span></span></code></pre></div>
+<p>Maintenant, créez le graphique. Comme dans les pyramides des âges ci-dessus, nous créons deux graphes à barres et inversons les valeurs de l’un d’entre eux en négatif.</p>
+<p>On utilise <code>geom_bar()</code> parce que nos données sont une ligne par observation, et non pas des comptes agrégés. Nous utilisons le terme spécial de <strong>ggplot2</strong> <code>..count..</code> dans l’un des graphiques en barres pour inverser les valeurs négatives (<em>-1</em>), et nous définissons <code>position = "stack"</code> pour que les valeurs s’empilent les unes sur les autres.</p>
+<div class="sourceCode" id="cb1659"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1659-1"><a href="age_pyramid.html#cb1659-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Créer le graphe</span></span>
+<span id="cb1659-2"><a href="age_pyramid.html#cb1659-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>()<span class="sc">+</span></span>
+<span id="cb1659-3"><a href="age_pyramid.html#cb1659-3" aria-hidden="true" tabindex="-1"></a>     </span>
+<span id="cb1659-4"><a href="age_pyramid.html#cb1659-4" aria-hidden="true" tabindex="-1"></a>  <span class="co"># graphique à barres des réponses &quot;négatives&quot; </span></span>
+<span id="cb1659-5"><a href="age_pyramid.html#cb1659-5" aria-hidden="true" tabindex="-1"></a>     <span class="fu">geom_bar</span>(</span>
+<span id="cb1659-6"><a href="age_pyramid.html#cb1659-6" aria-hidden="true" tabindex="-1"></a>       <span class="at">data =</span> melted <span class="sc">%&gt;%</span> <span class="fu">filter</span>(direction <span class="sc">==</span> <span class="st">&quot;Negative&quot;</span>),</span>
+<span id="cb1659-7"><a href="age_pyramid.html#cb1659-7" aria-hidden="true" tabindex="-1"></a>       <span class="at">mapping =</span> <span class="fu">aes</span>(</span>
+<span id="cb1659-8"><a href="age_pyramid.html#cb1659-8" aria-hidden="true" tabindex="-1"></a>         <span class="at">x =</span> status,</span>
+<span id="cb1659-9"><a href="age_pyramid.html#cb1659-9" aria-hidden="true" tabindex="-1"></a>         <span class="at">y =</span> ..count..<span class="sc">*</span>(<span class="sc">-</span><span class="dv">1</span>),    <span class="co"># counts inverted to negative</span></span>
+<span id="cb1659-10"><a href="age_pyramid.html#cb1659-10" aria-hidden="true" tabindex="-1"></a>         <span class="at">fill =</span> Response),</span>
+<span id="cb1659-11"><a href="age_pyramid.html#cb1659-11" aria-hidden="true" tabindex="-1"></a>       <span class="at">color =</span> <span class="st">&quot;black&quot;</span>,</span>
+<span id="cb1659-12"><a href="age_pyramid.html#cb1659-12" aria-hidden="true" tabindex="-1"></a>       <span class="at">closed =</span> <span class="st">&quot;left&quot;</span>,</span>
+<span id="cb1659-13"><a href="age_pyramid.html#cb1659-13" aria-hidden="true" tabindex="-1"></a>       <span class="at">position =</span> <span class="st">&quot;stack&quot;</span>)<span class="sc">+</span></span>
+<span id="cb1659-14"><a href="age_pyramid.html#cb1659-14" aria-hidden="true" tabindex="-1"></a>     </span>
+<span id="cb1659-15"><a href="age_pyramid.html#cb1659-15" aria-hidden="true" tabindex="-1"></a>     <span class="co">#  graphique à barres des réponses &quot;positives&quot; </span></span>
+<span id="cb1659-16"><a href="age_pyramid.html#cb1659-16" aria-hidden="true" tabindex="-1"></a>     <span class="fu">geom_bar</span>(</span>
+<span id="cb1659-17"><a href="age_pyramid.html#cb1659-17" aria-hidden="true" tabindex="-1"></a>       <span class="at">data =</span> melted <span class="sc">%&gt;%</span> <span class="fu">filter</span>(direction <span class="sc">==</span> <span class="st">&quot;Positive&quot;</span>),</span>
+<span id="cb1659-18"><a href="age_pyramid.html#cb1659-18" aria-hidden="true" tabindex="-1"></a>       <span class="at">mapping =</span> <span class="fu">aes</span>(</span>
+<span id="cb1659-19"><a href="age_pyramid.html#cb1659-19" aria-hidden="true" tabindex="-1"></a>         <span class="at">x =</span> status,</span>
+<span id="cb1659-20"><a href="age_pyramid.html#cb1659-20" aria-hidden="true" tabindex="-1"></a>         <span class="at">fill =</span> Response),</span>
+<span id="cb1659-21"><a href="age_pyramid.html#cb1659-21" aria-hidden="true" tabindex="-1"></a>       <span class="at">colour =</span> <span class="st">&quot;black&quot;</span>,</span>
+<span id="cb1659-22"><a href="age_pyramid.html#cb1659-22" aria-hidden="true" tabindex="-1"></a>       <span class="at">closed =</span> <span class="st">&quot;left&quot;</span>,</span>
+<span id="cb1659-23"><a href="age_pyramid.html#cb1659-23" aria-hidden="true" tabindex="-1"></a>       <span class="at">position =</span> <span class="st">&quot;stack&quot;</span>)<span class="sc">+</span></span>
+<span id="cb1659-24"><a href="age_pyramid.html#cb1659-24" aria-hidden="true" tabindex="-1"></a>     </span>
+<span id="cb1659-25"><a href="age_pyramid.html#cb1659-25" aria-hidden="true" tabindex="-1"></a>     <span class="co"># inversion des axes x et y</span></span>
+<span id="cb1659-26"><a href="age_pyramid.html#cb1659-26" aria-hidden="true" tabindex="-1"></a>     <span class="fu">coord_flip</span>()<span class="sc">+</span></span>
+<span id="cb1659-27"><a href="age_pyramid.html#cb1659-27" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb1659-28"><a href="age_pyramid.html#cb1659-28" aria-hidden="true" tabindex="-1"></a>     <span class="co"># Ligne noire verticale à 0</span></span>
+<span id="cb1659-29"><a href="age_pyramid.html#cb1659-29" aria-hidden="true" tabindex="-1"></a>     <span class="fu">geom_hline</span>(<span class="at">yintercept =</span> <span class="dv">0</span>, <span class="at">color =</span> <span class="st">&quot;black&quot;</span>, <span class="at">size=</span><span class="dv">1</span>)<span class="sc">+</span></span>
+<span id="cb1659-30"><a href="age_pyramid.html#cb1659-30" aria-hidden="true" tabindex="-1"></a>     </span>
+<span id="cb1659-31"><a href="age_pyramid.html#cb1659-31" aria-hidden="true" tabindex="-1"></a>    <span class="co"># On convertit les libellés pour qu&#39;il n&#39;y ai que des chiffres positifs</span></span>
+<span id="cb1659-32"><a href="age_pyramid.html#cb1659-32" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_y_continuous</span>(</span>
+<span id="cb1659-33"><a href="age_pyramid.html#cb1659-33" aria-hidden="true" tabindex="-1"></a>      </span>
+<span id="cb1659-34"><a href="age_pyramid.html#cb1659-34" aria-hidden="true" tabindex="-1"></a>      <span class="co"># limites de l&#39;échelle des x</span></span>
+<span id="cb1659-35"><a href="age_pyramid.html#cb1659-35" aria-hidden="true" tabindex="-1"></a>      <span class="at">limits =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="fu">ceiling</span>(melted_max<span class="sc">/</span><span class="dv">10</span>)<span class="sc">*</span><span class="dv">11</span>,    <span class="co"># séquence de négatif à positif par 10, bords arrondis vers l&#39;extérieur au 5 le plus proche</span></span>
+<span id="cb1659-36"><a href="age_pyramid.html#cb1659-36" aria-hidden="true" tabindex="-1"></a>                 <span class="fu">ceiling</span>(melted_max<span class="sc">/</span><span class="dv">10</span>)<span class="sc">*</span><span class="dv">10</span>),   </span>
+<span id="cb1659-37"><a href="age_pyramid.html#cb1659-37" aria-hidden="true" tabindex="-1"></a>      </span>
+<span id="cb1659-38"><a href="age_pyramid.html#cb1659-38" aria-hidden="true" tabindex="-1"></a>      <span class="co"># valeurs de l&#39;échelle de l&#39;axe des x</span></span>
+<span id="cb1659-39"><a href="age_pyramid.html#cb1659-39" aria-hidden="true" tabindex="-1"></a>      <span class="at">breaks =</span> <span class="fu">seq</span>(<span class="at">from =</span> <span class="sc">-</span><span class="fu">ceiling</span>(melted_max<span class="sc">/</span><span class="dv">10</span>)<span class="sc">*</span><span class="dv">10</span>,</span>
+<span id="cb1659-40"><a href="age_pyramid.html#cb1659-40" aria-hidden="true" tabindex="-1"></a>                   <span class="at">to =</span> <span class="fu">ceiling</span>(melted_max<span class="sc">/</span><span class="dv">10</span>)<span class="sc">*</span><span class="dv">10</span>,</span>
+<span id="cb1659-41"><a href="age_pyramid.html#cb1659-41" aria-hidden="true" tabindex="-1"></a>                   <span class="at">by =</span> <span class="dv">10</span>),</span>
+<span id="cb1659-42"><a href="age_pyramid.html#cb1659-42" aria-hidden="true" tabindex="-1"></a>      </span>
+<span id="cb1659-43"><a href="age_pyramid.html#cb1659-43" aria-hidden="true" tabindex="-1"></a>      <span class="co"># libellés de l&#39;échelle de l&#39;axe des x</span></span>
+<span id="cb1659-44"><a href="age_pyramid.html#cb1659-44" aria-hidden="true" tabindex="-1"></a>      <span class="at">labels =</span> <span class="fu">abs</span>(<span class="fu">unique</span>(<span class="fu">c</span>(<span class="fu">seq</span>(<span class="sc">-</span><span class="fu">ceiling</span>(melted_max<span class="sc">/</span><span class="dv">10</span>)<span class="sc">*</span><span class="dv">10</span>, <span class="dv">0</span>, <span class="dv">10</span>),</span>
+<span id="cb1659-45"><a href="age_pyramid.html#cb1659-45" aria-hidden="true" tabindex="-1"></a>                            <span class="fu">seq</span>(<span class="dv">0</span>, <span class="fu">ceiling</span>(melted_max<span class="sc">/</span><span class="dv">10</span>)<span class="sc">*</span><span class="dv">10</span>, <span class="dv">10</span>))))) <span class="sc">+</span></span>
+<span id="cb1659-46"><a href="age_pyramid.html#cb1659-46" aria-hidden="true" tabindex="-1"></a>     </span>
+<span id="cb1659-47"><a href="age_pyramid.html#cb1659-47" aria-hidden="true" tabindex="-1"></a>    <span class="co"># échelle de couleur attribuées manuellement</span></span>
+<span id="cb1659-48"><a href="age_pyramid.html#cb1659-48" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_fill_manual</span>(</span>
+<span id="cb1659-49"><a href="age_pyramid.html#cb1659-49" aria-hidden="true" tabindex="-1"></a>      <span class="at">values =</span> <span class="fu">c</span>(<span class="st">&quot;Very Good&quot;</span>  <span class="ot">=</span> <span class="st">&quot;green4&quot;</span>, <span class="co"># attribue les couleurs</span></span>
+<span id="cb1659-50"><a href="age_pyramid.html#cb1659-50" aria-hidden="true" tabindex="-1"></a>                <span class="st">&quot;Good&quot;</span>      <span class="ot">=</span> <span class="st">&quot;green3&quot;</span>,</span>
+<span id="cb1659-51"><a href="age_pyramid.html#cb1659-51" aria-hidden="true" tabindex="-1"></a>                <span class="st">&quot;Poor&quot;</span>      <span class="ot">=</span> <span class="st">&quot;yellow&quot;</span>,</span>
+<span id="cb1659-52"><a href="age_pyramid.html#cb1659-52" aria-hidden="true" tabindex="-1"></a>                <span class="st">&quot;Very Poor&quot;</span> <span class="ot">=</span> <span class="st">&quot;red3&quot;</span>),</span>
+<span id="cb1659-53"><a href="age_pyramid.html#cb1659-53" aria-hidden="true" tabindex="-1"></a>      <span class="at">breaks =</span> <span class="fu">c</span>(<span class="st">&quot;Very Good&quot;</span>, <span class="st">&quot;Good&quot;</span>, <span class="st">&quot;Poor&quot;</span>, <span class="st">&quot;Very Poor&quot;</span>))<span class="sc">+</span> <span class="co"># donne l&#39;ordre de la légende</span></span>
+<span id="cb1659-54"><a href="age_pyramid.html#cb1659-54" aria-hidden="true" tabindex="-1"></a>     </span>
+<span id="cb1659-55"><a href="age_pyramid.html#cb1659-55" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb1659-56"><a href="age_pyramid.html#cb1659-56" aria-hidden="true" tabindex="-1"></a>     </span>
+<span id="cb1659-57"><a href="age_pyramid.html#cb1659-57" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Convertit le graphe de sorte à ce que chaque sous graphe corresponde à une question</span></span>
+<span id="cb1659-58"><a href="age_pyramid.html#cb1659-58" aria-hidden="true" tabindex="-1"></a>    <span class="fu">facet_wrap</span>( <span class="sc">~</span> Question, <span class="at">ncol =</span> <span class="dv">3</span>)<span class="sc">+</span></span>
+<span id="cb1659-59"><a href="age_pyramid.html#cb1659-59" aria-hidden="true" tabindex="-1"></a>     </span>
+<span id="cb1659-60"><a href="age_pyramid.html#cb1659-60" aria-hidden="true" tabindex="-1"></a>    <span class="co"># libellés, titres, légende</span></span>
+<span id="cb1659-61"><a href="age_pyramid.html#cb1659-61" aria-hidden="true" tabindex="-1"></a>    <span class="fu">labs</span>(</span>
+<span id="cb1659-62"><a href="age_pyramid.html#cb1659-62" aria-hidden="true" tabindex="-1"></a>      <span class="at">title =</span> <span class="fu">str_glue</span>(<span class="st">&quot;Likert-style responses</span><span class="sc">\n</span><span class="st">n = {nrow(likert_data)}&quot;</span>),</span>
+<span id="cb1659-63"><a href="age_pyramid.html#cb1659-63" aria-hidden="true" tabindex="-1"></a>      <span class="at">x =</span> <span class="st">&quot;Respondent status&quot;</span>,</span>
+<span id="cb1659-64"><a href="age_pyramid.html#cb1659-64" aria-hidden="true" tabindex="-1"></a>      <span class="at">y =</span> <span class="st">&quot;Number of responses&quot;</span>,</span>
+<span id="cb1659-65"><a href="age_pyramid.html#cb1659-65" aria-hidden="true" tabindex="-1"></a>      <span class="at">fill =</span> <span class="st">&quot;&quot;</span>)<span class="sc">+</span></span>
+<span id="cb1659-66"><a href="age_pyramid.html#cb1659-66" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1659-67"><a href="age_pyramid.html#cb1659-67" aria-hidden="true" tabindex="-1"></a>     <span class="co"># Paramètres graphiques </span></span>
+<span id="cb1659-68"><a href="age_pyramid.html#cb1659-68" aria-hidden="true" tabindex="-1"></a>     <span class="fu">theme_minimal</span>()<span class="sc">+</span></span>
+<span id="cb1659-69"><a href="age_pyramid.html#cb1659-69" aria-hidden="true" tabindex="-1"></a>     <span class="fu">theme</span>(<span class="at">axis.text =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">12</span>),</span>
+<span id="cb1659-70"><a href="age_pyramid.html#cb1659-70" aria-hidden="true" tabindex="-1"></a>           <span class="at">axis.title =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">14</span>, <span class="at">face =</span> <span class="st">&quot;bold&quot;</span>),</span>
+<span id="cb1659-71"><a href="age_pyramid.html#cb1659-71" aria-hidden="true" tabindex="-1"></a>           <span class="at">strip.text =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">14</span>, <span class="at">face =</span> <span class="st">&quot;bold&quot;</span>),  <span class="co"># Titre de chaque sous graphique</span></span>
+<span id="cb1659-72"><a href="age_pyramid.html#cb1659-72" aria-hidden="true" tabindex="-1"></a>           <span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">20</span>, <span class="at">face =</span> <span class="st">&quot;bold&quot;</span>),</span>
+<span id="cb1659-73"><a href="age_pyramid.html#cb1659-73" aria-hidden="true" tabindex="-1"></a>           <span class="at">panel.background =</span> <span class="fu">element_rect</span>(<span class="at">fill =</span> <span class="cn">NA</span>, <span class="at">color =</span> <span class="st">&quot;black&quot;</span>)) <span class="co"># Cadre noir autour de chaque sous graphique</span></span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-1253-1.png" width="672" /></p>
+<!-- ======================================================= -->
+</div>
+<div id="resources-8" class="section level2" number="34.5">
+<h2><span class="header-section-number">34.5</span> Resources</h2>
+<p><a href="https://cran.r-project.org/web/packages/apyramid/vignettes/intro.html">Documentation de apyramid</a></p>
+
+</div>
+</div>
+  </main>
+
+  <div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
+    <nav id="toc" data-toggle="toc" aria-label="On this page">
+      <h2>On this page</h2>
+      <div id="book-on-this-page"></div>
+
+      <div class="book-extra">
+        <ul class="list-unstyled">
+          <li><a id="book-source" href="#">View source <i class="fab fa-github"></i></a></li>
+          <li><a id="book-edit" href="#">Edit this page <i class="fab fa-github"></i></a></li>
+        </ul>
+      </div>
+    </nav>
+  </div>
+
+</div>
+</div> <!-- .container -->
+
+<footer class="bg-primary text-light mt-5">
+  <div class="container"><div class="row">
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>"<strong>The Epidemiologist R Handbook</strong>" was written by the handbook team. It was last built on 2023-05-17.</p>
+  </div>
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>This book was built by the <a class="text-light" href="https://bookdown.org">bookdown</a> R package.</p>
+  </div>
+
+</div></div>
+</footer>
+
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+<script type="text/x-mathjax-config">const popovers = document.querySelectorAll('a.footnote-ref[data-toggle="popover"]');
+for (let popover of popovers) {
+  const div = document.createElement('div');
+  div.setAttribute('style', 'position: absolute; top: 0, left:0; width:0, height:0, overflow: hidden; visibility: hidden;');
+  div.innerHTML = popover.getAttribute('data-content');
+
+  var has_math = div.querySelector("span.math");
+  if (has_math) {
+    document.body.appendChild(div);
+    MathJax.Hub.Queue(["Typeset", MathJax.Hub, div]);
+    MathJax.Hub.Queue(function() {
+      popover.setAttribute('data-content', div.innerHTML);
+      document.body.removeChild(div);
+    })
+  }
+}
+</script>
+</body>
+
+</html>

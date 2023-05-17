@@ -1,0 +1,309 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <title>6 Projets R | The Epidemiologist R Handbook</title>
+
+    <meta name="author" content="the handbook team" />
+  
+   <meta name="description" content="The Epi R Handbook est un manuel de référence sur l’utilisation de R en épidémiologie appliquée et santé publique." />
+   <meta name="generator" content="placeholder" />
+  <meta property="og:title" content="6 Projets R | The Epidemiologist R Handbook" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="The Epi R Handbook est un manuel de référence sur l’utilisation de R en épidémiologie appliquée et santé publique." />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="6 Projets R | The Epidemiologist R Handbook" />
+  
+  <meta name="twitter:description" content="The Epi R Handbook est un manuel de référence sur l’utilisation de R en épidémiologie appliquée et santé publique." />
+  
+  <!-- JS -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script>
+  <script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script>
+    <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet" />
+    <script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script>
+    <script src="libs/bs3compat-0.4.2/transition.js"></script>
+    <script src="libs/bs3compat-0.4.2/tabs.js"></script>
+    <script src="libs/bs3compat-0.4.2/bs3compat.js"></script>
+    <link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet" />
+    <script src="libs/bs4_book-1.0.0/bs4_book.js"></script>
+    <script src="libs/htmlwidgets-1.6.2/htmlwidgets.js"></script>
+    <link href="libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet" />
+    <script src="libs/datatables-binding-0.27/datatables.js"></script>
+    <link href="libs/dt-core-1.12.1/css/jquery.dataTables.min.css" rel="stylesheet" />
+    <link href="libs/dt-core-1.12.1/css/jquery.dataTables.extra.css" rel="stylesheet" />
+    <script src="libs/dt-core-1.12.1/js/jquery.dataTables.min.js"></script>
+    <link href="libs/nouislider-7.0.10/jquery.nouislider.min.css" rel="stylesheet" />
+    <script src="libs/nouislider-7.0.10/jquery.nouislider.min.js"></script>
+    <link href="libs/selectize-0.12.0/selectize.bootstrap3.css" rel="stylesheet" />
+    <script src="libs/selectize-0.12.0/selectize.min.js"></script>
+    <link href="libs/crosstalk-1.2.0/css/crosstalk.min.css" rel="stylesheet" />
+    <script src="libs/crosstalk-1.2.0/js/crosstalk.min.js"></script>
+    <script src="libs/kePrint-0.0.1/kePrint.js"></script>
+    <link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
+    <link href="libs/tabwid-1.1.3/tabwid.css" rel="stylesheet" />
+    <script src="libs/tabwid-1.1.3/tabwid.js"></script>
+    <link href="libs/leaflet-1.3.1/leaflet.css" rel="stylesheet" />
+    <script src="libs/leaflet-1.3.1/leaflet.js"></script>
+    <link href="libs/leafletfix-1.0.0/leafletfix.css" rel="stylesheet" />
+    <script src="libs/proj4-2.6.2/proj4.min.js"></script>
+    <script src="libs/Proj4Leaflet-1.0.1/proj4leaflet.js"></script>
+    <link href="libs/rstudio_leaflet-1.3.1/rstudio_leaflet.css" rel="stylesheet" />
+    <script src="libs/leaflet-binding-2.1.2/leaflet.js"></script>
+    <script src="libs/leaflet-providers-1.9.0/leaflet-providers_1.9.0.js"></script>
+    <script src="libs/leaflet-providers-plugin-2.1.2/leaflet-providers-plugin.js"></script>
+    <script src="libs/viz-1.8.2/viz.js"></script>
+    <link href="libs/DiagrammeR-styles-0.2/styles.css" rel="stylesheet" />
+    <script src="libs/grViz-binding-1.0.9/grViz.js"></script>
+    <script src="libs/d3-4.5.0/d3.min.js"></script>
+    <script src="libs/sankey-1/sankey.js"></script>
+    <script src="libs/sankeyNetwork-binding-0.4/sankeyNetwork.js"></script>
+    <script src="libs/plotly-binding-4.10.1/plotly.js"></script>
+    <script src="libs/typedarray-0.1/typedarray.min.js"></script>
+    <link href="libs/plotly-htmlwidgets-css-2.11.1/plotly-htmlwidgets.css" rel="stylesheet" />
+    <script src="libs/plotly-main-2.11.1/plotly-latest.min.js"></script>
+    <link href="libs/vis-9.1.0/vis-network.min.css" rel="stylesheet" />
+    <script src="libs/vis-9.1.0/vis-network.min.js"></script>
+    <script src="libs/visNetwork-binding-2.1.2/visNetwork.js"></script>
+    <link href="libs/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" />
+    <script src="libs/plotly-basic-2.11.1/plotly-basic-2.11.1.min.js"></script>
+    <script src="libs/plotly-cartesian-2.11.1/plotly-cartesian-2.11.1.min.js"></script>
+    <script src="libs/proj4js-2.3.15/proj4.js"></script>
+    <link href="libs/highcharts-9.3.1/css/motion.css" rel="stylesheet" />
+    <script src="libs/highcharts-9.3.1/highcharts.js"></script>
+    <script src="libs/highcharts-9.3.1/highcharts-3d.js"></script>
+    <script src="libs/highcharts-9.3.1/highcharts-more.js"></script>
+    <script src="libs/highcharts-9.3.1/modules/stock.js"></script>
+    <script src="libs/highcharts-9.3.1/modules/map.js"></script>
+    <script src="libs/highcharts-9.3.1/modules/data.js"></script>
+    <script src="libs/highcharts-9.3.1/modules/exporting.js"></script>
+    <script src="libs/highcharts-9.3.1/modules/offline-exporting.js"></script>
+    <script src="libs/highcharts-9.3.1/modules/drilldown.js"></script>
+    <script src="libs/highcharts-9.3.1/modules/item-series.js"></script>
+    <script src="libs/highcharts-9.3.1/modules/overlapping-datalabels.js"></script>
+    <script src="libs/highcharts-9.3.1/modules/annotations.js"></script>
+    <script src="libs/highcharts-9.3.1/modules/export-data.js"></script>
+    <script src="libs/highcharts-9.3.1/modules/funnel.js"></script>
+    <script src="libs/highcharts-9.3.1/modules/heatmap.js"></script>
+    <script src="libs/highcharts-9.3.1/modules/treemap.js"></script>
+    <script src="libs/highcharts-9.3.1/modules/sankey.js"></script>
+    <script src="libs/highcharts-9.3.1/modules/dependency-wheel.js"></script>
+    <script src="libs/highcharts-9.3.1/modules/organization.js"></script>
+    <script src="libs/highcharts-9.3.1/modules/solid-gauge.js"></script>
+    <script src="libs/highcharts-9.3.1/modules/streamgraph.js"></script>
+    <script src="libs/highcharts-9.3.1/modules/sunburst.js"></script>
+    <script src="libs/highcharts-9.3.1/modules/vector.js"></script>
+    <script src="libs/highcharts-9.3.1/modules/wordcloud.js"></script>
+    <script src="libs/highcharts-9.3.1/modules/xrange.js"></script>
+    <script src="libs/highcharts-9.3.1/modules/tilemap.js"></script>
+    <script src="libs/highcharts-9.3.1/modules/venn.js"></script>
+    <script src="libs/highcharts-9.3.1/modules/gantt.js"></script>
+    <script src="libs/highcharts-9.3.1/modules/timeline.js"></script>
+    <script src="libs/highcharts-9.3.1/modules/parallel-coordinates.js"></script>
+    <script src="libs/highcharts-9.3.1/modules/bullet.js"></script>
+    <script src="libs/highcharts-9.3.1/modules/coloraxis.js"></script>
+    <script src="libs/highcharts-9.3.1/modules/dumbbell.js"></script>
+    <script src="libs/highcharts-9.3.1/modules/lollipop.js"></script>
+    <script src="libs/highcharts-9.3.1/modules/series-label.js"></script>
+    <script src="libs/highcharts-9.3.1/plugins/motion.js"></script>
+    <script src="libs/highcharts-9.3.1/custom/reset.js"></script>
+    <script src="libs/highcharts-9.3.1/modules/boost.js"></script>
+    <script src="libs/highchart-binding-0.9.4/highchart.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script>
+
+  <!-- CSS -->
+  <style type="text/css">
+    
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  </style>
+      <link rel="stylesheet" href="style_bs4.css" />
+  
+</head>
+
+<body data-spy="scroll" data-target="#toc">
+
+<div class="container-fluid">
+<div class="row">
+  <header class="col-sm-12 col-lg-3 sidebar sidebar-book">
+    <a class="sr-only sr-only-focusable" href="#content">Skip to main content</a>
+
+    <div class="d-flex align-items-start justify-content-between">
+      <h1>
+        <a href="index.html" title="">The Epidemiologist R Handbook</a>
+      </h1>
+      <button class="btn btn-outline-primary d-lg-none ml-2 mt-1" type="button" data-toggle="collapse" data-target="#main-nav" aria-expanded="true" aria-controls="main-nav"><i class="fas fa-bars"></i><span class="sr-only">Show table of contents</span></button>
+    </div>
+
+    <div id="main-nav" class="collapse-lg">
+      <form role="search">
+        <input id="search" class="form-control" type="search" placeholder="Search" aria-label="Search">
+      </form>
+
+      <nav aria-label="Table of contents">
+        <h2>Table of contents</h2>
+        <div id="book-toc"></div>
+
+        <div class="book-extra">
+          <p><a id="book-repo" href="#">View book source <i class="fab fa-github"></i></a></li></p>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main class="col-sm-12 col-md-9 col-lg-7" id="content">
+<div id="r_projects" class="section level1" number="6">
+<h1><span class="header-section-number">6</span> Projets R</h1>
+<p>Un projet R permet de regrouper votre travail dans un dossier portable et autonome. A l’intérieur du projet, tous les scripts, fichiers de données, figures/sorties et historiques pertinents sont stockés dans des sous-dossiers et, surtout, le <em>répertoire de travail</em> est le dossier racine du projet.</p>
+<div id="utilisation-suggérée" class="section level2" number="6.1">
+<h2><span class="header-section-number">6.1</span> Utilisation suggérée</h2>
+<p>Une façon courante, efficace et sans probléme d’utiliser R consiste à combiner ces 3 éléments. Un projet de travail discret est hébergélé dans un projet R. Chaque élément est décrit dans les sections ci-dessous.</p>
+<ol style="list-style-type: decimal">
+<li>Un <strong>projet R</strong>
+<ul>
+<li>Un environnement de travail autonome avec des dossiers pour les données, les scripts, les résultats, etc.<br />
+</li>
+</ul></li>
+<li>Le paquet <strong>here</strong> pour les chemins de fichiers relatifs
+<ul>
+<li>Les chemins de fichiers sont écrits par rapport au dossier racine du projet R - voir <a href="import_export.html#import_export">Importation et exportation</a> pour plus d’informations.<br />
+</li>
+</ul></li>
+<li>Le paquet <strong>rio</strong> pour les importations/exportations
+<ul>
+<li><code>import()</code> et <code>export()</code> traitent tout type de fichier par son extension (par exemple .csv, .xlsx, .png).</li>
+</ul></li>
+</ol>
+<!-- ======================================================= -->
+</div>
+<div id="créer-un-projet-r" class="section level2" number="6.2">
+<h2><span class="header-section-number">6.2</span> Créer un projet R</h2>
+<p>Pour créer un projet R, sélectionnez “Nouveau projet” dans le menu Fichier.</p>
+<ul>
+<li>Si vous voulez créer un nouveau dossier pour le projet, sélectionnez “Nouveau répertoire” et indiquez où vous voulez qu’il soit créé.<br />
+</li>
+<li>Si vous voulez créer le projet dans un dossier existant, cliquez sur “Répertoire existant” et indiquez le dossier.<br />
+</li>
+<li>Si vous voulez cloner un dépôt Github, sélectionnez la troisiéme option “Version Control” et ensuite “Git”. Voir la page <a href="collaboration.html#collaboration">contrôle de version et collaboration avec Git et Github</a> pour plus de détails.</li>
+</ul>
+<p><img src="images/create_project.png" width="75%" style="display: block; margin: auto;" /></p>
+<p>Le projet R que vous créez se présente sous la forme d’un dossier contenant un fichier <em>.Rproj</em>. Ce fichier est un raccourci et probablement la principale façon d’ouvrir votre projet. Vous pouvez également ouvrir un projet en sélectionnant “Ouvrir un projet” dans le menu Fichier. Alternativement, sur le côté supérieur droit de RStudio, vous verrez une icône de projet R et un menu déroulant des projets R disponibles.</p>
+<p>Pour quitter un projet R, vous pouvez soit ouvrir un nouveau projet, soit fermer le projet (Fichier - Fermer le projet).</p>
+<div id="changer-de-projet" class="section level3 unnumbered">
+<h3>Changer de projet</h3>
+<p>Pour passer d’un projet à l’autre, cliquez sur l’icône et le menu déroulant du projet R tout en haut à droite de RStudio. Vous verrez les options Fermer le projet, Ouvrir le projet, et une liste de projets récents.</p>
+<p><img src="images/Rproject_dropdown.png" width="100%" style="display: block; margin: auto;" /></p>
+</div>
+<div id="paramétres" class="section level3 unnumbered">
+<h3>Paramétres</h3>
+<p>Il est généralement conseillé de démarrer RStudio à chaque fois avec une “ardoise propre” - c’est-à-dire avec votre espace de travail <strong>non</strong> préservé de votre session précédente. Cela signifie que vos objets et résultats ne persisteront pas d’une session à l’autre (vous devrez les recréer en exécutant vos scripts). C’est une bonne chose, car cela vous obligera à écrire de meilleurs scripts et à éviter les erreurs à long terme.</p>
+<p>Pour configurer RStudio de maniére à ce qu’il fasse “table rase” à chaque démarrage :</p>
+<ul>
+<li>Sélectionnez “Options du projet” dans le menu Outils.<br />
+</li>
+<li>Dans l’onglet “Général”, configurez RStudio pour <strong>ne pas</strong> restaurer les .RData dans l’espace de travail au démarrage, et pour <strong>ne pas</strong> sauvegarder l’espace de travail en .RData à la sortie.</li>
+</ul>
+</div>
+<div id="organisation" class="section level3 unnumbered">
+<h3>Organisation</h3>
+<p>Il est courant d’avoir des sous-dossiers dans votre projet. Pensez à avoir des dossiers tels que “données”, “scripts”, “figures”, “présentations”. Vous pouvez ajouter des dossiers de la même maniére que vous ajouteriez un nouveau dossier sur votre ordinateur. Vous pouvez également consulter la page sur les <a href="directories.html#directories">Interactions avec les répertoires</a> pour apprendre à créer de nouveaux dossiers à l’aide de commandes R.</p>
+</div>
+<div id="contrôle-de-version" class="section level3 unnumbered">
+<h3>Contrôle de version</h3>
+<p>Pensez à un systéme de contrôle de version. Cela pourrait étre quelque chose d’aussi simple que d’avoir des dates sur les noms des scripts (par exemple “transmission_analysis_2020-10-03.R”) et un dossier “archive”. Vous pouvez également envisager d’avoir un texte d’en-téte commenté en haut de chaque script avec une description, des balises, des auteurs et un journal des modifications.</p>
+<p>Une méthode plus complexe consisterait à utiliser Github ou une plateforme similaire pour le contrôle de version. Voir la page <a href="collaboration.html#collaboration">contrôle de version et collaboration avec Git et Github</a>.</p>
+<p>Une astuce : vous pouvez effectuer une recherche dans l’ensemble d’un projet ou d’un dossier à l’aide de l’outil “Rechercher dans les fichiers” (menu édition). Il peut rechercher et même remplacer des chaînes de caractères dans plusieurs fichiers.</p>
+</div>
+</div>
+<div id="exemples" class="section level2" number="6.3">
+<h2><span class="header-section-number">6.3</span> Exemples</h2>
+<p>Voici quelques exemples d’importation/exportation/sauvegarde utilisant <code>here()</code> à partir d’un projet R. Pour en savoir plus sur l’utilisation du paquet <strong>here</strong>, consultez la page <a href="import_export.html#import_export">Import and export</a>.</p>
+<p><em>Importer <code>linelist_raw.xlsx</code> du dossier “data” de votre projet R</em></p>
+<div class="sourceCode" id="cb126"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb126-1"><a href="r_projects.html#cb126-1" aria-hidden="true" tabindex="-1"></a>linelist <span class="ot">&lt;-</span> <span class="fu">import</span>(<span class="fu">here</span>(<span class="st">&quot;data&quot;</span>, <span class="st">&quot;linelist_raw.xlsx&quot;</span>))</span></code></pre></div>
+<p><em>Exportation de l’objet R <code>linelist</code> en tant que “my_linelist.rds” dans le dossier “clean” du dossier “data” de votre projet R.</em></p>
+<div class="sourceCode" id="cb127"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb127-1"><a href="r_projects.html#cb127-1" aria-hidden="true" tabindex="-1"></a><span class="fu">export</span>(linelist, <span class="fu">here</span>(<span class="st">&quot;data&quot;</span>,<span class="st">&quot;clean&quot;</span>, <span class="st">&quot;my_linelist.rds&quot;</span>))</span></code></pre></div>
+<p><em>Enregistrement du tracé le plus récemment imprimé sous le nom de “epicurve_2021-02-15.png” dans le dossier “epicurves” du dossier “outputs” de votre projet R.</em></p>
+<div class="sourceCode" id="cb128"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb128-1"><a href="r_projects.html#cb128-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggsave</span>(<span class="fu">here</span>(<span class="st">&quot;outputs&quot;</span>, <span class="st">&quot;epicurves&quot;</span>, <span class="st">&quot;epicurve_2021-02-15.png&quot;</span>))</span></code></pre></div>
+<!-- ======================================================= -->
+</div>
+<div id="ressources" class="section level2" number="6.4">
+<h2><span class="header-section-number">6.4</span> Ressources</h2>
+<p>Page web de RStudio sur <a href="https://support.rstudio.com/hc/en-us/articles/200526207-Using-Projects">l’utilisation de projets R</a></p>
+
+</div>
+</div>
+  </main>
+
+  <div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
+    <nav id="toc" data-toggle="toc" aria-label="On this page">
+      <h2>On this page</h2>
+      <div id="book-on-this-page"></div>
+
+      <div class="book-extra">
+        <ul class="list-unstyled">
+          <li><a id="book-source" href="#">View source <i class="fab fa-github"></i></a></li>
+          <li><a id="book-edit" href="#">Edit this page <i class="fab fa-github"></i></a></li>
+        </ul>
+      </div>
+    </nav>
+  </div>
+
+</div>
+</div> <!-- .container -->
+
+<footer class="bg-primary text-light mt-5">
+  <div class="container"><div class="row">
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>"<strong>The Epidemiologist R Handbook</strong>" was written by the handbook team. It was last built on 2023-05-17.</p>
+  </div>
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>This book was built by the <a class="text-light" href="https://bookdown.org">bookdown</a> R package.</p>
+  </div>
+
+</div></div>
+</footer>
+
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+<script type="text/x-mathjax-config">const popovers = document.querySelectorAll('a.footnote-ref[data-toggle="popover"]');
+for (let popover of popovers) {
+  const div = document.createElement('div');
+  div.setAttribute('style', 'position: absolute; top: 0, left:0; width:0, height:0, overflow: hidden; visibility: hidden;');
+  div.innerHTML = popover.getAttribute('data-content');
+
+  var has_math = div.querySelector("span.math");
+  if (has_math) {
+    document.body.appendChild(div);
+    MathJax.Hub.Queue(["Typeset", MathJax.Hub, div]);
+    MathJax.Hub.Queue(function() {
+      popover.setAttribute('data-content', div.innerHTML);
+      document.body.removeChild(div);
+    })
+  }
+}
+</script>
+</body>
+
+</html>

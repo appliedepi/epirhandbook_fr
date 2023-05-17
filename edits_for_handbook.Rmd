@@ -1,0 +1,100 @@
+---
+title: "edits_for_handbook"
+author: "Olivia Boyd"
+date: "03/04/2023"
+output: html_document
+---
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Chapter edits
+
+### ggplot_basics 
+
+* Missing packages: *ggforce*, *janitor*
+* Move tidyverse to be last package
+* Remove old chapter?
+* ggplot figures, two png with english writing --> Update to french
+
+### ggplot_tips 
+* Tried to calculate group_by (warning 22) to review, looks same as EN
+* Axes and titles of graphics in english, edit?
+
+### epi_curves 
+* grates incidence2 package issue, is_int_period function defunct (updated two weeks ago)
+* Time to move away from incidence2 package?
+
+### apyramid 
+* line 108, fix agepyramid to apyramid
+* line 625, fix *-1* bolding
+
+
+### heatmaps
+* EN version needs update, line 282, add r to calculate nrow rather than print nrow.
+* EN version, pivoting tag needs to be included line 328
+* EN version, nrow calculation not working, need to add r to inline code, line 328
+* EN version, nrow line 352 issue
+
+### diagrams
+* first figure changed to french in png
+
+### combination_analysis
+* No edits
+
+### transmission_chains
+* x_axis and col_pal issue in plots and edge_col_pal
+* Those are hashtagged out for now
+
+### phylogenetic_trees
+* warnings and messages turned off for package loading because of gg
+
+### rmarkdown
+* Replace figures with french text figures from ppt
+* line 367 EXPLIQuer PLUS A FAIRE
+
+### reportfactory
+* No edits
+
+### flexdashboards
+* No edits
+
+### shiny_basics
+* No edits
+
+### writing_functions
+* No edits
+
+### directories
+* Figure very small, increase size?
+
+### collaboration
+* review translation 
+* figures to be updated to french notes (pngs?)
+* update schema figure
+* update github flow figure
+* update comments on git push pull figure
+
+### data_table
+* review code
+
+### plot_continuous
+* change ggplot figure titles to french
+
+### plot_discrete
+* check code is correct
+
+### descrtiptive_statistics
+* issue with R higher.rdb, skim_without_charts function
+* runs if hashed out
+* add_rownames deprecated --> replace to tibble::rownames_to_column() 
+
+### Other checks
+
+
+
+* Chapter tags correct
+* Clean up directory
+* Alex issue tag from english epiRHandbook

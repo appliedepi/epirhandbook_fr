@@ -59,7 +59,7 @@ DT::datatable(head(linelist, 50), rownames = FALSE, filter = "top",
 ### Conversion des données manquantes lors de l'import {.unnumbered}  
 
 Il faut être particulièrement attentif aux valeurs qui doivent être classifiées comme "manquantes" lors de l'import des données. Des données manquantes peuvent par exemple être indiquées par 99, 999, "Manquant", un espace vide (" ") ou des cellules vides (""). Vous pouvez les convertir en `NA` via la fonction d'importation des données.  
-Pour plus de détails, consultez la page sur l'importation des [Données manquantes](#import_missing), car la syntaxe exacte varie selon le type de fichier.  
+Pour plus de détails, consultez la page sur l'importation des [Données manquantes](#missing_data), car la syntaxe exacte varie selon le type de fichier.  
 
 
 <!-- ======================================================= -->
@@ -71,7 +71,7 @@ Nous explorons ci-dessous les façons dont les données manquantes sont représe
 
 En R, les valeurs manquantes sont représentées par un mot réservé (spécial) : `NA` (pour _"Non available"_). Notez que ce mot est tapé *sans* guillemets, et ne doit pas être confondu avec une chaîne de caractères "NA" (également une parole des Beatles de la chanson _Hey Jude_).  
 
-Les données manquantes peuvent avoir été encodées de divers manières dans les données brutes, telles que "99", "Manquant", "Inconnu", une valeur de caractère vide "" qui ressemble à un "blanc", ou un espace simple " ". Tenez-en compte et réfléchissez à l'opportunité de [les convertir en `NA` pendant l'importation](#import_missing) ou pendant le nettoyage des données avec `na_if()`.  
+Les données manquantes peuvent avoir été encodées de divers manières dans les données brutes, telles que "99", "Manquant", "Inconnu", une valeur de caractère vide "" qui ressemble à un "blanc", ou un espace simple " ". Tenez-en compte et réfléchissez à l'opportunité de [les convertir en `NA` pendant l'importation](#missing_data) ou pendant le nettoyage des données avec `na_if()`.  
 
 
 A l'inverse, lors du nettoyage des données, il peut également être pertinent de convertir des `NA` en "Manquant" (ou autre) avec les fonctions `replace_na()` ou `fct_explicit_na()` dans le cas des facteurs.    

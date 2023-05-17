@@ -21,8 +21,14 @@ Voici un exemple de l'un des résultats que nous produirons dans cette section.
 
 ```{r out.width=c('100%', '100%'), fig.show='hold', echo=F, fig.width = 12, fig.height = 9, message=F, warning=F}
 
+#if (!require("EpiNow2", quietly = TRUE))
+#    remotes::install_github("epiforecasts/EpiNow2")
+
 ## installer et charger les paquets
 pacman::p_load(tidyverse, EpiNow2, EpiEstim, here, incidence2, epicontacts, rio, projections)
+
+
+
 
 ## Chargement de la linelist
 linelist <- import(here::here("data", "case_linelists", "linelist_cleaned.rds"))
@@ -81,10 +87,10 @@ cases <- linelist %>%
   group_by(date = date_onset) %>%
   summarise(confirm = n())
 
-## ## exécuter epinow
+ ## exécuter epinow#
 ## epinow_res <- epinow(
-## reported_cases = cas,
-## generation_time = generation_time,
+## reported_cases = cases,
+## generation_time = generation_times,
 ## delays = delay_opts(incubation_period),
 ## target_folder = here("data/cache/epidemic_models"),
 ## return_output = TRUE,

@@ -29,7 +29,8 @@ pacman::p_load(
      rio, # import/export
      here, # localisateur de fichiers
      purrr, # itération
-     tidyverse # gestion et visualisation des données
+     tidyverse, # gestion et visualisation des données
+     grates
 )
 ```
 

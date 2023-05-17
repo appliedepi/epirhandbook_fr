@@ -19,7 +19,7 @@ rmd_files: [
 
   # BASICS
   "new_pages/cat_basics.Rmd",               # start of new section
-  "new_pages/basics.Rmd",
+  #"new_pages/basics.Rmd",
   "new_pages/transition_to_R.Rmd",
   "new_pages/packages_suggested.Rmd",
   "new_pages/r_projects.Rmd",
@@ -58,8 +58,8 @@ rmd_files: [
   "new_pages/cat_data_viz.Rmd",             # start of new section
   "new_pages/tables_presentation.Rmd",
   "new_pages/ggplot_basics.Rmd",
-  #"new_pages/plot_continuous.Rmd",
-  #"new_pages/plot_discrete.Rmd",
+  "new_pages/plot_continuous.Rmd",
+  "new_pages/plot_discrete.Rmd",
   "new_pages/ggplot_tips.Rmd",
   "new_pages/epicurves.Rmd",
   "new_pages/age_pyramid.Rmd",
@@ -85,10 +85,10 @@ rmd_files: [
   "new_pages/collaboration.Rmd",
   "new_pages/errors.Rmd",
   "new_pages/help.Rmd",
-  #"new_pages/relational_databases.Rmd",
+  "new_pages/relational_databases.Rmd",
   "new_pages/network_drives.Rmd",
-  "new_pages/data_table.Rmd" #,
-  #"new_pages/rstudio_advanced.Rmd"
+  "new_pages/data_table.Rmd" ,
+  "new_pages/rstudio_advanced.Rmd"
 ]
 
 

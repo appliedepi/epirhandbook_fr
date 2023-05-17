@@ -1,0 +1,566 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <title>30 Traçage de données continues | The Epidemiologist R Handbook</title>
+
+    <meta name="author" content="the handbook team" />
+  
+   <meta name="description" content="The Epi R Handbook est un manuel de référence sur l’utilisation de R en épidémiologie appliquée et santé publique." />
+   <meta name="generator" content="placeholder" />
+  <meta property="og:title" content="30 Traçage de données continues | The Epidemiologist R Handbook" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="The Epi R Handbook est un manuel de référence sur l’utilisation de R en épidémiologie appliquée et santé publique." />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="30 Traçage de données continues | The Epidemiologist R Handbook" />
+  
+  <meta name="twitter:description" content="The Epi R Handbook est un manuel de référence sur l’utilisation de R en épidémiologie appliquée et santé publique." />
+  
+  <!-- JS -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script>
+  <script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script>
+    <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet" />
+    <script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script>
+    <script src="libs/bs3compat-0.4.2/transition.js"></script>
+    <script src="libs/bs3compat-0.4.2/tabs.js"></script>
+    <script src="libs/bs3compat-0.4.2/bs3compat.js"></script>
+    <link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet" />
+    <script src="libs/bs4_book-1.0.0/bs4_book.js"></script>
+    <script src="libs/htmlwidgets-1.6.2/htmlwidgets.js"></script>
+    <link href="libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet" />
+    <script src="libs/datatables-binding-0.27/datatables.js"></script>
+    <link href="libs/dt-core-1.12.1/css/jquery.dataTables.min.css" rel="stylesheet" />
+    <link href="libs/dt-core-1.12.1/css/jquery.dataTables.extra.css" rel="stylesheet" />
+    <script src="libs/dt-core-1.12.1/js/jquery.dataTables.min.js"></script>
+    <link href="libs/nouislider-7.0.10/jquery.nouislider.min.css" rel="stylesheet" />
+    <script src="libs/nouislider-7.0.10/jquery.nouislider.min.js"></script>
+    <link href="libs/selectize-0.12.0/selectize.bootstrap3.css" rel="stylesheet" />
+    <script src="libs/selectize-0.12.0/selectize.min.js"></script>
+    <link href="libs/crosstalk-1.2.0/css/crosstalk.min.css" rel="stylesheet" />
+    <script src="libs/crosstalk-1.2.0/js/crosstalk.min.js"></script>
+    <script src="libs/kePrint-0.0.1/kePrint.js"></script>
+    <link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
+    <link href="libs/tabwid-1.1.3/tabwid.css" rel="stylesheet" />
+    <script src="libs/tabwid-1.1.3/tabwid.js"></script>
+    <link href="libs/leaflet-1.3.1/leaflet.css" rel="stylesheet" />
+    <script src="libs/leaflet-1.3.1/leaflet.js"></script>
+    <link href="libs/leafletfix-1.0.0/leafletfix.css" rel="stylesheet" />
+    <script src="libs/proj4-2.6.2/proj4.min.js"></script>
+    <script src="libs/Proj4Leaflet-1.0.1/proj4leaflet.js"></script>
+    <link href="libs/rstudio_leaflet-1.3.1/rstudio_leaflet.css" rel="stylesheet" />
+    <script src="libs/leaflet-binding-2.1.2/leaflet.js"></script>
+    <script src="libs/leaflet-providers-1.9.0/leaflet-providers_1.9.0.js"></script>
+    <script src="libs/leaflet-providers-plugin-2.1.2/leaflet-providers-plugin.js"></script>
+    <script src="libs/viz-1.8.2/viz.js"></script>
+    <link href="libs/DiagrammeR-styles-0.2/styles.css" rel="stylesheet" />
+    <script src="libs/grViz-binding-1.0.9/grViz.js"></script>
+    <script src="libs/d3-4.5.0/d3.min.js"></script>
+    <script src="libs/sankey-1/sankey.js"></script>
+    <script src="libs/sankeyNetwork-binding-0.4/sankeyNetwork.js"></script>
+    <script src="libs/plotly-binding-4.10.1/plotly.js"></script>
+    <script src="libs/typedarray-0.1/typedarray.min.js"></script>
+    <link href="libs/plotly-htmlwidgets-css-2.11.1/plotly-htmlwidgets.css" rel="stylesheet" />
+    <script src="libs/plotly-main-2.11.1/plotly-latest.min.js"></script>
+    <link href="libs/vis-9.1.0/vis-network.min.css" rel="stylesheet" />
+    <script src="libs/vis-9.1.0/vis-network.min.js"></script>
+    <script src="libs/visNetwork-binding-2.1.2/visNetwork.js"></script>
+    <link href="libs/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" />
+    <script src="libs/plotly-basic-2.11.1/plotly-basic-2.11.1.min.js"></script>
+    <script src="libs/plotly-cartesian-2.11.1/plotly-cartesian-2.11.1.min.js"></script>
+    <script src="libs/proj4js-2.3.15/proj4.js"></script>
+    <link href="libs/highcharts-9.3.1/css/motion.css" rel="stylesheet" />
+    <script src="libs/highcharts-9.3.1/highcharts.js"></script>
+    <script src="libs/highcharts-9.3.1/highcharts-3d.js"></script>
+    <script src="libs/highcharts-9.3.1/highcharts-more.js"></script>
+    <script src="libs/highcharts-9.3.1/modules/stock.js"></script>
+    <script src="libs/highcharts-9.3.1/modules/map.js"></script>
+    <script src="libs/highcharts-9.3.1/modules/data.js"></script>
+    <script src="libs/highcharts-9.3.1/modules/exporting.js"></script>
+    <script src="libs/highcharts-9.3.1/modules/offline-exporting.js"></script>
+    <script src="libs/highcharts-9.3.1/modules/drilldown.js"></script>
+    <script src="libs/highcharts-9.3.1/modules/item-series.js"></script>
+    <script src="libs/highcharts-9.3.1/modules/overlapping-datalabels.js"></script>
+    <script src="libs/highcharts-9.3.1/modules/annotations.js"></script>
+    <script src="libs/highcharts-9.3.1/modules/export-data.js"></script>
+    <script src="libs/highcharts-9.3.1/modules/funnel.js"></script>
+    <script src="libs/highcharts-9.3.1/modules/heatmap.js"></script>
+    <script src="libs/highcharts-9.3.1/modules/treemap.js"></script>
+    <script src="libs/highcharts-9.3.1/modules/sankey.js"></script>
+    <script src="libs/highcharts-9.3.1/modules/dependency-wheel.js"></script>
+    <script src="libs/highcharts-9.3.1/modules/organization.js"></script>
+    <script src="libs/highcharts-9.3.1/modules/solid-gauge.js"></script>
+    <script src="libs/highcharts-9.3.1/modules/streamgraph.js"></script>
+    <script src="libs/highcharts-9.3.1/modules/sunburst.js"></script>
+    <script src="libs/highcharts-9.3.1/modules/vector.js"></script>
+    <script src="libs/highcharts-9.3.1/modules/wordcloud.js"></script>
+    <script src="libs/highcharts-9.3.1/modules/xrange.js"></script>
+    <script src="libs/highcharts-9.3.1/modules/tilemap.js"></script>
+    <script src="libs/highcharts-9.3.1/modules/venn.js"></script>
+    <script src="libs/highcharts-9.3.1/modules/gantt.js"></script>
+    <script src="libs/highcharts-9.3.1/modules/timeline.js"></script>
+    <script src="libs/highcharts-9.3.1/modules/parallel-coordinates.js"></script>
+    <script src="libs/highcharts-9.3.1/modules/bullet.js"></script>
+    <script src="libs/highcharts-9.3.1/modules/coloraxis.js"></script>
+    <script src="libs/highcharts-9.3.1/modules/dumbbell.js"></script>
+    <script src="libs/highcharts-9.3.1/modules/lollipop.js"></script>
+    <script src="libs/highcharts-9.3.1/modules/series-label.js"></script>
+    <script src="libs/highcharts-9.3.1/plugins/motion.js"></script>
+    <script src="libs/highcharts-9.3.1/custom/reset.js"></script>
+    <script src="libs/highcharts-9.3.1/modules/boost.js"></script>
+    <script src="libs/highchart-binding-0.9.4/highchart.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script>
+
+  <!-- CSS -->
+  <style type="text/css">
+    
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  </style>
+      <link rel="stylesheet" href="style_bs4.css" />
+  
+</head>
+
+<body data-spy="scroll" data-target="#toc">
+
+<div class="container-fluid">
+<div class="row">
+  <header class="col-sm-12 col-lg-3 sidebar sidebar-book">
+    <a class="sr-only sr-only-focusable" href="#content">Skip to main content</a>
+
+    <div class="d-flex align-items-start justify-content-between">
+      <h1>
+        <a href="index.html" title="">The Epidemiologist R Handbook</a>
+      </h1>
+      <button class="btn btn-outline-primary d-lg-none ml-2 mt-1" type="button" data-toggle="collapse" data-target="#main-nav" aria-expanded="true" aria-controls="main-nav"><i class="fas fa-bars"></i><span class="sr-only">Show table of contents</span></button>
+    </div>
+
+    <div id="main-nav" class="collapse-lg">
+      <form role="search">
+        <input id="search" class="form-control" type="search" placeholder="Search" aria-label="Search">
+      </form>
+
+      <nav aria-label="Table of contents">
+        <h2>Table of contents</h2>
+        <div id="book-toc"></div>
+
+        <div class="book-extra">
+          <p><a id="book-repo" href="#">View book source <i class="fab fa-github"></i></a></li></p>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main class="col-sm-12 col-md-9 col-lg-7" id="content">
+<div id="plot_continuous" class="section level1" number="30">
+<h1><span class="header-section-number">30</span> Traçage de données continues</h1>
+<p><img src="_main_files/figure-html/unnamed-chunk-1064-1.png" width="50%" /><img src="_main_files/figure-html/unnamed-chunk-1064-2.png" width="50%" /><img src="_main_files/figure-html/unnamed-chunk-1064-3.png" width="50%" /></p>
+<p>Cette page traite du traçage approprié de données continues, telles que l’âge, les mesures cliniques et la distance. Nous nous concentrons sur l’utilisation de <strong>ggplot2</strong> (qui fait partie de la famille de paquets <strong>tidyverse</strong>), mais nous décrivons aussi brièvement les fonctions de traçage de <strong>base</strong> de R.</p>
+<p>Les visualisations couvertes ici incluent :</p>
+<ul>
+<li>Tracés pour une variable continue :
+<ul>
+<li><strong>Histogramme</strong>, un graphique classique pour présenter la distribution d’une variable continue.</li>
+<li><strong>Graphique en boîte</strong> (également appelé boîte et moustaches), pour montrer les 25ème, 50ème et 75ème percentiles, les extrémités de la distribution et les valeurs aberrantes (<a href="https://www.data-to-viz.com/caveat/boxplot.html">limitations importantes</a>).<br />
+</li>
+<li><strong>Graphique de gigue</strong>, pour montrer toutes les valeurs sous forme de points qui sont “gigueux” de sorte qu’ils peuvent (presque) tous être vus, même si deux ont la même valeur.<br />
+</li>
+<li><strong>Violin plot</strong>, montre la distribution d’une variable continue basée sur la largeur symétrique du “violon”.</li>
+<li><strong>Sina plot</strong>, est une combinaison de jitter et de violin plot, où les points individuels sont montrés mais dans la forme symétrique de la distribution (via le paquet <strong>ggforce</strong>).<br />
+</li>
+</ul></li>
+<li><strong>Scatter plot</strong> pour deux variables continues.<br />
+</li>
+<li><strong>Graphes de chaleur</strong> pour trois variables continues (lien vers la page <a href="heatmaps.html#heatmaps">Graphiques thermiques</a> ).</li>
+</ul>
+<!-- ======================================================= -->
+<div id="préparation-14" class="section level2" number="30.1">
+<h2><span class="header-section-number">30.1</span> Préparation</h2>
+<p>La préparation comprend le chargement des paquets pertinents, ici <strong>ggplot2</strong> et <strong>dplyr</strong> (tous deux faisant partie de <strong>tidyverse</strong>), et l’assurance que vos colonnes de données sont de la bonne classe.</p>
+<div id="chargement-des-paquets-6" class="section level3 unnumbered">
+<h3>Chargement des paquets</h3>
+<p>Ce morceau de code montre le chargement des paquets requis pour les analyses. Dans ce manuel, nous mettons l’accent sur <code>p_load()</code> de <strong>pacman</strong>, qui installe le paquet si nécessaire <em>et</em> le charge pour l’utiliser. Vous pouvez aussi charger les paquets installés avec <code>library()</code> de <strong>base</strong> R. Voir la page sur <a href="rbasics.html#rbasics">R - les bases</a> pour plus d’informations sur les paquets R.</p>
+<p>Note : Le méga-paquet <strong>tidyverse</strong> comprend les paquets <strong>ggplot2</strong> et <strong>dplyr</strong> parmi beaucoup d’autres (par exemple <strong>stringr</strong>, <strong>tidyr</strong>, et <strong>forcats</strong>).</p>
+<div class="sourceCode" id="cb1460"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1460-1"><a href="plot_continuous.html#cb1460-1" aria-hidden="true" tabindex="-1"></a>pacman<span class="sc">::</span><span class="fu">p_load</span>(</span>
+<span id="cb1460-2"><a href="plot_continuous.html#cb1460-2" aria-hidden="true" tabindex="-1"></a>  rio, <span class="co"># importation et exportation de données</span></span>
+<span id="cb1460-3"><a href="plot_continuous.html#cb1460-3" aria-hidden="true" tabindex="-1"></a>  here, <span class="co"># chemins de fichiers relatifs</span></span>
+<span id="cb1460-4"><a href="plot_continuous.html#cb1460-4" aria-hidden="true" tabindex="-1"></a>  tidyverse <span class="co"># inclut ggplot2 et dplyr</span></span>
+<span id="cb1460-5"><a href="plot_continuous.html#cb1460-5" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div>
+</div>
+<div id="importer-des-données-5" class="section level3 unnumbered">
+<h3>Importer des données</h3>
+<p>Pour les exemples de cette page, nous importons la linelist nettoyée des cas d’une épidémie d’Ebola simulée. Si vous voulez suivre, <a href='https://github.com/epirhandbook/Epi_R_handbook/raw/master/data/case_linelists/linelist_cleaned.rds' class='download-button'>cliquez pour télécharger la linelist “propre”</a> (en tant que fichier .rds). Importez des données avec la fonction <code>import()</code> du paquet <strong>rio</strong> (elle gère de nombreux types de fichiers comme .xlsx, .csv, .rds - voir la page <a href="import_export.html#import_export">Importer et exporter des données</a> pour plus de détails).</p>
+<div class="sourceCode" id="cb1461"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1461-1"><a href="plot_continuous.html#cb1461-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Importez la liste de cas</span></span>
+<span id="cb1461-2"><a href="plot_continuous.html#cb1461-2" aria-hidden="true" tabindex="-1"></a>linelist <span class="ot">&lt;-</span> <span class="fu">import</span>(<span class="st">&quot;linelist_cleaned.rds&quot;</span>)</span></code></pre></div>
+<p>Les 50 premières lignes de la linelist sont affichées ci-dessous. Nous allons nous concentrer sur les variables continues <code>age</code>, <code>wt_kg</code> (poids en kilos), <code>ct_blood</code> (CT, valeurs de seuil de cycle), et <code>days_onset_hosp</code> (différence entre la date d’apparition des symptômes et la date d’hospitalisation).</p>
+<div class="datatables html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-8919ba3a66421c193543" style="width:100%;height:auto;"></div>
+<script type="application/json" data-for="htmlwidget-8919ba3a66421c193543">{"x":{"filter":"top","vertical":false,"filterHTML":"<tr>\n  <td data-type=\"character\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"number\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n    <div style=\"display: none;position: absolute;width: 200px;opacity: 1\">\n      <div data-min=\"2\" data-max=\"13\"><\/div>\n      <span style=\"float: left;\"><\/span>\n      <span style=\"float: right;\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"date\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n    <div style=\"display: none;position: absolute;width: 200px;opacity: 1\">\n      <div data-min=\"1399075200000\" data-max=\"1406419200000\"><\/div>\n      <span style=\"float: left;\"><\/span>\n      <span style=\"float: right;\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"date\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n    <div style=\"display: none;position: absolute;width: 200px;opacity: 1\">\n      <div data-min=\"1399939200000\" data-max=\"1407024000000\"><\/div>\n      <span style=\"float: left;\"><\/span>\n      <span style=\"float: right;\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"date\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n    <div style=\"display: none;position: absolute;width: 200px;opacity: 1\">\n      <div data-min=\"1400025600000\" data-max=\"1407110400000\"><\/div>\n      <span style=\"float: left;\"><\/span>\n      <span style=\"float: right;\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"date\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n    <div style=\"display: none;position: absolute;width: 200px;opacity: 1\">\n      <div data-min=\"1400371200000\" data-max=\"1410566400000\"><\/div>\n      <span style=\"float: left;\"><\/span>\n      <span style=\"float: right;\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"character\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"character\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"number\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n    <div style=\"display: none;position: absolute;width: 200px;opacity: 1\">\n      <div data-min=\"0\" data-max=\"67\"><\/div>\n      <span style=\"float: left;\"><\/span>\n      <span style=\"float: right;\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"character\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\" disabled=\"\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"number\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n    <div style=\"display: none;position: absolute;width: 200px;opacity: 1\">\n      <div data-min=\"0\" data-max=\"67\"><\/div>\n      <span style=\"float: left;\"><\/span>\n      <span style=\"float: right;\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"factor\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n    <div style=\"width: 100%; display: none;\">\n      <select multiple=\"multiple\" style=\"width: 100%;\" data-options=\"[&quot;0-4&quot;,&quot;5-9&quot;,&quot;10-14&quot;,&quot;15-19&quot;,&quot;20-29&quot;,&quot;30-49&quot;,&quot;50-69&quot;,&quot;70+&quot;]\"><\/select>\n    <\/div>\n  <\/td>\n  <td data-type=\"factor\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n    <div style=\"width: 100%; display: none;\">\n      <select multiple=\"multiple\" style=\"width: 100%;\" data-options=\"[&quot;0-4&quot;,&quot;5-9&quot;,&quot;10-14&quot;,&quot;15-19&quot;,&quot;20-24&quot;,&quot;25-29&quot;,&quot;30-34&quot;,&quot;35-39&quot;,&quot;40-44&quot;,&quot;45-49&quot;,&quot;50-54&quot;,&quot;55-59&quot;,&quot;60-64&quot;,&quot;65-69&quot;,&quot;70-74&quot;,&quot;75-79&quot;,&quot;80-84&quot;,&quot;85+&quot;]\"><\/select>\n    <\/div>\n  <\/td>\n  <td data-type=\"character\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"number\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n    <div style=\"display: none;position: absolute;width: 200px;opacity: 1\">\n      <div data-min=\"-13.2697246824573\" data-max=\"-13.209391925612\" data-scale=\"13\"><\/div>\n      <span style=\"float: left;\"><\/span>\n      <span style=\"float: right;\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"number\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n    <div style=\"display: none;position: absolute;width: 200px;opacity: 1\">\n      <div data-min=\"8.45171855856465\" data-max=\"8.48802917129884\" data-scale=\"14\"><\/div>\n      <span style=\"float: left;\"><\/span>\n      <span style=\"float: right;\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"character\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"character\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"number\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n    <div style=\"display: none;position: absolute;width: 200px;opacity: 1\">\n      <div data-min=\"0\" data-max=\"100\"><\/div>\n      <span style=\"float: left;\"><\/span>\n      <span style=\"float: right;\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"number\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n    <div style=\"display: none;position: absolute;width: 200px;opacity: 1\">\n      <div data-min=\"11\" data-max=\"241\"><\/div>\n      <span style=\"float: left;\"><\/span>\n      <span style=\"float: right;\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"number\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n    <div style=\"display: none;position: absolute;width: 200px;opacity: 1\">\n      <div data-min=\"20\" data-max=\"24\"><\/div>\n      <span style=\"float: left;\"><\/span>\n      <span style=\"float: right;\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"character\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"character\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"character\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"character\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"character\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"number\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n    <div style=\"display: none;position: absolute;width: 200px;opacity: 1\">\n      <div data-min=\"35.9\" data-max=\"38\" data-scale=\"1\"><\/div>\n      <span style=\"float: left;\"><\/span>\n      <span style=\"float: right;\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"character\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"number\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n    <div style=\"display: none;position: absolute;width: 200px;opacity: 1\">\n      <div data-min=\"0\" data-max=\"428.994082840237\" data-scale=\"14\"><\/div>\n      <span style=\"float: left;\"><\/span>\n      <span style=\"float: right;\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"number\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n    <div style=\"display: none;position: absolute;width: 200px;opacity: 1\">\n      <div data-min=\"0\" data-max=\"2\"><\/div>\n      <span style=\"float: left;\"><\/span>\n      <span style=\"float: right;\"><\/span>\n    <\/div>\n  <\/td>\n<\/tr>","data":[["5fe599","8689b7","11f8ea","b8812a","893f25","be99c8","07e3e8","369449","f393b4","1389ca","2978ac","57a565","fc15ef","2eaa9a","bbfa93","c97dd9","f50e8a","3a7673","7f5a01","ddddee","99e8fa","567136","9371a9","bc2adf","403057","8bd1e8","f327be","42e1a9","90e5fe","959170","8ebf6e","e56412","6d788e","a47529","67be4e","da8ecb","148f18","2cb9a5","f5c142","70a9fe","3ad520","062638","c76676","baacc1","497372","23e499","38cc4a","3789ee","c71dcd","6b70f0"],[4,4,2,3,3,3,4,4,4,4,4,4,6,5,6,9,10,8,7,6,7,6,8,6,10,8,6,12,5,8,7,9,11,5,8,5,6,11,7,9,7,8,9,12,13,9,8,10,8,7],["2014-05-08",null,null,"2014-05-04","2014-05-18","2014-05-03","2014-05-22","2014-05-28",null,null,"2014-05-30","2014-05-28","2014-06-14","2014-06-07","2014-06-09",null,null,null,"2014-06-23","2014-06-18","2014-06-24",null,null,"2014-07-03",null,"2014-07-10","2014-06-14",null,"2014-06-18","2014-06-29","2014-07-02","2014-07-12","2014-07-12","2014-06-13","2014-07-15","2014-06-20",null,null,"2014-07-20",null,"2014-07-12","2014-07-19","2014-07-18","2014-07-18","2014-07-27",null,"2014-07-19","2014-07-26","2014-07-24",null],["2014-05-13","2014-05-13","2014-05-16","2014-05-18","2014-05-21","2014-05-22","2014-05-27","2014-06-02","2014-06-05","2014-06-05","2014-06-06","2014-06-13","2014-06-16","2014-06-17","2014-06-18","2014-06-19","2014-06-22","2014-06-23","2014-06-25","2014-06-26","2014-06-28","2014-07-02","2014-07-08","2014-07-09","2014-07-09","2014-07-10","2014-07-12","2014-07-12","2014-07-13","2014-07-13","2014-07-14","2014-07-15","2014-07-16","2014-07-17","2014-07-17","2014-07-18","2014-07-19","2014-07-22","2014-07-22","2014-07-24","2014-07-24","2014-07-25","2014-07-25","2014-07-27","2014-07-29","2014-07-30",null,"2014-08-01","2014-08-02","2014-08-03"],["2014-05-15","2014-05-14","2014-05-18","2014-05-20","2014-05-22","2014-05-23","2014-05-29","2014-06-03","2014-06-06","2014-06-07","2014-06-08","2014-06-15","2014-06-17","2014-06-17","2014-06-20","2014-06-19","2014-06-23","2014-06-24","2014-06-27","2014-06-28","2014-06-29","2014-07-03","2014-07-09","2014-07-09","2014-07-11","2014-07-11","2014-07-13","2014-07-14","2014-07-14","2014-07-13","2014-07-14","2014-07-17","2014-07-17","2014-07-18","2014-07-19","2014-07-20","2014-07-20","2014-07-22","2014-07-24","2014-07-26","2014-07-24","2014-07-27","2014-07-25","2014-07-27","2014-07-31","2014-08-01","2014-08-03","2014-08-02","2014-08-02","2014-08-04"],[null,"2014-05-18","2014-05-30",null,"2014-05-29","2014-05-24","2014-06-01","2014-06-07","2014-06-18","2014-06-09","2014-06-15",null,"2014-07-09",null,"2014-06-30","2014-07-11","2014-07-01","2014-06-25","2014-07-06","2014-07-02","2014-07-09","2014-07-07","2014-07-20",null,"2014-07-22","2014-07-16","2014-07-14","2014-07-20","2014-07-16","2014-07-19","2014-07-27","2014-07-19",null,"2014-07-26","2014-08-14","2014-08-01","2014-07-23","2014-08-28","2014-07-28","2014-07-19",null,"2014-08-03",null,null,null,"2014-08-06","2014-08-21","2014-09-13","2014-08-04",null],[null,"Recover","Recover",null,"Recover","Recover","Recover","Death","Recover","Death","Death","Death","Recover","Recover",null,"Recover",null,null,"Death","Death","Recover",null,null,null,"Death",null,"Death","Death",null,"Death","Recover","Death","Recover","Death","Recover",null,"Death","Recover","Recover","Death",null,null,"Death","Death","Death","Death","Recover",null,"Death","Death"],["m","f","m","f","m","f","f","f","m","f","m","m","m","f","f","m","f","f","f","f","m","m","f","m","f","m","m","f","m","f","f","f","m","m","f","m","f","f","f","m","f","m","f","m","m","f","m","f","m","m"],[2,3,56,18,3,16,16,0,61,27,12,42,19,7,7,13,35,17,11,11,19,54,14,28,6,3,31,6,67,14,10,21,20,45,1,12,3,15,20,36,7,13,14,3,10,1,0,20,26,14],["years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years"],[2,3,56,18,3,16,16,0,61,27,12,42,19,7,7,13,35,17,11,11,19,54,14,28,6,3,31,6,67,14,10,21,20,45,1,12,3,15,20,36,7,13,14,3,10,1,0,20,26,14],["0-4","0-4","50-69","15-19","0-4","15-19","15-19","0-4","50-69","20-29","10-14","30-49","15-19","5-9","5-9","10-14","30-49","15-19","10-14","10-14","15-19","50-69","10-14","20-29","5-9","0-4","30-49","5-9","50-69","10-14","10-14","20-29","20-29","30-49","0-4","10-14","0-4","15-19","20-29","30-49","5-9","10-14","10-14","0-4","10-14","0-4","0-4","20-29","20-29","10-14"],["0-4","0-4","55-59","15-19","0-4","15-19","15-19","0-4","60-64","25-29","10-14","40-44","15-19","5-9","5-9","10-14","35-39","15-19","10-14","10-14","15-19","50-54","10-14","25-29","5-9","0-4","30-34","5-9","65-69","10-14","10-14","20-24","20-24","45-49","0-4","10-14","0-4","15-19","20-24","35-39","5-9","10-14","10-14","0-4","10-14","0-4","0-4","20-24","25-29","10-14"],["Other","Missing","St. Mark's Maternity Hospital (SMMH)","Port Hospital","Military Hospital","Port Hospital","Missing","Missing","Missing","Missing","Port Hospital","Military Hospital","Missing","Missing","Other","Port Hospital","Port Hospital","Port Hospital","Missing","Other","Port Hospital","Port Hospital","St. Mark's Maternity Hospital (SMMH)","Missing","Other","Missing","St. Mark's Maternity Hospital (SMMH)","Military Hospital","Port Hospital","Central Hospital","Military Hospital","Central Hospital","Missing","Military Hospital","Other","Missing","Missing","Port Hospital","Port Hospital","Port Hospital","Missing","Central Hospital","Military Hospital","Other","Other","Other","Missing","St. Mark's Maternity Hospital (SMMH)","St. Mark's Maternity Hospital (SMMH)","Missing"],[-13.2157351064963,-13.2152339775486,-13.212910703914,-13.2363711169728,-13.2228638912441,-13.222625321098,-13.2331547837254,-13.2320975453153,-13.2225511595637,-13.2572163655863,-13.2206286746001,-13.253989309478,-13.2385127873491,-13.209391925612,-13.2157278814899,-13.2243437095992,-13.2336087079551,-13.21422143145,-13.2339681355349,-13.2535640411465,-13.2250089377786,-13.2160657166043,-13.2680671272333,-13.2266742923612,-13.2160179088168,-13.2482584611565,-13.2156319199566,-13.2142410663192,-13.2614879104088,-13.2452992638476,-13.2630592726116,-13.2343341712241,-13.2199077448676,-13.2227293309912,-13.2343062806506,-13.218781651651,-13.2483677722899,-13.2097478342339,-13.2680867723786,-13.2587535457526,-13.262635786914,-13.2697246824573,-13.2209026809759,-13.2330734719715,-13.2680923666905,-13.2547212675054,-13.2573683214693,-13.2137356012883,-13.2175973322257,-13.2486407324245],[8.46897295100924,8.45171855856465,8.46481700596819,8.4754761613651,8.46082377490923,8.46183062600728,8.46272931462646,8.46144367534271,8.46191259217774,8.47292327643506,8.48401630165138,8.45837125340844,8.47761705512509,8.47570184950483,8.47779946878972,8.47145134147474,8.47804840685363,8.48528034195779,8.46957530395867,8.45957352078114,8.47404889511544,8.48802917129884,8.473437335922,8.48408263734462,8.46242233645879,8.47026822126572,8.46398447480533,8.4641347894342,8.45623094629607,8.48334624336805,8.47493999153642,8.47832062438022,8.4693933891765,8.48480589906514,8.47121232619015,8.48438437371817,8.48466158574339,8.47714159984428,8.46238127010609,8.45568597813113,8.4632880274758,8.47940722413856,8.46353857052336,8.46178968158864,8.47508713872833,8.45825808128071,8.4532568143863,8.4732571907655,8.47911586641933,8.48480340615605],["f547d6",null,null,"f90f5f","11f8ea","aec8ec","893f25","133ee7",null,null,"996f3a","133ee7","37a6f6","9f6884","4802b1",null,null,null,"a75c7f","8e104d","ab634e",null,null,"b799eb",null,"5d9e4d","a15e13",null,"ea3740","beb26e","567136","894024","36e2e7","a2086d","7baf73","eb2277",null,null,"d6584f",null,"312ecf","52ea64","cfd79c","d145b7","174288",null,"53608c","3b096b","f5c142",null],["other",null,null,"other","other","other","other","other",null,null,"other","other","other","other","other",null,null,null,"other","other","other",null,null,"other",null,"other","other",null,"other","funeral","other","funeral","other","other","other","funeral",null,null,"other",null,"other","other","other","other","other",null,"funeral","other","other",null],[27,25,91,41,36,56,47,0,86,69,67,84,68,44,34,66,78,47,53,47,71,86,53,69,38,46,68,37,100,56,50,57,65,72,29,69,37,48,54,71,47,61,47,35,53,16,13,59,69,67],[48,59,238,135,71,116,87,11,226,174,112,186,174,90,91,152,214,137,117,131,150,241,131,161,80,69,188,66,233,142,110,182,164,214,26,157,39,154,133,168,100,125,123,67,134,31,36,125,183,169],[22,22,21,23,23,21,21,22,22,22,22,22,22,21,23,22,23,21,22,23,21,23,21,24,23,22,24,23,20,24,24,20,24,21,22,21,23,22,23,23,23,22,23,22,22,22,23,22,22,22],["no",null,null,"no","no","no",null,"no","no","no","no","no","no","no","no","no","no","no",null,"no","no","no","no","no",null,"no","no","no",null,null,"no","no",null,"no","no",null,null,"no","no",null,"no","no",null,"no","no","no","no","no","no",null],["no",null,null,"no","no","no",null,"no","no","no","no","no","no","no","no","no","yes","no",null,"no","no","no","yes","no",null,"no","no","yes",null,null,"no","no",null,"no","no",null,null,"no","no",null,"no","no",null,"no","yes","no","no","no","no",null],["yes",null,null,"no","yes","yes",null,"yes","yes","yes","yes","yes","yes","yes","yes","yes","yes","yes",null,"yes","yes","yes","yes","yes",null,"yes","yes","yes",null,null,"yes","yes",null,"yes","yes",null,null,"yes","yes",null,"yes","yes",null,"yes","yes","yes","yes","yes","no",null],["no",null,null,"no","no","no",null,"no","no","no","no","no","no","no","no","yes","no","no",null,"no","no","no","no","no",null,"no","no","no",null,null,"no","no",null,"no","no",null,null,"yes","yes",null,"no","no",null,"no","no","no","no","no","no",null],["yes",null,null,"no","yes","yes",null,"yes","yes","no","yes","no","no","no","yes","no","no","no",null,"no","yes","no","no","no",null,"no","no","no",null,null,"no","yes",null,"yes","yes",null,null,"yes","yes",null,"yes","yes",null,"yes","yes","no","yes","yes","yes",null],[36.8,36.9,36.9,36.8,36.9,37.6,37.3,37,36.4,35.9,36.5,36.9,36.5,37.1,36.5,37.3,37,38,38,36,37,36.7,36.9,36.5,37,36.5,37.6,36.6,36.6,36.2,36.4,37.1,37.5,37.5,37.4,36.9,36.4,37.3,37,37.8,36.5,37.5,36.7,37,37.3,36.6,36.5,36.6,37.6,36.8],[null,"09:36","16:48","11:22","12:60","14:13","14:33","09:25","11:16","10:55","16:03","11:14","12:42","11:06","09:10","08:45",null,"15:41","13:34","18:58","12:43","16:33","14:29","07:18","08:11","16:32","16:17","07:32","17:45",null,"13:24","14:43","02:33","11:36","17:28","16:27",null,"20:49",null,"11:38","14:25","13:42","21:22","13:33","19:06","17:14","20:09",null,"10:23","09:09"],[117.1875,71.8184429761563,16.0652496292635,22.4965706447188,71.4144019043841,41.6171224732461,62.0953890870657,0,16.8376536925366,22.7903289734443,53.4119897959184,24.2802636142907,22.4600343506408,54.320987654321,41.0578432556455,28.5664819944598,17.0320552013276,25.0412914912888,38.7172182043977,27.3876813705495,31.5555555555556,14.8069075945662,30.8839811199813,26.6193433895297,59.375,96.6183574879227,19.2394748755093,84.9403122130395,18.4199377406104,27.7722674072605,41.3223140495868,17.2080666586161,24.1671624033314,15.7218971089178,428.994082840237,27.9930220292912,243.261012491782,20.2395007589813,30.527446435638,25.15589569161,47,39.04,31.0661643201798,77.9683671196257,29.5165961238583,166.493236212279,100.308641975309,37.76,20.6037803457852,23.458562375267],[2,1,2,2,1,1,2,1,1,2,2,2,1,0,2,0,1,1,2,2,1,1,1,0,2,1,1,2,1,0,0,2,1,1,2,2,1,0,2,2,0,2,0,0,2,2,null,1,0,1]],"container":"<table class=\"white-space: nowrap\">\n  <thead>\n    <tr>\n      <th>case_id<\/th>\n      <th>generation<\/th>\n      <th>date_infection<\/th>\n      <th>date_onset<\/th>\n      <th>date_hospitalisation<\/th>\n      <th>date_outcome<\/th>\n      <th>outcome<\/th>\n      <th>gender<\/th>\n      <th>age<\/th>\n      <th>age_unit<\/th>\n      <th>age_years<\/th>\n      <th>age_cat<\/th>\n      <th>age_cat5<\/th>\n      <th>hospital<\/th>\n      <th>lon<\/th>\n      <th>lat<\/th>\n      <th>infector<\/th>\n      <th>source<\/th>\n      <th>wt_kg<\/th>\n      <th>ht_cm<\/th>\n      <th>ct_blood<\/th>\n      <th>fever<\/th>\n      <th>chills<\/th>\n      <th>cough<\/th>\n      <th>aches<\/th>\n      <th>vomit<\/th>\n      <th>temp<\/th>\n      <th>time_admission<\/th>\n      <th>bmi<\/th>\n      <th>days_onset_hosp<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"pageLength":5,"scrollX":true,"columnDefs":[{"className":"dt-right","targets":[1,8,10,14,15,18,19,20,26,28,29]}],"order":[],"autoWidth":false,"orderClasses":false,"orderCellsTop":true,"lengthMenu":[5,10,25,50,100]},"selection":{"mode":"multiple","selected":null,"target":"row","selectable":null}},"evals":[],"jsHooks":[]}</script>
+</div>
+<div id="classe-de-colonnes" class="section level3 unnumbered">
+<h3>Classe de colonnes</h3>
+<p>Assurez-vous que les colonnes continues sont correctement classées dans R comme classe numérique. Nous utilisons ci-dessous <code>mutate()</code> et <code>as.numeric()</code> pour assurer la classe des colonnes qui sont importantes pour notre analyse. Voir la page <a href="cleaning_data.html#cleaning_data">Nettoyage de données et fonctions essentielles</a> pour plus de détails.</p>
+<div class="sourceCode" id="cb1462"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1462-1"><a href="plot_continuous.html#cb1462-1" aria-hidden="true" tabindex="-1"></a>linelist <span class="ot">&lt;-</span> linelist <span class="sc">%&gt;%</span>  </span>
+<span id="cb1462-2"><a href="plot_continuous.html#cb1462-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb1462-3"><a href="plot_continuous.html#cb1462-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">across</span>( <span class="co"># mutate plusieurs colonnes à la fois</span></span>
+<span id="cb1462-4"><a href="plot_continuous.html#cb1462-4" aria-hidden="true" tabindex="-1"></a>      <span class="at">.cols =</span> <span class="fu">c</span>(age, ct_blood, days_onset_hosp, wt_kg), <span class="co"># colonnes à transformer</span></span>
+<span id="cb1462-5"><a href="plot_continuous.html#cb1462-5" aria-hidden="true" tabindex="-1"></a>      <span class="at">.fns =</span> as.numeric <span class="co"># fonction à utiliser (sans parenthèses)</span></span>
+<span id="cb1462-6"><a href="plot_continuous.html#cb1462-6" aria-hidden="true" tabindex="-1"></a>      )</span>
+<span id="cb1462-7"><a href="plot_continuous.html#cb1462-7" aria-hidden="true" tabindex="-1"></a>    )                               </span></code></pre></div>
+<p>Remarque : Vous devez avoir effectué plusieurs vérifications des données avant cette étape, y compris la vérification de l’absence de données. Consultez la page <a href="missing_data.html#missing_data">Données manquantes</a> pour obtenir des conseils sur ces analyses.</p>
+</div>
+<div id="une-variable-continue" class="section level3" number="30.1.1">
+<h3><span class="header-section-number">30.1.1</span> Une variable continue</h3>
+</div>
+<div id="histogrammes-1" class="section level3 unnumbered">
+<h3>Histogrammes</h3>
+<p>Vous trouverez ci-dessous le code pour générer des <strong>histogrammes</strong>, qui regroupent les données continues en plages et les affichent dans des barres adjacentes de hauteur variable. Ceci est fait en utilisant <code>geom_histogram()</code>. Voir la section <a href="ggplot_basics.html#ggplot_basics_bars">“Tracé des barres”</a> de la page ggplot basics pour comprendre la différence entre <code>geom_histogram()</code>, <code>geom_bar()</code>, et <code>geom_col()</code>.</p>
+<p>Nous allons montrer la distribution des âges des cas. Dans <code>mapping = aes()</code>, spécifiez la colonne dont vous voulez voir la distribution. Vous pouvez affecter cette colonne à l’axe des x ou des y.</p>
+<p>Les lignes seront assignées à des “bacs” basés sur leur âge numérique, et ces bacs seront représentés graphiquement par des barres. Si vous spécifiez un nombre de bins avec l’esthétique de tracé <code>bins =</code>, les points de rupture sont espacés de manière égale entre les valeurs minimum et maximum de l’histogramme. Si <code>bins =</code> n’est pas spécifié, un nombre approprié de bins sera deviné et ce message sera affiché après le tracé :</p>
+<pre><code>## `stat_bin()`` utilisant `bins = 30`. Choisissez une meilleure valeur avec `binwidth`.</code></pre>
+<p>Si vous ne voulez pas spécifier un nombre de bins à <code>bins =</code>, vous pouvez alternativement spécifier <code>binwidth =</code> dans les unités de l’axe. Nous donnons quelques exemples montrant différents bins et largeurs de bins :</p>
+<div class="sourceCode" id="cb1464"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1464-1"><a href="plot_continuous.html#cb1464-1" aria-hidden="true" tabindex="-1"></a><span class="co"># A) Histogramme régulier</span></span>
+<span id="cb1464-2"><a href="plot_continuous.html#cb1464-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> linelist, <span class="fu">aes</span>(<span class="at">x =</span> age))<span class="sc">+</span> <span class="co"># fournir la variable x</span></span>
+<span id="cb1464-3"><a href="plot_continuous.html#cb1464-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>()<span class="sc">+</span></span>
+<span id="cb1464-4"><a href="plot_continuous.html#cb1464-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;A) Histogramme par défaut (30 bins)&quot;</span>)</span>
+<span id="cb1464-5"><a href="plot_continuous.html#cb1464-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1464-6"><a href="plot_continuous.html#cb1464-6" aria-hidden="true" tabindex="-1"></a><span class="co"># B) Plus de bins</span></span>
+<span id="cb1464-7"><a href="plot_continuous.html#cb1464-7" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> linelist, <span class="fu">aes</span>(<span class="at">x =</span> age))<span class="sc">+</span> <span class="co"># fournit la variable x</span></span>
+<span id="cb1464-8"><a href="plot_continuous.html#cb1464-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">bins =</span> <span class="dv">50</span>)<span class="sc">+</span></span>
+<span id="cb1464-9"><a href="plot_continuous.html#cb1464-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;B) Définir à 50 bins&quot;</span>)</span>
+<span id="cb1464-10"><a href="plot_continuous.html#cb1464-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1464-11"><a href="plot_continuous.html#cb1464-11" aria-hidden="true" tabindex="-1"></a><span class="co"># C) Moins de bins</span></span>
+<span id="cb1464-12"><a href="plot_continuous.html#cb1464-12" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> linelist, <span class="fu">aes</span>(<span class="at">x =</span> age))<span class="sc">+</span> <span class="co"># fournir la variable x</span></span>
+<span id="cb1464-13"><a href="plot_continuous.html#cb1464-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">bins =</span> <span class="dv">5</span>)<span class="sc">+</span></span>
+<span id="cb1464-14"><a href="plot_continuous.html#cb1464-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;C) Définir à 5 bins&quot;</span>)</span>
+<span id="cb1464-15"><a href="plot_continuous.html#cb1464-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1464-16"><a href="plot_continuous.html#cb1464-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1464-17"><a href="plot_continuous.html#cb1464-17" aria-hidden="true" tabindex="-1"></a><span class="co"># D) Plus de bacs</span></span>
+<span id="cb1464-18"><a href="plot_continuous.html#cb1464-18" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> linelist, <span class="fu">aes</span>(<span class="at">x =</span> age))<span class="sc">+</span> <span class="co"># fournir la variable x</span></span>
+<span id="cb1464-19"><a href="plot_continuous.html#cb1464-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">binwidth =</span> <span class="dv">1</span>)<span class="sc">+</span></span>
+<span id="cb1464-20"><a href="plot_continuous.html#cb1464-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;D) largeur de bande de 1&quot;</span>)</span>
+<span id="cb1464-21"><a href="plot_continuous.html#cb1464-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1464-22"><a href="plot_continuous.html#cb1464-22" aria-hidden="true" tabindex="-1"></a><span class="co"># E) Histogrammes en couches avec différentes largeurs de bande</span></span>
+<span id="cb1464-23"><a href="plot_continuous.html#cb1464-23" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> linelist, <span class="fu">aes</span>(<span class="at">x =</span> age))<span class="sc">+</span> <span class="co"># fournir la variable x </span></span>
+<span id="cb1464-24"><a href="plot_continuous.html#cb1464-24" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(</span>
+<span id="cb1464-25"><a href="plot_continuous.html#cb1464-25" aria-hidden="true" tabindex="-1"></a>    <span class="at">binwidth =</span> <span class="dv">2</span>) <span class="sc">+</span> <span class="co"># La couche sous-jacente a une largeur de bin de 2</span></span>
+<span id="cb1464-26"><a href="plot_continuous.html#cb1464-26" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(</span>
+<span id="cb1464-27"><a href="plot_continuous.html#cb1464-27" aria-hidden="true" tabindex="-1"></a>    <span class="at">binwidth =</span> <span class="dv">1</span>, <span class="co"># La couche supérieure a une largeur de bin de 1</span></span>
+<span id="cb1464-28"><a href="plot_continuous.html#cb1464-28" aria-hidden="true" tabindex="-1"></a>    <span class="at">alpha =</span> <span class="fl">0.4</span>, <span class="co"># Définir la couche supérieure pour qu&#39;elle soit légèrement transparente</span></span>
+<span id="cb1464-29"><a href="plot_continuous.html#cb1464-29" aria-hidden="true" tabindex="-1"></a>    <span class="at">fill =</span> <span class="st">&quot;blue&quot;</span>)<span class="sc">+</span> </span>
+<span id="cb1464-30"><a href="plot_continuous.html#cb1464-30" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;E) Histogrammes en couches avec différentes largeurs de bande&quot;</span>)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-1070-1.png" width="50%" /><img src="_main_files/figure-html/unnamed-chunk-1070-2.png" width="50%" /><img src="_main_files/figure-html/unnamed-chunk-1070-3.png" width="50%" /><img src="_main_files/figure-html/unnamed-chunk-1070-4.png" width="50%" /><img src="_main_files/figure-html/unnamed-chunk-1070-5.png" width="50%" /></p>
+<p>Pour obtenir des proportions lissées, vous pouvez utiliser `geom_density()`` :</p>
+<div class="sourceCode" id="cb1465"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1465-1"><a href="plot_continuous.html#cb1465-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Fréquence avec axe de proportion, lissée</span></span>
+<span id="cb1465-2"><a href="plot_continuous.html#cb1465-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> linelist, <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> age), <span class="at">fill =</span> gender) <span class="sc">+</span></span>
+<span id="cb1465-3"><a href="plot_continuous.html#cb1465-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_density</span>(<span class="at">binwidth =</span> <span class="dv">2</span>, <span class="at">size =</span> <span class="dv">2</span>, <span class="at">alpha =</span> <span class="fl">0.2</span>)<span class="sc">+</span></span>
+<span id="cb1465-4"><a href="plot_continuous.html#cb1465-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;Proportionnelle, lissée avec geom_density()&quot;</span>)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-1071-1.png" width="672" /></p>
+<p>Pour obtenir un histogramme “empilé” (d’une colonne continue de données), vous pouvez effectuer l’une des opérations suivantes :</p>
+<ol style="list-style-type: decimal">
+<li>Utilisez <code>geom_histogram()</code> avec l’argument <code>fill =</code> dans <code>aes()</code> et affecté à la colonne de regroupement, ou bien<br />
+</li>
+<li>Utilisez <code>geom_freqpoly()</code>, qui est probablement plus facile à lire (vous pouvez toujours définir <code>binwidth =</code>).<br />
+</li>
+<li>Pour voir les proportions de toutes les valeurs, définissez le paramètre <code>y = after_stat(density)</code> (utilisez exactement cette syntaxe - elle n’a pas été modifiée pour vos données). Note : ces proportions seront affichées <em>par groupe</em>.</li>
+</ol>
+<p>Chacune d’entre elles est présentée ci-dessous (*notez l’utilisation de <code>color =</code> par rapport à <code>fill =</code> dans chacune) :</p>
+<div class="sourceCode" id="cb1466"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1466-1"><a href="plot_continuous.html#cb1466-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Histogramme &quot;empilé&quot;</span></span>
+<span id="cb1466-2"><a href="plot_continuous.html#cb1466-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> linelist, <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> age, <span class="at">fill =</span> gender)) <span class="sc">+</span></span>
+<span id="cb1466-3"><a href="plot_continuous.html#cb1466-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">binwidth =</span> <span class="dv">2</span>)<span class="sc">+</span></span>
+<span id="cb1466-4"><a href="plot_continuous.html#cb1466-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;Histogramme &#39;empilé&#39;&quot;</span>)</span>
+<span id="cb1466-5"><a href="plot_continuous.html#cb1466-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1466-6"><a href="plot_continuous.html#cb1466-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Fréquence </span></span>
+<span id="cb1466-7"><a href="plot_continuous.html#cb1466-7" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> linelist, <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> age, <span class="at">color =</span> gender)) <span class="sc">+</span></span>
+<span id="cb1466-8"><a href="plot_continuous.html#cb1466-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_freqpoly</span>(<span class="at">binwidth =</span> <span class="dv">2</span>, <span class="at">size =</span> <span class="dv">2</span>)<span class="sc">+</span></span>
+<span id="cb1466-9"><a href="plot_continuous.html#cb1466-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;Freqpoly&quot;</span>)</span>
+<span id="cb1466-10"><a href="plot_continuous.html#cb1466-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1466-11"><a href="plot_continuous.html#cb1466-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Fréquence avec axe de proportion</span></span>
+<span id="cb1466-12"><a href="plot_continuous.html#cb1466-12" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> linelist, <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> age, <span class="at">y =</span> <span class="fu">after_stat</span>(density), <span class="at">color =</span> gender)) <span class="sc">+</span></span>
+<span id="cb1466-13"><a href="plot_continuous.html#cb1466-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_freqpoly</span>(<span class="at">binwidth =</span> <span class="dv">5</span>, <span class="at">size =</span> <span class="dv">2</span>)<span class="sc">+</span></span>
+<span id="cb1466-14"><a href="plot_continuous.html#cb1466-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;Freqpoly proportionnelle&quot;</span>)</span>
+<span id="cb1466-15"><a href="plot_continuous.html#cb1466-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1466-16"><a href="plot_continuous.html#cb1466-16" aria-hidden="true" tabindex="-1"></a><span class="co"># Fréquence avec axe de proportion, lissée</span></span>
+<span id="cb1466-17"><a href="plot_continuous.html#cb1466-17" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> linelist, <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> age, <span class="at">y =</span> <span class="fu">after_stat</span>(density), <span class="at">fill =</span> gender)) <span class="sc">+</span></span>
+<span id="cb1466-18"><a href="plot_continuous.html#cb1466-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_density</span>(<span class="at">binwidth =</span> <span class="dv">2</span>, <span class="at">size =</span> <span class="dv">2</span>, <span class="at">alpha =</span> <span class="fl">0.2</span>)<span class="sc">+</span></span>
+<span id="cb1466-19"><a href="plot_continuous.html#cb1466-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;Proportionnelle, lissée avec geom_density()&quot;</span>)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-1072-1.png" width="50%" /><img src="_main_files/figure-html/unnamed-chunk-1072-2.png" width="50%" /><img src="_main_files/figure-html/unnamed-chunk-1072-3.png" width="50%" /><img src="_main_files/figure-html/unnamed-chunk-1072-4.png" width="50%" /></p>
+<p>Si vous voulez vous amuser un peu, essayez <code>geom_density_ridges</code> du paquet <strong>ggridges</strong> ( <a href="https://cran.r-project.org/web/packages/ggridges/vignettes/introduction.html">vignette ici</a>.</p>
+<p>Pour en savoir plus sur les histogrammes, consultez la page <strong>tidyverse</strong> <a href="https://ggplot2.tidyverse.org/reference/geom_histogram.html">page sur geom_histogram()</a>.</p>
+</div>
+<div id="diagrammes-en-boîte" class="section level3 unnumbered">
+<h3>Diagrammes en boîte</h3>
+<p>Les diagrammes en boîte sont courants, mais ils ont des limites importantes. Ils peuvent masquer la distribution réelle - par exemple, une distribution bimodale. Voir cette <a href="https://www.r-graph-gallery.com/boxplot.html">galerie de graphiques R</a> et cet <a href="https://www.data-to-viz.com/caveat/boxplot.html">article data-to-viz</a> pour plus de détails. Cependant, ils affichent joliment l’écart interquartile et les valeurs aberrantes, et peuvent donc être superposés à d’autres types de graphiques qui montrent la distribution de manière plus détaillée.</p>
+<p>Voici l’anatomie d’un box plot ( <a href="https://www.leansigmacorporation.com/box-plot-with-minitab/">source de l’image</a>).</p>
+<p><img src="images/boxplot.png" width="100%" style="display: block; margin: auto;" /></p>
+<p>Lorsque vous utilisez <code>geom_boxplot()</code> pour créer un box plot, vous n’indiquez généralement qu’un seul axe (x ou y) dans <code>aes()</code>. L’axe spécifié détermine si les tracés sont horizontaux ou verticaux.</p>
+<p>Dans la plupart des géométries, vous créez un graphique par groupe en faisant correspondre une esthétique comme <code>color =</code> ou <code>fill =</code> à une colonne dans <code>aes()</code>. Cependant, pour les boxplot, vous pouvez le faire en assignant la colonne de regroupement à l’axe non assigné (x ou y). Ci-dessous se trouve le code pour un boxplot de <em>toutes</em> les valeurs d’âge dans l’ensemble de données, et ensuite le code pour afficher un box plot pour chaque sexe (non manquant) dans l’ensemble de données. Notez que les valeurs <code>NA</code> (manquantes) apparaîtront comme un box plot séparé, sauf si elles sont supprimées. Dans cet exemple, nous avons également défini le <code>fill</code> sur la colonne <code>outcome</code> pour que chaque diagramme soit d’une couleur différente - mais ce n’est pas nécessaire.</p>
+<div class="sourceCode" id="cb1467"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1467-1"><a href="plot_continuous.html#cb1467-1" aria-hidden="true" tabindex="-1"></a><span class="co"># A) Diagramme numérique global</span></span>
+<span id="cb1467-2"><a href="plot_continuous.html#cb1467-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> linelist)<span class="sc">+</span>  </span>
+<span id="cb1467-3"><a href="plot_continuous.html#cb1467-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>(<span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">y =</span> age))<span class="sc">+</span> <span class="co"># seulement l&#39;axe des y cartographié (pas les x)</span></span>
+<span id="cb1467-4"><a href="plot_continuous.html#cb1467-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;A) Boxplot global&quot;</span>)</span>
+<span id="cb1467-5"><a href="plot_continuous.html#cb1467-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1467-6"><a href="plot_continuous.html#cb1467-6" aria-hidden="true" tabindex="-1"></a><span class="co"># B) Box plot par groupe</span></span>
+<span id="cb1467-7"><a href="plot_continuous.html#cb1467-7" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> linelist, <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">y =</span> age, <span class="at">x =</span> gender, <span class="at">fill =</span> gender)) <span class="sc">+</span> </span>
+<span id="cb1467-8"><a href="plot_continuous.html#cb1467-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>()<span class="sc">+</span>                     </span>
+<span id="cb1467-9"><a href="plot_continuous.html#cb1467-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">&quot;none&quot;</span>)<span class="sc">+</span> <span class="co"># supprimer la légende (redondante)</span></span>
+<span id="cb1467-10"><a href="plot_continuous.html#cb1467-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;B) Boxplot par sexe&quot;</span>)      </span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-1074-1.png" width="50%" /><img src="_main_files/figure-html/unnamed-chunk-1074-2.png" width="50%" /></p>
+<p>Pour le code permettant d’ajouter un box plot sur les bords d’un nuage de points (tracés “marginaux”), voir la page <a href="ggplot_tips.html#ggplot_tips">Trucs et Astuces avec ggplot</a>.</p>
+</div>
+<div id="diagrammes-de-violon-de-gigue-et-de-sina" class="section level3 unnumbered">
+<h3>Diagrammes de violon, de gigue et de sina</h3>
+<p>Ci-dessous se trouve le code pour créer des <strong>graphiques de violon</strong> (<code>geom_violin</code>) et des <strong>graphiques de gigues</strong> (<code>geom_jitter</code>) pour montrer des distributions. Vous pouvez spécifier que le remplissage ou la couleur est également déterminé par les données, en insérant ces options dans <code>aes()</code>.</p>
+<div class="sourceCode" id="cb1468"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1468-1"><a href="plot_continuous.html#cb1468-1" aria-hidden="true" tabindex="-1"></a><span class="co"># A) Graphe de gigue par groupe</span></span>
+<span id="cb1468-2"><a href="plot_continuous.html#cb1468-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> linelist <span class="sc">%&gt;%</span> <span class="fu">drop_na</span>(outcome), <span class="co"># supprimer les valeurs manquantes</span></span>
+<span id="cb1468-3"><a href="plot_continuous.html#cb1468-3" aria-hidden="true" tabindex="-1"></a>       <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">y =</span> age, <span class="co"># Variable continue</span></span>
+<span id="cb1468-4"><a href="plot_continuous.html#cb1468-4" aria-hidden="true" tabindex="-1"></a>           <span class="at">x =</span> outcome, <span class="co"># variable de groupement</span></span>
+<span id="cb1468-5"><a href="plot_continuous.html#cb1468-5" aria-hidden="true" tabindex="-1"></a>           <span class="at">color =</span> outcome))<span class="sc">+</span> <span class="co"># Variable de couleur</span></span>
+<span id="cb1468-6"><a href="plot_continuous.html#cb1468-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_jitter</span>()<span class="sc">+</span> <span class="co"># Créez le graphique en forme de violon</span></span>
+<span id="cb1468-7"><a href="plot_continuous.html#cb1468-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;A) graphique de gigue par sexe&quot;</span>)     </span>
+<span id="cb1468-8"><a href="plot_continuous.html#cb1468-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1468-9"><a href="plot_continuous.html#cb1468-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1468-10"><a href="plot_continuous.html#cb1468-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1468-11"><a href="plot_continuous.html#cb1468-11" aria-hidden="true" tabindex="-1"></a><span class="co"># B) Tracé de violon par groupe</span></span>
+<span id="cb1468-12"><a href="plot_continuous.html#cb1468-12" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> linelist <span class="sc">%&gt;%</span> <span class="fu">drop_na</span>(outcome), <span class="co"># Suppression des valeurs manquantes</span></span>
+<span id="cb1468-13"><a href="plot_continuous.html#cb1468-13" aria-hidden="true" tabindex="-1"></a>       <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">y =</span> age, <span class="co"># Variable continue</span></span>
+<span id="cb1468-14"><a href="plot_continuous.html#cb1468-14" aria-hidden="true" tabindex="-1"></a>           <span class="at">x =</span> outcome, <span class="co"># variable de regroupement</span></span>
+<span id="cb1468-15"><a href="plot_continuous.html#cb1468-15" aria-hidden="true" tabindex="-1"></a>           <span class="at">fill =</span> outcome))<span class="sc">+</span> <span class="co"># remplir la variable (couleur)</span></span>
+<span id="cb1468-16"><a href="plot_continuous.html#cb1468-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_violin</span>()<span class="sc">+</span> <span class="co"># crée le graphique en forme de violon</span></span>
+<span id="cb1468-17"><a href="plot_continuous.html#cb1468-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;B) tracé du violon par sexe&quot;</span>)    </span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-1075-1.png" width="50%" /><img src="_main_files/figure-html/unnamed-chunk-1075-2.png" width="50%" /></p>
+<p>On peut combiner les deux en utilisant la fonction <code>geom_sina()</code> du paquet <strong>ggforce</strong>. Le sina plot les points de gigue dans la forme du violin plot. Lorsqu’ils sont superposés sur le tracé du violon (en ajustant les transparences), ils peuvent être plus faciles à interpréter visuellement.</p>
+<p>Le tracé A) à gauche montre une superposition basique de <code>geom_violin()</code> et <code>geom_sina()</code>. Le tracé B montre un peu plus d’efforts dans l’apparence du ggplot (voir les commentaires en ligne).</p>
+<div class="sourceCode" id="cb1469"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1469-1"><a href="plot_continuous.html#cb1469-1" aria-hidden="true" tabindex="-1"></a>pacman<span class="sc">::</span><span class="fu">p_load</span>(ggforce)</span>
+<span id="cb1469-2"><a href="plot_continuous.html#cb1469-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1469-3"><a href="plot_continuous.html#cb1469-3" aria-hidden="true" tabindex="-1"></a><span class="co"># A) Tracé Sina par groupe</span></span>
+<span id="cb1469-4"><a href="plot_continuous.html#cb1469-4" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> linelist <span class="sc">%&gt;%</span> <span class="fu">drop_na</span>(outcome), </span>
+<span id="cb1469-5"><a href="plot_continuous.html#cb1469-5" aria-hidden="true" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">y =</span> age, <span class="co"># variable numérique</span></span>
+<span id="cb1469-6"><a href="plot_continuous.html#cb1469-6" aria-hidden="true" tabindex="-1"></a>           <span class="at">x =</span> outcome)) <span class="sc">+</span> <span class="co"># variable de groupe</span></span>
+<span id="cb1469-7"><a href="plot_continuous.html#cb1469-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_violin</span>()<span class="sc">+</span> <span class="co"># création de la base du tracé violine</span></span>
+<span id="cb1469-8"><a href="plot_continuous.html#cb1469-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_sina</span>()<span class="sc">+</span> <span class="co"># ajout de points de gigue en forme de violon</span></span>
+<span id="cb1469-9"><a href="plot_continuous.html#cb1469-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;A) tracé violon et sina par sexe&quot;</span>)      </span>
+<span id="cb1469-10"><a href="plot_continuous.html#cb1469-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1469-11"><a href="plot_continuous.html#cb1469-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1469-12"><a href="plot_continuous.html#cb1469-12" aria-hidden="true" tabindex="-1"></a><span class="co"># A) Tracé Sina par groupe</span></span>
+<span id="cb1469-13"><a href="plot_continuous.html#cb1469-13" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(</span>
+<span id="cb1469-14"><a href="plot_continuous.html#cb1469-14" aria-hidden="true" tabindex="-1"></a>  <span class="at">data =</span> linelist <span class="sc">%&gt;%</span> <span class="fu">drop_na</span>(outcome), </span>
+<span id="cb1469-15"><a href="plot_continuous.html#cb1469-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">aes</span>(<span class="at">y =</span> age, <span class="co"># variable numérique</span></span>
+<span id="cb1469-16"><a href="plot_continuous.html#cb1469-16" aria-hidden="true" tabindex="-1"></a>      <span class="at">x =</span> outcome)) <span class="sc">+</span> <span class="co"># variable de groupe</span></span>
+<span id="cb1469-17"><a href="plot_continuous.html#cb1469-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_violin</span>(</span>
+<span id="cb1469-18"><a href="plot_continuous.html#cb1469-18" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">fill =</span> outcome), <span class="co"># fill (couleur du fond du violon)</span></span>
+<span id="cb1469-19"><a href="plot_continuous.html#cb1469-19" aria-hidden="true" tabindex="-1"></a>    <span class="at">color =</span> <span class="st">&quot;white&quot;</span>, <span class="co"># contour blanc</span></span>
+<span id="cb1469-20"><a href="plot_continuous.html#cb1469-20" aria-hidden="true" tabindex="-1"></a>    <span class="at">alpha =</span> <span class="fl">0.2</span>)<span class="sc">+</span> <span class="co"># transparence</span></span>
+<span id="cb1469-21"><a href="plot_continuous.html#cb1469-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_sina</span>(</span>
+<span id="cb1469-22"><a href="plot_continuous.html#cb1469-22" aria-hidden="true" tabindex="-1"></a>    <span class="at">size=</span><span class="dv">1</span>, <span class="co"># modification de la taille de la gigue</span></span>
+<span id="cb1469-23"><a href="plot_continuous.html#cb1469-23" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">color =</span> outcome))<span class="sc">+</span> <span class="co"># couleur (couleur des points)</span></span>
+<span id="cb1469-24"><a href="plot_continuous.html#cb1469-24" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_manual</span>( <span class="co"># Définir le remplissage pour le fond du violon par death/recover</span></span>
+<span id="cb1469-25"><a href="plot_continuous.html#cb1469-25" aria-hidden="true" tabindex="-1"></a>    <span class="at">values =</span> <span class="fu">c</span>( <span class="st">&quot;Death&quot;</span> <span class="ot">=</span> <span class="st">&quot;#bf5300&quot;</span>, </span>
+<span id="cb1469-26"><a href="plot_continuous.html#cb1469-26" aria-hidden="true" tabindex="-1"></a>              <span class="st">&quot;Recover&quot;</span> <span class="ot">=</span> <span class="st">&quot;#11118c&quot;</span>)) <span class="sc">+</span> </span>
+<span id="cb1469-27"><a href="plot_continuous.html#cb1469-27" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_color_manual</span>( <span class="co"># Définir les couleurs pour les points par death/recover</span></span>
+<span id="cb1469-28"><a href="plot_continuous.html#cb1469-28" aria-hidden="true" tabindex="-1"></a>    <span class="at">values =</span> <span class="fu">c</span>( <span class="st">&quot;Death&quot;</span> <span class="ot">=</span> <span class="st">&quot;#bf5300&quot;</span>, </span>
+<span id="cb1469-29"><a href="plot_continuous.html#cb1469-29" aria-hidden="true" tabindex="-1"></a>              <span class="st">&quot;Recover&quot;</span> <span class="ot">=</span> <span class="st">&quot;#11118c&quot;</span>)) <span class="sc">+</span> </span>
+<span id="cb1469-30"><a href="plot_continuous.html#cb1469-30" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span> <span class="co"># Supprimer le fond gris</span></span>
+<span id="cb1469-31"><a href="plot_continuous.html#cb1469-31" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">&quot;none&quot;</span>) <span class="sc">+</span> <span class="co"># Suppression de la légende inutile</span></span>
+<span id="cb1469-32"><a href="plot_continuous.html#cb1469-32" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;B) tracé du violon et du sina par sexe, avec formatage supplémentaire&quot;</span>)      </span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-1076-1.png" width="50%" /><img src="_main_files/figure-html/unnamed-chunk-1076-2.png" width="50%" /></p>
+<!-- ### Une variable continue dans les facettes {.unnumbered} -->
+<!-- **Facettes de base** -->
+<!-- Pour examiner d'autres sous-groupes, on peut "facetter" le graphique. Cela signifie que le graphique sera recréé dans les sous-groupes spécifiés. On peut utiliser : -->
+<!-- * `facet_wrap()` - ceci recréera les sous-graphes et les présentera par ordre alphabétique (typiquement, sauf indication contraire). Vous pouvez invoquer certaines options pour déterminer l'aspect des facettes, par exemple `nrow=1` ou `ncol=1` pour contrôler le nombre de lignes ou de colonnes dans lesquelles les graphiques à facettes sont disposés. Voir le graphique A ci-dessous.  -->
+<!-- * `facet_grid()` - ceci est adapté pour voir des sous-groupes pour des combinaisons particulières de variables discrètes. Voir le graphique B ci-dessous. `nrow` et `ncol` ne sont pas pertinents, car les sous-groupes sont présentés dans une grille, avec les sous-groupes toujours dans l'axe x ou y (voir les notes dans le code ci-dessous) -->
+<p>.</p>
+<!-- Vous pouvez stipuler jusqu'à deux variables de facettes, avec un '~' entre elles. Si une seule variable à facettes, un '.' est utilisé comme placeholder pour une deuxième variable à facettes non utilisée - voir les exemples de code. -->
+<!-- ``{r fig.show='hold', message=FALSE, warning=FALSE, out.width=c('50%', '50%')} -->
+<!-- # A) Histogramme des dates d'hospitalisation facettes par hôpital -->
+<!-- ggplot(data = linelist %>% -->
+<!-- filter(hospital != "Missing"), # le filtre supprime les hôpitaux inconnus -->
+<!-- aes(x = date_hospitalisation ))+ -->
+<!-- geom_histogram(binwidth=7) + # Bindwidth = 7 jours -->
+<!-- labs(title = "A) 2 histogramme des dates d'hospitalisation par hôpital")+ -->
+<!-- facet_wrap(hospital~., # Facet by just hospital -->
+<!-- ncol = 2) # Facet en deux colonnes -->
+<!-- # B) Boxplot de l'âge facetté dans une grille avec deux variables, le sexe et le résultat -->
+<!-- ggplot(data = linelist %>% -->
+<!-- filter(!is.na(gender) & !is.na(outcome)), # filter retains non-missing gender/outcome -->
+<!-- aes(y = âge))+ -->
+<!-- geom_boxplot()+ -->
+<!-- labs(title = "A) A boxplot by gender and outcome")+ -->
+<!-- facet_grid(outcome~gender) # Le résultat est la ligne, le sexe est la colonne -->
+<!-- ``` -->
+</div>
+</div>
+<div id="deux-variables-continues-1" class="section level2" number="30.2">
+<h2><span class="header-section-number">30.2</span> Deux variables continues</h2>
+<p>En suivant une syntaxe similaire, <code>geom_point()</code> vous permettra de tracer deux variables continues l’une contre l’autre dans un <strong>graphique en nuage de points</strong>. Ceci est utile pour montrer les valeurs réelles plutôt que leurs distributions.</p>
+<p>Un diagramme de dispersion basique de l’âge par rapport au poids est montré dans (A). Dans (B), nous utilisons à nouveau <code>facet_grid()</code> pour montrer la relation entre deux variables continues dans la linelist.</p>
+<div class="sourceCode" id="cb1470"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1470-1"><a href="plot_continuous.html#cb1470-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Diagramme de dispersion de base du poids et de l&#39;âge</span></span>
+<span id="cb1470-2"><a href="plot_continuous.html#cb1470-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> linelist, </span>
+<span id="cb1470-3"><a href="plot_continuous.html#cb1470-3" aria-hidden="true" tabindex="-1"></a>       <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">y =</span> wt_kg, <span class="at">x =</span> age))<span class="sc">+</span></span>
+<span id="cb1470-4"><a href="plot_continuous.html#cb1470-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb1470-5"><a href="plot_continuous.html#cb1470-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;A) Diagramme de dispersion du poids et de l&#39;âge&quot;</span>)</span>
+<span id="cb1470-6"><a href="plot_continuous.html#cb1470-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1470-7"><a href="plot_continuous.html#cb1470-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Diagramme de dispersion du poids et de l&#39;âge par sexe et résultat Ebola</span></span>
+<span id="cb1470-8"><a href="plot_continuous.html#cb1470-8" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> linelist <span class="sc">%&gt;%</span> <span class="fu">drop_na</span>(gender, outcome), <span class="co"># le filtre retient le genre/résultat non manquant</span></span>
+<span id="cb1470-9"><a href="plot_continuous.html#cb1470-9" aria-hidden="true" tabindex="-1"></a>       <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">y =</span> wt_kg, <span class="at">x =</span> age))<span class="sc">+</span></span>
+<span id="cb1470-10"><a href="plot_continuous.html#cb1470-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb1470-11"><a href="plot_continuous.html#cb1470-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;B) Diagramme de dispersion du poids et de l&#39;âge en fonction du sexe et de l&#39;issue&quot;</span>)<span class="sc">+</span></span>
+<span id="cb1470-12"><a href="plot_continuous.html#cb1470-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_grid</span>(gender <span class="sc">~</span> outcome) </span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-1077-1.png" width="50%" /><img src="_main_files/figure-html/unnamed-chunk-1077-2.png" width="50%" /></p>
+<div id="trois-variables-continues-1" class="section level3 unnumbered">
+<h3>Trois variables continues</h3>
+<p>Vous pouvez afficher trois variables continues en utilisant l’argument <code>fill =</code> pour créer un <em>graphique thermique</em>. La couleur de chaque “cellule” reflétera la valeur de la troisième colonne de données continues. Voir la page sur les [Heat plots] pour plus de détails et plusieurs exemples.</p>
+<p>Il existe des moyens de faire des tracés 3D dans R, mais pour l’épidémiologie appliquée, ceux-ci sont souvent difficiles à interpréter et donc moins utiles pour la prise de décision.</p>
+<!-- ======================================================= -->
+</div>
+</div>
+<div id="tracer-avec-les-graphiques-de-base" class="section level2" number="30.3">
+<h2><span class="header-section-number">30.3</span> Tracer avec les graphiques de base</h2>
+<p>Nous présentons des méthodes pour tracer en utilisant les graphiques <strong>base</strong> de R au cas où l’utilisateur n’est pas encore familier avec <strong>ggplot2</strong> ou ne l’a pas installé. La syntaxe peut être plus simple, mais les tracés ne sont pas aussi beaux et sont plus difficiles à personnaliser.</p>
+<div id="une-variable-continue-1" class="section level3 unnumbered">
+<h3>Une variable continue</h3>
+<div id="graphiques-en-boîte-et-histogrammes" class="section level4 unnumbered">
+<h4>Graphiques en boîte et histogrammes</h4>
+<p>Le paquet graphique intégré <strong>base</strong> de R est livré avec les fonctions <code>boxplot()</code> et <code>hist()</code>, permettant une visualisation directe d’une variable continue. Ces commandes peuvent être tapées rapidement et sont donc utiles pour un “coup d’œil rapide”. Rappelez-vous que vous devez écrire <em>chaque</em> cadre de données et colonne dans la syntaxe du “signe du dollar” - <code>dataframe$column</code>. L’argument <code>main =</code> est utilisé pour créer un titre.</p>
+<div class="sourceCode" id="cb1471"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1471-1"><a href="plot_continuous.html#cb1471-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Boxplot</span></span>
+<span id="cb1471-2"><a href="plot_continuous.html#cb1471-2" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(linelist<span class="sc">$</span>wt_kg, <span class="at">main =</span> <span class="st">&quot;A) Base boxplot&quot;</span>) </span>
+<span id="cb1471-3"><a href="plot_continuous.html#cb1471-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1471-4"><a href="plot_continuous.html#cb1471-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1471-5"><a href="plot_continuous.html#cb1471-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Histogramme</span></span>
+<span id="cb1471-6"><a href="plot_continuous.html#cb1471-6" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(linelist<span class="sc">$</span>wt_kg, <span class="at">main =</span> <span class="st">&quot;B) Base histogram&quot;</span>) </span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-1078-1.png" width="50%" /><img src="_main_files/figure-html/unnamed-chunk-1078-2.png" width="50%" /></p>
+</div>
+<div id="sous-groupes" class="section level4 unnumbered">
+<h4>Sous-groupes</h4>
+<p>Les sous-groupes peuvent être créés avec la syntaxe des formules. Notez que dans le graphique B ci-dessous, <code>outcome</code> et <code>gender</code> sont écrits comme <code>outcome*gender</code>, de sorte que les boxplots existent pour les quatre combinaisons de ces deux colonnes. Ils ne sont pas facettés sur différentes lignes et colonnes comme dans <strong>ggplot2</strong>. Nous spécifions <code>linelist</code> à <code>data =</code> pour ne pas avoir à utiliser la syntaxe <code>$</code> tout le temps.</p>
+<div class="sourceCode" id="cb1472"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1472-1"><a href="plot_continuous.html#cb1472-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Box plot par sous-groupe</span></span>
+<span id="cb1472-2"><a href="plot_continuous.html#cb1472-2" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(age <span class="sc">~</span> outcome,</span>
+<span id="cb1472-3"><a href="plot_continuous.html#cb1472-3" aria-hidden="true" tabindex="-1"></a>                  <span class="at">data =</span> linelist, </span>
+<span id="cb1472-4"><a href="plot_continuous.html#cb1472-4" aria-hidden="true" tabindex="-1"></a>                  <span class="at">main =</span> <span class="st">&quot;A) Base boxplot by subgroup&quot;</span>)</span>
+<span id="cb1472-5"><a href="plot_continuous.html#cb1472-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1472-6"><a href="plot_continuous.html#cb1472-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Box plot par sous-groupes croisés</span></span>
+<span id="cb1472-7"><a href="plot_continuous.html#cb1472-7" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(age <span class="sc">~</span> outcome<span class="sc">*</span>gender,</span>
+<span id="cb1472-8"><a href="plot_continuous.html#cb1472-8" aria-hidden="true" tabindex="-1"></a>                  <span class="at">data =</span> linelist, </span>
+<span id="cb1472-9"><a href="plot_continuous.html#cb1472-9" aria-hidden="true" tabindex="-1"></a>                  <span class="at">main =</span> <span class="st">&quot;B) Base boxplot) by crossed groups&quot;</span>)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-1079-1.png" width="50%" /><img src="_main_files/figure-html/unnamed-chunk-1079-2.png" width="50%" /></p>
+<p>Voici quelques options supplémentaires avec <code>boxplot()</code> présentées ci-dessous :</p>
+<ul>
+<li>Largeur du boxplot proportionnelle à la taille de l’échantillon (A)</li>
+<li>Graphiques en forme de violon, avec une encoche représentant la médiane et un x autour de celle-ci (B)</li>
+<li>Horizontal (C)</li>
+</ul>
+<div class="sourceCode" id="cb1473"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1473-1"><a href="plot_continuous.html#cb1473-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Varier la largeur en fonction de la taille de l&#39;échantillon </span></span>
+<span id="cb1473-2"><a href="plot_continuous.html#cb1473-2" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(linelist<span class="sc">$</span>age <span class="sc">~</span> linelist<span class="sc">$</span>outcome,</span>
+<span id="cb1473-3"><a href="plot_continuous.html#cb1473-3" aria-hidden="true" tabindex="-1"></a>                  <span class="at">varwidth =</span> <span class="cn">TRUE</span>, <span class="co"># Largeur variable selon la taille de l&#39;échantillon</span></span>
+<span id="cb1473-4"><a href="plot_continuous.html#cb1473-4" aria-hidden="true" tabindex="-1"></a>                  <span class="at">main=</span><span class="st">&quot;A) Proportional boxplot() widths&quot;</span>)</span>
+<span id="cb1473-5"><a href="plot_continuous.html#cb1473-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1473-6"><a href="plot_continuous.html#cb1473-6" aria-hidden="true" tabindex="-1"></a>                  </span>
+<span id="cb1473-7"><a href="plot_continuous.html#cb1473-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Entaille (graphique en forme de violon), et largeur variable</span></span>
+<span id="cb1473-8"><a href="plot_continuous.html#cb1473-8" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(age <span class="sc">~</span> outcome,</span>
+<span id="cb1473-9"><a href="plot_continuous.html#cb1473-9" aria-hidden="true" tabindex="-1"></a>        <span class="at">data=</span>linelist,</span>
+<span id="cb1473-10"><a href="plot_continuous.html#cb1473-10" aria-hidden="true" tabindex="-1"></a>        <span class="at">notch=</span><span class="cn">TRUE</span>, <span class="co"># encoche à la médiane</span></span>
+<span id="cb1473-11"><a href="plot_continuous.html#cb1473-11" aria-hidden="true" tabindex="-1"></a>        <span class="at">main=</span><span class="st">&quot;B) Encoche boxplot()&quot;</span>,</span>
+<span id="cb1473-12"><a href="plot_continuous.html#cb1473-12" aria-hidden="true" tabindex="-1"></a>        <span class="at">col=</span>(<span class="fu">c</span>(<span class="st">&quot;gold&quot;</span>, <span class="st">&quot;darkgreen&quot;</span>)),</span>
+<span id="cb1473-13"><a href="plot_continuous.html#cb1473-13" aria-hidden="true" tabindex="-1"></a>        <span class="at">xlab=</span><span class="st">&quot;Supplément et dose&quot;</span>)</span>
+<span id="cb1473-14"><a href="plot_continuous.html#cb1473-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1473-15"><a href="plot_continuous.html#cb1473-15" aria-hidden="true" tabindex="-1"></a><span class="co"># Horizontal</span></span>
+<span id="cb1473-16"><a href="plot_continuous.html#cb1473-16" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(age <span class="sc">~</span> outcome,</span>
+<span id="cb1473-17"><a href="plot_continuous.html#cb1473-17" aria-hidden="true" tabindex="-1"></a>        <span class="at">data=</span>linelist,</span>
+<span id="cb1473-18"><a href="plot_continuous.html#cb1473-18" aria-hidden="true" tabindex="-1"></a>        <span class="at">horizontal=</span><span class="cn">TRUE</span>, <span class="co"># bascule à l&#39;horizontale</span></span>
+<span id="cb1473-19"><a href="plot_continuous.html#cb1473-19" aria-hidden="true" tabindex="-1"></a>        <span class="at">col=</span>(<span class="fu">c</span>(<span class="st">&quot;gold&quot;</span>, <span class="st">&quot;darkgreen&quot;</span>)),</span>
+<span id="cb1473-20"><a href="plot_continuous.html#cb1473-20" aria-hidden="true" tabindex="-1"></a>        <span class="at">main=</span><span class="st">&quot;C) Boxplot horizontal()&quot;</span>,</span>
+<span id="cb1473-21"><a href="plot_continuous.html#cb1473-21" aria-hidden="true" tabindex="-1"></a>        <span class="at">xlab=</span><span class="st">&quot;Supplément et dose&quot;</span>)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-1080-1.png" width="33%" /><img src="_main_files/figure-html/unnamed-chunk-1080-2.png" width="33%" /><img src="_main_files/figure-html/unnamed-chunk-1080-3.png" width="33%" /></p>
+</div>
+</div>
+<div id="deux-variables-continues-2" class="section level3 unnumbered">
+<h3>Deux variables continues</h3>
+<p>En utilisant la base R, nous pouvons rapidement visualiser la relation entre deux variables continues avec la fonction <code>plot</code>.</p>
+<div class="sourceCode" id="cb1474"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1474-1"><a href="plot_continuous.html#cb1474-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(linelist<span class="sc">$</span>age, linelist<span class="sc">$</span>wt_kg)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-1081-1.png" width="672" /></p>
+<!-- ======================================================= -->
+</div>
+</div>
+<div id="ressources-16" class="section level2" number="30.4">
+<h2><span class="header-section-number">30.4</span> Ressources</h2>
+<p>Il existe une énorme quantité d’aide en ligne, notamment avec ggplot. Voir :</p>
+<p><em><a href="http://r-statistics.co/ggplot2-cheatsheet.html">ggplot2 cheat sheet</a>
+</em><a href="https://biostats.w.uib.no/the-ggplot2-cheat-sheet-by-rstudio/">un autre aide-mémoire</a>
+*<a href="http://www.sthda.com/english/articles/32-r-graphics-essentials/131-plot-two-continuous-variables-scatter-graph-and-alternatives/">tracer des variables continues</a></p>
+
+</div>
+</div>
+  </main>
+
+  <div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
+    <nav id="toc" data-toggle="toc" aria-label="On this page">
+      <h2>On this page</h2>
+      <div id="book-on-this-page"></div>
+
+      <div class="book-extra">
+        <ul class="list-unstyled">
+          <li><a id="book-source" href="#">View source <i class="fab fa-github"></i></a></li>
+          <li><a id="book-edit" href="#">Edit this page <i class="fab fa-github"></i></a></li>
+        </ul>
+      </div>
+    </nav>
+  </div>
+
+</div>
+</div> <!-- .container -->
+
+<footer class="bg-primary text-light mt-5">
+  <div class="container"><div class="row">
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>"<strong>The Epidemiologist R Handbook</strong>" was written by the handbook team. It was last built on 2023-05-17.</p>
+  </div>
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>This book was built by the <a class="text-light" href="https://bookdown.org">bookdown</a> R package.</p>
+  </div>
+
+</div></div>
+</footer>
+
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+<script type="text/x-mathjax-config">const popovers = document.querySelectorAll('a.footnote-ref[data-toggle="popover"]');
+for (let popover of popovers) {
+  const div = document.createElement('div');
+  div.setAttribute('style', 'position: absolute; top: 0, left:0; width:0, height:0, overflow: hidden; visibility: hidden;');
+  div.innerHTML = popover.getAttribute('data-content');
+
+  var has_math = div.querySelector("span.math");
+  if (has_math) {
+    document.body.appendChild(div);
+    MathJax.Hub.Queue(["Typeset", MathJax.Hub, div]);
+    MathJax.Hub.Queue(function() {
+      popover.setAttribute('data-content', div.innerHTML);
+      document.body.removeChild(div);
+    })
+  }
+}
+</script>
+</body>
+
+</html>

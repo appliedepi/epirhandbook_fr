@@ -1,0 +1,421 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <title>42 Organisation des rapports de routine | The Epidemiologist R Handbook</title>
+
+    <meta name="author" content="the handbook team" />
+  
+   <meta name="description" content="The Epi R Handbook est un manuel de référence sur l’utilisation de R en épidémiologie appliquée et santé publique." />
+   <meta name="generator" content="placeholder" />
+  <meta property="og:title" content="42 Organisation des rapports de routine | The Epidemiologist R Handbook" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="The Epi R Handbook est un manuel de référence sur l’utilisation de R en épidémiologie appliquée et santé publique." />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="42 Organisation des rapports de routine | The Epidemiologist R Handbook" />
+  
+  <meta name="twitter:description" content="The Epi R Handbook est un manuel de référence sur l’utilisation de R en épidémiologie appliquée et santé publique." />
+  
+  <!-- JS -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script>
+  <script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script>
+    <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet" />
+    <script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script>
+    <script src="libs/bs3compat-0.4.2/transition.js"></script>
+    <script src="libs/bs3compat-0.4.2/tabs.js"></script>
+    <script src="libs/bs3compat-0.4.2/bs3compat.js"></script>
+    <link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet" />
+    <script src="libs/bs4_book-1.0.0/bs4_book.js"></script>
+    <script src="libs/htmlwidgets-1.6.2/htmlwidgets.js"></script>
+    <link href="libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet" />
+    <script src="libs/datatables-binding-0.27/datatables.js"></script>
+    <link href="libs/dt-core-1.12.1/css/jquery.dataTables.min.css" rel="stylesheet" />
+    <link href="libs/dt-core-1.12.1/css/jquery.dataTables.extra.css" rel="stylesheet" />
+    <script src="libs/dt-core-1.12.1/js/jquery.dataTables.min.js"></script>
+    <link href="libs/nouislider-7.0.10/jquery.nouislider.min.css" rel="stylesheet" />
+    <script src="libs/nouislider-7.0.10/jquery.nouislider.min.js"></script>
+    <link href="libs/selectize-0.12.0/selectize.bootstrap3.css" rel="stylesheet" />
+    <script src="libs/selectize-0.12.0/selectize.min.js"></script>
+    <link href="libs/crosstalk-1.2.0/css/crosstalk.min.css" rel="stylesheet" />
+    <script src="libs/crosstalk-1.2.0/js/crosstalk.min.js"></script>
+    <script src="libs/kePrint-0.0.1/kePrint.js"></script>
+    <link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
+    <link href="libs/tabwid-1.1.3/tabwid.css" rel="stylesheet" />
+    <script src="libs/tabwid-1.1.3/tabwid.js"></script>
+    <link href="libs/leaflet-1.3.1/leaflet.css" rel="stylesheet" />
+    <script src="libs/leaflet-1.3.1/leaflet.js"></script>
+    <link href="libs/leafletfix-1.0.0/leafletfix.css" rel="stylesheet" />
+    <script src="libs/proj4-2.6.2/proj4.min.js"></script>
+    <script src="libs/Proj4Leaflet-1.0.1/proj4leaflet.js"></script>
+    <link href="libs/rstudio_leaflet-1.3.1/rstudio_leaflet.css" rel="stylesheet" />
+    <script src="libs/leaflet-binding-2.1.2/leaflet.js"></script>
+    <script src="libs/leaflet-providers-1.9.0/leaflet-providers_1.9.0.js"></script>
+    <script src="libs/leaflet-providers-plugin-2.1.2/leaflet-providers-plugin.js"></script>
+    <script src="libs/viz-1.8.2/viz.js"></script>
+    <link href="libs/DiagrammeR-styles-0.2/styles.css" rel="stylesheet" />
+    <script src="libs/grViz-binding-1.0.9/grViz.js"></script>
+    <script src="libs/d3-4.5.0/d3.min.js"></script>
+    <script src="libs/sankey-1/sankey.js"></script>
+    <script src="libs/sankeyNetwork-binding-0.4/sankeyNetwork.js"></script>
+    <script src="libs/plotly-binding-4.10.1/plotly.js"></script>
+    <script src="libs/typedarray-0.1/typedarray.min.js"></script>
+    <link href="libs/plotly-htmlwidgets-css-2.11.1/plotly-htmlwidgets.css" rel="stylesheet" />
+    <script src="libs/plotly-main-2.11.1/plotly-latest.min.js"></script>
+    <link href="libs/vis-9.1.0/vis-network.min.css" rel="stylesheet" />
+    <script src="libs/vis-9.1.0/vis-network.min.js"></script>
+    <script src="libs/visNetwork-binding-2.1.2/visNetwork.js"></script>
+    <link href="libs/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" />
+    <script src="libs/plotly-basic-2.11.1/plotly-basic-2.11.1.min.js"></script>
+    <script src="libs/plotly-cartesian-2.11.1/plotly-cartesian-2.11.1.min.js"></script>
+    <script src="libs/proj4js-2.3.15/proj4.js"></script>
+    <link href="libs/highcharts-9.3.1/css/motion.css" rel="stylesheet" />
+    <script src="libs/highcharts-9.3.1/highcharts.js"></script>
+    <script src="libs/highcharts-9.3.1/highcharts-3d.js"></script>
+    <script src="libs/highcharts-9.3.1/highcharts-more.js"></script>
+    <script src="libs/highcharts-9.3.1/modules/stock.js"></script>
+    <script src="libs/highcharts-9.3.1/modules/map.js"></script>
+    <script src="libs/highcharts-9.3.1/modules/data.js"></script>
+    <script src="libs/highcharts-9.3.1/modules/exporting.js"></script>
+    <script src="libs/highcharts-9.3.1/modules/offline-exporting.js"></script>
+    <script src="libs/highcharts-9.3.1/modules/drilldown.js"></script>
+    <script src="libs/highcharts-9.3.1/modules/item-series.js"></script>
+    <script src="libs/highcharts-9.3.1/modules/overlapping-datalabels.js"></script>
+    <script src="libs/highcharts-9.3.1/modules/annotations.js"></script>
+    <script src="libs/highcharts-9.3.1/modules/export-data.js"></script>
+    <script src="libs/highcharts-9.3.1/modules/funnel.js"></script>
+    <script src="libs/highcharts-9.3.1/modules/heatmap.js"></script>
+    <script src="libs/highcharts-9.3.1/modules/treemap.js"></script>
+    <script src="libs/highcharts-9.3.1/modules/sankey.js"></script>
+    <script src="libs/highcharts-9.3.1/modules/dependency-wheel.js"></script>
+    <script src="libs/highcharts-9.3.1/modules/organization.js"></script>
+    <script src="libs/highcharts-9.3.1/modules/solid-gauge.js"></script>
+    <script src="libs/highcharts-9.3.1/modules/streamgraph.js"></script>
+    <script src="libs/highcharts-9.3.1/modules/sunburst.js"></script>
+    <script src="libs/highcharts-9.3.1/modules/vector.js"></script>
+    <script src="libs/highcharts-9.3.1/modules/wordcloud.js"></script>
+    <script src="libs/highcharts-9.3.1/modules/xrange.js"></script>
+    <script src="libs/highcharts-9.3.1/modules/tilemap.js"></script>
+    <script src="libs/highcharts-9.3.1/modules/venn.js"></script>
+    <script src="libs/highcharts-9.3.1/modules/gantt.js"></script>
+    <script src="libs/highcharts-9.3.1/modules/timeline.js"></script>
+    <script src="libs/highcharts-9.3.1/modules/parallel-coordinates.js"></script>
+    <script src="libs/highcharts-9.3.1/modules/bullet.js"></script>
+    <script src="libs/highcharts-9.3.1/modules/coloraxis.js"></script>
+    <script src="libs/highcharts-9.3.1/modules/dumbbell.js"></script>
+    <script src="libs/highcharts-9.3.1/modules/lollipop.js"></script>
+    <script src="libs/highcharts-9.3.1/modules/series-label.js"></script>
+    <script src="libs/highcharts-9.3.1/plugins/motion.js"></script>
+    <script src="libs/highcharts-9.3.1/custom/reset.js"></script>
+    <script src="libs/highcharts-9.3.1/modules/boost.js"></script>
+    <script src="libs/highchart-binding-0.9.4/highchart.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script>
+
+  <!-- CSS -->
+  <style type="text/css">
+    
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  </style>
+      <link rel="stylesheet" href="style_bs4.css" />
+  
+</head>
+
+<body data-spy="scroll" data-target="#toc">
+
+<div class="container-fluid">
+<div class="row">
+  <header class="col-sm-12 col-lg-3 sidebar sidebar-book">
+    <a class="sr-only sr-only-focusable" href="#content">Skip to main content</a>
+
+    <div class="d-flex align-items-start justify-content-between">
+      <h1>
+        <a href="index.html" title="">The Epidemiologist R Handbook</a>
+      </h1>
+      <button class="btn btn-outline-primary d-lg-none ml-2 mt-1" type="button" data-toggle="collapse" data-target="#main-nav" aria-expanded="true" aria-controls="main-nav"><i class="fas fa-bars"></i><span class="sr-only">Show table of contents</span></button>
+    </div>
+
+    <div id="main-nav" class="collapse-lg">
+      <form role="search">
+        <input id="search" class="form-control" type="search" placeholder="Search" aria-label="Search">
+      </form>
+
+      <nav aria-label="Table of contents">
+        <h2>Table of contents</h2>
+        <div id="book-toc"></div>
+
+        <div class="book-extra">
+          <p><a id="book-repo" href="#">View book source <i class="fab fa-github"></i></a></li></p>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main class="col-sm-12 col-md-9 col-lg-7" id="content">
+<div id="reportfactory" class="section level1" number="42">
+<h1><span class="header-section-number">42</span> Organisation des rapports de routine</h1>
+<p>Cette page couvre le “package” <strong>reportfactory</strong>, qui est un <em>complément à la page sur <a href="rmarkdown.html#rmarkdown">Production de rapports avec R Markdown</a> </em>.</p>
+<p>Ce package est adapté aux cas où on exécute des rapports régulièrement (par exemple, quotidiennement, hebdomadairement…). Il facilite la compilation de plusieurs fichiers R Markdown et l’organisation de leurs fichiers de sortie. Essentiellement, il fournit une “fabrique de rapports” (“factory”) qui est une machine d’exécution à partir de laquelle vous pouvez exécuter les rapports R Markdown, obtenir des dossiers automatiquement horodatés pour les fichiers de sortie, et avoir un contrôle de version “léger”.</p>
+<p><strong>reportfactory</strong> est l’un des “packages” développés par RECON (R Epidemics Consortium). Voici leur <a href="https://www.repidemicsconsortium.org/">site Web</a> et <a href="https://github.com/reconverse">Github</a>.</p>
+<div id="préparation-26" class="section level2" number="42.1">
+<h2><span class="header-section-number">42.1</span> Préparation</h2>
+<div id="charger-les-packages-3" class="section level3 unnumbered">
+<h3>Charger les packages</h3>
+<p>Depuis RStudio, installez la dernière version du package <strong>reportfactory</strong> depuis Github.</p>
+<p>Vous pouvez le faire via le “package” <strong>pacman</strong> avec <code>p_load_current_gh()</code> qui forcera l’installation de la dernière version depuis Github. Tapez la chaîne de caractères “reconverse/reportfactory”, qui spécifie l’organisation Github (reconverse) et le répertoire (reportfactory). Vous pouvez également utiliser <code>install_github()</code> du “package” <strong>remotes</strong>, comme alternative.</p>
+<div class="sourceCode" id="cb1856"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1856-1"><a href="reportfactory.html#cb1856-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Installer et charger la dernière version du package depuis Github</span></span>
+<span id="cb1856-2"><a href="reportfactory.html#cb1856-2" aria-hidden="true" tabindex="-1"></a>pacman<span class="sc">::</span><span class="fu">p_load_current_gh</span>(<span class="st">&quot;reconverse/reportfactory&quot;</span>)</span>
+<span id="cb1856-3"><a href="reportfactory.html#cb1856-3" aria-hidden="true" tabindex="-1"></a><span class="co">#remotes::install_github(&quot;reconverse/reportfactory&quot;) # alternative</span></span></code></pre></div>
+</div>
+</div>
+<div id="nouvelle-factory" class="section level2" number="42.2">
+<h2><span class="header-section-number">42.2</span> Nouvelle “factory”</h2>
+<p>Pour créer une nouvelle “factory”, exécutez la fonction <code>new_factory()</code>. Ceci créera un nouveau dossier de projet R autonome. Par défaut :</p>
+<ul>
+<li>“factory” sera ajoutée à votre répertoire de travail.</li>
+<li>Le nom du projet R de la “factory” sera appelé “new_factory.Rproj”.<br />
+</li>
+<li>Votre session RStudio s’installera dans ce projet R.</li>
+</ul>
+<div class="sourceCode" id="cb1857"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1857-1"><a href="reportfactory.html#cb1857-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Ceci créera la &quot;factory&quot; dans le répertoire de travail</span></span>
+<span id="cb1857-2"><a href="reportfactory.html#cb1857-2" aria-hidden="true" tabindex="-1"></a><span class="fu">new_factory</span>()</span></code></pre></div>
+<p>En regardant à l’intérieur de la “factory”, vous pouvez voir que des sous-dossiers et certains fichiers ont été créés automatiquement.</p>
+<p><img src="images/factory_new2.png" width="424" /></p>
+<ul>
+<li>Le dossier <em>report_sources</em> contient vos scripts R Markdown, qui génèrent vos rapports.<br />
+</li>
+<li>Le dossier <em>outputs</em> contient les fichiers de sortie du rapport (par exemple, HTML, Word, PDF, etc.).<br />
+</li>
+<li>Le dossier <em>scripts</em> peut être utilisé pour stocker d’autres scripts R (par exemple, ceux qui proviennent de vos scripts Rmd).<br />
+</li>
+<li>Le dossier <em>data</em> peut être utilisé pour contenir vos données à partir desquelles vous travvaillez (les sous-dossiers “raw” et “clean” sont inclus).<br />
+</li>
+<li>Un fichier <em>.here</em>, afin que vous puissiez utiliser le package <strong>here</strong> pour faire appel aux fichiers dans les sous-dossiers selon leur relation avec le dossier à la racine (voir la page <a href="r_projects.html#r_projects">Projets R</a> pour plus de détails).<br />
+</li>
+<li>Un fichier <em>gitignore</em> a été créé au cas où vous lieriez ce projet R à un répertoire Github (voir <a href="collaboration.html#collaboration">Contrôle de version et collaboration avec Git et Github</a>).<br />
+</li>
+<li>Un fichier README vide, si vous utilisez un dépôt Github.</li>
+</ul>
+<p><span style="color: orange;"><strong><em>CAUTION:</em></strong> selon les paramètres de votre ordinateur, des fichiers tels que “.here” peuvent exister mais restés cachés.</span></p>
+<p>Parmi les paramètres par défaut, en voici quelques-uns que vous pourriez vouloir ajuster dans la commande <code>new_factory()</code> :</p>
+<ul>
+<li><code>factory =</code> - Fournit un nom pour le dossier de la “factory” (par défaut “new_factory”)<br />
+</li>
+<li><code>path =</code> - Désigne un chemin de fichier pour la nouvelle “factory” (par défaut le répertoire de travail)<br />
+</li>
+<li><code>report_sources =</code> - Donne un autre nom au sous-dossier qui contient les scripts R Markdown (par défaut, “report_sources”)<br />
+</li>
+<li><code>outputs =</code> Fournit un nom alternatif pour le dossier qui contient les fichiers de sortie du rapport (par défaut “outputs”).</li>
+</ul>
+<p>Voir <code>?new_factory</code> pour une liste complète des arguments.</p>
+<p>Lorsque vous créez la nouvelle “factory”, votre session R est transférée vers le nouveau projet R, vous devez donc charger à nouveau le “package” <strong>reportfactory</strong>.</p>
+<div class="sourceCode" id="cb1858"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1858-1"><a href="reportfactory.html#cb1858-1" aria-hidden="true" tabindex="-1"></a>pacman<span class="sc">::</span><span class="fu">p_load</span>(reportfactory)</span></code></pre></div>
+<p>Maintenant vous pouvez lancer la commande <code>factory_overview()</code> pour voir la structure interne (tous les dossiers et fichiers) de la “factory”.</p>
+<div class="sourceCode" id="cb1859"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1859-1"><a href="reportfactory.html#cb1859-1" aria-hidden="true" tabindex="-1"></a><span class="fu">factory_overview</span>()            <span class="co">#  afficher l&#39;aperçu de la factory dans la console</span></span></code></pre></div>
+<p>L’“arbre” suivant des dossiers et fichiers de la “factory” est affiché dans la console R. Notez que dans le dossier “data”, il y a des sous-dossiers pour les données “raw” et “clean”, et des exemples de données CSV. Il y a aussi “example_report.Rmd” dans le dossier “report_sources”.</p>
+<p><img src="images/factory_overview.png" width="202" /></p>
+</div>
+<div id="créer-un-rapport" class="section level2" number="42.3">
+<h2><span class="header-section-number">42.3</span> Créer un rapport</h2>
+<p>À partir du projet R de la fabrique, créez un rapport R Markdown comme vous le feriez normalement, et enregistrez-le dans le dossier “report_sources”. Consultez la page <a href="rmarkdown.html#rmarkdown">Production de rapports avec R Markdown</a> pour obtenir des instructions. À titre d’exemple, nous avons ajouté les éléments suivants à la fabrique :</p>
+<ul>
+<li>Un nouveau script R markdown intitulé “daily_sitrep.Rmd”, enregistré dans le dossier “report_sources”.<br />
+</li>
+<li>Les données du rapport (“linelist_cleaned.rds”), enregistrées dans le sous-dossier “clean” du dossier “data”.</li>
+</ul>
+<p>Nous pouvons voir en utilisant <code>factory_overview()</code> notre R Markdown dans le dossier “report_sources” et le fichier de données dans le dossier “clean” data (en surbrillance) :</p>
+<p><img src="images/factory_overview2.png" width="149" /></p>
+<p>Voici une capture d’écran du début du fihier R Markdown “daily_sitrep.Rmd”. Vous pouvez voir que le format de sortie est défini comme étant HTML, via l’en-tête YAML <code>output: html_document</code>.</p>
+<p><img src="images/factory_new_rmd.png" width="420" /></p>
+<p>Dans ce script simple, il y a des commandes pour :</p>
+<ul>
+<li>Charger les “packages” nécessaires<br />
+</li>
+<li>Importer les données de la liste linéaire en utilisant un chemin de fichier du “package” <strong>here</strong> (pour en savoir plus, consultez la page <a href="import_export.html#import_export">Importer et exporter des données</a>).</li>
+</ul>
+<div class="sourceCode" id="cb1860"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1860-1"><a href="reportfactory.html#cb1860-1" aria-hidden="true" tabindex="-1"></a>linelist <span class="ot">&lt;-</span> <span class="fu">import</span>(<span class="fu">here</span>(<span class="st">&quot;data&quot;</span>, <span class="st">&quot;clean&quot;</span>, <span class="st">&quot;linelist_cleaned.rds&quot;</span>))</span></code></pre></div>
+<ul>
+<li>Imprimer un tableau récapitulatif des cas, et exportez-le avec <code>export()</code> comme un fichier .csv.<br />
+</li>
+<li>Imprimer une courbe épidemiologique, et l’exporter avec <code>ggsave()</code> comme un fichier .png.</li>
+</ul>
+<p>Vous pouvez examiner la liste des rapports R Markdown dans le dossier “report_sources” avec cette commande :</p>
+<div class="sourceCode" id="cb1861"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1861-1"><a href="reportfactory.html#cb1861-1" aria-hidden="true" tabindex="-1"></a><span class="fu">list_reports</span>()</span></code></pre></div>
+</div>
+<div id="compiler" class="section level2" number="42.4">
+<h2><span class="header-section-number">42.4</span> Compiler</h2>
+<p>Dans une “factory”, “compiler” un rapport R Markdown signifie que le script .Rmd sera exécuté et que la sortie sera produite (comme spécifié dans le script YAML, par exemple en HTML, Word, PDF, etc).</p>
+<p><em>La fabrique créera automatiquement un dossier daté et horodaté pour les sorties dans le dossier “outputs”</em>.</p>
+<p>Le rapport lui-même et tous les fichiers exportés produits par le script (par exemple, csv, png, xlsx) seront enregistrés dans ce dossier. En outre, le script Rmd lui-même sera enregistré dans ce dossier, de sorte que vous ayez une trace de cette version du script.</p>
+<p>Cela contraste avec le comportement normal d’un R Markdown exécuté en indépendant, qui enregistre les sorties à l’emplacement du script Rmd. Ce comportement par défaut peut donner lieu à des dossiers encombrés et désordonnés. La “factory” vise à améliorer l’organisation lorsque l’on doit exécuter des rapports fréquemment.</p>
+<div id="compiler-par-nom" class="section level3 unnumbered">
+<h3>Compiler par nom</h3>
+<p>Vous pouvez compiler un rapport spécifique en exécutant <code>compile_reports()</code> et en fournissant le nom du script Rmd (sans extension .Rmd) à <code>reports =</code>. Pour simplifier, vous pouvez sauter le <code>reports =</code> et juste écrire le nom R Markdown entre guillemets, comme ci-dessous.</p>
+<p><img src="images/factory_compile1.png" width="271" /></p>
+<p>Cette commande compile uniquement le rapport “daily_sitrep.Rmd”, en sauvegardant le rapport HTML, le tableau .csv et les exportations des courbes épi .png dans un sous-dossier daté et horodaté spécifique au rapport, dans le dossier “outputs”.</p>
+<p>Notez que si vous choisissez de fournir l’extension .Rmd, vous devez saisir correctement l’extension telle qu’elle est enregistrée dans le nom du fichier (.rmd vs. .Rmd).</p>
+<p>Notez également que lorsque vous compilez, vous pouvez voir plusieurs fichiers apparaître temporairement dans le dossier “report_sources” - mais ils disparaîtront rapidement lorsqu’ils seront transférés dans le bon dossier “outputs”.</p>
+</div>
+<div id="compiler-par-numéro" class="section level3 unnumbered">
+<h3>Compiler par numéro</h3>
+<p>Vous pouvez également spécifier le script Rmd à compiler en fournissant un nombre ou un vecteur de nombres à <code>reports =</code>. Les nombres doivent correspondre à l’ordre dans lequel les rapports apparaissent lorsque vous exécutez <code>list_reports()</code>.</p>
+<div class="sourceCode" id="cb1862"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1862-1"><a href="reportfactory.html#cb1862-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Compilez les deuxième et quatrième Rmds dans le dossier &quot;report_sources&quot;.</span></span>
+<span id="cb1862-2"><a href="reportfactory.html#cb1862-2" aria-hidden="true" tabindex="-1"></a><span class="fu">compile_reports</span>(<span class="at">reports =</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">4</span>))</span></code></pre></div>
+</div>
+<div id="compiler-tous-les-rapports" class="section level3 unnumbered">
+<h3>Compiler tous les rapports</h3>
+<p>Vous pouvez compiler <em>tous</em> les rapports R Markdown dans le dossier “report_sources” en mettant l’argument <code>reports =</code> à TRUE.</p>
+<p><img src="images/factory_compile_all.png" width="268" /></p>
+</div>
+<div id="compilation-à-partir-du-sous-dossier" class="section level3 unnumbered">
+<h3>Compilation à partir du sous-dossier</h3>
+<p>Vous pouvez ajouter des sous-dossiers au dossier “report_sources”. Pour exécuter un rapport R Markdown à partir d’un sous-dossier, il suffit de fournir le nom du dossier à <code>subfolder =</code>. Voici un exemple de code pour compiler un rapport Rmd qui se trouve dans un sous-dossier de “report_sources”.</p>
+<div class="sourceCode" id="cb1863"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1863-1"><a href="reportfactory.html#cb1863-1" aria-hidden="true" tabindex="-1"></a><span class="fu">compile_reports</span>(</span>
+<span id="cb1863-2"><a href="reportfactory.html#cb1863-2" aria-hidden="true" tabindex="-1"></a>     <span class="at">reports =</span> <span class="st">&quot;summary_for_partners.Rmd&quot;</span>,</span>
+<span id="cb1863-3"><a href="reportfactory.html#cb1863-3" aria-hidden="true" tabindex="-1"></a>     <span class="at">subfolder =</span> <span class="st">&quot;for_partners&quot;</span>)</span></code></pre></div>
+<p>Vous pouvez compiler tous les rapports Rmd dans un sous-dossier en fournissant le nom du sous-dossier à <code>reports =</code>, avec un slash à la fin, comme ci-dessous.</p>
+<div class="sourceCode" id="cb1864"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1864-1"><a href="reportfactory.html#cb1864-1" aria-hidden="true" tabindex="-1"></a><span class="fu">compile_reports</span>(<span class="at">reports =</span> <span class="st">&quot;for_partners/&quot;</span>)</span></code></pre></div>
+</div>
+<div id="paramétrisation" class="section level3 unnumbered">
+<h3>Paramétrisation</h3>
+<p>Comme indiqué dans la page sur <a href="rmarkdown.html#rmarkdown">Production de rapports avec R Markdown</a>, vous pouvez exécuter des rapports avec des paramètres spécifiques. Vous pouvez passer ces paramètres comme une liste à <code>compile_reports()</code> via l’argument <code>params =</code>. Par exemple, dans ce rapport fictif, trois paramètres sont fournis aux rapports R Markdown.</p>
+<div class="sourceCode" id="cb1865"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1865-1"><a href="reportfactory.html#cb1865-1" aria-hidden="true" tabindex="-1"></a><span class="fu">compile_reports</span>(</span>
+<span id="cb1865-2"><a href="reportfactory.html#cb1865-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">reports =</span> <span class="st">&quot;daily_sitrep.Rmd&quot;</span>,</span>
+<span id="cb1865-3"><a href="reportfactory.html#cb1865-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">params =</span> <span class="fu">list</span>(<span class="at">most_recent_data =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb1865-4"><a href="reportfactory.html#cb1865-4" aria-hidden="true" tabindex="-1"></a>                <span class="at">region =</span> <span class="st">&quot;NORTHERN&quot;</span>,</span>
+<span id="cb1865-5"><a href="reportfactory.html#cb1865-5" aria-hidden="true" tabindex="-1"></a>                <span class="at">rates_denominator =</span> <span class="dv">10000</span>),</span>
+<span id="cb1865-6"><a href="reportfactory.html#cb1865-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">subfolder =</span> <span class="st">&quot;regional&quot;</span></span>
+<span id="cb1865-7"><a href="reportfactory.html#cb1865-7" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+</div>
+<div id="en-utilisant-un-run-file" class="section level3 unnumbered">
+<h3>En utilisant un “run-file”</h3>
+<p>Si vous avez plusieurs rapports à exécuter, pensez à créer un script R qui contient toutes les commandes <code>compile_reports()</code>. Un utilisateur peut simplement exécuter toutes les commandes de ce script R et tous les rapports seront compilés. Vous pouvez enregistrer ce “fichier d’exécution” dans le dossier “scripts”.</p>
+</div>
+</div>
+<div id="fichiers-de-sortie" class="section level2" number="42.5">
+<h2><span class="header-section-number">42.5</span> Fichiers de sortie</h2>
+<p>Après avoir compilé les rapports plusieurs fois, le dossier “outputs” pourrait ressembler à ceci (certains éléments surlignés pour plus de clarté) :</p>
+<p><img src="images/factory_overview_all.png" width="350" /></p>
+<ul>
+<li>Dans “outputs”, des sous-dossiers ont été créés pour chaque rapport Rmd.<br />
+</li>
+<li>Dans ces dossiers, d’autres sous-dossiers ont été créés pour chaque compilation unique.
+<ul>
+<li>Ces dossiers sont datés et horodatés (“2021-04-23_T11-07-36” signifie 23 avril 2021 à 11:07:36).<br />
+</li>
+<li>Vous pouvez modifier le format de l’horodatage. Voir <code>?compile_reports</code>.</li>
+</ul></li>
+<li>Dans chaque dossier de compilation par date/heure, la sortie du rapport est stockée (par exemple HTML, PDF, Word) avec le script Rmd (contrôle de version !) et tout autre fichier exporté (par exemple table.csv, epidemic_curve.png).</li>
+</ul>
+<p>Voici une vue de l’intérieur d’un des dossiers horodatés, pour le rapport “daily_sitrep”. Le chemin du fichier est surligné en jaune pour plus de clarté.</p>
+<p><img src="images/factory_compile_folder.png" width="435" /></p>
+<p>Enfin, vous trouverez ci-dessous une capture d’écran de la sortie du rapport HTML.</p>
+<p><img src="images/factory_html.png" width="452" /></p>
+<p>Vous pouvez utiliser <code>list_outputs()</code> pour consulter une liste des fichiers de sortie.</p>
+</div>
+<div id="divers-1" class="section level2" number="42.6">
+<h2><span class="header-section-number">42.6</span> Divers</h2>
+<div id="exécution" class="section level3 unnumbered">
+<h3>Exécution</h3>
+<p>Vous pouvez toujours “exécuter” un de vos rapports R Markdown en cliquant sur le bouton “Knit”, si vous le souhaitez. Si vous faites cela, comme par défaut, les sorties apparaîtront dans le dossier où le Rmd est enregistré - le dossier “report_sources”. Dans les versions précédentes de <strong>reportfactory</strong>, avoir des fichiers non-Rmd dans “report_sources” empêchait la compilation, mais ce n’est plus le cas. Vous pouvez exécuter <code>compile_reports()</code> et aucune erreur ne se produira.</p>
+</div>
+<div id="scripts-2" class="section level3 unnumbered">
+<h3>Scripts</h3>
+<p>Nous vous encourageons à utiliser le dossier “scripts” pour stocker les “fichiers d’exécution” ou les scripts .R qui proviennent de vos scripts .Rmd. Consultez la page <a href="rmarkdown.html#rmarkdown">Production de rapports avec R Markdown</a> pour obtenir des conseils sur la manière de structurer votre code dans plusieurs fichiers.</p>
+</div>
+<div id="extras" class="section level3 unnumbered">
+<h3>Extras</h3>
+<ul>
+<li><p>Avec <strong>reportfactory</strong>, vous pouvez utiliser la fonction <code>list_deps()</code> pour lister tous les “packages” requis pour tous les rapports dans l’ensemble de la fabrique.</p></li>
+<li><p>Il y a un “package” de support utilisé en de développement appelé <strong>rfextras</strong> qui offre plus de fonctions d’aide pour vous assister dans la construction des rapports, comme :</p>
+<ul>
+<li><code>load_scripts()</code> - source/charge tous les scripts .R dans un dossier donné (le dossier “scripts” par défaut).<br />
+</li>
+<li><code>find_latest()</code> - trouve la dernière version d’un fichier (par exemple, le dernier jeu de données).</li>
+</ul></li>
+</ul>
+<!-- ======================================================= -->
+</div>
+</div>
+<div id="ressources-26" class="section level2" number="42.7">
+<h2><span class="header-section-number">42.7</span> Ressources</h2>
+<p>Voir la <a href="https://github.com/reconverse/reportfactory">page Github</a> du “package” <strong>reportfactory</strong></p>
+<p>Voir la <a href="https://github.com/reconhub/rfextras">page Github</a> du package <strong>rfextras</strong></p>
+
+</div>
+</div>
+  </main>
+
+  <div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
+    <nav id="toc" data-toggle="toc" aria-label="On this page">
+      <h2>On this page</h2>
+      <div id="book-on-this-page"></div>
+
+      <div class="book-extra">
+        <ul class="list-unstyled">
+          <li><a id="book-source" href="#">View source <i class="fab fa-github"></i></a></li>
+          <li><a id="book-edit" href="#">Edit this page <i class="fab fa-github"></i></a></li>
+        </ul>
+      </div>
+    </nav>
+  </div>
+
+</div>
+</div> <!-- .container -->
+
+<footer class="bg-primary text-light mt-5">
+  <div class="container"><div class="row">
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>"<strong>The Epidemiologist R Handbook</strong>" was written by the handbook team. It was last built on 2023-05-17.</p>
+  </div>
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>This book was built by the <a class="text-light" href="https://bookdown.org">bookdown</a> R package.</p>
+  </div>
+
+</div></div>
+</footer>
+
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+<script type="text/x-mathjax-config">const popovers = document.querySelectorAll('a.footnote-ref[data-toggle="popover"]');
+for (let popover of popovers) {
+  const div = document.createElement('div');
+  div.setAttribute('style', 'position: absolute; top: 0, left:0; width:0, height:0, overflow: hidden; visibility: hidden;');
+  div.innerHTML = popover.getAttribute('data-content');
+
+  var has_math = div.querySelector("span.math");
+  if (has_math) {
+    document.body.appendChild(div);
+    MathJax.Hub.Queue(["Typeset", MathJax.Hub, div]);
+    MathJax.Hub.Queue(function() {
+      popover.setAttribute('data-content', div.innerHTML);
+      document.body.removeChild(div);
+    })
+  }
+}
+</script>
+</body>
+
+</html>
