@@ -92,8 +92,8 @@ linelist <- linelist %>%
     .cols = all_of(c(explanatory_vars, "outcome")),  ## pour chaque colonne listée et "résultat"
     .fns = ~case_when(                              
       . %in% c("m", "yes", "Death")   ~ 1,           ## recoder male, yes et death en 1
-      . %in% c("f", "no",  "Recover") ~ 0,           ## female, no and recover en 0
-      TRUE                            ~ NA_real_)    ## autre definir comme valeurs manquantes
+      . %in% c("f", "no",  "Recover") ~ 0)           ## female, no and recover en 0
+                                                     ## autre definir comme valeurs manquantes
     )
   )
 

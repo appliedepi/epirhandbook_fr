@@ -288,8 +288,8 @@ pyramid_data <- linelist %>%
   mutate(percent = round(100*(counts / sum(counts, na.rm=T)), digits = 1), 
          percent = case_when(
             gender == "f" ~ percent,
-            gender == "m" ~ -percent,     # convertir les hommes en négatif
-            TRUE          ~ NA_real_))    # les valeur NA doivent aussi être numériques
+            gender == "m" ~ -percent))    # convertir les hommes en négatif
+                              # les valeur NA doivent aussi être numériques
 ```
 
 Il est important de noter que nous enregistrons les valeurs max et min afin de connaître les limites de l'échelle. Elles seront utilisées dans la commande `ggplot()` ci-dessous.
@@ -412,8 +412,7 @@ pop_data <- pop %>%
     percent  = round(100*(counts / sum(counts, na.rm=T)),1),  # % du total
     percent  = case_when(                                                        
      gender == "f" ~ percent,
-     gender == "m" ~ -percent,               # Pour les hommes on converti le pourcentage en négatif
-     TRUE          ~ NA_real_))
+     gender == "m" ~ -percent))  # Pour les hommes on converti le pourcentage en négatif
 ```
 
 Examiner les données de population modifiées
@@ -435,8 +434,7 @@ case_data <- linelist %>%
     percent = round(100*(counts / sum(counts, na.rm=T)),1),  # calculer le % du total pour les groupes d'âge et de sexe
     percent = case_when(                                     # our les hommes on converti le pourcentage en négatif
       gender == "f" ~ percent,
-      gender == "m" ~ -percent,
-      TRUE          ~ NA_real_))
+      gender == "m" ~ -percent))
 ```
 
 Examiner les données des cas modifiées

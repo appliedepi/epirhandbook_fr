@@ -1015,7 +1015,7 @@ linelist <- linelist %>%
 ```
 
 
-<span style="color: red;">**_DANGER:_** **Les valeurs du côté droit doivent toutes être de la même classe** - soit numérique, caractère, date, logique, etc. Pour attribuer des valeurs manquantes (`NA`), Il est dnas certaine situation important d'utiliser  des variantes spéciales de `NA` telles que `NA_caracter_`, `NA_real_` (pour les numériques ou POSIX), et `as.Date(NA)`. Pour en savoir plus, lisez [Manipuler les dates](#working_dates).</span>  
+<span style="color: red;">**_DANGER:_** **Les valeurs du côté droit doivent toutes être de la même classe** - soit numérique, caractère, date, logique, etc. Pour attribuer des valeurs manquantes (`NA`), Il est dnas certaine situation important d'utiliser  des variantes spéciales de `NA` telles que `NA_character_`, `NA_real_` (pour les numériques ou POSIX), et `as.Date(NA)`. Pour en savoir plus, lisez [Manipuler les dates](#working_dates).</span>  
 
 
 
@@ -1191,8 +1191,7 @@ linelist <- linelist_raw %>%
     mutate(age_years = case_when(
           age_unit == "years" ~ age,
           age_unit == "months" ~ age/12,
-          is.na(age_unit) ~ age,
-          TRUE ~ NA_real_))
+          is.na(age_unit) ~ age))
 ```
 
 
