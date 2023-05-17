@@ -1,0 +1,15 @@
+rbasics
+pourquoi-utiliser-r
+termes-clés
+learning
+installation
+rstudio
+functions
+packages
+scripts
+répertoire-de-travail
+répertoire-de-travail-dans-un-script-r-markdown
+objets
+tuyauterie-piping
+operators
+erreurs-et-avertissements
