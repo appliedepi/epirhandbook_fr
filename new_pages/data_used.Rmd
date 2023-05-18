@@ -83,7 +83,7 @@ get_data(file = "linelist_cleaned.rds")
 
 Une fois que vous avez utilisé `get_data()` pour enregistrer un fichier sur votre ordinateur, vous devrez encore l'importer dans R. Voir la page [Importer et exporter des données](#import_export) pour plus de détails.  
 
-Si vous le souhaitez, vous pouvez consulter toutes les données utilisées dans ce manuel dans le **["dossier données"](https://github.com/epirhandbook/Epi_R_handbook/tree/master/data)** de notre dépôt Github.  
+Si vous le souhaitez, vous pouvez consulter toutes les données utilisées dans ce manuel dans le **["dossier données"](https://github.com/appliedepi/epirhandbook_eng/tree/master/data)** de notre dépôt Github.  
 
 
 ### Téléchargement manuel {.unnumbered}  
@@ -340,10 +340,10 @@ Pour télécharger les fichiers R qui produisent l'app Shiny :
 Vous pouvez <a href='https://github.com/appliedepi/epiRhandbook_fr/tree/master/data/malaria_app/app.R' class='download-button'>
 	cliquer ici pour télécharger le fichier app.R<span> qui contient à la fois le code de l'interface utilisateur et du serveur pour l'application Shiny.</span></a>.
 
-Vous pouvez <a href='https://github.com/epirhandbook/Epi_R_handbook/blob/master/data/malaria_app/data/facility_count_data.rds' class='download-button'>
+Vous pouvez <a href='https://github.com/appliedepi/epirhandbook_eng/blob/master/data/malaria_app/data/facility_count_data.rds' class='download-button'>
 	cliquer ici pour télécharger le fichier facility_count_data.rds<span></a> qui contient les données sur le paludisme pour l'application Shiny. Notez que vous devrez peut-être l'enregistrer dans un dossier "data" pour que les chemins de fichier here() fonctionnent correctement.  
 
-Vous pouvez <a href='https://github.com/epirhandbook/Epi_R_handbook/blob/master/data/malaria_app/global.R' class='download-button'>
+Vous pouvez <a href='https://github.com/appliedepi/epirhandbook_eng/blob/master/data/malaria_app/global.R' class='download-button'>
 	cliquer ici pour télécharger le fichier global.R<span></a> qui doit être exécuté avant l'ouverture de l'app, comme expliqué dans la page.
 	
 Vous pouvez <a href='https://github.com/appliedepi/epiRhandbook_fr/tree/master/data/malaria_app/funcs/plot_epicurve.R' class='download-button'>
