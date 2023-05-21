@@ -4,16 +4,16 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>24 Analyse d’enquête | Le Epi R Handbook</title>
+<title>25 Analyse d’enquête | Le Epi R Handbook</title>
 <meta name="author" content="the handbook team">
-<meta name="description" content="24.1 Aperçu Cette page démontre l’utilisation de plusieurs packages pour l’analyse d’enquêtes. La plupart des paquets R d’enquête reposent sur le paquet survey pour effectuer des analyses...">
+<meta name="description" content="25.1 Aperçu Cette page démontre l’utilisation de plusieurs packages pour l’analyse d’enquêtes. La plupart des paquets R d’enquête reposent sur le paquet survey pour effectuer des analyses...">
 <meta name="generator" content="bookdown 0.34 with bs4_book()">
-<meta property="og:title" content="24 Analyse d’enquête | Le Epi R Handbook">
+<meta property="og:title" content="25 Analyse d’enquête | Le Epi R Handbook">
 <meta property="og:type" content="book">
-<meta property="og:description" content="24.1 Aperçu Cette page démontre l’utilisation de plusieurs packages pour l’analyse d’enquêtes. La plupart des paquets R d’enquête reposent sur le paquet survey pour effectuer des analyses...">
+<meta property="og:description" content="25.1 Aperçu Cette page démontre l’utilisation de plusieurs packages pour l’analyse d’enquêtes. La plupart des paquets R d’enquête reposent sur le paquet survey pour effectuer des analyses...">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="24 Analyse d’enquête | Le Epi R Handbook">
-<meta name="twitter:description" content="24.1 Aperçu Cette page démontre l’utilisation de plusieurs packages pour l’analyse d’enquêtes. La plupart des paquets R d’enquête reposent sur le paquet survey pour effectuer des analyses...">
+<meta name="twitter:title" content="25 Analyse d’enquête | Le Epi R Handbook">
+<meta name="twitter:description" content="25.1 Aperçu Cette page démontre l’utilisation de plusieurs packages pour l’analyse d’enquêtes. La plupart des paquets R d’enquête reposent sur le paquet survey pour effectuer des analyses...">
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
 <script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.4.2/transition.js"></script><script src="libs/bs3compat-0.4.2/tabs.js"></script><script src="libs/bs3compat-0.4.2/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
@@ -64,61 +64,58 @@
 <li><a class="" href="editorial_notes.html"><span class="header-section-number">1</span> Notes techniques et choix éditoriaux</a></li>
 <li><a class="" href="download_book_data.html"><span class="header-section-number">2</span> Télécharger le manuel et les données</a></li>
 <li class="book-part">Basics</li>
-<li><a class="" href="transition_to_r.html"><span class="header-section-number">3</span> Transition vers R</a></li>
-<li><a class="" href="suggested_packages.html"><span class="header-section-number">4</span> Paquets conseillés</a></li>
-<li><a class="" href="r_projects.html"><span class="header-section-number">5</span> Projets R</a></li>
-<li><a class="" href="import_export.html"><span class="header-section-number">6</span> Importer et exporter des données</a></li>
+<li><a class="" href="rbasics.html"><span class="header-section-number">3</span> R - les bases</a></li>
+<li><a class="" href="transition_to_r.html"><span class="header-section-number">4</span> Transition vers R</a></li>
+<li><a class="" href="suggested_packages.html"><span class="header-section-number">5</span> Paquets conseillés</a></li>
+<li><a class="" href="r_projects.html"><span class="header-section-number">6</span> Projets R</a></li>
+<li><a class="" href="import_export.html"><span class="header-section-number">7</span> Importer et exporter des données</a></li>
 <li class="book-part">Data Management</li>
-<li><a class="" href="cleaning_data.html"><span class="header-section-number">7</span> Nettoyage de données et fonctions essentielles</a></li>
-<li><a class="" href="working_dates.html"><span class="header-section-number">8</span> Manipuler les dates</a></li>
-<li><a class="" href="character_strings.html"><span class="header-section-number">9</span> Caractères et chaînes de caractères</a></li>
-<li><a class="" href="factors.html"><span class="header-section-number">10</span> Facteurs</a></li>
-<li><a class="" href="pivoting_data.html"><span class="header-section-number">11</span> Restructurer les données</a></li>
-<li><a class="" href="grouping_data.html"><span class="header-section-number">12</span> Travailler sur des données groupées</a></li>
-<li><a class="" href="joining_matching.html"><span class="header-section-number">13</span> Joindre des données</a></li>
-<li><a class="" href="deduplication.html"><span class="header-section-number">14</span> De-duplication</a></li>
-<li><a class="" href="iteration.html"><span class="header-section-number">15</span> Itération, boucles et listes</a></li>
+<li><a class="" href="cleaning_data.html"><span class="header-section-number">8</span> Nettoyage de données et fonctions essentielles</a></li>
+<li><a class="" href="working_dates.html"><span class="header-section-number">9</span> Manipuler les dates</a></li>
+<li><a class="" href="character_strings.html"><span class="header-section-number">10</span> Caractères et chaînes de caractères</a></li>
+<li><a class="" href="factors.html"><span class="header-section-number">11</span> Facteurs</a></li>
+<li><a class="" href="pivoting_data.html"><span class="header-section-number">12</span> Restructurer les données</a></li>
+<li><a class="" href="grouping_data.html"><span class="header-section-number">13</span> Travailler sur des données groupées</a></li>
+<li><a class="" href="joining_matching.html"><span class="header-section-number">14</span> Joindre des données</a></li>
+<li><a class="" href="deduplication.html"><span class="header-section-number">15</span> De-duplication</a></li>
+<li><a class="" href="iteration.html"><span class="header-section-number">16</span> Itération, boucles et listes</a></li>
 <li class="book-part">Analysis</li>
-<li><a class="" href="descriptive_tables.html"><span class="header-section-number">16</span> Tableaux descriptifs</a></li>
-<li><a class="" href="stats_test.html"><span class="header-section-number">17</span> Tests statistiques simples</a></li>
-<li><a class="" href="regression.html"><span class="header-section-number">18</span> Régression univariée et multivariable</a></li>
-<li><a class="" href="missing_data.html"><span class="header-section-number">19</span> Données manquantes</a></li>
-<li><a class="" href="standardisation.html"><span class="header-section-number">20</span> Taux standardisés</a></li>
-<li><a class="" href="moving_average.html"><span class="header-section-number">21</span> Moyennes mobiles</a></li>
-<li><a class="" href="time_series.html"><span class="header-section-number">22</span> Série temporelle et détection des épidémies</a></li>
-<li><a class="" href="contact_tracing.html"><span class="header-section-number">23</span> Suivi des contacts</a></li>
-<li><a class="active" href="survey_analysis.html"><span class="header-section-number">24</span> Analyse d’enquête</a></li>
-<li><a class="" href="survival_analysis.html"><span class="header-section-number">25</span> Analyse de survie</a></li>
-<li><a class="" href="gis.html"><span class="header-section-number">26</span> GIS basics</a></li>
+<li><a class="" href="descriptive_tables.html"><span class="header-section-number">17</span> Tableaux descriptifs</a></li>
+<li><a class="" href="stats_test.html"><span class="header-section-number">18</span> Tests statistiques simples</a></li>
+<li><a class="" href="regression.html"><span class="header-section-number">19</span> Régression univariée et multivariable</a></li>
+<li><a class="" href="missing_data.html"><span class="header-section-number">20</span> Données manquantes</a></li>
+<li><a class="" href="standardisation.html"><span class="header-section-number">21</span> Taux standardisés</a></li>
+<li><a class="" href="moving_average.html"><span class="header-section-number">22</span> Moyennes mobiles</a></li>
+<li><a class="" href="time_series.html"><span class="header-section-number">23</span> Série temporelle et détection des épidémies</a></li>
+<li><a class="" href="contact_tracing.html"><span class="header-section-number">24</span> Suivi des contacts</a></li>
+<li><a class="active" href="survey_analysis.html"><span class="header-section-number">25</span> Analyse d’enquête</a></li>
+<li><a class="" href="survival_analysis.html"><span class="header-section-number">26</span> Analyse de survie</a></li>
+<li><a class="" href="gis.html"><span class="header-section-number">27</span> GIS basics</a></li>
 <li class="book-part">Data Visualization</li>
-<li><a class="" href="tables_presentation.html"><span class="header-section-number">27</span> Présenter avec des tables</a></li>
-<li><a class="" href="ggplot_basics.html"><span class="header-section-number">28</span> Les bases de ggplot</a></li>
-<li><a class="" href="plot_continuous.html"><span class="header-section-number">29</span> Traçage de données continues</a></li>
-<li><a class="" href="tracer-des-donn%C3%A9es-cat%C3%A9gorielles.html"><span class="header-section-number">30</span> Tracer des données catégorielles</a></li>
-<li><a class="" href="ggplot_tips.html"><span class="header-section-number">31</span> Trucs et Astuces avec ggplot</a></li>
-<li><a class="" href="epicurves.html"><span class="header-section-number">32</span> Courbes épidémiques</a></li>
-<li><a class="" href="age_pyramid.html"><span class="header-section-number">33</span> Pyramides démographiques et échelles de Likert</a></li>
-<li><a class="" href="heatmaps.html"><span class="header-section-number">34</span> Graphiques thermiques</a></li>
-<li><a class="" href="diagrams.html"><span class="header-section-number">35</span> Diagrammes et schémas</a></li>
-<li><a class="" href="combination_analysis.html"><span class="header-section-number">36</span> Analyse des combinaisons</a></li>
-<li><a class="" href="transmission_chains.html"><span class="header-section-number">37</span> Chaînes de transmission</a></li>
-<li><a class="" href="phylogenetic_trees.html"><span class="header-section-number">38</span> Les arbres phylogénétiques</a></li>
-<li><a class="" href="interactive_plots.html"><span class="header-section-number">39</span> Graphiques interactifs</a></li>
+<li><a class="" href="tables_presentation.html"><span class="header-section-number">28</span> Présenter avec des tables</a></li>
+<li><a class="" href="ggplot_basics.html"><span class="header-section-number">29</span> Les bases de ggplot</a></li>
+<li><a class="" href="ggplot_tips.html"><span class="header-section-number">30</span> Trucs et Astuces avec ggplot</a></li>
+<li><a class="" href="epicurves.html"><span class="header-section-number">31</span> Courbes épidémiques</a></li>
+<li><a class="" href="age_pyramid.html"><span class="header-section-number">32</span> Pyramides démographiques et échelles de Likert</a></li>
+<li><a class="" href="heatmaps.html"><span class="header-section-number">33</span> Graphiques thermiques</a></li>
+<li><a class="" href="diagrams.html"><span class="header-section-number">34</span> Diagrammes et schémas</a></li>
+<li><a class="" href="combination_analysis.html"><span class="header-section-number">35</span> Analyse des combinaisons</a></li>
+<li><a class="" href="transmission_chains.html"><span class="header-section-number">36</span> Chaînes de transmission</a></li>
+<li><a class="" href="phylogenetic_trees.html"><span class="header-section-number">37</span> Les arbres phylogénétiques</a></li>
+<li><a class="" href="interactive_plots.html"><span class="header-section-number">38</span> Graphiques interactifs</a></li>
 <li class="book-part">Reports and dashboards</li>
-<li><a class="" href="rmarkdown.html"><span class="header-section-number">40</span> Production de rapports avec R Markdown</a></li>
-<li><a class="" href="reportfactory.html"><span class="header-section-number">41</span> Organisation des rapports de routine</a></li>
-<li><a class="" href="dashboards.html"><span class="header-section-number">42</span> Tableaux de bord avec R Markdown</a></li>
-<li><a class="" href="shiny.html"><span class="header-section-number">43</span> Tableaux de bord avec Shiny</a></li>
+<li><a class="" href="rmarkdown.html"><span class="header-section-number">39</span> Production de rapports avec R Markdown</a></li>
+<li><a class="" href="reportfactory.html"><span class="header-section-number">40</span> Organisation des rapports de routine</a></li>
+<li><a class="" href="dashboards.html"><span class="header-section-number">41</span> Tableaux de bord avec R Markdown</a></li>
+<li><a class="" href="shiny.html"><span class="header-section-number">42</span> Tableaux de bord avec Shiny</a></li>
 <li class="book-part">Miscellaneous</li>
-<li><a class="" href="writing_functions.html"><span class="header-section-number">44</span> Fonctions d’écriture</a></li>
-<li><a class="" href="directories.html"><span class="header-section-number">45</span> Interactions avec les répertoires</a></li>
-<li><a class="" href="collaboration.html"><span class="header-section-number">46</span> Contrôle de version et collaboration avec Git et Github</a></li>
-<li><a class="" href="errors.html"><span class="header-section-number">47</span> Erreurs fréquentes</a></li>
-<li><a class="" href="help.html"><span class="header-section-number">48</span> Obtenir de l’aide</a></li>
-<li><a class="" href="relational-databases.html"><span class="header-section-number">49</span> Relational databases</a></li>
-<li><a class="" href="network_drives.html"><span class="header-section-number">50</span> R sur les lecteurs réseau</a></li>
-<li><a class="" href="data_table.html"><span class="header-section-number">51</span> Tableau de données</a></li>
-<li><a class="" href="advanced-rstudio.html"><span class="header-section-number">52</span> Advanced RStudio</a></li>
+<li><a class="" href="writing_functions.html"><span class="header-section-number">43</span> Fonctions d’écriture</a></li>
+<li><a class="" href="directories.html"><span class="header-section-number">44</span> Interactions avec les répertoires</a></li>
+<li><a class="" href="collaboration.html"><span class="header-section-number">45</span> Contrôle de version et collaboration avec Git et Github</a></li>
+<li><a class="" href="errors.html"><span class="header-section-number">46</span> Erreurs fréquentes</a></li>
+<li><a class="" href="help.html"><span class="header-section-number">47</span> Obtenir de l’aide</a></li>
+<li><a class="" href="network_drives.html"><span class="header-section-number">48</span> R sur les lecteurs réseau</a></li>
+<li><a class="" href="data_table.html"><span class="header-section-number">49</span> Tableau de données</a></li>
 </ul>
 
         <div class="book-extra">
@@ -126,14 +123,14 @@
         </div>
       </nav>
 </div>
-  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="survey_analysis" class="section level1" number="24">
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="survey_analysis" class="section level1" number="25">
 <h1>
-<span class="header-section-number">24</span> Analyse d’enquête<a class="anchor" aria-label="anchor" href="#survey_analysis"><i class="fas fa-link"></i></a>
+<span class="header-section-number">25</span> Analyse d’enquête<a class="anchor" aria-label="anchor" href="#survey_analysis"><i class="fas fa-link"></i></a>
 </h1>
 <!-- ======================================================= -->
-<div id="aperçu-2" class="section level2" number="24.1">
+<div id="aperçu-2" class="section level2" number="25.1">
 <h2>
-<span class="header-section-number">24.1</span> Aperçu<a class="anchor" aria-label="anchor" href="#aper%C3%A7u-2"><i class="fas fa-link"></i></a>
+<span class="header-section-number">25.1</span> Aperçu<a class="anchor" aria-label="anchor" href="#aper%C3%A7u-2"><i class="fas fa-link"></i></a>
 </h2>
 <p>Cette page démontre l’utilisation de plusieurs packages pour l’analyse d’enquêtes.</p>
 <p>La plupart des paquets R d’enquête reposent sur le paquet <a href="https://cran.r-project.org/web/packages/survey/index.html"><strong>survey</strong></a> pour effectuer des analyses pondérées.
@@ -151,16 +148,16 @@ Nous utiliserons <strong>survey</strong> ainsi que <a href="https://cran.r-proje
 </ol>
 <!-- ======================================================= -->
 </div>
-<div id="préparation-9" class="section level2" number="24.2">
+<div id="préparation-9" class="section level2" number="25.2">
 <h2>
-<span class="header-section-number">24.2</span> Préparation<a class="anchor" aria-label="anchor" href="#pr%C3%A9paration-9"><i class="fas fa-link"></i></a>
+<span class="header-section-number">25.2</span> Préparation<a class="anchor" aria-label="anchor" href="#pr%C3%A9paration-9"><i class="fas fa-link"></i></a>
 </h2>
 <div id="paquets-1" class="section level3 unnumbered">
 <h3>Paquets<a class="anchor" aria-label="anchor" href="#paquets-1"><i class="fas fa-link"></i></a>
 </h3>
 <p>Ce morceau de code montre le chargement des paquets nécessaires aux analyses. Dans ce manuel, nous mettons l’accent sur <code><a href="https://rdrr.io/pkg/pacman/man/p_load.html">p_load()</a></code> de <strong>pacman</strong>, qui installe le paquet si nécessaire <em>et</em> le charge pour l’utiliser. Vous pouvez également charger des paquets avec <code><a href="https://rdrr.io/r/base/library.html">library()</a></code> depuis <strong>base</strong> R. Voir la page sur [R basics] pour plus d’informations sur les paquets R.<br>
 Ici, nous démontrons également l’utilisation de la fonction <code><a href="https://rdrr.io/pkg/pacman/man/p_load_gh.html">p_load_gh()</a></code> de <strong>pacman</strong> pour installer et charger un paquet de github qui n’a pas encore été publié sur CRAN.</p>
-<div class="sourceCode" id="cb1125"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb1233"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co">## charger des paquets depuis CRAN</span></span>
 <span><span class="fu">pacman</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/pacman/man/p_load.html">p_load</a></span><span class="op">(</span><span class="va">rio</span>, <span class="co"># Importation du fichier</span></span>
 <span>               <span class="va">here</span>, <span class="co"># Localisation de fichiers</span></span>
@@ -195,26 +192,26 @@ Tout ceci est basé sur les données collectées à l’aide de <a href="https:/
 <p><span style="color : darkgreen ;"><strong><em>TIP:</em></strong> Le dictionnaire de données de Kobo comporte des noms de variables dans la colonne “nom” de la feuille d’enquête. Les valeurs possibles pour chaque variable sont spécifiées dans la feuille de choix. Dans la feuille de choix, “name” a la valeur abrégée et les colonnes “label::english” et “label::french” ont les versions longues appropriées. L’utilisation de la fonction <code><a href="https://r4epi.github.io/epidict/reference/msf_dict.html">msf_dict_survey()</a></code> du paquet <strong>epidict</strong> pour importer un fichier Excel du dictionnaire Kobo sera reformaté pour vous afin de pouvoir l’utiliser facilement pour le recodage. </span></p>
 <p><span style="color : orange ;"><strong><em>CAUTION:</em></strong> Le jeu de données d’exemple n’est pas le même comme un export (comme dans Kobo vous exportez différents niveaux de questionnaire individuellement).
 - voir la section sur les données d’enquête ci-dessous pour fusionner les différents niveaux.</span></p>
-<p>Le jeu de données est importé à l’aide de la fonction <code>import()</code> du paquet <strong>rio</strong>. Consultez la page <a href="import_export.html#import_export">Importation et exportation</a> pour connaître les différentes façons d’importer des données.</p>
-<div class="sourceCode" id="cb1126"><pre class="downlit sourceCode r">
+<p>Le jeu de données est importé à l’aide de la fonction <code><a href="https://rdrr.io/pkg/rio/man/import.html">import()</a></code> du paquet <strong>rio</strong>. Consultez la page <a href="import_export.html#import_export">Importation et exportation</a> pour connaître les différentes façons d’importer des données.</p>
+<div class="sourceCode" id="cb1234"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Importez les données d'enquête</span></span>
 <span><span class="va">survey_data</span> <span class="op">&lt;-</span> <span class="fu">rio</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/rio/man/import.html">import</a></span><span class="op">(</span><span class="st">"survey_data.xlsx"</span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># Importez le dictionnaire dans R</span></span>
 <span><span class="va">survey_dict</span> <span class="op">&lt;-</span> <span class="fu">rio</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/rio/man/import.html">import</a></span><span class="op">(</span><span class="st">"survey_dict.xlsx"</span><span class="op">)</span> </span></code></pre></div>
 <p>Les 10 premières lignes de l’enquête sont affichées ci-dessous.</p>
-<div class="datatables html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-f07c43cc77e5568a0cda" style="width:100%;height:auto;"></div>
-<script type="application/json" data-for="htmlwidget-f07c43cc77e5568a0cda">{"x":{"filter":"none","vertical":false,"data":[[null,null,null,null,null,null,null,null,null,null],[null,null,null,null,null,null,null,null,null,null],[null,null,null,null,null,null,null,null,null,null],[null,null,null,null,null,null,null,null,null,null],["2018-04-15T00:00:00Z","2018-03-04T00:00:00Z","2018-04-16T00:00:00Z","2018-01-23T00:00:00Z","2018-01-09T00:00:00Z","2018-03-07T00:00:00Z","2018-02-18T00:00:00Z","2018-04-12T00:00:00Z","2018-04-17T00:00:00Z","2018-01-05T00:00:00Z"],[null,null,null,null,null,null,null,null,null,null],["village_1","village_1","village_10","village_5","village_3","village_8","other","village_7","village_4","village_2"],[null,null,null,null,null,null,null,null,null,null],[1,1,10,5,3,8,11,7,4,2],[9,1,15,6,18,14,17,16,13,14],[null,null,null,null,null,null,null,null,null,null],[null,null,null,null,null,null,null,null,null,null],[null,null,null,null,null,null,null,null,null,null],["yes","no","no","yes","no","yes","no","yes","yes","yes"],[null,"no_benefit","neg_experience",null,"other",null,"no_benefit",null,null,null],[null,null,null,null,null,null,null,null,null,null],[6,null,null,8,null,5,null,6,5,5],["female",null,null,"female",null,"male",null,"male","male","female"],[26,null,null,3,null,22,null,33,96,18],[null,null,null,36,null,null,null,null,null,null],[null,null,null,null,null,null,null,null,null,null],["no",null,null,"no",null,"yes",null,"yes","yes","yes"],["yes",null,null,null,null,"yes",null,"no","no","no"],["secondary",null,null,null,null,"secondary",null,null,null,null],["no",null,null,"no",null,"yes",null,"no","yes","yes"],[null,null,null,null,null,"yes",null,null,"no","no"],["yes",null,null,null,null,null,null,null,null,"yes"],["no",null,null,"no",null,"yes",null,"yes","no","yes"],["yes",null,null,"no",null,"no",null,"no","yes","yes"],["no",null,null,null,null,null,null,null,"no","no"],[null,null,null,null,null,null,null,null,null,null],["yes",null,null,"no",null,"no",null,"yes","no","no"],["no",null,null,null,null,null,null,"no",null,null],[null,null,null,null,null,null,null,null,null,null],[null,null,null,null,null,null,null,null,null,null],[null,null,null,null,null,null,null,null,null,null],[null,null,null,null,null,null,null,null,null,null],["no","no","no","no","no","no","no","no","yes","no"],[null,null,null,null,null,null,null,null,"no",null],[null,null,null,null,null,null,null,null,null,null],[null,null,null,null,null,null,null,null,"dont_know",null],[null,null,null,null,null,null,null,null,null,null],["yes",null,null,"yes",null,"no",null,"yes","no","no"],[null,null,null,null,null,null,null,null,null,null],[null,null,null,null,null,null,null,null,null,null],["sexual",null,null,"sexual",null,null,null,"shot",null,null],["0",null,null,"0",null,null,null,"0",null,null],["1",null,null,"1",null,null,null,"0",null,null],["0",null,null,"0",null,null,null,"1",null,null],["0",null,null,"0",null,null,null,"0",null,null],["0",null,null,"0",null,null,null,"0",null,null],["0",null,null,"0",null,null,null,"0",null,null],[9,1,183,83,58,146,205,130,72,33],[1,1,1,1,1,1,1,1,1,1],["9_1","1_1","183_1","83_1","58_1","146_1","205_1","130_1","72_1","33_1"]],"container":"<table class=\"white-space : nowrap\">\n  <thead>\n    <tr>\n      <th>start<\/th>\n      <th>end<\/th>\n      <th>today<\/th>\n      <th>deviceid<\/th>\n      <th>date<\/th>\n      <th>team_number<\/th>\n      <th>village_name<\/th>\n      <th>village_other<\/th>\n      <th>cluster_number<\/th>\n      <th>household_number<\/th>\n      <th>households_building<\/th>\n      <th>random_hh<\/th>\n      <th>random_hh_note<\/th>\n      <th>consent<\/th>\n      <th>no_consent_reason<\/th>\n      <th>no_consent_other<\/th>\n      <th>member_number<\/th>\n      <th>sex<\/th>\n      <th>age_years<\/th>\n      <th>age_months_calc<\/th>\n      <th>age_months<\/th>\n      <th>bednet<\/th>\n      <th>read_write<\/th>\n      <th>education_level<\/th>\n      <th>measles_vaccination<\/th>\n      <th>vaccination_card<\/th>\n      <th>pregnant<\/th>\n      <th>malaria_treatment<\/th>\n      <th>arrived<\/th>\n      <th>remember_arrival<\/th>\n      <th>arrived_date<\/th>\n      <th>left<\/th>\n      <th>remember_departure<\/th>\n      <th>left_date<\/th>\n      <th>born<\/th>\n      <th>remember_dob<\/th>\n      <th>birthday_date<\/th>\n      <th>died<\/th>\n      <th>remember_death<\/th>\n      <th>death_date<\/th>\n      <th>cause<\/th>\n      <th>cause_other<\/th>\n      <th>violent_episode<\/th>\n      <th>violent_episodes_number<\/th>\n      <th>violence_nature_other<\/th>\n      <th>violence_nature<\/th>\n      <th>violence_nature/beaten<\/th>\n      <th>violence_nature/sexual<\/th>\n      <th>violence_nature/shot<\/th>\n      <th>violence_nature/detained_kidnapped<\/th>\n      <th>violence_nature/other<\/th>\n      <th>violence_nature/no_response<\/th>\n      <th>index<\/th>\n      <th>index_y<\/th>\n      <th>uid<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"pageLength":5,"scrollX":true,"columnDefs":[{"className":"dt-right","targets":[8,9,16,18,19,20,52,53]}],"order":[],"autoWidth":false,"orderClasses":false,"lengthMenu":[5,10,25,50,100]},"selection":{"mode":"multiple","selected":null,"target":"row","selectable":null}},"evals":[],"jsHooks":[]}</script><p>Nous voulons également importer les données sur la population d’échantillonnage afin de pouvoir produire des pondérations appropriées. Ces données peuvent se présenter sous différents formats. Cependant, nous vous suggérons de les présenter comme suit (vous pouvez simplement les saisir dans un excel).</p>
-<div class="sourceCode" id="cb1127"><pre class="downlit sourceCode r">
+<div class="datatables html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-70b74c1506832bfbf3a0" style="width:100%;height:auto;"></div>
+<script type="application/json" data-for="htmlwidget-70b74c1506832bfbf3a0">{"x":{"filter":"none","vertical":false,"data":[[null,null,null,null,null,null,null,null,null,null],[null,null,null,null,null,null,null,null,null,null],[null,null,null,null,null,null,null,null,null,null],[null,null,null,null,null,null,null,null,null,null],["2018-04-15T00:00:00Z","2018-03-04T00:00:00Z","2018-04-16T00:00:00Z","2018-01-23T00:00:00Z","2018-01-09T00:00:00Z","2018-03-07T00:00:00Z","2018-02-18T00:00:00Z","2018-04-12T00:00:00Z","2018-04-17T00:00:00Z","2018-01-05T00:00:00Z"],[null,null,null,null,null,null,null,null,null,null],["village_1","village_1","village_10","village_5","village_3","village_8","other","village_7","village_4","village_2"],[null,null,null,null,null,null,null,null,null,null],[1,1,10,5,3,8,11,7,4,2],[9,1,15,6,18,14,17,16,13,14],[null,null,null,null,null,null,null,null,null,null],[null,null,null,null,null,null,null,null,null,null],[null,null,null,null,null,null,null,null,null,null],["yes","no","no","yes","no","yes","no","yes","yes","yes"],[null,"no_benefit","neg_experience",null,"other",null,"no_benefit",null,null,null],[null,null,null,null,null,null,null,null,null,null],[6,null,null,8,null,5,null,6,5,5],["female",null,null,"female",null,"male",null,"male","male","female"],[26,null,null,3,null,22,null,33,96,18],[null,null,null,36,null,null,null,null,null,null],[null,null,null,null,null,null,null,null,null,null],["no",null,null,"no",null,"yes",null,"yes","yes","yes"],["yes",null,null,null,null,"yes",null,"no","no","no"],["secondary",null,null,null,null,"secondary",null,null,null,null],["no",null,null,"no",null,"yes",null,"no","yes","yes"],[null,null,null,null,null,"yes",null,null,"no","no"],["yes",null,null,null,null,null,null,null,null,"yes"],["no",null,null,"no",null,"yes",null,"yes","no","yes"],["yes",null,null,"no",null,"no",null,"no","yes","yes"],["no",null,null,null,null,null,null,null,"no","no"],[null,null,null,null,null,null,null,null,null,null],["yes",null,null,"no",null,"no",null,"yes","no","no"],["no",null,null,null,null,null,null,"no",null,null],[null,null,null,null,null,null,null,null,null,null],[null,null,null,null,null,null,null,null,null,null],[null,null,null,null,null,null,null,null,null,null],[null,null,null,null,null,null,null,null,null,null],["no","no","no","no","no","no","no","no","yes","no"],[null,null,null,null,null,null,null,null,"no",null],[null,null,null,null,null,null,null,null,null,null],[null,null,null,null,null,null,null,null,"dont_know",null],[null,null,null,null,null,null,null,null,null,null],["yes",null,null,"yes",null,"no",null,"yes","no","no"],[null,null,null,null,null,null,null,null,null,null],[null,null,null,null,null,null,null,null,null,null],["sexual",null,null,"sexual",null,null,null,"shot",null,null],["0",null,null,"0",null,null,null,"0",null,null],["1",null,null,"1",null,null,null,"0",null,null],["0",null,null,"0",null,null,null,"1",null,null],["0",null,null,"0",null,null,null,"0",null,null],["0",null,null,"0",null,null,null,"0",null,null],["0",null,null,"0",null,null,null,"0",null,null],[9,1,183,83,58,146,205,130,72,33],[1,1,1,1,1,1,1,1,1,1],["9_1","1_1","183_1","83_1","58_1","146_1","205_1","130_1","72_1","33_1"]],"container":"<table class=\"white-space : nowrap\">\n  <thead>\n    <tr>\n      <th>start<\/th>\n      <th>end<\/th>\n      <th>today<\/th>\n      <th>deviceid<\/th>\n      <th>date<\/th>\n      <th>team_number<\/th>\n      <th>village_name<\/th>\n      <th>village_other<\/th>\n      <th>cluster_number<\/th>\n      <th>household_number<\/th>\n      <th>households_building<\/th>\n      <th>random_hh<\/th>\n      <th>random_hh_note<\/th>\n      <th>consent<\/th>\n      <th>no_consent_reason<\/th>\n      <th>no_consent_other<\/th>\n      <th>member_number<\/th>\n      <th>sex<\/th>\n      <th>age_years<\/th>\n      <th>age_months_calc<\/th>\n      <th>age_months<\/th>\n      <th>bednet<\/th>\n      <th>read_write<\/th>\n      <th>education_level<\/th>\n      <th>measles_vaccination<\/th>\n      <th>vaccination_card<\/th>\n      <th>pregnant<\/th>\n      <th>malaria_treatment<\/th>\n      <th>arrived<\/th>\n      <th>remember_arrival<\/th>\n      <th>arrived_date<\/th>\n      <th>left<\/th>\n      <th>remember_departure<\/th>\n      <th>left_date<\/th>\n      <th>born<\/th>\n      <th>remember_dob<\/th>\n      <th>birthday_date<\/th>\n      <th>died<\/th>\n      <th>remember_death<\/th>\n      <th>death_date<\/th>\n      <th>cause<\/th>\n      <th>cause_other<\/th>\n      <th>violent_episode<\/th>\n      <th>violent_episodes_number<\/th>\n      <th>violence_nature_other<\/th>\n      <th>violence_nature<\/th>\n      <th>violence_nature/beaten<\/th>\n      <th>violence_nature/sexual<\/th>\n      <th>violence_nature/shot<\/th>\n      <th>violence_nature/detained_kidnapped<\/th>\n      <th>violence_nature/other<\/th>\n      <th>violence_nature/no_response<\/th>\n      <th>index<\/th>\n      <th>index_y<\/th>\n      <th>uid<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"pageLength":5,"scrollX":true,"columnDefs":[{"className":"dt-right","targets":[8,9,16,18,19,20,52,53]}],"order":[],"autoWidth":false,"orderClasses":false,"lengthMenu":[5,10,25,50,100]},"selection":{"mode":"multiple","selected":null,"target":"row","selectable":null}},"evals":[],"jsHooks":[]}</script><p>Nous voulons également importer les données sur la population d’échantillonnage afin de pouvoir produire des pondérations appropriées. Ces données peuvent se présenter sous différents formats. Cependant, nous vous suggérons de les présenter comme suit (vous pouvez simplement les saisir dans un excel).</p>
+<div class="sourceCode" id="cb1235"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Importez les données de la population</span></span>
 <span><span class="va">population</span> <span class="op">&lt;-</span> <span class="fu">rio</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/rio/man/import.html">import</a></span><span class="op">(</span><span class="st">"population.xlsx"</span><span class="op">)</span></span></code></pre></div>
 <p>Les 10 premières lignes de l’enquête sont affichées ci-dessous.</p>
-<div class="datatables html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-6c3939bc8225c5623e67" style="width:100%;height:auto;"></div>
-<script type="application/json" data-for="htmlwidget-6c3939bc8225c5623e67">{"x":{"filter":"none","vertical":false,"data":[["0-2","3-14","15-29","30-44","45+","0-2","3-14","15-29","30-44","45+"],["male","male","male","male","male","female","female","female","female","female"],[0.034,0.1811,0.138,0.0808,0.0661,0.034,0.1811,0.138,0.0808,0.0661],[340,1811,1380,808,661,340,1811,1380,808,661],["district_a","district_a","district_a","district_a","district_a","district_a","district_a","district_a","district_a","district_a"]],"container":"<table class=\"white-space : nowrap\">\n  <thead>\n    <tr>\n      <th>age_group<\/th>\n      <th>sex<\/th>\n      <th>proportions<\/th>\n      <th>population<\/th>\n      <th>health_district<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"pageLength":5,"scrollX":true,"columnDefs":[{"className":"dt-right","targets":[2,3]}],"order":[],"autoWidth":false,"orderClasses":false,"lengthMenu":[5,10,25,50,100]},"selection":{"mode":"multiple","selected":null,"target":"row","selectable":null}},"evals":[],"jsHooks":[]}</script><p>Pour les enquêtes en grappes, vous pouvez souhaiter ajouter des poids d’enquête au niveau de la grappe. Vous pouvez lire ces données comme ci-dessus.
+<div class="datatables html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-71c7921d54047e27c311" style="width:100%;height:auto;"></div>
+<script type="application/json" data-for="htmlwidget-71c7921d54047e27c311">{"x":{"filter":"none","vertical":false,"data":[["0-2","3-14","15-29","30-44","45+","0-2","3-14","15-29","30-44","45+"],["male","male","male","male","male","female","female","female","female","female"],[0.034,0.1811,0.138,0.0808,0.0661,0.034,0.1811,0.138,0.0808,0.0661],[340,1811,1380,808,661,340,1811,1380,808,661],["district_a","district_a","district_a","district_a","district_a","district_a","district_a","district_a","district_a","district_a"]],"container":"<table class=\"white-space : nowrap\">\n  <thead>\n    <tr>\n      <th>age_group<\/th>\n      <th>sex<\/th>\n      <th>proportions<\/th>\n      <th>population<\/th>\n      <th>health_district<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"pageLength":5,"scrollX":true,"columnDefs":[{"className":"dt-right","targets":[2,3]}],"order":[],"autoWidth":false,"orderClasses":false,"lengthMenu":[5,10,25,50,100]},"selection":{"mode":"multiple","selected":null,"target":"row","selectable":null}},"evals":[],"jsHooks":[]}</script><p>Pour les enquêtes en grappes, vous pouvez souhaiter ajouter des poids d’enquête au niveau de la grappe. Vous pouvez lire ces données comme ci-dessus.
 Alternativement, s’il n’y a que quelques comptages, ils peuvent être entrés comme suit dans un tibble. Dans tous les cas, vous aurez besoin d’avoir une colonne avec un identifiant de grappe qui correspondant à vos données d’enquête, et une autre colonne avec le nombre de ménages dans chaque grappe.</p>
-<div class="sourceCode" id="cb1128"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb1236"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co">## définir le nombre de ménages dans chaque cluster</span></span>
-<span><span class="va">cluster_counts</span> <span class="op">&lt;-</span> <span class="fu">tibble</span><span class="op">(</span>cluster <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"village_1"</span>, <span class="st">"village_2"</span>, <span class="st">"village_3"</span>, <span class="st">"village_4"</span>, </span>
+<span><span class="va">cluster_counts</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html">tibble</a></span><span class="op">(</span>cluster <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"village_1"</span>, <span class="st">"village_2"</span>, <span class="st">"village_3"</span>, <span class="st">"village_4"</span>, </span>
 <span>                                     <span class="st">"village_5"</span>, <span class="st">"village_6"</span>, <span class="st">"village_7"</span>, <span class="st">"village_8"</span>,</span>
 <span>                                     <span class="st">"village_9"</span>, <span class="st">"village_10"</span><span class="op">)</span>, </span>
 <span>                         households <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">700</span>, <span class="fl">400</span>, <span class="fl">600</span>, <span class="fl">500</span>, <span class="fl">300</span>, </span>
@@ -226,58 +223,58 @@ Alternativement, s’il n’y a que quelques comptages, ils peuvent être entré
 <p>L’exemple ci-dessous permet de s’assurer que la colonne date est au bon format. Il existe plusieurs autres façons de procéder (voir la page <a href="working_dates.html#working_dates">Travailler avec des dates</a> pour plus de détails), mais l’utilisation du dictionnaire pour définir les dates est rapide et facile.</p>
 <p>Nous créons également une variable de groupe d’âge en utilisant la fonction <code><a href="https://r4epi.github.io/epikit/reference/age_categories.html">age_categories()</a></code> de <strong>epikit</strong> - voir la section <a href="cleaning_data.html#cleaning_data">Nettoyage de données et fonctions essentielles</a> pour plus de détails. De plus, nous créons une variable de caractère définissant dans quel district se trouvent les différents clusters.</p>
 <p>Enfin, nous recodons toutes les variables oui/non en variables VRAI/FAUX, sinon elles ne peuvent pas être utilisées par les fonctions de proportion <strong>survey</strong>.</p>
-<div class="sourceCode" id="cb1129"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb1237"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co">## sélectionne les noms de variables de date dans le dictionnaire </span></span>
-<span><span class="va">DATEVARS</span> <span class="op">&lt;-</span> <span class="va">survey_dict</span> <span class="op">%&gt;%</span> </span>
-<span>  <span class="fu"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span><span class="op">(</span><span class="va">type</span> <span class="op">==</span> <span class="st">"date"</span><span class="op">)</span> <span class="op">%&gt;%</span> </span>
-<span>  <span class="fu"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span><span class="op">(</span><span class="va">name</span> <span class="op"><a href="https://rdrr.io/r/base/match.html">%in%</a></span> <span class="fu"><a href="https://rdrr.io/r/base/names.html">names</a></span><span class="op">(</span><span class="va">survey_data</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span> </span>
+<span><span class="va">DATEVARS</span> <span class="op">&lt;-</span> <span class="va">survey_dict</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">type</span> <span class="op">==</span> <span class="st">"date"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">name</span> <span class="op"><a href="https://rdrr.io/r/base/match.html">%in%</a></span> <span class="fu"><a href="https://rdrr.io/r/base/names.html">names</a></span><span class="op">(</span><span class="va">survey_data</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
 <span>  <span class="co">## filtre pour correspondre aux noms des colonnes de vos données</span></span>
-<span>  <span class="fu">pull</span><span class="op">(</span><span class="va">name</span><span class="op">)</span> <span class="co"># sélectionne les variables de date</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/pull.html">pull</a></span><span class="op">(</span><span class="va">name</span><span class="op">)</span> <span class="co"># sélectionne les variables de date</span></span>
 <span>  </span>
 <span><span class="co">## changer en dates </span></span>
-<span><span class="va">survey_data</span> <span class="op">&lt;-</span> <span class="va">survey_data</span> <span class="op">%&gt;%</span></span>
-<span>  <span class="fu">mutate</span><span class="op">(</span><span class="fu">across</span><span class="op">(</span><span class="fu">all_of</span><span class="op">(</span><span class="va">DATEVARS</span><span class="op">)</span>, <span class="va">as.Date</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="va">survey_data</span> <span class="op">&lt;-</span> <span class="va">survey_data</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/across.html">across</a></span><span class="op">(</span><span class="fu"><a href="https://tidyselect.r-lib.org/reference/all_of.html">all_of</a></span><span class="op">(</span><span class="va">DATEVARS</span><span class="op">)</span>, <span class="va">as.Date</span><span class="op">)</span><span class="op">)</span></span>
 <span></span>
 <span></span>
 <span><span class="co">## ajouter ceux dont l'âge est uniquement en mois à la variable année (diviser par douze).</span></span>
-<span><span class="va">survey_data</span> <span class="op">&lt;-</span> <span class="va">survey_data</span> <span class="op">%&gt;%</span> </span>
-<span>  <span class="fu">mutate</span><span class="op">(</span>age_years <span class="op">=</span> <span class="fu">if_else</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html">is.na</a></span><span class="op">(</span><span class="va">age_years</span><span class="op">)</span>, </span>
+<span><span class="va">survey_data</span> <span class="op">&lt;-</span> <span class="va">survey_data</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>age_years <span class="op">=</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/if_else.html">if_else</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html">is.na</a></span><span class="op">(</span><span class="va">age_years</span><span class="op">)</span>, </span>
 <span>                             <span class="va">age_months</span> <span class="op">/</span> <span class="fl">12</span>, </span>
 <span>                             <span class="va">age_years</span><span class="op">)</span><span class="op">)</span></span>
 <span></span>
 <span><span class="co">## définir la variable groupe d'âge</span></span>
-<span><span class="va">survey_data</span> <span class="op">&lt;-</span> <span class="va">survey_data</span> <span class="op">%&gt;%</span> </span>
-<span>     <span class="fu">mutate</span><span class="op">(</span>age_group <span class="op">=</span> <span class="fu"><a href="https://r4epi.github.io/epikit/reference/age_categories.html">age_categories</a></span><span class="op">(</span><span class="va">age_years</span>, </span>
+<span><span class="va">survey_data</span> <span class="op">&lt;-</span> <span class="va">survey_data</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
+<span>     <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>age_group <span class="op">=</span> <span class="fu"><a href="https://r4epi.github.io/epikit/reference/age_categories.html">age_categories</a></span><span class="op">(</span><span class="va">age_years</span>, </span>
 <span>                                    breakers <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">3</span>, <span class="fl">15</span>, <span class="fl">30</span>, <span class="fl">45</span><span class="op">)</span></span>
 <span>                                    <span class="op">)</span><span class="op">)</span></span>
 <span></span>
 <span></span>
 <span><span class="co">## créer une variable caractère basée sur les groupes d'une autre variable </span></span>
-<span><span class="va">survey_data</span> <span class="op">&lt;-</span> <span class="va">survey_data</span> <span class="op">%&gt;%</span> </span>
-<span>  <span class="fu">mutate</span><span class="op">(</span>health_district <span class="op">=</span> <span class="fu">case_when</span><span class="op">(</span></span>
+<span><span class="va">survey_data</span> <span class="op">&lt;-</span> <span class="va">survey_data</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>health_district <span class="op">=</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/case_when.html">case_when</a></span><span class="op">(</span></span>
 <span>    <span class="va">cluster_number</span> <span class="op"><a href="https://rdrr.io/r/base/match.html">%in%</a></span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">5</span><span class="op">)</span> <span class="op">~</span> <span class="st">"district_a"</span>, </span>
 <span>    <span class="cn">TRUE</span> <span class="op">~</span> <span class="st">"district_b"</span></span>
 <span>  <span class="op">)</span><span class="op">)</span></span>
 <span></span>
 <span></span>
 <span><span class="co">## sélectionner les noms de variables oui/non dans le dictionnaire </span></span>
-<span><span class="va">YNVARS</span> <span class="op">&lt;-</span> <span class="va">survey_dict</span> <span class="op">%&gt;%</span> </span>
-<span>  <span class="fu"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span><span class="op">(</span><span class="va">type</span> <span class="op">==</span> <span class="st">"yn"</span><span class="op">)</span> <span class="op">%&gt;%</span> </span>
-<span>  <span class="fu"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span><span class="op">(</span><span class="va">name</span> <span class="op"><a href="https://rdrr.io/r/base/match.html">%in%</a></span> <span class="fu"><a href="https://rdrr.io/r/base/names.html">names</a></span><span class="op">(</span><span class="va">survey_data</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span> </span>
+<span><span class="va">YNVARS</span> <span class="op">&lt;-</span> <span class="va">survey_dict</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">type</span> <span class="op">==</span> <span class="st">"yn"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">name</span> <span class="op"><a href="https://rdrr.io/r/base/match.html">%in%</a></span> <span class="fu"><a href="https://rdrr.io/r/base/names.html">names</a></span><span class="op">(</span><span class="va">survey_data</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
 <span>  <span class="co">## filtre pour correspondre aux noms des colonnes de vos données</span></span>
-<span>  <span class="fu">pull</span><span class="op">(</span><span class="va">name</span><span class="op">)</span> <span class="co"># select yn vars</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/pull.html">pull</a></span><span class="op">(</span><span class="va">name</span><span class="op">)</span> <span class="co"># select yn vars</span></span>
 <span>  </span>
 <span><span class="co">## changer en dates </span></span>
-<span><span class="va">survey_data</span> <span class="op">&lt;-</span> <span class="va">survey_data</span> <span class="op">%&gt;%</span></span>
-<span>  <span class="fu">mutate</span><span class="op">(</span><span class="fu">across</span><span class="op">(</span><span class="fu">all_of</span><span class="op">(</span><span class="va">YNVARS</span><span class="op">)</span>, </span>
+<span><span class="va">survey_data</span> <span class="op">&lt;-</span> <span class="va">survey_data</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/across.html">across</a></span><span class="op">(</span><span class="fu"><a href="https://tidyselect.r-lib.org/reference/all_of.html">all_of</a></span><span class="op">(</span><span class="va">YNVARS</span><span class="op">)</span>, </span>
 <span>                <span class="va">str_detect</span>, </span>
 <span>                pattern <span class="op">=</span> <span class="st">"yes"</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <!-- ======================================================= -->
 </div>
 </div>
-<div id="données-denquête" class="section level2" number="24.3">
+<div id="données-denquête" class="section level2" number="25.3">
 <h2>
-<span class="header-section-number">24.3</span> Données d’enquête<a class="anchor" aria-label="anchor" href="#donn%C3%A9es-denqu%C3%AAte"><i class="fas fa-link"></i></a>
+<span class="header-section-number">25.3</span> Données d’enquête<a class="anchor" aria-label="anchor" href="#donn%C3%A9es-denqu%C3%AAte"><i class="fas fa-link"></i></a>
 </h2>
 <p>Il existe de nombreux plans d’échantillonnage différents qui peuvent être utilisés pour les enquêtes. Ici, nous allons démontrer le code pour :
 - Stratifié
@@ -287,48 +284,48 @@ Alternativement, s’il n’y a que quelques comptages, ils peuvent être entré
 un niveau pour les ménages et un niveau pour les individus au sein de ces ménages.</p>
 <p>Ces deux niveaux sont liés par un identifiant unique. Pour un ensemble de données Kobo, cette variable est “_index” au niveau du ménage, qui correspond à “_parent_index” au niveau de l’individu.
 Cela créera de nouvelles lignes pour le ménage avec chaque individu correspondant, voir la section du manuel sur <a href="joining_matching.html#joining_matching">Joindre des données</a> pour plus de détails.</p>
-<div class="sourceCode" id="cb1130"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb1238"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co">## Joignez les données des individus et des ménages pour former un ensemble de données complet.</span></span>
-<span><span class="va">survey_data</span> <span class="op">&lt;-</span> <span class="fu">left_join</span><span class="op">(</span><span class="va">survey_data_hh</span>, </span>
+<span><span class="va">survey_data</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html">left_join</a></span><span class="op">(</span><span class="va">survey_data_hh</span>, </span>
 <span>                         <span class="va">survey_data_indiv</span>,</span>
 <span>                         by <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"_index"</span> <span class="op">=</span> <span class="st">"_parent_index"</span><span class="op">)</span><span class="op">)</span></span>
 <span></span>
 <span></span>
 <span><span class="co">## créer un identifiant unique en combinant les index des deux niveaux </span></span>
-<span><span class="va">survey_data</span> <span class="op">&lt;-</span> <span class="va">survey_data</span> <span class="op">%&gt;%</span> </span>
-<span>     <span class="fu">mutate</span><span class="op">(</span>uid <span class="op">=</span> <span class="fu">str_glue</span><span class="op">(</span><span class="st">"{index}_{index_y}"</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<span><span class="va">survey_data</span> <span class="op">&lt;-</span> <span class="va">survey_data</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
+<span>     <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>uid <span class="op">=</span> <span class="fu"><a href="https://stringr.tidyverse.org/reference/str_glue.html">str_glue</a></span><span class="op">(</span><span class="st">"{index}_{index_y}"</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <!-- ======================================================= -->
 </div>
-<div id="temps-dobservation" class="section level2" number="24.4">
+<div id="temps-dobservation" class="section level2" number="25.4">
 <h2>
-<span class="header-section-number">24.4</span> Temps d’observation<a class="anchor" aria-label="anchor" href="#temps-dobservation"><i class="fas fa-link"></i></a>
+<span class="header-section-number">25.4</span> Temps d’observation<a class="anchor" aria-label="anchor" href="#temps-dobservation"><i class="fas fa-link"></i></a>
 </h2>
 <p>Pour les enquêtes de mortalité, nous voulons maintenant savoir combien de temps chaque individu a été présent dans l’emplacement afin de pouvoir calculer un taux de mortalité approprié pour notre période d’intérêt. Ceci n’est pas pertinent pour toutes les enquêtes, mais particulièrement pour les enquêtes de mortalité, car elles sont fréquemment menées auprès de populations mobiles ou déplacées.</p>
 <p>Pour ce faire, nous définissons d’abord notre période d’intérêt, également connue sous le nom de période de rappel (c’est-à-dire le moment où l’enquête est menée). Nous pouvons ensuite utiliser cette période pour définir des dates inappropriées comme manquantes, c’est-à-dire que si des décès sont signalés en dehors de la période d’intérêt.</p>
-<div class="sourceCode" id="cb1131"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb1239"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co">## Définit le début/la fin de la période de rappel.</span></span>
 <span><span class="co">## peut être changé en variables de date provenant de l'ensemble de données </span></span>
 <span><span class="co">## (par exemple, date d'arrivée et date du questionnaire)</span></span>
-<span><span class="va">survey_data</span> <span class="op">&lt;-</span> <span class="va">survey_data</span> <span class="op">%&gt;%</span> </span>
-<span>  <span class="fu">mutate</span><span class="op">(</span>recall_start <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/as.Date.html">as.Date</a></span><span class="op">(</span><span class="st">"2018-01-01"</span><span class="op">)</span>, </span>
+<span><span class="va">survey_data</span> <span class="op">&lt;-</span> <span class="va">survey_data</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>recall_start <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/as.Date.html">as.Date</a></span><span class="op">(</span><span class="st">"2018-01-01"</span><span class="op">)</span>, </span>
 <span>         recall_end <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/as.Date.html">as.Date</a></span><span class="op">(</span><span class="st">"2018-05-01"</span><span class="op">)</span></span>
 <span>  <span class="op">)</span></span>
 <span></span>
 <span></span>
 <span><span class="co"># Définir les dates inappropriées à NA sur la base de règles </span></span>
 <span><span class="co">## par exemple, arrivées avant le début, départs après la fin.</span></span>
-<span><span class="va">survey_data</span> <span class="op">&lt;-</span> <span class="va">survey_data</span> <span class="op">%&gt;%</span></span>
-<span>      <span class="fu">mutate</span><span class="op">(</span></span>
-<span>           arrived_date <span class="op">=</span> <span class="fu">if_else</span><span class="op">(</span><span class="va">arrived_date</span> <span class="op">&lt;</span> <span class="va">recall_start</span>, </span>
+<span><span class="va">survey_data</span> <span class="op">&lt;-</span> <span class="va">survey_data</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>      <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span></span>
+<span>           arrived_date <span class="op">=</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/if_else.html">if_else</a></span><span class="op">(</span><span class="va">arrived_date</span> <span class="op">&lt;</span> <span class="va">recall_start</span>, </span>
 <span>                                 <span class="fu"><a href="https://rdrr.io/r/base/as.Date.html">as.Date</a></span><span class="op">(</span><span class="cn">NA</span><span class="op">)</span>,</span>
 <span>                                  <span class="va">arrived_date</span><span class="op">)</span>,</span>
-<span>           birthday_date <span class="op">=</span> <span class="fu">if_else</span><span class="op">(</span><span class="va">birthday_date</span> <span class="op">&lt;</span> <span class="va">recall_start</span>,</span>
+<span>           birthday_date <span class="op">=</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/if_else.html">if_else</a></span><span class="op">(</span><span class="va">birthday_date</span> <span class="op">&lt;</span> <span class="va">recall_start</span>,</span>
 <span>                                  <span class="fu"><a href="https://rdrr.io/r/base/as.Date.html">as.Date</a></span><span class="op">(</span><span class="cn">NA</span><span class="op">)</span>,</span>
 <span>                                  <span class="va">birthday_date</span><span class="op">)</span>,</span>
-<span>           left_date <span class="op">=</span> <span class="fu">if_else</span><span class="op">(</span><span class="va">left_date</span> <span class="op">&gt;</span> <span class="va">recall_end</span>,</span>
+<span>           left_date <span class="op">=</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/if_else.html">if_else</a></span><span class="op">(</span><span class="va">left_date</span> <span class="op">&gt;</span> <span class="va">recall_end</span>,</span>
 <span>                              <span class="fu"><a href="https://rdrr.io/r/base/as.Date.html">as.Date</a></span><span class="op">(</span><span class="cn">NA</span><span class="op">)</span>,</span>
 <span>                               <span class="va">left_date</span><span class="op">)</span>,</span>
-<span>           death_date <span class="op">=</span> <span class="fu">if_else</span><span class="op">(</span><span class="va">death_date</span> <span class="op">&gt;</span> <span class="va">recall_end</span>,</span>
+<span>           death_date <span class="op">=</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/if_else.html">if_else</a></span><span class="op">(</span><span class="va">death_date</span> <span class="op">&gt;</span> <span class="va">recall_end</span>,</span>
 <span>                               <span class="fu"><a href="https://rdrr.io/r/base/as.Date.html">as.Date</a></span><span class="op">(</span><span class="cn">NA</span><span class="op">)</span>,</span>
 <span>                               <span class="va">death_date</span><span class="op">)</span></span>
 <span>           <span class="op">)</span></span></code></pre></div>
@@ -337,9 +334,9 @@ Cela créera de nouvelles lignes pour le ménage avec chaque individu correspond
 L’événement d’arrivée approprié le plus tôt dans votre période de rappel. Soit le début de votre période de rappel (que vous définissez à l’avance), soit une date après le début de la période de rappel, le cas échéant (par exemple, les arrivées ou les naissances).</p>
 <p>Date de fin :
 Soit la fin de votre période de rappel, soit une date antérieure à la fin du rappel.</p>
-<div class="sourceCode" id="cb1132"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb1240"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co">## Créer de nouvelles variables pour les dates/causes de début et de fin.</span></span>
-<span><span class="va">survey_data</span> <span class="op">&lt;-</span> <span class="va">survey_data</span> <span class="op">%&gt;%</span> </span>
+<span><span class="va">survey_data</span> <span class="op">&lt;-</span> <span class="va">survey_data</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
 <span>     <span class="co">## choisir la date la plus ancienne saisie dans l'enquête.</span></span>
 <span>     <span class="co">## à partir des naissances, des arrivées dans les ménages et des arrivées dans les camps. </span></span>
 <span>     <span class="fu"><a href="https://r4epi.github.io/epikit/reference/find_date_cause.html">find_start_date</a></span><span class="op">(</span><span class="st">"birthday_date"</span>,</span>
@@ -348,7 +345,7 @@ Soit la fin de votre période de rappel, soit une date antérieure à la fin du 
 <span>                  period_end <span class="op">=</span> <span class="st">"recall_end"</span>,</span>
 <span>                  datecol <span class="op">=</span> <span class="st">"startdate"</span>,</span>
 <span>                  datereason <span class="op">=</span> <span class="st">"startcause"</span></span>
-<span>                 <span class="op">)</span> <span class="op">%&gt;%</span></span>
+<span>                 <span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>     <span class="co">## choisir la date la plus ancienne saisie dans l'enquête</span></span>
 <span>     <span class="co">## à partir des départs du camp, des décès et de la fin de l'étude</span></span>
 <span>     <span class="fu"><a href="https://r4epi.github.io/epikit/reference/find_date_cause.html">find_end_date</a></span><span class="op">(</span><span class="st">"left_date"</span>,</span>
@@ -361,44 +358,44 @@ Soit la fin de votre période de rappel, soit une date antérieure à la fin du 
 <span></span>
 <span></span>
 <span><span class="co">## étiqueter ceux qui étaient présents au début/à la fin (sauf les naissances/décès)</span></span>
-<span><span class="va">survey_data</span> <span class="op">&lt;-</span> <span class="va">survey_data</span> <span class="op">%&gt;%</span> </span>
-<span>     <span class="fu">mutate</span><span class="op">(</span></span>
+<span><span class="va">survey_data</span> <span class="op">&lt;-</span> <span class="va">survey_data</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
+<span>     <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span></span>
 <span>       <span class="co">## remplir la date de début pour qu'elle corresponde au début de la période de rappel (pour ceux qui sont vides) </span></span>
-<span>       startdate <span class="op">=</span> <span class="fu">if_else</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html">is.na</a></span><span class="op">(</span><span class="va">startdate</span><span class="op">)</span>, <span class="va">recall_start</span>, <span class="va">startdate</span><span class="op">)</span>, </span>
+<span>       startdate <span class="op">=</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/if_else.html">if_else</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html">is.na</a></span><span class="op">(</span><span class="va">startdate</span><span class="op">)</span>, <span class="va">recall_start</span>, <span class="va">startdate</span><span class="op">)</span>, </span>
 <span>       <span class="co">## définir la cause de début comme présente au début si elle est égale à la période de rappel </span></span>
 <span>       <span class="co">## sauf si elle est égale à la date de naissance </span></span>
-<span>       startcause <span class="op">=</span> <span class="fu">if_else</span><span class="op">(</span><span class="va">startdate</span> <span class="op">==</span> <span class="va">recall_start</span> <span class="op">&amp;</span> <span class="va">startcause</span> <span class="op">!=</span> <span class="st">"birthday_date"</span>,</span>
+<span>       startcause <span class="op">=</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/if_else.html">if_else</a></span><span class="op">(</span><span class="va">startdate</span> <span class="op">==</span> <span class="va">recall_start</span> <span class="op">&amp;</span> <span class="va">startcause</span> <span class="op">!=</span> <span class="st">"birthday_date"</span>,</span>
 <span>                              <span class="st">"Present at start"</span>, <span class="va">startcause</span><span class="op">)</span>, </span>
 <span>       <span class="co">## remplir la date de fin pour qu'elle corresponde à la fin de la période de rappel (pour ceux qui sont vides) </span></span>
-<span>       enddate <span class="op">=</span> <span class="fu">if_else</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html">is.na</a></span><span class="op">(</span><span class="va">enddate</span><span class="op">)</span>, <span class="va">recall_end</span>, <span class="va">enddate</span><span class="op">)</span>, </span>
+<span>       enddate <span class="op">=</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/if_else.html">if_else</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html">is.na</a></span><span class="op">(</span><span class="va">enddate</span><span class="op">)</span>, <span class="va">recall_end</span>, <span class="va">enddate</span><span class="op">)</span>, </span>
 <span>       <span class="co">## définir la cause de fin comme étant présente à la fin si égale à la fin de rappel </span></span>
 <span>       <span class="co">## sauf si elle est égale à la date de décès</span></span>
-<span>       endcause <span class="op">=</span> <span class="fu">if_else</span><span class="op">(</span><span class="va">enddate</span> <span class="op">==</span> <span class="va">recall_end</span> <span class="op">&amp;</span> <span class="va">endcause</span> <span class="op">!=</span> <span class="st">"death_date"</span>, </span>
+<span>       endcause <span class="op">=</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/if_else.html">if_else</a></span><span class="op">(</span><span class="va">enddate</span> <span class="op">==</span> <span class="va">recall_end</span> <span class="op">&amp;</span> <span class="va">endcause</span> <span class="op">!=</span> <span class="st">"death_date"</span>, </span>
 <span>                            <span class="st">"Present at end"</span>, <span class="va">endcause</span><span class="op">)</span><span class="op">)</span></span>
 <span></span>
 <span></span>
 <span><span class="co">## Définir la durée d'observation en jours</span></span>
-<span><span class="va">survey_data</span> <span class="op">&lt;-</span> <span class="va">survey_data</span> <span class="op">%&gt;%</span> </span>
-<span>  <span class="fu">mutate</span><span class="op">(</span>obstime <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/numeric.html">as.numeric</a></span><span class="op">(</span><span class="va">enddate</span> <span class="op">-</span> <span class="va">startdate</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<span><span class="va">survey_data</span> <span class="op">&lt;-</span> <span class="va">survey_data</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>obstime <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/numeric.html">as.numeric</a></span><span class="op">(</span><span class="va">enddate</span> <span class="op">-</span> <span class="va">startdate</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <!-- ======================================================= -->
 </div>
-<div id="pondération" class="section level2" number="24.5">
+<div id="pondération" class="section level2" number="25.5">
 <h2>
-<span class="header-section-number">24.5</span> Pondération<a class="anchor" aria-label="anchor" href="#pond%C3%A9ration"><i class="fas fa-link"></i></a>
+<span class="header-section-number">25.5</span> Pondération<a class="anchor" aria-label="anchor" href="#pond%C3%A9ration"><i class="fas fa-link"></i></a>
 </h2>
 <p>Il est important d’éliminer les observations erronées avant d’ajouter les poids de l’enquête. Par exemple, si vous avez des observations avec un temps d’observation négatif, vous devrez les vérifier (vous pouvez le faire avec la fonction <code><a href="https://r4epi.github.io/epikit/reference/find_date_cause.html">assert_positive_timespan()</a></code> de <strong>sitrep</strong>. Une autre chose est si vous voulez supprimer les lignes vides (par exemple avec <code>drop_na(uid)</code>) ou supprimer les doublons (voir la section du manuel sur la <a href="cleaning_data.html#deduplication">déduplication</a> pour plus de détails). Ceux qui n’ont pas de consentement doivent aussi être supprimés.</p>
-<p>Dans cet exemple, nous filtrons les cas que nous voulons supprimer et les stockons dans un cadre de données séparé - de cette façon, nous pouvons décrire ceux qui ont été exclus de l’enquête. Nous utilisons ensuite la fonction <code>anti_join()</code> de <strong>dplyr</strong> pour supprimer ces cas exclus de nos données d’enquête.</p>
+<p>Dans cet exemple, nous filtrons les cas que nous voulons supprimer et les stockons dans un cadre de données séparé - de cette façon, nous pouvons décrire ceux qui ont été exclus de l’enquête. Nous utilisons ensuite la fonction <code><a href="https://dplyr.tidyverse.org/reference/filter-joins.html">anti_join()</a></code> de <strong>dplyr</strong> pour supprimer ces cas exclus de nos données d’enquête.</p>
 <p><span style="color : red ;"><strong><em>DANGER:</em></strong> Vous ne pouvez pas avoir de valeurs manquantes dans votre variable de poids, ni dans aucune des variables pertinentes pour le plan de sondage (par exemple, les variables d’âge, de sexe, de strates ou de grappes).</span></p>
-<div class="sourceCode" id="cb1133"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb1241"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co">## stockez les cas que vous abandonnez afin de pouvoir les décrire (par exemple, non-consentant. </span></span>
 <span><span class="co">## ou mauvais village/cluster)</span></span>
-<span><span class="va">dropped</span> <span class="op">&lt;-</span> <span class="va">survey_data</span> <span class="op">%&gt;%</span> </span>
-<span>  <span class="fu"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span><span class="op">(</span><span class="op">!</span><span class="va">consent</span> <span class="op">|</span> <span class="fu"><a href="https://rdrr.io/r/base/NA.html">is.na</a></span><span class="op">(</span><span class="va">startdate</span><span class="op">)</span> <span class="op">|</span> <span class="fu"><a href="https://rdrr.io/r/base/NA.html">is.na</a></span><span class="op">(</span><span class="va">enddate</span><span class="op">)</span> <span class="op">|</span> <span class="va">village_name</span> <span class="op">==</span> <span class="st">"other"</span><span class="op">)</span></span>
+<span><span class="va">dropped</span> <span class="op">&lt;-</span> <span class="va">survey_data</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="op">!</span><span class="va">consent</span> <span class="op">|</span> <span class="fu"><a href="https://rdrr.io/r/base/NA.html">is.na</a></span><span class="op">(</span><span class="va">startdate</span><span class="op">)</span> <span class="op">|</span> <span class="fu"><a href="https://rdrr.io/r/base/NA.html">is.na</a></span><span class="op">(</span><span class="va">enddate</span><span class="op">)</span> <span class="op">|</span> <span class="va">village_name</span> <span class="op">==</span> <span class="st">"other"</span><span class="op">)</span></span>
 <span></span>
 <span><span class="co">## utiliser les cas abandonnés pour supprimer les lignes inutilisées de l'ensemble des données de l'enquête.  </span></span>
-<span><span class="va">survey_data</span> <span class="op">&lt;-</span> <span class="fu">anti_join</span><span class="op">(</span><span class="va">survey_data</span>, <span class="va">dropped</span>, by <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/names.html">names</a></span><span class="op">(</span><span class="va">dropped</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<span><span class="va">survey_data</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter-joins.html">anti_join</a></span><span class="op">(</span><span class="va">survey_data</span>, <span class="va">dropped</span>, by <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/names.html">names</a></span><span class="op">(</span><span class="va">dropped</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <p>Comme mentionné ci-dessus, nous montrons comment ajouter des poids pour trois plans d’étude différents (stratifié, en grappe et en grappe stratifié). Ceux-ci nécessitent des informations sur la population source et/ou les grappes enquêtées. Nous utiliserons le code de la grappe stratifiée pour cet exemple, mais utilisez celui qui est le plus approprié à votre plan d’étude.</p>
-<div class="sourceCode" id="cb1134"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb1242"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># stratified ------------------------------------------------------------------</span></span>
 <span><span class="co"># Créez une variable appelée "surv_weight_strata".</span></span>
 <span><span class="co"># contient les poids pour chaque individu - par groupe d'âge, sexe et district sanitaire.</span></span>
@@ -412,8 +409,8 @@ Soit la fin de votre période de rappel, soit une date antérieure à la fin du 
 <span></span>
 <span><span class="co"># obtient le nombre de personnes d'individus interrogés par ménage</span></span>
 <span><span class="co"># ajoute une variable avec les comptes de la variable index du ménage (parent)</span></span>
-<span><span class="va">survey_data</span> <span class="op">&lt;-</span> <span class="va">survey_data</span> <span class="op">%&gt;%</span></span>
-<span>  <span class="fu">add_count</span><span class="op">(</span><span class="va">index</span>, name <span class="op">=</span> <span class="st">"interviewed"</span><span class="op">)</span></span>
+<span><span class="va">survey_data</span> <span class="op">&lt;-</span> <span class="va">survey_data</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/count.html">add_count</a></span><span class="op">(</span><span class="va">index</span>, name <span class="op">=</span> <span class="st">"interviewed"</span><span class="op">)</span></span>
 <span></span>
 <span></span>
 <span><span class="co">## crée des poids de cluster</span></span>
@@ -433,13 +430,13 @@ Soit la fin de votre période de rappel, soit une date antérieure à la fin du 
 <span></span>
 <span><span class="co"># stratifié et cluster ------------------------------------------------------</span></span>
 <span><span class="co"># créer un poids d'enquête pour la grappe et les strates</span></span>
-<span><span class="va">survey_data</span> <span class="op">&lt;-</span> <span class="va">survey_data</span> <span class="op">%&gt;%</span></span>
-<span>  <span class="fu">mutate</span><span class="op">(</span>surv_weight_cluster_strata <span class="op">=</span> <span class="va">surv_weight_strata</span> <span class="op">*</span> <span class="va">surv_weight_cluster</span><span class="op">)</span></span></code></pre></div>
+<span><span class="va">survey_data</span> <span class="op">&lt;-</span> <span class="va">survey_data</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>surv_weight_cluster_strata <span class="op">=</span> <span class="va">surv_weight_strata</span> <span class="op">*</span> <span class="va">surv_weight_cluster</span><span class="op">)</span></span></code></pre></div>
 <!-- ======================================================= -->
 </div>
-<div id="objets-de-conception-denquête" class="section level2" number="24.6">
+<div id="objets-de-conception-denquête" class="section level2" number="25.6">
 <h2>
-<span class="header-section-number">24.6</span> Objets de conception d’enquête<a class="anchor" aria-label="anchor" href="#objets-de-conception-denqu%C3%AAte"><i class="fas fa-link"></i></a>
+<span class="header-section-number">25.6</span> Objets de conception d’enquête<a class="anchor" aria-label="anchor" href="#objets-de-conception-denqu%C3%AAte"><i class="fas fa-link"></i></a>
 </h2>
 <p>Créez un objet d’enquête en fonction de la conception de votre étude. Utilisé de la même manière que les cadres de données pour calculer les proportions de poids, etc. Assurez-vous que toutes les variables nécessaires sont créées avant cela.</p>
 <p>Il y a quatre options, commentez celles que vous n’utilisez pas :
@@ -449,13 +446,13 @@ Soit la fin de votre période de rappel, soit une date antérieure à la fin du 
 - Grappe stratifiée</p>
 <p>Pour ce modèle, nous supposerons que nous regroupons les enquêtes dans deux strates distinctes (districts sanitaires A et B). Pour obtenir des estimations globales, nous devons donc combiner les poids des grappes et des strates.</p>
 <p>Comme nous l’avons mentionné précédemment, il existe deux paquets disponibles pour ce faire. Le classique est <strong>survey</strong> et il existe un paquetage appelé <strong>srvyr</strong> qui crée des objets et des fonctions adaptés à tidyverse. Nous ferons la démonstration des deux, mais notez que la plupart du code de ce chapitre utilisera des objets basés sur <strong>srvyr</strong>. La seule exception est que le paquet <strong>gtsummary</strong> n’accepte que les objets <strong>survey</strong>.</p>
-<div id="paquet-survey" class="section level3" number="24.6.1">
+<div id="paquet-survey" class="section level3" number="25.6.1">
 <h3>
-<span class="header-section-number">24.6.1</span> Paquet **Survey<a class="anchor" aria-label="anchor" href="#paquet-survey"><i class="fas fa-link"></i></a>
+<span class="header-section-number">25.6.1</span> Paquet **Survey<a class="anchor" aria-label="anchor" href="#paquet-survey"><i class="fas fa-link"></i></a>
 </h3>
 <p>Le paquet <strong>survey</strong> utilise effectivement le codage <strong>base</strong> <em>R</em>, et il n’est donc pas possible d’utiliser les pipes (<code>%&gt;%</code>) ou d’autres syntaxes <strong>dplyr</strong>. Avec le paquetage <strong>survey</strong>, nous utilisons la fonction <code>svydesign()</code> pour définir un objet d’enquête avec les clusters, les poids et les strates appropriés.</p>
 <p><span style="color : black ;"><strong><em>NOTE:</em></strong> nous devons utiliser le tilde (<code>~</code>) devant les variables, ceci parce que le package utilise la syntaxe <strong>base</strong> <em>R</em> d’affectation des variables basée sur des formules. </span></p>
-<div class="sourceCode" id="cb1135"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb1243"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># aléatoire simple ---------------------------------------------------------------</span></span>
 <span><span class="va">base_survey_design_simple</span> <span class="op">&lt;-</span> <span class="fu">svydesign</span><span class="op">(</span>ids <span class="op">=</span> <span class="op">~</span><span class="fl">1</span>, <span class="co"># 1 pour aucun id de grappe</span></span>
 <span>                   weights <span class="op">=</span> <span class="cn">NULL</span>, <span class="co"># aucun poids ajouté</span></span>
@@ -484,33 +481,33 @@ Soit la fin de votre période de rappel, soit une date antérieure à la fin du 
 <span>                   data <span class="op">=</span> <span class="va">survey_data</span> <span class="co"># doit spécifier l'ensemble de données</span></span>
 <span>                  <span class="op">)</span></span></code></pre></div>
 </div>
-<div id="paquet-srvyr" class="section level3" number="24.6.2">
+<div id="paquet-srvyr" class="section level3" number="25.6.2">
 <h3>
-<span class="header-section-number">24.6.2</span> Paquet **Srvyr<a class="anchor" aria-label="anchor" href="#paquet-srvyr"><i class="fas fa-link"></i></a>
+<span class="header-section-number">25.6.2</span> Paquet **Srvyr<a class="anchor" aria-label="anchor" href="#paquet-srvyr"><i class="fas fa-link"></i></a>
 </h3>
 <p>Avec le paquet <strong>srvyr</strong>, nous pouvons utiliser la fonction <code>as_survey_design()</code>, qui a les mêmes arguments que ci-dessus, mais autorise les tubes (<code>%&gt;%</code>), et nous n’avons donc pas besoin d’utiliser le tilde (<code>%&gt;%</code>).</p>
-<div class="sourceCode" id="cb1136"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb1244"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co">## aléatoire simple ---------------------------------------------------------------</span></span>
-<span><span class="va">survey_design_simple</span> <span class="op">&lt;-</span> <span class="va">survey_data</span> <span class="op">%&gt;%</span> </span>
+<span><span class="va">survey_design_simple</span> <span class="op">&lt;-</span> <span class="va">survey_data</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
 <span>  <span class="fu">as_survey_design</span><span class="op">(</span>ids <span class="op">=</span> <span class="fl">1</span>, <span class="co"># 1 pour aucun id de grappe </span></span>
 <span>                   weights <span class="op">=</span> <span class="cn">NULL</span>, <span class="co"># Aucun poids ajouté</span></span>
 <span>                   strata <span class="op">=</span> <span class="cn">NULL</span> <span class="co"># l'échantillonnage était simple (pas de strates)</span></span>
 <span>                  <span class="op">)</span></span>
 <span><span class="co">## stratified ------------------------------------------------------------------</span></span>
-<span><span class="va">survey_design_strata</span> <span class="op">&lt;-</span> <span class="va">survey_data</span> <span class="op">%&gt;%</span></span>
+<span><span class="va">survey_design_strata</span> <span class="op">&lt;-</span> <span class="va">survey_data</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu">as_survey_design</span><span class="op">(</span>ids <span class="op">=</span> <span class="fl">1</span>, <span class="co"># 1 pour aucun id de cluster</span></span>
 <span>                   weights <span class="op">=</span> <span class="va">surv_weight_strata</span>, <span class="co"># variable de poids créée ci-dessus</span></span>
 <span>                   strata <span class="op">=</span> <span class="va">health_district</span> <span class="co"># l'échantillonnage a été stratifié par district</span></span>
 <span>                  <span class="op">)</span></span>
 <span><span class="co">## cluster ---------------------------------------------------------------------</span></span>
-<span><span class="va">survey_design_cluster</span> <span class="op">&lt;-</span> <span class="va">survey_data</span> <span class="op">%&gt;%</span></span>
+<span><span class="va">survey_design_cluster</span> <span class="op">&lt;-</span> <span class="va">survey_data</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu">as_survey_design</span><span class="op">(</span>ids <span class="op">=</span> <span class="va">village_name</span>, <span class="co"># ids de la grappe</span></span>
 <span>                   weights <span class="op">=</span> <span class="va">surv_weight_cluster</span>, <span class="co"># variable de poids créée ci-dessus</span></span>
 <span>                   strata <span class="op">=</span> <span class="cn">NULL</span> <span class="co"># l'échantillonnage était simple (pas de strates)</span></span>
 <span>                  <span class="op">)</span></span>
 <span></span>
 <span><span class="co">## cluster stratifié ----------------------------------------------------------</span></span>
-<span><span class="va">survey_design</span> <span class="op">&lt;-</span> <span class="va">survey_data</span> <span class="op">%&gt;%</span></span>
+<span><span class="va">survey_design</span> <span class="op">&lt;-</span> <span class="va">survey_data</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu">as_survey_design</span><span class="op">(</span>ids <span class="op">=</span> <span class="va">village_name</span>, <span class="co"># ids de la grappe</span></span>
 <span>                   weights <span class="op">=</span> <span class="va">surv_weight_cluster_strata</span>, <span class="co"># variable de poids créée ci-dessus</span></span>
 <span>                   strata <span class="op">=</span> <span class="va">health_district</span> <span class="co"># l'échantillonnage a été stratifié par district</span></span>
@@ -518,9 +515,9 @@ Soit la fin de votre période de rappel, soit une date antérieure à la fin du 
 <!-- ======================================================= -->
 </div>
 </div>
-<div id="analyse-descriptive-1" class="section level2" number="24.7">
+<div id="analyse-descriptive-1" class="section level2" number="25.7">
 <h2>
-<span class="header-section-number">24.7</span> Analyse descriptive<a class="anchor" aria-label="anchor" href="#analyse-descriptive-1"><i class="fas fa-link"></i></a>
+<span class="header-section-number">25.7</span> Analyse descriptive<a class="anchor" aria-label="anchor" href="#analyse-descriptive-1"><i class="fas fa-link"></i></a>
 </h2>
 <p>L’analyse descriptive et la visualisation de base sont traitées en détail dans d’autres chapitres du manuel, nous ne nous y attarderons donc pas ici. Pour plus de détails, voir les chapitres sur les <a href="descriptive_tables.html#descriptive_tables">tableaux descriptifs</a>, <a href="stats_test.html#stats_test">les tests statistiques</a>, <a href="tables_presentation.html#tables_presentation">les tableaux de présentation</a>, [les bases du ggplot] (#ggplot_basics) et <a href="rmarkdown.html#rmarkdown">rapports R markdown</a>.</p>
 <p>Dans cette section, nous allons nous concentrer sur la manière d’étudier le biais dans votre échantillon et de le visualiser. Nous nous pencherons également sur la visualisation du flux de population dans le cadre d’une enquête à l’aide de diagrammes alluviaux/sankey.</p>
@@ -531,52 +528,52 @@ Soit la fin de votre période de rappel, soit une date antérieure à la fin du 
 <li>Nombre d’individus exclus et les raisons de cette exclusion</li>
 <li>Nombre médian (fourchette) de ménages par grappe et d’individus par ménage.</li>
 </ul>
-<div id="biais-déchantillonnage" class="section level3" number="24.7.1">
+<div id="biais-déchantillonnage" class="section level3" number="25.7.1">
 <h3>
-<span class="header-section-number">24.7.1</span> Biais d’échantillonnage<a class="anchor" aria-label="anchor" href="#biais-d%C3%A9chantillonnage"><i class="fas fa-link"></i></a>
+<span class="header-section-number">25.7.1</span> Biais d’échantillonnage<a class="anchor" aria-label="anchor" href="#biais-d%C3%A9chantillonnage"><i class="fas fa-link"></i></a>
 </h3>
 <p>Comparez les proportions dans chaque groupe d’âge entre votre échantillon et la population source. Ceci est important pour pouvoir mettre en évidence un éventuel biais d’échantillonnage. Vous pouvez également répéter cette opération en examinant les distributions par sexe.</p>
 <p>Notez que ces p-values ne sont qu’indicatives, et qu’une discussion descriptive (ou une visualisation avec les pyramides d’âge ci-dessous) des distributions dans votre échantillon d’étude par rapport à la population source est plus importante que le test binomial lui-même. Cela est dû au fait que l’augmentation de la taille de l’échantillon conduira le plus souvent à des différences qui peuvent ne pas être pertinentes après la pondération de vos données.</p>
-<div class="sourceCode" id="cb1137"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb1245"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co">## dénombrements et saillies de la population étudiée.</span></span>
-<span><span class="va">ag</span> <span class="op">&lt;-</span> <span class="va">survey_data</span> <span class="op">%&gt;%</span> </span>
-<span>  <span class="fu">group_by</span><span class="op">(</span><span class="va">age_group</span><span class="op">)</span> <span class="op">%&gt;%</span> </span>
-<span>  <span class="fu">drop_na</span><span class="op">(</span><span class="va">age_group</span><span class="op">)</span> <span class="op">%&gt;%</span> </span>
-<span>  <span class="fu">tally</span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span> </span>
-<span>  <span class="fu">mutate</span><span class="op">(</span>proportion <span class="op">=</span> <span class="va">n</span> <span class="op">/</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">n</span><span class="op">)</span>, </span>
+<span><span class="va">ag</span> <span class="op">&lt;-</span> <span class="va">survey_data</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">age_group</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="https://tidyr.tidyverse.org/reference/drop_na.html">drop_na</a></span><span class="op">(</span><span class="va">age_group</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/count.html">tally</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>proportion <span class="op">=</span> <span class="va">n</span> <span class="op">/</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">n</span><span class="op">)</span>, </span>
 <span>         n_total <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">n</span><span class="op">)</span><span class="op">)</span></span>
 <span></span>
 <span><span class="co">## comptes et props de la population source</span></span>
-<span><span class="va">propcount</span> <span class="op">&lt;-</span> <span class="va">population</span> <span class="op">%&gt;%</span> </span>
-<span>  <span class="fu">group_by</span><span class="op">(</span><span class="va">age_group</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
-<span>    <span class="fu">tally</span><span class="op">(</span><span class="va">population</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
-<span>    <span class="fu">mutate</span><span class="op">(</span>proportion <span class="op">=</span> <span class="va">n</span> <span class="op">/</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">n</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="va">propcount</span> <span class="op">&lt;-</span> <span class="va">population</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">age_group</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/count.html">tally</a></span><span class="op">(</span><span class="va">population</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>proportion <span class="op">=</span> <span class="va">n</span> <span class="op">/</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">n</span><span class="op">)</span><span class="op">)</span></span>
 <span></span>
 <span><span class="co">## lier ensemble les colonnes de deux tables, regrouper par âge, et effectuer un </span></span>
 <span><span class="co">## un test binomial pour voir si n/total est significativement différent de la population</span></span>
 <span><span class="co">## proportion.</span></span>
 <span>  <span class="co">## Le suffixe ajoute ici du texte à la fin des colonnes dans chacun des deux ensembles de données.</span></span>
-<span><span class="fu">left_join</span><span class="op">(</span><span class="va">ag</span>, <span class="va">propcount</span>, by <span class="op">=</span> <span class="st">"age_group"</span>, suffix <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">""</span>, <span class="st">"_pop"</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
-<span>  <span class="fu">group_by</span><span class="op">(</span><span class="va">age_group</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
+<span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html">left_join</a></span><span class="op">(</span><span class="va">ag</span>, <span class="va">propcount</span>, by <span class="op">=</span> <span class="st">"age_group"</span>, suffix <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">""</span>, <span class="st">"_pop"</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">age_group</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="co">## broom::tidy(binom.test()) crée une trame de données à partir du test binomial et ## ajoutera les variables p.p. à la trame de données.</span></span>
 <span>  <span class="co">## ajoutera les variables p.value, parameter, conf.low, conf.high, method, and</span></span>
 <span>  <span class="co">## alternative. Nous n'utiliserons que p.value ici. Vous pouvez inclure d'autres</span></span>
 <span>  <span class="co">## d'autres colonnes si vous souhaitez faire état des intervalles de confiance.</span></span>
-<span>  <span class="fu">mutate</span><span class="op">(</span>binom <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="fu">broom</span><span class="fu">::</span><span class="fu"><a href="https://generics.r-lib.org/reference/tidy.html">tidy</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/binom.test.html">binom.test</a></span><span class="op">(</span><span class="va">n</span>, <span class="va">n_total</span>, <span class="va">proportion_pop</span><span class="op">)</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
-<span>  <span class="fu">unnest</span><span class="op">(</span>cols <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="va">binom</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="co"># important pour l'expansion du cadre de données binom.test</span></span>
-<span>  <span class="fu">mutate</span><span class="op">(</span>proportion_pop <span class="op">=</span> <span class="va">proportion_pop</span> <span class="op">*</span> <span class="fl">100</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>binom <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="fu">broom</span><span class="fu">::</span><span class="fu"><a href="https://generics.r-lib.org/reference/tidy.html">tidy</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/binom.test.html">binom.test</a></span><span class="op">(</span><span class="va">n</span>, <span class="va">n_total</span>, <span class="va">proportion_pop</span><span class="op">)</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://tidyr.tidyverse.org/reference/unnest.html">unnest</a></span><span class="op">(</span>cols <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="va">binom</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="co"># important pour l'expansion du cadre de données binom.test</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>proportion_pop <span class="op">=</span> <span class="va">proportion_pop</span> <span class="op">*</span> <span class="fl">100</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="co">## Ajustement des valeurs de p pour corriger les faux positifs. </span></span>
 <span>  <span class="co">## (parce que l'on teste plusieurs groupes d'âge). Cela ne fera une </span></span>
 <span>  <span class="co">## une différence que si vous avez plusieurs catégories d'âge</span></span>
-<span>  <span class="fu">mutate</span><span class="op">(</span>p.value <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/p.adjust.html">p.adjust</a></span><span class="op">(</span><span class="va">p.value</span>, method <span class="op">=</span> <span class="st">"holm"</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>p.value <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/p.adjust.html">p.adjust</a></span><span class="op">(</span><span class="va">p.value</span>, method <span class="op">=</span> <span class="st">"holm"</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>                      </span>
 <span>  <span class="co">## N'affichez que les valeurs de p supérieures à 0,001 (celles qui sont inférieures sont signalées comme &lt;0,001)</span></span>
-<span>  <span class="fu">mutate</span><span class="op">(</span>p.value <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/ifelse.html">ifelse</a></span><span class="op">(</span><span class="va">p.value</span> <span class="op">&lt;</span> <span class="fl">0.001</span>, </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>p.value <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/ifelse.html">ifelse</a></span><span class="op">(</span><span class="va">p.value</span> <span class="op">&lt;</span> <span class="fl">0.001</span>, </span>
 <span>                          <span class="st">"&lt;0.001"</span>, </span>
-<span>                          <span class="fu"><a href="https://rdrr.io/r/base/character.html">as.character</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/Round.html">round</a></span><span class="op">(</span><span class="va">p.value</span>, <span class="fl">3</span><span class="op">)</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span> </span>
+<span>                          <span class="fu"><a href="https://rdrr.io/r/base/character.html">as.character</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/Round.html">round</a></span><span class="op">(</span><span class="va">p.value</span>, <span class="fl">3</span><span class="op">)</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
 <span>  </span>
 <span>  <span class="co">## renommez les colonnes de manière appropriée</span></span>
-<span>  <span class="fu">select</span><span class="op">(</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span></span>
 <span>    <span class="st">"Groupe d'âge"</span> <span class="op">=</span> <span class="va">age_group</span>,</span>
 <span>    <span class="st">"Population étudiée (n)"</span> <span class="op">=</span> <span class="va">n</span>,</span>
 <span>    <span class="st">"Population étudiée (%)"</span> <span class="op">=</span> <span class="va">proportion</span>,</span>
@@ -586,25 +583,24 @@ Soit la fin de votre période de rappel, soit une date antérieure à la fin du 
 <span>  <span class="op">)</span></span></code></pre></div>
 <pre><code>## # A tibble: 5 × 6
 ## # Groups:   Groupe d'âge [5]
-##   `Groupe d'âge` Population étudiée (n…¹ Population étudiée (…² Population source (n…³
-##   &lt;chr&gt;                            &lt;int&gt;                  &lt;dbl&gt;                  &lt;dbl&gt;
-## 1 0-2                                 12                 0.0256                   1360
-## 2 3-14                                42                 0.0896                   7244
-## 3 15-29                               64                 0.136                    5520
-## 4 30-44                               52                 0.111                    3232
-## 5 45+                                299                 0.638                    2644
-## # ℹ abbreviated names: ¹​`Population étudiée (n)`, ²​`Population étudiée (%)`,
-## #   ³​`Population source (n)`
+##   `Groupe d'âge` `Population étudiée (n)` Population étudiée (%…¹ Population source (n…²
+##   &lt;chr&gt;                             &lt;int&gt;                   &lt;dbl&gt;                  &lt;dbl&gt;
+## 1 0-2                                  12                  0.0256                   1360
+## 2 3-14                                 42                  0.0896                   7244
+## 3 15-29                                64                  0.136                    5520
+## 4 30-44                                52                  0.111                    3232
+## 5 45+                                 299                  0.638                    2644
+## # ℹ abbreviated names: ¹​`Population étudiée (%)`, ²​`Population source (n)`
 ## # ℹ 2 more variables: `Population source (%)` &lt;dbl&gt;, `P-value` &lt;chr&gt;</code></pre>
 </div>
-<div id="pyramides-démographiques" class="section level3" number="24.7.2">
+<div id="pyramides-démographiques" class="section level3" number="25.7.2">
 <h3>
-<span class="header-section-number">24.7.2</span> Pyramides démographiques<a class="anchor" aria-label="anchor" href="#pyramides-d%C3%A9mographiques"><i class="fas fa-link"></i></a>
+<span class="header-section-number">25.7.2</span> Pyramides démographiques<a class="anchor" aria-label="anchor" href="#pyramides-d%C3%A9mographiques"><i class="fas fa-link"></i></a>
 </h3>
 <p>Les pyramides démographiques (ou âge-sexe) sont un moyen facile de visualiser la distribution dans la population de votre enquête. Il est également intéressant de créer des <a href="descriptive_tables.html#descriptive_tables">tableaux descriptifs</a> et le sexe par strates d’enquête. Nous allons démontrer l’utilisation du paquet <strong>apyramide</strong> car il permet de pondérées en utilisant notre objet de conception d’enquête créé ci-dessus. Autres options pour créer <a href="age_pyramid.html#age_pyramid">pyramides démographiques</a> sont traitées en détail dans ce chapitre du manuel. Nous utiliserons également une fonction wrapper de <strong>apyramid</strong> appelée <code><a href="https://rdrr.io/pkg/apyramid/man/age_pyramid.html">age_pyramid()</a></code> qui permet de gagner quelque lignes de code pour produire un graphique avec des proportions.</p>
 <p>Comme pour le test binomial formel de différence, vu plus haut dans la section sur le biais d’échantillonnage, nous sommes intéressés ici à visualiser si notre population échantillonnée est sensiblement différente de la population source et si la pondération corrige cette différence. Pour ce faire, nous allons utiliser le paquet <strong>patchwork</strong> pour montrer nos visualisations <strong>ggplot</strong> côte à côte ; pour plus de détails, voir la section sur la combinaison de tracés dans le chapitre du manuel <a href="ggplot_tips.html#ggplot_tips">Astuces de ggplot</a> du manuel. Nous allons visualiser notre population source, notre population d’enquête non pondérée et notre population d’enquête pondérée. Vous pouvez également envisager de visualiser chaque strate de votre enquête, pars exemple ici, en utilisant l’argument <code>stack_by = "health_district"</code> (voir <code>?plot_age_pyramid</code> pour plus de détails).</p>
 <p><span style="color : black ;"><strong><em>NOTE:</em></strong> Les axes x et y sont inversés dans les pyramides </span>.</p>
-<div class="sourceCode" id="cb1139"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb1247"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co">## définir les limites et les étiquettes de l'axe des x ---------------------------------------------</span></span>
 <span><span class="co">## (mettez à jour ces chiffres pour qu'ils correspondent aux valeurs de votre graphique)</span></span>
 <span><span class="va">max_prop</span> <span class="op">&lt;-</span> <span class="fl">35</span> <span class="co">## choisissez la plus haute proportion que vous voulez montrer </span></span>
@@ -632,21 +628,21 @@ Soit la fin de votre période de rappel, soit une date antérieure à la fin du 
 <span></span>
 <span><span class="co">## tracer la population source </span></span>
 <span><span class="co">## nb : cette population doit être réduite à la population globale (c'est-à-dire en enlevant les districts de santé).</span></span>
-<span><span class="va">source_population</span> <span class="op">&lt;-</span> <span class="va">population</span> <span class="op">%&gt;%</span></span>
+<span><span class="va">source_population</span> <span class="op">&lt;-</span> <span class="va">population</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="co">## s'assurer que l'âge et le sexe sont des facteurs</span></span>
-<span>  <span class="fu">mutate</span><span class="op">(</span>age_group <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html">factor</a></span><span class="op">(</span><span class="va">age_group</span>, </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>age_group <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html">factor</a></span><span class="op">(</span><span class="va">age_group</span>, </span>
 <span>                            levels <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"0-2"</span>, </span>
 <span>                                       <span class="st">"3-14"</span>, </span>
 <span>                                       <span class="st">"15-29"</span>,</span>
 <span>                                       <span class="st">"30-44"</span>, </span>
 <span>                                       <span class="st">"45+"</span><span class="op">)</span><span class="op">)</span>, </span>
-<span>         sex <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html">factor</a></span><span class="op">(</span><span class="va">sex</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span> </span>
-<span>  <span class="fu">group_by</span><span class="op">(</span><span class="va">age_group</span>, <span class="va">sex</span><span class="op">)</span> <span class="op">%&gt;%</span> </span>
+<span>         sex <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html">factor</a></span><span class="op">(</span><span class="va">sex</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">age_group</span>, <span class="va">sex</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
 <span>  <span class="co">## additionner les comptes pour chaque district de santé </span></span>
-<span>  <span class="fu">summarise</span><span class="op">(</span>population <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">population</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarise</a></span><span class="op">(</span>population <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">population</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
 <span>  <span class="co">## supprimer le regroupement pour pouvoir calculer la proportion globale</span></span>
-<span>  <span class="fu">ungroup</span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span> </span>
-<span>  <span class="fu">mutate</span><span class="op">(</span>proportion <span class="op">=</span> <span class="va">population</span> <span class="op">/</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">population</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">ungroup</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>proportion <span class="op">=</span> <span class="va">population</span> <span class="op">/</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">population</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
 <span>  <span class="co">## tracer la pyramide </span></span>
 <span>  <span class="fu"><a href="https://rdrr.io/pkg/apyramid/man/age_pyramid.html">age_pyramid</a></span><span class="op">(</span></span>
 <span>            age_group <span class="op">=</span> <span class="va">age_group</span>, </span>
@@ -654,11 +650,11 @@ Soit la fin de votre période de rappel, soit une date antérieure à la fin du 
 <span>            count <span class="op">=</span> <span class="va">proportion</span>, </span>
 <span>            proportional <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="co">## Afficher uniquement le libellé de l'axe des y (sinon répété dans les trois graphiques)</span></span>
-<span>  <span class="fu">labs</span><span class="op">(</span>title <span class="op">=</span> <span class="st">"Population source"</span>, </span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span>title <span class="op">=</span> <span class="st">"Population source"</span>, </span>
 <span>       y <span class="op">=</span> <span class="st">""</span>, </span>
 <span>       x <span class="op">=</span> <span class="st">"Groupe d'âge (années)"</span><span class="op">)</span> <span class="op">+</span> </span>
 <span>  <span class="co">## rendre l'axe des x identique pour tous les graphiques </span></span>
-<span>  <span class="fu">scale_y_continuous</span><span class="op">(</span>breaks <span class="op">=</span> <span class="va">breaks</span>, </span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_continuous.html">scale_y_continuous</a></span><span class="op">(</span>breaks <span class="op">=</span> <span class="va">breaks</span>, </span>
 <span>    limits <span class="op">=</span> <span class="va">limits</span>, </span>
 <span>    labels <span class="op">=</span> <span class="va">labels</span><span class="op">)</span></span>
 <span>  </span>
@@ -669,30 +665,30 @@ Soit la fin de votre période de rappel, soit une date antérieure à la fin du 
 <span>                 split_by <span class="op">=</span> <span class="st">"sex"</span>,</span>
 <span>                 proportion <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span> <span class="op">+</span> </span>
 <span>  <span class="co">## Afficher uniquement le libellé de l'axe des x (sinon répété dans les trois graphiques)</span></span>
-<span>  <span class="fu">labs</span><span class="op">(</span>title <span class="op">=</span> <span class="st">"Population échantillon non pondérée"</span>, </span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span>title <span class="op">=</span> <span class="st">"Population échantillon non pondérée"</span>, </span>
 <span>       y <span class="op">=</span> <span class="st">"Proportion (%)"</span>, </span>
 <span>       x <span class="op">=</span> <span class="st">""</span><span class="op">)</span> <span class="op">+</span> </span>
 <span>  <span class="co">## rendre l'axe des x identique pour tous les graphiques </span></span>
-<span>  <span class="fu">scale_y_continuous</span><span class="op">(</span>breaks <span class="op">=</span> <span class="va">breaks</span>, </span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_continuous.html">scale_y_continuous</a></span><span class="op">(</span>breaks <span class="op">=</span> <span class="va">breaks</span>, </span>
 <span>    limits <span class="op">=</span> <span class="va">limits</span>, </span>
 <span>    labels <span class="op">=</span> <span class="va">labels</span><span class="op">)</span></span>
 <span></span>
 <span></span>
 <span><span class="co">## tracer la population de l'échantillon pondéré </span></span>
-<span><span class="va">weighted_population</span> <span class="op">&lt;-</span> <span class="va">survey_design</span> <span class="op">%&gt;%</span> </span>
+<span><span class="va">weighted_population</span> <span class="op">&lt;-</span> <span class="va">survey_design</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
 <span>  <span class="co">## S'assurer que les variables sont des facteurs</span></span>
-<span>  <span class="fu">mutate</span><span class="op">(</span>age_group <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html">factor</a></span><span class="op">(</span><span class="va">age_group</span><span class="op">)</span>, </span>
-<span>         sex <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html">factor</a></span><span class="op">(</span><span class="va">sex</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>age_group <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html">factor</a></span><span class="op">(</span><span class="va">age_group</span><span class="op">)</span>, </span>
+<span>         sex <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html">factor</a></span><span class="op">(</span><span class="va">sex</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://rdrr.io/pkg/apyramid/man/age_pyramid.html">age_pyramid</a></span><span class="op">(</span></span>
 <span>    age_group <span class="op">=</span> <span class="st">"age_group"</span>,</span>
 <span>    split_by <span class="op">=</span> <span class="st">"sex"</span>, </span>
 <span>    proportion <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="co">## Afficher uniquement le libellé de l'axe des x (sinon répété dans les trois graphiques)</span></span>
-<span>  <span class="fu">labs</span><span class="op">(</span>title <span class="op">=</span> <span class="st">"Echantillon de population pondéré"</span>, </span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span>title <span class="op">=</span> <span class="st">"Echantillon de population pondéré"</span>, </span>
 <span>       y <span class="op">=</span> <span class="st">""</span>, </span>
 <span>       x <span class="op">=</span> <span class="st">""</span><span class="op">)</span> <span class="op">+</span> </span>
 <span>  <span class="co">## rendre l'axe des x identique pour tous les graphiques </span></span>
-<span>  <span class="fu">scale_y_continuous</span><span class="op">(</span>breaks <span class="op">=</span> <span class="va">breaks</span>, </span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_continuous.html">scale_y_continuous</a></span><span class="op">(</span>breaks <span class="op">=</span> <span class="va">breaks</span>, </span>
 <span>    limits <span class="op">=</span> <span class="va">limits</span>, </span>
 <span>    labels <span class="op">=</span> <span class="va">labels</span><span class="op">)</span></span>
 <span></span>
@@ -702,23 +698,23 @@ Soit la fin de votre période de rappel, soit une date antérieure à la fin du 
 <span>  <span class="co">## ne montrer qu'une seule légende et définir le thème </span></span>
 <span>  <span class="co">## notez l'utilisation de &amp; pour combiner le thème avec plot_layout()</span></span>
 <span>  <span class="fu">plot_layout</span><span class="op">(</span>guides <span class="op">=</span> <span class="st">"collect"</span><span class="op">)</span> <span class="op">&amp;</span> </span>
-<span>  <span class="fu">theme</span><span class="op">(</span>legend.position <span class="op">=</span> <span class="st">"bottom"</span>, <span class="co"># déplace la légende vers le bas</span></span>
-<span>        legend.title <span class="op">=</span> <span class="fu">element_blank</span><span class="op">(</span><span class="op">)</span>, <span class="co"># supprimer le titre</span></span>
-<span>        text <span class="op">=</span> <span class="fu">element_text</span><span class="op">(</span>size <span class="op">=</span> <span class="fl">18</span><span class="op">)</span>, <span class="co"># change la taille du texte</span></span>
-<span>        axis.text.x <span class="op">=</span> <span class="fu">element_text</span><span class="op">(</span>angle <span class="op">=</span> <span class="fl">45</span>, hjust <span class="op">=</span> <span class="fl">1</span>, vjust <span class="op">=</span> <span class="fl">1</span><span class="op">)</span> <span class="co"># tourner le texte de l'axe x</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html">theme</a></span><span class="op">(</span>legend.position <span class="op">=</span> <span class="st">"bottom"</span>, <span class="co"># déplace la légende vers le bas</span></span>
+<span>        legend.title <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_blank</a></span><span class="op">(</span><span class="op">)</span>, <span class="co"># supprimer le titre</span></span>
+<span>        text <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_text</a></span><span class="op">(</span>size <span class="op">=</span> <span class="fl">18</span><span class="op">)</span>, <span class="co"># change la taille du texte</span></span>
+<span>        axis.text.x <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_text</a></span><span class="op">(</span>angle <span class="op">=</span> <span class="fl">45</span>, hjust <span class="op">=</span> <span class="fl">1</span>, vjust <span class="op">=</span> <span class="fl">1</span><span class="op">)</span> <span class="co"># tourner le texte de l'axe x</span></span>
 <span>       <span class="op">)</span></span></code></pre></div>
 <div class="inline-figure"><img src="_main_files/figure-html/weighted_age_pyramid-1.png" width="1440"></div>
 </div>
-<div id="diagramme-alluvialsankey" class="section level3" number="24.7.3">
+<div id="diagramme-alluvialsankey" class="section level3" number="25.7.3">
 <h3>
-<span class="header-section-number">24.7.3</span> Diagramme alluvial/sankey<a class="anchor" aria-label="anchor" href="#diagramme-alluvialsankey"><i class="fas fa-link"></i></a>
+<span class="header-section-number">25.7.3</span> Diagramme alluvial/sankey<a class="anchor" aria-label="anchor" href="#diagramme-alluvialsankey"><i class="fas fa-link"></i></a>
 </h3>
 <p>La visualisation des points de départ et des résultats pour les individus peut être très utile pour obtenir une vue d’ensemble. L’application est évidente pour les populations mobiles, mais il existe de nombreuses autres applications telles que les cohortes ou toute autre situation
 où il y a des transitions d’états pour les individus. Ces diagrammes ont plusieurs noms différents, y compris alluvial, sankey et ensembles parallèles - les détails sont dans le chapitre du manuel consacré aux <a href="diagrams.html#diagrams">diagrammes et graphiques</a>.</p>
-<div class="sourceCode" id="cb1140"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb1248"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co">## résumer les données</span></span>
-<span><span class="va">flow_table</span> <span class="op">&lt;-</span> <span class="va">survey_data</span> <span class="op">%&gt;%</span></span>
-<span>  <span class="fu">count</span><span class="op">(</span><span class="va">startcause</span>, <span class="va">endcause</span>, <span class="va">sex</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="co"># obtenir des comptages </span></span>
+<span><span class="va">flow_table</span> <span class="op">&lt;-</span> <span class="va">survey_data</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/count.html">count</a></span><span class="op">(</span><span class="va">startcause</span>, <span class="va">endcause</span>, <span class="va">sex</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="co"># obtenir des comptages </span></span>
 <span>  <span class="fu">gather_set_data</span><span class="op">(</span>x <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"startcause"</span>, <span class="st">"endcause"</span><span class="op">)</span><span class="op">)</span> <span class="co"># changer de format pour le tracé</span></span>
 <span></span>
 <span></span>
@@ -728,50 +724,50 @@ où il y a des transitions d’états pour les individus. Ces diagrammes ont plu
 <span>  <span class="co">## gather_set_data génère un ID pour chaque combinaison possible.</span></span>
 <span>  <span class="co">## La division par y donne les combinaisons possibles de début et de fin.</span></span>
 <span>  <span class="co">## la valeur n donne les comptes (peut aussi être changée en proportion).</span></span>
-<span><span class="fu">ggplot</span><span class="op">(</span><span class="va">flow_table</span>, <span class="fu">aes</span><span class="op">(</span><span class="va">x</span>, id <span class="op">=</span> <span class="va">id</span>, split <span class="op">=</span> <span class="va">y</span>, value <span class="op">=</span> <span class="va">n</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">flow_table</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span><span class="va">x</span>, id <span class="op">=</span> <span class="va">id</span>, split <span class="op">=</span> <span class="va">y</span>, value <span class="op">=</span> <span class="va">n</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="co">## colorer les lignes par sexe </span></span>
-<span>  <span class="fu">geom_parallel_sets</span><span class="op">(</span><span class="fu">aes</span><span class="op">(</span>fill <span class="op">=</span> <span class="va">sex</span><span class="op">)</span>, alpha <span class="op">=</span> <span class="fl">0.5</span>, axis.width <span class="op">=</span> <span class="fl">0.2</span><span class="op">)</span> <span class="op">+</span> <span class="co">### remplir les cases d'étiquettes en gris.</span></span>
+<span>  <span class="fu">geom_parallel_sets</span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>fill <span class="op">=</span> <span class="va">sex</span><span class="op">)</span>, alpha <span class="op">=</span> <span class="fl">0.5</span>, axis.width <span class="op">=</span> <span class="fl">0.2</span><span class="op">)</span> <span class="op">+</span> <span class="co">### remplir les cases d'étiquettes en gris.</span></span>
 <span>  <span class="co">## remplir les cases d'étiquettes en gris</span></span>
 <span>  <span class="fu">geom_parallel_sets_axes</span><span class="op">(</span>axis.width <span class="op">=</span> <span class="fl">0.15</span>, fill <span class="op">=</span> <span class="st">"grey80"</span>, color <span class="op">=</span> <span class="st">"grey80"</span><span class="op">)</span> <span class="op">+</span> <span class="co">## changer la couleur du texte et l'angle de l'étiquette.</span></span>
 <span>  <span class="co">## changer la couleur et l'angle du texte (doit être ajusté)</span></span>
 <span>  <span class="fu">geom_parallel_sets_labels</span><span class="op">(</span>color <span class="op">=</span> <span class="st">"black"</span>, angle <span class="op">=</span> <span class="fl">0</span>, size <span class="op">=</span> <span class="fl">5</span><span class="op">)</span> <span class="op">+</span> <span class="co">## ajuster la couleur et l'angle du texte (doit être ajusté)</span></span>
 <span>  <span class="co">## suppression des étiquettes d'axe</span></span>
-<span>  <span class="fu">theme_void</span><span class="op">(</span><span class="op">)</span><span class="op">+</span></span>
-<span>  <span class="fu">theme</span><span class="op">(</span>legend.position <span class="op">=</span> <span class="st">"bottom"</span><span class="op">)</span></span></code></pre></div>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_void</a></span><span class="op">(</span><span class="op">)</span><span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html">theme</a></span><span class="op">(</span>legend.position <span class="op">=</span> <span class="st">"bottom"</span><span class="op">)</span></span></code></pre></div>
 <div class="inline-figure"><img src="_main_files/figure-html/visualise_population_flow-1.png" width="672"></div>
 <!-- ======================================================= -->
 </div>
 </div>
-<div id="proportions-pondérées" class="section level2" number="24.8">
+<div id="proportions-pondérées" class="section level2" number="25.8">
 <h2>
-<span class="header-section-number">24.8</span> Proportions pondérées<a class="anchor" aria-label="anchor" href="#proportions-pond%C3%A9r%C3%A9es"><i class="fas fa-link"></i></a>
+<span class="header-section-number">25.8</span> Proportions pondérées<a class="anchor" aria-label="anchor" href="#proportions-pond%C3%A9r%C3%A9es"><i class="fas fa-link"></i></a>
 </h2>
 <p>Cette section détaillera comment produire des tableaux pour les effectifs et les proportions pondérés, avec les intervalles de confiance associés et l’effet de plan. Il existe quatre options différentes utilisant les fonctions des paquets suivants : <strong>survey</strong>, <strong>srvyr</strong>, <strong>sitrep</strong> et <strong>gtsummary</strong>. Pour un codage minimal permettant de produire un tableau standard de style épidémiologique, nous recommandons la fonction <strong>sitrep</strong> - qui est un wrapper pour le code <strong>srvyr</strong> ; notez cependant que ce n’est pas encore sur CRAN et que cela peut changer dans le futur. Autrement, le code <strong>survey</strong> est susceptible d’être le plus stable à long terme, alors que <strong>srvyr</strong> s’intégrera le mieux dans les flux de travail de tidyverse. Bien que les fonctions <strong>gtsummary</strong> ont beaucoup de potentiel, elles semblent expérimentales et incomplètes au moment de la rédaction.</p>
-<div id="paquet-survey-1" class="section level3" number="24.8.1">
+<div id="paquet-survey-1" class="section level3" number="25.8.1">
 <h3>
-<span class="header-section-number">24.8.1</span> Paquet **Survey<a class="anchor" aria-label="anchor" href="#paquet-survey-1"><i class="fas fa-link"></i></a>
+<span class="header-section-number">25.8.1</span> Paquet **Survey<a class="anchor" aria-label="anchor" href="#paquet-survey-1"><i class="fas fa-link"></i></a>
 </h3>
 <p>Nous pouvons utiliser la fonction <code>svyciprop()</code> de <strong>survey</strong> pour obtenir des proportions pondérées et les intervalles de confiance à 95% qui les accompagnent. Il est intéressant de noter que <code>svyprop()</code> ne semble accepter que les variables comprises entre 0 et 1 (ou VRAI/FAUX), donc les variables catégorielles ne fonctionneront pas.</p>
 <p><span style="color : black ;"><strong><em>NOTE:</em></strong> Les fonctions de <strong>survey</strong> acceptent également les objets de conception <strong>srvyr</strong>, mais ici nous avons utilisé l’objet de conception <strong>survey</strong> juste pour la cohérence </span>.</p>
-<div class="sourceCode" id="cb1141"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb1249"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co">## produire des comptes pondérés </span></span>
 <span><span class="fu">svytable</span><span class="op">(</span><span class="op">~</span><span class="va">died</span>, <span class="va">base_survey_design</span><span class="op">)</span></span></code></pre></div>
 <pre><code>## died
 ##      FALSE       TRUE 
 ## 1406244.43   76213.01</code></pre>
-<div class="sourceCode" id="cb1143"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb1251"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co">## produit des proportions pondérées</span></span>
 <span><span class="fu">svyciprop</span><span class="op">(</span><span class="op">~</span><span class="va">died</span>, <span class="va">base_survey_design</span>, na.rm <span class="op">=</span> <span class="cn">T</span><span class="op">)</span></span></code></pre></div>
 <pre><code>##               2.5% 97.5%
 ## died 0.0514 0.0208  0.12</code></pre>
-<div class="sourceCode" id="cb1145"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb1253"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co">## obtenir l'effet du plan de sondage </span></span>
-<span><span class="fu">svymean</span><span class="op">(</span><span class="op">~</span><span class="va">died</span>, <span class="va">base_survey_design</span>, na.rm <span class="op">=</span> <span class="cn">T</span>, deff <span class="op">=</span> <span class="cn">T</span><span class="op">)</span> <span class="op">%&gt;%</span> </span>
+<span><span class="fu">svymean</span><span class="op">(</span><span class="op">~</span><span class="va">died</span>, <span class="va">base_survey_design</span>, na.rm <span class="op">=</span> <span class="cn">T</span>, deff <span class="op">=</span> <span class="cn">T</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
 <span>  <span class="fu">deff</span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <pre><code>## diedFALSE  diedTRUE 
 ##  3.755508  3.755508</code></pre>
-<p>Nous pouvons combiner les fonctions de <strong>survey</strong> présentées ci-dessus en une fonction que nous définissons nous-mêmes ci-dessous, appelée <code>svy_prop</code> ; et nous pouvons alors utiliser cette fonction avec <code>map()</code> du paquetage purrr pour itérer sur plusieurs variables et créer un tableau. Voir le chapitre du manuel <a href="iteration.html#iteration">itération</a> pour plus de détails sur <strong>purrr</strong>.</p>
-<div class="sourceCode" id="cb1147"><pre class="downlit sourceCode r">
+<p>Nous pouvons combiner les fonctions de <strong>survey</strong> présentées ci-dessus en une fonction que nous définissons nous-mêmes ci-dessous, appelée <code>svy_prop</code> ; et nous pouvons alors utiliser cette fonction avec <code><a href="https://purrr.tidyverse.org/reference/map.html">map()</a></code> du paquetage purrr pour itérer sur plusieurs variables et créer un tableau. Voir le chapitre du manuel <a href="iteration.html#iteration">itération</a> pour plus de détails sur <strong>purrr</strong>.</p>
+<div class="sourceCode" id="cb1255"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Définissez la fonction permettant de calculer les effectifs pondérés, les proportions, l'IC et l'effet de plan.</span></span>
 <span><span class="co"># x est la variable entre guillemets </span></span>
 <span><span class="co"># design est votre objet de conception d'enquête</span></span>
@@ -815,26 +811,26 @@ où il y a des transitions d’états pour les individus. Ces diagrammes ont plu
 <span>  <span class="co">## définir les variables d'intérêt</span></span>
 <span>  <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"left"</span>, <span class="st">"died"</span>, <span class="st">"arrived"</span><span class="op">)</span>, </span>
 <span>  <span class="co">## déclarer la fonction utilisée et les arguments pour cette fonction (design)</span></span>
-<span>  <span class="va">svy_prop</span>, design <span class="op">=</span> <span class="va">base_survey_design</span><span class="op">)</span> <span class="op">%&gt;%</span> </span>
+<span>  <span class="va">svy_prop</span>, design <span class="op">=</span> <span class="va">base_survey_design</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
 <span>  <span class="co">## réduire la liste à un seul cadre de données</span></span>
-<span>  <span class="fu">bind_rows</span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/bind_rows.html">bind_rows</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
 <span>  <span class="co">## round </span></span>
-<span>  <span class="fu">mutate</span><span class="op">(</span><span class="fu">across</span><span class="op">(</span><span class="fu">where</span><span class="op">(</span><span class="va">is.numeric</span><span class="op">)</span>, <span class="va">round</span>, digits <span class="op">=</span> <span class="fl">1</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/across.html">across</a></span><span class="op">(</span><span class="fu"><a href="https://tidyselect.r-lib.org/reference/where.html">where</a></span><span class="op">(</span><span class="va">is.numeric</span><span class="op">)</span>, <span class="va">round</span>, digits <span class="op">=</span> <span class="fl">1</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <pre><code>##   Variable    Count Proportion X2.5. X97.5. Design.effect
 ## 1     left 701199.1       47.3  39.2   55.5           2.4
 ## 2     died  76213.0        5.1   2.1   12.1           3.8
 ## 3  arrived 761799.0       51.4  40.9   61.7           3.9</code></pre>
 </div>
-<div id="paquet-srvyr-1" class="section level3" number="24.8.2">
+<div id="paquet-srvyr-1" class="section level3" number="25.8.2">
 <h3>
-<span class="header-section-number">24.8.2</span> Paquet **Srvyr<a class="anchor" aria-label="anchor" href="#paquet-srvyr-1"><i class="fas fa-link"></i></a>
+<span class="header-section-number">25.8.2</span> Paquet **Srvyr<a class="anchor" aria-label="anchor" href="#paquet-srvyr-1"><i class="fas fa-link"></i></a>
 </h3>
 <p>Avec <strong>srvyr</strong>, nous pouvons utiliser la syntaxe <strong>dplyr</strong> pour créer une table. Notez que la méthode fonction <code>survey_mean()</code> est utilisée et que l’argument de proportion est spécifié, ainsi que également que la même fonction est utilisée pour calculer l’effet de plan. Ceci est dû au fait que <strong>srvyr</strong> englobe les deux fonctions du paquetage <strong>survey</strong>, <code>svyciprop()</code> et <code>svymean()</code>, qui sont utilisées dans la section ci-dessus.</p>
 <p><span style="color : black ;"><strong><em>NOTE:</em></strong> Il ne semble pas non plus possible d’obtenir des proportions à partir de variables catégorielles en utilisant <strong>srvyr</strong>, si vous en avez besoin, consultez la section ci-dessous utilisant <strong>sitrep</strong> </span>.</p>
-<div class="sourceCode" id="cb1149"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb1257"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co">## utiliser l'objet de conception srvyr</span></span>
-<span><span class="va">survey_design</span> <span class="op">%&gt;%</span> </span>
-<span>  <span class="fu">summarise</span><span class="op">(</span></span>
+<span><span class="va">survey_design</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarise</a></span><span class="op">(</span></span>
 <span>    <span class="co">## produire les comptes pondérés </span></span>
 <span>    counts <span class="op">=</span> <span class="fu">survey_total</span><span class="op">(</span><span class="va">died</span><span class="op">)</span>, </span>
 <span>    <span class="co">## produire les proportions pondérées et les intervalles de confiance </span></span>
@@ -843,16 +839,16 @@ où il y a des transitions d’états pour les individus. Ces diagrammes ont plu
 <span>                        proportion <span class="op">=</span> <span class="cn">TRUE</span>, </span>
 <span>                        vartype <span class="op">=</span> <span class="st">"ci"</span><span class="op">)</span> <span class="op">*</span> <span class="fl">100</span>, </span>
 <span>    <span class="co">## produire l'effet de plan </span></span>
-<span>    deff <span class="op">=</span> <span class="fu">survey_mean</span><span class="op">(</span><span class="va">died</span>, deff <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span> </span>
+<span>    deff <span class="op">=</span> <span class="fu">survey_mean</span><span class="op">(</span><span class="va">died</span>, deff <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
 <span>  <span class="co">## conserver uniquement les lignes d'intérêt</span></span>
 <span>  <span class="co">## (supprimez les erreurs standard et répétez le calcul des proportions)</span></span>
-<span>  <span class="fu">select</span><span class="op">(</span><span class="va">counts</span>, <span class="va">props</span>, <span class="va">props_low</span>, <span class="va">props_upp</span>, <span class="va">deff_deff</span><span class="op">)</span></span></code></pre></div>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">counts</span>, <span class="va">props</span>, <span class="va">props_low</span>, <span class="va">props_upp</span>, <span class="va">deff_deff</span><span class="op">)</span></span></code></pre></div>
 <pre><code>## # A tibble: 1 × 5
 ##   counts props props_low props_upp deff_deff
 ##    &lt;dbl&gt; &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;
 ## 1 76213.  5.14      2.08      12.1      3.76</code></pre>
 <p>Là encore, nous pourrions écrire une fonction pour itérer sur plusieurs variables en utilisant le paquet <strong>purrr</strong>. Voir le chapitre du manuel <a href="iteration.html#iteration">itération</a> pour plus de détails sur <strong>purrr</strong>.</p>
-<div class="sourceCode" id="cb1151"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb1259"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Définit la fonction permettant de calculer les effectifs pondérés, les proportions, l'IC et l'effet du plan de sondage.</span></span>
 <span><span class="co"># design est l'objet de votre plan de sondage</span></span>
 <span><span class="co"># x est la variable entre guillemets </span></span>
@@ -860,7 +856,7 @@ où il y a des transitions d’états pour les individus. Ces diagrammes ont plu
 <span></span>
 <span><span class="va">srvyr_prop</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">design</span>, <span class="va">x</span><span class="op">)</span> <span class="op">{</span></span>
 <span>  </span>
-<span>  <span class="fu">summarise</span><span class="op">(</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarise</a></span><span class="op">(</span></span>
 <span>    <span class="co">## utiliser l'objet du plan de sondage</span></span>
 <span>    <span class="va">design</span>, </span>
 <span>    <span class="co">## produire les comptes pondérés </span></span>
@@ -871,12 +867,12 @@ où il y a des transitions d’états pour les individus. Ces diagrammes ont plu
 <span>                        proportion <span class="op">=</span> <span class="cn">TRUE</span>, </span>
 <span>                        vartype <span class="op">=</span> <span class="st">"ci"</span><span class="op">)</span> <span class="op">*</span> <span class="fl">100</span>, </span>
 <span>    <span class="co">## produire l'effet de plan </span></span>
-<span>    deff <span class="op">=</span> <span class="fu">survey_mean</span><span class="op">(</span><span class="va">.data</span><span class="op">[[</span><span class="va">x</span><span class="op">]</span><span class="op">]</span>, deff <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span> </span>
+<span>    deff <span class="op">=</span> <span class="fu">survey_mean</span><span class="op">(</span><span class="va">.data</span><span class="op">[[</span><span class="va">x</span><span class="op">]</span><span class="op">]</span>, deff <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
 <span>  <span class="co">## ajouter le nom de la variable</span></span>
-<span>  <span class="fu">mutate</span><span class="op">(</span>variable <span class="op">=</span> <span class="va">x</span><span class="op">)</span> <span class="op">%&gt;%</span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>variable <span class="op">=</span> <span class="va">x</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
 <span>  <span class="co">## ne conserve que les lignes d'intérêt</span></span>
 <span>  <span class="co">## (supprimez les erreurs standard et répétez le calcul des proportions)</span></span>
-<span>  <span class="fu">select</span><span class="op">(</span><span class="va">variable</span>, <span class="va">counts</span>, <span class="va">props</span>, <span class="va">props_low</span>, <span class="va">props_upp</span>, <span class="va">deff_deff</span><span class="op">)</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">variable</span>, <span class="va">counts</span>, <span class="va">props</span>, <span class="va">props_low</span>, <span class="va">props_upp</span>, <span class="va">deff_deff</span><span class="op">)</span></span>
 <span>  </span>
 <span><span class="op">}</span></span>
 <span>  </span>
@@ -886,9 +882,9 @@ où il y a des transitions d’états pour les individus. Ces diagrammes ont plu
 <span>  <span class="co">## définir les variables d'intérêt</span></span>
 <span>  <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"left"</span>, <span class="st">"died"</span>, <span class="st">"arrived"</span><span class="op">)</span>, </span>
 <span>  <span class="co">## déclarer la fonction utilisée et les arguments pour cette fonction (design)</span></span>
-<span>  <span class="op">~</span><span class="fu">srvyr_prop</span><span class="op">(</span><span class="va">.x</span>, design <span class="op">=</span> <span class="va">survey_design</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span> </span>
+<span>  <span class="op">~</span><span class="fu">srvyr_prop</span><span class="op">(</span><span class="va">.x</span>, design <span class="op">=</span> <span class="va">survey_design</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
 <span>  <span class="co">## réduire la liste à un seul cadre de données</span></span>
-<span>  <span class="fu">bind_rows</span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/bind_rows.html">bind_rows</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <pre><code>## # A tibble: 3 × 6
 ##   variable  counts props props_low props_upp deff_deff
 ##   &lt;chr&gt;      &lt;dbl&gt; &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;
@@ -896,14 +892,14 @@ où il y a des transitions d’états pour les individus. Ces diagrammes ont plu
 ## 2 died      76213.  5.14      2.08      12.1      3.76
 ## 3 arrived  761799. 51.4      40.9       61.7      3.93</code></pre>
 </div>
-<div id="paquet-sitrep" class="section level3" number="24.8.3">
+<div id="paquet-sitrep" class="section level3" number="25.8.3">
 <h3>
-<span class="header-section-number">24.8.3</span> Paquet **Sitrep<a class="anchor" aria-label="anchor" href="#paquet-sitrep"><i class="fas fa-link"></i></a>
+<span class="header-section-number">25.8.3</span> Paquet **Sitrep<a class="anchor" aria-label="anchor" href="#paquet-sitrep"><i class="fas fa-link"></i></a>
 </h3>
 <p>La fonction <code><a href="https://R4EPI.github.io/epitabulate/reference/tab_functions.html">tab_survey()</a></code> de <strong>sitrep</strong> est une enveloppe pour <strong>srvyr</strong>, vous permettant de créer des tableaux pondérés avec un codage minimal. Elle vous permet également de calculer proportions pondérées pour les variables catégorielles.</p>
-<div class="sourceCode" id="cb1153"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb1261"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co">## utilisation de l'objet survey design</span></span>
-<span><span class="va">survey_design</span> <span class="op">%&gt;%</span> </span>
+<span><span class="va">survey_design</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
 <span>  <span class="co">## passe les noms des variables d'intérêt sans les citer</span></span>
 <span>  <span class="fu"><a href="https://R4EPI.github.io/epitabulate/reference/tab_functions.html">tab_survey</a></span><span class="op">(</span><span class="va">arrived</span>, <span class="va">left</span>, <span class="va">died</span>, <span class="va">education_level</span>,</span>
 <span>             deff <span class="op">=</span> <span class="cn">TRUE</span>, <span class="co"># calculer l'effet du plan de sondage</span></span>
@@ -923,12 +919,12 @@ où il y a des transitions d’états pour les individus. Ces diagrammes ont plu
 ## 8 education_level primary    102609.  2.37 25.4% (16.2-37.3)
 ## 9 education_level secondary  130201.  6.68 32.2% (16.5-53.3)</code></pre>
 </div>
-<div id="paquet-gtsummary" class="section level3" number="24.8.4">
+<div id="paquet-gtsummary" class="section level3" number="25.8.4">
 <h3>
-<span class="header-section-number">24.8.4</span> Paquet **Gtsummary<a class="anchor" aria-label="anchor" href="#paquet-gtsummary"><i class="fas fa-link"></i></a>
+<span class="header-section-number">25.8.4</span> Paquet **Gtsummary<a class="anchor" aria-label="anchor" href="#paquet-gtsummary"><i class="fas fa-link"></i></a>
 </h3>
 <p>Avec <strong>gtsummary</strong>, il ne semble pas y avoir de fonctions intégrées pour ajouter des intervalles de confiance ou l’effet de plan. Ici nous montrons comment définir une fonction pour ajouter des intervalles de confiance et ensuite ajouter des intervalles de confiance à une table <strong>gtsummary</strong> créée en utilisant la fonction <code>tbl_svysummary()</code>.</p>
-<div class="sourceCode" id="cb1156"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb1264"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">confidence_intervals</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">data</span>, <span class="va">variable</span>, <span class="va">by</span>, <span class="va">...</span><span class="op">)</span> <span class="op">{</span></span>
 <span>  </span>
 <span>  <span class="co">## extraire les intervalles de confiance et les multiplier pour obtenir des pourcentages.</span></span>
@@ -936,18 +932,18 @@ où il y a des transitions d’états pour les individus. Ces diagrammes ont plu
 <span>              <span class="va">data</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
 <span>  </span>
 <span>  <span class="co">## Extraire les intervalles de confiance </span></span>
-<span>  <span class="fu"><a href="https://rdrr.io/r/base/numeric.html">as.numeric</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/confint.html">confint</a></span><span class="op">(</span><span class="va">props</span><span class="op">)</span> <span class="op">*</span> <span class="fl">100</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="co">### rendre numérique et multiplier pour le pourcentage</span></span>
-<span>    <span class="fu"><a href="https://rdrr.io/r/base/Round.html">round</a></span><span class="op">(</span><span class="va">.</span>, digits <span class="op">=</span> <span class="fl">1</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="co">## arrondir à un chiffre</span></span>
-<span>    <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="va">.</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="co">## extraire les chiffres de la matrice</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/base/numeric.html">as.numeric</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/confint.html">confint</a></span><span class="op">(</span><span class="va">props</span><span class="op">)</span> <span class="op">*</span> <span class="fl">100</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="co">### rendre numérique et multiplier pour le pourcentage</span></span>
+<span>    <span class="fu"><a href="https://rdrr.io/r/base/Round.html">round</a></span><span class="op">(</span><span class="va">.</span>, digits <span class="op">=</span> <span class="fl">1</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="co">## arrondir à un chiffre</span></span>
+<span>    <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="va">.</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="co">## extraire les chiffres de la matrice</span></span>
 <span>    <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span><span class="op">(</span><span class="va">.</span>, collapse <span class="op">=</span> <span class="st">"-"</span><span class="op">)</span> <span class="co">## combine en un seul caractère</span></span>
 <span><span class="op">}</span></span>
 <span></span>
 <span><span class="co">## utiliser l'objet de conception du paquet d'enquêtes</span></span>
 <span><span class="fu">tbl_svysummary</span><span class="op">(</span><span class="va">base_survey_design</span>, </span>
 <span>               include <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="va">arrived</span>, <span class="va">left</span>, <span class="va">died</span><span class="op">)</span>, <span class="co">## définir les variables à inclure</span></span>
-<span>               statistic <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="fu">everything</span><span class="op">(</span><span class="op">)</span> <span class="op">~</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"{n} ({p}%)"</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="co">## définir les statistiques d'intérêt</span></span>
-<span>  <span class="fu">add_n</span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="co">## ajoute le total pondéré </span></span>
-<span>  <span class="fu">add_stat</span><span class="op">(</span>fns <span class="op">=</span> <span class="fu">everything</span><span class="op">(</span><span class="op">)</span> <span class="op">~</span> <span class="va">confidence_intervals</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="co">## ajouter les ICs</span></span>
+<span>               statistic <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="fu"><a href="https://tidyselect.r-lib.org/reference/everything.html">everything</a></span><span class="op">(</span><span class="op">)</span> <span class="op">~</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"{n} ({p}%)"</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="co">## définir les statistiques d'intérêt</span></span>
+<span>  <span class="fu">add_n</span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="co">## ajoute le total pondéré </span></span>
+<span>  <span class="fu">add_stat</span><span class="op">(</span>fns <span class="op">=</span> <span class="fu"><a href="https://tidyselect.r-lib.org/reference/everything.html">everything</a></span><span class="op">(</span><span class="op">)</span> <span class="op">~</span> <span class="va">confidence_intervals</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="co">## ajouter les ICs</span></span>
 <span>  <span class="co">## modifier les en-têtes de colonnes</span></span>
 <span>  <span class="fu">modify_header</span><span class="op">(</span></span>
 <span>    <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span></span>
@@ -956,23 +952,23 @@ où il y a des transitions d’états pour les individus. Ces diagrammes ont plu
 <span>      <span class="va">add_stat_1</span> <span class="op">~</span> <span class="st">"**95%CI**"</span></span>
 <span>    <span class="op">)</span></span>
 <span>    <span class="op">)</span></span></code></pre></div>
-<div id="kfwekxvefa" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#kfwekxvefa table {
+<div id="wzyvhwdoca" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#wzyvhwdoca table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#kfwekxvefa thead, #kfwekxvefa tbody, #kfwekxvefa tfoot, #kfwekxvefa tr, #kfwekxvefa td, #kfwekxvefa th {
+#wzyvhwdoca thead, #wzyvhwdoca tbody, #wzyvhwdoca tfoot, #wzyvhwdoca tr, #wzyvhwdoca td, #wzyvhwdoca th {
   border-style: none;
 }
 
-#kfwekxvefa p {
+#wzyvhwdoca p {
   margin: 0;
   padding: 0;
 }
 
-#kfwekxvefa .gt_table {
+#wzyvhwdoca .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -998,12 +994,12 @@ où il y a des transitions d’états pour les individus. Ces diagrammes ont plu
   border-left-color: #D3D3D3;
 }
 
-#kfwekxvefa .gt_caption {
+#wzyvhwdoca .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#kfwekxvefa .gt_title {
+#wzyvhwdoca .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -1015,7 +1011,7 @@ où il y a des transitions d’états pour les individus. Ces diagrammes ont plu
   border-bottom-width: 0;
 }
 
-#kfwekxvefa .gt_subtitle {
+#wzyvhwdoca .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -1027,7 +1023,7 @@ où il y a des transitions d’états pour les individus. Ces diagrammes ont plu
   border-top-width: 0;
 }
 
-#kfwekxvefa .gt_heading {
+#wzyvhwdoca .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -1039,13 +1035,13 @@ où il y a des transitions d’états pour les individus. Ces diagrammes ont plu
   border-right-color: #D3D3D3;
 }
 
-#kfwekxvefa .gt_bottom_border {
+#wzyvhwdoca .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#kfwekxvefa .gt_col_headings {
+#wzyvhwdoca .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1060,7 +1056,7 @@ où il y a des transitions d’états pour les individus. Ces diagrammes ont plu
   border-right-color: #D3D3D3;
 }
 
-#kfwekxvefa .gt_col_heading {
+#wzyvhwdoca .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1080,7 +1076,7 @@ où il y a des transitions d’états pour les individus. Ces diagrammes ont plu
   overflow-x: hidden;
 }
 
-#kfwekxvefa .gt_column_spanner_outer {
+#wzyvhwdoca .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1092,15 +1088,15 @@ où il y a des transitions d’états pour les individus. Ces diagrammes ont plu
   padding-right: 4px;
 }
 
-#kfwekxvefa .gt_column_spanner_outer:first-child {
+#wzyvhwdoca .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#kfwekxvefa .gt_column_spanner_outer:last-child {
+#wzyvhwdoca .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#kfwekxvefa .gt_column_spanner {
+#wzyvhwdoca .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -1112,11 +1108,11 @@ où il y a des transitions d’états pour les individus. Ces diagrammes ont plu
   width: 100%;
 }
 
-#kfwekxvefa .gt_spanner_row {
+#wzyvhwdoca .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#kfwekxvefa .gt_group_heading {
+#wzyvhwdoca .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1142,7 +1138,7 @@ où il y a des transitions d’états pour les individus. Ces diagrammes ont plu
   text-align: left;
 }
 
-#kfwekxvefa .gt_empty_group_heading {
+#wzyvhwdoca .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -1157,15 +1153,15 @@ où il y a des transitions d’états pour les individus. Ces diagrammes ont plu
   vertical-align: middle;
 }
 
-#kfwekxvefa .gt_from_md > :first-child {
+#wzyvhwdoca .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#kfwekxvefa .gt_from_md > :last-child {
+#wzyvhwdoca .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#kfwekxvefa .gt_row {
+#wzyvhwdoca .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1184,7 +1180,7 @@ où il y a des transitions d’états pour les individus. Ces diagrammes ont plu
   overflow-x: hidden;
 }
 
-#kfwekxvefa .gt_stub {
+#wzyvhwdoca .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1197,7 +1193,7 @@ où il y a des transitions d’états pour les individus. Ces diagrammes ont plu
   padding-right: 5px;
 }
 
-#kfwekxvefa .gt_stub_row_group {
+#wzyvhwdoca .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1211,15 +1207,15 @@ où il y a des transitions d’états pour les individus. Ces diagrammes ont plu
   vertical-align: top;
 }
 
-#kfwekxvefa .gt_row_group_first td {
+#wzyvhwdoca .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#kfwekxvefa .gt_row_group_first th {
+#wzyvhwdoca .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#kfwekxvefa .gt_summary_row {
+#wzyvhwdoca .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1229,16 +1225,16 @@ où il y a des transitions d’états pour les individus. Ces diagrammes ont plu
   padding-right: 5px;
 }
 
-#kfwekxvefa .gt_first_summary_row {
+#wzyvhwdoca .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#kfwekxvefa .gt_first_summary_row.thick {
+#wzyvhwdoca .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#kfwekxvefa .gt_last_summary_row {
+#wzyvhwdoca .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1248,7 +1244,7 @@ où il y a des transitions d’états pour les individus. Ces diagrammes ont plu
   border-bottom-color: #D3D3D3;
 }
 
-#kfwekxvefa .gt_grand_summary_row {
+#wzyvhwdoca .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1258,7 +1254,7 @@ où il y a des transitions d’états pour les individus. Ces diagrammes ont plu
   padding-right: 5px;
 }
 
-#kfwekxvefa .gt_first_grand_summary_row {
+#wzyvhwdoca .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1268,7 +1264,7 @@ où il y a des transitions d’états pour les individus. Ces diagrammes ont plu
   border-top-color: #D3D3D3;
 }
 
-#kfwekxvefa .gt_last_grand_summary_row_top {
+#wzyvhwdoca .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1278,11 +1274,11 @@ où il y a des transitions d’états pour les individus. Ces diagrammes ont plu
   border-bottom-color: #D3D3D3;
 }
 
-#kfwekxvefa .gt_striped {
+#wzyvhwdoca .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#kfwekxvefa .gt_table_body {
+#wzyvhwdoca .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1291,7 +1287,7 @@ où il y a des transitions d’états pour les individus. Ces diagrammes ont plu
   border-bottom-color: #D3D3D3;
 }
 
-#kfwekxvefa .gt_footnotes {
+#wzyvhwdoca .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1305,7 +1301,7 @@ où il y a des transitions d’états pour les individus. Ces diagrammes ont plu
   border-right-color: #D3D3D3;
 }
 
-#kfwekxvefa .gt_footnote {
+#wzyvhwdoca .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -1314,7 +1310,7 @@ où il y a des transitions d’états pour les individus. Ces diagrammes ont plu
   padding-right: 5px;
 }
 
-#kfwekxvefa .gt_sourcenotes {
+#wzyvhwdoca .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1328,7 +1324,7 @@ où il y a des transitions d’états pour les individus. Ces diagrammes ont plu
   border-right-color: #D3D3D3;
 }
 
-#kfwekxvefa .gt_sourcenote {
+#wzyvhwdoca .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -1336,63 +1332,63 @@ où il y a des transitions d’états pour les individus. Ces diagrammes ont plu
   padding-right: 5px;
 }
 
-#kfwekxvefa .gt_left {
+#wzyvhwdoca .gt_left {
   text-align: left;
 }
 
-#kfwekxvefa .gt_center {
+#wzyvhwdoca .gt_center {
   text-align: center;
 }
 
-#kfwekxvefa .gt_right {
+#wzyvhwdoca .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#kfwekxvefa .gt_font_normal {
+#wzyvhwdoca .gt_font_normal {
   font-weight: normal;
 }
 
-#kfwekxvefa .gt_font_bold {
+#wzyvhwdoca .gt_font_bold {
   font-weight: bold;
 }
 
-#kfwekxvefa .gt_font_italic {
+#wzyvhwdoca .gt_font_italic {
   font-style: italic;
 }
 
-#kfwekxvefa .gt_super {
+#wzyvhwdoca .gt_super {
   font-size: 65%;
 }
 
-#kfwekxvefa .gt_footnote_marks {
+#wzyvhwdoca .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#kfwekxvefa .gt_asterisk {
+#wzyvhwdoca .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#kfwekxvefa .gt_indent_1 {
+#wzyvhwdoca .gt_indent_1 {
   text-indent: 5px;
 }
 
-#kfwekxvefa .gt_indent_2 {
+#wzyvhwdoca .gt_indent_2 {
   text-indent: 10px;
 }
 
-#kfwekxvefa .gt_indent_3 {
+#wzyvhwdoca .gt_indent_3 {
   text-indent: 15px;
 }
 
-#kfwekxvefa .gt_indent_4 {
+#wzyvhwdoca .gt_indent_4 {
   text-indent: 20px;
 }
 
-#kfwekxvefa .gt_indent_5 {
+#wzyvhwdoca .gt_indent_5 {
   text-indent: 25px;
 }
 </style>
@@ -1434,16 +1430,16 @@ où il y a des transitions d’états pour les individus. Ces diagrammes ont plu
 <!-- ======================================================= -->
 </div>
 </div>
-<div id="ratios-pondérés" class="section level2" number="24.9">
+<div id="ratios-pondérés" class="section level2" number="25.9">
 <h2>
-<span class="header-section-number">24.9</span> Ratios pondérés<a class="anchor" aria-label="anchor" href="#ratios-pond%C3%A9r%C3%A9s"><i class="fas fa-link"></i></a>
+<span class="header-section-number">25.9</span> Ratios pondérés<a class="anchor" aria-label="anchor" href="#ratios-pond%C3%A9r%C3%A9s"><i class="fas fa-link"></i></a>
 </h2>
 <p>De même, pour les ratios pondérés (comme pour les ratios de mortalité), vous pouvez utiliser le paquetage <strong>survey</strong> ou le paquet <strong>srvyr</strong>. Vous pouvez également écrire des fonctions (similaires à celles ci-dessus) pour itérer sur plusieurs variables. Vous pourriez également créer une fonction pour <strong>gtsummary</strong> comme ci-dessus mais actuellement, elle n’a pas de fonctionnalité intégrée.</p>
-<div id="paquet-survey-2" class="section level3" number="24.9.1">
+<div id="paquet-survey-2" class="section level3" number="25.9.1">
 <h3>
-<span class="header-section-number">24.9.1</span> Paquet **Survey<a class="anchor" aria-label="anchor" href="#paquet-survey-2"><i class="fas fa-link"></i></a>
+<span class="header-section-number">25.9.1</span> Paquet **Survey<a class="anchor" aria-label="anchor" href="#paquet-survey-2"><i class="fas fa-link"></i></a>
 </h3>
-<div class="sourceCode" id="cb1157"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb1265"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">ratio</span> <span class="op">&lt;-</span> <span class="fu">svyratio</span><span class="op">(</span><span class="op">~</span><span class="va">died</span>, </span>
 <span>         denominator <span class="op">=</span> <span class="op">~</span><span class="va">obstime</span>, </span>
 <span>         design <span class="op">=</span> <span class="va">base_survey_design</span><span class="op">)</span></span>
@@ -1457,14 +1453,14 @@ où il y a des transitions d’états pour les individus. Ces diagrammes ont plu
 <pre><code>##       obstime    2.5 %   97.5 %
 ## died 5.981922 1.194294 10.76955</code></pre>
 </div>
-<div id="paquet-srvyr-paquet" class="section level3" number="24.9.2">
+<div id="paquet-srvyr-paquet" class="section level3" number="25.9.2">
 <h3>
-<span class="header-section-number">24.9.2</span> <strong>Paquet SRVYR</strong> (paquet)<a class="anchor" aria-label="anchor" href="#paquet-srvyr-paquet"><i class="fas fa-link"></i></a>
+<span class="header-section-number">25.9.2</span> <strong>Paquet SRVYR</strong> (paquet)<a class="anchor" aria-label="anchor" href="#paquet-srvyr-paquet"><i class="fas fa-link"></i></a>
 </h3>
-<div class="sourceCode" id="cb1159"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">survey_design</span> <span class="op">%&gt;%</span> </span>
+<div class="sourceCode" id="cb1267"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">survey_design</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
 <span>  <span class="co">### ratio d'enquête utilisé pour tenir compte du temps d'observation </span></span>
-<span>  <span class="fu">summarise</span><span class="op">(</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarise</a></span><span class="op">(</span></span>
 <span>    mortality <span class="op">=</span> <span class="fu">survey_ratio</span><span class="op">(</span></span>
 <span>      <span class="fu"><a href="https://rdrr.io/r/base/numeric.html">as.numeric</a></span><span class="op">(</span><span class="va">died</span><span class="op">)</span> <span class="op">*</span> <span class="fl">10000</span>, </span>
 <span>      <span class="va">obstime</span>, </span>
@@ -1477,9 +1473,9 @@ où il y a des transitions d’états pour les individus. Ces diagrammes ont plu
 <!-- ======================================================= -->
 </div>
 </div>
-<div id="ressources-12" class="section level2" number="24.10">
+<div id="ressources-12" class="section level2" number="25.10">
 <h2>
-<span class="header-section-number">24.10</span> Ressources<a class="anchor" aria-label="anchor" href="#ressources-12"><i class="fas fa-link"></i></a>
+<span class="header-section-number">25.10</span> Ressources<a class="anchor" aria-label="anchor" href="#ressources-12"><i class="fas fa-link"></i></a>
 </h2>
 <p><a href="https://stats.idre.ucla.edu/r/seminars/survey-data-analysis-with-r/">Page des statistiques de l’UCLA</a></p>
 <p><a href="http://asdfree.com/">Analyse des données d’enquête gratuite</a></p>
@@ -1490,51 +1486,51 @@ où il y a des transitions d’états pour les individus. Ces diagrammes ont plu
 </div>
 </div>
   <div class="chapter-nav">
-<div class="prev"><a href="contact_tracing.html"><span class="header-section-number">23</span> Suivi des contacts</a></div>
-<div class="next"><a href="survival_analysis.html"><span class="header-section-number">25</span> Analyse de survie</a></div>
+<div class="prev"><a href="contact_tracing.html"><span class="header-section-number">24</span> Suivi des contacts</a></div>
+<div class="next"><a href="survival_analysis.html"><span class="header-section-number">26</span> Analyse de survie</a></div>
 </div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
     <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
       <ul class="nav navbar-nav">
-<li><a class="nav-link" href="#survey_analysis"><span class="header-section-number">24</span> Analyse d’enquête</a></li>
-<li><a class="nav-link" href="#aper%C3%A7u-2"><span class="header-section-number">24.1</span> Aperçu</a></li>
+<li><a class="nav-link" href="#survey_analysis"><span class="header-section-number">25</span> Analyse d’enquête</a></li>
+<li><a class="nav-link" href="#aper%C3%A7u-2"><span class="header-section-number">25.1</span> Aperçu</a></li>
 <li>
-<a class="nav-link" href="#pr%C3%A9paration-9"><span class="header-section-number">24.2</span> Préparation</a><ul class="nav navbar-nav">
+<a class="nav-link" href="#pr%C3%A9paration-9"><span class="header-section-number">25.2</span> Préparation</a><ul class="nav navbar-nav">
 <li><a class="nav-link" href="#paquets-1">Paquets</a></li>
 <li><a class="nav-link" href="#charger-les-donn%C3%A9es">Charger les données</a></li>
 <li><a class="nav-link" href="#nettoyer-les-donn%C3%A9es-2">Nettoyer les données</a></li>
 </ul>
 </li>
-<li><a class="nav-link" href="#donn%C3%A9es-denqu%C3%AAte"><span class="header-section-number">24.3</span> Données d’enquête</a></li>
-<li><a class="nav-link" href="#temps-dobservation"><span class="header-section-number">24.4</span> Temps d’observation</a></li>
-<li><a class="nav-link" href="#pond%C3%A9ration"><span class="header-section-number">24.5</span> Pondération</a></li>
+<li><a class="nav-link" href="#donn%C3%A9es-denqu%C3%AAte"><span class="header-section-number">25.3</span> Données d’enquête</a></li>
+<li><a class="nav-link" href="#temps-dobservation"><span class="header-section-number">25.4</span> Temps d’observation</a></li>
+<li><a class="nav-link" href="#pond%C3%A9ration"><span class="header-section-number">25.5</span> Pondération</a></li>
 <li>
-<a class="nav-link" href="#objets-de-conception-denqu%C3%AAte"><span class="header-section-number">24.6</span> Objets de conception d’enquête</a><ul class="nav navbar-nav">
-<li><a class="nav-link" href="#paquet-survey"><span class="header-section-number">24.6.1</span> Paquet **Survey</a></li>
-<li><a class="nav-link" href="#paquet-srvyr"><span class="header-section-number">24.6.2</span> Paquet **Srvyr</a></li>
+<a class="nav-link" href="#objets-de-conception-denqu%C3%AAte"><span class="header-section-number">25.6</span> Objets de conception d’enquête</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#paquet-survey"><span class="header-section-number">25.6.1</span> Paquet **Survey</a></li>
+<li><a class="nav-link" href="#paquet-srvyr"><span class="header-section-number">25.6.2</span> Paquet **Srvyr</a></li>
 </ul>
 </li>
 <li>
-<a class="nav-link" href="#analyse-descriptive-1"><span class="header-section-number">24.7</span> Analyse descriptive</a><ul class="nav navbar-nav">
-<li><a class="nav-link" href="#biais-d%C3%A9chantillonnage"><span class="header-section-number">24.7.1</span> Biais d’échantillonnage</a></li>
-<li><a class="nav-link" href="#pyramides-d%C3%A9mographiques"><span class="header-section-number">24.7.2</span> Pyramides démographiques</a></li>
-<li><a class="nav-link" href="#diagramme-alluvialsankey"><span class="header-section-number">24.7.3</span> Diagramme alluvial/sankey</a></li>
+<a class="nav-link" href="#analyse-descriptive-1"><span class="header-section-number">25.7</span> Analyse descriptive</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#biais-d%C3%A9chantillonnage"><span class="header-section-number">25.7.1</span> Biais d’échantillonnage</a></li>
+<li><a class="nav-link" href="#pyramides-d%C3%A9mographiques"><span class="header-section-number">25.7.2</span> Pyramides démographiques</a></li>
+<li><a class="nav-link" href="#diagramme-alluvialsankey"><span class="header-section-number">25.7.3</span> Diagramme alluvial/sankey</a></li>
 </ul>
 </li>
 <li>
-<a class="nav-link" href="#proportions-pond%C3%A9r%C3%A9es"><span class="header-section-number">24.8</span> Proportions pondérées</a><ul class="nav navbar-nav">
-<li><a class="nav-link" href="#paquet-survey-1"><span class="header-section-number">24.8.1</span> Paquet **Survey</a></li>
-<li><a class="nav-link" href="#paquet-srvyr-1"><span class="header-section-number">24.8.2</span> Paquet **Srvyr</a></li>
-<li><a class="nav-link" href="#paquet-sitrep"><span class="header-section-number">24.8.3</span> Paquet **Sitrep</a></li>
-<li><a class="nav-link" href="#paquet-gtsummary"><span class="header-section-number">24.8.4</span> Paquet **Gtsummary</a></li>
+<a class="nav-link" href="#proportions-pond%C3%A9r%C3%A9es"><span class="header-section-number">25.8</span> Proportions pondérées</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#paquet-survey-1"><span class="header-section-number">25.8.1</span> Paquet **Survey</a></li>
+<li><a class="nav-link" href="#paquet-srvyr-1"><span class="header-section-number">25.8.2</span> Paquet **Srvyr</a></li>
+<li><a class="nav-link" href="#paquet-sitrep"><span class="header-section-number">25.8.3</span> Paquet **Sitrep</a></li>
+<li><a class="nav-link" href="#paquet-gtsummary"><span class="header-section-number">25.8.4</span> Paquet **Gtsummary</a></li>
 </ul>
 </li>
 <li>
-<a class="nav-link" href="#ratios-pond%C3%A9r%C3%A9s"><span class="header-section-number">24.9</span> Ratios pondérés</a><ul class="nav navbar-nav">
-<li><a class="nav-link" href="#paquet-survey-2"><span class="header-section-number">24.9.1</span> Paquet **Survey</a></li>
-<li><a class="nav-link" href="#paquet-srvyr-paquet"><span class="header-section-number">24.9.2</span> Paquet SRVYR (paquet)</a></li>
+<a class="nav-link" href="#ratios-pond%C3%A9r%C3%A9s"><span class="header-section-number">25.9</span> Ratios pondérés</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#paquet-survey-2"><span class="header-section-number">25.9.1</span> Paquet **Survey</a></li>
+<li><a class="nav-link" href="#paquet-srvyr-paquet"><span class="header-section-number">25.9.2</span> Paquet SRVYR (paquet)</a></li>
 </ul>
 </li>
-<li><a class="nav-link" href="#ressources-12"><span class="header-section-number">24.10</span> Ressources</a></li>
+<li><a class="nav-link" href="#ressources-12"><span class="header-section-number">25.10</span> Ressources</a></li>
 </ul>
 
       <div class="book-extra">

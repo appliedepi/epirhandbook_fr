@@ -1,3 +1,7 @@
-download_book_data
-download_offline
-télécharger-les-données
+epidemic_models
+overview
+préparation
+estimation-de-rt
+estimation-des-distributions-de-retard
+projection-de-lincidence
+ressources

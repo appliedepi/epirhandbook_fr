@@ -85,10 +85,10 @@ rmd_files: [
   "new_pages/collaboration.Rmd",
   "new_pages/errors.Rmd",
   "new_pages/help.Rmd",
-  "new_pages/relational_databases.Rmd",
+  #"new_pages/relational_databases.Rmd",
   "new_pages/network_drives.Rmd",
   "new_pages/data_table.Rmd" ,
-  "new_pages/rstudio_advanced.Rmd"
+  #"new_pages/rstudio_advanced.Rmd"
 ]
 
 

@@ -4,16 +4,16 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>50 R sur les lecteurs réseau | Le Epi R Handbook</title>
+<title>48 R sur les lecteurs réseau | Le Epi R Handbook</title>
 <meta name="author" content="the handbook team">
-<meta name="description" content="50.1 Aperçu L’utilisation de R sur des lecteurs partagés du réseau ou de “l’entreprise” peut présenter des défis supplémentaires. Cette page contient des approches, des erreurs courantes et des...">
+<meta name="description" content="48.1 Aperçu L’utilisation de R sur des lecteurs partagés du réseau ou de “l’entreprise” peut présenter des défis supplémentaires. Cette page contient des approches, des erreurs courantes et des...">
 <meta name="generator" content="bookdown 0.34 with bs4_book()">
-<meta property="og:title" content="50 R sur les lecteurs réseau | Le Epi R Handbook">
+<meta property="og:title" content="48 R sur les lecteurs réseau | Le Epi R Handbook">
 <meta property="og:type" content="book">
-<meta property="og:description" content="50.1 Aperçu L’utilisation de R sur des lecteurs partagés du réseau ou de “l’entreprise” peut présenter des défis supplémentaires. Cette page contient des approches, des erreurs courantes et des...">
+<meta property="og:description" content="48.1 Aperçu L’utilisation de R sur des lecteurs partagés du réseau ou de “l’entreprise” peut présenter des défis supplémentaires. Cette page contient des approches, des erreurs courantes et des...">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="50 R sur les lecteurs réseau | Le Epi R Handbook">
-<meta name="twitter:description" content="50.1 Aperçu L’utilisation de R sur des lecteurs partagés du réseau ou de “l’entreprise” peut présenter des défis supplémentaires. Cette page contient des approches, des erreurs courantes et des...">
+<meta name="twitter:title" content="48 R sur les lecteurs réseau | Le Epi R Handbook">
+<meta name="twitter:description" content="48.1 Aperçu L’utilisation de R sur des lecteurs partagés du réseau ou de “l’entreprise” peut présenter des défis supplémentaires. Cette page contient des approches, des erreurs courantes et des...">
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
 <script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.4.2/transition.js"></script><script src="libs/bs3compat-0.4.2/tabs.js"></script><script src="libs/bs3compat-0.4.2/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
@@ -64,61 +64,58 @@
 <li><a class="" href="editorial_notes.html"><span class="header-section-number">1</span> Notes techniques et choix éditoriaux</a></li>
 <li><a class="" href="download_book_data.html"><span class="header-section-number">2</span> Télécharger le manuel et les données</a></li>
 <li class="book-part">Basics</li>
-<li><a class="" href="transition_to_r.html"><span class="header-section-number">3</span> Transition vers R</a></li>
-<li><a class="" href="suggested_packages.html"><span class="header-section-number">4</span> Paquets conseillés</a></li>
-<li><a class="" href="r_projects.html"><span class="header-section-number">5</span> Projets R</a></li>
-<li><a class="" href="import_export.html"><span class="header-section-number">6</span> Importer et exporter des données</a></li>
+<li><a class="" href="rbasics.html"><span class="header-section-number">3</span> R - les bases</a></li>
+<li><a class="" href="transition_to_r.html"><span class="header-section-number">4</span> Transition vers R</a></li>
+<li><a class="" href="suggested_packages.html"><span class="header-section-number">5</span> Paquets conseillés</a></li>
+<li><a class="" href="r_projects.html"><span class="header-section-number">6</span> Projets R</a></li>
+<li><a class="" href="import_export.html"><span class="header-section-number">7</span> Importer et exporter des données</a></li>
 <li class="book-part">Data Management</li>
-<li><a class="" href="cleaning_data.html"><span class="header-section-number">7</span> Nettoyage de données et fonctions essentielles</a></li>
-<li><a class="" href="working_dates.html"><span class="header-section-number">8</span> Manipuler les dates</a></li>
-<li><a class="" href="character_strings.html"><span class="header-section-number">9</span> Caractères et chaînes de caractères</a></li>
-<li><a class="" href="factors.html"><span class="header-section-number">10</span> Facteurs</a></li>
-<li><a class="" href="pivoting_data.html"><span class="header-section-number">11</span> Restructurer les données</a></li>
-<li><a class="" href="grouping_data.html"><span class="header-section-number">12</span> Travailler sur des données groupées</a></li>
-<li><a class="" href="joining_matching.html"><span class="header-section-number">13</span> Joindre des données</a></li>
-<li><a class="" href="deduplication.html"><span class="header-section-number">14</span> De-duplication</a></li>
-<li><a class="" href="iteration.html"><span class="header-section-number">15</span> Itération, boucles et listes</a></li>
+<li><a class="" href="cleaning_data.html"><span class="header-section-number">8</span> Nettoyage de données et fonctions essentielles</a></li>
+<li><a class="" href="working_dates.html"><span class="header-section-number">9</span> Manipuler les dates</a></li>
+<li><a class="" href="character_strings.html"><span class="header-section-number">10</span> Caractères et chaînes de caractères</a></li>
+<li><a class="" href="factors.html"><span class="header-section-number">11</span> Facteurs</a></li>
+<li><a class="" href="pivoting_data.html"><span class="header-section-number">12</span> Restructurer les données</a></li>
+<li><a class="" href="grouping_data.html"><span class="header-section-number">13</span> Travailler sur des données groupées</a></li>
+<li><a class="" href="joining_matching.html"><span class="header-section-number">14</span> Joindre des données</a></li>
+<li><a class="" href="deduplication.html"><span class="header-section-number">15</span> De-duplication</a></li>
+<li><a class="" href="iteration.html"><span class="header-section-number">16</span> Itération, boucles et listes</a></li>
 <li class="book-part">Analysis</li>
-<li><a class="" href="descriptive_tables.html"><span class="header-section-number">16</span> Tableaux descriptifs</a></li>
-<li><a class="" href="stats_test.html"><span class="header-section-number">17</span> Tests statistiques simples</a></li>
-<li><a class="" href="regression.html"><span class="header-section-number">18</span> Régression univariée et multivariable</a></li>
-<li><a class="" href="missing_data.html"><span class="header-section-number">19</span> Données manquantes</a></li>
-<li><a class="" href="standardisation.html"><span class="header-section-number">20</span> Taux standardisés</a></li>
-<li><a class="" href="moving_average.html"><span class="header-section-number">21</span> Moyennes mobiles</a></li>
-<li><a class="" href="time_series.html"><span class="header-section-number">22</span> Série temporelle et détection des épidémies</a></li>
-<li><a class="" href="contact_tracing.html"><span class="header-section-number">23</span> Suivi des contacts</a></li>
-<li><a class="" href="survey_analysis.html"><span class="header-section-number">24</span> Analyse d’enquête</a></li>
-<li><a class="" href="survival_analysis.html"><span class="header-section-number">25</span> Analyse de survie</a></li>
-<li><a class="" href="gis.html"><span class="header-section-number">26</span> GIS basics</a></li>
+<li><a class="" href="descriptive_tables.html"><span class="header-section-number">17</span> Tableaux descriptifs</a></li>
+<li><a class="" href="stats_test.html"><span class="header-section-number">18</span> Tests statistiques simples</a></li>
+<li><a class="" href="regression.html"><span class="header-section-number">19</span> Régression univariée et multivariable</a></li>
+<li><a class="" href="missing_data.html"><span class="header-section-number">20</span> Données manquantes</a></li>
+<li><a class="" href="standardisation.html"><span class="header-section-number">21</span> Taux standardisés</a></li>
+<li><a class="" href="moving_average.html"><span class="header-section-number">22</span> Moyennes mobiles</a></li>
+<li><a class="" href="time_series.html"><span class="header-section-number">23</span> Série temporelle et détection des épidémies</a></li>
+<li><a class="" href="contact_tracing.html"><span class="header-section-number">24</span> Suivi des contacts</a></li>
+<li><a class="" href="survey_analysis.html"><span class="header-section-number">25</span> Analyse d’enquête</a></li>
+<li><a class="" href="survival_analysis.html"><span class="header-section-number">26</span> Analyse de survie</a></li>
+<li><a class="" href="gis.html"><span class="header-section-number">27</span> GIS basics</a></li>
 <li class="book-part">Data Visualization</li>
-<li><a class="" href="tables_presentation.html"><span class="header-section-number">27</span> Présenter avec des tables</a></li>
-<li><a class="" href="ggplot_basics.html"><span class="header-section-number">28</span> Les bases de ggplot</a></li>
-<li><a class="" href="plot_continuous.html"><span class="header-section-number">29</span> Traçage de données continues</a></li>
-<li><a class="" href="tracer-des-donn%C3%A9es-cat%C3%A9gorielles.html"><span class="header-section-number">30</span> Tracer des données catégorielles</a></li>
-<li><a class="" href="ggplot_tips.html"><span class="header-section-number">31</span> Trucs et Astuces avec ggplot</a></li>
-<li><a class="" href="epicurves.html"><span class="header-section-number">32</span> Courbes épidémiques</a></li>
-<li><a class="" href="age_pyramid.html"><span class="header-section-number">33</span> Pyramides démographiques et échelles de Likert</a></li>
-<li><a class="" href="heatmaps.html"><span class="header-section-number">34</span> Graphiques thermiques</a></li>
-<li><a class="" href="diagrams.html"><span class="header-section-number">35</span> Diagrammes et schémas</a></li>
-<li><a class="" href="combination_analysis.html"><span class="header-section-number">36</span> Analyse des combinaisons</a></li>
-<li><a class="" href="transmission_chains.html"><span class="header-section-number">37</span> Chaînes de transmission</a></li>
-<li><a class="" href="phylogenetic_trees.html"><span class="header-section-number">38</span> Les arbres phylogénétiques</a></li>
-<li><a class="" href="interactive_plots.html"><span class="header-section-number">39</span> Graphiques interactifs</a></li>
+<li><a class="" href="tables_presentation.html"><span class="header-section-number">28</span> Présenter avec des tables</a></li>
+<li><a class="" href="ggplot_basics.html"><span class="header-section-number">29</span> Les bases de ggplot</a></li>
+<li><a class="" href="ggplot_tips.html"><span class="header-section-number">30</span> Trucs et Astuces avec ggplot</a></li>
+<li><a class="" href="epicurves.html"><span class="header-section-number">31</span> Courbes épidémiques</a></li>
+<li><a class="" href="age_pyramid.html"><span class="header-section-number">32</span> Pyramides démographiques et échelles de Likert</a></li>
+<li><a class="" href="heatmaps.html"><span class="header-section-number">33</span> Graphiques thermiques</a></li>
+<li><a class="" href="diagrams.html"><span class="header-section-number">34</span> Diagrammes et schémas</a></li>
+<li><a class="" href="combination_analysis.html"><span class="header-section-number">35</span> Analyse des combinaisons</a></li>
+<li><a class="" href="transmission_chains.html"><span class="header-section-number">36</span> Chaînes de transmission</a></li>
+<li><a class="" href="phylogenetic_trees.html"><span class="header-section-number">37</span> Les arbres phylogénétiques</a></li>
+<li><a class="" href="interactive_plots.html"><span class="header-section-number">38</span> Graphiques interactifs</a></li>
 <li class="book-part">Reports and dashboards</li>
-<li><a class="" href="rmarkdown.html"><span class="header-section-number">40</span> Production de rapports avec R Markdown</a></li>
-<li><a class="" href="reportfactory.html"><span class="header-section-number">41</span> Organisation des rapports de routine</a></li>
-<li><a class="" href="dashboards.html"><span class="header-section-number">42</span> Tableaux de bord avec R Markdown</a></li>
-<li><a class="" href="shiny.html"><span class="header-section-number">43</span> Tableaux de bord avec Shiny</a></li>
+<li><a class="" href="rmarkdown.html"><span class="header-section-number">39</span> Production de rapports avec R Markdown</a></li>
+<li><a class="" href="reportfactory.html"><span class="header-section-number">40</span> Organisation des rapports de routine</a></li>
+<li><a class="" href="dashboards.html"><span class="header-section-number">41</span> Tableaux de bord avec R Markdown</a></li>
+<li><a class="" href="shiny.html"><span class="header-section-number">42</span> Tableaux de bord avec Shiny</a></li>
 <li class="book-part">Miscellaneous</li>
-<li><a class="" href="writing_functions.html"><span class="header-section-number">44</span> Fonctions d’écriture</a></li>
-<li><a class="" href="directories.html"><span class="header-section-number">45</span> Interactions avec les répertoires</a></li>
-<li><a class="" href="collaboration.html"><span class="header-section-number">46</span> Contrôle de version et collaboration avec Git et Github</a></li>
-<li><a class="" href="errors.html"><span class="header-section-number">47</span> Erreurs fréquentes</a></li>
-<li><a class="" href="help.html"><span class="header-section-number">48</span> Obtenir de l’aide</a></li>
-<li><a class="" href="relational-databases.html"><span class="header-section-number">49</span> Relational databases</a></li>
-<li><a class="active" href="network_drives.html"><span class="header-section-number">50</span> R sur les lecteurs réseau</a></li>
-<li><a class="" href="data_table.html"><span class="header-section-number">51</span> Tableau de données</a></li>
-<li><a class="" href="advanced-rstudio.html"><span class="header-section-number">52</span> Advanced RStudio</a></li>
+<li><a class="" href="writing_functions.html"><span class="header-section-number">43</span> Fonctions d’écriture</a></li>
+<li><a class="" href="directories.html"><span class="header-section-number">44</span> Interactions avec les répertoires</a></li>
+<li><a class="" href="collaboration.html"><span class="header-section-number">45</span> Contrôle de version et collaboration avec Git et Github</a></li>
+<li><a class="" href="errors.html"><span class="header-section-number">46</span> Erreurs fréquentes</a></li>
+<li><a class="" href="help.html"><span class="header-section-number">47</span> Obtenir de l’aide</a></li>
+<li><a class="active" href="network_drives.html"><span class="header-section-number">48</span> R sur les lecteurs réseau</a></li>
+<li><a class="" href="data_table.html"><span class="header-section-number">49</span> Tableau de données</a></li>
 </ul>
 
         <div class="book-extra">
@@ -126,14 +123,14 @@
         </div>
       </nav>
 </div>
-  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="network_drives" class="section level1" number="50">
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="network_drives" class="section level1" number="48">
 <h1>
-<span class="header-section-number">50</span> R sur les lecteurs réseau<a class="anchor" aria-label="anchor" href="#network_drives"><i class="fas fa-link"></i></a>
+<span class="header-section-number">48</span> R sur les lecteurs réseau<a class="anchor" aria-label="anchor" href="#network_drives"><i class="fas fa-link"></i></a>
 </h1>
 <!-- ======================================================= -->
-<div id="aperçu-6" class="section level2" number="50.1">
+<div id="aperçu-6" class="section level2" number="48.1">
 <h2>
-<span class="header-section-number">50.1</span> Aperçu<a class="anchor" aria-label="anchor" href="#aper%C3%A7u-6"><i class="fas fa-link"></i></a>
+<span class="header-section-number">48.1</span> Aperçu<a class="anchor" aria-label="anchor" href="#aper%C3%A7u-6"><i class="fas fa-link"></i></a>
 </h2>
 <p>L’utilisation de R sur des lecteurs partagés du réseau ou de “l’entreprise” peut présenter des défis supplémentaires. Cette page contient des approches, des erreurs courantes et des suggestions de dépannage tirées de notre expérience de travail sur ces questions. Cela inclut des conseils pour les situations particulièrement délicates impliquant R Markdown.</p>
 <p><strong>Utilisation de R sur des lecteurs réseau : Principes généraux</strong></p>
@@ -145,49 +142,49 @@
 <li>Le paquet <strong>rmarkdown</strong> ne doit <strong>pas</strong> être dans une bibliothèque de paquets “\", car alors il ne peut pas se connecter à TinyTex ou Pandoc.</li>
 </ol>
 </div>
-<div id="rstudio-en-tant-quadministrateur" class="section level2" number="50.2">
+<div id="rstudio-en-tant-quadministrateur" class="section level2" number="48.2">
 <h2>
-<span class="header-section-number">50.2</span> RStudio en tant qu’administrateur<a class="anchor" aria-label="anchor" href="#rstudio-en-tant-quadministrateur"><i class="fas fa-link"></i></a>
+<span class="header-section-number">48.2</span> RStudio en tant qu’administrateur<a class="anchor" aria-label="anchor" href="#rstudio-en-tant-quadministrateur"><i class="fas fa-link"></i></a>
 </h2>
 <p>Lorsque vous cliquez sur l’icône RStudio pour ouvrir RStudio, faites-le avec un clic droit. Selon votre machine, vous verrez peut-être une option “Exécuter en tant qu’administrateur”. Sinon, vous verrez peut-être une option permettant de sélectionner Propriétés (une fenêtre devrait alors apparaître avec l’option “Compatibilité”, et vous pourrez cocher la case “Exécuter en tant qu’administrateur”).</p>
-<div id="commandes-utiles" class="section level3" number="50.2.1">
+<div id="commandes-utiles" class="section level3" number="48.2.1">
 <h3>
-<span class="header-section-number">50.2.1</span> Commandes utiles<a class="anchor" aria-label="anchor" href="#commandes-utiles"><i class="fas fa-link"></i></a>
+<span class="header-section-number">48.2.1</span> Commandes utiles<a class="anchor" aria-label="anchor" href="#commandes-utiles"><i class="fas fa-link"></i></a>
 </h3>
 <p>Vous trouverez ci-dessous quelques commandes utiles lorsque vous essayez de résoudre des problèmes en utilisant R sur des lecteurs réseau.</p>
 <p>Vous pouvez renvoyer le(s) chemin(s) des bibliothèques de paquets que R utilise. Ils seront listés dans l’ordre que R utilise pour installer/charger/rechercher les paquets. Ainsi, si vous voulez que R utilise une autre bibliothèque par défaut, vous pouvez changer l’ordre de ces chemins (voir ci-dessous).</p>
-<div class="sourceCode" id="cb1874"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb1936"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Recherche de bibliothèques</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/libPaths.html">.libPaths</a></span><span class="op">(</span><span class="op">)</span> <span class="co"># Vos chemins de bibliothèques, listés dans l'ordre d'installation/de recherche de R. </span></span>
 <span>                              <span class="co"># Note : toutes les bibliothèques seront listées, mais pour en installer certaines (par exemple C :), vous devrez peut-être exécuter RStock. </span></span>
 <span>                              <span class="co"># devrez peut-être exécuter RStudio en tant qu'administrateur (cela n'apparaîtra pas dans le menu déroulant </span></span>
 <span>                              <span class="co"># menu déroulant des bibliothèques d'installation des paquets) </span></span></code></pre></div>
 <p>Vous pouvez vouloir changer l’ordre des bibliothèques de paquets utilisées par R. Par exemple, si R récupère un emplacement de bibliothèque qui commence par “\" et un autre qui commence par une lettre, par exemple”D :“. Vous pouvez ajuster l’ordre de <code><a href="https://rdrr.io/r/base/libPaths.html">.libPaths()</a></code> avec le code suivant.</p>
-<div class="sourceCode" id="cb1875"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb1937"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Changer l'ordre des bibliothèques</span></span>
 <span><span class="co"># Ceci peut affecter la priorité de R à trouver un paquet. Par exemple, vous pouvez vouloir que votre bibliothèque C : soit listée en premier.</span></span>
 <span><span class="va">myPaths</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/libPaths.html">.libPaths</a></span><span class="op">(</span><span class="op">)</span> <span class="co"># obtenir les chemins d'accès</span></span>
 <span><span class="va">myPaths</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="va">myPaths</span><span class="op">[</span><span class="fl">2</span><span class="op">]</span>, <span class="va">myPaths</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span><span class="op">)</span> <span class="co"># les commuter</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/libPaths.html">.libPaths</a></span><span class="op">(</span><span class="va">myPaths</span><span class="op">)</span> <span class="co"># les réaffecter</span></span></code></pre></div>
 <p>Si vous avez des difficultés à connecter R Markdown à Pandoc, commencez par ce code pour savoir où RStudio pense que votre installation Pandoc se trouve.</p>
-<div class="sourceCode" id="cb1876"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb1938"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Trouver Pandoc</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/Sys.getenv.html">Sys.getenv</a></span><span class="op">(</span><span class="st">"RSTUDIO_PANDOC"</span><span class="op">)</span> <span class="co"># Trouver où RStudio pense que votre installation Pandoc se trouve</span></span></code></pre></div>
 <p>Si vous voulez voir à partir de quelle bibliothèque un paquet est chargé, essayez le code suivant :</p>
-<div class="sourceCode" id="cb1877"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb1939"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Trouver un paquetage</span></span>
 <span><span class="co"># donne le premier emplacement du paquet (notez l'ordre de vos bibliothèques)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/find.package.html">find.package</a></span><span class="op">(</span><span class="st">"rmarkdown"</span>, lib.loc <span class="op">=</span> <span class="cn">NULL</span>, quiet <span class="op">=</span> <span class="cn">FALSE</span>, verbose <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/options.html">getOption</a></span><span class="op">(</span><span class="st">"verbose"</span><span class="op">)</span><span class="op">)</span> </span></code></pre></div>
 <!-- ======================================================= -->
 </div>
 </div>
-<div id="dépannage-des-erreurs-courantes" class="section level2" number="50.3">
+<div id="dépannage-des-erreurs-courantes" class="section level2" number="48.3">
 <h2>
-<span class="header-section-number">50.3</span> Dépannage des erreurs courantes<a class="anchor" aria-label="anchor" href="#d%C3%A9pannage-des-erreurs-courantes"><i class="fas fa-link"></i></a>
+<span class="header-section-number">48.3</span> Dépannage des erreurs courantes<a class="anchor" aria-label="anchor" href="#d%C3%A9pannage-des-erreurs-courantes"><i class="fas fa-link"></i></a>
 </h2>
 <p><strong>“Failed to compile…tex in rmarkdown”</strong><br>
-* Vérifiez l’installation de TinyTex, ou installez TinyTex à l’emplacement C :. Voir la page <a href="#rbasics">R - les bases</a>pour savoir comment installer TinyTex.</p>
-<div class="sourceCode" id="cb1878"><pre class="downlit sourceCode r">
+* Vérifiez l’installation de TinyTex, ou installez TinyTex à l’emplacement C :. Voir la page <a href="rbasics.html#rbasics">R - les bases</a>pour savoir comment installer TinyTex.</p>
+<div class="sourceCode" id="cb1940"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># vérifiez/installez tinytex, à l'emplacement C :.</span></span>
 <span><span class="fu">tinytex</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/tinytex/man/install_tinytex.html">install_tinytex</a></span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="fu">tinytex</span><span class="fu">:::</span><span class="fu"><a href="https://rdrr.io/pkg/tinytex/man/is_tinytex.html">is_tinytex</a></span><span class="op">(</span><span class="op">)</span> <span class="co"># devrait retourner VRAI (notez les trois deux points)</span></span></code></pre></div>
@@ -276,17 +273,17 @@
 </div>
 </div>
   <div class="chapter-nav">
-<div class="prev"><a href="relational-databases.html"><span class="header-section-number">49</span> Relational databases</a></div>
-<div class="next"><a href="data_table.html"><span class="header-section-number">51</span> Tableau de données</a></div>
+<div class="prev"><a href="help.html"><span class="header-section-number">47</span> Obtenir de l’aide</a></div>
+<div class="next"><a href="data_table.html"><span class="header-section-number">49</span> Tableau de données</a></div>
 </div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
     <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
       <ul class="nav navbar-nav">
-<li><a class="nav-link" href="#network_drives"><span class="header-section-number">50</span> R sur les lecteurs réseau</a></li>
-<li><a class="nav-link" href="#aper%C3%A7u-6"><span class="header-section-number">50.1</span> Aperçu</a></li>
+<li><a class="nav-link" href="#network_drives"><span class="header-section-number">48</span> R sur les lecteurs réseau</a></li>
+<li><a class="nav-link" href="#aper%C3%A7u-6"><span class="header-section-number">48.1</span> Aperçu</a></li>
 <li>
-<a class="nav-link" href="#rstudio-en-tant-quadministrateur"><span class="header-section-number">50.2</span> RStudio en tant qu’administrateur</a><ul class="nav navbar-nav"><li><a class="nav-link" href="#commandes-utiles"><span class="header-section-number">50.2.1</span> Commandes utiles</a></li></ul>
+<a class="nav-link" href="#rstudio-en-tant-quadministrateur"><span class="header-section-number">48.2</span> RStudio en tant qu’administrateur</a><ul class="nav navbar-nav"><li><a class="nav-link" href="#commandes-utiles"><span class="header-section-number">48.2.1</span> Commandes utiles</a></li></ul>
 </li>
-<li><a class="nav-link" href="#d%C3%A9pannage-des-erreurs-courantes"><span class="header-section-number">50.3</span> Dépannage des erreurs courantes</a></li>
+<li><a class="nav-link" href="#d%C3%A9pannage-des-erreurs-courantes"><span class="header-section-number">48.3</span> Dépannage des erreurs courantes</a></li>
 </ul>
 
       <div class="book-extra">

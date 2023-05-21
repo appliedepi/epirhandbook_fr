@@ -1,5 +1,5 @@
 
-#Modélisation des épidémies {#epidemic_models}  
+# Modélisation des épidémies {#epidemic_models}  
 
 
 <!-- ======================================================= -->
@@ -138,7 +138,7 @@ pacman::p_load(
 )
 ```
 	
-Nous utiliserons la linelist de cas nettoyée pour toutes les analyses de cette section. Si vous voulez suivre, <a href='https://github.com/epirhandbook/Epi_R_handbook/raw/master/data/case_linelists/linelist_cleaned.rds' class='download-button'>cliquez pour télécharger la linelist "propre"</a> (en tant que fichier .rds). Consultez la page [Télécharger le manuel et les données](#data_used) pour télécharger tous les exemples de données utilisés dans ce manuel.  
+Nous utiliserons la linelist de cas nettoyée pour toutes les analyses de cette section. Si vous voulez suivre, <a href='https://github.com/epirhandbook/Epi_R_handbook/raw/master/data/case_linelists/linelist_cleaned.rds' class='download-button'>cliquez pour télécharger la linelist "propre"</a> (en tant que fichier .rds). Consultez la page [Télécharger le manuel et les données](#download_book_data) pour télécharger tous les exemples de données utilisés dans ce manuel.  
 
 ```{r, echo=F}
 # Importez la liste de lignes dans R
