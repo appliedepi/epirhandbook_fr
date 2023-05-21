@@ -112,8 +112,8 @@ knitr::include_graphics(here::here("images", "example_script.png"))
 
 Voici quelques liens vers des tutoriels pour vous aider à passer d'Excel à R:  
 
-* .[R vs. Excel](https://www.northeastern.edu/graduate/blog/r-vs-excel/)  
-* .[Cours RStudio en R pour les utilisateurs d'Excel](https://rstudio-conf-2020.github.io/r-for-excel/)  
+* [R vs. Excel](https://www.northeastern.edu/graduate/blog/r-vs-excel/)  
+* [Cours RStudio en R pour les utilisateurs d'Excel](https://rstudio-conf-2020.github.io/r-for-excel/)  
 
 
 ### Intéraction R-Excel {.unnumbered}  
