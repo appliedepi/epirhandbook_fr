@@ -114,7 +114,7 @@ pacman::p_load(
 
 Ici, nous importons le fichier Excel "brut" de cas linelist en utilisant la fonction `import()` du package **rio**. Cet dernier gère de manière flexible de nombreux types de fichiers (par exemple, .xlsx, .csv, .tsv, .rds). [Importation et exportation des données](import_export) pour plus d'informations et des conseils sur les situations inhabituelles (par exemple, sauter des lignes, définir des valeurs manquantes, importer des feuilles Google, etc.)  
 
-Pour reproduire les étapes, <a href='https://github.com/epirhandbook/Epi_R_handbook/raw/master/data/case_linelists/linelist_raw.xlsx' class='download-button'>cliquer pour télécharger le jeu de données  "brutes" linelist</a> (comme fichier .xlsx ).  
+Pour reproduire les étapes, <a href='https://github.com/epirhandbook/Epi_R_handbook/raw/master/data/case_linelists/linelist_raw.xlsx' class='download-button'>cliquer pour télécharger le jeu de données  "brutes" linelist</a> (comme fichier .xlsx).  
 
 Si votre jeu de données est important et prend beaucoup de temps à s'importer, il peut valloir le coup de séparer la commande d'importation des étapes de nettoyage, pour que que la donnée "brute" soit enregistré dans un dataframe distinct. Cela permet également de comparer facilement les versions originales et nettoyées.  
 
