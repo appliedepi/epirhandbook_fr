@@ -1,6 +1,6 @@
 ---
 knit: "bookdown::render_book"
-title: "The Epidemiologist R Handbook"  
+title: "Le Epi R Handbook"  
 description: "The Epi R Handbook est un manuel de référence sur l'utilisation de R en épidémiologie appliquée et santé publique."
 author: "the handbook team"
 date: "`r Sys.Date()`"
@@ -52,34 +52,26 @@ knitr::include_graphics(here::here("images", "Epi R Handbook banner beige 1500x5
 
 ## R pour l'épidémiologie appliquée et la santé publique {-}  
 
-**Ce manuel a les objectifs suivants :**  
+**Utilisation** : Ce manuel a été utilisé **plus d'un million de fois par 300 000 personnes** dans le monde entier.
 
-* Établir une base de code de référence
-* Illustrer comment utiliser R pour effectuer des tâches classiques et récurrentes en épidémiologie
-* Aider les épidémiologistes à faire la transition vers R 
-* Être facilement accessible, y compris dans les endroits ayant une mauvaise connexion internet, grâce à une **[version hors-ligne](#download_offline)**  
+**Objectif:** Servir de manuel de référence rapide du code R (en ligne et **[Télécharger le manuel et les données](#date_used)**) avec des exemples centrés sur la tâche qui traitent des problèmes épidémiologiques courants.  
 
+**Essayez nos **[tutoriels interactifs gratuits](https://www.appliedepi.org/tutorial/)** ou notre **[cours d'introduction](https://www.appliedepi.org/live/)** synchrone et virtuel utilisé par les CDC américains, l'OMS et plus de 75 autres agences de santé et programmes de formation à l'épidémiologie sur le terrain dans le monde entier.  
 
-<!-- * Use practical epi examples - cleaning case linelists, making transmission chains and epidemic curves, automated reports and dashboards, modeling incidence and making projections, demographic pyramids and rate standardization, record matching, outbreak detection, survey analysis, survival analysis, GIS basics, contact tracing, phylogenetic trees...   -->
-
-
-
-<!-- **How is this different than other R books?**   -->
-
-<!-- * It is community-driven - *written for epidemiologists by epidemiologists* in their spare time and leveraging experience in local, national, academic, and emergency settings   -->
-
-<!-- Dual-column created based on the rmarkdown cookbook here: https://bookdown.org/yihui/rmarkdown-cookbook/multi-column.html -->
-
+**Langues:** [Espagnol (Español)](https://epirhandbook.com/es/), [Vietnamien (Tiếng Việt)](https://epirhandbook.com/vn/), [Japonais (日本)](https://epirhandbook.com/jp/), [Turc (Türkçe)](https://epirhandbook.com/tr/)  
+[Francais](https://epirhandbook.com/fr/)
+[Portugais](https://epirhandbook.com/pt/)
 
 
 <br>
+<span style="color: black;">**Rédigé par des épidémiologistes, pour des épidémiologistes**</span>
 
 
 :::: {style="display: flex;"}
 
 ::: {}
 ```{r, out.width = "100%", fig.align = "center", echo=F}
-knitr::include_graphics(here::here("images", "epiRhandbook_HexSticker_500x500.png"))
+knitr::include_graphics(here::here("images", "Applied_Epi_logo.png"))
 ```
 :::
 
@@ -91,37 +83,35 @@ a column separator -->
 :::
 
 ::: {}
-<span style="color: black;">**Écrit par des épidémiologistes, pour les épidémiologistes**</span>
 
-Nous sommes une équipe d'épidémiologistes venant du monde entier. Nous travaillons bénévolement pour  offrir cette ressource à la communauté. Vos encouragements et vos retours sont les bienvenus :
 
-* Retours structurés via un **[formulaire](https://forms.gle/A5SnRVws7tPD15Js9)**  
-* Courriel **epiRhandbook@gmail.com** or tweet **[\@epiRhandbook](https://twitter.com/epirhandbook)** * Soumettre un ticket sur notre **[répertoire Github](https://github.com/appliedepi/epiRhandbook_fr)**  
+**[Applied Epi](http://www.appliedepi.org)** est une organisation à but non lucratif et un mouvement d'épis de première ligne du monde entier. Nous écrivons pendant notre temps libre pour offrir cette ressource à la communauté. Vos encouragements et vos commentaires sont les bienvenus :  
 
+* Visitez notre **[site web](http://www.appliedepi.org)** et **[rejoignez notre liste de contacts](https://forms.gle/9awNd8syypTSYUsn7)**.  
+* **contact@appliedepi.org**, tweeter **[\@appliedepi](https://twitter.com/appliedepi)**, ou **[LinkedIn](www.linkedin.com/company/appliedepi)**  
+* Soumettre des problèmes à notre **[dépôt Github](https://github.com/appliedepi/epiRhandbook_eng)**  
+
+**Nous proposons des formations R en direct** dispensées par des formateurs ayant des décennies d'expérience en épidémiologie appliquée - envoyez-nous un courriel pour en discuter.
 :::
 
-::::
+:::: 
 
+<form target="_blank" action="https://www.paypal.com/donate" method="post" target="_top">
+<input type="hidden" name="hosted_button_id" value="YTEZELC8VBXV6" />
+<input type="image" src="https://github.com/appliedepi/epiRhandbook_eng/raw/master/images/donate_button_long.png" border="0" name="submit" title="PayPal - The safer, easier way to pay online!" alt="Donate with PayPal button" />
+<img alt="" border="0" src="https://www.paypal.com/en_US/i/scr/pixel.gif" />
+</form>
 
+======================================================= -->
+## Comment utiliser ce manuel {-} 
 
+* Parcourez les pages de la table des matières ou utilisez la boîte de recherche.
+* Cliquez sur les icônes "copier" pour copier le code.  
+* Vous pouvez suivre avec les données d'exemple de le chapitre**[Télécharger le manuel et les données](#date_used)**.  
 
-<!-- ======================================================= -->
-## Comment utiliser ce mannuel ? {-} 
+**Version hors ligne**  
 
-* Naviguez dans la table des matières ou utilisez le formulaire de recherche  
-* Cliquez sur le bouton "Copy" pour copier le code
-* Utilisez les [données fournies avec le manuel](#download_book_data) pour exécuter le code sur votre ordinateur
-* utilisez la section "Ressources" de chaque page pour aller plus loin
- 
-
-**Version hors-ligne**  
-
-Voir les instructions dans le chapitre [Téléchargement du livre et données](#download_book_data) pour télécharger le livre.  
-
-**Langues**  
-
-Ce livre a été originellement publié en Anglais puis traduit bénévolement par une équipe. Si vous voulez nous aider pour la traduction des prochaines éditions, n'hésitez pas à nous contacter.
-
+Voir les instructions de la page [Télécharger le manuel et les données](#date_used).  
 
 <!-- ======================================================= -->
 ## Remmerciements {-}  
@@ -137,13 +127,13 @@ Ce guide n'est **pas** un produit approuvé par une organisation spécifique. Bi
 
 **Commité éditorial** [Neale Batra](https://www.linkedin.com/in/neale-batra/), [Alex Spina](https://github.com/aspina7), [Amrish Baidjoe](https://twitter.com/Ammer_B), Pat Keating, [Henry Laurenson-Schafer](https://github.com/henryls1), [Finlay Campbell](https://github.com/finlaycampbell)  
 
-**Auteurs et autrices**: [Neale Batra](https://www.linkedin.com/in/neale-batra/), [Alex Spina](https://github.com/aspina7), [Paula Blomquist](https://www.linkedin.com/in/paula-bianca-blomquist-53188186/), [Finlay Campbell](https://github.com/finlaycampbell), [Henry Laurenson-Schafer](https://github.com/henryls1), [Isaac Florence](www.Twitter.com/isaacatflorence), [Natalie Fischer](https://www.linkedin.com/in/nataliefischer211/), [Aminata Ndiaye](https://twitter.com/aminata_fadl), [Liza Coyer]( https://www.linkedin.com/in/liza-coyer-86022040/), [Jonathan Polonsky](https://twitter.com/jonny_polonsky), [Yurie Izawa](https://ch.linkedin.com/in/yurie-izawa-a1590319), [Chris Bailey](https://twitter.com/cbailey_58?lang=en), [Daniel Molling](https://www.linkedin.com/in/daniel-molling-4005716a/), [Isha Berry](https://twitter.com/ishaberry2), [Emma Buajitti](https://twitter.com/buajitti), [Mathilde Mousset](https://mathildemousset.wordpress.com/research/), [Sara Hollis](https://www.linkedin.com/in/saramhollis/), Wen Lin  
+**Auteurs et autrices**: [Neale Batra](https://www.linkedin.com/in/neale-batra/), [Alex Spina](https://github.com/aspina7), [Paula Blomquist](https://www.linkedin.com/in/paula-bianca-blomquist-53188186/), [Finlay Campbell](https://github.com/finlaycampbell), [Henry Laurenson-Schafer](https://github.com/henryls1), [Isaac Florence](www.Twitter.com/isaacatflorence), [Natalie Fischer](https://www.linkedin.com/in/nataliefischer211/), [Aminata Ndiaye](https://twitter.com/aminata_fadl), [Liza Coyer]( https://www.linkedin.com/in/liza-coyer-86022040/), [Jonathan Polonsky](https://twitter.com/jonny_polonsky), [Yurie Izawa](https://ch.linkedin.com/in/yurie-izawa-a1590319), [Chris Bailey](https://twitter.com/cbailey_58?lang=en), [Daniel Molling](https://www.linkedin.com/in/daniel-molling-4005716a/), [Isha Berry](https://twitter.com/ishaberry2), [Emma Buajitti](https://twitter.com/buajitti), [Mathilde Mousset](https://mathildemousset.wordpress.com/research/), [Sara Hollis](https://www.linkedin.com/in/saramhollis/), Wen Lin, Olivia Boyd 
 
 **Relecture**: Pat Keating, Annick Lenglet, Margot Charette, Danielly Xavier, Esther Kukielka, Michelle Sloan, Aybüke Koyuncu, Rachel Burke, Kate Kelsey, [Berhe Etsay](https://www.linkedin.com/in/berhe-etsay-5752b1154/), John Rossow, Mackenzie Zendt, James Wright, Laura Haskins, [Flavio Finger](ffinger.github.io), Tim Taylor, [Jae Hyoung Tim Lee](https://www.linkedin.com/in/jaehyoungtlee/), [Brianna Bradley](https://www.linkedin.com/in/brianna-bradley-bb8658155), [Wayne Enanoria](https://www.linkedin.com/in/wenanoria), Manual Albela Miranda, [Molly Mantus](https://www.linkedin.com/in/molly-mantus-174550150/), Pattama Ulrich, Joseph Timothy, Adam Vaughan, Olivia Varsaneux, Lionel Monteiro, Joao Muianga  
 
 **Illustrations**: Calder Fong  
 
-**Traduction**: 
+**Traduction**: Aminata Ndiaye, Anais Legrand, Marie-Amelie Degail-Chabrat, Yves Amevoin, Laura Downham, Lise Grout, Margot Charette, Mathilde Mousset, Noe Guincko, Mor Ndiaye, Elysée Junior, Nerisson Joseph, Bryan Tegomoh, Marcel Woung, Olivia Boyd, Amy Mikhail, Lucie Fournier, Paul-Evans Ehouman, Kelly McCain
 
 <!-- **Editor-in-Chief:** Neale Batra  -->
 
@@ -156,11 +146,11 @@ Ce guide n'est **pas** un produit approuvé par une organisation spécifique. Bi
 
 ### Financements {-}  
 
-Le manuel a reçu un financement de soutien via une subvention d'urgence COVID-19 pour le renforcement des capacités de la part de [TEPHINET] (https://www.tephinet.org/), le réseau mondial des programmes de formation en épidémiologie de terrain (FETP).  
+Le manuel a reçu un financement de soutien via une subvention d'urgence COVID-19 pour le renforcement des capacités de la part de [TEPHINET](https://www.tephinet.org/), le réseau mondial des programmes de formation en épidémiologie de terrain (FETP).  
 
 Le réseau des anciens d'EPIET ([EAN](https://epietalumni.net/)) a fourni un soutien administratif (Annika Wendland en particulier). EPIET est le programme européen de formation en épidémiologie d'intervention.
 
-Nous remercions tout particulièrement le Centre Opérationnel d'Amsterdam de Médecins Sans Frontières  (MSF OCA) pour son soutien lors de l'élaboration de ce manuel.  
+Nous remercions tout particulièrement le Centre Opérationnel d'Amsterdam de Médecins Sans Frontières (MSF OCA) pour son soutien lors de l'élaboration de ce manuel.  
 
 **Cette publication a été soutenue par l'accord de coopération numéro NU2GGH001873, financé par les Centers for Disease Control and Prevention par le biais de TEPHINET, un programme de "The Task Force for Global Health". Son contenu relève de la seule responsabilité des auteurs et ne reflète pas les opinions officielles des Centers for Disease Control and Prevention, du Department of Health and Human Services, de The Task Force for Global Health, Inc. ou de TEPHINET.**
 
