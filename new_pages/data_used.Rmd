@@ -190,7 +190,7 @@ knitr::include_graphics(here::here("images", "download_shp.png"))
 
 #### Arbres phylogénétiques {.unnumbered}  
 
-La page sur les [arbres phylogénétiques](phylogenetic_trees) utilise un fichier Newick pour l'arbre phylogénétique construit à partir du séquençage du génome entier de 299 échantillons de Shigella sonnei et des données d'échantillons correspondantes (converties en fichier texte). Les échantillons belges et les données résultantes sont aimablement fournis par le CNR belge pour Salmonella et Shigella dans le cadre d'un projet mené par un boursier EUPHEM de l'ECDC, et seront également publiés dans un manuscrit. Les données internationales sont disponibles sur des bases de données publiques (ncbi) et ont déjà été publiées.  
+La page sur les [arbres phylogénétiques](#phylogenetic_trees) utilise un fichier Newick pour l'arbre phylogénétique construit à partir du séquençage du génome entier de 299 échantillons de Shigella sonnei et des données d'échantillons correspondantes (converties en fichier texte). Les échantillons belges et les données résultantes sont aimablement fournis par le CNR belge pour Salmonella et Shigella dans le cadre d'un projet mené par un boursier EUPHEM de l'ECDC, et seront également publiés dans un manuscrit. Les données internationales sont disponibles sur des bases de données publiques (ncbi) et ont déjà été publiées.  
 
 
 * Pour télécharger le fichier de l'arbre phylogénétique "Shigella_tree.txt", cliquez avec le bouton droit de la souris sur ce [lien](https://github.com/appliedepi/epiRhandbook_fr/raw/main/data/phylo/Shigella_tree.txt) (Cmd+click for Mac) et sélectionnez "Enregistrer le lien sous". 
