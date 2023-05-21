@@ -10,10 +10,7 @@ Une courbe épidémique (également connue sous le nom de "courbe épi") est un 
 
 L'analyse de la courbe épi peut révéler des tendances temporelles, des valeurs aberrantes, l'ampleur de l'épidémie, la période d'exposition la plus probable, les intervalles de temps entre les générations de cas, et peut même aider à identifier le mode de transmission d'une maladie non identifie (par exemple, source ponctuelle, source commune continue, propagation de personne à personne). Une leçon en ligne sur l'interprétation des courbes épi est disponible sur le site Web du [US CDC](https://www.cdc.gov/training/quicklearns/epimode/index.html).    
 
-Dans cette page, nous démontrons deux approches pour produire des épicurves dans R :  
-
-* Le paquet **incidence2**, qui peut produire une courbe épi avec des commandes simples.  
-* Le paquet **ggplot2**, qui permet une personnalisation avancé via des commandes plus complexes.  
+Dans cette page, nous démontrons le paquet **ggplot2** pour produire des épicurves dans R, qui permet une personnalisation avancé via des commandes plus complexes.  
 
 Nous abordons également des cas d'utilisation spécifiques tels que : 
 
@@ -37,7 +34,7 @@ pacman::p_load(
   here,        # chemins de fichiers relatifs 
   lubridate,   # travailler avec des dates/epiweeks
   aweek,       # paquet alternatif pour travailler avec les dates/semaines
-  incidence2,  # épicurves de données linelist
+  #incidence2, # paquet alternatif 
   i2extras,    # supplément à incidence2
   stringr,      # recherche et manipulation de chaînes de caractères
   forcats,      # travail avec des facteurs
