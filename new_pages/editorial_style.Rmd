@@ -109,9 +109,8 @@ Ci-dessous, nous décrivons les principales décisions concernant le choix des p
 **Tableau des paquets, fonction et autres choix techniques**  
 
 
-Sujet           |     Considéré      |   Choisi              |    Explication brève   
------------------ | --------------------|------------------------|-----------------------------------------------
-
+Sujet | Considéré | Choisi |Explication brève  
+----------------- | --------------------|------------------------|--------------------------------------  
 Approche générale|**tidyverse**, **data.table**, **base**|**tidyverse**, avec un chapitre sur **data.table**, et mentions d'alternatives en R de **base** pour les lecteurs avec une connexion Internet faible|lisibilité accrue, universel, paquets très répandus  
 Importation des paquets|`library()`,`install.packages()`, `require()`, **pacman**|**pacman**|Simplification et code plus court pour les cas avec de nombreux paquets à installer puis importer
 Import et export de données|**rio**, de nombreux paquets spécialisés|**rio**|Gère un grand nombre de format de jeux de données

@@ -1,0 +1,726 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>1 Notes techniques et choix éditoriaux | Le Epi R Handbook</title>
+<meta name="author" content="the handbook team">
+<meta name="description" content="Nous décrivons ici les choix pédagogiques, le style et les décisions éditoriales spécifiques prises lors de l’écriture de ce guide.  1.1 Approche et style Le public visé par ce manuel est large....">
+<meta name="generator" content="bookdown 0.34 with bs4_book()">
+<meta property="og:title" content="1 Notes techniques et choix éditoriaux | Le Epi R Handbook">
+<meta property="og:type" content="book">
+<meta property="og:description" content="Nous décrivons ici les choix pédagogiques, le style et les décisions éditoriales spécifiques prises lors de l’écriture de ce guide.  1.1 Approche et style Le public visé par ce manuel est large....">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="1 Notes techniques et choix éditoriaux | Le Epi R Handbook">
+<meta name="twitter:description" content="Nous décrivons ici les choix pédagogiques, le style et les décisions éditoriales spécifiques prises lors de l’écriture de ce guide.  1.1 Approche et style Le public visé par ce manuel est large....">
+<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
+<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.4.2/transition.js"></script><script src="libs/bs3compat-0.4.2/tabs.js"></script><script src="libs/bs3compat-0.4.2/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><style type="text/css">
+    
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  </style>
+<link rel="stylesheet" href="style_bs4.css">
+</head>
+<body data-spy="scroll" data-target="#toc">
+
+<div class="container-fluid">
+<div class="row">
+  <header class="col-sm-12 col-lg-3 sidebar sidebar-book"><a class="sr-only sr-only-focusable" href="#content">Skip to main content</a>
+
+    <div class="d-flex align-items-start justify-content-between">
+      <h1>
+        <a href="index.html" title="">Le Epi R Handbook</a>
+      </h1>
+      <button class="btn btn-outline-primary d-lg-none ml-2 mt-1" type="button" data-toggle="collapse" data-target="#main-nav" aria-expanded="true" aria-controls="main-nav"><i class="fas fa-bars"></i><span class="sr-only">Show table of contents</span></button>
+    </div>
+
+    <div id="main-nav" class="collapse-lg">
+      <form role="search">
+        <input id="search" class="form-control" type="search" placeholder="Search" aria-label="Search">
+</form>
+
+      <nav aria-label="Table of contents"><h2>Table of contents</h2>
+        <ul class="book-toc list-unstyled">
+<li><a class="" href="index.html"></a></li>
+<li><a class="active" href="editorial_notes.html"><span class="header-section-number">1</span> Notes techniques et choix éditoriaux</a></li>
+</ul>
+
+        <div class="book-extra">
+          
+        </div>
+      </nav>
+</div>
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="editorial_notes" class="section level1" number="1">
+<h1>
+<span class="header-section-number">1</span> Notes techniques et choix éditoriaux<a class="anchor" aria-label="anchor" href="#editorial_notes"><i class="fas fa-link"></i></a>
+</h1>
+<p>Nous décrivons ici les choix pédagogiques, le style et les décisions éditoriales spécifiques prises lors de l’écriture de ce guide.</p>
+<div id="approche-et-style" class="section level2" number="1.1">
+<h2>
+<span class="header-section-number">1.1</span> Approche et style<a class="anchor" aria-label="anchor" href="#approche-et-style"><i class="fas fa-link"></i></a>
+</h2>
+<p>Le public visé par ce manuel est large. Nous espérons qu’il sera utile aux épidémiologistes novices en R, mais aussi aux utilisateurs expérimentés à la recherche de bonnes pratiques et d’astuces. L’ouvrage doit donc être à la fois accessible et succinct. Notre cherchons à fournir <em>juste assez</em> d’explications textuelles pour qu’une personne débutante en R puisse appliquer le code et comprendre ce qu’il fait.</p>
+<p>En conséquences de quoi, ce guide est :</p>
+<ul>
+<li>un ouvrage de référence de code, accompagné d’exemples relativement brefs, <em>et non</em> un manuel complet sur R ou la science des données<br>
+</li>
+<li>un <em>guide R</em> à utiliser dans le cadre de l’épidémiologie appliquée, <em>et non</em> un manuel sur les méthodes ou la science de l’épidémiologie appliquée<br>
+</li>
+<li>un document évolutif : les paquets R optimaux pour une tâche donnée changent souvent et nous sommes ouverts à toute discussion sur les paquets à privilégier dans ce manuel.</li>
+</ul>
+<div id="paquets-r" class="section level3 unnumbered">
+<h3>Paquets R<a class="anchor" aria-label="anchor" href="#paquets-r"><i class="fas fa-link"></i></a>
+</h3>
+<p><strong>Tellement de possibilités…</strong></p>
+<p>Un aspect difficile de l’apprentissage de R est de savoir quel paquet R utiliser pour une tâche donnée. Il n’est pas rare que l’on se décarcasse à écrire vingt (cent ?) lignes de code, pour se rendre compte plus tard qu’il existe un paquet R qui donne le même résultat recheré en une seule ligne de commande !</p>
+<p>Dans ce guide, nous essayons de vous proposer au moins deux façons de réaliser chaque tâche : une méthode éprouvée (probablement dans R de <strong>base</strong> ou utilisant le <strong>tidyverse</strong>) et un paquet R spécialement conçu à cet effet. Nous voulons que vous ayez les deux options, au cas où vous ne pourriez pas télécharger un paquet donné ou si celui-ci ne vous convient pas.</p>
+<p>Pour choisir les paquets à utiliser, nous avons donné la priorité aux paquets R et aux approches qui ont été testés et approuvés par la communauté, qui minimisent le nombre de paquets utilisés dans une session de travail typique, qui sont stables (ne changent pas très souvent) et qui accomplissent la tâche simplement et proprement.</p>
+<p>Ce manuel donne généralement la priorité aux paquets et fonctions R du méta-paquet <strong>tidyverse</strong>. Tidyverse est une <em>collection de paquets R</em> conçus pour la science des données, et qui partagent une grammaire et des structures de données sous-jacentes. Tous les paquets du Tidyverse peuvent être installés ou chargés séparément, ou en masse via le paquet <strong>tidyverse</strong>. Pour en savoir plus, consultez le <a href="https://www.tidyverse.org/">site Web du tidyverse</a>.</p>
+<p>Nous proposons également souvent des options de code utilisant R de <strong>base</strong> (les paquets et fonctions fournis avec R à l’installation). En effet, nous sommes conscients que certains lecteurs de ce livre ne disposent pas d’un accès Internet fiable pour télécharger des paquets supplémentaires.</p>
+<p><strong>Expliciter quelle fonction appartient à quel paquet</strong></p>
+<p>Il est souvent frustrant lorsque l’on suit un tutoriel R de ne pas savoir de quel paquet provient une fonction (et donc de ne pas pouvoir l’utiliser immédiatement dans notre code) !</p>
+<p>Dans ce guide, les noms des paquets seront écrits en gras (par exemple <strong>dplyr</strong>) et les fonctions sont écrites comme ceci : <code><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate()</a></code>. Nous nous efforçons d’être explicites quant au paquet dont provient une fonction, soit en faisant référence au paquet dans le texte voisin, soit en spécifiant le paquet explicitement dans le code, comme ceci : <code><a href="https://dplyr.tidyverse.org/reference/mutate.html">dplyr::mutate()</a></code>. Cela alourdit un petit peu le code, mais rend plus facile la réutilisation du code chez vous.</p>
+<p>Consultez la page sur les <a href="#rbasics">Bases de R</a> pour en savoir plus sur les paquets et les fonctions.</p>
+</div>
+<div id="choix-dyn-style-de-code" class="section level3 unnumbered">
+<h3>Choix d’yn style de code<a class="anchor" aria-label="anchor" href="#choix-dyn-style-de-code"><i class="fas fa-link"></i></a>
+</h3>
+<p>Dans le manuel, nous allons fréquemment à la ligne, ce qui rend notre code “long”. Nous faisons cela pour plusieurs raisons :</p>
+<ul>
+<li>cela permet d’écrire des commentaires explicatifs avec <code>#</code> adjacents à la commande qu’ils décrivent,<br>
+</li>
+<li>généralement, un code plus long (vertical) est plus facile à lire,<br>
+</li>
+<li>il est plus facile à lire sur un écran étroit (pas de défilement latéral nécessaire),<br>
+</li>
+<li>il est plus facile de savoir quels arguments appartiennent à quelle fonction grâce aux indentations.</li>
+</ul>
+<p>Par conséquent, un bout de code code qui <em>pourrait</em> être écrit comme ceci :</p>
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">linelist</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">hospital</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>  <span class="co"># groupe les lignes par hopital</span></span>
+<span>  <span class="fu">slice_max</span><span class="op">(</span><span class="va">date</span>, n <span class="op">=</span> <span class="fl">1</span>, with_ties <span class="op">=</span> <span class="cn">F</span><span class="op">)</span> <span class="co"># s'il y a égalité de date, prendre la première</span></span></code></pre></div>
+<p>…est écrit comme cela :</p>
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">linelist</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">hospital</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="co"># groupe les lignes par hopital</span></span>
+<span>  <span class="fu">slice_max</span><span class="op">(</span></span>
+<span>    <span class="va">date</span>,                <span class="co"># Garde les lignes avec la date maximun à l'intérieur de chaque groupe</span></span>
+<span>    n <span class="op">=</span> <span class="fl">1</span>,               <span class="co"># Ne garder que la date maximum</span></span>
+<span>    with_ties <span class="op">=</span> <span class="cn">F</span><span class="op">)</span>       <span class="co"># S'il y a égalité de date, prendre la première</span></span></code></pre></div>
+<p>Le code R n’est généralement pas affecté par les nouvelles lignes ou les indentations. Lorsque vous écrivez dans Rstudio (ou un éditeur décent), l’indentation se fera automatiquement lorsque vous allez à la ligne après une virgule.</p>
+<p>Nous utilisons beaucoup d’espaces (par exemple <code>n = 1</code> au lieu de <code>n=1</code>) parce que c’est plus facile à lire pour beaucoup de personnes. Pensez aux gens qui lisent votre code !</p>
+</div>
+<div id="nomenclature" class="section level3 unnumbered">
+<h3>Nomenclature<a class="anchor" aria-label="anchor" href="#nomenclature"><i class="fas fa-link"></i></a>
+</h3>
+<p>Dans ce manuel, nous faisons généralement référence aux “colonnes” et aux “lignes” plutôt qu’aux “variables” et “observations”. Comme l’explique cette introduction aux <a href="https://tidyr.tidyverse.org/articles/tidy-data.html">“données ordonnées”</a>, la plupart des jeux de données statistiques épidémiologiques se composent structurellement de lignes, de colonnes et de valeurs.</p>
+<p>Les <em>variables</em> contiennent les valeurs qui mesurent le même attribut sous-jacent (comme le groupe d’âge, le résultat ou la date d’apparition des symptomes). Les <em>observations</em> contiennent toutes les valeurs mesurées sur la même unité (par exemple, une personne, un site ou un échantillon de laboratoire). Ces aspects peuvent donc être plus difficiles à définir de manière tangible.</p>
+<p>Dans les ensembles de données “ordonnés” (<em>tidy data</em> en anglais), chaque colonne est une variable, chaque ligne est une observation et chaque cellule est une valeur unique. Cependant, certains jeux de données que vous rencontrerez ne correspondront pas à ce modèle - un ensemble de données au format “large” peut avoir une variable répartie sur plusieurs colonnes (voir un exemple à la page <a href="#pivoting_data">Transformation long-large</a>). De même, les observations peuvent être réparties sur plusieurs lignes.</p>
+<p>La majeure partie de ce manuel porte sur le nettoyage et la transformation des données, et il est donc plus pertinent de se référer aux structures de données concrètes que sont les lignes et les colonnes qu’aux observations et aux variables plus abstraites. Les exceptions se produisent principalement dans les pages sur l’analyse des données, où vous verrez davantage de références aux “variables” et aux “observations”.</p>
+</div>
+<div id="notes" class="section level3 unnumbered">
+<h3>Notes<a class="anchor" aria-label="anchor" href="#notes"><i class="fas fa-link"></i></a>
+</h3>
+<p>Voici les types de notations utilisées dans le guide :</p>
+<p><span style="color: black;"><strong><em>NOTE:</em></strong> Ceci est une note</span><br><span style="color: darkgreen;"><strong><em>TIP:</em></strong> Ceci est un conseil ou une astuce.</span><br><span style="color: orange;"><strong><em>CAUTION:</em></strong> Ceci vous invite à bien prêter attention.</span><br><span style="color: red;"><strong><em>DANGER:</em></strong> Ceci est un avertissement.</span></p>
+</div>
+</div>
+<div id="choix-techniques" class="section level2" number="1.2">
+<h2>
+<span class="header-section-number">1.2</span> Choix techniques<a class="anchor" aria-label="anchor" href="#choix-techniques"><i class="fas fa-link"></i></a>
+</h2>
+<p>Ci-dessous, nous décrivons les principales décisions concernant le choix des paquets et des fonctions. Si vous n’êtes pas d’accord ou si vous souhaitez proposer un nouvel outil à examiner, veuillez rejoindre/démarrer une conversation sur notre <a href="https://github.com/epirhandbook/Epi_R_handbook">page Github</a>.</p>
+<p><strong>Tableau des paquets, fonction et autres choix techniques</strong></p>
+<div class="inline-table"><table class="table table-sm">
+<colgroup>
+<col width="17%">
+<col width="20%">
+<col width="24%">
+<col width="38%">
+</colgroup>
+<thead><tr class="header">
+<th>Sujet</th>
+<th>Considéré</th>
+<th>Choisi</th>
+<th>Explication brève</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td>Approche générale</td>
+<td>
+<strong>tidyverse</strong>, <strong>data.table</strong>, <strong>base</strong>
+</td>
+<td>
+<strong>tidyverse</strong>, avec un chapitre sur <strong>data.table</strong>, et mentions d’alternatives en R de <strong>base</strong> pour les lecteurs avec une connexion Internet faible</td>
+<td>lisibilité accrue, universel, paquets très répandus</td>
+</tr>
+<tr class="even">
+<td>Importation des paquets</td>
+<td>
+<code><a href="https://rdrr.io/r/base/library.html">library()</a></code>,<code><a href="https://rdrr.io/r/utils/install.packages.html">install.packages()</a></code>, <code><a href="https://rdrr.io/r/base/library.html">require()</a></code>, <strong>pacman</strong>
+</td>
+<td><strong>pacman</strong></td>
+<td>Simplification et code plus court pour les cas avec de nombreux paquets à installer puis importer</td>
+</tr>
+<tr class="odd">
+<td>Import et export de données</td>
+<td>
+<strong>rio</strong>, de nombreux paquets spécialisés</td>
+<td><strong>rio</strong></td>
+<td>Gère un grand nombre de format de jeux de données</td>
+</tr>
+<tr class="even">
+<td>Résumer des données agrégées</td>
+<td>
+<strong>dplyr</strong> <code><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by()</a></code>, <strong>stats</strong> <code><a href="https://rdrr.io/r/stats/aggregate.html">aggregate()</a></code>
+</td>
+<td>
+<strong>dplyr</strong> <code><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by()</a></code>
+</td>
+<td>Reste cohérent avec nos choix d’utiliser le <strong>tidyverse</strong>
+</td>
+</tr>
+<tr class="odd">
+<td>Transformation long-large</td>
+<td>
+<strong>tidyr</strong> (fonctions <code>pivot_XXX</code>), <strong>reshape2</strong> (melt/cast), <strong>tidyr</strong> (spread/gather)</td>
+<td>
+<strong>tidyr</strong> (fonctions <code>pivot_XXX</code>)</td>
+<td>
+<strong>reshape2</strong> est en fin de vie (recommandations officielles d’utiliser <strong>tidyr</strong>), <strong>tidyr</strong> utilise les fonctions <code>pivot_XXX</code> dès la versions v1.0.0</td>
+</tr>
+<tr class="even">
+<td>Nettoyer les noms des colonnes</td>
+<td>
+<strong>matchmaker</strong>, <strong>janitor</strong>
+</td>
+<td><strong>janitor</strong></td>
+<td>Janitor est utilisé pour plusieus tâches dans le guide (optimisation des paquets)</td>
+</tr>
+<tr class="odd">
+<td>Semaines epi</td>
+<td>
+<strong>lubridate</strong>, <strong>aweek</strong>, <strong>tsibble</strong>, <strong>zoo</strong>
+</td>
+<td>
+<strong>lubridate</strong> en général, avec utilisation ponctuelle d’autres paquets pour des cas spécifiques</td>
+<td>La grande flexibilité de <strong>lubridate</strong>, la cohérence avec le <strong>tidyverse</strong>, une meilleure maintenance future (?)</td>
+</tr>
+<tr class="even">
+<td>Labels ggplot</td>
+<td>
+<code><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs()</a></code>, <code><a href="https://ggplot2.tidyverse.org/reference/labs.html">ggtitle()</a></code>/<code><a href="https://ggplot2.tidyverse.org/reference/labs.html">ylab()</a></code>/<code><a href="https://ggplot2.tidyverse.org/reference/labs.html">xlab()</a></code>
+</td>
+<td><code><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs()</a></code></td>
+<td>Simplicité, tous les labels dans la même commande</td>
+</tr>
+<tr class="odd">
+<td>Conversion en facteur</td>
+<td>
+<code><a href="https://rdrr.io/r/base/factor.html">factor()</a></code>, <strong>forcats</strong>
+</td>
+<td><strong>forcats</strong></td>
+<td>différentes fonctions pour transformer les facteurs dans la même commande</td>
+</tr>
+<tr class="even">
+<td>Courbes épidémiques</td>
+<td>
+<strong>incidence</strong>, <strong>ggplot2</strong>, <strong>EpiCurve</strong>
+</td>
+<td>
+<strong>incidence2</strong> pour le plus rapide, <strong>ggplot2</strong> pour les détails</td>
+<td>fiabilité</td>
+</tr>
+<tr class="odd">
+<td>Concaténation</td>
+<td>
+<code><a href="https://rdrr.io/r/base/paste.html">paste()</a></code>, <code><a href="https://rdrr.io/r/base/paste.html">paste0()</a></code>, <code>str_glue()</code>, <code>glue()</code>
+</td>
+<td><code>str_glue()</code></td>
+<td>syntaxe plus simple que <code><a href="https://rdrr.io/r/base/paste.html">paste()</a></code>; dans <strong>stringr</strong>
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div id="révisions-majeures" class="section level2" number="1.3">
+<h2>
+<span class="header-section-number">1.3</span> Révisions majeures<a class="anchor" aria-label="anchor" href="#r%C3%A9visions-majeures"><i class="fas fa-link"></i></a>
+</h2>
+<div class="inline-table"><table class="table table-sm">
+<thead><tr class="header">
+<th>Date</th>
+<th>Changements majeurs</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td>10 Mai 2021</td>
+<td>Publication de la version 1.0.0</td>
+</tr>
+<tr class="even">
+<td>20 Nov 2022</td>
+<td>Publication de la version 1.0.1</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>NEWS</strong>
+Avec la version 1.0.1, les changements suivants ont été mis en œuvre :</p>
+<ul>
+<li>Mise à jour vers la version 4.2 de R<br>
+</li>
+<li>Nettoyage des données : remplacement de {linelist} par {matchmaker}, suppression d’une ligne inutile dans l’exemple <code>case_when()</code>.<br>
+</li>
+<li>Dates : remplacement de {linelist} <code>guess_date()</code> par {parsedate} <code>parse_date()</code>.</li>
+<li>Pivot : légère mise à jour de <code>pivot_wider()</code>id_cols=`.<br>
+</li>
+<li>Analyse d’enquête : remplacement de <code>plot_age_pyramid()</code> par <code><a href="https://rdrr.io/pkg/apyramid/man/age_pyramid.html">age_pyramid()</a></code>, légère modification du code du tracé alluvial.<br>
+</li>
+<li>Graphiques de chaleur : ajout de <code><a href="https://dplyr.tidyverse.org/reference/group_by.html">ungroup()</a></code> au chunk <code>agg_weeks</code>.<br>
+</li>
+<li>Graphiques interactifs : ajout de <code><a href="https://dplyr.tidyverse.org/reference/group_by.html">ungroup()</a></code> au chunk qui fait <code>agg_weeks</code> pour que <code>expand()</code> fonctionne comme prévu.<br>
+</li>
+<li>Séries temporelles : ajout de <code><a href="https://rdrr.io/r/base/data.frame.html">data.frame()</a></code> autour des objets dans toutes les commandes <code><a href="https://rdrr.io/pkg/trending/man/fit.html">trending::fit()</a></code> et <code><a href="https://rdrr.io/r/stats/predict.html">predict()</a></code>.<br>
+</li>
+<li>Analyse des combinaisons : Remplacer <code>case_when()</code> par <code><a href="https://rdrr.io/r/base/ifelse.html">ifelse()</a></code> et ajouter le code optionnel <code>across()</code> pour préparer les données.</li>
+</ul>
+</div>
+<div id="information-de-session-r-rstudio-paquets" class="section level2" number="1.4">
+<h2>
+<span class="header-section-number">1.4</span> Information de session (R, RStudio, paquets)<a class="anchor" aria-label="anchor" href="#information-de-session-r-rstudio-paquets"><i class="fas fa-link"></i></a>
+</h2>
+<p>Vous trouverez ci-dessous les informations sur les versions de R, RStudio et les paquets R utilisés lors de la compilation du guide.</p>
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu">sessioninfo</span><span class="fu">::</span><span class="fu"><a href="https://r-lib.github.io/sessioninfo/reference/session_info.html">session_info</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
+<pre><code>## ─ Session info ─────────────────────────────────────────────────────────────────────
+##  setting  value
+##  version  R version 4.3.0 (2023-04-21 ucrt)
+##  os       Windows 11 x64 (build 22621)
+##  system   x86_64, mingw32
+##  ui       RStudio
+##  language (EN)
+##  collate  English_United States.utf8
+##  ctype    English_United States.utf8
+##  tz       Europe/Berlin
+##  date     2023-05-21
+##  rstudio  2023.03.1+446 Cherry Blossom (desktop)
+##  pandoc   2.19.2 @ C:/Program Files/RStudio/resources/app/bin/quarto/bin/tools/ (via rmarkdown)
+## 
+## ─ Packages ─────────────────────────────────────────────────────────────────────────
+##  ! package              * version    date (UTC) lib source
+##    abind                * 1.4-5      2016-07-21 [1] CRAN (R 4.3.0)
+##    ada                    2.0-5      2016-05-13 [1] CRAN (R 4.3.0)
+##    adagio                 0.8.5      2022-10-03 [1] CRAN (R 4.3.0)
+##    ade4                   1.7-22     2023-02-06 [1] CRAN (R 4.3.0)
+##    anytime                0.3.9      2020-08-27 [1] CRAN (R 4.3.0)
+##    ape                  * 5.7-1      2023-03-13 [1] CRAN (R 4.3.0)
+##    aplot                  0.1.10     2023-03-08 [1] CRAN (R 4.3.0)
+##    apyramid             * 0.1.3      2023-02-14 [1] CRAN (R 4.3.0)
+##    arm                    1.13-1     2022-08-28 [1] CRAN (R 4.3.0)
+##    askpass                1.1        2019-01-13 [1] CRAN (R 4.3.0)
+##    assertive.base         0.0-9      2021-02-08 [1] CRAN (R 4.3.0)
+##    assertive.properties   0.0-5      2022-04-21 [1] CRAN (R 4.3.0)
+##    assertive.types        0.0-3      2016-12-30 [1] CRAN (R 4.3.0)
+##    assertthat             0.2.1      2019-03-21 [1] CRAN (R 4.3.0)
+##    aweek                * 1.0.3      2022-10-06 [1] CRAN (R 4.3.0)
+##    backports              1.4.1      2021-12-13 [1] CRAN (R 4.3.0)
+##    base64enc              0.1-3      2015-07-28 [1] CRAN (R 4.3.0)
+##    bayestestR           * 0.13.1     2023-04-07 [1] CRAN (R 4.3.0)
+##    BiocManager          * 1.30.20    2023-02-24 [1] CRAN (R 4.3.0)
+##    bit                  * 4.0.5      2022-11-15 [1] CRAN (R 4.3.0)
+##    bit64                  4.0.5      2020-08-30 [1] CRAN (R 4.3.0)
+##    blob                   1.2.4      2023-03-17 [1] CRAN (R 4.3.0)
+##    bookdown               0.34       2023-05-09 [1] CRAN (R 4.3.0)
+##    boot                 * 1.3-28.1   2022-11-22 [2] CRAN (R 4.3.0)
+##    broom                * 1.0.4      2023-03-11 [1] CRAN (R 4.3.0)
+##    broom.helpers          1.13.0     2023-03-28 [1] CRAN (R 4.3.0)
+##    bslib                  0.4.2      2022-12-16 [1] CRAN (R 4.3.0)
+##    cachem                 1.0.8      2023-05-01 [1] CRAN (R 4.3.0)
+##    callr                  3.7.3      2022-11-02 [1] CRAN (R 4.3.0)
+##    car                    3.1-2      2023-03-30 [1] CRAN (R 4.3.0)
+##    carData                3.0-5      2022-01-06 [1] CRAN (R 4.3.0)
+##    cellranger             1.1.0      2016-07-27 [1] CRAN (R 4.3.0)
+##    ciTools                0.6.1      2020-10-25 [1] CRAN (R 4.3.0)
+##    class                  7.3-21     2023-01-23 [2] CRAN (R 4.3.0)
+##    classInt               0.4-9      2023-02-28 [1] CRAN (R 4.3.0)
+##    cli                    3.6.1      2023-03-23 [1] CRAN (R 4.3.0)
+##    clipr                  0.8.0      2022-02-22 [1] CRAN (R 4.3.0)
+##    cmprsk                 2.2-11     2022-01-06 [1] CRAN (R 4.3.0)
+##    coarseDataTools        0.6-6      2021-12-09 [1] CRAN (R 4.3.0)
+##    coda                   0.19-4     2020-09-30 [1] CRAN (R 4.3.0)
+##    codetools              0.2-19     2023-02-01 [2] CRAN (R 4.3.0)
+##    colorspace             2.1-0      2023-01-23 [1] CRAN (R 4.3.0)
+##    commonmark             1.9.0      2023-03-17 [1] CRAN (R 4.3.0)
+##    correlation          * 0.8.4      2023-04-06 [1] CRAN (R 4.3.0)
+##    corrr                * 0.4.4      2022-08-16 [1] CRAN (R 4.3.0)
+##    cowplot              * 1.1.1      2020-12-30 [1] CRAN (R 4.3.0)
+##    crayon                 1.5.2      2022-09-29 [1] CRAN (R 4.3.0)
+##    crosstalk              1.2.0      2021-11-04 [1] CRAN (R 4.3.0)
+##    crul                   1.4.0      2023-05-17 [1] CRAN (R 4.3.0)
+##    curl                   5.0.0      2023-01-12 [1] CRAN (R 4.3.0)
+##    data.table           * 1.14.8     2023-02-17 [1] CRAN (R 4.3.0)
+##    datawizard           * 0.7.1      2023-04-03 [1] CRAN (R 4.3.0)
+##    DBI                  * 1.1.3      2022-06-18 [1] CRAN (R 4.3.0)
+##    deldir                 1.0-9      2023-05-17 [1] CRAN (R 4.3.0)
+##    Deriv                  4.1.3      2021-02-24 [1] CRAN (R 4.3.0)
+##    desc                   1.4.2      2022-09-08 [1] CRAN (R 4.3.0)
+##    DiagrammeR           * 1.0.10     2023-05-18 [1] CRAN (R 4.3.0)
+##    dichromat              2.0-0.1    2022-05-02 [1] CRAN (R 4.3.0)
+##    digest                 0.6.31     2022-12-11 [1] CRAN (R 4.3.0)
+##    distcrete            * 1.0.3      2017-11-23 [1] CRAN (R 4.3.0)
+##    distributional         0.3.2      2023-03-22 [1] CRAN (R 4.3.0)
+##    doBy                 * 4.6.16     2023-01-18 [1] CRAN (R 4.3.0)
+##    doParallel             1.0.17     2022-02-07 [1] CRAN (R 4.3.0)
+##    downlit                0.4.2      2022-07-05 [1] CRAN (R 4.3.0)
+##    dplyr                * 1.1.2      2023-04-20 [1] CRAN (R 4.3.0)
+##    dsr                  * 0.2.2      2019-08-23 [1] CRAN (R 4.3.0)
+##    DT                   * 0.28       2023-05-18 [1] CRAN (R 4.3.0)
+##    e1071                  1.7-13     2023-02-01 [1] CRAN (R 4.3.0)
+##    easystats            * 0.6.0      2022-11-29 [1] CRAN (R 4.3.0)
+##    ecmwfr               * 1.5.0      2023-01-19 [1] CRAN (R 4.3.0)
+##    effectsize           * 0.8.3      2023-01-28 [1] CRAN (R 4.3.0)
+##    ellipsis               0.3.2      2021-04-29 [1] CRAN (R 4.3.0)
+##    Epi                  * 2.47.1     2023-04-25 [1] CRAN (R 4.3.0)
+##    epicontacts          * 1.2.0      2023-05-21 [1] Github (reconhub/epicontacts@7df53e5)
+##    epidict                0.0.0.9001 2023-05-21 [1] Github (R4EPI/epidict@9cf5a53)
+##    EpiEstim             * 2.2-4      2021-01-07 [1] CRAN (R 4.3.0)
+##    epikit               * 0.1.5      2023-02-15 [1] CRAN (R 4.3.0)
+##    EpiNow2              * 1.3.5      2023-04-27 [1] CRAN (R 4.3.0)
+##    epitabulate            0.0.0.9007 2023-05-21 [1] Github (R4EPI/epitabulate@56370b8)
+##    epitrix              * 0.4.0      2023-01-13 [1] CRAN (R 4.3.0)
+##    etm                    1.1.1      2020-09-08 [1] CRAN (R 4.3.0)
+##    evaluate               0.21       2023-05-05 [1] CRAN (R 4.3.0)
+##    evd                    2.3-6.1    2022-07-04 [1] CRAN (R 4.3.0)
+##    fabletools           * 0.3.3      2023-04-04 [1] CRAN (R 4.3.0)
+##    FactoClass             1.2.7      2018-10-01 [1] CRAN (R 4.3.0)
+##    fansi                  1.0.4      2023-01-22 [1] CRAN (R 4.3.0)
+##    farver                 2.1.1      2022-07-06 [1] CRAN (R 4.3.0)
+##    fastLink             * 0.6.0      2020-04-29 [1] CRAN (R 4.3.0)
+##    fastmap                1.1.1      2023-02-24 [1] CRAN (R 4.3.0)
+##    feasts               * 0.3.1      2023-03-22 [1] CRAN (R 4.3.0)
+##    ff                   * 4.0.9      2023-01-25 [1] CRAN (R 4.3.0)
+##    fitdistrplus           1.1-11     2023-04-25 [1] CRAN (R 4.3.0)
+##    flexdashboard        * 0.6.1      2023-01-23 [1] CRAN (R 4.3.0)
+##    flextable            * 0.9.1      2023-04-02 [1] CRAN (R 4.3.0)
+##    fontBitstreamVera      0.1.1      2017-02-01 [1] CRAN (R 4.3.0)
+##    fontLiberation         0.1.0      2016-10-15 [1] CRAN (R 4.3.0)
+##    fontquiver             0.2.1      2017-02-01 [1] CRAN (R 4.3.0)
+##    forcats              * 1.0.0      2023-01-29 [1] CRAN (R 4.3.0)
+##    foreach                1.5.2      2022-02-02 [1] CRAN (R 4.3.0)
+##    forecast             * 8.21       2023-02-27 [1] CRAN (R 4.3.0)
+##    foreign                0.8-84     2022-12-06 [2] CRAN (R 4.3.0)
+##    formatR                1.14       2023-01-17 [1] CRAN (R 4.3.0)
+##    formattable          * 0.2.1      2021-01-07 [1] CRAN (R 4.3.0)
+##    Formula              * 1.2-5      2023-02-24 [1] CRAN (R 4.3.0)
+##    fracdiff               1.5-2      2022-10-31 [1] CRAN (R 4.3.0)
+##    frailtypack          * 3.5.0      2021-12-20 [1] CRAN (R 4.3.0)
+##    fs                   * 1.6.2      2023-04-25 [1] CRAN (R 4.3.0)
+##    futile.logger          1.4.3      2016-07-10 [1] CRAN (R 4.3.0)
+##    futile.options         1.0.1      2018-04-20 [1] CRAN (R 4.3.0)
+##    future                 1.32.0     2023-03-07 [1] CRAN (R 4.3.0)
+##    future.apply           1.11.0     2023-05-21 [1] CRAN (R 4.3.0)
+##    gdtools                0.3.3      2023-03-27 [1] CRAN (R 4.3.0)
+##    generics               0.1.3      2022-07-05 [1] CRAN (R 4.3.0)
+##    gfonts                 0.2.0      2023-01-08 [1] CRAN (R 4.3.0)
+##    ggExtra              * 0.10.0     2022-03-23 [1] CRAN (R 4.3.0)
+##    ggforce              * 0.4.1      2022-10-04 [1] CRAN (R 4.3.0)
+##    ggfun                  0.0.9      2022-11-21 [1] CRAN (R 4.3.0)
+##    gghighlight          * 0.4.0      2022-10-16 [1] CRAN (R 4.3.0)
+##    ggnewscale           * 0.4.8      2022-10-06 [1] CRAN (R 4.3.0)
+##    ggplot2              * 3.4.2      2023-04-03 [1] CRAN (R 4.3.0)
+##    ggplotify              0.1.0      2021-09-02 [1] CRAN (R 4.3.0)
+##    ggpubr               * 0.6.0      2023-02-10 [1] CRAN (R 4.3.0)
+##    ggrepel              * 0.9.3      2023-02-03 [1] CRAN (R 4.3.0)
+##    ggsignif               0.6.4      2022-10-13 [1] CRAN (R 4.3.0)
+##    ggtext                 0.1.2      2022-09-16 [1] CRAN (R 4.3.0)
+##    ggtree               * 3.8.0      2023-04-25 [1] Bioconductor
+##    ggupset              * 0.3.0      2020-05-05 [1] CRAN (R 4.3.0)
+##    globals                0.16.2     2022-11-21 [1] CRAN (R 4.3.0)
+##    glue                   1.6.2      2022-02-24 [1] CRAN (R 4.3.0)
+##    grates               * 1.0.1      2023-04-02 [1] CRAN (R 4.3.0)
+##    gridExtra              2.3        2017-09-09 [1] CRAN (R 4.3.0)
+##    gridGraphics           0.5-1      2020-12-13 [1] CRAN (R 4.3.0)
+##    gridtext               0.1.5      2022-09-16 [1] CRAN (R 4.3.0)
+##    gt                     0.9.0      2023-03-31 [1] CRAN (R 4.3.0)
+##    gtable                 0.3.3      2023-03-21 [1] CRAN (R 4.3.0)
+##    gtools                 3.9.4      2022-11-27 [1] CRAN (R 4.3.0)
+##    gtsummary            * 1.7.1      2023-04-27 [1] CRAN (R 4.3.0)
+##    haven                  2.5.2      2023-02-28 [1] CRAN (R 4.3.0)
+##    here                 * 1.0.1      2020-12-13 [1] CRAN (R 4.3.0)
+##    highcharter          * 0.9.4      2022-01-03 [1] CRAN (R 4.3.0)
+##    highr                  0.10       2022-12-22 [1] CRAN (R 4.3.0)
+##    hms                    1.1.3      2023-03-21 [1] CRAN (R 4.3.0)
+##    htmltools              0.5.5      2023-03-23 [1] CRAN (R 4.3.0)
+##    htmlwidgets            1.6.2      2023-03-17 [1] CRAN (R 4.3.0)
+##    httpcode               0.3.0      2020-04-10 [1] CRAN (R 4.3.0)
+##    httpuv                 1.6.11     2023-05-11 [1] CRAN (R 4.3.0)
+##    httr                   1.4.6      2023-05-08 [1] CRAN (R 4.3.0)
+##    i2extras             * 0.2.1      2023-03-17 [1] CRAN (R 4.3.0)
+##    igraph                 1.4.2      2023-04-07 [1] CRAN (R 4.3.0)
+##    imputeTS             * 3.3        2022-09-09 [1] CRAN (R 4.3.0)
+##    incidence              1.7.3      2020-11-04 [1] CRAN (R 4.3.0)
+##    incidence2           * 2.0.0      2023-03-17 [1] CRAN (R 4.3.0)
+##    inline                 0.3.19     2021-05-31 [1] CRAN (R 4.3.0)
+##    insight              * 0.19.1     2023-03-18 [1] CRAN (R 4.3.0)
+##    ipred                  0.9-14     2023-03-09 [1] CRAN (R 4.3.0)
+##    isoband                0.2.7      2022-12-20 [1] CRAN (R 4.3.0)
+##    iterators              1.0.14     2022-02-05 [1] CRAN (R 4.3.0)
+##    janitor              * 2.2.0      2023-02-02 [1] CRAN (R 4.3.0)
+##    jpeg                   0.1-10     2022-11-29 [1] CRAN (R 4.3.0)
+##    jquerylib              0.1.4      2021-04-26 [1] CRAN (R 4.3.0)
+##    jsonlite               1.8.4      2022-12-06 [1] CRAN (R 4.3.0)
+##    kableExtra           * 1.3.4      2021-02-20 [1] CRAN (R 4.3.0)
+##    KernSmooth             2.23-20    2021-05-03 [2] CRAN (R 4.3.0)
+##    km.ci                  0.5-6      2022-04-06 [1] CRAN (R 4.3.0)
+##    KMsurv                 0.1-5      2012-12-03 [1] CRAN (R 4.3.0)
+##    knitr                  1.42       2023-01-25 [1] CRAN (R 4.3.0)
+##    labeling               0.4.2      2020-10-20 [1] CRAN (R 4.3.0)
+##    labelled               2.11.0     2023-04-11 [1] CRAN (R 4.3.0)
+##    lambda.r               1.2.4      2019-09-18 [1] CRAN (R 4.3.0)
+##    later                  1.3.1      2023-05-02 [1] CRAN (R 4.3.0)
+##    lattice                0.21-8     2023-04-05 [2] CRAN (R 4.3.0)
+##    lava                   1.7.2.1    2023-02-27 [1] CRAN (R 4.3.0)
+##    lazyeval               0.2.2      2019-03-15 [1] CRAN (R 4.3.0)
+##    leafem                 0.2.0      2022-04-16 [1] CRAN (R 4.3.0)
+##    leaflet                2.1.2      2023-03-10 [1] CRAN (R 4.3.0)
+##    leaflet.providers      1.9.0      2019-11-09 [1] CRAN (R 4.3.0)
+##    leafsync               0.1.0      2019-03-05 [1] CRAN (R 4.3.0)
+##    lifecycle              1.0.3      2022-10-07 [1] CRAN (R 4.3.0)
+##    listenv                0.9.0      2022-12-16 [1] CRAN (R 4.3.0)
+##    lme4                   1.1-33     2023-04-25 [1] CRAN (R 4.3.0)
+##    lmtest               * 0.9-40     2022-03-21 [1] CRAN (R 4.3.0)
+##    loo                    2.6.0      2023-03-31 [1] CRAN (R 4.3.0)
+##    lpSolve                5.6.18     2023-02-01 [1] CRAN (R 4.3.0)
+##    lubridate            * 1.9.2      2023-02-10 [1] CRAN (R 4.3.0)
+##    lwgeom                 0.2-11     2023-01-14 [1] CRAN (R 4.3.0)
+##    magrittr             * 2.0.3      2022-03-30 [1] CRAN (R 4.3.0)
+##    markdown               1.7        2023-05-16 [1] CRAN (R 4.3.0)
+##    MASS                 * 7.3-58.4   2023-03-07 [2] CRAN (R 4.3.0)
+##    matchmaker           * 0.1.1      2020-02-21 [1] CRAN (R 4.3.0)
+##    Matrix               * 1.5-4      2023-04-04 [2] CRAN (R 4.3.0)
+##    MatrixModels           0.5-1      2022-09-11 [1] CRAN (R 4.3.0)
+##    matrixStats            0.63.0     2022-11-18 [1] CRAN (R 4.3.0)
+##    mcmc                   0.9-7      2020-03-21 [1] CRAN (R 4.3.0)
+##    MCMCpack               1.6-3      2022-04-13 [1] CRAN (R 4.3.0)
+##    memoise                2.0.1      2021-11-26 [1] CRAN (R 4.3.0)
+##    mgcv                   1.8-42     2023-03-02 [2] CRAN (R 4.3.0)
+##    mice                 * 3.15.0     2022-11-19 [1] CRAN (R 4.3.0)
+##    microbenchmark         1.4.10     2023-04-28 [1] CRAN (R 4.3.0)
+##    mime                   0.12       2021-09-28 [1] CRAN (R 4.3.0)
+##    miniUI                 0.1.1.1    2018-05-18 [1] CRAN (R 4.3.0)
+##    minqa                  1.2.5      2022-10-19 [1] CRAN (R 4.3.0)
+##    mitools                2.4        2019-04-26 [1] CRAN (R 4.3.0)
+##    modelbased           * 0.8.6      2023-01-13 [1] CRAN (R 4.3.0)
+##    munsell                0.5.0      2018-06-12 [1] CRAN (R 4.3.0)
+##    naniar               * 1.0.0      2023-02-02 [1] CRAN (R 4.3.0)
+##    networkD3            * 0.4        2017-03-18 [1] CRAN (R 4.3.0)
+##    nlme                   3.1-162    2023-01-31 [2] CRAN (R 4.3.0)
+##    nloptr                 2.0.3      2022-05-26 [1] CRAN (R 4.3.0)
+##    nnet                   7.3-18     2022-09-28 [2] CRAN (R 4.3.0)
+##    numDeriv               2016.8-1.1 2019-06-06 [1] CRAN (R 4.3.0)
+##    officer              * 0.6.2      2023-03-28 [1] CRAN (R 4.3.0)
+##    openssl                2.0.6      2023-03-09 [1] CRAN (R 4.3.0)
+##    OpenStreetMap        * 0.3.4      2019-05-31 [1] CRAN (R 4.3.0)
+##    openxlsx               4.2.5.2    2023-02-06 [1] CRAN (R 4.3.0)
+##    pacman                 0.5.1      2019-03-11 [1] CRAN (R 4.3.0)
+##    parallelly             1.35.0     2023-03-23 [1] CRAN (R 4.3.0)
+##    parameters           * 0.21.0     2023-04-19 [1] CRAN (R 4.3.0)
+##    parsedate            * 1.3.1      2022-10-27 [1] CRAN (R 4.3.0)
+##    patchwork            * 1.1.2      2022-08-19 [1] CRAN (R 4.3.0)
+##    performance          * 0.10.3     2023-04-07 [1] CRAN (R 4.3.0)
+##    PerformanceAnalytics * 2.0.4      2020-02-06 [1] CRAN (R 4.3.0)
+##    PHEindicatormethods  * 2.0.1      2023-05-05 [1] CRAN (R 4.3.0)
+##    pillar                 1.9.0      2023-03-22 [1] CRAN (R 4.3.0)
+##    pkgbuild               1.4.0      2022-11-27 [1] CRAN (R 4.3.0)
+##    pkgconfig              2.0.3      2019-09-22 [1] CRAN (R 4.3.0)
+##    plotly               * 4.10.1     2022-11-07 [1] CRAN (R 4.3.0)
+##    plotrix                3.8-2      2021-09-08 [1] CRAN (R 4.3.0)
+##    plyr                   1.8.8      2022-11-11 [1] CRAN (R 4.3.0)
+##    png                    0.1-8      2022-11-29 [1] CRAN (R 4.3.0)
+##    polyclip               1.10-4     2022-10-20 [1] CRAN (R 4.3.0)
+##    polyCub                0.8.1      2022-11-28 [1] CRAN (R 4.3.0)
+##    prettyunits            1.1.1      2020-01-24 [1] CRAN (R 4.3.0)
+##    processx               3.8.1      2023-04-18 [1] CRAN (R 4.3.0)
+##    prodlim                2023.03.31 2023-04-02 [1] CRAN (R 4.3.0)
+##    progressr              0.13.0     2023-01-10 [1] CRAN (R 4.3.0)
+##    projections          * 0.6.0      2023-03-23 [1] CRAN (R 4.3.0)
+##    promises               1.2.0.1    2021-02-11 [1] CRAN (R 4.3.0)
+##    proxy                  0.4-27     2022-06-09 [1] CRAN (R 4.3.0)
+##    ps                     1.7.5      2023-04-18 [1] CRAN (R 4.3.0)
+##    purrr                * 1.0.1      2023-01-10 [1] CRAN (R 4.3.0)
+##    quadprog               1.5-8      2019-11-20 [1] CRAN (R 4.3.0)
+##    Quandl                 2.11.0     2021-08-11 [1] CRAN (R 4.3.0)
+##    quantmod             * 0.4.22     2023-04-07 [1] CRAN (R 4.3.0)
+##    quantreg               5.95       2023-04-08 [1] CRAN (R 4.3.0)
+##    R.methodsS3            1.8.2      2022-06-13 [1] CRAN (R 4.3.0)
+##    R.oo                   1.25.0     2022-06-12 [1] CRAN (R 4.3.0)
+##    R.utils                2.12.2     2022-11-11 [1] CRAN (R 4.3.0)
+##    R6                     2.5.1      2021-08-19 [1] CRAN (R 4.3.0)
+##    ragg                   1.2.5      2023-01-12 [1] CRAN (R 4.3.0)
+##    raster                 3.6-20     2023-03-06 [1] CRAN (R 4.3.0)
+##    RColorBrewer         * 1.1-3      2022-04-03 [1] CRAN (R 4.3.0)
+##    Rcpp                 * 1.0.10     2023-01-22 [1] CRAN (R 4.3.0)
+##  D RcppParallel           5.1.7      2023-02-27 [1] CRAN (R 4.3.0)
+##    readr                * 2.1.4      2023-02-10 [1] CRAN (R 4.3.0)
+##    readxl               * 1.4.2      2023-02-09 [1] CRAN (R 4.3.0)
+##    RecordLinkage        * 0.4-12.4   2022-11-08 [1] CRAN (R 4.3.0)
+##    remotes                2.4.2      2021-11-30 [1] CRAN (R 4.3.0)
+##    report               * 0.5.7      2023-03-22 [1] CRAN (R 4.3.0)
+##    repr                   1.1.6      2023-01-26 [1] CRAN (R 4.3.0)
+##    reprex                 2.0.2      2022-08-17 [1] CRAN (R 4.3.0)
+##    reshape2               1.4.4      2020-04-09 [1] CRAN (R 4.3.0)
+##    rgdal                  1.6-6      2023-04-18 [1] CRAN (R 4.3.0)
+##    rio                  * 0.5.29     2021-11-22 [1] CRAN (R 4.3.0)
+##  D rJava                  1.0-6      2021-12-10 [1] CRAN (R 4.3.0)
+##    rlang                  1.1.1      2023-04-28 [1] CRAN (R 4.3.0)
+##    rlist                  0.4.6.2    2021-09-03 [1] CRAN (R 4.3.0)
+##    rmarkdown              2.21       2023-03-26 [1] CRAN (R 4.3.0)
+##    rootSolve              1.8.2.3    2021-09-29 [1] CRAN (R 4.3.0)
+##    rpart                  4.1.19     2022-10-21 [2] CRAN (R 4.3.0)
+##    rprojroot              2.0.3      2022-04-02 [1] CRAN (R 4.3.0)
+##    RSQLite              * 2.3.1      2023-04-03 [1] CRAN (R 4.3.0)
+##    rstan                  2.21.8     2023-01-17 [1] CRAN (R 4.3.0)
+##    rstantools             2.3.1      2023-03-30 [1] CRAN (R 4.3.0)
+##    rstatix              * 0.7.2      2023-02-01 [1] CRAN (R 4.3.0)
+##    rstudioapi             0.14       2022-08-22 [1] CRAN (R 4.3.0)
+##    runner                 0.4.3      2023-03-21 [1] CRAN (R 4.3.0)
+##    rvest                  1.0.3      2022-08-19 [1] CRAN (R 4.3.0)
+##    s2                     1.1.4      2023-05-17 [1] CRAN (R 4.3.0)
+##    sass                   0.4.6      2023-05-03 [1] CRAN (R 4.3.0)
+##    scales               * 1.2.1      2022-08-20 [1] CRAN (R 4.3.0)
+##    scatterplot3d          0.3-44     2023-05-05 [1] CRAN (R 4.3.0)
+##    see                  * 0.7.5      2023-03-23 [1] CRAN (R 4.3.0)
+##    SemiCompRisks        * 3.4        2021-02-03 [1] CRAN (R 4.3.0)
+##    sessioninfo            1.2.2      2021-12-06 [1] CRAN (R 4.3.0)
+##    sf                   * 1.0-12     2023-03-19 [1] CRAN (R 4.3.0)
+##    shiny                * 1.7.4      2022-12-15 [1] CRAN (R 4.3.0)
+##    sitrep               * 0.2.3      2023-05-21 [1] Github (r4epi/sitrep@b96906b)
+##    skimr                * 2.1.5      2022-12-23 [1] CRAN (R 4.3.0)
+##    slider               * 0.3.0      2022-11-16 [1] CRAN (R 4.3.0)
+##    snakecase              0.11.0     2019-05-25 [1] CRAN (R 4.3.0)
+##    sp                   * 1.6-0      2023-01-19 [1] CRAN (R 4.3.0)
+##    SparseM                1.81       2021-02-18 [1] CRAN (R 4.3.0)
+##    spatstat.data          3.0-1      2023-03-12 [1] CRAN (R 4.3.0)
+##    spatstat.geom          3.2-1      2023-05-09 [1] CRAN (R 4.3.0)
+##    spatstat.utils         3.0-3      2023-05-09 [1] CRAN (R 4.3.0)
+##    spData               * 2.2.2      2023-03-01 [1] CRAN (R 4.3.0)
+##    spdep                * 1.2-8      2023-02-28 [1] CRAN (R 4.3.0)
+##    srvyr                * 1.2.0      2023-02-21 [1] CRAN (R 4.3.0)
+##    StanHeaders            2.26.25    2023-05-17 [1] CRAN (R 4.3.0)
+##    stars                * 0.6-1      2023-04-06 [1] CRAN (R 4.3.0)
+##    statmod                1.5.0      2023-01-06 [1] CRAN (R 4.3.0)
+##    stinepack              1.4        2018-07-30 [1] CRAN (R 4.3.0)
+##    stringdist           * 0.9.10     2022-11-07 [1] CRAN (R 4.3.0)
+##    stringi                1.7.12     2023-01-11 [1] CRAN (R 4.3.0)
+##    stringr              * 1.5.0      2022-12-02 [1] CRAN (R 4.3.0)
+##    survC1               * 1.0-3      2021-02-10 [1] CRAN (R 4.3.0)
+##    surveillance         * 1.21.1     2023-05-19 [1] CRAN (R 4.3.0)
+##    survey               * 4.2-1      2023-05-03 [1] CRAN (R 4.3.0)
+##    survival             * 3.5-5      2023-03-12 [2] CRAN (R 4.3.0)
+##    survminer            * 0.4.9      2021-03-09 [1] CRAN (R 4.3.0)
+##    survMisc               0.5.6      2022-04-07 [1] CRAN (R 4.3.0)
+##    svglite                2.1.1      2023-01-10 [1] CRAN (R 4.3.0)
+##    systemfonts            1.0.4      2022-02-11 [1] CRAN (R 4.3.0)
+##    terra                  1.7-29     2023-04-22 [1] CRAN (R 4.3.0)
+##    textshaping            0.3.6      2021-10-13 [1] CRAN (R 4.3.0)
+##    tibble               * 3.2.1      2023-03-20 [1] CRAN (R 4.3.0)
+##    tidyquant            * 1.0.7      2023-03-31 [1] CRAN (R 4.3.0)
+##    tidyr                * 1.3.0      2023-01-24 [1] CRAN (R 4.3.0)
+##    tidyselect             1.2.0      2022-10-10 [1] CRAN (R 4.3.0)
+##    tidytree               0.4.2      2022-12-18 [1] CRAN (R 4.3.0)
+##    tidyverse            * 2.0.0      2023-02-22 [1] CRAN (R 4.3.0)
+##    timechange             0.2.0      2023-01-11 [1] CRAN (R 4.3.0)
+##    timeDate               4022.108   2023-01-07 [1] CRAN (R 4.3.0)
+##    tinytex                0.45       2023-04-18 [1] CRAN (R 4.3.0)
+##    tmap                 * 3.3-3      2022-03-02 [1] CRAN (R 4.3.0)
+##    tmaptools            * 3.1-1      2021-01-19 [1] CRAN (R 4.3.0)
+##    treeio               * 1.24.0     2023-04-25 [1] Bioconductor
+##    trending             * 0.1.0      2023-04-03 [1] CRAN (R 4.3.0)
+##    truncnorm              1.0-9      2023-03-20 [1] CRAN (R 4.3.0)
+##    tseries                0.10-54    2023-05-02 [1] CRAN (R 4.3.0)
+##    tsibble              * 1.1.3      2022-10-09 [1] CRAN (R 4.3.0)
+##    TTR                  * 0.24.3     2021-12-12 [1] CRAN (R 4.3.0)
+##    tweenr                 2.0.2      2022-09-06 [1] CRAN (R 4.3.0)
+##    tzdb                   0.4.0      2023-05-12 [1] CRAN (R 4.3.0)
+##    units                * 0.8-2      2023-04-27 [1] CRAN (R 4.3.0)
+##    UpSetR               * 1.4.0      2019-05-22 [1] CRAN (R 4.3.0)
+##    urca                   1.3-3      2022-08-29 [1] CRAN (R 4.3.0)
+##    utf8                   1.2.3      2023-01-31 [1] CRAN (R 4.3.0)
+##    uuid                   1.1-0      2022-04-19 [1] CRAN (R 4.3.0)
+##    vctrs                  0.6.2      2023-04-19 [1] CRAN (R 4.3.0)
+##    viridis                0.6.3      2023-05-03 [1] CRAN (R 4.3.0)
+##    viridisLite            0.4.2      2023-05-02 [1] CRAN (R 4.3.0)
+##    visdat                 0.6.0      2023-02-02 [1] CRAN (R 4.3.0)
+##    visNetwork           * 2.1.2      2022-09-29 [1] CRAN (R 4.3.0)
+##    vistime              * 1.2.3      2022-10-16 [1] CRAN (R 4.3.0)
+##    warp                   0.2.0      2020-10-21 [1] CRAN (R 4.3.0)
+##    webshot              * 0.5.4      2022-09-26 [1] CRAN (R 4.3.0)
+##    withr                  2.5.0      2022-03-03 [1] CRAN (R 4.3.0)
+##    wk                     0.7.3      2023-05-06 [1] CRAN (R 4.3.0)
+##    writexl              * 1.4.2      2023-01-06 [1] CRAN (R 4.3.0)
+##    xfun                   0.39       2023-04-20 [1] CRAN (R 4.3.0)
+##    XML                    3.99-0.14  2023-03-19 [1] CRAN (R 4.3.0)
+##    xml2                   1.3.4      2023-04-27 [1] CRAN (R 4.3.0)
+##    xtable               * 1.8-4      2019-04-21 [1] CRAN (R 4.3.0)
+##    xts                  * 0.13.1     2023-04-16 [1] CRAN (R 4.3.0)
+##    yaml                   2.3.7      2023-01-23 [1] CRAN (R 4.3.0)
+##    yardstick            * 1.2.0      2023-04-21 [1] CRAN (R 4.3.0)
+##    yulab.utils            0.0.6      2022-12-20 [1] CRAN (R 4.3.0)
+##    zip                    2.3.0      2023-04-17 [1] CRAN (R 4.3.0)
+##    zoo                  * 1.8-12     2023-04-13 [1] CRAN (R 4.3.0)
+## 
+##  [1] C:/Users/neale/AppData/Local/R/win-library/4.3
+##  [2] C:/Program Files/R/R-4.3.0/library
+## 
+##  D ── DLL MD5 mismatch, broken installation.
+## 
+## ────────────────────────────────────────────────────────────────────────────────────</code></pre>
+
+</div>
+</div>
+  <div class="chapter-nav">
+<div class="prev"><a href="index.html"></a></div>
+<div class="empty"></div>
+</div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
+    <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
+      <ul class="nav navbar-nav">
+<li><a class="nav-link" href="#editorial_notes"><span class="header-section-number">1</span> Notes techniques et choix éditoriaux</a></li>
+<li>
+<a class="nav-link" href="#approche-et-style"><span class="header-section-number">1.1</span> Approche et style</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#paquets-r">Paquets R</a></li>
+<li><a class="nav-link" href="#choix-dyn-style-de-code">Choix d’yn style de code</a></li>
+<li><a class="nav-link" href="#nomenclature">Nomenclature</a></li>
+<li><a class="nav-link" href="#notes">Notes</a></li>
+</ul>
+</li>
+<li><a class="nav-link" href="#choix-techniques"><span class="header-section-number">1.2</span> Choix techniques</a></li>
+<li><a class="nav-link" href="#r%C3%A9visions-majeures"><span class="header-section-number">1.3</span> Révisions majeures</a></li>
+<li><a class="nav-link" href="#information-de-session-r-rstudio-paquets"><span class="header-section-number">1.4</span> Information de session (R, RStudio, paquets)</a></li>
+</ul>
+
+      <div class="book-extra">
+        <ul class="list-unstyled">
+          
+        </ul>
+</div>
+    </nav>
+</div>
+
+</div>
+</div> <!-- .container -->
+
+<footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>"<strong>Le Epi R Handbook</strong>" was written by the handbook team. It was last built on 2023-05-21.</p>
+  </div>
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>This book was built by the <a class="text-light" href="https://bookdown.org">bookdown</a> R package.</p>
+  </div>
+
+</div></div>
+</footer>
+</body>
+</html>

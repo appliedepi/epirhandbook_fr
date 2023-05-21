@@ -1,143 +1,53 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-  <title>5 Paquets conseillés | The Epidemiologist R Handbook</title>
-
-    <meta name="author" content="the handbook team" />
-  
-   <meta name="description" content="The Epi R Handbook est un manuel de référence sur l’utilisation de R en épidémiologie appliquée et santé publique." />
-   <meta name="generator" content="placeholder" />
-  <meta property="og:title" content="5 Paquets conseillés | The Epidemiologist R Handbook" />
-  <meta property="og:type" content="book" />
-  
-  
-  <meta property="og:description" content="The Epi R Handbook est un manuel de référence sur l’utilisation de R en épidémiologie appliquée et santé publique." />
-
-  <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="5 Paquets conseillés | The Epidemiologist R Handbook" />
-  
-  <meta name="twitter:description" content="The Epi R Handbook est un manuel de référence sur l’utilisation de R en épidémiologie appliquée et santé publique." />
-  
-  <!-- JS -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script>
-  <script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script>
-    <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-    <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet" />
-    <script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script>
-    <script src="libs/bs3compat-0.4.2/transition.js"></script>
-    <script src="libs/bs3compat-0.4.2/tabs.js"></script>
-    <script src="libs/bs3compat-0.4.2/bs3compat.js"></script>
-    <link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet" />
-    <script src="libs/bs4_book-1.0.0/bs4_book.js"></script>
-    <script src="libs/htmlwidgets-1.6.2/htmlwidgets.js"></script>
-    <link href="libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet" />
-    <script src="libs/datatables-binding-0.27/datatables.js"></script>
-    <link href="libs/dt-core-1.12.1/css/jquery.dataTables.min.css" rel="stylesheet" />
-    <link href="libs/dt-core-1.12.1/css/jquery.dataTables.extra.css" rel="stylesheet" />
-    <script src="libs/dt-core-1.12.1/js/jquery.dataTables.min.js"></script>
-    <link href="libs/nouislider-7.0.10/jquery.nouislider.min.css" rel="stylesheet" />
-    <script src="libs/nouislider-7.0.10/jquery.nouislider.min.js"></script>
-    <link href="libs/selectize-0.12.0/selectize.bootstrap3.css" rel="stylesheet" />
-    <script src="libs/selectize-0.12.0/selectize.min.js"></script>
-    <link href="libs/crosstalk-1.2.0/css/crosstalk.min.css" rel="stylesheet" />
-    <script src="libs/crosstalk-1.2.0/js/crosstalk.min.js"></script>
-    <script src="libs/kePrint-0.0.1/kePrint.js"></script>
-    <link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
-    <link href="libs/tabwid-1.1.3/tabwid.css" rel="stylesheet" />
-    <script src="libs/tabwid-1.1.3/tabwid.js"></script>
-    <link href="libs/leaflet-1.3.1/leaflet.css" rel="stylesheet" />
-    <script src="libs/leaflet-1.3.1/leaflet.js"></script>
-    <link href="libs/leafletfix-1.0.0/leafletfix.css" rel="stylesheet" />
-    <script src="libs/proj4-2.6.2/proj4.min.js"></script>
-    <script src="libs/Proj4Leaflet-1.0.1/proj4leaflet.js"></script>
-    <link href="libs/rstudio_leaflet-1.3.1/rstudio_leaflet.css" rel="stylesheet" />
-    <script src="libs/leaflet-binding-2.1.2/leaflet.js"></script>
-    <script src="libs/leaflet-providers-1.9.0/leaflet-providers_1.9.0.js"></script>
-    <script src="libs/leaflet-providers-plugin-2.1.2/leaflet-providers-plugin.js"></script>
-    <script src="libs/viz-1.8.2/viz.js"></script>
-    <link href="libs/DiagrammeR-styles-0.2/styles.css" rel="stylesheet" />
-    <script src="libs/grViz-binding-1.0.9/grViz.js"></script>
-    <script src="libs/d3-4.5.0/d3.min.js"></script>
-    <script src="libs/sankey-1/sankey.js"></script>
-    <script src="libs/sankeyNetwork-binding-0.4/sankeyNetwork.js"></script>
-    <script src="libs/plotly-binding-4.10.1/plotly.js"></script>
-    <script src="libs/typedarray-0.1/typedarray.min.js"></script>
-    <link href="libs/plotly-htmlwidgets-css-2.11.1/plotly-htmlwidgets.css" rel="stylesheet" />
-    <script src="libs/plotly-main-2.11.1/plotly-latest.min.js"></script>
-    <link href="libs/vis-9.1.0/vis-network.min.css" rel="stylesheet" />
-    <script src="libs/vis-9.1.0/vis-network.min.js"></script>
-    <script src="libs/visNetwork-binding-2.1.2/visNetwork.js"></script>
-    <link href="libs/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" />
-    <script src="libs/plotly-basic-2.11.1/plotly-basic-2.11.1.min.js"></script>
-    <script src="libs/plotly-cartesian-2.11.1/plotly-cartesian-2.11.1.min.js"></script>
-    <script src="libs/proj4js-2.3.15/proj4.js"></script>
-    <link href="libs/highcharts-9.3.1/css/motion.css" rel="stylesheet" />
-    <script src="libs/highcharts-9.3.1/highcharts.js"></script>
-    <script src="libs/highcharts-9.3.1/highcharts-3d.js"></script>
-    <script src="libs/highcharts-9.3.1/highcharts-more.js"></script>
-    <script src="libs/highcharts-9.3.1/modules/stock.js"></script>
-    <script src="libs/highcharts-9.3.1/modules/map.js"></script>
-    <script src="libs/highcharts-9.3.1/modules/data.js"></script>
-    <script src="libs/highcharts-9.3.1/modules/exporting.js"></script>
-    <script src="libs/highcharts-9.3.1/modules/offline-exporting.js"></script>
-    <script src="libs/highcharts-9.3.1/modules/drilldown.js"></script>
-    <script src="libs/highcharts-9.3.1/modules/item-series.js"></script>
-    <script src="libs/highcharts-9.3.1/modules/overlapping-datalabels.js"></script>
-    <script src="libs/highcharts-9.3.1/modules/annotations.js"></script>
-    <script src="libs/highcharts-9.3.1/modules/export-data.js"></script>
-    <script src="libs/highcharts-9.3.1/modules/funnel.js"></script>
-    <script src="libs/highcharts-9.3.1/modules/heatmap.js"></script>
-    <script src="libs/highcharts-9.3.1/modules/treemap.js"></script>
-    <script src="libs/highcharts-9.3.1/modules/sankey.js"></script>
-    <script src="libs/highcharts-9.3.1/modules/dependency-wheel.js"></script>
-    <script src="libs/highcharts-9.3.1/modules/organization.js"></script>
-    <script src="libs/highcharts-9.3.1/modules/solid-gauge.js"></script>
-    <script src="libs/highcharts-9.3.1/modules/streamgraph.js"></script>
-    <script src="libs/highcharts-9.3.1/modules/sunburst.js"></script>
-    <script src="libs/highcharts-9.3.1/modules/vector.js"></script>
-    <script src="libs/highcharts-9.3.1/modules/wordcloud.js"></script>
-    <script src="libs/highcharts-9.3.1/modules/xrange.js"></script>
-    <script src="libs/highcharts-9.3.1/modules/tilemap.js"></script>
-    <script src="libs/highcharts-9.3.1/modules/venn.js"></script>
-    <script src="libs/highcharts-9.3.1/modules/gantt.js"></script>
-    <script src="libs/highcharts-9.3.1/modules/timeline.js"></script>
-    <script src="libs/highcharts-9.3.1/modules/parallel-coordinates.js"></script>
-    <script src="libs/highcharts-9.3.1/modules/bullet.js"></script>
-    <script src="libs/highcharts-9.3.1/modules/coloraxis.js"></script>
-    <script src="libs/highcharts-9.3.1/modules/dumbbell.js"></script>
-    <script src="libs/highcharts-9.3.1/modules/lollipop.js"></script>
-    <script src="libs/highcharts-9.3.1/modules/series-label.js"></script>
-    <script src="libs/highcharts-9.3.1/plugins/motion.js"></script>
-    <script src="libs/highcharts-9.3.1/custom/reset.js"></script>
-    <script src="libs/highcharts-9.3.1/modules/boost.js"></script>
-    <script src="libs/highchart-binding-0.9.4/highchart.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script>
-
-  <!-- CSS -->
-  <style type="text/css">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>4 Paquets conseillés | Le Epi R Handbook</title>
+<meta name="author" content="the handbook team">
+<meta name="description" content="Vous trouverez ci-dessous une longue liste de paquets suggérés réaliser des tâches utiles lors d’analyses épidémiologies en R. Vous pouvez copier ce code, l’exécuter, et tous ces paquets seront...">
+<meta name="generator" content="bookdown 0.34 with bs4_book()">
+<meta property="og:title" content="4 Paquets conseillés | Le Epi R Handbook">
+<meta property="og:type" content="book">
+<meta property="og:description" content="Vous trouverez ci-dessous une longue liste de paquets suggérés réaliser des tâches utiles lors d’analyses épidémiologies en R. Vous pouvez copier ce code, l’exécuter, et tous ces paquets seront...">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="4 Paquets conseillés | Le Epi R Handbook">
+<meta name="twitter:description" content="Vous trouverez ci-dessous une longue liste de paquets suggérés réaliser des tâches utiles lors d’analyses épidémiologies en R. Vous pouvez copier ce code, l’exécuter, et tous ces paquets seront...">
+<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
+<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.4.2/transition.js"></script><script src="libs/bs3compat-0.4.2/tabs.js"></script><script src="libs/bs3compat-0.4.2/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="libs/htmlwidgets-1.6.2/htmlwidgets.js"></script><link href="libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet">
+<script src="libs/datatables-binding-0.28/datatables.js"></script><link href="libs/dt-core-1.13.4/css/jquery.dataTables.min.css" rel="stylesheet">
+<link href="libs/dt-core-1.13.4/css/jquery.dataTables.extra.css" rel="stylesheet">
+<script src="libs/dt-core-1.13.4/js/jquery.dataTables.min.js"></script><link href="libs/nouislider-7.0.10/jquery.nouislider.min.css" rel="stylesheet">
+<script src="libs/nouislider-7.0.10/jquery.nouislider.min.js"></script><link href="libs/selectize-0.12.0/selectize.bootstrap3.css" rel="stylesheet">
+<script src="libs/selectize-0.12.0/selectize.min.js"></script><link href="libs/crosstalk-1.2.0/css/crosstalk.min.css" rel="stylesheet">
+<script src="libs/crosstalk-1.2.0/js/crosstalk.min.js"></script><script src="libs/kePrint-0.0.1/kePrint.js"></script><link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet">
+<link href="libs/tabwid-1.1.3/tabwid.css" rel="stylesheet">
+<script src="libs/tabwid-1.1.3/tabwid.js"></script><link href="libs/leaflet-1.3.1/leaflet.css" rel="stylesheet">
+<script src="libs/leaflet-1.3.1/leaflet.js"></script><link href="libs/leafletfix-1.0.0/leafletfix.css" rel="stylesheet">
+<script src="libs/proj4-2.6.2/proj4.min.js"></script><script src="libs/Proj4Leaflet-1.0.1/proj4leaflet.js"></script><link href="libs/rstudio_leaflet-1.3.1/rstudio_leaflet.css" rel="stylesheet">
+<script src="libs/leaflet-binding-2.1.2/leaflet.js"></script><script src="libs/leaflet-providers-1.9.0/leaflet-providers_1.9.0.js"></script><script src="libs/leaflet-providers-plugin-2.1.2/leaflet-providers-plugin.js"></script><script src="libs/viz-1.8.2/viz.js"></script><link href="libs/DiagrammeR-styles-0.2/styles.css" rel="stylesheet">
+<script src="libs/grViz-binding-1.0.10/grViz.js"></script><script src="libs/d3-4.5.0/d3.min.js"></script><script src="libs/sankey-1/sankey.js"></script><script src="libs/sankeyNetwork-binding-0.4/sankeyNetwork.js"></script><script src="libs/plotly-binding-4.10.1/plotly.js"></script><script src="libs/typedarray-0.1/typedarray.min.js"></script><link href="libs/plotly-htmlwidgets-css-2.11.1/plotly-htmlwidgets.css" rel="stylesheet">
+<script src="libs/plotly-main-2.11.1/plotly-latest.min.js"></script><link href="libs/vis-9.1.0/vis-network.min.css" rel="stylesheet">
+<script src="libs/vis-9.1.0/vis-network.min.js"></script><script src="libs/visNetwork-binding-2.1.2/visNetwork.js"></script><link href="libs/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet">
+<script src="libs/plotly-basic-2.11.1/plotly-basic-2.11.1.min.js"></script><script src="libs/plotly-cartesian-2.11.1/plotly-cartesian-2.11.1.min.js"></script><script src="libs/proj4js-2.3.15/proj4.js"></script><link href="libs/highcharts-9.3.1/css/motion.css" rel="stylesheet">
+<script src="libs/highcharts-9.3.1/highcharts.js"></script><script src="libs/highcharts-9.3.1/highcharts-3d.js"></script><script src="libs/highcharts-9.3.1/highcharts-more.js"></script><script src="libs/highcharts-9.3.1/modules/stock.js"></script><script src="libs/highcharts-9.3.1/modules/map.js"></script><script src="libs/highcharts-9.3.1/modules/data.js"></script><script src="libs/highcharts-9.3.1/modules/exporting.js"></script><script src="libs/highcharts-9.3.1/modules/offline-exporting.js"></script><script src="libs/highcharts-9.3.1/modules/drilldown.js"></script><script src="libs/highcharts-9.3.1/modules/item-series.js"></script><script src="libs/highcharts-9.3.1/modules/overlapping-datalabels.js"></script><script src="libs/highcharts-9.3.1/modules/annotations.js"></script><script src="libs/highcharts-9.3.1/modules/export-data.js"></script><script src="libs/highcharts-9.3.1/modules/funnel.js"></script><script src="libs/highcharts-9.3.1/modules/heatmap.js"></script><script src="libs/highcharts-9.3.1/modules/treemap.js"></script><script src="libs/highcharts-9.3.1/modules/sankey.js"></script><script src="libs/highcharts-9.3.1/modules/dependency-wheel.js"></script><script src="libs/highcharts-9.3.1/modules/organization.js"></script><script src="libs/highcharts-9.3.1/modules/solid-gauge.js"></script><script src="libs/highcharts-9.3.1/modules/streamgraph.js"></script><script src="libs/highcharts-9.3.1/modules/sunburst.js"></script><script src="libs/highcharts-9.3.1/modules/vector.js"></script><script src="libs/highcharts-9.3.1/modules/wordcloud.js"></script><script src="libs/highcharts-9.3.1/modules/xrange.js"></script><script src="libs/highcharts-9.3.1/modules/tilemap.js"></script><script src="libs/highcharts-9.3.1/modules/venn.js"></script><script src="libs/highcharts-9.3.1/modules/gantt.js"></script><script src="libs/highcharts-9.3.1/modules/timeline.js"></script><script src="libs/highcharts-9.3.1/modules/parallel-coordinates.js"></script><script src="libs/highcharts-9.3.1/modules/bullet.js"></script><script src="libs/highcharts-9.3.1/modules/coloraxis.js"></script><script src="libs/highcharts-9.3.1/modules/dumbbell.js"></script><script src="libs/highcharts-9.3.1/modules/lollipop.js"></script><script src="libs/highcharts-9.3.1/modules/series-label.js"></script><script src="libs/highcharts-9.3.1/plugins/motion.js"></script><script src="libs/highcharts-9.3.1/custom/reset.js"></script><script src="libs/highcharts-9.3.1/modules/boost.js"></script><script src="libs/highchart-binding-0.9.4/highchart.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><style type="text/css">
     
     div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
   </style>
-      <link rel="stylesheet" href="style_bs4.css" />
-  
+<link rel="stylesheet" href="style_bs4.css">
 </head>
-
 <body data-spy="scroll" data-target="#toc">
 
 <div class="container-fluid">
 <div class="row">
-  <header class="col-sm-12 col-lg-3 sidebar sidebar-book">
-    <a class="sr-only sr-only-focusable" href="#content">Skip to main content</a>
+  <header class="col-sm-12 col-lg-3 sidebar sidebar-book"><a class="sr-only sr-only-focusable" href="#content">Skip to main content</a>
 
     <div class="d-flex align-items-start justify-content-between">
       <h1>
-        <a href="index.html" title="">The Epidemiologist R Handbook</a>
+        <a href="index.html" title="">Le Epi R Handbook</a>
       </h1>
       <button class="btn btn-outline-primary d-lg-none ml-2 mt-1" type="button" data-toggle="collapse" data-target="#main-nav" aria-expanded="true" aria-controls="main-nav"><i class="fas fa-bars"></i><span class="sr-only">Show table of contents</span></button>
     </div>
@@ -145,204 +55,271 @@
     <div id="main-nav" class="collapse-lg">
       <form role="search">
         <input id="search" class="form-control" type="search" placeholder="Search" aria-label="Search">
-      </form>
+</form>
 
-      <nav aria-label="Table of contents">
-        <h2>Table of contents</h2>
-        <div id="book-toc"></div>
+      <nav aria-label="Table of contents"><h2>Table of contents</h2>
+        <ul class="book-toc list-unstyled">
+<li><a class="" href="index.html"></a></li>
+<li class="book-part">About this book</li>
+<li><a class="" href="editorial_notes.html"><span class="header-section-number">1</span> Notes techniques et choix éditoriaux</a></li>
+<li><a class="" href="download_book_data.html"><span class="header-section-number">2</span> Télécharger le manuel et les données</a></li>
+<li class="book-part">Basics</li>
+<li><a class="" href="transition_to_r.html"><span class="header-section-number">3</span> Transition vers R</a></li>
+<li><a class="active" href="suggested_packages.html"><span class="header-section-number">4</span> Paquets conseillés</a></li>
+<li><a class="" href="r_projects.html"><span class="header-section-number">5</span> Projets R</a></li>
+<li><a class="" href="import_export.html"><span class="header-section-number">6</span> Importer et exporter des données</a></li>
+<li class="book-part">Data Management</li>
+<li><a class="" href="cleaning_data.html"><span class="header-section-number">7</span> Nettoyage de données et fonctions essentielles</a></li>
+<li><a class="" href="working_dates.html"><span class="header-section-number">8</span> Manipuler les dates</a></li>
+<li><a class="" href="character_strings.html"><span class="header-section-number">9</span> Caractères et chaînes de caractères</a></li>
+<li><a class="" href="factors.html"><span class="header-section-number">10</span> Facteurs</a></li>
+<li><a class="" href="pivoting_data.html"><span class="header-section-number">11</span> Restructurer les données</a></li>
+<li><a class="" href="grouping_data.html"><span class="header-section-number">12</span> Travailler sur des données groupées</a></li>
+<li><a class="" href="joining_matching.html"><span class="header-section-number">13</span> Joindre des données</a></li>
+<li><a class="" href="deduplication.html"><span class="header-section-number">14</span> De-duplication</a></li>
+<li><a class="" href="iteration.html"><span class="header-section-number">15</span> Itération, boucles et listes</a></li>
+<li class="book-part">Analysis</li>
+<li><a class="" href="descriptive_tables.html"><span class="header-section-number">16</span> Tableaux descriptifs</a></li>
+<li><a class="" href="stats_test.html"><span class="header-section-number">17</span> Tests statistiques simples</a></li>
+<li><a class="" href="regression.html"><span class="header-section-number">18</span> Régression univariée et multivariable</a></li>
+<li><a class="" href="missing_data.html"><span class="header-section-number">19</span> Données manquantes</a></li>
+<li><a class="" href="standardisation.html"><span class="header-section-number">20</span> Taux standardisés</a></li>
+<li><a class="" href="moving_average.html"><span class="header-section-number">21</span> Moyennes mobiles</a></li>
+<li><a class="" href="time_series.html"><span class="header-section-number">22</span> Série temporelle et détection des épidémies</a></li>
+<li><a class="" href="contact_tracing.html"><span class="header-section-number">23</span> Suivi des contacts</a></li>
+<li><a class="" href="survey_analysis.html"><span class="header-section-number">24</span> Analyse d’enquête</a></li>
+<li><a class="" href="survival_analysis.html"><span class="header-section-number">25</span> Analyse de survie</a></li>
+<li><a class="" href="gis.html"><span class="header-section-number">26</span> GIS basics</a></li>
+<li class="book-part">Data Visualization</li>
+<li><a class="" href="tables_presentation.html"><span class="header-section-number">27</span> Présenter avec des tables</a></li>
+<li><a class="" href="ggplot_basics.html"><span class="header-section-number">28</span> Les bases de ggplot</a></li>
+<li><a class="" href="plot_continuous.html"><span class="header-section-number">29</span> Traçage de données continues</a></li>
+<li><a class="" href="tracer-des-donn%C3%A9es-cat%C3%A9gorielles.html"><span class="header-section-number">30</span> Tracer des données catégorielles</a></li>
+<li><a class="" href="ggplot_tips.html"><span class="header-section-number">31</span> Trucs et Astuces avec ggplot</a></li>
+<li><a class="" href="epicurves.html"><span class="header-section-number">32</span> Courbes épidémiques</a></li>
+<li><a class="" href="age_pyramid.html"><span class="header-section-number">33</span> Pyramides démographiques et échelles de Likert</a></li>
+<li><a class="" href="heatmaps.html"><span class="header-section-number">34</span> Graphiques thermiques</a></li>
+<li><a class="" href="diagrams.html"><span class="header-section-number">35</span> Diagrammes et schémas</a></li>
+<li><a class="" href="combination_analysis.html"><span class="header-section-number">36</span> Analyse des combinaisons</a></li>
+<li><a class="" href="transmission_chains.html"><span class="header-section-number">37</span> Chaînes de transmission</a></li>
+<li><a class="" href="phylogenetic_trees.html"><span class="header-section-number">38</span> Les arbres phylogénétiques</a></li>
+<li><a class="" href="interactive_plots.html"><span class="header-section-number">39</span> Graphiques interactifs</a></li>
+<li class="book-part">Reports and dashboards</li>
+<li><a class="" href="rmarkdown.html"><span class="header-section-number">40</span> Production de rapports avec R Markdown</a></li>
+<li><a class="" href="reportfactory.html"><span class="header-section-number">41</span> Organisation des rapports de routine</a></li>
+<li><a class="" href="dashboards.html"><span class="header-section-number">42</span> Tableaux de bord avec R Markdown</a></li>
+<li><a class="" href="shiny.html"><span class="header-section-number">43</span> Tableaux de bord avec Shiny</a></li>
+<li class="book-part">Miscellaneous</li>
+<li><a class="" href="writing_functions.html"><span class="header-section-number">44</span> Fonctions d’écriture</a></li>
+<li><a class="" href="directories.html"><span class="header-section-number">45</span> Interactions avec les répertoires</a></li>
+<li><a class="" href="collaboration.html"><span class="header-section-number">46</span> Contrôle de version et collaboration avec Git et Github</a></li>
+<li><a class="" href="errors.html"><span class="header-section-number">47</span> Erreurs fréquentes</a></li>
+<li><a class="" href="help.html"><span class="header-section-number">48</span> Obtenir de l’aide</a></li>
+<li><a class="" href="relational-databases.html"><span class="header-section-number">49</span> Relational databases</a></li>
+<li><a class="" href="network_drives.html"><span class="header-section-number">50</span> R sur les lecteurs réseau</a></li>
+<li><a class="" href="data_table.html"><span class="header-section-number">51</span> Tableau de données</a></li>
+<li><a class="" href="advanced-rstudio.html"><span class="header-section-number">52</span> Advanced RStudio</a></li>
+</ul>
 
         <div class="book-extra">
-          <p><a id="book-repo" href="#">View book source <i class="fab fa-github"></i></a></li></p>
+          
         </div>
       </nav>
-    </div>
-  </header>
-
-  <main class="col-sm-12 col-md-9 col-lg-7" id="content">
-<div id="suggested_packages" class="section level1" number="5">
-<h1><span class="header-section-number">5</span> Paquets conseillés</h1>
+</div>
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="suggested_packages" class="section level1" number="4">
+<h1>
+<span class="header-section-number">4</span> Paquets conseillés<a class="anchor" aria-label="anchor" href="#suggested_packages"><i class="fas fa-link"></i></a>
+</h1>
 <p>Vous trouverez ci-dessous une longue liste de paquets suggérés réaliser des tâches utiles lors d’analyses épidémiologies en R. Vous pouvez copier ce code, l’exécuter, et tous ces paquets seront installés à partir du CRAN et chargés pour être utilisés dans la session R actuelle. Si un paquet est déjà installé, il sera importé pour être utilisé mais pas réinstallé.</p>
 <p>Vous pouvez modifier le code avec les symboles <code>#</code> pour exclure les paquets que vous ne voulez pas.</p>
 <p>A noter :</p>
 <ul>
-<li>Installez le paquet <strong>pacman</strong> avant d’exécuter le code ci-dessous. Vous pouvez le faire avec <code>install.packages("pacman")</code>. Dans ce guide, nous mettons l’accent sur <code>p_load()</code> de <strong>pacman</strong>, qui installe le paquet si nécessaire <em>et</em> l’importe dans la session R actuelle. Vous pouvez également charger des paquets qui sont déjà installés avec <code>library()</code> depuis <strong>base</strong> R.<br />
+<li>Installez le paquet <strong>pacman</strong> avant d’exécuter le code ci-dessous. Vous pouvez le faire avec <code>install.packages("pacman")</code>. Dans ce guide, nous mettons l’accent sur <code><a href="https://rdrr.io/pkg/pacman/man/p_load.html">p_load()</a></code> de <strong>pacman</strong>, qui installe le paquet si nécessaire <em>et</em> l’importe dans la session R actuelle. Vous pouvez également charger des paquets qui sont déjà installés avec <code><a href="https://rdrr.io/r/base/library.html">library()</a></code> depuis <strong>base</strong> R.<br>
 </li>
-<li>Dans le code ci-dessous, les paquets qui sont inclus lors de l’installation/de l’import d’un autre paquet sont indiqués par une indentation et un dièse. Par exemple, <strong>ggplot2</strong> est listé sous <strong>tidyverse</strong>.<br />
+<li>Dans le code ci-dessous, les paquets qui sont inclus lors de l’installation/de l’import d’un autre paquet sont indiqués par une indentation et un dièse. Par exemple, <strong>ggplot2</strong> est listé sous <strong>tidyverse</strong>.<br>
 </li>
-<li>Si plusieurs paquets ont des fonctions portant le même nom, un <em>masquage</em> peut se produire lorsque la fonction du paquet le plus récemment chargé prend le dessus. Pour en savoir plus, consultez la page <a href="rbasics.html#rbasics">sur les bases de R</a>. Vous pouvez utiliser le paquet <strong>conflicted</strong> pour gérer de tels conflits de manière explicite.<br />
+<li>Si plusieurs paquets ont des fonctions portant le même nom, un <em>masquage</em> peut se produire lorsque la fonction du paquet le plus récemment chargé prend le dessus. Pour en savoir plus, consultez la page <a href="#rbasics">sur les bases de R</a>. Vous pouvez utiliser le paquet <strong>conflicted</strong> pour gérer de tels conflits de manière explicite.<br>
 </li>
-<li>Voir la section <a href="rbasics.html#rbasics">sur les bases de R</a> sur les paquets pour plus d’informations sur <strong>pacman</strong> et le masquage.</li>
+<li>Voir la section <a href="#rbasics">sur les bases de R</a> sur les paquets pour plus d’informations sur <strong>pacman</strong> et le masquage.</li>
 </ul>
 <p>Pour voir les versions de R, RStudio et les paquets R utilisés lors de la production de ce manuel, voir la page sur les <a href="editorial_notes.html#editorial_notes">Notes techniques et choix éditoriaux</a>.</p>
-<div id="paquets-disponibles-sur-le-cran" class="section level2" number="5.1">
-<h2><span class="header-section-number">5.1</span> Paquets disponibles sur le CRAN</h2>
-<div class="sourceCode" id="cb124"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb124-1"><a href="suggested_packages.html#cb124-1" aria-hidden="true" tabindex="-1"></a><span class="do">##############################################</span></span>
-<span id="cb124-2"><a href="suggested_packages.html#cb124-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Liste de paquets R utiles en épidémiologie #</span></span>
-<span id="cb124-3"><a href="suggested_packages.html#cb124-3" aria-hidden="true" tabindex="-1"></a><span class="do">##############################################</span></span>
-<span id="cb124-4"><a href="suggested_packages.html#cb124-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb124-5"><a href="suggested_packages.html#cb124-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Ce script utilise la fonction p_load() du paquet **pacman**, </span></span>
-<span id="cb124-6"><a href="suggested_packages.html#cb124-6" aria-hidden="true" tabindex="-1"></a><span class="co"># qui installe le paquet si ce dernier n&#39;est pas encore installé sur</span></span>
-<span id="cb124-7"><a href="suggested_packages.html#cb124-7" aria-hidden="true" tabindex="-1"></a><span class="co"># l&#39;ordinateur, et l&#39;importe dans la session active pour l&#39;utiliser </span></span>
-<span id="cb124-8"><a href="suggested_packages.html#cb124-8" aria-hidden="true" tabindex="-1"></a><span class="co"># s&#39;il est déjà installé.</span></span>
-<span id="cb124-9"><a href="suggested_packages.html#cb124-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb124-10"><a href="suggested_packages.html#cb124-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb124-11"><a href="suggested_packages.html#cb124-11" aria-hidden="true" tabindex="-1"></a><span class="co"># S&#39;assure de l&#39;installation du paquet &quot;pacman&quot;.</span></span>
-<span id="cb124-12"><a href="suggested_packages.html#cb124-12" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="sc">!</span><span class="fu">require</span>(<span class="st">&quot;pacman&quot;</span>)) <span class="fu">install.packages</span>(<span class="st">&quot;pacman&quot;</span>)</span>
-<span id="cb124-13"><a href="suggested_packages.html#cb124-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb124-14"><a href="suggested_packages.html#cb124-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb124-15"><a href="suggested_packages.html#cb124-15" aria-hidden="true" tabindex="-1"></a><span class="co">#  Paquets du CRAN</span></span>
-<span id="cb124-16"><a href="suggested_packages.html#cb124-16" aria-hidden="true" tabindex="-1"></a><span class="do">##############################</span></span>
-<span id="cb124-17"><a href="suggested_packages.html#cb124-17" aria-hidden="true" tabindex="-1"></a>pacman<span class="sc">::</span><span class="fu">p_load</span>(</span>
-<span id="cb124-18"><a href="suggested_packages.html#cb124-18" aria-hidden="true" tabindex="-1"></a>     </span>
-<span id="cb124-19"><a href="suggested_packages.html#cb124-19" aria-hidden="true" tabindex="-1"></a>     <span class="co"># Apprendre R</span></span>
-<span id="cb124-20"><a href="suggested_packages.html#cb124-20" aria-hidden="true" tabindex="-1"></a>     <span class="do">############</span></span>
-<span id="cb124-21"><a href="suggested_packages.html#cb124-21" aria-hidden="true" tabindex="-1"></a>     learnr,   <span class="co"># tutos interactifs dans le volet tutos de RStudio</span></span>
-<span id="cb124-22"><a href="suggested_packages.html#cb124-22" aria-hidden="true" tabindex="-1"></a>     swirl,    <span class="co"># tutoriels interactifs dans la console R</span></span>
-<span id="cb124-23"><a href="suggested_packages.html#cb124-23" aria-hidden="true" tabindex="-1"></a>        </span>
-<span id="cb124-24"><a href="suggested_packages.html#cb124-24" aria-hidden="true" tabindex="-1"></a>     <span class="co"># Gestion des projets et des dossiers</span></span>
-<span id="cb124-25"><a href="suggested_packages.html#cb124-25" aria-hidden="true" tabindex="-1"></a>     <span class="do">#############################</span></span>
-<span id="cb124-26"><a href="suggested_packages.html#cb124-26" aria-hidden="true" tabindex="-1"></a>     here,     <span class="co"># chemins de fichiers relatifs au dossier racine du projet R</span></span>
-<span id="cb124-27"><a href="suggested_packages.html#cb124-27" aria-hidden="true" tabindex="-1"></a>     rio,      <span class="co"># import/export de nombreux types de données</span></span>
-<span id="cb124-28"><a href="suggested_packages.html#cb124-28" aria-hidden="true" tabindex="-1"></a>     openxlsx, <span class="co"># import/export de classeurs Excel à feuilles multiples </span></span>
-<span id="cb124-29"><a href="suggested_packages.html#cb124-29" aria-hidden="true" tabindex="-1"></a>     </span>
-<span id="cb124-30"><a href="suggested_packages.html#cb124-30" aria-hidden="true" tabindex="-1"></a>     <span class="co"># Installation et gestion des paquets</span></span>
-<span id="cb124-31"><a href="suggested_packages.html#cb124-31" aria-hidden="true" tabindex="-1"></a>     <span class="do">################################</span></span>
-<span id="cb124-32"><a href="suggested_packages.html#cb124-32" aria-hidden="true" tabindex="-1"></a>     pacman,   <span class="co"># installation et importation des paquets</span></span>
-<span id="cb124-33"><a href="suggested_packages.html#cb124-33" aria-hidden="true" tabindex="-1"></a>     renv,     <span class="co"># gérer les versions des paquets lors de collaborations</span></span>
-<span id="cb124-34"><a href="suggested_packages.html#cb124-34" aria-hidden="true" tabindex="-1"></a>     remotes,  <span class="co"># installer des paquets provenant de Github</span></span>
-<span id="cb124-35"><a href="suggested_packages.html#cb124-35" aria-hidden="true" tabindex="-1"></a>     </span>
-<span id="cb124-36"><a href="suggested_packages.html#cb124-36" aria-hidden="true" tabindex="-1"></a>     <span class="co"># Paquets généralistes pour gérer les données</span></span>
-<span id="cb124-37"><a href="suggested_packages.html#cb124-37" aria-hidden="true" tabindex="-1"></a>     <span class="do">#########################</span></span>
-<span id="cb124-38"><a href="suggested_packages.html#cb124-38" aria-hidden="true" tabindex="-1"></a>     tidyverse,    <span class="co"># méta-paquet qui comprend de nombreux paquets pour le traitement et la présentation des données.</span></span>
-<span id="cb124-39"><a href="suggested_packages.html#cb124-39" aria-hidden="true" tabindex="-1"></a>          <span class="co"># dplyr : gestion des données</span></span>
-<span id="cb124-40"><a href="suggested_packages.html#cb124-40" aria-hidden="true" tabindex="-1"></a>          <span class="co"># tidyr : gestion des données</span></span>
-<span id="cb124-41"><a href="suggested_packages.html#cb124-41" aria-hidden="true" tabindex="-1"></a>          <span class="co"># ggplot2 : visualisation de données</span></span>
-<span id="cb124-42"><a href="suggested_packages.html#cb124-42" aria-hidden="true" tabindex="-1"></a>          <span class="co"># stringr : travailler avec des chaînes de caractères et des caractères</span></span>
-<span id="cb124-43"><a href="suggested_packages.html#cb124-43" aria-hidden="true" tabindex="-1"></a>          <span class="co"># forcats : travailler avec des facteurs </span></span>
-<span id="cb124-44"><a href="suggested_packages.html#cb124-44" aria-hidden="true" tabindex="-1"></a>          <span class="co"># lubridate : travailler avec des dates</span></span>
-<span id="cb124-45"><a href="suggested_packages.html#cb124-45" aria-hidden="true" tabindex="-1"></a>          <span class="co"># purrr : itération et travail avec des listes</span></span>
-<span id="cb124-46"><a href="suggested_packages.html#cb124-46" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb124-47"><a href="suggested_packages.html#cb124-47" aria-hidden="true" tabindex="-1"></a>     linelist,     <span class="co"># nettoyage de linelists</span></span>
-<span id="cb124-48"><a href="suggested_packages.html#cb124-48" aria-hidden="true" tabindex="-1"></a>     naniar,       <span class="co"># évaluation des données manquantes</span></span>
-<span id="cb124-49"><a href="suggested_packages.html#cb124-49" aria-hidden="true" tabindex="-1"></a>     </span>
-<span id="cb124-50"><a href="suggested_packages.html#cb124-50" aria-hidden="true" tabindex="-1"></a>     <span class="co"># Statistiques</span></span>
-<span id="cb124-51"><a href="suggested_packages.html#cb124-51" aria-hidden="true" tabindex="-1"></a>     <span class="do">############</span></span>
-<span id="cb124-52"><a href="suggested_packages.html#cb124-52" aria-hidden="true" tabindex="-1"></a>     janitor,      <span class="co"># nettoyage des données</span></span>
-<span id="cb124-53"><a href="suggested_packages.html#cb124-53" aria-hidden="true" tabindex="-1"></a>     gtsummary,    <span class="co"># création de tableaux descriptifs et statistiques</span></span>
-<span id="cb124-54"><a href="suggested_packages.html#cb124-54" aria-hidden="true" tabindex="-1"></a>     rstatix,      <span class="co"># exécution rapide de tests et de résumés statistiques</span></span>
-<span id="cb124-55"><a href="suggested_packages.html#cb124-55" aria-hidden="true" tabindex="-1"></a>     broom,        <span class="co"># nettoyage des résultats des régressions</span></span>
-<span id="cb124-56"><a href="suggested_packages.html#cb124-56" aria-hidden="true" tabindex="-1"></a>     lmtest,       <span class="co"># likelihood-ratio tests</span></span>
-<span id="cb124-57"><a href="suggested_packages.html#cb124-57" aria-hidden="true" tabindex="-1"></a>     easystats,</span>
-<span id="cb124-58"><a href="suggested_packages.html#cb124-58" aria-hidden="true" tabindex="-1"></a>          <span class="co"># parameters, # alternative pour ordonner les résultats des régressions</span></span>
-<span id="cb124-59"><a href="suggested_packages.html#cb124-59" aria-hidden="true" tabindex="-1"></a>          <span class="co"># see,        # alternative pour visualiser les forest plots</span></span>
-<span id="cb124-60"><a href="suggested_packages.html#cb124-60" aria-hidden="true" tabindex="-1"></a>     </span>
-<span id="cb124-61"><a href="suggested_packages.html#cb124-61" aria-hidden="true" tabindex="-1"></a>     <span class="co"># modélisation épidémiologique</span></span>
-<span id="cb124-62"><a href="suggested_packages.html#cb124-62" aria-hidden="true" tabindex="-1"></a>     <span class="do">###################</span></span>
-<span id="cb124-63"><a href="suggested_packages.html#cb124-63" aria-hidden="true" tabindex="-1"></a>     epicontacts,    <span class="co"># Analyse des réseaux de transmission</span></span>
-<span id="cb124-64"><a href="suggested_packages.html#cb124-64" aria-hidden="true" tabindex="-1"></a>     EpiNow2,        <span class="co"># Estimation de Rt</span></span>
-<span id="cb124-65"><a href="suggested_packages.html#cb124-65" aria-hidden="true" tabindex="-1"></a>     EpiEstim,       <span class="co"># Estimation Rt</span></span>
-<span id="cb124-66"><a href="suggested_packages.html#cb124-66" aria-hidden="true" tabindex="-1"></a>     projections,    <span class="co"># Projections d&#39;incidence</span></span>
-<span id="cb124-67"><a href="suggested_packages.html#cb124-67" aria-hidden="true" tabindex="-1"></a>     incidence2,     <span class="co"># Création d&#39;épicurves et traitement des données d&#39;incidence</span></span>
-<span id="cb124-68"><a href="suggested_packages.html#cb124-68" aria-hidden="true" tabindex="-1"></a>     i2extras,       <span class="co"># Fonctions supplémentaires pour le paquet incidence2</span></span>
-<span id="cb124-69"><a href="suggested_packages.html#cb124-69" aria-hidden="true" tabindex="-1"></a>     epitrix,        <span class="co"># Fonctions epi utiles</span></span>
-<span id="cb124-70"><a href="suggested_packages.html#cb124-70" aria-hidden="true" tabindex="-1"></a>     distcrete,      <span class="co"># Distributions discrètes de délais</span></span>
-<span id="cb124-71"><a href="suggested_packages.html#cb124-71" aria-hidden="true" tabindex="-1"></a>     </span>
-<span id="cb124-72"><a href="suggested_packages.html#cb124-72" aria-hidden="true" tabindex="-1"></a>     </span>
-<span id="cb124-73"><a href="suggested_packages.html#cb124-73" aria-hidden="true" tabindex="-1"></a>     <span class="co"># graphiques - general</span></span>
-<span id="cb124-74"><a href="suggested_packages.html#cb124-74" aria-hidden="true" tabindex="-1"></a>     <span class="do">#################</span></span>
-<span id="cb124-75"><a href="suggested_packages.html#cb124-75" aria-hidden="true" tabindex="-1"></a>     <span class="co">#ggplot2,     # inclus dans tidyverse</span></span>
-<span id="cb124-76"><a href="suggested_packages.html#cb124-76" aria-hidden="true" tabindex="-1"></a>     cowplot,      <span class="co"># combinaison de graphiques  </span></span>
-<span id="cb124-77"><a href="suggested_packages.html#cb124-77" aria-hidden="true" tabindex="-1"></a>     patchwork,  <span class="co"># combinaison de graphiques (alternative à cowplot)     </span></span>
-<span id="cb124-78"><a href="suggested_packages.html#cb124-78" aria-hidden="true" tabindex="-1"></a>     RColorBrewer, <span class="co"># échelles de couleurs</span></span>
-<span id="cb124-79"><a href="suggested_packages.html#cb124-79" aria-hidden="true" tabindex="-1"></a>     ggnewscale,   <span class="co"># pour ajouter des couches supplémentaires de schémas de couleurs</span></span>
-<span id="cb124-80"><a href="suggested_packages.html#cb124-80" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb124-81"><a href="suggested_packages.html#cb124-81" aria-hidden="true" tabindex="-1"></a>     <span class="co"># graphiques - types spécifiques</span></span>
-<span id="cb124-82"><a href="suggested_packages.html#cb124-82" aria-hidden="true" tabindex="-1"></a>     <span class="do">########################</span></span>
-<span id="cb124-83"><a href="suggested_packages.html#cb124-83" aria-hidden="true" tabindex="-1"></a>     DiagrammeR,  <span class="co"># diagrammes utilisant le langage DOT</span></span>
-<span id="cb124-84"><a href="suggested_packages.html#cb124-84" aria-hidden="true" tabindex="-1"></a>     incidence2,  <span class="co"># courbes épidémiques</span></span>
-<span id="cb124-85"><a href="suggested_packages.html#cb124-85" aria-hidden="true" tabindex="-1"></a>     gghighlight, <span class="co"># mettre en évidence un sous-ensemble</span></span>
-<span id="cb124-86"><a href="suggested_packages.html#cb124-86" aria-hidden="true" tabindex="-1"></a>     ggrepel,     <span class="co"># étiquettes intelligentes</span></span>
-<span id="cb124-87"><a href="suggested_packages.html#cb124-87" aria-hidden="true" tabindex="-1"></a>     plotly,      <span class="co"># graphiques interactifs</span></span>
-<span id="cb124-88"><a href="suggested_packages.html#cb124-88" aria-hidden="true" tabindex="-1"></a>     gganimate,   <span class="co"># graphiques animés </span></span>
-<span id="cb124-89"><a href="suggested_packages.html#cb124-89" aria-hidden="true" tabindex="-1"></a>     </span>
-<span id="cb124-90"><a href="suggested_packages.html#cb124-90" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb124-91"><a href="suggested_packages.html#cb124-91" aria-hidden="true" tabindex="-1"></a>     <span class="co"># SIG</span></span>
-<span id="cb124-92"><a href="suggested_packages.html#cb124-92" aria-hidden="true" tabindex="-1"></a>     <span class="do">######</span></span>
-<span id="cb124-93"><a href="suggested_packages.html#cb124-93" aria-hidden="true" tabindex="-1"></a>     sf,            <span class="co"># pour gérer les données spatiales en utilisant un format Simple Feature</span></span>
-<span id="cb124-94"><a href="suggested_packages.html#cb124-94" aria-hidden="true" tabindex="-1"></a>     tmap,          <span class="co"># pour produire des cartes simples, fonctionne à la fois pour les cartes interactives et statiques</span></span>
-<span id="cb124-95"><a href="suggested_packages.html#cb124-95" aria-hidden="true" tabindex="-1"></a>     OpenStreetMap, <span class="co"># pour ajouter la carte de base OSM dans la carte ggplot</span></span>
-<span id="cb124-96"><a href="suggested_packages.html#cb124-96" aria-hidden="true" tabindex="-1"></a>     spdep,         <span class="co"># statistiques spatiales </span></span>
-<span id="cb124-97"><a href="suggested_packages.html#cb124-97" aria-hidden="true" tabindex="-1"></a>     </span>
-<span id="cb124-98"><a href="suggested_packages.html#cb124-98" aria-hidden="true" tabindex="-1"></a>     <span class="co"># Rapports automatisés</span></span>
-<span id="cb124-99"><a href="suggested_packages.html#cb124-99" aria-hidden="true" tabindex="-1"></a>     <span class="do">#################</span></span>
-<span id="cb124-100"><a href="suggested_packages.html#cb124-100" aria-hidden="true" tabindex="-1"></a>     rmarkdown,     <span class="co"># produit des PDFs, des documents Word, des Powerpoints, et des fichiers HTML</span></span>
-<span id="cb124-101"><a href="suggested_packages.html#cb124-101" aria-hidden="true" tabindex="-1"></a>     reportfactory, <span class="co"># auto-organisation des sorties R Markdown</span></span>
-<span id="cb124-102"><a href="suggested_packages.html#cb124-102" aria-hidden="true" tabindex="-1"></a>     officer,       <span class="co"># création de documents word et powerpoints (alternative à Rmarkdown)</span></span>
-<span id="cb124-103"><a href="suggested_packages.html#cb124-103" aria-hidden="true" tabindex="-1"></a>     </span>
-<span id="cb124-104"><a href="suggested_packages.html#cb124-104" aria-hidden="true" tabindex="-1"></a>     <span class="co"># Tableaux de bord</span></span>
-<span id="cb124-105"><a href="suggested_packages.html#cb124-105" aria-hidden="true" tabindex="-1"></a>     <span class="do">############</span></span>
-<span id="cb124-106"><a href="suggested_packages.html#cb124-106" aria-hidden="true" tabindex="-1"></a>     flexdashboard, <span class="co"># création de tableaux de bord (syntaxe Rmarkdown)</span></span>
-<span id="cb124-107"><a href="suggested_packages.html#cb124-107" aria-hidden="true" tabindex="-1"></a>     shiny,         <span class="co"># applications web interactives</span></span>
-<span id="cb124-108"><a href="suggested_packages.html#cb124-108" aria-hidden="true" tabindex="-1"></a>     </span>
-<span id="cb124-109"><a href="suggested_packages.html#cb124-109" aria-hidden="true" tabindex="-1"></a>     <span class="co"># Créer des tableaux pour présenter des résultats</span></span>
-<span id="cb124-110"><a href="suggested_packages.html#cb124-110" aria-hidden="true" tabindex="-1"></a>     <span class="do">#########################</span></span>
-<span id="cb124-111"><a href="suggested_packages.html#cb124-111" aria-hidden="true" tabindex="-1"></a>     knitr,       <span class="co"># Génération de rapports R Markdown et tableaux html</span></span>
-<span id="cb124-112"><a href="suggested_packages.html#cb124-112" aria-hidden="true" tabindex="-1"></a>     flextable,   <span class="co"># Tableaux HTML</span></span>
-<span id="cb124-113"><a href="suggested_packages.html#cb124-113" aria-hidden="true" tabindex="-1"></a>     <span class="co"># DT,        # Tableaux HTML (alternative)</span></span>
-<span id="cb124-114"><a href="suggested_packages.html#cb124-114" aria-hidden="true" tabindex="-1"></a>     <span class="co"># gt,        # Tableaux HTML (alternative)</span></span>
-<span id="cb124-115"><a href="suggested_packages.html#cb124-115" aria-hidden="true" tabindex="-1"></a>     <span class="co"># huxtable,  # Tableaux HTML (alternative) </span></span>
-<span id="cb124-116"><a href="suggested_packages.html#cb124-116" aria-hidden="true" tabindex="-1"></a>     </span>
-<span id="cb124-117"><a href="suggested_packages.html#cb124-117" aria-hidden="true" tabindex="-1"></a>     <span class="co"># Phylogenetique</span></span>
-<span id="cb124-118"><a href="suggested_packages.html#cb124-118" aria-hidden="true" tabindex="-1"></a>     <span class="do">###############</span></span>
-<span id="cb124-119"><a href="suggested_packages.html#cb124-119" aria-hidden="true" tabindex="-1"></a>     ggtree,  <span class="co"># visualisation et annotation d&#39;arbres phylogénétiques</span></span>
-<span id="cb124-120"><a href="suggested_packages.html#cb124-120" aria-hidden="true" tabindex="-1"></a>     ape,     <span class="co"># analyse phylogénétique et évolutive</span></span>
-<span id="cb124-121"><a href="suggested_packages.html#cb124-121" aria-hidden="true" tabindex="-1"></a>     treeio,  <span class="co"># visualision des fichiers phylogénétiques</span></span>
-<span id="cb124-122"><a href="suggested_packages.html#cb124-122" aria-hidden="true" tabindex="-1"></a> </span>
-<span id="cb124-123"><a href="suggested_packages.html#cb124-123" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+<div id="paquets-disponibles-sur-le-cran" class="section level2" number="4.1">
+<h2>
+<span class="header-section-number">4.1</span> Paquets disponibles sur le CRAN<a class="anchor" aria-label="anchor" href="#paquets-disponibles-sur-le-cran"><i class="fas fa-link"></i></a>
+</h2>
+<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co">##############################################</span></span>
+<span><span class="co"># Liste de paquets R utiles en épidémiologie #</span></span>
+<span><span class="co">##############################################</span></span>
+<span></span>
+<span><span class="co"># Ce script utilise la fonction p_load() du paquet **pacman**, </span></span>
+<span><span class="co"># qui installe le paquet si ce dernier n'est pas encore installé sur</span></span>
+<span><span class="co"># l'ordinateur, et l'importe dans la session active pour l'utiliser </span></span>
+<span><span class="co"># s'il est déjà installé.</span></span>
+<span></span>
+<span></span>
+<span><span class="co"># S'assure de l'installation du paquet "pacman".</span></span>
+<span><span class="kw">if</span> <span class="op">(</span><span class="op">!</span><span class="kw"><a href="https://rdrr.io/r/base/library.html">require</a></span><span class="op">(</span><span class="st"><a href="https://github.com/trinker/pacman">"pacman"</a></span><span class="op">)</span><span class="op">)</span> <span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">"pacman"</span><span class="op">)</span></span>
+<span></span>
+<span></span>
+<span><span class="co">#  Paquets du CRAN</span></span>
+<span><span class="co">##############################</span></span>
+<span><span class="fu">pacman</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/pacman/man/p_load.html">p_load</a></span><span class="op">(</span></span>
+<span>     </span>
+<span>     <span class="co"># Apprendre R</span></span>
+<span>     <span class="co">############</span></span>
+<span>     <span class="va">learnr</span>,   <span class="co"># tutos interactifs dans le volet tutos de RStudio</span></span>
+<span>     <span class="va">swirl</span>,    <span class="co"># tutoriels interactifs dans la console R</span></span>
+<span>        </span>
+<span>     <span class="co"># Gestion des projets et des dossiers</span></span>
+<span>     <span class="co">#############################</span></span>
+<span>     <span class="va">here</span>,     <span class="co"># chemins de fichiers relatifs au dossier racine du projet R</span></span>
+<span>     <span class="va">rio</span>,      <span class="co"># import/export de nombreux types de données</span></span>
+<span>     <span class="va">openxlsx</span>, <span class="co"># import/export de classeurs Excel à feuilles multiples </span></span>
+<span>     </span>
+<span>     <span class="co"># Installation et gestion des paquets</span></span>
+<span>     <span class="co">################################</span></span>
+<span>     <span class="va">pacman</span>,   <span class="co"># installation et importation des paquets</span></span>
+<span>     <span class="va">renv</span>,     <span class="co"># gérer les versions des paquets lors de collaborations</span></span>
+<span>     <span class="va">remotes</span>,  <span class="co"># installer des paquets provenant de Github</span></span>
+<span>     </span>
+<span>     <span class="co"># Paquets généralistes pour gérer les données</span></span>
+<span>     <span class="co">#########################</span></span>
+<span>     <span class="va">tidyverse</span>,    <span class="co"># méta-paquet qui comprend de nombreux paquets pour le traitement et la présentation des données.</span></span>
+<span>          <span class="co"># dplyr : gestion des données</span></span>
+<span>          <span class="co"># tidyr : gestion des données</span></span>
+<span>          <span class="co"># ggplot2 : visualisation de données</span></span>
+<span>          <span class="co"># stringr : travailler avec des chaînes de caractères et des caractères</span></span>
+<span>          <span class="co"># forcats : travailler avec des facteurs </span></span>
+<span>          <span class="co"># lubridate : travailler avec des dates</span></span>
+<span>          <span class="co"># purrr : itération et travail avec des listes</span></span>
+<span></span>
+<span>     <span class="va">linelist</span>,     <span class="co"># nettoyage de linelists</span></span>
+<span>     <span class="va">naniar</span>,       <span class="co"># évaluation des données manquantes</span></span>
+<span>     </span>
+<span>     <span class="co"># Statistiques</span></span>
+<span>     <span class="co">############</span></span>
+<span>     <span class="va">janitor</span>,      <span class="co"># nettoyage des données</span></span>
+<span>     <span class="va">gtsummary</span>,    <span class="co"># création de tableaux descriptifs et statistiques</span></span>
+<span>     <span class="va">rstatix</span>,      <span class="co"># exécution rapide de tests et de résumés statistiques</span></span>
+<span>     <span class="va">broom</span>,        <span class="co"># nettoyage des résultats des régressions</span></span>
+<span>     <span class="va">lmtest</span>,       <span class="co"># likelihood-ratio tests</span></span>
+<span>     <span class="va">easystats</span>,</span>
+<span>          <span class="co"># parameters, # alternative pour ordonner les résultats des régressions</span></span>
+<span>          <span class="co"># see,        # alternative pour visualiser les forest plots</span></span>
+<span>     </span>
+<span>     <span class="co"># modélisation épidémiologique</span></span>
+<span>     <span class="co">###################</span></span>
+<span>     <span class="va">epicontacts</span>,    <span class="co"># Analyse des réseaux de transmission</span></span>
+<span>     <span class="va">EpiNow2</span>,        <span class="co"># Estimation de Rt</span></span>
+<span>     <span class="va">EpiEstim</span>,       <span class="co"># Estimation Rt</span></span>
+<span>     <span class="va">projections</span>,    <span class="co"># Projections d'incidence</span></span>
+<span>     <span class="va">incidence2</span>,     <span class="co"># Création d'épicurves et traitement des données d'incidence</span></span>
+<span>     <span class="va">i2extras</span>,       <span class="co"># Fonctions supplémentaires pour le paquet incidence2</span></span>
+<span>     <span class="va">epitrix</span>,        <span class="co"># Fonctions epi utiles</span></span>
+<span>     <span class="va">distcrete</span>,      <span class="co"># Distributions discrètes de délais</span></span>
+<span>     </span>
+<span>     </span>
+<span>     <span class="co"># graphiques - general</span></span>
+<span>     <span class="co">#################</span></span>
+<span>     <span class="co">#ggplot2,     # inclus dans tidyverse</span></span>
+<span>     <span class="va">cowplot</span>,      <span class="co"># combinaison de graphiques  </span></span>
+<span>     <span class="va">patchwork</span>,  <span class="co"># combinaison de graphiques (alternative à cowplot)     </span></span>
+<span>     <span class="va">RColorBrewer</span>, <span class="co"># échelles de couleurs</span></span>
+<span>     <span class="va">ggnewscale</span>,   <span class="co"># pour ajouter des couches supplémentaires de schémas de couleurs</span></span>
+<span></span>
+<span>     <span class="co"># graphiques - types spécifiques</span></span>
+<span>     <span class="co">########################</span></span>
+<span>     <span class="va">DiagrammeR</span>,  <span class="co"># diagrammes utilisant le langage DOT</span></span>
+<span>     <span class="va">incidence2</span>,  <span class="co"># courbes épidémiques</span></span>
+<span>     <span class="va">gghighlight</span>, <span class="co"># mettre en évidence un sous-ensemble</span></span>
+<span>     <span class="va">ggrepel</span>,     <span class="co"># étiquettes intelligentes</span></span>
+<span>     <span class="va">plotly</span>,      <span class="co"># graphiques interactifs</span></span>
+<span>     <span class="va">gganimate</span>,   <span class="co"># graphiques animés </span></span>
+<span>     </span>
+<span></span>
+<span>     <span class="co"># SIG</span></span>
+<span>     <span class="co">######</span></span>
+<span>     <span class="va">sf</span>,            <span class="co"># pour gérer les données spatiales en utilisant un format Simple Feature</span></span>
+<span>     <span class="va">tmap</span>,          <span class="co"># pour produire des cartes simples, fonctionne à la fois pour les cartes interactives et statiques</span></span>
+<span>     <span class="va">OpenStreetMap</span>, <span class="co"># pour ajouter la carte de base OSM dans la carte ggplot</span></span>
+<span>     <span class="va">spdep</span>,         <span class="co"># statistiques spatiales </span></span>
+<span>     </span>
+<span>     <span class="co"># Rapports automatisés</span></span>
+<span>     <span class="co">#################</span></span>
+<span>     <span class="va">rmarkdown</span>,     <span class="co"># produit des PDFs, des documents Word, des Powerpoints, et des fichiers HTML</span></span>
+<span>     <span class="va">reportfactory</span>, <span class="co"># auto-organisation des sorties R Markdown</span></span>
+<span>     <span class="va">officer</span>,       <span class="co"># création de documents word et powerpoints (alternative à Rmarkdown)</span></span>
+<span>     </span>
+<span>     <span class="co"># Tableaux de bord</span></span>
+<span>     <span class="co">############</span></span>
+<span>     <span class="va">flexdashboard</span>, <span class="co"># création de tableaux de bord (syntaxe Rmarkdown)</span></span>
+<span>     <span class="va">shiny</span>,         <span class="co"># applications web interactives</span></span>
+<span>     </span>
+<span>     <span class="co"># Créer des tableaux pour présenter des résultats</span></span>
+<span>     <span class="co">#########################</span></span>
+<span>     <span class="va">knitr</span>,       <span class="co"># Génération de rapports R Markdown et tableaux html</span></span>
+<span>     <span class="va">flextable</span>,   <span class="co"># Tableaux HTML</span></span>
+<span>     <span class="co"># DT,        # Tableaux HTML (alternative)</span></span>
+<span>     <span class="co"># gt,        # Tableaux HTML (alternative)</span></span>
+<span>     <span class="co"># huxtable,  # Tableaux HTML (alternative) </span></span>
+<span>     </span>
+<span>     <span class="co"># Phylogenetique</span></span>
+<span>     <span class="co">###############</span></span>
+<span>     <span class="va">ggtree</span>,  <span class="co"># visualisation et annotation d'arbres phylogénétiques</span></span>
+<span>     <span class="va">ape</span>,     <span class="co"># analyse phylogénétique et évolutive</span></span>
+<span>     <span class="va">treeio</span>,  <span class="co"># visualision des fichiers phylogénétiques</span></span>
+<span> </span>
+<span><span class="op">)</span></span></code></pre></div>
 </div>
-<div id="paquets-hébergés-sur-github" class="section level2" number="5.2">
-<h2><span class="header-section-number">5.2</span> Paquets hébergés sur Github</h2>
+<div id="paquets-hébergés-sur-github" class="section level2" number="4.2">
+<h2>
+<span class="header-section-number">4.2</span> Paquets hébergés sur Github<a class="anchor" aria-label="anchor" href="#paquets-h%C3%A9berg%C3%A9s-sur-github"><i class="fas fa-link"></i></a>
+</h2>
 <p>Vous trouverez ci-dessous les commandes pour installer des paquets directement depuis leur répertoire sur Github.</p>
 <ul>
-<li>La version de développement de <strong>epicontacts</strong> contient la possibilité de faire des arbres de transmission avec un axe x temporel.<br />
+<li>La version de développement de <strong>epicontacts</strong> contient la possibilité de faire des arbres de transmission avec un axe x temporel.<br>
 </li>
 <li>Le paquet <strong>epirhandbook</strong> contient toutes les données d’exemple pour ce manuel et peut être utilisé pour télécharger la version hors ligne du manuel.</li>
 </ul>
-<div class="sourceCode" id="cb125"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb125-1"><a href="suggested_packages.html#cb125-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Paquets à télécharger depuis Github (non disponibles sur CRAN)</span></span>
-<span id="cb125-2"><a href="suggested_packages.html#cb125-2" aria-hidden="true" tabindex="-1"></a><span class="do">##########################################################</span></span>
-<span id="cb125-3"><a href="suggested_packages.html#cb125-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb125-4"><a href="suggested_packages.html#cb125-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Version de développement d&#39;epicontacts (pour les chaînes de transmission avec un axe x temporel)</span></span>
-<span id="cb125-5"><a href="suggested_packages.html#cb125-5" aria-hidden="true" tabindex="-1"></a>pacman<span class="sc">::</span><span class="fu">p_install_gh</span>(<span class="st">&quot;reconhub/epicontacts@timeline&quot;</span>)</span>
-<span id="cb125-6"><a href="suggested_packages.html#cb125-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb125-7"><a href="suggested_packages.html#cb125-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Le paquet pour ce manuel, qui comprend toutes les données d&#39;exemple </span></span>
-<span id="cb125-8"><a href="suggested_packages.html#cb125-8" aria-hidden="true" tabindex="-1"></a>pacman<span class="sc">::</span><span class="fu">p_install_gh</span>(<span class="st">&quot;appliedepi/epirhandbook&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># Paquets à télécharger depuis Github (non disponibles sur CRAN)</span></span>
+<span><span class="co">##########################################################</span></span>
+<span></span>
+<span><span class="co"># Version de développement d'epicontacts (pour les chaînes de transmission avec un axe x temporel)</span></span>
+<span><span class="fu">pacman</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/pacman/man/p_install_gh.html">p_install_gh</a></span><span class="op">(</span><span class="st">"reconhub/epicontacts@timeline"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Le paquet pour ce manuel, qui comprend toutes les données d'exemple </span></span>
+<span><span class="fu">pacman</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/pacman/man/p_install_gh.html">p_install_gh</a></span><span class="op">(</span><span class="st">"appliedepi/epirhandbook"</span><span class="op">)</span></span></code></pre></div>
 
 </div>
 </div>
-  </main>
-
-  <div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
-    <nav id="toc" data-toggle="toc" aria-label="On this page">
-      <h2>On this page</h2>
-      <div id="book-on-this-page"></div>
+  <div class="chapter-nav">
+<div class="prev"><a href="transition_to_r.html"><span class="header-section-number">3</span> Transition vers R</a></div>
+<div class="next"><a href="r_projects.html"><span class="header-section-number">5</span> Projets R</a></div>
+</div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
+    <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
+      <ul class="nav navbar-nav">
+<li><a class="nav-link" href="#suggested_packages"><span class="header-section-number">4</span> Paquets conseillés</a></li>
+<li><a class="nav-link" href="#paquets-disponibles-sur-le-cran"><span class="header-section-number">4.1</span> Paquets disponibles sur le CRAN</a></li>
+<li><a class="nav-link" href="#paquets-h%C3%A9berg%C3%A9s-sur-github"><span class="header-section-number">4.2</span> Paquets hébergés sur Github</a></li>
+</ul>
 
       <div class="book-extra">
         <ul class="list-unstyled">
-          <li><a id="book-source" href="#">View source <i class="fab fa-github"></i></a></li>
-          <li><a id="book-edit" href="#">Edit this page <i class="fab fa-github"></i></a></li>
+          
         </ul>
-      </div>
+</div>
     </nav>
-  </div>
+</div>
 
 </div>
 </div> <!-- .container -->
 
-<footer class="bg-primary text-light mt-5">
-  <div class="container"><div class="row">
+<footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>The Epidemiologist R Handbook</strong>" was written by the handbook team. It was last built on 2023-05-17.</p>
+    <p>"<strong>Le Epi R Handbook</strong>" was written by the handbook team. It was last built on 2023-05-21.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">
@@ -350,11 +327,7 @@
   </div>
 
 </div></div>
-</footer>
-
-
-<!-- dynamically load mathjax for compatibility with self-contained -->
-<script>
+</footer><!-- dynamically load mathjax for compatibility with self-contained --><script>
   (function () {
     var script = document.createElement("script");
     script.type = "text/javascript";
@@ -366,8 +339,7 @@
     script.src = src;
     document.getElementsByTagName("head")[0].appendChild(script);
   })();
-</script>
-<script type="text/x-mathjax-config">const popovers = document.querySelectorAll('a.footnote-ref[data-toggle="popover"]');
+</script><script type="text/x-mathjax-config">const popovers = document.querySelectorAll('a.footnote-ref[data-toggle="popover"]');
 for (let popover of popovers) {
   const div = document.createElement('div');
   div.setAttribute('style', 'position: absolute; top: 0, left:0; width:0, height:0, overflow: hidden; visibility: hidden;');
@@ -385,5 +357,4 @@ for (let popover of popovers) {
 }
 </script>
 </body>
-
 </html>

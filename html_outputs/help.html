@@ -1,143 +1,53 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-  <title>49 Obtenir de l’aide | The Epidemiologist R Handbook</title>
-
-    <meta name="author" content="the handbook team" />
-  
-   <meta name="description" content="The Epi R Handbook est un manuel de référence sur l’utilisation de R en épidémiologie appliquée et santé publique." />
-   <meta name="generator" content="placeholder" />
-  <meta property="og:title" content="49 Obtenir de l’aide | The Epidemiologist R Handbook" />
-  <meta property="og:type" content="book" />
-  
-  
-  <meta property="og:description" content="The Epi R Handbook est un manuel de référence sur l’utilisation de R en épidémiologie appliquée et santé publique." />
-
-  <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="49 Obtenir de l’aide | The Epidemiologist R Handbook" />
-  
-  <meta name="twitter:description" content="The Epi R Handbook est un manuel de référence sur l’utilisation de R en épidémiologie appliquée et santé publique." />
-  
-  <!-- JS -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script>
-  <script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script>
-    <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-    <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet" />
-    <script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script>
-    <script src="libs/bs3compat-0.4.2/transition.js"></script>
-    <script src="libs/bs3compat-0.4.2/tabs.js"></script>
-    <script src="libs/bs3compat-0.4.2/bs3compat.js"></script>
-    <link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet" />
-    <script src="libs/bs4_book-1.0.0/bs4_book.js"></script>
-    <script src="libs/htmlwidgets-1.6.2/htmlwidgets.js"></script>
-    <link href="libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet" />
-    <script src="libs/datatables-binding-0.27/datatables.js"></script>
-    <link href="libs/dt-core-1.12.1/css/jquery.dataTables.min.css" rel="stylesheet" />
-    <link href="libs/dt-core-1.12.1/css/jquery.dataTables.extra.css" rel="stylesheet" />
-    <script src="libs/dt-core-1.12.1/js/jquery.dataTables.min.js"></script>
-    <link href="libs/nouislider-7.0.10/jquery.nouislider.min.css" rel="stylesheet" />
-    <script src="libs/nouislider-7.0.10/jquery.nouislider.min.js"></script>
-    <link href="libs/selectize-0.12.0/selectize.bootstrap3.css" rel="stylesheet" />
-    <script src="libs/selectize-0.12.0/selectize.min.js"></script>
-    <link href="libs/crosstalk-1.2.0/css/crosstalk.min.css" rel="stylesheet" />
-    <script src="libs/crosstalk-1.2.0/js/crosstalk.min.js"></script>
-    <script src="libs/kePrint-0.0.1/kePrint.js"></script>
-    <link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
-    <link href="libs/tabwid-1.1.3/tabwid.css" rel="stylesheet" />
-    <script src="libs/tabwid-1.1.3/tabwid.js"></script>
-    <link href="libs/leaflet-1.3.1/leaflet.css" rel="stylesheet" />
-    <script src="libs/leaflet-1.3.1/leaflet.js"></script>
-    <link href="libs/leafletfix-1.0.0/leafletfix.css" rel="stylesheet" />
-    <script src="libs/proj4-2.6.2/proj4.min.js"></script>
-    <script src="libs/Proj4Leaflet-1.0.1/proj4leaflet.js"></script>
-    <link href="libs/rstudio_leaflet-1.3.1/rstudio_leaflet.css" rel="stylesheet" />
-    <script src="libs/leaflet-binding-2.1.2/leaflet.js"></script>
-    <script src="libs/leaflet-providers-1.9.0/leaflet-providers_1.9.0.js"></script>
-    <script src="libs/leaflet-providers-plugin-2.1.2/leaflet-providers-plugin.js"></script>
-    <script src="libs/viz-1.8.2/viz.js"></script>
-    <link href="libs/DiagrammeR-styles-0.2/styles.css" rel="stylesheet" />
-    <script src="libs/grViz-binding-1.0.9/grViz.js"></script>
-    <script src="libs/d3-4.5.0/d3.min.js"></script>
-    <script src="libs/sankey-1/sankey.js"></script>
-    <script src="libs/sankeyNetwork-binding-0.4/sankeyNetwork.js"></script>
-    <script src="libs/plotly-binding-4.10.1/plotly.js"></script>
-    <script src="libs/typedarray-0.1/typedarray.min.js"></script>
-    <link href="libs/plotly-htmlwidgets-css-2.11.1/plotly-htmlwidgets.css" rel="stylesheet" />
-    <script src="libs/plotly-main-2.11.1/plotly-latest.min.js"></script>
-    <link href="libs/vis-9.1.0/vis-network.min.css" rel="stylesheet" />
-    <script src="libs/vis-9.1.0/vis-network.min.js"></script>
-    <script src="libs/visNetwork-binding-2.1.2/visNetwork.js"></script>
-    <link href="libs/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" />
-    <script src="libs/plotly-basic-2.11.1/plotly-basic-2.11.1.min.js"></script>
-    <script src="libs/plotly-cartesian-2.11.1/plotly-cartesian-2.11.1.min.js"></script>
-    <script src="libs/proj4js-2.3.15/proj4.js"></script>
-    <link href="libs/highcharts-9.3.1/css/motion.css" rel="stylesheet" />
-    <script src="libs/highcharts-9.3.1/highcharts.js"></script>
-    <script src="libs/highcharts-9.3.1/highcharts-3d.js"></script>
-    <script src="libs/highcharts-9.3.1/highcharts-more.js"></script>
-    <script src="libs/highcharts-9.3.1/modules/stock.js"></script>
-    <script src="libs/highcharts-9.3.1/modules/map.js"></script>
-    <script src="libs/highcharts-9.3.1/modules/data.js"></script>
-    <script src="libs/highcharts-9.3.1/modules/exporting.js"></script>
-    <script src="libs/highcharts-9.3.1/modules/offline-exporting.js"></script>
-    <script src="libs/highcharts-9.3.1/modules/drilldown.js"></script>
-    <script src="libs/highcharts-9.3.1/modules/item-series.js"></script>
-    <script src="libs/highcharts-9.3.1/modules/overlapping-datalabels.js"></script>
-    <script src="libs/highcharts-9.3.1/modules/annotations.js"></script>
-    <script src="libs/highcharts-9.3.1/modules/export-data.js"></script>
-    <script src="libs/highcharts-9.3.1/modules/funnel.js"></script>
-    <script src="libs/highcharts-9.3.1/modules/heatmap.js"></script>
-    <script src="libs/highcharts-9.3.1/modules/treemap.js"></script>
-    <script src="libs/highcharts-9.3.1/modules/sankey.js"></script>
-    <script src="libs/highcharts-9.3.1/modules/dependency-wheel.js"></script>
-    <script src="libs/highcharts-9.3.1/modules/organization.js"></script>
-    <script src="libs/highcharts-9.3.1/modules/solid-gauge.js"></script>
-    <script src="libs/highcharts-9.3.1/modules/streamgraph.js"></script>
-    <script src="libs/highcharts-9.3.1/modules/sunburst.js"></script>
-    <script src="libs/highcharts-9.3.1/modules/vector.js"></script>
-    <script src="libs/highcharts-9.3.1/modules/wordcloud.js"></script>
-    <script src="libs/highcharts-9.3.1/modules/xrange.js"></script>
-    <script src="libs/highcharts-9.3.1/modules/tilemap.js"></script>
-    <script src="libs/highcharts-9.3.1/modules/venn.js"></script>
-    <script src="libs/highcharts-9.3.1/modules/gantt.js"></script>
-    <script src="libs/highcharts-9.3.1/modules/timeline.js"></script>
-    <script src="libs/highcharts-9.3.1/modules/parallel-coordinates.js"></script>
-    <script src="libs/highcharts-9.3.1/modules/bullet.js"></script>
-    <script src="libs/highcharts-9.3.1/modules/coloraxis.js"></script>
-    <script src="libs/highcharts-9.3.1/modules/dumbbell.js"></script>
-    <script src="libs/highcharts-9.3.1/modules/lollipop.js"></script>
-    <script src="libs/highcharts-9.3.1/modules/series-label.js"></script>
-    <script src="libs/highcharts-9.3.1/plugins/motion.js"></script>
-    <script src="libs/highcharts-9.3.1/custom/reset.js"></script>
-    <script src="libs/highcharts-9.3.1/modules/boost.js"></script>
-    <script src="libs/highchart-binding-0.9.4/highchart.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script>
-
-  <!-- CSS -->
-  <style type="text/css">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>48 Obtenir de l’aide | Le Epi R Handbook</title>
+<meta name="author" content="the handbook team">
+<meta name="description" content="Cette page explique comment obtenir de l’aide en postant un problème sur Github ou en publiant un exemple reproductible (“reprex”) sur un forum en ligne.  48.1 Github issues Plusieurs packages et...">
+<meta name="generator" content="bookdown 0.34 with bs4_book()">
+<meta property="og:title" content="48 Obtenir de l’aide | Le Epi R Handbook">
+<meta property="og:type" content="book">
+<meta property="og:description" content="Cette page explique comment obtenir de l’aide en postant un problème sur Github ou en publiant un exemple reproductible (“reprex”) sur un forum en ligne.  48.1 Github issues Plusieurs packages et...">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="48 Obtenir de l’aide | Le Epi R Handbook">
+<meta name="twitter:description" content="Cette page explique comment obtenir de l’aide en postant un problème sur Github ou en publiant un exemple reproductible (“reprex”) sur un forum en ligne.  48.1 Github issues Plusieurs packages et...">
+<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
+<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.4.2/transition.js"></script><script src="libs/bs3compat-0.4.2/tabs.js"></script><script src="libs/bs3compat-0.4.2/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="libs/htmlwidgets-1.6.2/htmlwidgets.js"></script><link href="libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet">
+<script src="libs/datatables-binding-0.28/datatables.js"></script><link href="libs/dt-core-1.13.4/css/jquery.dataTables.min.css" rel="stylesheet">
+<link href="libs/dt-core-1.13.4/css/jquery.dataTables.extra.css" rel="stylesheet">
+<script src="libs/dt-core-1.13.4/js/jquery.dataTables.min.js"></script><link href="libs/nouislider-7.0.10/jquery.nouislider.min.css" rel="stylesheet">
+<script src="libs/nouislider-7.0.10/jquery.nouislider.min.js"></script><link href="libs/selectize-0.12.0/selectize.bootstrap3.css" rel="stylesheet">
+<script src="libs/selectize-0.12.0/selectize.min.js"></script><link href="libs/crosstalk-1.2.0/css/crosstalk.min.css" rel="stylesheet">
+<script src="libs/crosstalk-1.2.0/js/crosstalk.min.js"></script><script src="libs/kePrint-0.0.1/kePrint.js"></script><link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet">
+<link href="libs/tabwid-1.1.3/tabwid.css" rel="stylesheet">
+<script src="libs/tabwid-1.1.3/tabwid.js"></script><link href="libs/leaflet-1.3.1/leaflet.css" rel="stylesheet">
+<script src="libs/leaflet-1.3.1/leaflet.js"></script><link href="libs/leafletfix-1.0.0/leafletfix.css" rel="stylesheet">
+<script src="libs/proj4-2.6.2/proj4.min.js"></script><script src="libs/Proj4Leaflet-1.0.1/proj4leaflet.js"></script><link href="libs/rstudio_leaflet-1.3.1/rstudio_leaflet.css" rel="stylesheet">
+<script src="libs/leaflet-binding-2.1.2/leaflet.js"></script><script src="libs/leaflet-providers-1.9.0/leaflet-providers_1.9.0.js"></script><script src="libs/leaflet-providers-plugin-2.1.2/leaflet-providers-plugin.js"></script><script src="libs/viz-1.8.2/viz.js"></script><link href="libs/DiagrammeR-styles-0.2/styles.css" rel="stylesheet">
+<script src="libs/grViz-binding-1.0.10/grViz.js"></script><script src="libs/d3-4.5.0/d3.min.js"></script><script src="libs/sankey-1/sankey.js"></script><script src="libs/sankeyNetwork-binding-0.4/sankeyNetwork.js"></script><script src="libs/plotly-binding-4.10.1/plotly.js"></script><script src="libs/typedarray-0.1/typedarray.min.js"></script><link href="libs/plotly-htmlwidgets-css-2.11.1/plotly-htmlwidgets.css" rel="stylesheet">
+<script src="libs/plotly-main-2.11.1/plotly-latest.min.js"></script><link href="libs/vis-9.1.0/vis-network.min.css" rel="stylesheet">
+<script src="libs/vis-9.1.0/vis-network.min.js"></script><script src="libs/visNetwork-binding-2.1.2/visNetwork.js"></script><link href="libs/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet">
+<script src="libs/plotly-basic-2.11.1/plotly-basic-2.11.1.min.js"></script><script src="libs/plotly-cartesian-2.11.1/plotly-cartesian-2.11.1.min.js"></script><script src="libs/proj4js-2.3.15/proj4.js"></script><link href="libs/highcharts-9.3.1/css/motion.css" rel="stylesheet">
+<script src="libs/highcharts-9.3.1/highcharts.js"></script><script src="libs/highcharts-9.3.1/highcharts-3d.js"></script><script src="libs/highcharts-9.3.1/highcharts-more.js"></script><script src="libs/highcharts-9.3.1/modules/stock.js"></script><script src="libs/highcharts-9.3.1/modules/map.js"></script><script src="libs/highcharts-9.3.1/modules/data.js"></script><script src="libs/highcharts-9.3.1/modules/exporting.js"></script><script src="libs/highcharts-9.3.1/modules/offline-exporting.js"></script><script src="libs/highcharts-9.3.1/modules/drilldown.js"></script><script src="libs/highcharts-9.3.1/modules/item-series.js"></script><script src="libs/highcharts-9.3.1/modules/overlapping-datalabels.js"></script><script src="libs/highcharts-9.3.1/modules/annotations.js"></script><script src="libs/highcharts-9.3.1/modules/export-data.js"></script><script src="libs/highcharts-9.3.1/modules/funnel.js"></script><script src="libs/highcharts-9.3.1/modules/heatmap.js"></script><script src="libs/highcharts-9.3.1/modules/treemap.js"></script><script src="libs/highcharts-9.3.1/modules/sankey.js"></script><script src="libs/highcharts-9.3.1/modules/dependency-wheel.js"></script><script src="libs/highcharts-9.3.1/modules/organization.js"></script><script src="libs/highcharts-9.3.1/modules/solid-gauge.js"></script><script src="libs/highcharts-9.3.1/modules/streamgraph.js"></script><script src="libs/highcharts-9.3.1/modules/sunburst.js"></script><script src="libs/highcharts-9.3.1/modules/vector.js"></script><script src="libs/highcharts-9.3.1/modules/wordcloud.js"></script><script src="libs/highcharts-9.3.1/modules/xrange.js"></script><script src="libs/highcharts-9.3.1/modules/tilemap.js"></script><script src="libs/highcharts-9.3.1/modules/venn.js"></script><script src="libs/highcharts-9.3.1/modules/gantt.js"></script><script src="libs/highcharts-9.3.1/modules/timeline.js"></script><script src="libs/highcharts-9.3.1/modules/parallel-coordinates.js"></script><script src="libs/highcharts-9.3.1/modules/bullet.js"></script><script src="libs/highcharts-9.3.1/modules/coloraxis.js"></script><script src="libs/highcharts-9.3.1/modules/dumbbell.js"></script><script src="libs/highcharts-9.3.1/modules/lollipop.js"></script><script src="libs/highcharts-9.3.1/modules/series-label.js"></script><script src="libs/highcharts-9.3.1/plugins/motion.js"></script><script src="libs/highcharts-9.3.1/custom/reset.js"></script><script src="libs/highcharts-9.3.1/modules/boost.js"></script><script src="libs/highchart-binding-0.9.4/highchart.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><style type="text/css">
     
     div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
   </style>
-      <link rel="stylesheet" href="style_bs4.css" />
-  
+<link rel="stylesheet" href="style_bs4.css">
 </head>
-
 <body data-spy="scroll" data-target="#toc">
 
 <div class="container-fluid">
 <div class="row">
-  <header class="col-sm-12 col-lg-3 sidebar sidebar-book">
-    <a class="sr-only sr-only-focusable" href="#content">Skip to main content</a>
+  <header class="col-sm-12 col-lg-3 sidebar sidebar-book"><a class="sr-only sr-only-focusable" href="#content">Skip to main content</a>
 
     <div class="d-flex align-items-start justify-content-between">
       <h1>
-        <a href="index.html" title="">The Epidemiologist R Handbook</a>
+        <a href="index.html" title="">Le Epi R Handbook</a>
       </h1>
       <button class="btn btn-outline-primary d-lg-none ml-2 mt-1" type="button" data-toggle="collapse" data-target="#main-nav" aria-expanded="true" aria-controls="main-nav"><i class="fas fa-bars"></i><span class="sr-only">Show table of contents</span></button>
     </div>
@@ -145,101 +55,172 @@
     <div id="main-nav" class="collapse-lg">
       <form role="search">
         <input id="search" class="form-control" type="search" placeholder="Search" aria-label="Search">
-      </form>
+</form>
 
-      <nav aria-label="Table of contents">
-        <h2>Table of contents</h2>
-        <div id="book-toc"></div>
+      <nav aria-label="Table of contents"><h2>Table of contents</h2>
+        <ul class="book-toc list-unstyled">
+<li><a class="" href="index.html"></a></li>
+<li class="book-part">About this book</li>
+<li><a class="" href="editorial_notes.html"><span class="header-section-number">1</span> Notes techniques et choix éditoriaux</a></li>
+<li><a class="" href="download_book_data.html"><span class="header-section-number">2</span> Télécharger le manuel et les données</a></li>
+<li class="book-part">Basics</li>
+<li><a class="" href="transition_to_r.html"><span class="header-section-number">3</span> Transition vers R</a></li>
+<li><a class="" href="suggested_packages.html"><span class="header-section-number">4</span> Paquets conseillés</a></li>
+<li><a class="" href="r_projects.html"><span class="header-section-number">5</span> Projets R</a></li>
+<li><a class="" href="import_export.html"><span class="header-section-number">6</span> Importer et exporter des données</a></li>
+<li class="book-part">Data Management</li>
+<li><a class="" href="cleaning_data.html"><span class="header-section-number">7</span> Nettoyage de données et fonctions essentielles</a></li>
+<li><a class="" href="working_dates.html"><span class="header-section-number">8</span> Manipuler les dates</a></li>
+<li><a class="" href="character_strings.html"><span class="header-section-number">9</span> Caractères et chaînes de caractères</a></li>
+<li><a class="" href="factors.html"><span class="header-section-number">10</span> Facteurs</a></li>
+<li><a class="" href="pivoting_data.html"><span class="header-section-number">11</span> Restructurer les données</a></li>
+<li><a class="" href="grouping_data.html"><span class="header-section-number">12</span> Travailler sur des données groupées</a></li>
+<li><a class="" href="joining_matching.html"><span class="header-section-number">13</span> Joindre des données</a></li>
+<li><a class="" href="deduplication.html"><span class="header-section-number">14</span> De-duplication</a></li>
+<li><a class="" href="iteration.html"><span class="header-section-number">15</span> Itération, boucles et listes</a></li>
+<li class="book-part">Analysis</li>
+<li><a class="" href="descriptive_tables.html"><span class="header-section-number">16</span> Tableaux descriptifs</a></li>
+<li><a class="" href="stats_test.html"><span class="header-section-number">17</span> Tests statistiques simples</a></li>
+<li><a class="" href="regression.html"><span class="header-section-number">18</span> Régression univariée et multivariable</a></li>
+<li><a class="" href="missing_data.html"><span class="header-section-number">19</span> Données manquantes</a></li>
+<li><a class="" href="standardisation.html"><span class="header-section-number">20</span> Taux standardisés</a></li>
+<li><a class="" href="moving_average.html"><span class="header-section-number">21</span> Moyennes mobiles</a></li>
+<li><a class="" href="time_series.html"><span class="header-section-number">22</span> Série temporelle et détection des épidémies</a></li>
+<li><a class="" href="contact_tracing.html"><span class="header-section-number">23</span> Suivi des contacts</a></li>
+<li><a class="" href="survey_analysis.html"><span class="header-section-number">24</span> Analyse d’enquête</a></li>
+<li><a class="" href="survival_analysis.html"><span class="header-section-number">25</span> Analyse de survie</a></li>
+<li><a class="" href="gis.html"><span class="header-section-number">26</span> GIS basics</a></li>
+<li class="book-part">Data Visualization</li>
+<li><a class="" href="tables_presentation.html"><span class="header-section-number">27</span> Présenter avec des tables</a></li>
+<li><a class="" href="ggplot_basics.html"><span class="header-section-number">28</span> Les bases de ggplot</a></li>
+<li><a class="" href="plot_continuous.html"><span class="header-section-number">29</span> Traçage de données continues</a></li>
+<li><a class="" href="tracer-des-donn%C3%A9es-cat%C3%A9gorielles.html"><span class="header-section-number">30</span> Tracer des données catégorielles</a></li>
+<li><a class="" href="ggplot_tips.html"><span class="header-section-number">31</span> Trucs et Astuces avec ggplot</a></li>
+<li><a class="" href="epicurves.html"><span class="header-section-number">32</span> Courbes épidémiques</a></li>
+<li><a class="" href="age_pyramid.html"><span class="header-section-number">33</span> Pyramides démographiques et échelles de Likert</a></li>
+<li><a class="" href="heatmaps.html"><span class="header-section-number">34</span> Graphiques thermiques</a></li>
+<li><a class="" href="diagrams.html"><span class="header-section-number">35</span> Diagrammes et schémas</a></li>
+<li><a class="" href="combination_analysis.html"><span class="header-section-number">36</span> Analyse des combinaisons</a></li>
+<li><a class="" href="transmission_chains.html"><span class="header-section-number">37</span> Chaînes de transmission</a></li>
+<li><a class="" href="phylogenetic_trees.html"><span class="header-section-number">38</span> Les arbres phylogénétiques</a></li>
+<li><a class="" href="interactive_plots.html"><span class="header-section-number">39</span> Graphiques interactifs</a></li>
+<li class="book-part">Reports and dashboards</li>
+<li><a class="" href="rmarkdown.html"><span class="header-section-number">40</span> Production de rapports avec R Markdown</a></li>
+<li><a class="" href="reportfactory.html"><span class="header-section-number">41</span> Organisation des rapports de routine</a></li>
+<li><a class="" href="dashboards.html"><span class="header-section-number">42</span> Tableaux de bord avec R Markdown</a></li>
+<li><a class="" href="shiny.html"><span class="header-section-number">43</span> Tableaux de bord avec Shiny</a></li>
+<li class="book-part">Miscellaneous</li>
+<li><a class="" href="writing_functions.html"><span class="header-section-number">44</span> Fonctions d’écriture</a></li>
+<li><a class="" href="directories.html"><span class="header-section-number">45</span> Interactions avec les répertoires</a></li>
+<li><a class="" href="collaboration.html"><span class="header-section-number">46</span> Contrôle de version et collaboration avec Git et Github</a></li>
+<li><a class="" href="errors.html"><span class="header-section-number">47</span> Erreurs fréquentes</a></li>
+<li><a class="active" href="help.html"><span class="header-section-number">48</span> Obtenir de l’aide</a></li>
+<li><a class="" href="relational-databases.html"><span class="header-section-number">49</span> Relational databases</a></li>
+<li><a class="" href="network_drives.html"><span class="header-section-number">50</span> R sur les lecteurs réseau</a></li>
+<li><a class="" href="data_table.html"><span class="header-section-number">51</span> Tableau de données</a></li>
+<li><a class="" href="advanced-rstudio.html"><span class="header-section-number">52</span> Advanced RStudio</a></li>
+</ul>
 
         <div class="book-extra">
-          <p><a id="book-repo" href="#">View book source <i class="fab fa-github"></i></a></li></p>
+          
         </div>
       </nav>
-    </div>
-  </header>
-
-  <main class="col-sm-12 col-md-9 col-lg-7" id="content">
-<div id="help" class="section level1" number="49">
-<h1><span class="header-section-number">49</span> Obtenir de l’aide</h1>
+</div>
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="help" class="section level1" number="48">
+<h1>
+<span class="header-section-number">48</span> Obtenir de l’aide<a class="anchor" aria-label="anchor" href="#help"><i class="fas fa-link"></i></a>
+</h1>
 <p>Cette page explique comment obtenir de l’aide en postant un problème sur Github ou en publiant un exemple reproductible (“reprex”) sur un forum en ligne.</p>
-<div id="github-issues" class="section level2" number="49.1">
-<h2><span class="header-section-number">49.1</span> Github issues</h2>
+<div id="github-issues" class="section level2" number="48.1">
+<h2>
+<span class="header-section-number">48.1</span> Github issues<a class="anchor" aria-label="anchor" href="#github-issues"><i class="fas fa-link"></i></a>
+</h2>
 <p>Plusieurs packages et projets en R ont leur code sur le site Github.com. Vous pouvez communiquer directement avec les auteurs sur ce site en postant un “Issue”.</p>
 <p>Pour en savoir plus sur comment sauvegarder vos travaux sur Github, consultez la page <a href="collaboration.html#collaboration">Collaboration et Github</a>.</p>
 <p>Sur Github, chaque projet est contenu dans un <em>repository</em>. Chaque repository contient du code, des données, des résultats, la documentation d’aide, etc. Il existe également un moyen de communiquer avec les auteurs dénommé “Issues”.</p>
 <p>Ci-dessous, la page Github pour le package <strong>incidence2</strong> (utilisé pour créer des courbes épidémiques). Vous pouvez voir l’onglet “Issues” surligné en jaune. Vous pouvez voir qu’il y a 5 issues ouvertes.</p>
-<p><img src="images/errors_Github_issues.png" width="948" /></p>
+<div class="inline-figure"><img src="images/errors_Github_issues.png" width="948"></div>
 <p>Une fois dans l’onglet Issues, vous pouvez voir les questions ou issues ouvertes. Lisez-les pour vous assurer que votre question n’est pas déjà abordée. Vous pouvez ouvrir un nouveau issue en cliquant sur le bouton vert à droite. Vous aurez besoin d’un compte Github pour le faire.</p>
-<p><img src="images/errors_Github_issues2.png" width="910" /></p>
+<div class="inline-figure"><img src="images/errors_Github_issues2.png" width="910"></div>
 <p>Dans votre question, suivez les instructions ci-dessous pour fournir un exemple minimal et reproductible. Et soyez gentil! La plupart des personnes qui développent des packages et des projets R le font pendant leur temps libre (comme ce manuel!).</p>
 <p>Pour en savoir plus sur la gestion des questions dans votre propre repository Github, consultez la <a href="https://guides.github.com/features/issues/">documentation sur les issues</a> sur Github.</p>
 </div>
-<div id="exemple-reproductible" class="section level2" number="49.2">
-<h2><span class="header-section-number">49.2</span> Exemple reproductible</h2>
+<div id="exemple-reproductible" class="section level2" number="48.2">
+<h2>
+<span class="header-section-number">48.2</span> Exemple reproductible<a class="anchor" aria-label="anchor" href="#exemple-reproductible"><i class="fas fa-link"></i></a>
+</h2>
 <p>Fournir un exemple reproductible (“reprex”) est essentiel pour obtenir de l’aide lorsque vous postez un message dans un forum ou dans un issue Github. Les gens veulent vous aider, mais vous devez leur donner un exemple avec lequel ils peuvent travailler sur leur propre ordinateur. L’exemple doit :</p>
 <ul>
-<li>Démontrer le problème que vous avez rencontré<br />
+<li>Démontrer le problème que vous avez rencontré<br>
 </li>
-<li>Être <em>minimal</em>, c’est-à-dire qu’il ne doit contenir que les données et le code nécessaires à la reproduction du problème.<br />
+<li>Être <em>minimal</em>, c’est-à-dire qu’il ne doit contenir que les données et le code nécessaires à la reproduction du problème.<br>
 </li>
-<li>Être <em>reproductible</em>, c’est-à-dire que tous les objets (par exemple les données) et les requêtes sur les packages (par exemple <code>library()</code> ou <code>p_load()</code>) sont inclus.</li>
+<li>Être <em>reproductible</em>, c’est-à-dire que tous les objets (par exemple les données) et les requêtes sur les packages (par exemple <code><a href="https://rdrr.io/r/base/library.html">library()</a></code> ou <code><a href="https://rdrr.io/pkg/pacman/man/p_load.html">p_load()</a></code>) sont inclus.</li>
 </ul>
-<p><em>Aussi, assurez-vous de ne pas poster de données confidentielles avec le reprex!</em> Vous pouvez créer des tableaux de données exemplaires, ou utiliser l’un des tableaux de données intégrés à R (entrez <code>data()</code> pour ouvrir une liste de ces ensembles de données).</p>
+<p><em>Aussi, assurez-vous de ne pas poster de données confidentielles avec le reprex!</em> Vous pouvez créer des tableaux de données exemplaires, ou utiliser l’un des tableaux de données intégrés à R (entrez <code><a href="https://rdrr.io/r/utils/data.html">data()</a></code> pour ouvrir une liste de ces ensembles de données).</p>
 <div id="le-package-reprex" class="section level3 unnumbered">
-<h3>Le package <strong>reprex</strong></h3>
+<h3>Le package <strong>reprex</strong><a class="anchor" aria-label="anchor" href="#le-package-reprex"><i class="fas fa-link"></i></a>
+</h3>
 <p>Le package <strong>reprex</strong> peut vous aider à créer un exemple reproduisible :</p>
 <ol style="list-style-type: decimal">
-<li><strong>reprex</strong> est installé avec <strong>tidyverse</strong>, donc chargez l’un ou l’autre des packages</li>
+<li>
+<strong>reprex</strong> est installé avec <strong>tidyverse</strong>, donc chargez l’un ou l’autre des packages</li>
 </ol>
-<div class="sourceCode" id="cb2001"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2001-1"><a href="help.html#cb2001-1" aria-hidden="true" tabindex="-1"></a><span class="co"># installer/charger tidyverse (qui inclut reprex)</span></span>
-<span id="cb2001-2"><a href="help.html#cb2001-2" aria-hidden="true" tabindex="-1"></a>pacman<span class="sc">::</span><span class="fu">p_load</span>(tidyverse)</span></code></pre></div>
+<div class="sourceCode" id="cb1869"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># installer/charger tidyverse (qui inclut reprex)</span></span>
+<span><span class="fu">pacman</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/pacman/man/p_load.html">p_load</a></span><span class="op">(</span><span class="va">tidyverse</span><span class="op">)</span></span></code></pre></div>
 <ol start="2" style="list-style-type: decimal">
 <li>Commencez un script R qui crée votre problème, étape par étape, en commençant par le chargement des packages et des données.</li>
 </ol>
-<div class="sourceCode" id="cb2002"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2002-1"><a href="help.html#cb2002-1" aria-hidden="true" tabindex="-1"></a><span class="co"># charger les packages</span></span>
-<span id="cb2002-2"><a href="help.html#cb2002-2" aria-hidden="true" tabindex="-1"></a>pacman<span class="sc">::</span><span class="fu">p_load</span>(</span>
-<span id="cb2002-3"><a href="help.html#cb2002-3" aria-hidden="true" tabindex="-1"></a>     tidyverse,  <span class="co"># gestion des donnees et visualisation </span></span>
-<span id="cb2002-4"><a href="help.html#cb2002-4" aria-hidden="true" tabindex="-1"></a>     outbreaks)  <span class="co"># exemple de données sur les épidémies</span></span>
-<span id="cb2002-5"><a href="help.html#cb2002-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2002-6"><a href="help.html#cb2002-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Liste des cas d&#39;épidémie de grippe</span></span>
-<span id="cb2002-7"><a href="help.html#cb2002-7" aria-hidden="true" tabindex="-1"></a>outbreak_raw <span class="ot">&lt;-</span> outbreaks<span class="sc">::</span>fluH7N9_china_2013 <span class="co"># récupérer les données à partir du package outbreaks </span></span>
-<span id="cb2002-8"><a href="help.html#cb2002-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2002-9"><a href="help.html#cb2002-9" aria-hidden="true" tabindex="-1"></a><span class="co"># nettoyage des données</span></span>
-<span id="cb2002-10"><a href="help.html#cb2002-10" aria-hidden="true" tabindex="-1"></a>outbreak <span class="ot">&lt;-</span> outbreak_raw <span class="sc">%&gt;%</span> </span>
-<span id="cb2002-11"><a href="help.html#cb2002-11" aria-hidden="true" tabindex="-1"></a>     <span class="fu">mutate</span>(<span class="fu">across</span>(<span class="fu">contains</span>(<span class="st">&quot;date&quot;</span>), as.Date))</span>
-<span id="cb2002-12"><a href="help.html#cb2002-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2002-13"><a href="help.html#cb2002-13" aria-hidden="true" tabindex="-1"></a><span class="co"># graphique de l&#39;epidémie </span></span>
-<span id="cb2002-14"><a href="help.html#cb2002-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2002-15"><a href="help.html#cb2002-15" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> outbreak)<span class="sc">+</span></span>
-<span id="cb2002-16"><a href="help.html#cb2002-16" aria-hidden="true" tabindex="-1"></a>     <span class="fu">geom_histogram</span>(</span>
-<span id="cb2002-17"><a href="help.html#cb2002-17" aria-hidden="true" tabindex="-1"></a>          <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> date_of_onset),</span>
-<span id="cb2002-18"><a href="help.html#cb2002-18" aria-hidden="true" tabindex="-1"></a>          <span class="at">binwidth =</span> <span class="dv">7</span></span>
-<span id="cb2002-19"><a href="help.html#cb2002-19" aria-hidden="true" tabindex="-1"></a>     )<span class="sc">+</span></span>
-<span id="cb2002-20"><a href="help.html#cb2002-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_date</span>(</span>
-<span id="cb2002-21"><a href="help.html#cb2002-21" aria-hidden="true" tabindex="-1"></a>    <span class="at">date_format =</span> <span class="st">&quot;%d %m&quot;</span></span>
-<span id="cb2002-22"><a href="help.html#cb2002-22" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div>
+<div class="sourceCode" id="cb1870"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># charger les packages</span></span>
+<span><span class="fu">pacman</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/pacman/man/p_load.html">p_load</a></span><span class="op">(</span></span>
+<span>     <span class="va">tidyverse</span>,  <span class="co"># gestion des donnees et visualisation </span></span>
+<span>     <span class="va">outbreaks</span><span class="op">)</span>  <span class="co"># exemple de données sur les épidémies</span></span>
+<span></span>
+<span><span class="co"># Liste des cas d'épidémie de grippe</span></span>
+<span><span class="va">outbreak_raw</span> <span class="op">&lt;-</span> <span class="fu">outbreaks</span><span class="fu">::</span><span class="va">fluH7N9_china_2013</span> <span class="co"># récupérer les données à partir du package outbreaks </span></span>
+<span></span>
+<span><span class="co"># nettoyage des données</span></span>
+<span><span class="va">outbreak</span> <span class="op">&lt;-</span> <span class="va">outbreak_raw</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
+<span>     <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span><span class="fu">across</span><span class="op">(</span><span class="fu">contains</span><span class="op">(</span><span class="st">"date"</span><span class="op">)</span>, <span class="va">as.Date</span><span class="op">)</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># graphique de l'epidémie </span></span>
+<span></span>
+<span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">outbreak</span><span class="op">)</span><span class="op">+</span></span>
+<span>     <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_histogram.html">geom_histogram</a></span><span class="op">(</span></span>
+<span>          mapping <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">date_of_onset</span><span class="op">)</span>,</span>
+<span>          binwidth <span class="op">=</span> <span class="fl">7</span></span>
+<span>     <span class="op">)</span><span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_date.html">scale_x_date</a></span><span class="op">(</span></span>
+<span>    date_format <span class="op">=</span> <span class="st">"%d %m"</span></span>
+<span>  <span class="op">)</span></span></code></pre></div>
 <p><em>Copiez</em> tout le code sur votre clipboard, et exécutez la commande suivante :</p>
-<div class="sourceCode" id="cb2003"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2003-1"><a href="help.html#cb2003-1" aria-hidden="true" tabindex="-1"></a>reprex<span class="sc">::</span><span class="fu">reprex</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb1871"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu">reprex</span><span class="fu">::</span><span class="fu"><a href="https://reprex.tidyverse.org/reference/reprex.html">reprex</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <p>Vous verrez une fenêtre HTML apparaître dans la fenêtre viewer de RStudio. Elle contiendra l’ensemble de votre code et tous les messages, les erreurs, ou les résultats de graphique. Ce résultat est également copié sur votre presse-papier, de façon à ce que vous pouvez le poster directement dans un issue Github ou un poste de forum.</p>
-<p><img src="images/errors_reprex_RStudio1.png" width="100%" /></p>
+<div class="inline-figure"><img src="images/errors_reprex_RStudio1.png" width="100%"></div>
 <ul>
-<li>Si vous définissez <code>session_info = TRUE</code>, le resultat de <code>sessioninfo::session_info()</code> avec votre version de R et du package R sera inclus.<br />
+<li>Si vous définissez <code>session_info = TRUE</code>, le resultat de <code><a href="https://r-lib.github.io/sessioninfo/reference/session_info.html">sessioninfo::session_info()</a></code> avec votre version de R et du package R sera inclus.<br>
 </li>
-<li>Vous pouvez spécifier un répertoire de travail avec <code>wd =</code>.<br />
+<li>Vous pouvez spécifier un répertoire de travail avec <code>wd =</code>.<br>
 </li>
 <li>Vous pouvez en lire plus sur les arguments et les variations possibles dans la <a href="">documentation</a> ou en saisissant <code>?reprex</code>.</li>
 </ul>
-<p>Dans l’exemple ci-dessus, la commande <code>ggplot()</code> ne s’est pas exécutée car l’argument <code>date_format =</code> n’est pas correcte - il devrait être <code>date_labels =</code>.</p>
+<p>Dans l’exemple ci-dessus, la commande <code><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot()</a></code> ne s’est pas exécutée car l’argument <code>date_format =</code> n’est pas correcte - il devrait être <code>date_labels =</code>.</p>
 </div>
 <div id="données-minimales" class="section level3 unnumbered">
-<h3>Données minimales</h3>
+<h3>Données minimales<a class="anchor" aria-label="anchor" href="#donn%C3%A9es-minimales"><i class="fas fa-link"></i></a>
+</h3>
 <p>Les aidants doivent être en mesure d’utiliser vos données - idéalement, ils doivent pouvoir les créer <em>avec du code</em>.</p>
 <p>Pour créer un ensemble de données minimales, considérez anonymer et utiliser seulement un sous-ensemble des observations.</p>
-<p>EN CONSTRUCTION - vous pouvez également utiliser la fonction <code>dput()</code> pour créer un ensemble de données minimales.</p>
+<p>EN CONSTRUCTION - vous pouvez également utiliser la fonction <code><a href="https://rdrr.io/r/base/dput.html">dput()</a></code> pour créer un ensemble de données minimales.</p>
 </div>
 </div>
-<div id="poster-sur-un-forum" class="section level2" number="49.3">
-<h2><span class="header-section-number">49.3</span> Poster sur un forum</h2>
+<div id="poster-sur-un-forum" class="section level2" number="48.3">
+<h2>
+<span class="header-section-number">48.3</span> Poster sur un forum<a class="anchor" aria-label="anchor" href="#poster-sur-un-forum"><i class="fas fa-link"></i></a>
+</h2>
 <p>Lisez beaucoup de messages de forum. Essayez de comprendre quels messages sont bien rédigés et lesquels ne sont pas.</p>
 <ol style="list-style-type: decimal">
 <li><p>Tout d’abord, décidez si vous devez poser la question. Avez-vous <em>parcouru</em> le site web du forum, en essayant divers termes de recherche, pour voir si votre question n’a pas déjà été posée ?</p></li>
@@ -247,12 +228,12 @@
 <li><p>Rédigez votre question :</p></li>
 </ol>
 <ul>
-<li>Présentez votre situation et votre problème<br />
+<li>Présentez votre situation et votre problème<br>
 </li>
 <li>Liez aux posts de problèmes similaires et expliquez pourquoi ils ne répondent pas à votre question</li>
-<li>Incluez toute information pertinente pour aider quelqu’un qui ne connaît pas le contexte de votre travail.<br />
+<li>Incluez toute information pertinente pour aider quelqu’un qui ne connaît pas le contexte de votre travail.<br>
 </li>
-<li>Donnez un exemple minimal reproductible avec les informations de votre session R.<br />
+<li>Donnez un exemple minimal reproductible avec les informations de votre session R.<br>
 </li>
 <li>Utilisez la propre orthographe, grammaire et ponctuation, et divisez votre question en paragraphes pour faciliter la lecture.</li>
 </ul>
@@ -263,38 +244,49 @@
 <p>Lisez ces articles sur <a href="https://stackoverflow.com/help/how-to-ask">comment poser une bonne question</a> et le <a href="https://stackoverflow.com/conduct">code de conduite de Stack overflow</a>.</p>
 <!-- ======================================================= -->
 </div>
-<div id="resources-10" class="section level2" number="49.4">
-<h2><span class="header-section-number">49.4</span> Resources</h2>
+<div id="resources-10" class="section level2" number="48.4">
+<h2>
+<span class="header-section-number">48.4</span> Resources<a class="anchor" aria-label="anchor" href="#resources-10"><i class="fas fa-link"></i></a>
+</h2>
 <p>Page Tidyverse sur comment <a href="https://www.tidyverse.org/help/#:~:text=When%20you%20want%20to%20make,to%20load%20the%20reprex%20package.&amp;text=Enter%20reprex()%20in%20the,preview%20of%20your%20rendered%20reprex.">obtenir de l’aide</a></p>
 <p>Astuces pour <a href="https://xiangxing98.github.io/R_Learning/R_Reproducible.nb.html#producing-a-minimal-dataset">produire un ensemble de données minimal</a></p>
 <p>Documentation de la <a href="https://www.rdocumentation.org/packages/base/versions/3.6.2/topics/dput">fonction dput</a></p>
 
 </div>
 </div>
-  </main>
-
-  <div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
-    <nav id="toc" data-toggle="toc" aria-label="On this page">
-      <h2>On this page</h2>
-      <div id="book-on-this-page"></div>
+  <div class="chapter-nav">
+<div class="prev"><a href="errors.html"><span class="header-section-number">47</span> Erreurs fréquentes</a></div>
+<div class="next"><a href="relational-databases.html"><span class="header-section-number">49</span> Relational databases</a></div>
+</div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
+    <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
+      <ul class="nav navbar-nav">
+<li><a class="nav-link" href="#help"><span class="header-section-number">48</span> Obtenir de l’aide</a></li>
+<li><a class="nav-link" href="#github-issues"><span class="header-section-number">48.1</span> Github issues</a></li>
+<li>
+<a class="nav-link" href="#exemple-reproductible"><span class="header-section-number">48.2</span> Exemple reproductible</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#le-package-reprex">Le package reprex</a></li>
+<li><a class="nav-link" href="#donn%C3%A9es-minimales">Données minimales</a></li>
+</ul>
+</li>
+<li><a class="nav-link" href="#poster-sur-un-forum"><span class="header-section-number">48.3</span> Poster sur un forum</a></li>
+<li><a class="nav-link" href="#resources-10"><span class="header-section-number">48.4</span> Resources</a></li>
+</ul>
 
       <div class="book-extra">
         <ul class="list-unstyled">
-          <li><a id="book-source" href="#">View source <i class="fab fa-github"></i></a></li>
-          <li><a id="book-edit" href="#">Edit this page <i class="fab fa-github"></i></a></li>
+          
         </ul>
-      </div>
+</div>
     </nav>
-  </div>
+</div>
 
 </div>
 </div> <!-- .container -->
 
-<footer class="bg-primary text-light mt-5">
-  <div class="container"><div class="row">
+<footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>The Epidemiologist R Handbook</strong>" was written by the handbook team. It was last built on 2023-05-17.</p>
+    <p>"<strong>Le Epi R Handbook</strong>" was written by the handbook team. It was last built on 2023-05-21.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">
@@ -302,11 +294,7 @@
   </div>
 
 </div></div>
-</footer>
-
-
-<!-- dynamically load mathjax for compatibility with self-contained -->
-<script>
+</footer><!-- dynamically load mathjax for compatibility with self-contained --><script>
   (function () {
     var script = document.createElement("script");
     script.type = "text/javascript";
@@ -318,8 +306,7 @@
     script.src = src;
     document.getElementsByTagName("head")[0].appendChild(script);
   })();
-</script>
-<script type="text/x-mathjax-config">const popovers = document.querySelectorAll('a.footnote-ref[data-toggle="popover"]');
+</script><script type="text/x-mathjax-config">const popovers = document.querySelectorAll('a.footnote-ref[data-toggle="popover"]');
 for (let popover of popovers) {
   const div = document.createElement('div');
   div.setAttribute('style', 'position: absolute; top: 0, left:0; width:0, height:0, overflow: hidden; visibility: hidden;');
@@ -337,5 +324,4 @@ for (let popover of popovers) {
 }
 </script>
 </body>
-
 </html>

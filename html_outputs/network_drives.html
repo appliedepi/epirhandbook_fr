@@ -1,143 +1,53 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-  <title>51 R sur les lecteurs réseau | The Epidemiologist R Handbook</title>
-
-    <meta name="author" content="the handbook team" />
-  
-   <meta name="description" content="The Epi R Handbook est un manuel de référence sur l’utilisation de R en épidémiologie appliquée et santé publique." />
-   <meta name="generator" content="placeholder" />
-  <meta property="og:title" content="51 R sur les lecteurs réseau | The Epidemiologist R Handbook" />
-  <meta property="og:type" content="book" />
-  
-  
-  <meta property="og:description" content="The Epi R Handbook est un manuel de référence sur l’utilisation de R en épidémiologie appliquée et santé publique." />
-
-  <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="51 R sur les lecteurs réseau | The Epidemiologist R Handbook" />
-  
-  <meta name="twitter:description" content="The Epi R Handbook est un manuel de référence sur l’utilisation de R en épidémiologie appliquée et santé publique." />
-  
-  <!-- JS -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script>
-  <script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script>
-    <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-    <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet" />
-    <script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script>
-    <script src="libs/bs3compat-0.4.2/transition.js"></script>
-    <script src="libs/bs3compat-0.4.2/tabs.js"></script>
-    <script src="libs/bs3compat-0.4.2/bs3compat.js"></script>
-    <link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet" />
-    <script src="libs/bs4_book-1.0.0/bs4_book.js"></script>
-    <script src="libs/htmlwidgets-1.6.2/htmlwidgets.js"></script>
-    <link href="libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet" />
-    <script src="libs/datatables-binding-0.27/datatables.js"></script>
-    <link href="libs/dt-core-1.12.1/css/jquery.dataTables.min.css" rel="stylesheet" />
-    <link href="libs/dt-core-1.12.1/css/jquery.dataTables.extra.css" rel="stylesheet" />
-    <script src="libs/dt-core-1.12.1/js/jquery.dataTables.min.js"></script>
-    <link href="libs/nouislider-7.0.10/jquery.nouislider.min.css" rel="stylesheet" />
-    <script src="libs/nouislider-7.0.10/jquery.nouislider.min.js"></script>
-    <link href="libs/selectize-0.12.0/selectize.bootstrap3.css" rel="stylesheet" />
-    <script src="libs/selectize-0.12.0/selectize.min.js"></script>
-    <link href="libs/crosstalk-1.2.0/css/crosstalk.min.css" rel="stylesheet" />
-    <script src="libs/crosstalk-1.2.0/js/crosstalk.min.js"></script>
-    <script src="libs/kePrint-0.0.1/kePrint.js"></script>
-    <link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
-    <link href="libs/tabwid-1.1.3/tabwid.css" rel="stylesheet" />
-    <script src="libs/tabwid-1.1.3/tabwid.js"></script>
-    <link href="libs/leaflet-1.3.1/leaflet.css" rel="stylesheet" />
-    <script src="libs/leaflet-1.3.1/leaflet.js"></script>
-    <link href="libs/leafletfix-1.0.0/leafletfix.css" rel="stylesheet" />
-    <script src="libs/proj4-2.6.2/proj4.min.js"></script>
-    <script src="libs/Proj4Leaflet-1.0.1/proj4leaflet.js"></script>
-    <link href="libs/rstudio_leaflet-1.3.1/rstudio_leaflet.css" rel="stylesheet" />
-    <script src="libs/leaflet-binding-2.1.2/leaflet.js"></script>
-    <script src="libs/leaflet-providers-1.9.0/leaflet-providers_1.9.0.js"></script>
-    <script src="libs/leaflet-providers-plugin-2.1.2/leaflet-providers-plugin.js"></script>
-    <script src="libs/viz-1.8.2/viz.js"></script>
-    <link href="libs/DiagrammeR-styles-0.2/styles.css" rel="stylesheet" />
-    <script src="libs/grViz-binding-1.0.9/grViz.js"></script>
-    <script src="libs/d3-4.5.0/d3.min.js"></script>
-    <script src="libs/sankey-1/sankey.js"></script>
-    <script src="libs/sankeyNetwork-binding-0.4/sankeyNetwork.js"></script>
-    <script src="libs/plotly-binding-4.10.1/plotly.js"></script>
-    <script src="libs/typedarray-0.1/typedarray.min.js"></script>
-    <link href="libs/plotly-htmlwidgets-css-2.11.1/plotly-htmlwidgets.css" rel="stylesheet" />
-    <script src="libs/plotly-main-2.11.1/plotly-latest.min.js"></script>
-    <link href="libs/vis-9.1.0/vis-network.min.css" rel="stylesheet" />
-    <script src="libs/vis-9.1.0/vis-network.min.js"></script>
-    <script src="libs/visNetwork-binding-2.1.2/visNetwork.js"></script>
-    <link href="libs/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" />
-    <script src="libs/plotly-basic-2.11.1/plotly-basic-2.11.1.min.js"></script>
-    <script src="libs/plotly-cartesian-2.11.1/plotly-cartesian-2.11.1.min.js"></script>
-    <script src="libs/proj4js-2.3.15/proj4.js"></script>
-    <link href="libs/highcharts-9.3.1/css/motion.css" rel="stylesheet" />
-    <script src="libs/highcharts-9.3.1/highcharts.js"></script>
-    <script src="libs/highcharts-9.3.1/highcharts-3d.js"></script>
-    <script src="libs/highcharts-9.3.1/highcharts-more.js"></script>
-    <script src="libs/highcharts-9.3.1/modules/stock.js"></script>
-    <script src="libs/highcharts-9.3.1/modules/map.js"></script>
-    <script src="libs/highcharts-9.3.1/modules/data.js"></script>
-    <script src="libs/highcharts-9.3.1/modules/exporting.js"></script>
-    <script src="libs/highcharts-9.3.1/modules/offline-exporting.js"></script>
-    <script src="libs/highcharts-9.3.1/modules/drilldown.js"></script>
-    <script src="libs/highcharts-9.3.1/modules/item-series.js"></script>
-    <script src="libs/highcharts-9.3.1/modules/overlapping-datalabels.js"></script>
-    <script src="libs/highcharts-9.3.1/modules/annotations.js"></script>
-    <script src="libs/highcharts-9.3.1/modules/export-data.js"></script>
-    <script src="libs/highcharts-9.3.1/modules/funnel.js"></script>
-    <script src="libs/highcharts-9.3.1/modules/heatmap.js"></script>
-    <script src="libs/highcharts-9.3.1/modules/treemap.js"></script>
-    <script src="libs/highcharts-9.3.1/modules/sankey.js"></script>
-    <script src="libs/highcharts-9.3.1/modules/dependency-wheel.js"></script>
-    <script src="libs/highcharts-9.3.1/modules/organization.js"></script>
-    <script src="libs/highcharts-9.3.1/modules/solid-gauge.js"></script>
-    <script src="libs/highcharts-9.3.1/modules/streamgraph.js"></script>
-    <script src="libs/highcharts-9.3.1/modules/sunburst.js"></script>
-    <script src="libs/highcharts-9.3.1/modules/vector.js"></script>
-    <script src="libs/highcharts-9.3.1/modules/wordcloud.js"></script>
-    <script src="libs/highcharts-9.3.1/modules/xrange.js"></script>
-    <script src="libs/highcharts-9.3.1/modules/tilemap.js"></script>
-    <script src="libs/highcharts-9.3.1/modules/venn.js"></script>
-    <script src="libs/highcharts-9.3.1/modules/gantt.js"></script>
-    <script src="libs/highcharts-9.3.1/modules/timeline.js"></script>
-    <script src="libs/highcharts-9.3.1/modules/parallel-coordinates.js"></script>
-    <script src="libs/highcharts-9.3.1/modules/bullet.js"></script>
-    <script src="libs/highcharts-9.3.1/modules/coloraxis.js"></script>
-    <script src="libs/highcharts-9.3.1/modules/dumbbell.js"></script>
-    <script src="libs/highcharts-9.3.1/modules/lollipop.js"></script>
-    <script src="libs/highcharts-9.3.1/modules/series-label.js"></script>
-    <script src="libs/highcharts-9.3.1/plugins/motion.js"></script>
-    <script src="libs/highcharts-9.3.1/custom/reset.js"></script>
-    <script src="libs/highcharts-9.3.1/modules/boost.js"></script>
-    <script src="libs/highchart-binding-0.9.4/highchart.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script>
-
-  <!-- CSS -->
-  <style type="text/css">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>50 R sur les lecteurs réseau | Le Epi R Handbook</title>
+<meta name="author" content="the handbook team">
+<meta name="description" content="50.1 Aperçu L’utilisation de R sur des lecteurs partagés du réseau ou de “l’entreprise” peut présenter des défis supplémentaires. Cette page contient des approches, des erreurs courantes et des...">
+<meta name="generator" content="bookdown 0.34 with bs4_book()">
+<meta property="og:title" content="50 R sur les lecteurs réseau | Le Epi R Handbook">
+<meta property="og:type" content="book">
+<meta property="og:description" content="50.1 Aperçu L’utilisation de R sur des lecteurs partagés du réseau ou de “l’entreprise” peut présenter des défis supplémentaires. Cette page contient des approches, des erreurs courantes et des...">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="50 R sur les lecteurs réseau | Le Epi R Handbook">
+<meta name="twitter:description" content="50.1 Aperçu L’utilisation de R sur des lecteurs partagés du réseau ou de “l’entreprise” peut présenter des défis supplémentaires. Cette page contient des approches, des erreurs courantes et des...">
+<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
+<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.4.2/transition.js"></script><script src="libs/bs3compat-0.4.2/tabs.js"></script><script src="libs/bs3compat-0.4.2/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="libs/htmlwidgets-1.6.2/htmlwidgets.js"></script><link href="libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet">
+<script src="libs/datatables-binding-0.28/datatables.js"></script><link href="libs/dt-core-1.13.4/css/jquery.dataTables.min.css" rel="stylesheet">
+<link href="libs/dt-core-1.13.4/css/jquery.dataTables.extra.css" rel="stylesheet">
+<script src="libs/dt-core-1.13.4/js/jquery.dataTables.min.js"></script><link href="libs/nouislider-7.0.10/jquery.nouislider.min.css" rel="stylesheet">
+<script src="libs/nouislider-7.0.10/jquery.nouislider.min.js"></script><link href="libs/selectize-0.12.0/selectize.bootstrap3.css" rel="stylesheet">
+<script src="libs/selectize-0.12.0/selectize.min.js"></script><link href="libs/crosstalk-1.2.0/css/crosstalk.min.css" rel="stylesheet">
+<script src="libs/crosstalk-1.2.0/js/crosstalk.min.js"></script><script src="libs/kePrint-0.0.1/kePrint.js"></script><link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet">
+<link href="libs/tabwid-1.1.3/tabwid.css" rel="stylesheet">
+<script src="libs/tabwid-1.1.3/tabwid.js"></script><link href="libs/leaflet-1.3.1/leaflet.css" rel="stylesheet">
+<script src="libs/leaflet-1.3.1/leaflet.js"></script><link href="libs/leafletfix-1.0.0/leafletfix.css" rel="stylesheet">
+<script src="libs/proj4-2.6.2/proj4.min.js"></script><script src="libs/Proj4Leaflet-1.0.1/proj4leaflet.js"></script><link href="libs/rstudio_leaflet-1.3.1/rstudio_leaflet.css" rel="stylesheet">
+<script src="libs/leaflet-binding-2.1.2/leaflet.js"></script><script src="libs/leaflet-providers-1.9.0/leaflet-providers_1.9.0.js"></script><script src="libs/leaflet-providers-plugin-2.1.2/leaflet-providers-plugin.js"></script><script src="libs/viz-1.8.2/viz.js"></script><link href="libs/DiagrammeR-styles-0.2/styles.css" rel="stylesheet">
+<script src="libs/grViz-binding-1.0.10/grViz.js"></script><script src="libs/d3-4.5.0/d3.min.js"></script><script src="libs/sankey-1/sankey.js"></script><script src="libs/sankeyNetwork-binding-0.4/sankeyNetwork.js"></script><script src="libs/plotly-binding-4.10.1/plotly.js"></script><script src="libs/typedarray-0.1/typedarray.min.js"></script><link href="libs/plotly-htmlwidgets-css-2.11.1/plotly-htmlwidgets.css" rel="stylesheet">
+<script src="libs/plotly-main-2.11.1/plotly-latest.min.js"></script><link href="libs/vis-9.1.0/vis-network.min.css" rel="stylesheet">
+<script src="libs/vis-9.1.0/vis-network.min.js"></script><script src="libs/visNetwork-binding-2.1.2/visNetwork.js"></script><link href="libs/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet">
+<script src="libs/plotly-basic-2.11.1/plotly-basic-2.11.1.min.js"></script><script src="libs/plotly-cartesian-2.11.1/plotly-cartesian-2.11.1.min.js"></script><script src="libs/proj4js-2.3.15/proj4.js"></script><link href="libs/highcharts-9.3.1/css/motion.css" rel="stylesheet">
+<script src="libs/highcharts-9.3.1/highcharts.js"></script><script src="libs/highcharts-9.3.1/highcharts-3d.js"></script><script src="libs/highcharts-9.3.1/highcharts-more.js"></script><script src="libs/highcharts-9.3.1/modules/stock.js"></script><script src="libs/highcharts-9.3.1/modules/map.js"></script><script src="libs/highcharts-9.3.1/modules/data.js"></script><script src="libs/highcharts-9.3.1/modules/exporting.js"></script><script src="libs/highcharts-9.3.1/modules/offline-exporting.js"></script><script src="libs/highcharts-9.3.1/modules/drilldown.js"></script><script src="libs/highcharts-9.3.1/modules/item-series.js"></script><script src="libs/highcharts-9.3.1/modules/overlapping-datalabels.js"></script><script src="libs/highcharts-9.3.1/modules/annotations.js"></script><script src="libs/highcharts-9.3.1/modules/export-data.js"></script><script src="libs/highcharts-9.3.1/modules/funnel.js"></script><script src="libs/highcharts-9.3.1/modules/heatmap.js"></script><script src="libs/highcharts-9.3.1/modules/treemap.js"></script><script src="libs/highcharts-9.3.1/modules/sankey.js"></script><script src="libs/highcharts-9.3.1/modules/dependency-wheel.js"></script><script src="libs/highcharts-9.3.1/modules/organization.js"></script><script src="libs/highcharts-9.3.1/modules/solid-gauge.js"></script><script src="libs/highcharts-9.3.1/modules/streamgraph.js"></script><script src="libs/highcharts-9.3.1/modules/sunburst.js"></script><script src="libs/highcharts-9.3.1/modules/vector.js"></script><script src="libs/highcharts-9.3.1/modules/wordcloud.js"></script><script src="libs/highcharts-9.3.1/modules/xrange.js"></script><script src="libs/highcharts-9.3.1/modules/tilemap.js"></script><script src="libs/highcharts-9.3.1/modules/venn.js"></script><script src="libs/highcharts-9.3.1/modules/gantt.js"></script><script src="libs/highcharts-9.3.1/modules/timeline.js"></script><script src="libs/highcharts-9.3.1/modules/parallel-coordinates.js"></script><script src="libs/highcharts-9.3.1/modules/bullet.js"></script><script src="libs/highcharts-9.3.1/modules/coloraxis.js"></script><script src="libs/highcharts-9.3.1/modules/dumbbell.js"></script><script src="libs/highcharts-9.3.1/modules/lollipop.js"></script><script src="libs/highcharts-9.3.1/modules/series-label.js"></script><script src="libs/highcharts-9.3.1/plugins/motion.js"></script><script src="libs/highcharts-9.3.1/custom/reset.js"></script><script src="libs/highcharts-9.3.1/modules/boost.js"></script><script src="libs/highchart-binding-0.9.4/highchart.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><style type="text/css">
     
     div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
   </style>
-      <link rel="stylesheet" href="style_bs4.css" />
-  
+<link rel="stylesheet" href="style_bs4.css">
 </head>
-
 <body data-spy="scroll" data-target="#toc">
 
 <div class="container-fluid">
 <div class="row">
-  <header class="col-sm-12 col-lg-3 sidebar sidebar-book">
-    <a class="sr-only sr-only-focusable" href="#content">Skip to main content</a>
+  <header class="col-sm-12 col-lg-3 sidebar sidebar-book"><a class="sr-only sr-only-focusable" href="#content">Skip to main content</a>
 
     <div class="d-flex align-items-start justify-content-between">
       <h1>
-        <a href="index.html" title="">The Epidemiologist R Handbook</a>
+        <a href="index.html" title="">Le Epi R Handbook</a>
       </h1>
       <button class="btn btn-outline-primary d-lg-none ml-2 mt-1" type="button" data-toggle="collapse" data-target="#main-nav" aria-expanded="true" aria-controls="main-nav"><i class="fas fa-bars"></i><span class="sr-only">Show table of contents</span></button>
     </div>
@@ -145,105 +55,179 @@
     <div id="main-nav" class="collapse-lg">
       <form role="search">
         <input id="search" class="form-control" type="search" placeholder="Search" aria-label="Search">
-      </form>
+</form>
 
-      <nav aria-label="Table of contents">
-        <h2>Table of contents</h2>
-        <div id="book-toc"></div>
+      <nav aria-label="Table of contents"><h2>Table of contents</h2>
+        <ul class="book-toc list-unstyled">
+<li><a class="" href="index.html"></a></li>
+<li class="book-part">About this book</li>
+<li><a class="" href="editorial_notes.html"><span class="header-section-number">1</span> Notes techniques et choix éditoriaux</a></li>
+<li><a class="" href="download_book_data.html"><span class="header-section-number">2</span> Télécharger le manuel et les données</a></li>
+<li class="book-part">Basics</li>
+<li><a class="" href="transition_to_r.html"><span class="header-section-number">3</span> Transition vers R</a></li>
+<li><a class="" href="suggested_packages.html"><span class="header-section-number">4</span> Paquets conseillés</a></li>
+<li><a class="" href="r_projects.html"><span class="header-section-number">5</span> Projets R</a></li>
+<li><a class="" href="import_export.html"><span class="header-section-number">6</span> Importer et exporter des données</a></li>
+<li class="book-part">Data Management</li>
+<li><a class="" href="cleaning_data.html"><span class="header-section-number">7</span> Nettoyage de données et fonctions essentielles</a></li>
+<li><a class="" href="working_dates.html"><span class="header-section-number">8</span> Manipuler les dates</a></li>
+<li><a class="" href="character_strings.html"><span class="header-section-number">9</span> Caractères et chaînes de caractères</a></li>
+<li><a class="" href="factors.html"><span class="header-section-number">10</span> Facteurs</a></li>
+<li><a class="" href="pivoting_data.html"><span class="header-section-number">11</span> Restructurer les données</a></li>
+<li><a class="" href="grouping_data.html"><span class="header-section-number">12</span> Travailler sur des données groupées</a></li>
+<li><a class="" href="joining_matching.html"><span class="header-section-number">13</span> Joindre des données</a></li>
+<li><a class="" href="deduplication.html"><span class="header-section-number">14</span> De-duplication</a></li>
+<li><a class="" href="iteration.html"><span class="header-section-number">15</span> Itération, boucles et listes</a></li>
+<li class="book-part">Analysis</li>
+<li><a class="" href="descriptive_tables.html"><span class="header-section-number">16</span> Tableaux descriptifs</a></li>
+<li><a class="" href="stats_test.html"><span class="header-section-number">17</span> Tests statistiques simples</a></li>
+<li><a class="" href="regression.html"><span class="header-section-number">18</span> Régression univariée et multivariable</a></li>
+<li><a class="" href="missing_data.html"><span class="header-section-number">19</span> Données manquantes</a></li>
+<li><a class="" href="standardisation.html"><span class="header-section-number">20</span> Taux standardisés</a></li>
+<li><a class="" href="moving_average.html"><span class="header-section-number">21</span> Moyennes mobiles</a></li>
+<li><a class="" href="time_series.html"><span class="header-section-number">22</span> Série temporelle et détection des épidémies</a></li>
+<li><a class="" href="contact_tracing.html"><span class="header-section-number">23</span> Suivi des contacts</a></li>
+<li><a class="" href="survey_analysis.html"><span class="header-section-number">24</span> Analyse d’enquête</a></li>
+<li><a class="" href="survival_analysis.html"><span class="header-section-number">25</span> Analyse de survie</a></li>
+<li><a class="" href="gis.html"><span class="header-section-number">26</span> GIS basics</a></li>
+<li class="book-part">Data Visualization</li>
+<li><a class="" href="tables_presentation.html"><span class="header-section-number">27</span> Présenter avec des tables</a></li>
+<li><a class="" href="ggplot_basics.html"><span class="header-section-number">28</span> Les bases de ggplot</a></li>
+<li><a class="" href="plot_continuous.html"><span class="header-section-number">29</span> Traçage de données continues</a></li>
+<li><a class="" href="tracer-des-donn%C3%A9es-cat%C3%A9gorielles.html"><span class="header-section-number">30</span> Tracer des données catégorielles</a></li>
+<li><a class="" href="ggplot_tips.html"><span class="header-section-number">31</span> Trucs et Astuces avec ggplot</a></li>
+<li><a class="" href="epicurves.html"><span class="header-section-number">32</span> Courbes épidémiques</a></li>
+<li><a class="" href="age_pyramid.html"><span class="header-section-number">33</span> Pyramides démographiques et échelles de Likert</a></li>
+<li><a class="" href="heatmaps.html"><span class="header-section-number">34</span> Graphiques thermiques</a></li>
+<li><a class="" href="diagrams.html"><span class="header-section-number">35</span> Diagrammes et schémas</a></li>
+<li><a class="" href="combination_analysis.html"><span class="header-section-number">36</span> Analyse des combinaisons</a></li>
+<li><a class="" href="transmission_chains.html"><span class="header-section-number">37</span> Chaînes de transmission</a></li>
+<li><a class="" href="phylogenetic_trees.html"><span class="header-section-number">38</span> Les arbres phylogénétiques</a></li>
+<li><a class="" href="interactive_plots.html"><span class="header-section-number">39</span> Graphiques interactifs</a></li>
+<li class="book-part">Reports and dashboards</li>
+<li><a class="" href="rmarkdown.html"><span class="header-section-number">40</span> Production de rapports avec R Markdown</a></li>
+<li><a class="" href="reportfactory.html"><span class="header-section-number">41</span> Organisation des rapports de routine</a></li>
+<li><a class="" href="dashboards.html"><span class="header-section-number">42</span> Tableaux de bord avec R Markdown</a></li>
+<li><a class="" href="shiny.html"><span class="header-section-number">43</span> Tableaux de bord avec Shiny</a></li>
+<li class="book-part">Miscellaneous</li>
+<li><a class="" href="writing_functions.html"><span class="header-section-number">44</span> Fonctions d’écriture</a></li>
+<li><a class="" href="directories.html"><span class="header-section-number">45</span> Interactions avec les répertoires</a></li>
+<li><a class="" href="collaboration.html"><span class="header-section-number">46</span> Contrôle de version et collaboration avec Git et Github</a></li>
+<li><a class="" href="errors.html"><span class="header-section-number">47</span> Erreurs fréquentes</a></li>
+<li><a class="" href="help.html"><span class="header-section-number">48</span> Obtenir de l’aide</a></li>
+<li><a class="" href="relational-databases.html"><span class="header-section-number">49</span> Relational databases</a></li>
+<li><a class="active" href="network_drives.html"><span class="header-section-number">50</span> R sur les lecteurs réseau</a></li>
+<li><a class="" href="data_table.html"><span class="header-section-number">51</span> Tableau de données</a></li>
+<li><a class="" href="advanced-rstudio.html"><span class="header-section-number">52</span> Advanced RStudio</a></li>
+</ul>
 
         <div class="book-extra">
-          <p><a id="book-repo" href="#">View book source <i class="fab fa-github"></i></a></li></p>
+          
         </div>
       </nav>
-    </div>
-  </header>
-
-  <main class="col-sm-12 col-md-9 col-lg-7" id="content">
-<div id="network_drives" class="section level1" number="51">
-<h1><span class="header-section-number">51</span> R sur les lecteurs réseau</h1>
+</div>
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="network_drives" class="section level1" number="50">
+<h1>
+<span class="header-section-number">50</span> R sur les lecteurs réseau<a class="anchor" aria-label="anchor" href="#network_drives"><i class="fas fa-link"></i></a>
+</h1>
 <!-- ======================================================= -->
-<div id="aperçu-6" class="section level2" number="51.1">
-<h2><span class="header-section-number">51.1</span> Aperçu</h2>
+<div id="aperçu-6" class="section level2" number="50.1">
+<h2>
+<span class="header-section-number">50.1</span> Aperçu<a class="anchor" aria-label="anchor" href="#aper%C3%A7u-6"><i class="fas fa-link"></i></a>
+</h2>
 <p>L’utilisation de R sur des lecteurs partagés du réseau ou de “l’entreprise” peut présenter des défis supplémentaires. Cette page contient des approches, des erreurs courantes et des suggestions de dépannage tirées de notre expérience de travail sur ces questions. Cela inclut des conseils pour les situations particulièrement délicates impliquant R Markdown.</p>
 <p><strong>Utilisation de R sur des lecteurs réseau : Principes généraux</strong></p>
 <ol style="list-style-type: decimal">
-<li>Vous devez obtenir un accès administrateur pour votre ordinateur. Configurez RStudio spécifiquement pour qu’il s’exécute en tant qu’administrateur.<br />
+<li>Vous devez obtenir un accès administrateur pour votre ordinateur. Configurez RStudio spécifiquement pour qu’il s’exécute en tant qu’administrateur.<br>
 </li>
-<li>Enregistrez les paquets dans une bibliothèque située sur un lecteur portant une lettre (par exemple, “C :”) lorsque cela est possible. Utilisez le moins possible une bibliothèque de paquets dont le chemin commence par “\".<br />
+<li>Enregistrez les paquets dans une bibliothèque située sur un lecteur portant une lettre (par exemple, “C :”) lorsque cela est possible. Utilisez le moins possible une bibliothèque de paquets dont le chemin commence par “\".<br>
 </li>
 <li>Le paquet <strong>rmarkdown</strong> ne doit <strong>pas</strong> être dans une bibliothèque de paquets “\", car alors il ne peut pas se connecter à TinyTex ou Pandoc.</li>
 </ol>
 </div>
-<div id="rstudio-en-tant-quadministrateur" class="section level2" number="51.2">
-<h2><span class="header-section-number">51.2</span> RStudio en tant qu’administrateur</h2>
+<div id="rstudio-en-tant-quadministrateur" class="section level2" number="50.2">
+<h2>
+<span class="header-section-number">50.2</span> RStudio en tant qu’administrateur<a class="anchor" aria-label="anchor" href="#rstudio-en-tant-quadministrateur"><i class="fas fa-link"></i></a>
+</h2>
 <p>Lorsque vous cliquez sur l’icône RStudio pour ouvrir RStudio, faites-le avec un clic droit. Selon votre machine, vous verrez peut-être une option “Exécuter en tant qu’administrateur”. Sinon, vous verrez peut-être une option permettant de sélectionner Propriétés (une fenêtre devrait alors apparaître avec l’option “Compatibilité”, et vous pourrez cocher la case “Exécuter en tant qu’administrateur”).</p>
-<div id="commandes-utiles" class="section level3" number="51.2.1">
-<h3><span class="header-section-number">51.2.1</span> Commandes utiles</h3>
+<div id="commandes-utiles" class="section level3" number="50.2.1">
+<h3>
+<span class="header-section-number">50.2.1</span> Commandes utiles<a class="anchor" aria-label="anchor" href="#commandes-utiles"><i class="fas fa-link"></i></a>
+</h3>
 <p>Vous trouverez ci-dessous quelques commandes utiles lorsque vous essayez de résoudre des problèmes en utilisant R sur des lecteurs réseau.</p>
 <p>Vous pouvez renvoyer le(s) chemin(s) des bibliothèques de paquets que R utilise. Ils seront listés dans l’ordre que R utilise pour installer/charger/rechercher les paquets. Ainsi, si vous voulez que R utilise une autre bibliothèque par défaut, vous pouvez changer l’ordre de ces chemins (voir ci-dessous).</p>
-<div class="sourceCode" id="cb2006"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2006-1"><a href="network_drives.html#cb2006-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Recherche de bibliothèques</span></span>
-<span id="cb2006-2"><a href="network_drives.html#cb2006-2" aria-hidden="true" tabindex="-1"></a><span class="fu">.libPaths</span>() <span class="co"># Vos chemins de bibliothèques, listés dans l&#39;ordre d&#39;installation/de recherche de R. </span></span>
-<span id="cb2006-3"><a href="network_drives.html#cb2006-3" aria-hidden="true" tabindex="-1"></a>                              <span class="co"># Note : toutes les bibliothèques seront listées, mais pour en installer certaines (par exemple C :), vous devrez peut-être exécuter RStock. </span></span>
-<span id="cb2006-4"><a href="network_drives.html#cb2006-4" aria-hidden="true" tabindex="-1"></a>                              <span class="co"># devrez peut-être exécuter RStudio en tant qu&#39;administrateur (cela n&#39;apparaîtra pas dans le menu déroulant </span></span>
-<span id="cb2006-5"><a href="network_drives.html#cb2006-5" aria-hidden="true" tabindex="-1"></a>                              <span class="co"># menu déroulant des bibliothèques d&#39;installation des paquets) </span></span></code></pre></div>
-<p>Vous pouvez vouloir changer l’ordre des bibliothèques de paquets utilisées par R. Par exemple, si R récupère un emplacement de bibliothèque qui commence par “\" et un autre qui commence par une lettre, par exemple”D :“. Vous pouvez ajuster l’ordre de <code>.libPaths()</code> avec le code suivant.</p>
-<div class="sourceCode" id="cb2007"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2007-1"><a href="network_drives.html#cb2007-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Changer l&#39;ordre des bibliothèques</span></span>
-<span id="cb2007-2"><a href="network_drives.html#cb2007-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Ceci peut affecter la priorité de R à trouver un paquet. Par exemple, vous pouvez vouloir que votre bibliothèque C : soit listée en premier.</span></span>
-<span id="cb2007-3"><a href="network_drives.html#cb2007-3" aria-hidden="true" tabindex="-1"></a>myPaths <span class="ot">&lt;-</span> <span class="fu">.libPaths</span>() <span class="co"># obtenir les chemins d&#39;accès</span></span>
-<span id="cb2007-4"><a href="network_drives.html#cb2007-4" aria-hidden="true" tabindex="-1"></a>myPaths <span class="ot">&lt;-</span> <span class="fu">c</span>(myPaths[<span class="dv">2</span>], myPaths[<span class="dv">1</span>]) <span class="co"># les commuter</span></span>
-<span id="cb2007-5"><a href="network_drives.html#cb2007-5" aria-hidden="true" tabindex="-1"></a><span class="fu">.libPaths</span>(myPaths) <span class="co"># les réaffecter</span></span></code></pre></div>
+<div class="sourceCode" id="cb1874"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># Recherche de bibliothèques</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/libPaths.html">.libPaths</a></span><span class="op">(</span><span class="op">)</span> <span class="co"># Vos chemins de bibliothèques, listés dans l'ordre d'installation/de recherche de R. </span></span>
+<span>                              <span class="co"># Note : toutes les bibliothèques seront listées, mais pour en installer certaines (par exemple C :), vous devrez peut-être exécuter RStock. </span></span>
+<span>                              <span class="co"># devrez peut-être exécuter RStudio en tant qu'administrateur (cela n'apparaîtra pas dans le menu déroulant </span></span>
+<span>                              <span class="co"># menu déroulant des bibliothèques d'installation des paquets) </span></span></code></pre></div>
+<p>Vous pouvez vouloir changer l’ordre des bibliothèques de paquets utilisées par R. Par exemple, si R récupère un emplacement de bibliothèque qui commence par “\" et un autre qui commence par une lettre, par exemple”D :“. Vous pouvez ajuster l’ordre de <code><a href="https://rdrr.io/r/base/libPaths.html">.libPaths()</a></code> avec le code suivant.</p>
+<div class="sourceCode" id="cb1875"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># Changer l'ordre des bibliothèques</span></span>
+<span><span class="co"># Ceci peut affecter la priorité de R à trouver un paquet. Par exemple, vous pouvez vouloir que votre bibliothèque C : soit listée en premier.</span></span>
+<span><span class="va">myPaths</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/libPaths.html">.libPaths</a></span><span class="op">(</span><span class="op">)</span> <span class="co"># obtenir les chemins d'accès</span></span>
+<span><span class="va">myPaths</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="va">myPaths</span><span class="op">[</span><span class="fl">2</span><span class="op">]</span>, <span class="va">myPaths</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span><span class="op">)</span> <span class="co"># les commuter</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/libPaths.html">.libPaths</a></span><span class="op">(</span><span class="va">myPaths</span><span class="op">)</span> <span class="co"># les réaffecter</span></span></code></pre></div>
 <p>Si vous avez des difficultés à connecter R Markdown à Pandoc, commencez par ce code pour savoir où RStudio pense que votre installation Pandoc se trouve.</p>
-<div class="sourceCode" id="cb2008"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2008-1"><a href="network_drives.html#cb2008-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Trouver Pandoc</span></span>
-<span id="cb2008-2"><a href="network_drives.html#cb2008-2" aria-hidden="true" tabindex="-1"></a><span class="fu">Sys.getenv</span>(<span class="st">&quot;RSTUDIO_PANDOC&quot;</span>) <span class="co"># Trouver où RStudio pense que votre installation Pandoc se trouve</span></span></code></pre></div>
+<div class="sourceCode" id="cb1876"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># Trouver Pandoc</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/Sys.getenv.html">Sys.getenv</a></span><span class="op">(</span><span class="st">"RSTUDIO_PANDOC"</span><span class="op">)</span> <span class="co"># Trouver où RStudio pense que votre installation Pandoc se trouve</span></span></code></pre></div>
 <p>Si vous voulez voir à partir de quelle bibliothèque un paquet est chargé, essayez le code suivant :</p>
-<div class="sourceCode" id="cb2009"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2009-1"><a href="network_drives.html#cb2009-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Trouver un paquetage</span></span>
-<span id="cb2009-2"><a href="network_drives.html#cb2009-2" aria-hidden="true" tabindex="-1"></a><span class="co"># donne le premier emplacement du paquet (notez l&#39;ordre de vos bibliothèques)</span></span>
-<span id="cb2009-3"><a href="network_drives.html#cb2009-3" aria-hidden="true" tabindex="-1"></a><span class="fu">find.package</span>(<span class="st">&quot;rmarkdown&quot;</span>, <span class="at">lib.loc =</span> <span class="cn">NULL</span>, <span class="at">quiet =</span> <span class="cn">FALSE</span>, <span class="at">verbose =</span> <span class="fu">getOption</span>(<span class="st">&quot;verbose&quot;</span>)) </span></code></pre></div>
+<div class="sourceCode" id="cb1877"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># Trouver un paquetage</span></span>
+<span><span class="co"># donne le premier emplacement du paquet (notez l'ordre de vos bibliothèques)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/find.package.html">find.package</a></span><span class="op">(</span><span class="st">"rmarkdown"</span>, lib.loc <span class="op">=</span> <span class="cn">NULL</span>, quiet <span class="op">=</span> <span class="cn">FALSE</span>, verbose <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/options.html">getOption</a></span><span class="op">(</span><span class="st">"verbose"</span><span class="op">)</span><span class="op">)</span> </span></code></pre></div>
 <!-- ======================================================= -->
 </div>
 </div>
-<div id="dépannage-des-erreurs-courantes" class="section level2" number="51.3">
-<h2><span class="header-section-number">51.3</span> Dépannage des erreurs courantes</h2>
-<p><strong>“Failed to compile…tex in rmarkdown”</strong><br />
-* Vérifiez l’installation de TinyTex, ou installez TinyTex à l’emplacement C :. Voir la page <a href="rbasics.html#rbasics">R - les bases</a>pour savoir comment installer TinyTex.</p>
-<div class="sourceCode" id="cb2010"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2010-1"><a href="network_drives.html#cb2010-1" aria-hidden="true" tabindex="-1"></a><span class="co"># vérifiez/installez tinytex, à l&#39;emplacement C :.</span></span>
-<span id="cb2010-2"><a href="network_drives.html#cb2010-2" aria-hidden="true" tabindex="-1"></a>tinytex<span class="sc">::</span><span class="fu">install_tinytex</span>()</span>
-<span id="cb2010-3"><a href="network_drives.html#cb2010-3" aria-hidden="true" tabindex="-1"></a>tinytex<span class="sc">:::</span><span class="fu">is_tinytex</span>() <span class="co"># devrait retourner VRAI (notez les trois deux points)</span></span></code></pre></div>
+<div id="dépannage-des-erreurs-courantes" class="section level2" number="50.3">
+<h2>
+<span class="header-section-number">50.3</span> Dépannage des erreurs courantes<a class="anchor" aria-label="anchor" href="#d%C3%A9pannage-des-erreurs-courantes"><i class="fas fa-link"></i></a>
+</h2>
+<p><strong>“Failed to compile…tex in rmarkdown”</strong><br>
+* Vérifiez l’installation de TinyTex, ou installez TinyTex à l’emplacement C :. Voir la page <a href="#rbasics">R - les bases</a>pour savoir comment installer TinyTex.</p>
+<div class="sourceCode" id="cb1878"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># vérifiez/installez tinytex, à l'emplacement C :.</span></span>
+<span><span class="fu">tinytex</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/tinytex/man/install_tinytex.html">install_tinytex</a></span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="fu">tinytex</span><span class="fu">:::</span><span class="fu"><a href="https://rdrr.io/pkg/tinytex/man/is_tinytex.html">is_tinytex</a></span><span class="op">(</span><span class="op">)</span> <span class="co"># devrait retourner VRAI (notez les trois deux points)</span></span></code></pre></div>
 <p><strong>Les routines Internet ne peuvent pas être chargées</strong>.</p>
 <p>Par exemple, <code>Erreur dans tools::startDynamicHelp() : les routines internet ne peuvent pas être chargées</code>.</p>
 <ul>
 <li>Essayez de sélectionner la version 32 bits de RStudio via Tools/Global Options.
 <ul>
-<li>Note : si la version 32 bits n’apparaît pas dans le menu, assurez-vous que vous n’utilisez pas RStudio v1.2.<br />
+<li>Note : si la version 32 bits n’apparaît pas dans le menu, assurez-vous que vous n’utilisez pas RStudio v1.2.<br>
 </li>
-</ul></li>
+</ul>
+</li>
 <li>Alternativement, essayez de désinstaller R et de le réinstaller avec une version différente (32 au lieu de 64).</li>
 </ul>
 <p><strong>C : la bibliothèque n’apparaît pas comme une option lorsque j’essaie d’installer les paquets manuellement</strong>.</p>
 <ul>
-<li>Lancez RStudio en tant qu’administrateur, cette option apparaîtra alors.<br />
+<li>Lancez RStudio en tant qu’administrateur, cette option apparaîtra alors.<br>
 </li>
 <li>Pour configurer RStudio pour qu’il soit toujours exécuté en tant qu’administrateur (avantageux lorsque vous utilisez un projet R où vous ne cliquez pas sur l’icône RStudio pour l’ouvrir)… cliquez avec le bouton droit de la souris sur l’icône Rstudio.</li>
 </ul>
 <p>L’image ci-dessous montre comment vous pouvez sélectionner manuellement la bibliothèque dans laquelle installer un paquet. Cette fenêtre apparaît lorsque vous ouvrez le volet Packages RStudio et cliquez sur “Installer”.</p>
-<p><img src="images/network_install.png" width="148" /></p>
+<div class="inline-figure"><img src="images/network_install.png" width="148"></div>
 <p><strong>Pandoc 1 erreur</strong></p>
 <p>Si vous obtenez “pandoc error 1” lorsque vous tricotez des scripts R Markdowns sur des lecteurs réseau :</p>
 <ul>
-<li>Sur plusieurs emplacements de bibliothèque, faites en sorte que celui qui a un lecteur avec une lettre soit listé en premier (voir les codes ci-dessus).<br />
+<li>Sur plusieurs emplacements de bibliothèque, faites en sorte que celui qui a un lecteur avec une lettre soit listé en premier (voir les codes ci-dessus).<br>
 </li>
-<li>La solution ci-dessus a fonctionné lors du tricotage sur le lecteur local, mais lors d’une connexion Internet en réseau.<br />
+<li>La solution ci-dessus a fonctionné lors du tricotage sur le lecteur local, mais lors d’une connexion Internet en réseau.<br>
 </li>
-<li>Voir plus de conseils ici : <a href="https://ciser.cornell.edu/rmarkdown-knit-to-html-word-pdf/" class="uri">https://ciser.cornell.edu/rmarkdown-knit-to-html-word-pdf/</a></li>
+<li>Voir plus de conseils ici : <a href="https://ciser.cornell.edu/rmarkdown-knit-to-html-word-pdf/" class="uri">https://ciser.cornell.edu/rmarkdown-knit-to-html-word-pdf/</a>
+</li>
 </ul>
 <p><strong>Erreur Pandoc 83</strong></p>
 <p>L’erreur ressemblera à quelque chose comme ceci : <code>Impossible de trouver le fichier...rmarkdown...lua...</code>. Cela signifie qu’il n’a pas pu trouver ce fichier.</p>
 <p>Voir <a href="https://stackoverflow.com/questions/58830927/rmarkdown-unable-to-locate-lua-filter-when-knitting-to-word" class="uri">https://stackoverflow.com/questions/58830927/rmarkdown-unable-to-locate-lua-filter-when-knitting-to-word</a></p>
 <p>Possibilités :</p>
 <ol style="list-style-type: decimal">
-<li>Le paquet Rmarkdown n’est pas installé<br />
+<li>Le paquet Rmarkdown n’est pas installé<br>
 </li>
-<li>Le paquet Rmarkdown n’est pas trouvable<br />
+<li>Le paquet Rmarkdown n’est pas trouvable<br>
 </li>
 <li>Un problème de droits d’administration.</li>
 </ol>
@@ -251,14 +235,14 @@
 <p><strong>Erreur Pandoc 61</strong></p>
 <p>Par exemple : <code>Erreur : la conversion du document pandoc a échoué avec l'erreur 61</code> ou <code>Impossible d'aller chercher...</code>.</p>
 <ul>
-<li>Essayez d’exécuter RStudio en tant qu’administrateur (cliquez avec le bouton droit de la souris sur l’icône, sélectionnez exécuter en tant qu’administrateur, voir les instructions ci-dessus).<br />
+<li>Essayez d’exécuter RStudio en tant qu’administrateur (cliquez avec le bouton droit de la souris sur l’icône, sélectionnez exécuter en tant qu’administrateur, voir les instructions ci-dessus).<br>
 </li>
 <li>Voir également si le paquet spécifique qui n’a pas pu être atteint peut être déplacé vers la bibliothèque C :.</li>
 </ul>
 <p><strong>Erreur LaTex (voir ci-dessous)</strong>.</p>
 <p>Une erreur du type : <code>! Paquet pdftex.def Erreur : File 'cict_qm2_2020-06-29_files/figure-latex/unnamed-chunk-5-1.png' non trouvé : utilisation de la fonction brouillon.</code> ou <code>Erreur : LaTeX n'a pas réussi à compiler file_name.tex.</code>.</p>
 <ul>
-<li>Voir <a href="https://yihui.org/tinytex/r/#debugging" class="uri">https://yihui.org/tinytex/r/#debugging</a> pour des conseils de débogage.<br />
+<li>Voir <a href="https://yihui.org/tinytex/r/#debugging" class="uri">https://yihui.org/tinytex/r/#debugging</a> pour des conseils de débogage.<br>
 </li>
 <li>Voir file_name.log pour plus d’informations.</li>
 </ul>
@@ -269,11 +253,11 @@
 <p>Un conseil emprunté à cette <a href="https://stackoverflow.com/questions/48161177/r-markdown-openbinaryfile-does-not-exist-no-such-file-or-directory/55616529?noredirect=1#comment97966859_55616529">discussion du forum</a> :</p>
 <p>Comment ouvrir un fichier “via un lecteur réseau mappé” ?</p>
 <ul>
-<li>Tout d’abord, vous devez connaître l’emplacement réseau auquel vous essayez d’accéder.<br />
+<li>Tout d’abord, vous devez connaître l’emplacement réseau auquel vous essayez d’accéder.<br>
 </li>
-<li>Ensuite, dans le gestionnaire de fichiers de Windows, vous devez cliquer avec le bouton droit de la souris sur “Ce PC” dans le volet de droite, et sélectionner “Mapper un lecteur réseau”.<br />
+<li>Ensuite, dans le gestionnaire de fichiers de Windows, vous devez cliquer avec le bouton droit de la souris sur “Ce PC” dans le volet de droite, et sélectionner “Mapper un lecteur réseau”.<br>
 </li>
-<li>Passez par la boîte de dialogue pour définir l’emplacement réseau de tout à l’heure comme un lecteur de lettres.<br />
+<li>Passez par la boîte de dialogue pour définir l’emplacement réseau de tout à l’heure comme un lecteur de lettres.<br>
 </li>
 <li>Maintenant, vous avez deux façons d’accéder au fichier que vous ouvrez. L’utilisation du chemin d’accès par lettre du lecteur devrait fonctionner.</li>
 </ul>
@@ -281,41 +265,45 @@
 <p>Si vous obtenez une erreur qui inclut la mention d’un répertoire “verrouillé”, par exemple : `Erreur dans install.packages : ERROR : échec du verrouillage du répertoire…``</p>
 <p>Regardez dans votre bibliothèque de paquets et vous verrez un répertoire dont le nom commence par “00LOCK”. Essayez les astuces suivantes :</p>
 <ul>
-<li>Supprimez manuellement le répertoire du dossier “00LOCK” de votre bibliothèque de paquets. Essayez d’installer à nouveau le paquetage.<br />
+<li>Supprimez manuellement le répertoire du dossier “00LOCK” de votre bibliothèque de paquets. Essayez d’installer à nouveau le paquetage.<br>
 </li>
-<li>Vous pouvez aussi essayer la commande <code>pacman::p_unlock()</code> (vous pouvez aussi mettre cette commande dans le Rprofile pour qu’elle s’exécute à chaque fois que le projet s’ouvre). Ensuite, essayez à nouveau d’installer le paquet. Cela peut prendre plusieurs essais.<br />
+<li>Vous pouvez aussi essayer la commande <code><a href="https://rdrr.io/pkg/pacman/man/p_unlock.html">pacman::p_unlock()</a></code> (vous pouvez aussi mettre cette commande dans le Rprofile pour qu’elle s’exécute à chaque fois que le projet s’ouvre). Ensuite, essayez à nouveau d’installer le paquet. Cela peut prendre plusieurs essais.<br>
 </li>
-<li>Essayez d’exécuter RStudio en mode Administrateur, et essayez d’installer les paquets un par un.<br />
+<li>Essayez d’exécuter RStudio en mode Administrateur, et essayez d’installer les paquets un par un.<br>
 </li>
 <li>Si tout le reste échoue, installez le paquet dans une autre bibliothèque ou un autre dossier (par exemple Temp), puis copiez manuellement le dossier du paquet dans la bibliothèque souhaitée.</li>
 </ul>
-
 </div>
 </div>
-  </main>
-
-  <div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
-    <nav id="toc" data-toggle="toc" aria-label="On this page">
-      <h2>On this page</h2>
-      <div id="book-on-this-page"></div>
+  <div class="chapter-nav">
+<div class="prev"><a href="relational-databases.html"><span class="header-section-number">49</span> Relational databases</a></div>
+<div class="next"><a href="data_table.html"><span class="header-section-number">51</span> Tableau de données</a></div>
+</div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
+    <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
+      <ul class="nav navbar-nav">
+<li><a class="nav-link" href="#network_drives"><span class="header-section-number">50</span> R sur les lecteurs réseau</a></li>
+<li><a class="nav-link" href="#aper%C3%A7u-6"><span class="header-section-number">50.1</span> Aperçu</a></li>
+<li>
+<a class="nav-link" href="#rstudio-en-tant-quadministrateur"><span class="header-section-number">50.2</span> RStudio en tant qu’administrateur</a><ul class="nav navbar-nav"><li><a class="nav-link" href="#commandes-utiles"><span class="header-section-number">50.2.1</span> Commandes utiles</a></li></ul>
+</li>
+<li><a class="nav-link" href="#d%C3%A9pannage-des-erreurs-courantes"><span class="header-section-number">50.3</span> Dépannage des erreurs courantes</a></li>
+</ul>
 
       <div class="book-extra">
         <ul class="list-unstyled">
-          <li><a id="book-source" href="#">View source <i class="fab fa-github"></i></a></li>
-          <li><a id="book-edit" href="#">Edit this page <i class="fab fa-github"></i></a></li>
+          
         </ul>
-      </div>
+</div>
     </nav>
-  </div>
+</div>
 
 </div>
 </div> <!-- .container -->
 
-<footer class="bg-primary text-light mt-5">
-  <div class="container"><div class="row">
+<footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>The Epidemiologist R Handbook</strong>" was written by the handbook team. It was last built on 2023-05-17.</p>
+    <p>"<strong>Le Epi R Handbook</strong>" was written by the handbook team. It was last built on 2023-05-21.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">
@@ -323,11 +311,7 @@
   </div>
 
 </div></div>
-</footer>
-
-
-<!-- dynamically load mathjax for compatibility with self-contained -->
-<script>
+</footer><!-- dynamically load mathjax for compatibility with self-contained --><script>
   (function () {
     var script = document.createElement("script");
     script.type = "text/javascript";
@@ -339,8 +323,7 @@
     script.src = src;
     document.getElementsByTagName("head")[0].appendChild(script);
   })();
-</script>
-<script type="text/x-mathjax-config">const popovers = document.querySelectorAll('a.footnote-ref[data-toggle="popover"]');
+</script><script type="text/x-mathjax-config">const popovers = document.querySelectorAll('a.footnote-ref[data-toggle="popover"]');
 for (let popover of popovers) {
   const div = document.createElement('div');
   div.setAttribute('style', 'position: absolute; top: 0, left:0; width:0, height:0, overflow: hidden; visibility: hidden;');
@@ -358,5 +341,4 @@ for (let popover of popovers) {
 }
 </script>
 </body>
-
 </html>

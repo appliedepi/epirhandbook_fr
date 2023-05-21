@@ -56,7 +56,7 @@ knitr::include_graphics(here::here("images", "Epi R Handbook banner beige 1500x5
 
 **Objectif:** Servir de manuel de référence rapide du code R (en ligne et **[Télécharger le manuel et les données](#download_book_data)**) avec des exemples centrés sur la tâche qui traitent des problèmes épidémiologiques courants.  
 
-**Essayez nos** [tutoriels interactifs gratuits](https://www.appliedepi.org/tutorial/) ou notre **[cours d'introduction](https://www.appliedepi.org/live/)** synchrone et virtuel utilisé par les CDC américains, l'OMS et plus de 130 autres agences de santé et programmes de formation à l'épidémiologie sur le terrain dans le monde entier.  
+**Essayez nos [tutoriels interactifs gratuits](https://www.appliedepi.org/tutorial/)** ou notre **[cours d'introduction](https://www.appliedepi.org/live/)** synchrone et virtuel utilisé par les CDC américains, l'OMS et plus de 130 autres agences de santé et programmes de formation à l'épidémiologie sur le terrain dans le monde entier.  
 
 **Langues:** [Anglais (English)](https://epirhandbook.com/), [Espagnol (Español)](https://epirhandbook.com/es/), [Vietnamien (Tiếng Việt)](https://epirhandbook.com/vn/), [Japonais (日本)](https://epirhandbook.com/jp/), [Turc (Türkçe)](https://epirhandbook.com/tr/), [Francais](https://epirhandbook.com/fr/), [Portugais (Português)](https://epirhandbook.com/pt/)  
 
@@ -86,7 +86,7 @@ a column separator -->
 **[Applied Epi](http://www.appliedepi.org)** est une organisation à but non lucratif et un mouvement d'épis de première ligne du monde entier. Nous écrivons pendant notre temps libre pour offrir cette ressource à la communauté. Vos encouragements et vos commentaires sont les bienvenus :  
 
 * Visitez notre **[site web](http://www.appliedepi.org)** et **[rejoignez notre liste de contacts](https://forms.gle/9awNd8syypTSYUsn7)**.  
-* **contact@appliedepi.org**, tweeter **[\@appliedepi](https://twitter.com/appliedepi)**, ou **[LinkedIn](www.linkedin.com/company/appliedepi)**  
+* **contact@appliedepi.org**, tweeter **[\@appliedepi](https://twitter.com/appliedepi)**, ou **[LinkedIn](https://linkedin.com/company/appliedepi)**  
 * Soumettre des problèmes à notre **[dépôt Github](https://github.com/appliedepi/epiRhandbook_eng)**  
 
 **Nous proposons des formations R en direct** dispensées par des formateurs ayant des décennies d'expérience en épidémiologie appliquée - envoyez-nous un courriel pour en discuter.
@@ -105,7 +105,7 @@ a column separator -->
 
 * Parcourez les pages de la table des matières ou utilisez la boîte de recherche.
 * Cliquez sur les icônes "copier" pour copier le code.  
-* Vous pouvez suivre avec [les données d'exemple de le chapitre](#download_book_data)**.  
+* Vous pouvez suivre avec [les données d'exemple de le chapitre](#download_book_data).  
 
 **Version hors ligne**  
 
@@ -176,7 +176,7 @@ Nous nous sommes inspiré de multiples tutoriels, livres et vignettes développ�
 <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /></a><br />Ce document est mis à disposition selon les termes de lalicence <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.fr">Creative Commons Attribution - Pas d’Utilisation Commerciale - Partage dans les Mêmes Conditions 4.0 International (CC BY-NC-SA 4.0) </a>.
 
 
-N'hésitez pas à utiliser les contenus de ce manuel dans vos cours et formations en épidémiologie, ou à le conseiller à vos étudiants. Si vous avez des questions sur l'utilisation que vous souhaitez en faire, envoyez un courriel à **epiRhandbook@gmail.com**.  
+N'hésitez pas à utiliser les contenus de ce manuel dans vos cours et formations en épidémiologie, ou à le conseiller à vos étudiants. Si vous avez des questions sur l'utilisation que vous souhaitez en faire, envoyez un courriel à **contact@appliedepi.org**.  
 
 ### Citation {.unnumbered}
 

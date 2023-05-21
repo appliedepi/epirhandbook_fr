@@ -56,7 +56,7 @@ knitr::include_graphics(here::here("images", "Epi R Handbook banner beige 1500x5
 
 **Objectif:** Servir de manuel de référence rapide du code R (en ligne et **[Télécharger le manuel et les données](#download_book_data)**) avec des exemples centrés sur la tâche qui traitent des problèmes épidémiologiques courants.  
 
-**Essayez nos** [tutoriels interactifs gratuits](https://www.appliedepi.org/tutorial/) ou notre **[cours d'introduction](https://www.appliedepi.org/live/)** synchrone et virtuel utilisé par les CDC américains, l'OMS et plus de 130 autres agences de santé et programmes de formation à l'épidémiologie sur le terrain dans le monde entier.  
+**Essayez nos [tutoriels interactifs gratuits](https://www.appliedepi.org/tutorial/)** ou notre **[cours d'introduction](https://www.appliedepi.org/live/)** synchrone et virtuel utilisé par les CDC américains, l'OMS et plus de 130 autres agences de santé et programmes de formation à l'épidémiologie sur le terrain dans le monde entier.  
 
 **Langues:** [Anglais (English)](https://epirhandbook.com/), [Espagnol (Español)](https://epirhandbook.com/es/), [Vietnamien (Tiếng Việt)](https://epirhandbook.com/vn/), [Japonais (日本)](https://epirhandbook.com/jp/), [Turc (Türkçe)](https://epirhandbook.com/tr/), [Francais](https://epirhandbook.com/fr/), [Portugais (Português)](https://epirhandbook.com/pt/)  
 
@@ -86,7 +86,7 @@ a column separator -->
 **[Applied Epi](http://www.appliedepi.org)** est une organisation à but non lucratif et un mouvement d'épis de première ligne du monde entier. Nous écrivons pendant notre temps libre pour offrir cette ressource à la communauté. Vos encouragements et vos commentaires sont les bienvenus :  
 
 * Visitez notre **[site web](http://www.appliedepi.org)** et **[rejoignez notre liste de contacts](https://forms.gle/9awNd8syypTSYUsn7)**.  
-* **contact@appliedepi.org**, tweeter **[\@appliedepi](https://twitter.com/appliedepi)**, ou **[LinkedIn](www.linkedin.com/company/appliedepi)**  
+* **contact@appliedepi.org**, tweeter **[\@appliedepi](https://twitter.com/appliedepi)**, ou **[LinkedIn](https://linkedin.com/company/appliedepi)**  
 * Soumettre des problèmes à notre **[dépôt Github](https://github.com/appliedepi/epiRhandbook_eng)**  
 
 **Nous proposons des formations R en direct** dispensées par des formateurs ayant des décennies d'expérience en épidémiologie appliquée - envoyez-nous un courriel pour en discuter.
@@ -105,7 +105,7 @@ a column separator -->
 
 * Parcourez les pages de la table des matières ou utilisez la boîte de recherche.
 * Cliquez sur les icônes "copier" pour copier le code.  
-* Vous pouvez suivre avec [les données d'exemple de le chapitre](#download_book_data)**.  
+* Vous pouvez suivre avec [les données d'exemple de le chapitre](#download_book_data).  
 
 **Version hors ligne**  
 
@@ -176,7 +176,7 @@ Nous nous sommes inspiré de multiples tutoriels, livres et vignettes développ�
 <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /></a><br />Ce document est mis à disposition selon les termes de lalicence <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.fr">Creative Commons Attribution - Pas d’Utilisation Commerciale - Partage dans les Mêmes Conditions 4.0 International (CC BY-NC-SA 4.0) </a>.
 
 
-N'hésitez pas à utiliser les contenus de ce manuel dans vos cours et formations en épidémiologie, ou à le conseiller à vos étudiants. Si vous avez des questions sur l'utilisation que vous souhaitez en faire, envoyez un courriel à **epiRhandbook@gmail.com**.  
+N'hésitez pas à utiliser les contenus de ce manuel dans vos cours et formations en épidémiologie, ou à le conseiller à vos étudiants. Si vous avez des questions sur l'utilisation que vous souhaitez en faire, envoyez un courriel à **contact@appliedepi.org**.  
 
 ### Citation {.unnumbered}
 
@@ -232,667 +232,359 @@ options(scipen=1, digits=7)
 
 <!--chapter:end:index.Rmd-->
 
-# Les arbres phylogénétiques {#phylogenetic_trees}
-
-<!-- ======================================================= -->
-
-## Aperçu
-
-**Les arbres phylogénétiques** sont utilisés pour visualiser et décrire la parenté et l'évolution des organismes à partir de la séquence de leur code génétique.
-
-On peut les construire à partir de séquences génétiques en utilisant des méthodes basées sur la distance (comme la méthode neighbor-joining) ou les méthodes probabiliste (comme la méthode de maximum de vraisemblance et la méthode Bayesian Markov Chain Monte Carlo). Le séquençage de nouvelle génération (NGS) devient de plus en plus abordable et populaire en santé publique pour caractériser des agents pathogènes à l'origine des maladies infectieuses. Les appareils de séquençage portables réduisent le délai d'exécution et offrent la possibilité de rendre les résultats disponible en temps réel pour les enquêtes sur les épidémies. Les données NGS peuvent être utilisées pour identifier l'origine ou la source d'une souche épidémique ainsi que sa propagation, et pour déterminer la présence de gènes de résistance antimicrobienne. Pour visualiser la parenté génétique entre les échantillons, un arbre phylogénétique est construit.
-
-Dans cette page, nous allons apprendre à utiliser le package **ggtree**, qui permet la visualisation combinée d'arbres phylogénétiques avec des données d'échantillons supplémentaires sous la forme de tableaux de données. Cela nous permettra d'observer les tendances et de comprendre la dynamique de l'épidémie.
-
-```{r, phylogenetic_trees_overview_graph, out.width=c('80%'), fig.align='center', fig.show='hold', echo = FALSE}
-
-pacman::p_load(here, ggplot2, dplyr, ape, ggtree, treeio, ggnewscale)
-
-tree <- ape::read.tree(here::here("data", "phylo", "Shigella_tree.txt"))
-
-sample_data <- read.csv(here::here("data","phylo", "sample_data_Shigella_tree.csv"),sep=",", na.strings=c("NA"), head = TRUE, stringsAsFactors=F)
+# Télécharger le manuel et les données  {#download_book_data}
 
 
-ggtree(tree, layout="circular", branch.length='none') %<+% sample_data + # l'operateur %<+% est utilisé pour ajouter à l'arbre votre tableau de données 
-  aes(color=I(Belgium))+ # colore les branches a partir d'une variable de votre tableau de données
-  scale_color_manual(name = "Sample Origin", # nom de votre palette de couleur (qui apparaîtra dans la légende comme ceci)
-                    breaks = c("Yes", "No"), # les différentes options de votre variable
-                   labels = c("NRCSS Belgium", "Other"), # comment vous souhaitez que les différentes options soient désignées dans votre légende, permet de les formater.
-                 values= c("blue", "black"), # la couleur que vous souhaitez attribuer à la variable 
-                 na.value = "black") + # colore les valeurs NA en noir également
-  new_scale_color()+ # permet d'ajouter une palette de couleurs supplémentaire pour une autre variable
-     geom_tippoint(aes(color=Continent), size=1.5)+ # colore le point d'extrémité par continent, vous pouvez changer la forme en ajoutant "shape = "
-scale_color_brewer(name = "Continent",  # nom de la palette de couleurs (qui apparaîtra dans la légende comme ceci)
-                       palette="Set1", # nous utilisons un ensemble de couleurs fournies avec le package brewer
-                   na.value="grey")+ # pour les valeurs NA nous utilisons la couleur grise
-  theme(legend.position= "bottom")
+<!-- Note to self: If you want to create a download link to Github, right-click the "View Raw" button on Github, copy the address, and use that in the HTML below. -->
 
-```
 
-<!-- ======================================================= -->
 
-## Préparation
 
-### Importation des packages {.unnumbered}
+## Télécharger le manuel hors-ligne  {#download_offline}
 
-Ces lignes de code importe les packages necessaire pour l'analyse. Dans ce guide, nous mettons l'accent sur `p_load()` de **pacman**, qui installe le package si nécessaire *puis* l'importe pour l'utiliser dans la session de Rstudio. Vous pouvez également charger les packages installés avec `library()` de **base** R. Voir la page sur [bases de R](#rbasics) pour plus d'informations sur les packages en R.
+Vous pouvez télécharger la version hors-ligne de ce manuel en tant que fichier HTML afin de pouvoir le visualiser dans votre navigateur Web même si vous n'avez plus accès à Internet. Si vous envisagez d'utiliser le manuel Epi R hors ligne, voici quelques éléments à prendre en compte :  
 
-```{r, phylogenetic_trees_loading_packages, warning=FALSE, message=FALSE}
-pacman::p_load(
-  rio,             # import/export
-  here,            # gestion des chemins d'accès
-  tidyverse,       # gestion des données + graphiques (ggplot2)
-  ape,             # pour importer and exporter les fichiers phylogénétiques
-  ggtree,          # pour visualiser les fichiers phylogénétiques
-  treeio,          # pour visualiser les fichiers phylogénétiques
-  ggnewscale)      # pour ajouter les palettes de couleurs supplémentaire
+* Lorsque vous ouvrez le fichier, le chargement des images et de la table des matières peut prendre une minute ou deux.  
+* Le manuel hors ligne a une mise en page légèrement différente : une très longue page avec la table des matières à gauche. Pour rechercher des termes spécifiques, utilisez Ctrl + F (Cmd + F).  
+* Consultez la page [Paquets conseillés](#suggested_packages) pour vous aider à installer les paquets R appropriés avant de perdre votre connexion à Internet.  
+* Installez notre paquet R **epirhandbook** qui contient toutes les données utilisées dans les exemples (le processus d'installation est décrit ci-dessous).  
 
-```
+**Il y a deux façons de télécharger le manuel :**  
 
-### Import data {.unnumbered}
 
-Les données pour cette page peuvent être téléchargées suivant les instructions de la page [Télécharger le manuel et les données](#download_book_data).
 
-Il existe plusieurs formats différents dans lesquels un arbre phylogénétique peut être enregistré (par exemple, Newick, NEXUS, Phylip). Un format couramment utilisés est celui des fichiers Newick (.nwk), qui est la norme pour représenter les arbres sous une forme facilement exploitable par ordinateur. Cela signifie qu'un arbre entier peut être représenté par un format de chaîne de caractères tel que "((t2:0.04,t1:0.34):0.89,(t5:0.37,(t4:0.03,t3:0.67):0.9):0.59) ; ", énumérant tous les nœuds, les extrémités et leur relation (longueur de branche) les uns avec les autres.
+### Utiliser le lien de téléchargement {.unnumbered}  
 
-Note : Il est important de comprendre que le fichier de l'arbre phylogénétique en lui-même ne contient pas de données de séquençage, mais est simplement le résultat des distances génétiques entre les séquences. Nous ne pouvons donc pas extraire les données de séquençage d'un fichier arbre.
+Pour un accès rapide, **cliquez à droite** [ce lien](https://github.com/appliedepi/epiRhandbook_fr/raw/main/offline_long/Epi_R_Handbook_offline.html) **et sélectionnez "Enregistrer le lien sous"**.  
 
-Tout d'abord, nous utilisons la fonction read.tree() du package **ape** pour importer un fichier d'arbre phylogénétique de Newick au format .txt, et le enregistrer dans un objet liste de classe "phylo". Si nécessaire, utilisez la fonction `here()` du package **here** pour spécifier le chemin relatif du fichier.
+Si vous êtes sur un Mac, utilisez Cmd + clic. Si vous êtes sur un téléphone portable, appuyez sur le lien et maintenez-le enfoncé, puis sélectionnez "Enregistrer le lien". Le manuel sera téléchargé sur votre appareil. Si un écran contenant un code HTML brut apparaît, assurez-vous d'avoir suivi les instructions ci-dessus ou essayez l'option 2.  
 
-Note : Dans ce cas, l'arbre Newick est enregistré au format .txt pour faciliter sa manipulation et son téléchargement de Github.
 
-```{r, echo=F}
-tree <- ape::read.tree(here::here("data", "phylo", "Shigella_tree.txt"))
-```
 
-```{r, echo=T, eval=F}
-tree <- ape::read.tree("Shigella_tree.txt")
-```
+### Utiliser notre paquet R {.unnumbered}  
 
-Nous inspectons notre objet arbre et voyons qu'il contient 299 pointes (ou échantillons) et 236 nœuds.
+Nous avons développé un paquet R appelé **epirhandbook**. Il comprend une fonction `download_book()` qui télécharge le fichier du guide depuis notre dépôt Github sur votre ordinateur.  
 
-```{r}
-tree
-```
 
-Ensuite, nous importons un fichier en format .csv contenant des informations supplémentaires pour chaque échantillon séquencé, tel que le sexe, le pays d'origine et les attributs de résistance antimicrobienne, en utilisant la fonction `import()` du package **rio** :
+Ce package contient également une fonction `get_data()` qui télécharge toutes les données utilisées dans les chapitres sur votre ordinateur.  
 
-```{r, echo=F}
-sample_data <- import(here("data", "phylo", "sample_data_Shigella_tree.csv"))
-```
 
-```{r, echo=T, eval=F}
-sample_data <- import("sample_data_Shigella_tree.csv")
-```
+Exécutez le code suivant pour installer notre paquet R **epirhandbook** à partir du [dépôt Github *appliedepi*](https://github.com/appliedepi/epirhandbook). Ce paquet n'est pas sur le CRAN, donc utilisez la fonction spéciale `p_install_gh()` du paquet **pacman** pour l'installer depuis Github.  
 
-Ci-dessous, vous trouverez les 50 premières lignes de données :
-
-```{r message=FALSE, echo=F}
-DT::datatable(head(sample_data,50), rownames = FALSE, options = list(pageLength = 5, scrollX=T), class = 'white-space: nowrap' )
-```
-
-### Nettoyer et inspecter {.unnumbered}
-
-Nous nettoyons et inspectons nos données : Pour pouvoir associer les données échantillon à l'arbre phylogénétique, les valeurs de la colonne `Sample_ID` dans le tableau de données `sample_data` doit correspondre aux valeurs `tip.labels` dans le fichier `tree` :
-
-Nous vérifions le format du `tip.labels` dans le fichier `tree` en regardant les 6 premières entrées en utilisant `head()` de **base** R.
-
-```{r, phylogenetic_trees_inspect_sampledata}
-head(tree$tip.label) 
-```
-
-Nous nous assurons également que la première colonne de notre tableau de données `sample_data` est `Sample_ID`. Nous regardons les noms des colonnes de notre jeu de données en utilisant `colnames()` de **base** R.
-
-```{r}
-colnames(sample_data)   
-```
-
-Nous regardons les `Sample_IDs` dans le jeu de données pour nous assurer que le format est le même que dans le `tip.label` (par exemple, les lettres sont en majuscules, pas de soulignement supplémentaire `_` entre les lettres et les chiffres, etc.)
-
-```{r}
-head(sample_data$Sample_ID) # Nous vérifions les 6 premières entrées en utilisant head()
-```
-
-Nous pouvons aussi vérifier si tous les échantillons sont présents dans le fichier `tree` et vice versa en générant un vecteur logique de VRAI ou FAUX là où ils correspondent ou non. Ceux-ci ne sont pas imprimés ici, pour plus de simplicité.
 
 ```{r, eval=F}
-sample_data$Sample_ID %in% tree$tip.label
-
-tree$tip.label %in% sample_data$Sample_ID
+# installer la dernière version du paquet epirhandbook
+pacman::p_install_gh("appliedepi/epirhandbook")
 ```
 
-Nous pouvons utiliser ces vecteurs pour démontrer les ID des échantillons qui ne sont pas sur l'arbre (il n'y en a pas).
-
-```{r}
-sample_data$Sample_ID[!tree$tip.label %in% sample_data$Sample_ID]
-```
-
-Après inspection, nous pouvons voir que le format de `Sample_ID` dans le dataframe correspond au format des noms d'échantillons dans le `tip.labels`. Ceux-ci n'ont pas besoin d'être triés dans le même ordre pour être appariés.
-
-Voilà on est prêts à partir !
-
-<!-- ======================================================= -->
-
-## Visualisation simple de l'arbre
-
-### Diverses configurations d'arbres {.unnumbered}
-
-**ggtree** offre nombreux formats de configuration d'arbres différents et certains peuvent être plus adéquats que d'autres pour votre usage spécifique. Ci-dessous, vous trouverez quelques illustrations. Pour d'autres options, voir ce [livre en ligne](http://yulab-smu.top/treedata-book/chapter4.html).
-
-Voici quelques exemples des configurations d'arbres :
-
-```{r, phylogenetic_trees_example_formats, out.width=c('50%'), fig.show='hold'}
-
-ggtree(tree)                                            # arbre linéaire simple
-ggtree(tree,  branch.length = "none")                   # arbre linéaire simple avec toutes les pointes alignées 
-ggtree(tree, layout="circular")                         # arbre circulaire simple
-ggtree(tree, layout="circular", branch.length = "none") # arbre circulaire simple avec toutes les pointes alignées 
-
-```
-
-### Arbre simple plus données échantillons {.unnumbered}
-
-L'opérateur **%\<+%** est utilisé pour connecter le tableau de donnees `sample_data` avec le fichier `arbre`. L'annotation la plus facile de votre arbre est l'ajout des noms des échantillons aux extrémités, ainsi que la coloration des points d'extrémité et si désiré des branches :
-
-Voici un exemple d'arbre circulaire :
-
-```{r, phylogenetic_trees_adding_sampledata, fig.align='center', warning=F, message=F}
-
-ggtree(tree, layout = "circular", branch.length = 'none') %<+% sample_data + # %<+% ajoute le tableau des données l'échantillon à l'arbre
-  aes(color = (Belgium))+                       # colore les branches en fonction d'une variable de votre tableau de données 
-  scale_color_manual(
-    name = "Sample Origin",                      # le nom de votre palette de couleurs (qui apparaîtra dans la légende comme ceci)
-    breaks = c("Yes", "No"),                     # les différentes options de votre variable
-    labels = c("NRCSS Belgium", "Other"),        # comment vous voulez que les différentes options soient nommées dans votre légende, ce qui permet de les formater
-    values = c("blue", "black"),                  # la couleur que vous voulez attribuer à la variable
-    na.value = "black") +                        # colorer les valeurs NA en noir également
-  new_scale_color()+                             # permet d'ajouter une couleur supplémentaire pour une autre variable
-    geom_tippoint(
-      mapping = aes(color = Continent),          # colorer les pointes par continent. Vous pouvez changer la forme en ajoutant "shape = "
-      size = 1.5)+                               # Définit la taille du point à la extremite 
-  scale_color_brewer(
-    name = "Continent",                    # nom de votre palette de couleurs (qui apparaîtra dans la légende comme ceci)
-    palette = "Set1",                      # nous choisissons un ensemble de couleurs fournies avec le package brewer 
-    na.value = "grey") +                    # pour les valeurs NA nous choisissons la couleur grise
-  geom_tiplab(                             # ajoute le nom de l'échantillon à l'extrémité de sa branche
-    color = 'black',                       # (ajoutez autant de lignes de texte que vous souhaitez avec + , mais vous devrez ajuster la valeur du décalage pour les placer les à côté des autres) 
-    offset = 1,
-    size = 1,
-    geom = "text",
-    align = TRUE) +    
-  ggtitle("Phylogenetic tree of Shigella sonnei")+       # titre de votre graphique
-  theme(
-    axis.title.x = element_blank(), # supprime le titre de l'axe x
-    axis.title.y = element_blank(), # supprime le titre de l'axe y
-    legend.title = element_text(    # définit la taille de la police et le format du titre de la légende
-      face = "bold",
-      size = 12),   
-    legend.text=element_text(       # définit la taille de la police et le format du texte de la légende
-      face = "bold",
-      size = 10),  
-    plot.title = element_text(      # définit la taille de la police et le format du titre du graphique
-      size = 12,
-      face = "bold"),  
-    legend.position = "bottom",     # # définit le position du légende
-    legend.box = "vertical",        # # définit le position du légende
-    legend.margin = margin())   
-```
-
-Vous pouvez exporter le graphique de votre arbre avec `ggsave()` comme vous le feriez avec n'importe quel autre objet ggplot. Écrit de cette façon, `ggsave()` enregistre la dernière image produite dans le chemin de fichier que vous spécifiez. Rappelez-vous que vous pouvez utiliser `here()` et les chemins de fichiers relatifs pour sauvegarder facilement dans des sous-dossiers, etc.
+Maintenant, importer le paquet pour l'utiliser dans votre session R actuelle :  
 
 ```{r, eval=F}
-ggsave("example_tree_circular_1.png", width = 12, height = 14)
+# Importer le paquet pour pouvoir l'utiliser dans la session ouverte
+pacman::p_load(epirhandbook)
+```
+
+Ensuite, exécutez la fonction du paquet `download_book()` (avec des parenthèses vides) pour télécharger le manuel sur votre ordinateur. En supposant que vous êtes dans RStudio, une fenêtre apparaîtra pour vous permettre de sélectionner un emplacement de sauvegarde.  
+
+
+```{r, eval=F}
+# télécharger la version html du manuel localement
+download_book()
+```
+
+
+
+## Télécharger les données
+
+Pour pouvoir reproduire les exemples au fur et à mesure sur votre ordinateur, vous pouvez télécharger les données et les fichiers générés. 
+
+### Utiliser notre paquet R {.unnumbered}  
+
+Une fois le paquet téléchargé et importé dans votre session R (voir section au-dessus) utilisez la fonction `get_data()` du paquet pour obtenir les données d'exemple sur votre ordinateur. Exécutez `get_data("all")` pour obtenir *toutes* les données d'exemple, ou fournissez un nom de fichier spécifique et une extension entre guillemets pour récupérer un seul fichier.  
+
+Techniquement, toutes les données ont déjà été téléchargées avec le paquet, et doivent simplement être transférées dans un dossier de votre ordinateur. Une fenêtre pop-up apparaîtra, vous permettant de sélectionner un emplacement de dossier de sauvegarde. Nous vous suggérons de créer un nouveau dossier "data" car il y a environ 30 fichiers (y compris les données d'exemple et les sorties générées par les exemples).  
+
+
+```{r, eval=F}
+# enregistrer toutes les données dans un dossier sur votre ordinateur
+get_data("all")
+
+# enregistrer les données linelist dans un dossiet sur votre ordinateur
+get_data(file = "linelist_cleaned.rds")
 
 ```
 
-<!-- ======================================================= -->
 
-## Manipulation de l'arbre
+Une fois que vous avez utilisé `get_data()` pour enregistrer un fichier sur votre ordinateur, vous devrez encore l'importer dans R. Voir la page [Importer et exporter des données](#import_export) pour plus de détails.  
 
-Parfois, vous pouvez avoir un très grand arbre phylogénétique et vous n'êtes intéressé que par une partie de l'arbre. Par exemple, si vous avez produit un arbre incluant des échantillons historiques ou internationaux afin d'obtenir un aperçu de la place de l'ensemble de vos données dans le schema général. Mais ensuite, pour examiner vos données de plus près, vous ne voulez inspecter que cette partie du grand arbre.
+Si vous le souhaitez, vous pouvez consulter toutes les données utilisées dans ce manuel dans le **["dossier données"](https://github.com/appliedepi/epirhandbook_eng/tree/master/data)** de notre dépôt Github.  
 
-Comme le fichier de l'arbre phylogénétique n'est que le résultat de l'analyse des données de séquençage, nous ne pouvons pas manipuler l'ordre des nœuds et des branches dans le fichier lui-même. Ceux-ci ont déjà été déterminés dans une analyse précédente à partir des données de séquençage brutes. Nous sommes cependant en mesure de zoomer sur certaines parties, de cacher certaines parties et même de sous-ensembler une partie de l'arbre.
 
-### Zoomer pour agrandir {.unnumbered}
+### Téléchargement manuel {.unnumbered}  
 
-Si vous ne voulez pas "couper" votre arbre, mais seulement en inspecter une partie de plus près, vous pouvez zoomer pour voir une partie spécifique.
+Vous pouvez télécharger les données fichier par fichier à partir de notre dépôt Github via un lien ou une commande R spécifique au fichier. Certains types de fichiers ont un bouton de téléchargement, tandis que d'autres peuvent être téléchargés via une commande R. 
 
-Tout d'abord, nous traçons l'arbre entier au format linéaire et ajoutons des étiquettes numériques à chaque nœud de l'arbre.
 
-```{r, phylogenetic_trees_zoom_in, out.width=c('50%'), fig.show='hold', fig.align='center'}
+#### Liste de cas (linelist) {.unnumbered}
 
-p <- ggtree(tree,) %<+% sample_data +
-  geom_tiplab(size = 1.5) +                # étiquette les extrémités de toutes les branches avec le nom de l'échantillon dans le fichier de l'arbre
-  geom_text2(
-    mapping = aes(subset = !isTip,
-                  label = node),
-    size = 5,
-    color = "darkred",
-    hjust = 1,
-    vjust = 1)                            # étiquette tous les nœuds de l'arbre
+Il s'agit d'une linelist pour une épidémie d'Ebola fictive, développée par notre équipe à partir du jeu de données d'exemple `ebola_sim` du paquet **outbreaks**.  
 
-p  # imprime
+* <a href='https://github.com/appliedepi/epiRhandbook_fr/tree/master/data/case_linelists/linelist_raw.xlsx' class='download-button'>Cliquer pour télécharger les données brutes (.xlsx)</span></a>. La liste de cas "brute" est une feuille de calcul Excel contenant des données désordonnées. Utilisez-la pour suivre la page [Nettoyer les données et fonctions essentielles](#cleaning_data).  
 
+* <a href='https://github.com/appliedepi/epiRhandbook_fr/tree/master/data/case_linelists/linelist_cleaned.rds' class='download-button'>Cliquer pour télécharger la linelist nettoyée (.rds)</a>. Utilisez ce fichier pour toutes les autres pages de ce manuel qui utilisent la linelist. Un fichier .rds est un type de fichier spécifique à R qui préserve les classes de colonnes. Cela garantit que vous n'aurez qu'un nettoyage minimal à faire après avoir importé les données dans R.  
+
+*Autres fichiers linelist :*  
+
+* <a href='https://github.com/appliedepi/epiRhandbook_fr/tree/master/data/case_linelists/linelist_cleaned.xlsx' class='download-button'>Cliquer pour télécharger la version nettoyée de la linelist sous format Excel</a>
+
+* Une partie de la page sur le nettoyage des données utilise un "dictionnaire de nettoyage" (fichier .csv). Vous pouvez le charger directement dans R en exécutant les commandes suivantes :  
+
+```{r, eval=F}
+pacman::p_load(rio) # installer/importer le paquet **rio**
+
+# importer le fichier directement depuis github
+cleaning_dict <- import("https://github.com/appliedepi/epiRhandbook_fr/tree/master/data/case_linelists/cleaning_dict.csv")
 ```
 
-Pour zoomer sur une branche particulière (qui déborde à droite), utilisez `viewClade()` sur l'objet ggtree `p` et fournissez le numéro du noeud pour obtenir une vue plus détaillée :
 
-```{r phylogenetic_trees_zoom_in_452, out.width=c('50%'), fig.show='hold', fig.align='center'}
+#### Cas de paludisme {#data_malaria .unnumbered}  
 
-viewClade(p, node = 452)
+Ces données sont des comptages fictifs de cas de paludisme par groupe d'âge, établissement et jour. Un fichier .rds est un type de fichier spécifique à R qui préserve les classes de colonnes. Cela garantit que vous n'aurez qu'un nettoyage minimal à faire après avoir importé les données dans R.  
 
+<a href='https://github.com/appliedepi/epiRhandbook_fr/tree/master/data/malaria_facility_count_data.rds' class='download-button'>
+	Click to download
+	<span>les comptages de de cas de paludisme (.rds file)</span>
+</a>
+
+
+#### Données sur l'échelle de Likert {.unnumbered}  
+
+Il s'agit de données fictives issues d'une enquête de type Likert, utilisées dans la page [Pyramides démographiques et échelles de Likert](#age_pyramid). Vous pouvez charger ces données directement dans R en exécutant les commandes suivantes :    
+
+
+```{r, eval=F}
+pacman::p_load(rio)  # installer/importer le paquet **rio**
+
+# importer le fichier directement depuis github
+likert_data <- import("https://github.com/appliedepi/epiRhandbook_fr/tree/master/data/likert_data.csv")
 ```
 
-### Réduire les branches {.unnumbered}
 
-Cependant, nous pouvons vouloir ignorer cette branche et la réduire à ce même noeud (noeud n° 452) en utilisant `collapse()`. Cet arbre est défini comme `p_collapsed`.
+#### Flexdashboard {.unnumbered}  
 
-```{r phylogenetic_trees_collapse_452, out.width=c('50%'), fig.show='hold', fig.align='center'}
+Vous trouverez ci-dessous des liens vers le fichier associé à la page [Tableaux de bord avec R Markdown](#dashboards): 
 
-p_collapsed <- collapse(p, node = 452)
-p_collapsed
+* Pour télécharger le fichier  RMarkdown (.Rmd) du tableau de bord sur les épidémies, faites un clic droit sur ce [lien](https://github.com/appliedepi/epiRhandbook_fr/tree/master/data/flexdashboard/outbreak_dashboard.Rmd) (Cmd+clic pour Mac) et sélectionnez "Enregistrer le lien sous".  
+* Pour télécharger le tableau de bord HTML, cliquez avec le bouton droit de la souris sur ce [lien](https://github.com/appliedepi/epiRhandbook_fr/tree/master/data/flexdashboard/outbreak_dashboard_test.html). (Cmd + clic pour Mac) et sélectionnez "Enregistrer le lien sous".  
+
+
+#### recherche des contacts {.unnumbered} 
+
+La page [Recherche des contacts](#contact_tracing) présente une analyse des données de recherche des contacts, à l'aide d'exemples de données provenant de [Go.Data](https://github.com/WorldHealthOrganization/godata/tree/master/analytics/r-reporting). Les données utilisées dans cette page peuvent être téléchargées sous forme de fichiers .rds en cliquant sur les liens suivants :  
+
+<a href='https://github.com/WorldHealthOrganization/godata/blob/master/analytics/r-reporting/data/cases_clean.rds?raw=true' class='download-button'>
+	Cliquer pour télécharger
+	<span>les données d'investigation des cas (.rds file)</span>
+</a>
+
+<a href='https://github.com/WorldHealthOrganization/godata/blob/master/analytics/r-reporting/data/contacts_clean.rds?raw=true' class='download-button'>
+	Cliquer pour télécharger
+	<span>les données d'enregistrement des contacts (.rds file)</span>
+</a>
+
+<a href='https://github.com/WorldHealthOrganization/godata/blob/master/analytics/r-reporting/data/followups_clean.rds?raw=true' class='download-button'>
+	Cliquer pour télécharger
+	<span>les données de suivi des contacts (.rds file)</span>
+</a>
+
+
+
+<span style="color: black;">**_NOTE:_** Les données structurées de recherche des contacts provenant d'autres logiciels (par exemple KoBo, DHIS2 Tracker, CommCare) peuvent être organisées differement. Si vous souhaitez contribuer à l'élaboration d'un échantillon de données ou d'un contenu alternatif pour cette page, veuillez [nous contacter](#contact_us).</span> 
+
+<span style="color: darkgreen;">**_TIP:_** Si vous déployez Go.Data et souhaitez vous connecter à l'API de votre instance, consultez la page Importation et exportation, [(section API)](#import_api) et la [Communauté de pratique Go.Data](https://community-godata.who.int/).</span>
+
+
+
+#### SIG {.unnumbered}  
+
+Les fichiers Shapefiles comportent de nombreux sous-fichiers, chacun avec une extension de fichier différente. Un fichier aura l'extension ".shp", mais d'autres peuvent avoir ".dbf", ".prj", etc.  
+
+La page [Notions de base sur les SIG](#gis) fournit des liens vers le site Web *Humanitarian Data Exchange* où vous pouvez télécharger les fichiers de forme directement sous forme de fichiers zippés.  
+
+Par exemple, les données des locations des établissements de santé peuvent être téléchargées [ici](https://data.humdata.org/dataset/hotosm_sierra_leone_health_facilities). Téléchargez "hotosm_sierra_leone_health_facilities_points_shp.zip". Une fois enregistré sur votre ordinateur, décompressez le dossier. Vous verrez plusieurs fichiers avec des extensions différentes (par exemple, ".shp", ".prj", ".shx"); tous ces fichiers doivent être enregistrés dans le même dossier sur votre ordinateur. Ensuite, pour importer dans R, fournissez le chemin et le nom du fichier ".shp" à `st_read()` du paquet **sf** (comme décrit dans la page [Notions de base sur les SIG](#gis)).  
+
+Si vous suivez l'option 1 pour télécharger toutes les données de l'exemple (via notre paquet R **epirhandbook**), tous les shapefiles sont inclus.  
+
+Vous pouvez également télécharger les fichiers Shapefile à partir du dossier "data" du manuel R sur Github (voir le sous-dossier "gis"). Cependant, sachez que vous devrez télécharger *chaque* sous-fichier individuellement sur votre ordinateur. Dans Github, cliquez sur chaque fichier et téléchargez-les en cliquant sur le bouton "Télécharger". Ci-dessous, vous pouvez voir comment le fichier de forme "sle_adm3" se compose de plusieurs fichiers, chacun devant être téléchargé depuis Github. 
+
+```{r out.height = "50%", fig.align = "center", echo=F}
+knitr::include_graphics(here::here("images", "download_shp.png"))
 ```
 
-Pour plus de clarté, lorsque nous imprimons `p_collapsed`, nous ajoutons un `geom_point2()` (un diamant bleu) au noeud de la branche réduite.
 
-```{r}
-p_collapsed + 
-geom_point2(aes(subset = (node == 452)),  # nous attribuons un symbole au nœud réduit
-            size = 5,                     # définir la taille du symbole
-            shape = 23,                   # définir la forme du symbole
-            fill = "steelblue")           # définir la coleur du symbole
+#### Arbres phylogénétiques {.unnumbered}  
+
+La page sur les [arbres phylogénétiques](phylogenetic_trees) utilise un fichier Newick pour l'arbre phylogénétique construit à partir du séquençage du génome entier de 299 échantillons de Shigella sonnei et des données d'échantillons correspondantes (converties en fichier texte). Les échantillons belges et les données résultantes sont aimablement fournis par le CNR belge pour Salmonella et Shigella dans le cadre d'un projet mené par un boursier EUPHEM de l'ECDC, et seront également publiés dans un manuscrit. Les données internationales sont disponibles sur des bases de données publiques (ncbi) et ont déjà été publiées.  
+
+
+* Pour télécharger le fichier de l'arbre phylogénétique "Shigella_tree.txt", cliquez avec le bouton droit de la souris sur ce [lien](https://github.com/appliedepi/epiRhandbook_fr/tree/master/data/phylo/Shigella_tree.txt) (Cmd+click for Mac) et sélectionnez "Enregistrer le lien sous". 
+* Pour télécharger le fichier "sample_data_Shigella_tree.csv" contenant des informations supplémentaires sur chaque échantillon, cliquez avec le bouton droit de la souris sur ce [lien](https://github.com/appliedepi/epiRhandbook_fr/tree/master/data/phylo/sample_data_Shigella_tree.csv) (Cmd+clic pour Mac) et sélectionnez "Enregistrer le lien sous".  
+* Pour voir le nouveau sous-arbre créé, cliquez avec le bouton droit de la souris sur ce [lien](https://github.com/appliedepi/epiRhandbook_fr/tree/master/data/phylo/Shigella_subtree_2.txt) (Cmd+clic pour Mac) et sélectionnez "Enregistrer le lien sous". Le fichier .txt sera téléchargé sur votre ordinateur.  
+
+Vous pouvez ensuite importer les fichiers .txt avec `read.tree()` du paquet **ape**, comme expliqué dans le chapitre concerné.
+
+
+```{r, eval=F}
+ape::read.tree("Shigella_tree.txt")
 ```
 
-### Sous-ensembler un arbre {.unnumbered}
 
-Si nous voulons faire un changement plus permanent et créer un nouvel arbre réduit avec lequel travailler, nous pouvons sous-ensembler une partie avec `tree_subset()`. Vous pouvez ensuite le sauvegarder comme un nouveau fichier newick tree ou un fichier .txt.
+#### Standardization {.unnumbered} 
 
-Tout d'abord, nous inspectons les noeuds de l'arbre et les étiquettes des extrémités afin de décider ce qu'il faut sous-ensembler.
+Pour la page sur la [standardisation des données](#standardisation), vous pouvez charger les données directement depuis notre dépôt Github sur internet dans votre session R avec les commandes suivantes :  
 
-```{r, phylogenetic_trees_subsetting, out.width=c('50%'), fig.show='hold', fig.align='center'}
-ggtree(
-  tree,
-  branch.length = 'none',
-  layout = 'circular') %<+% sample_data +               # nous ajoutons les données de l'échantillon en utilisant l'opérateur %<+%.
-  geom_tiplab(size = 1)+                                # étiqueter les extrémités de toutes les branches avec le nom de l'échantillon dans le fichier arbre
-  geom_text2(
-    mapping = aes(subset = !isTip, label = node),
-    size = 3,
-    color = "darkred") +                                # étiquette tous les noeuds de l'arbre 
- theme(
-   legend.position = "none",                            # supprime la légende tous ensemble
-   axis.title.x = element_blank(),
-   axis.title.y = element_blank(),
-   plot.title = element_text(size = 12, face="bold"))
+
+```{r, eval=F}
+# installer/importer le paquet **rio**
+pacman::p_load(rio) 
+
+##############
+# Pays A
+##############
+# import des données démographiques du pays depuis github
+A_demo <- import("https://github.com/appliedepi/epiRhandbook_fr/tree/master/data/standardization/country_demographics.csv")
+
+# import des données de mortalité du pays depuis github
+A_deaths <- import("https://github.com/appliedepi/epiRhandbook_fr/tree/master/data/standardization/deaths_countryA.csv")
+
+
+
+##############
+# Pays B
+##############
+# import des données démographiques du pays depuis github
+B_demo <- import("https://github.com/appliedepi/epiRhandbook_fr/tree/master/data/standardization/country_demographics_2.csv")
+
+# import des données de mortalité du pays depuis github
+B_deaths <- import("https://github.com/appliedepi/epiRhandbook_fr/tree/master/data/standardization/deaths_countryB.csv")
+
+
+###############
+# Population de référence
+###############
+# import depuis Github
+standard_pop_data <- import("https://github.com/appliedepi/epiRhandbook_fr/tree/master/data/standardization/world_standard_population_by_sex.csv")
 ```
 
-Maintenant, disons que nous avons décidé de sous-ensembler l'arbre au noeud 528 (ne garder que les pointes dans cette branche après le noeud 528) et nous le sauvegardons comme un nouvel objet `sub_tree1` :
 
-```{r}
-sub_tree1 <- tree_subset(
-  tree,
-  node = 528)                                            # nous sous-ensemblons l'arbre au nœud 528
-```
 
-Examinons l'arbre subset tree 1:
+#### Séries temporelles et détection des épidémies {#data_outbreak .unnumbered}  
 
-```{r}
-ggtree(sub_tree1) +
-  geom_tiplab(size = 3) +
-  ggtitle("Subset tree 1")
-```
+Voir la page sur [les séries temporelles et la détection des épidémies](#time_series). Nous utilisons les cas de campylobacter rapportés en Allemagne de 2002 à 2011, tels que disponibles dans le paquet R **surveillance**. (*note* cet ensemble de données a été adapté de l'original, en ce sens que 3 mois de données ont été supprimés à partir de la fin de 2011 à des fins de démonstration).
 
-Vous pouvez également effectuer un sous-ensemble basé sur un échantillon particulier, en spécifiant le nombre de noeuds "en arrière" que vous souhaitez inclure. Sous-ensemble la même partie de l'arbre basé sur un échantillon, dans ce cas S17BD07692, en remontant de 9 noeuds et nous le sauvegardons comme un nouvel objet `sub_tree2` :
 
-```{r}
-sub_tree2 <- tree_subset(
-  tree,
-  "S17BD07692",
-  levels_back = 9) # levels_back définit le nombre de nœuds en arrière de la pointe de l'échantillon que vous voulez atteindre.
-```
+<a href='https://github.com/appliedepi/epiRhandbook_fr/tree/master/data/time_series/campylobacter_germany.xlsx' class='download-button'>
+	Cliquer pour télécharger
+	<span> Campylobacter en Allemagne (.xlsx)</span>
+</a>
 
-Examinons l'arbre subset tree 2:
+Nous utilisons également les données climatiques de l'Allemagne entre 2002 et 2011 (température en degrés Celsius et précipitations en millimètres). Ces données ont été téléchargées à partir d'un jeu de données dérivé des données produites par le satellite Copernicus (UE) à l'aide du paquet **ecmwfr**. Vous devrez télécharger toutes ces données et les importer avec `stars::read_stars()` comme expliqué dans la page sur les séries temporelles.  
 
-```{r}
-ggtree(sub_tree2) +
-  geom_tiplab(size =3)  +
-  ggtitle("Subset tree 2")
 
-```
+<a href='https://github.com/appliedepi/epiRhandbook_fr/tree/master/data/time_series/weather/germany_weather2002.nc' class='download-button'>
+	Cliquer pour télécharger
+	<span> Climat Allemagne 2002 (.nc file)</span>
+</a> 
 
-Vous pouvez également sauvegarder votre nouvel arbre soit comme un type Newick ou même un fichier texte en utilisant la fonction `write.tree()` du package **ape** :
+<a href='https://github.com/appliedepi/epiRhandbook_fr/tree/master/data/time_series/weather/germany_weather2003.nc' class='download-button'>
+	Cliquer pour télécharger
+	<span> Climat Allemagne 2003 (.nc file)</span>
+</a> 
 
-```{r, eval=F, phylogenetic_trees_write_tree}
-# pour sauvegarder en format .nwk format
-ape::write.tree(sub_tree2, file='data/phylo/Shigella_subtree_2.nwk')
+<a href='https://github.com/appliedepi/epiRhandbook_fr/tree/master/data/time_series/weather/germany_weather2004.nc' class='download-button'>
+	Cliquer pour télécharger
+	<span> Climat Allemagne 2004 (.nc file)</span>
+</a> 
 
-# pour sauvegarder en format .txt format
-ape::write.tree(sub_tree2, file='data/phylo/Shigella_subtree_2.txt')
-
-```
-
-### Rotation des nœuds dans un arbre {.unnumbered}
-
-Comme mentionné précédemment, nous ne pouvons pas modifier l'ordre des pointes ou des noeuds dans l'arbre, car cela est basé sur leur parenté génétique et ne peut pas être manipulé de manière visuelle. Mais nous pouvons roter des branches autour des nœuds si cela facilite notre visualisation.
+<a href='https://github.com/appliedepi/epiRhandbook_fr/tree/master/data/time_series/weather/germany_weather2005.nc' class='download-button'>
+	Cliquer pour télécharger
+	<span> Climat Allemagne 2005 (.nc file)</span>
+</a> 
 
-Tout d'abord, nous traçons notre nouveau subset tree 2 avec des étiquettes de nœuds pour choisir le nœud que nous voulons manipuler et nous enregistrons dans un objet ggtree plot `p`.
+<a href='https://github.com/appliedepi/epiRhandbook_fr/tree/master/data/time_series/weather/germany_weather2006.nc' class='download-button'>
+	Cliquer pour télécharger
+	<span> Climat Allemagne 2006 (.nc file)</span>
+</a> 
 
-```{r, phylogenetic_trees_rotating_1, out.width=c('50%'), fig.show='hold', fig.align='center'}
+<a href='https://github.com/appliedepi/epiRhandbook_fr/tree/master/data/time_series/weather/germany_weather2007.nc' class='download-button'>
+	Cliquer pour télécharger
+	<span> Climat Allemagne 2007 (.nc file)</span>
+</a> 
 
-p <- ggtree(sub_tree2) +  
-  geom_tiplab(size = 4) +
-  geom_text2(aes(subset=!isTip, label=node), # étiquette tous les nœuds de l'arbre
-             size = 5,
-             color = "darkred", 
-             hjust = 1, 
-             vjust = 1) 
-p
-```
+<a href='https://github.com/appliedepi/epiRhandbook_fr/tree/master/data/time_series/weather/germany_weather2008.nc' class='download-button'>
+	Cliquer pour télécharger
+	<span> Climat Allemagne 2008 (.nc file)</span>
+</a> 
 
-Nous pouvons ensuite manipuler les nœuds en appliquant **ggtree::rotate()** ou **ggtree::flip()** : Note : pour illustrer quels noeuds nous manipulons, nous appliquons d'abord la fonction **geom_hilight()** de **ggtree** pour mettre en évidence les échantillons dans les noeuds qui nous intéressent et nous enregistrons cet objet ggtree plot dans un nouvel objet `p1`.
+<a href='https://github.com/appliedepi/epiRhandbook_fr/tree/master/data/time_series/weather/germany_weather2009.nc' class='download-button'>
+	Cliquer pour télécharger
+	<span> Climat Allemagne 2009 (.nc file)</span>
+</a> 
 
-```{r, phylogenetic_trees_rotating_2, out.width=c('50%'), fig.show='hold', fig.align='center'}
+<a href='https://github.com/appliedepi/epiRhandbook_fr/tree/master/data/time_series/weather/germany_weather2010.nc' class='download-button'>
+	Cliquer pour télécharger
+	<span> Climat Allemagne 2010 (.nc file)</span>
+</a> 
 
-p1 <- p + geom_hilight(  # met en évidence le nœud 39 en bleu, "extend =" nous permet de définir la longueur du bloc de couleur
-  node = 39,
-  fill = "steelblue",
-  extend = 0.0017) +  
-geom_hilight(            # met en évidence le nœud 39 en jaune
-  node = 37,
-  fill = "yellow",
-  extend = 0.0017) +               
-ggtitle("Original tree")
+<a href='https://github.com/appliedepi/epiRhandbook_fr/tree/master/data/time_series/weather/germany_weather2011.nc' class='download-button'>
+	Cliquer pour télécharger
+	<span> Climat Allemagne 2011 (.nc file)</span>
+</a>
 
 
-p1 # imprime
-```
 
-Maintenant nous pouvons faire tourner le noeud 37 dans l'objet `p1` de sorte que les échantillons sur le noeud 38 se déplacent vers le haut. Nous enregistrons l'arbre pivoté dans un nouvel objet `p2`.
+#### Analyse d'enquêtes {#data_survey .unnumbered}  
 
-```{r}
-p2 <- ggtree::rotate(p1, 37) + 
-      ggtitle("Rotated Node 37")
+Pour la page [analyse d'enquête](#survey_analysis), nous utilisons des données d'enquêtes de mortalité fictives basées sur les modèles d'enquête MSF OCA. Ces données fictives ont été générées dans le cadre du projet ["R4Epis"](https://r4epis.netlify.app/).
 
+<a href='https://github.com/appliedepi/epiRhandbook_fr/tree/master/data/surveys/survey_data.xlsx' class='download-button'>
+	Cliquer pour télécharger
+	<span> Données d'enquête fictives (.xlsx)</span>
+</a>
 
-p2   # imprime
-```
+<a href='https://github.com/appliedepi/epiRhandbook_fr/tree/master/data/surveys/survey_dict.xlsx' class='download-button'>
+	Cliquer pour télécharger
+	<span> Données d'enquête fictives (dictionnaire) (.xlsx)</span>
+</a>
 
-Ou nous pouvons utiliser la commande flip pour faire pivoter le noeud 36 de l'objet `p1` et faire passer le noeud 37 en haut et le noeud 39 en bas. Nous enregistrons l'arbre retourné dans un nouvel objet `p3`.
+<a href='https://github.com/appliedepi/epiRhandbook_fr/tree/master/data/surveys/population.xlsx' class='download-button'>
+	Cliquer pour télécharger
+	<span> Données d'enquête fictives (données de population) (.xlsx)</span>
+</a>
 
-```{r}
 
-p3 <-  flip(p1, 39, 37) +
-      ggtitle("Rotated Node 36")
 
 
-p3   # imprime
-```
-
-### Exemple de sous-arbre avec annotation d'échantillon de données {.unnumbered}
-
-Disons que nous investiguons le cluster de cas avec expansion clonale qui s'est produit en 2017 et 2018 au nœud 39 de notre sous-arbre. Nous ajoutons l'année d'isolement de la souche ainsi que l'historique des voyages et la couleur par pays pour voir l'origine d'autres souches étroitement liées :
-
-```{r, phylogenetic_trees_inspect_subset_example, out.width=c('80%'), fig.show='hold', fig.align='center', warning=F, message=F}
-
-ggtree(sub_tree2) %<+% sample_data +     # nous utilisons l'opérateur %<+% pour faire le lien avec le fichier sample_data 
-  geom_tiplab(                          # étiquette les extrémités de toutes les branches avec le nom de l'échantillon dans le fichier arbre
-    size = 2.5,
-    offset = 0.001,
-    align = TRUE) + 
-  theme_tree2()+
-  xlim(0, 0.015)+                       # définir les limites de l'axe x de notre arbre 
-  geom_tippoint(aes(color=Country),     # colorer le point d'extrémité par continent
-                size = 1.5)+ 
-  scale_color_brewer(
-    name = "Country", 
-    palette = "Set1", 
-    na.value = "grey")+
-  geom_tiplab(                          # ajouter l'année d'isolation comme étiquette de texte aux extrémités
-    aes(label = Year),
-    color = 'blue',
-    offset = 0.0045,
-    size = 3,
-    linetype = "blank" ,
-    geom = "text",
-    align = TRUE)+ 
-  geom_tiplab(                          # ajouter l'historique de voyage comme étiquette de texte aux extrémités, en couleur rouge
-    aes(label = Travel_history),
-    color = 'red',
-    offset = 0.006,
-    size = 3,
-    linetype = "blank",
-    geom = "text",
-    align = TRUE)+ 
-  ggtitle("Phylogenetic tree of Belgian S. sonnei strains with travel history")+  # ajouter le titre du graphique
-  xlab("genetic distance (0.001 = 4 nucleotides difference)")+                    # ajouter une étiquette à l'axe x 
-  theme(
-    axis.title.x = element_text(size = 10),
-    axis.title.y = element_blank(),
-    legend.title = element_text(face = "bold", size = 12),
-    legend.text = element_text(face = "bold", size = 10),
-    plot.title = element_text(size = 12, face = "bold"))
-
-```
-
-Notre observation pointe vers un événement d'importation de souches en provenance d'Asie, qui ont ensuite circulé en Belgique au fil des ans et semblent avoir causé notre dernière épidémie.
-
-<!-- ======================================================= -->
-
-## Arbres plus complexes : ajout de cartes thermiques des données de l'échantillon {.unnumbered}
-
-Nous pouvons ajouter des informations plus complexes, telles que la présence catégorielle de gènes de résistance aux antimicrobiens et des valeurs numériques pour la résistance aux antimicrobiens effectivement mesurée sous la forme d'une carte thermique en utilisant la fonction **ggtree::gheatmap()**.
-
-Tout d'abord, nous devons tracer notre arbre (qui peut être linéaire ou circulaire) et le enregistrer dans un nouvel objet ggtree plot `p` : Nous allons utiliser le sub_tree de la partie 3).
-
-```{r, phylogenetic_trees_sampledata_heatmap, out.width=c('60%'), fig.align='center', fig.show='hold'}
-
-p <- ggtree(sub_tree2, branch.length='none', layout='circular') %<+% sample_data +
-  geom_tiplab(size =3) + 
- theme(
-   legend.position = "none",
-    axis.title.x = element_blank(),
-    axis.title.y = element_blank(),
-    plot.title = element_text(
-      size = 12,
-      face = "bold",
-      hjust = 0.5,
-      vjust = -15))
-p
-
-```
-
-Ensuite, nous préparons nos données. Pour visualiser différentes variables avec de nouveaux schémas de couleurs, nous sous-ensemblons notre dataframe à la variable désirée. Il est important d'ajouter le `Sample_ID` comme rownames sinon il ne pourra pas faire correspondre les données à l'arbre `tip.labels` :
-
-Dans notre exemple, nous voulons examiner le sexe et les mutations qui pourraient conférer une résistance à la Ciprofloxacine, un important antibiotique de première ligne utilisé pour traiter les infections à Shigella.
-
-Nous créons un tableau de données pour le sexe :
-
-```{r, phylogenetic_trees_sampledata_heatmap_data}
-gender <- data.frame("gender" = sample_data[,c("Gender")])
-rownames(gender) <- sample_data$Sample_ID
-```
-
-Nous créons un tableau de données pour les mutations du gène gyrA, qui confèrent une résistance à la ciprofloxacine :
-
-```{r}
-cipR <- data.frame("cipR" = sample_data[,c("gyrA_mutations")])
-rownames(cipR) <- sample_data$Sample_ID
-
-```
-
-Nous créons un tableau de données pour la concentration minimale inhibitrice (CMI) mesurée pour la Ciprofloxacine en provenance du laboratoire :
-
-```{r}
-MIC_Cip <- data.frame("mic_cip" = sample_data[,c("MIC_CIP")])
-rownames(MIC_Cip) <- sample_data$Sample_ID
-```
-
-Nous créons un premier graphique en ajoutant une carte thermique binaire pour le sexe à l'arbre phylogénétique et en la sauvegardant dans un nouvel objet graphique ggtree `h1` :
-
-```{r, phylogenetic_trees_sampledata_heatmap_gender, out.width=c('70%'), fig.show='hold', fig.align='center'}
-
-h1 <-  gheatmap(p, gender,                                 # Nous ajoutons une couche de carte thermique du tableau de données de sexe à notre graphique arbre.
-                offset = 10,                               # l'offset déplace la carte thermique vers la droite,
-                width = 0.10,                              # la largeur définit la largeur de la colonne de la carte thermique,
-                color = NULL,                              # la couleur définit la bordure des colonnes de la carte thermique.
-         colnames = FALSE) +                               # cache les noms des colonnes de la carte thermique
-  scale_fill_manual(name = "Gender",                       # définit le schéma de coloration et la légende pour le sexe
-                    values = c("#00d1b1", "purple"),
-                    breaks = c("Male", "Female"),
-                    labels = c("Male", "Female")) +
-   theme(legend.position = "bottom",
-        legend.title = element_text(size = 12),
-        legend.text = element_text(size = 10),
-        legend.box = "vertical", legend.margin = margin())
-h1
-
-```
-
-Nous ajoutons ensuite des informations sur les mutations du gène gyrA, qui confèrent une résistance à la Ciprofloxacine :
-
-Note : La présence de mutations ponctuelles chromosomiques dans les données WGS a été déterminée au préalable à l'aide de l'outil PointFinder développé par Zankari et al. (voir la référence dans la section des références supplémentaires)
-
-Tout d'abord, nous attribuons un nouveau schéma de couleurs à notre objet de tracé existant `h1` et le sauvegardons dans un nouvel objet `h2`. Cela nous permet de définir et de modifier les couleurs de notre deuxième variable dans la carte thermique.
-
-```{r}
-h2 <- h1 + new_scale_fill() 
-```
-
-Ensuite, nous ajoutons la deuxième couche de carte thermique à `h2` et nous enregistrons les graphiques combinés dans un nouvel objet `h3` :
-
-```{r, phylogenetic_trees_sampledata_heatmap_cip_genes, out.width=c('80%'), fig.show='hold', fig.align='center'}
-
-h3 <- gheatmap(h2, cipR,         # ajoute la deuxième ligne de la carte thermique décrivant les mutations de résistance à la Ciprofloxacine
-               offset = 12, 
-               width = 0.10, 
-               colnames = FALSE) +
-  scale_fill_manual(name = "Ciprofloxacin resistance \n conferring mutation",
-                    values = c("#fe9698","#ea0c92"),
-                    breaks = c( "gyrA D87Y", "gyrA S83L"),
-                    labels = c( "gyrA d87y", "gyrA s83l")) +
-   theme(legend.position = "bottom",
-        legend.title = element_text(size = 12),
-        legend.text = element_text(size = 10),
-        legend.box = "vertical", legend.margin = margin())+
-  guides(fill = guide_legend(nrow = 2,byrow = TRUE))
-h3
-```
-
-Nous répétons le processus ci-dessus, en ajoutant d'abord une nouvelle couche d'échelle de couleurs à notre objet existant `h3`, puis en ajoutant les données continues sur la concentration minimale inhibitrice (CMI) de la Ciprofloxacine pour chaque souche à l'objet résultant `h4` pour produire l'objet final `h5` :
-
-```{r, phylogenetic_trees_sampledata_heatmap_cip_MIC, out.width=c('90%'), fig.show='hold', fig.align='center'}
-# D'abord nous ajoutons le nouveau schéma de coloration :
-h4 <- h3 + new_scale_fill()
-
-# puis nous combinons les deux en une nouvelle graphique :
-h5 <- gheatmap(h4, MIC_Cip,  
-               offset = 14, 
-               width = 0.10,
-                colnames = FALSE)+
-  scale_fill_continuous(name = "MIC for Ciprofloxacin",  # nous définissons ici un schéma de couleurs de gradient pour la variable continue de CMI
-                      low = "yellow", high = "red",
-                      breaks = c(0, 0.50, 1.00),
-                      na.value = "white") +
-   guides(fill = guide_colourbar(barwidth = 5, barheight = 1))+
-   theme(legend.position = "bottom",
-        legend.title = element_text(size = 12),
-        legend.text = element_text(size = 10),
-        legend.box = "vertical", legend.margin = margin())
-h5
-
-```
-
-We can do the same exercise for a linear tree:
-
-```{r, phylogenetic_trees_sampledata_heatmap_linear_1, out.width=c('80%'), fig.show='hold', fig.align='center'}
-
-p <- ggtree(sub_tree2) %<+% sample_data +
-  geom_tiplab(size = 3) + # etiquetter les pointes
-  theme_tree2()+
-  xlab("genetic distance (0.001 = 4 nucleotides difference)")+
-  xlim(0, 0.015)+
- theme(legend.position = "none",
-      axis.title.y = element_blank(),
-      plot.title = element_text(size = 12, 
-                                face = "bold",
-                                hjust = 0.5,
-                                vjust = -15))
-p
-```
-
-Tout d'abord, nous ajoutons le sexe :
-
-```{r, phylogenetic_trees_sampledata_heatmap_linear_2, out.width=c('80%'), fig.show='hold', fig.align='center'}
-
-h1 <-  gheatmap(p, gender, 
-                offset = 0.003,
-                width = 0.1, 
-                color="black", 
-         colnames = FALSE)+
-  scale_fill_manual(name = "Gender",
-                    values = c("#00d1b1", "purple"),
-                    breaks = c("Male", "Female"),
-                    labels = c("Male", "Female"))+
-   theme(legend.position = "bottom",
-        legend.title = element_text(size = 12),
-        legend.text = element_text(size = 10),
-        legend.box = "vertical", legend.margin = margin())
-h1
-```
-
-Puis nous ajoutons les mutations de résistance à la Ciprofloxacine après avoir ajouté une autre couche de schéma de couleurs :
-
-```{r, phylogenetic_trees_sampledata_heatmap_linear_3, out.width=c('80%'), fig.show='hold', fig.align='center'}
-
-h2 <- h1 + new_scale_fill()
-h3 <- gheatmap(h2, cipR,   
-               offset = 0.004, 
-               width = 0.1,
-               color = "black",
-                colnames = FALSE)+
-  scale_fill_manual(name = "Ciprofloxacin resistance \n conferring mutation",
-                    values = c("#fe9698","#ea0c92"),
-                    breaks = c( "gyrA D87Y", "gyrA S83L"),
-                    labels = c( "gyrA d87y", "gyrA s83l"))+
-   theme(legend.position = "bottom",
-        legend.title = element_text(size = 12),
-        legend.text = element_text(size = 10),
-        legend.box = "vertical", legend.margin = margin())+
-  guides(fill = guide_legend(nrow = 2,byrow = TRUE))
- h3
-```
-
-On ajoute ensuite la concentration minimale inhibitrice déterminée par le laboratoire (CMI) :
-
-```{r, phylogenetic_trees_sampledata_heatmap_linear_4, out.width=c('80%'), fig.show='hold', fig.align='center'}
-
-h4 <- h3 + new_scale_fill()
-h5 <- gheatmap(h4, MIC_Cip, 
-               offset = 0.005,  
-               width = 0.1,
-               color = "black", 
-                colnames = FALSE)+
-  scale_fill_continuous(name = "MIC for Ciprofloxacin",
-                      low = "yellow", high = "red",
-                      breaks = c(0,0.50,1.00),
-                      na.value = "white")+
-   guides(fill = guide_colourbar(barwidth = 5, barheight = 1))+
-   theme(legend.position = "bottom",
-        legend.title = element_text(size = 10),
-        legend.text = element_text(size = 8),
-        legend.box = "horizontal", legend.margin = margin())+
-  guides(shape = guide_legend(override.aes = list(size = 2)))
-h5
-
-```
-
-<!-- ======================================================= -->
-
-## Resources
-
-<http://hydrodictyon.eeb.uconn.edu/eebedia/index.php/Ggtree#> Clade_Colors <https://bioconductor.riken.jp/packages/3.2/bioc/vignettes/ggtree/inst/doc/treeManipulation.html> <https://guangchuangyu.github.io/ggtree-book/chapter-ggtree.html> <https://bioconductor.riken.jp/packages/3.8/bioc/vignettes/ggtree/inst/doc/treeManipulation.html>
-
-Ea Zankari, Rosa Allesøe, Katrine G Joensen, Lina M Cavaco, Ole Lund, Frank M Aarestrup, PointFinder: a novel web tool for WGS-based detection of antimicrobial resistance associated with chromosomal point mutations in bacterial pathogens, Journal of Antimicrobial Chemotherapy, Volume 72, Issue 10, October 2017, Pages 2764--2768, <https://doi.org/10.1093/jac/dkx217>
+#### Shiny {#data_shiny .unnumbered}  
+
+La page sur les [tableaux de bord avec Shiny](#shiny) illustre la construction d'une application simple pour afficher les données sur le paludisme.  
+
+Pour télécharger les fichiers R qui produisent l'app Shiny :  
+
+Vous pouvez <a href='https://github.com/appliedepi/epiRhandbook_fr/tree/master/data/malaria_app/app.R' class='download-button'>
+	cliquer ici pour télécharger le fichier app.R<span> qui contient à la fois le code de l'interface utilisateur et du serveur pour l'application Shiny.</span></a>.
+
+Vous pouvez <a href='https://github.com/appliedepi/epirhandbook_eng/blob/master/data/malaria_app/data/facility_count_data.rds' class='download-button'>
+	cliquer ici pour télécharger le fichier facility_count_data.rds<span></a> qui contient les données sur le paludisme pour l'application Shiny. Notez que vous devrez peut-être l'enregistrer dans un dossier "data" pour que les chemins de fichier here() fonctionnent correctement.  
+
+Vous pouvez <a href='https://github.com/appliedepi/epirhandbook_eng/blob/master/data/malaria_app/global.R' class='download-button'>
+	cliquer ici pour télécharger le fichier global.R<span></a> qui doit être exécuté avant l'ouverture de l'app, comme expliqué dans la page.
+	
+Vous pouvez <a href='https://github.com/appliedepi/epiRhandbook_fr/tree/master/data/malaria_app/funcs/plot_epicurve.R' class='download-button'>
+	cliquer ici pour télécharger le fichier plot_epicurve.R<span></a> dont l'exécution est lancée par le script global.R. Notez que vous devrez peut-être le stocker dans un dossier "funcs" pour que les chemins de fichier here() fonctionnent correctement.
+
+
+
 ```{r include=FALSE, cache=FALSE}
 
 # clear workspace
@@ -934,5 +626,5 @@ options(scipen=1, digits=7)
 # opts_chunk$set(list(echo = FALSE, eval = FALSE))
 ```
 
-<!--chapter:end:new_pages/phylogenetic_trees.Rmd-->
+<!--chapter:end:new_pages/data_used.Rmd-->
 
