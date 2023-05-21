@@ -189,6 +189,7 @@ détection-des-épidémies
 ajoutez-des-lignes-.unnumbered.
 série-chronologique-interrompue
 ressources-10
+epidemic_models
 overview
 préparation-7
 estimation-de-rt

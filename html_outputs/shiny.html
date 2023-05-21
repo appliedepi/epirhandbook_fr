@@ -4,15 +4,15 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>42 Tableaux de bord avec Shiny | Le Epi R Handbook</title>
+<title>43 Tableaux de bord avec Shiny | Le Epi R Handbook</title>
 <meta name="author" content="the handbook team">
 <meta name="description" content="Les tableaux de bord sont souvent une excellente méthode de partager les résultats d’analyses avec d’autres personnes. Produire un tableau de bord avec shiny nécessite une connaissance...">
 <meta name="generator" content="bookdown 0.34 with bs4_book()">
-<meta property="og:title" content="42 Tableaux de bord avec Shiny | Le Epi R Handbook">
+<meta property="og:title" content="43 Tableaux de bord avec Shiny | Le Epi R Handbook">
 <meta property="og:type" content="book">
 <meta property="og:description" content="Les tableaux de bord sont souvent une excellente méthode de partager les résultats d’analyses avec d’autres personnes. Produire un tableau de bord avec shiny nécessite une connaissance...">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="42 Tableaux de bord avec Shiny | Le Epi R Handbook">
+<meta name="twitter:title" content="43 Tableaux de bord avec Shiny | Le Epi R Handbook">
 <meta name="twitter:description" content="Les tableaux de bord sont souvent une excellente méthode de partager les résultats d’analyses avec d’autres personnes. Produire un tableau de bord avec shiny nécessite une connaissance...">
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
@@ -87,35 +87,36 @@
 <li><a class="" href="standardisation.html"><span class="header-section-number">21</span> Taux standardisés</a></li>
 <li><a class="" href="moving_average.html"><span class="header-section-number">22</span> Moyennes mobiles</a></li>
 <li><a class="" href="time_series.html"><span class="header-section-number">23</span> Série temporelle et détection des épidémies</a></li>
-<li><a class="" href="contact_tracing.html"><span class="header-section-number">24</span> Suivi des contacts</a></li>
-<li><a class="" href="survey_analysis.html"><span class="header-section-number">25</span> Analyse d’enquête</a></li>
-<li><a class="" href="survival_analysis.html"><span class="header-section-number">26</span> Analyse de survie</a></li>
-<li><a class="" href="gis.html"><span class="header-section-number">27</span> GIS basics</a></li>
+<li><a class="" href="epidemic_models.html"><span class="header-section-number">24</span> Modélisation des épidémies</a></li>
+<li><a class="" href="contact_tracing.html"><span class="header-section-number">25</span> Suivi des contacts</a></li>
+<li><a class="" href="survey_analysis.html"><span class="header-section-number">26</span> Analyse d’enquête</a></li>
+<li><a class="" href="survival_analysis.html"><span class="header-section-number">27</span> Analyse de survie</a></li>
+<li><a class="" href="gis.html"><span class="header-section-number">28</span> GIS basics</a></li>
 <li class="book-part">Data Visualization</li>
-<li><a class="" href="tables_presentation.html"><span class="header-section-number">28</span> Présenter avec des tables</a></li>
-<li><a class="" href="ggplot_basics.html"><span class="header-section-number">29</span> Les bases de ggplot</a></li>
-<li><a class="" href="ggplot_tips.html"><span class="header-section-number">30</span> Trucs et Astuces avec ggplot</a></li>
-<li><a class="" href="epicurves.html"><span class="header-section-number">31</span> Courbes épidémiques</a></li>
-<li><a class="" href="age_pyramid.html"><span class="header-section-number">32</span> Pyramides démographiques et échelles de Likert</a></li>
-<li><a class="" href="heatmaps.html"><span class="header-section-number">33</span> Graphiques thermiques</a></li>
-<li><a class="" href="diagrams.html"><span class="header-section-number">34</span> Diagrammes et schémas</a></li>
-<li><a class="" href="combination_analysis.html"><span class="header-section-number">35</span> Analyse des combinaisons</a></li>
-<li><a class="" href="transmission_chains.html"><span class="header-section-number">36</span> Chaînes de transmission</a></li>
-<li><a class="" href="phylogenetic_trees.html"><span class="header-section-number">37</span> Les arbres phylogénétiques</a></li>
-<li><a class="" href="interactive_plots.html"><span class="header-section-number">38</span> Graphiques interactifs</a></li>
+<li><a class="" href="tables_presentation.html"><span class="header-section-number">29</span> Présenter avec des tables</a></li>
+<li><a class="" href="ggplot_basics.html"><span class="header-section-number">30</span> Les bases de ggplot</a></li>
+<li><a class="" href="ggplot_tips.html"><span class="header-section-number">31</span> Trucs et Astuces avec ggplot</a></li>
+<li><a class="" href="epicurves.html"><span class="header-section-number">32</span> Courbes épidémiques</a></li>
+<li><a class="" href="age_pyramid.html"><span class="header-section-number">33</span> Pyramides démographiques et échelles de Likert</a></li>
+<li><a class="" href="heatmaps.html"><span class="header-section-number">34</span> Graphiques thermiques</a></li>
+<li><a class="" href="diagrams.html"><span class="header-section-number">35</span> Diagrammes et schémas</a></li>
+<li><a class="" href="combination_analysis.html"><span class="header-section-number">36</span> Analyse des combinaisons</a></li>
+<li><a class="" href="transmission_chains.html"><span class="header-section-number">37</span> Chaînes de transmission</a></li>
+<li><a class="" href="phylogenetic_trees.html"><span class="header-section-number">38</span> Les arbres phylogénétiques</a></li>
+<li><a class="" href="interactive_plots.html"><span class="header-section-number">39</span> Graphiques interactifs</a></li>
 <li class="book-part">Reports and dashboards</li>
-<li><a class="" href="rmarkdown.html"><span class="header-section-number">39</span> Production de rapports avec R Markdown</a></li>
-<li><a class="" href="reportfactory.html"><span class="header-section-number">40</span> Organisation des rapports de routine</a></li>
-<li><a class="" href="dashboards.html"><span class="header-section-number">41</span> Tableaux de bord avec R Markdown</a></li>
-<li><a class="active" href="shiny.html"><span class="header-section-number">42</span> Tableaux de bord avec Shiny</a></li>
+<li><a class="" href="rmarkdown.html"><span class="header-section-number">40</span> Production de rapports avec R Markdown</a></li>
+<li><a class="" href="reportfactory.html"><span class="header-section-number">41</span> Organisation des rapports de routine</a></li>
+<li><a class="" href="dashboards.html"><span class="header-section-number">42</span> Tableaux de bord avec R Markdown</a></li>
+<li><a class="active" href="shiny.html"><span class="header-section-number">43</span> Tableaux de bord avec Shiny</a></li>
 <li class="book-part">Miscellaneous</li>
-<li><a class="" href="writing_functions.html"><span class="header-section-number">43</span> Fonctions d’écriture</a></li>
-<li><a class="" href="directories.html"><span class="header-section-number">44</span> Interactions avec les répertoires</a></li>
-<li><a class="" href="collaboration.html"><span class="header-section-number">45</span> Contrôle de version et collaboration avec Git et Github</a></li>
-<li><a class="" href="errors.html"><span class="header-section-number">46</span> Erreurs fréquentes</a></li>
-<li><a class="" href="help.html"><span class="header-section-number">47</span> Obtenir de l’aide</a></li>
-<li><a class="" href="network_drives.html"><span class="header-section-number">48</span> R sur les lecteurs réseau</a></li>
-<li><a class="" href="data_table.html"><span class="header-section-number">49</span> Tableau de données</a></li>
+<li><a class="" href="writing_functions.html"><span class="header-section-number">44</span> Fonctions d’écriture</a></li>
+<li><a class="" href="directories.html"><span class="header-section-number">45</span> Interactions avec les répertoires</a></li>
+<li><a class="" href="collaboration.html"><span class="header-section-number">46</span> Contrôle de version et collaboration avec Git et Github</a></li>
+<li><a class="" href="errors.html"><span class="header-section-number">47</span> Erreurs fréquentes</a></li>
+<li><a class="" href="help.html"><span class="header-section-number">48</span> Obtenir de l’aide</a></li>
+<li><a class="" href="network_drives.html"><span class="header-section-number">49</span> R sur les lecteurs réseau</a></li>
+<li><a class="" href="data_table.html"><span class="header-section-number">50</span> Tableau de données</a></li>
 </ul>
 
         <div class="book-extra">
@@ -123,9 +124,9 @@
         </div>
       </nav>
 </div>
-  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="shiny" class="section level1" number="42">
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="shiny" class="section level1" number="43">
 <h1>
-<span class="header-section-number">42</span> Tableaux de bord avec Shiny<a class="anchor" aria-label="anchor" href="#shiny"><i class="fas fa-link"></i></a>
+<span class="header-section-number">43</span> Tableaux de bord avec Shiny<a class="anchor" aria-label="anchor" href="#shiny"><i class="fas fa-link"></i></a>
 </h1>
 <p>Les tableaux de bord sont souvent une excellente méthode de partager les résultats d’analyses avec d’autres personnes. Produire un tableau de bord avec <strong>shiny</strong> nécessite une connaissance relativement avancée du langage R, mais vous offrez la personnalisation des tableaux et des possibilités incroyables.</p>
 <!-- L'un des plus grands inconvénients de `R` est sa facilité d'utilisation pour les personnes qui sont nouvelles ou qui n'ont aucune expérience des langages de programmation. Bien que ces compétences soient très précieuses, la plupart des gens trouveront que cela représente un obstacle au partage des analyses, en particulier dans les environnements multidisciplinaires. Maintenir une installation `R` demande un certain travail, et tout le monde ne sera pas à l'aise pour exécuter du code partagé, même s'il est bien documenté et facile à lire. Ceci est *surtout* vrai lorsque les utilisateurs doivent modifier les paramètres du code!  -->
@@ -133,9 +134,9 @@
 <p>Il est recommandé qu’une personne apprenant les tableaux de bord avec <strong>shiny</strong> ait une bonne connaissance de la transformation et de la visualisation des données, et soit à l’aise pour déboguer du code et écrire des fonctions. Le travail avec les tableaux de bord n’est pas intuitif au début et est parfois difficile à comprendre, mais il s’agit d’une excellente compétence à apprendre qui devient beaucoup plus facile avec la pratique !</p>
 <p>Cette page donne un bref aperçu de la façon de créer des tableaux de bord avec <strong>shiny</strong> et ses extensions.
 Pour une méthode alternative de création de tableaux de bord qui est plus rapide, plus facile, mais peut-être moins personnalisable, voir la page sur <strong>flextable</strong> (<a href="rmarkdown.html#rmarkdown">Rapports avec R Markdown</a>).</p>
-<div id="préparation-26" class="section level2" number="42.1">
+<div id="préparation-26" class="section level2" number="43.1">
 <h2>
-<span class="header-section-number">42.1</span> Préparation<a class="anchor" aria-label="anchor" href="#pr%C3%A9paration-26"><i class="fas fa-link"></i></a>
+<span class="header-section-number">43.1</span> Préparation<a class="anchor" aria-label="anchor" href="#pr%C3%A9paration-26"><i class="fas fa-link"></i></a>
 </h2>
 <div id="chargement-des-packages-2" class="section level3 unnumbered">
 <h3>Chargement des packages<a class="anchor" aria-label="anchor" href="#chargement-des-packages-2"><i class="fas fa-link"></i></a>
@@ -153,9 +154,9 @@ Pour une méthode alternative de création de tableaux de bord qui est plus rapi
 <!-- ======================================================= -->
 </div>
 </div>
-<div id="la-structure-dune-application-shiny" class="section level2" number="42.2">
+<div id="la-structure-dune-application-shiny" class="section level2" number="43.2">
 <h2>
-<span class="header-section-number">42.2</span> La structure d’une application shiny<a class="anchor" aria-label="anchor" href="#la-structure-dune-application-shiny"><i class="fas fa-link"></i></a>
+<span class="header-section-number">43.2</span> La structure d’une application shiny<a class="anchor" aria-label="anchor" href="#la-structure-dune-application-shiny"><i class="fas fa-link"></i></a>
 </h2>
 <div id="structures-de-fichiers-de-base" class="section level3 unnumbered">
 <h3>Structures de fichiers de base<a class="anchor" aria-label="anchor" href="#structures-de-fichiers-de-base"><i class="fas fa-link"></i></a>
@@ -238,9 +239,9 @@ Pour une méthode alternative de création de tableaux de bord qui est plus rapi
 <p>Une fois que vous avez une idée de ce qui est possible, il est également utile de dessiner ce à quoi vous voulez que votre application ressemble. Vous pouvez faire un dessin soit sur du papier ou dans un logiciel de dessin (PowerPoint, MS paint, etc.). Il est utile de commencer simplement pour votre première application ! Il n’y a certainment pas d’honte à utiliser le code d’une belle application que vous trouvez en ligne comme modèle pour votre travail. C’est beaucoup plus facile que construire quelque chose à partir de zéro !</p>
 </div>
 </div>
-<div id="construire-une-interface-utilisateur" class="section level2" number="42.3">
+<div id="construire-une-interface-utilisateur" class="section level2" number="43.3">
 <h2>
-<span class="header-section-number">42.3</span> Construire une interface utilisateur<a class="anchor" aria-label="anchor" href="#construire-une-interface-utilisateur"><i class="fas fa-link"></i></a>
+<span class="header-section-number">43.3</span> Construire une interface utilisateur<a class="anchor" aria-label="anchor" href="#construire-une-interface-utilisateur"><i class="fas fa-link"></i></a>
 </h2>
 <p>Lorsque nous construisons notre application, il est plus facile de travailler d’abord sur l’interface utilisateur afin de voir ce que nous faisons, et de ne pas risquer que l’application échoue à cause d’erreurs de serveur. Comme mentionné précédemment, il est souvent bon d’utiliser un modèle pour travailler sur l’interface utilisateur. Il y a un certain nombre de modèles standards qui peuvent être utilisés avec shiny et qui sont disponibles dans le package de base shiny, mais il est intéressant de noter qu’il y a aussi un certain nombre d’extensions du package comme <code>shinydashboard</code>. Nous allons utiliser un exemple de la base shiny pour commencer.</p>
 <p>Une interface utilisateur shiny est généralement définie comme une série de fonctions imbriquées, dans l’ordre suivant:</p>
@@ -337,9 +338,9 @@ Pour une méthode alternative de création de tableaux de bord qui est plus rapi
 <li><a href="https://github.com/dreamRs/shinyWidgets">galerie de widgets shinyWidgets</a></li>
 </ul>
 </div>
-<div id="chargement-des-données-dans-notre-application" class="section level2" number="42.4">
+<div id="chargement-des-données-dans-notre-application" class="section level2" number="43.4">
 <h2>
-<span class="header-section-number">42.4</span> Chargement des données dans notre application<a class="anchor" aria-label="anchor" href="#chargement-des-donn%C3%A9es-dans-notre-application"><i class="fas fa-link"></i></a>
+<span class="header-section-number">43.4</span> Chargement des données dans notre application<a class="anchor" aria-label="anchor" href="#chargement-des-donn%C3%A9es-dans-notre-application"><i class="fas fa-link"></i></a>
 </h2>
 <p>L’étape suivante dans le développement de notre application consiste à mettre en place le serveur et à le faire fonctionner. Pour ce faire, nous devons charger des données dans notre application, et déterminer tous les calculs que nous allons effectuer. Une application shiny n’est pas facile à déboguer, car on ne sait pas toujours d’où viennent les erreurs. Il est donc idéal de faire fonctionner tout le code de traitement et de visualisation des données avant de commencer à créer le serveur lui-même.</p>
 <p>Ainsi, étant donné que nous voulons créer une application qui affiche des courbes épi qui changent en fonction de l’entrée de l’utilisateur, nous devons réfléchir au code dont nous aurions besoin pour l’exécuter dans un script R normal. Nous devrons :</p>
@@ -543,9 +544,9 @@ Pour une méthode alternative de création de tableaux de bord qui est plus rapi
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/source.html">source</a></span><span class="op">(</span><span class="fu"><a href="https://here.r-lib.org//reference/here.html">here</a></span><span class="op">(</span><span class="st">"funcs"</span>, <span class="st">"plot_epicurve.R"</span><span class="op">)</span>, local <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
 <p>Notez que vous devriez <em>toujours</em> spécifier <code>local = TRUE</code> dans les applications shiny, car cela affectera le sourcing quand/si l’application est publiée sur un serveur.</p>
 </div>
-<div id="développer-un-serveur-dapplications" class="section level2" number="42.5">
+<div id="développer-un-serveur-dapplications" class="section level2" number="43.5">
 <h2>
-<span class="header-section-number">42.5</span> Développer un serveur d’applications<a class="anchor" aria-label="anchor" href="#d%C3%A9velopper-un-serveur-dapplications"><i class="fas fa-link"></i></a>
+<span class="header-section-number">43.5</span> Développer un serveur d’applications<a class="anchor" aria-label="anchor" href="#d%C3%A9velopper-un-serveur-dapplications"><i class="fas fa-link"></i></a>
 </h2>
 <p>Maintenant que nous avons la plupart de notre code, il nous reste à développer notre serveur. Il s’agit de la dernière pièce de notre application, et c’est probablement la plus difficile à comprendre. Le serveur est une grande fonction R, mais il est utile de le considérer comme une série de petites fonctions, ou de tâches que l’application peut exécuter. Il est important de comprendre que ces fonctions ne sont pas exécutées dans un ordre linéaire. Il existe un ordre, mais il n’est pas nécessaire de le comprendre lorsqu’on débute avec Shiny. À un niveau très basique, ces tâches ou fonctions s’activent lorsqu’un changement dans les entrées de l’utilisateur les affecte, <em>à moins que le développeur ne les ait configurées pour qu’elles se comportent différemment</em>. Encore une fois, tout cela est assez abstrait, mais passons d’abord en revue les trois types <em>d’objets</em> shiny de base</p>
 <ol style="list-style-type: decimal">
@@ -637,9 +638,9 @@ Pour une méthode alternative de création de tableaux de bord qui est plus rapi
 <div class="inline-figure"><img src="images/shiny/listening.png" width="195"></div>
 <!-- À FAIRE: *AJOUTER QUELQUE CHOSE LORS DU TÉLÉCHARGEMENT D'UN FICHIER ZIP DE L'APPLICATION?*  -->
 </div>
-<div id="ajout-de-fonctionnalités-supplémentaires" class="section level2" number="42.6">
+<div id="ajout-de-fonctionnalités-supplémentaires" class="section level2" number="43.6">
 <h2>
-<span class="header-section-number">42.6</span> Ajout de fonctionnalités supplémentaires<a class="anchor" aria-label="anchor" href="#ajout-de-fonctionnalit%C3%A9s-suppl%C3%A9mentaires"><i class="fas fa-link"></i></a>
+<span class="header-section-number">43.6</span> Ajout de fonctionnalités supplémentaires<a class="anchor" aria-label="anchor" href="#ajout-de-fonctionnalit%C3%A9s-suppl%C3%A9mentaires"><i class="fas fa-link"></i></a>
 </h2>
 <p>À ce stade, nous avons enfin une application qui fonctionne, mais nous avons très peu de fonctionnalités. De plus, nous n’avons pas encore touché à la surface de ce que shiny peut faire, il y a donc encore beaucoup à apprendre ! Continuons à développer notre application existante en ajoutant quelques fonctionnalités supplémentaires. Voici quelques éléments qu’il serait bon d’ajouter :</p>
 <ol style="list-style-type: decimal">
@@ -1309,9 +1310,9 @@ Pour une méthode alternative de création de tableaux de bord qui est plus rapi
 <div class="inline-figure"><img src="images/shiny/app_table_view.gif" width="100%"></div>
 </div>
 </div>
-<div id="partager-les-applications-shiny" class="section level2" number="42.7">
+<div id="partager-les-applications-shiny" class="section level2" number="43.7">
 <h2>
-<span class="header-section-number">42.7</span> Partager les applications shiny<a class="anchor" aria-label="anchor" href="#partager-les-applications-shiny"><i class="fas fa-link"></i></a>
+<span class="header-section-number">43.7</span> Partager les applications shiny<a class="anchor" aria-label="anchor" href="#partager-les-applications-shiny"><i class="fas fa-link"></i></a>
 </h2>
 <p>Maintenant que vous avez développé votre application, vous voulez probablement la partager avec d’autres - c’est le principal avantage de shiny après tout ! Nous pouvons le faire en partageant le code directement, ou nous pouvons le publier sur un serveur. Si nous partageons le code, d’autres personnes pourront voir ce que vous avez fait et s’en inspirer, mais cela annulera l’un des principaux avantages de shiny - <em>il peut éliminer le besoin pour les utilisateurs finaux de maintenir une installation R</em>. Pour cette raison, si vous partagez votre application avec des utilisateurs qui ne sont pas à l’aise avec R, il est beaucoup plus facile de partager une application qui a été publiée sur un serveur.</p>
 <p>Si vous préférez partager le code, vous pouvez créer un fichier .zip de l’application ou, mieux encore, <em>publier votre application sur github et ajouter des collaborateurs</em>.</p>
@@ -1327,15 +1328,15 @@ Pour une méthode alternative de création de tableaux de bord qui est plus rapi
 <p>A partir de là, vous devez noter que l’url de votre compte reflétera le nom de votre application - donc si votre application s’appelle <em>mon_app</em>, l’url sera ajouté comme <em>xxx.io/mon_app/</em>. Choisissez judicieusement le nom de votre application ! Maintenant que vous êtes prêt, cliquez sur deploy - si vous réussissez, votre application sera lancée sur l’url que vous avez choisi !</p>
 <p><em>Quelque chose sur la création d’applications dans des documents ?</em></p>
 </div>
-<div id="lecture-complémentaire" class="section level2" number="42.8">
+<div id="lecture-complémentaire" class="section level2" number="43.8">
 <h2>
-<span class="header-section-number">42.8</span> Lecture complémentaire<a class="anchor" aria-label="anchor" href="#lecture-compl%C3%A9mentaire"><i class="fas fa-link"></i></a>
+<span class="header-section-number">43.8</span> Lecture complémentaire<a class="anchor" aria-label="anchor" href="#lecture-compl%C3%A9mentaire"><i class="fas fa-link"></i></a>
 </h2>
 <p>Jusqu’à présent, nous avons couvert beaucoup d’aspects de shiny, et nous avons à peine effleuré la surface de ce qui est offert pour shiny. Bien que ce guide serve d’introduction, il y a beaucoup plus à apprendre pour comprendre pleinement shiny. Vous devriez commencer à créer des applications et ajouter progressivement de plus en plus de fonctionnalités.</p>
 </div>
-<div id="packages-dextension-recommandés" class="section level2" number="42.9">
+<div id="packages-dextension-recommandés" class="section level2" number="43.9">
 <h2>
-<span class="header-section-number">42.9</span> packages d’extension recommandés<a class="anchor" aria-label="anchor" href="#packages-dextension-recommand%C3%A9s"><i class="fas fa-link"></i></a>
+<span class="header-section-number">43.9</span> packages d’extension recommandés<a class="anchor" aria-label="anchor" href="#packages-dextension-recommand%C3%A9s"><i class="fas fa-link"></i></a>
 </h2>
 <p>Ce qui suit représente une sélection d’extensions de haute qualité pour shiny qui peuvent vous aider à obtenir beaucoup plus de shiny. Sans ordre particulier :</p>
 <ul>
@@ -1351,9 +1352,9 @@ Pour une méthode alternative de création de tableaux de bord qui est plus rapi
 <li><p><strong>plotly</strong> est un package pour créer des graphiques interactifs que l’utilisateur peut manipuler dans l’application. Vous pouvez également convertir vos graphiques en versions interactives via <code><a href="https://rdrr.io/pkg/plotly/man/ggplotly.html">plotly::ggplotly()</a></code> ! Comme alternatives, <strong>dygraphs</strong> et <strong>highcharter</strong> sont également excellents.</p></li>
 </ul>
 </div>
-<div id="ressources-recommandées" class="section level2" number="42.10">
+<div id="ressources-recommandées" class="section level2" number="43.10">
 <h2>
-<span class="header-section-number">42.10</span> Ressources recommandées<a class="anchor" aria-label="anchor" href="#ressources-recommand%C3%A9es"><i class="fas fa-link"></i></a>
+<span class="header-section-number">43.10</span> Ressources recommandées<a class="anchor" aria-label="anchor" href="#ressources-recommand%C3%A9es"><i class="fas fa-link"></i></a>
 </h2>
 
 </div>
@@ -1362,30 +1363,30 @@ Pour une méthode alternative de création de tableaux de bord qui est plus rapi
 
 
 <div class="chapter-nav">
-<div class="prev"><a href="dashboards.html"><span class="header-section-number">41</span> Tableaux de bord avec R Markdown</a></div>
-<div class="next"><a href="writing_functions.html"><span class="header-section-number">43</span> Fonctions d’écriture</a></div>
+<div class="prev"><a href="dashboards.html"><span class="header-section-number">42</span> Tableaux de bord avec R Markdown</a></div>
+<div class="next"><a href="writing_functions.html"><span class="header-section-number">44</span> Fonctions d’écriture</a></div>
 </div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
     <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
       <ul class="nav navbar-nav">
-<li><a class="nav-link" href="#shiny"><span class="header-section-number">42</span> Tableaux de bord avec Shiny</a></li>
+<li><a class="nav-link" href="#shiny"><span class="header-section-number">43</span> Tableaux de bord avec Shiny</a></li>
 <li>
-<a class="nav-link" href="#pr%C3%A9paration-26"><span class="header-section-number">42.1</span> Préparation</a><ul class="nav navbar-nav">
+<a class="nav-link" href="#pr%C3%A9paration-26"><span class="header-section-number">43.1</span> Préparation</a><ul class="nav navbar-nav">
 <li><a class="nav-link" href="#chargement-des-packages-2">Chargement des packages</a></li>
 <li><a class="nav-link" href="#importer-des-donn%C3%A9es-9">Importer des données</a></li>
 </ul>
 </li>
 <li>
-<a class="nav-link" href="#la-structure-dune-application-shiny"><span class="header-section-number">42.2</span> La structure d’une application shiny</a><ul class="nav navbar-nav">
+<a class="nav-link" href="#la-structure-dune-application-shiny"><span class="header-section-number">43.2</span> La structure d’une application shiny</a><ul class="nav navbar-nav">
 <li><a class="nav-link" href="#structures-de-fichiers-de-base">Structures de fichiers de base</a></li>
 <li><a class="nav-link" href="#le-serveur-et-linterface-utilisateur">Le serveur et l’interface utilisateur</a></li>
 <li><a class="nav-link" href="#avant-de-commencer-%C3%A0-construire-une-application">Avant de commencer à construire une application</a></li>
 </ul>
 </li>
-<li><a class="nav-link" href="#construire-une-interface-utilisateur"><span class="header-section-number">42.3</span> Construire une interface utilisateur</a></li>
-<li><a class="nav-link" href="#chargement-des-donn%C3%A9es-dans-notre-application"><span class="header-section-number">42.4</span> Chargement des données dans notre application</a></li>
-<li><a class="nav-link" href="#d%C3%A9velopper-un-serveur-dapplications"><span class="header-section-number">42.5</span> Développer un serveur d’applications</a></li>
+<li><a class="nav-link" href="#construire-une-interface-utilisateur"><span class="header-section-number">43.3</span> Construire une interface utilisateur</a></li>
+<li><a class="nav-link" href="#chargement-des-donn%C3%A9es-dans-notre-application"><span class="header-section-number">43.4</span> Chargement des données dans notre application</a></li>
+<li><a class="nav-link" href="#d%C3%A9velopper-un-serveur-dapplications"><span class="header-section-number">43.5</span> Développer un serveur d’applications</a></li>
 <li>
-<a class="nav-link" href="#ajout-de-fonctionnalit%C3%A9s-suppl%C3%A9mentaires"><span class="header-section-number">42.6</span> Ajout de fonctionnalités supplémentaires</a><ul class="nav navbar-nav">
+<a class="nav-link" href="#ajout-de-fonctionnalit%C3%A9s-suppl%C3%A9mentaires"><span class="header-section-number">43.6</span> Ajout de fonctionnalités supplémentaires</a><ul class="nav navbar-nav">
 <li><a class="nav-link" href="#ajouter-du-texte-statique">Ajouter du texte statique</a></li>
 <li><a class="nav-link" href="#ajouter-un-lien">Ajouter un lien</a></li>
 <li><a class="nav-link" href="#ajout-dun-bouton-de-t%C3%A9l%C3%A9chargement">Ajout d’un bouton de téléchargement</a></li>
@@ -1393,10 +1394,10 @@ Pour une méthode alternative de création de tableaux de bord qui est plus rapi
 <li><a class="nav-link" href="#ajout-dun-autre-onglet-avec-une-table">Ajout d’un autre onglet avec une table</a></li>
 </ul>
 </li>
-<li><a class="nav-link" href="#partager-les-applications-shiny"><span class="header-section-number">42.7</span> Partager les applications shiny</a></li>
-<li><a class="nav-link" href="#lecture-compl%C3%A9mentaire"><span class="header-section-number">42.8</span> Lecture complémentaire</a></li>
-<li><a class="nav-link" href="#packages-dextension-recommand%C3%A9s"><span class="header-section-number">42.9</span> packages d’extension recommandés</a></li>
-<li><a class="nav-link" href="#ressources-recommand%C3%A9es"><span class="header-section-number">42.10</span> Ressources recommandées</a></li>
+<li><a class="nav-link" href="#partager-les-applications-shiny"><span class="header-section-number">43.7</span> Partager les applications shiny</a></li>
+<li><a class="nav-link" href="#lecture-compl%C3%A9mentaire"><span class="header-section-number">43.8</span> Lecture complémentaire</a></li>
+<li><a class="nav-link" href="#packages-dextension-recommand%C3%A9s"><span class="header-section-number">43.9</span> packages d’extension recommandés</a></li>
+<li><a class="nav-link" href="#ressources-recommand%C3%A9es"><span class="header-section-number">43.10</span> Ressources recommandées</a></li>
 </ul>
 
       <div class="book-extra">

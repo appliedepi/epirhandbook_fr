@@ -4,16 +4,16 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>25 Analyse d’enquête | Le Epi R Handbook</title>
+<title>26 Analyse d’enquête | Le Epi R Handbook</title>
 <meta name="author" content="the handbook team">
-<meta name="description" content="25.1 Aperçu Cette page démontre l’utilisation de plusieurs packages pour l’analyse d’enquêtes. La plupart des paquets R d’enquête reposent sur le paquet survey pour effectuer des analyses...">
+<meta name="description" content="26.1 Aperçu Cette page démontre l’utilisation de plusieurs packages pour l’analyse d’enquêtes. La plupart des paquets R d’enquête reposent sur le paquet survey pour effectuer des analyses...">
 <meta name="generator" content="bookdown 0.34 with bs4_book()">
-<meta property="og:title" content="25 Analyse d’enquête | Le Epi R Handbook">
+<meta property="og:title" content="26 Analyse d’enquête | Le Epi R Handbook">
 <meta property="og:type" content="book">
-<meta property="og:description" content="25.1 Aperçu Cette page démontre l’utilisation de plusieurs packages pour l’analyse d’enquêtes. La plupart des paquets R d’enquête reposent sur le paquet survey pour effectuer des analyses...">
+<meta property="og:description" content="26.1 Aperçu Cette page démontre l’utilisation de plusieurs packages pour l’analyse d’enquêtes. La plupart des paquets R d’enquête reposent sur le paquet survey pour effectuer des analyses...">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="25 Analyse d’enquête | Le Epi R Handbook">
-<meta name="twitter:description" content="25.1 Aperçu Cette page démontre l’utilisation de plusieurs packages pour l’analyse d’enquêtes. La plupart des paquets R d’enquête reposent sur le paquet survey pour effectuer des analyses...">
+<meta name="twitter:title" content="26 Analyse d’enquête | Le Epi R Handbook">
+<meta name="twitter:description" content="26.1 Aperçu Cette page démontre l’utilisation de plusieurs packages pour l’analyse d’enquêtes. La plupart des paquets R d’enquête reposent sur le paquet survey pour effectuer des analyses...">
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
 <script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.4.2/transition.js"></script><script src="libs/bs3compat-0.4.2/tabs.js"></script><script src="libs/bs3compat-0.4.2/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
@@ -87,35 +87,36 @@
 <li><a class="" href="standardisation.html"><span class="header-section-number">21</span> Taux standardisés</a></li>
 <li><a class="" href="moving_average.html"><span class="header-section-number">22</span> Moyennes mobiles</a></li>
 <li><a class="" href="time_series.html"><span class="header-section-number">23</span> Série temporelle et détection des épidémies</a></li>
-<li><a class="" href="contact_tracing.html"><span class="header-section-number">24</span> Suivi des contacts</a></li>
-<li><a class="active" href="survey_analysis.html"><span class="header-section-number">25</span> Analyse d’enquête</a></li>
-<li><a class="" href="survival_analysis.html"><span class="header-section-number">26</span> Analyse de survie</a></li>
-<li><a class="" href="gis.html"><span class="header-section-number">27</span> GIS basics</a></li>
+<li><a class="" href="epidemic_models.html"><span class="header-section-number">24</span> Modélisation des épidémies</a></li>
+<li><a class="" href="contact_tracing.html"><span class="header-section-number">25</span> Suivi des contacts</a></li>
+<li><a class="active" href="survey_analysis.html"><span class="header-section-number">26</span> Analyse d’enquête</a></li>
+<li><a class="" href="survival_analysis.html"><span class="header-section-number">27</span> Analyse de survie</a></li>
+<li><a class="" href="gis.html"><span class="header-section-number">28</span> GIS basics</a></li>
 <li class="book-part">Data Visualization</li>
-<li><a class="" href="tables_presentation.html"><span class="header-section-number">28</span> Présenter avec des tables</a></li>
-<li><a class="" href="ggplot_basics.html"><span class="header-section-number">29</span> Les bases de ggplot</a></li>
-<li><a class="" href="ggplot_tips.html"><span class="header-section-number">30</span> Trucs et Astuces avec ggplot</a></li>
-<li><a class="" href="epicurves.html"><span class="header-section-number">31</span> Courbes épidémiques</a></li>
-<li><a class="" href="age_pyramid.html"><span class="header-section-number">32</span> Pyramides démographiques et échelles de Likert</a></li>
-<li><a class="" href="heatmaps.html"><span class="header-section-number">33</span> Graphiques thermiques</a></li>
-<li><a class="" href="diagrams.html"><span class="header-section-number">34</span> Diagrammes et schémas</a></li>
-<li><a class="" href="combination_analysis.html"><span class="header-section-number">35</span> Analyse des combinaisons</a></li>
-<li><a class="" href="transmission_chains.html"><span class="header-section-number">36</span> Chaînes de transmission</a></li>
-<li><a class="" href="phylogenetic_trees.html"><span class="header-section-number">37</span> Les arbres phylogénétiques</a></li>
-<li><a class="" href="interactive_plots.html"><span class="header-section-number">38</span> Graphiques interactifs</a></li>
+<li><a class="" href="tables_presentation.html"><span class="header-section-number">29</span> Présenter avec des tables</a></li>
+<li><a class="" href="ggplot_basics.html"><span class="header-section-number">30</span> Les bases de ggplot</a></li>
+<li><a class="" href="ggplot_tips.html"><span class="header-section-number">31</span> Trucs et Astuces avec ggplot</a></li>
+<li><a class="" href="epicurves.html"><span class="header-section-number">32</span> Courbes épidémiques</a></li>
+<li><a class="" href="age_pyramid.html"><span class="header-section-number">33</span> Pyramides démographiques et échelles de Likert</a></li>
+<li><a class="" href="heatmaps.html"><span class="header-section-number">34</span> Graphiques thermiques</a></li>
+<li><a class="" href="diagrams.html"><span class="header-section-number">35</span> Diagrammes et schémas</a></li>
+<li><a class="" href="combination_analysis.html"><span class="header-section-number">36</span> Analyse des combinaisons</a></li>
+<li><a class="" href="transmission_chains.html"><span class="header-section-number">37</span> Chaînes de transmission</a></li>
+<li><a class="" href="phylogenetic_trees.html"><span class="header-section-number">38</span> Les arbres phylogénétiques</a></li>
+<li><a class="" href="interactive_plots.html"><span class="header-section-number">39</span> Graphiques interactifs</a></li>
 <li class="book-part">Reports and dashboards</li>
-<li><a class="" href="rmarkdown.html"><span class="header-section-number">39</span> Production de rapports avec R Markdown</a></li>
-<li><a class="" href="reportfactory.html"><span class="header-section-number">40</span> Organisation des rapports de routine</a></li>
-<li><a class="" href="dashboards.html"><span class="header-section-number">41</span> Tableaux de bord avec R Markdown</a></li>
-<li><a class="" href="shiny.html"><span class="header-section-number">42</span> Tableaux de bord avec Shiny</a></li>
+<li><a class="" href="rmarkdown.html"><span class="header-section-number">40</span> Production de rapports avec R Markdown</a></li>
+<li><a class="" href="reportfactory.html"><span class="header-section-number">41</span> Organisation des rapports de routine</a></li>
+<li><a class="" href="dashboards.html"><span class="header-section-number">42</span> Tableaux de bord avec R Markdown</a></li>
+<li><a class="" href="shiny.html"><span class="header-section-number">43</span> Tableaux de bord avec Shiny</a></li>
 <li class="book-part">Miscellaneous</li>
-<li><a class="" href="writing_functions.html"><span class="header-section-number">43</span> Fonctions d’écriture</a></li>
-<li><a class="" href="directories.html"><span class="header-section-number">44</span> Interactions avec les répertoires</a></li>
-<li><a class="" href="collaboration.html"><span class="header-section-number">45</span> Contrôle de version et collaboration avec Git et Github</a></li>
-<li><a class="" href="errors.html"><span class="header-section-number">46</span> Erreurs fréquentes</a></li>
-<li><a class="" href="help.html"><span class="header-section-number">47</span> Obtenir de l’aide</a></li>
-<li><a class="" href="network_drives.html"><span class="header-section-number">48</span> R sur les lecteurs réseau</a></li>
-<li><a class="" href="data_table.html"><span class="header-section-number">49</span> Tableau de données</a></li>
+<li><a class="" href="writing_functions.html"><span class="header-section-number">44</span> Fonctions d’écriture</a></li>
+<li><a class="" href="directories.html"><span class="header-section-number">45</span> Interactions avec les répertoires</a></li>
+<li><a class="" href="collaboration.html"><span class="header-section-number">46</span> Contrôle de version et collaboration avec Git et Github</a></li>
+<li><a class="" href="errors.html"><span class="header-section-number">47</span> Erreurs fréquentes</a></li>
+<li><a class="" href="help.html"><span class="header-section-number">48</span> Obtenir de l’aide</a></li>
+<li><a class="" href="network_drives.html"><span class="header-section-number">49</span> R sur les lecteurs réseau</a></li>
+<li><a class="" href="data_table.html"><span class="header-section-number">50</span> Tableau de données</a></li>
 </ul>
 
         <div class="book-extra">
@@ -123,14 +124,14 @@
         </div>
       </nav>
 </div>
-  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="survey_analysis" class="section level1" number="25">
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="survey_analysis" class="section level1" number="26">
 <h1>
-<span class="header-section-number">25</span> Analyse d’enquête<a class="anchor" aria-label="anchor" href="#survey_analysis"><i class="fas fa-link"></i></a>
+<span class="header-section-number">26</span> Analyse d’enquête<a class="anchor" aria-label="anchor" href="#survey_analysis"><i class="fas fa-link"></i></a>
 </h1>
 <!-- ======================================================= -->
-<div id="aperçu-2" class="section level2" number="25.1">
+<div id="aperçu-2" class="section level2" number="26.1">
 <h2>
-<span class="header-section-number">25.1</span> Aperçu<a class="anchor" aria-label="anchor" href="#aper%C3%A7u-2"><i class="fas fa-link"></i></a>
+<span class="header-section-number">26.1</span> Aperçu<a class="anchor" aria-label="anchor" href="#aper%C3%A7u-2"><i class="fas fa-link"></i></a>
 </h2>
 <p>Cette page démontre l’utilisation de plusieurs packages pour l’analyse d’enquêtes.</p>
 <p>La plupart des paquets R d’enquête reposent sur le paquet <a href="https://cran.r-project.org/web/packages/survey/index.html"><strong>survey</strong></a> pour effectuer des analyses pondérées.
@@ -148,9 +149,9 @@ Nous utiliserons <strong>survey</strong> ainsi que <a href="https://cran.r-proje
 </ol>
 <!-- ======================================================= -->
 </div>
-<div id="préparation-9" class="section level2" number="25.2">
+<div id="préparation-9" class="section level2" number="26.2">
 <h2>
-<span class="header-section-number">25.2</span> Préparation<a class="anchor" aria-label="anchor" href="#pr%C3%A9paration-9"><i class="fas fa-link"></i></a>
+<span class="header-section-number">26.2</span> Préparation<a class="anchor" aria-label="anchor" href="#pr%C3%A9paration-9"><i class="fas fa-link"></i></a>
 </h2>
 <div id="paquets-1" class="section level3 unnumbered">
 <h3>Paquets<a class="anchor" aria-label="anchor" href="#paquets-1"><i class="fas fa-link"></i></a>
@@ -200,14 +201,14 @@ Tout ceci est basé sur les données collectées à l’aide de <a href="https:/
 <span><span class="co"># Importez le dictionnaire dans R</span></span>
 <span><span class="va">survey_dict</span> <span class="op">&lt;-</span> <span class="fu">rio</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/rio/man/import.html">import</a></span><span class="op">(</span><span class="st">"survey_dict.xlsx"</span><span class="op">)</span> </span></code></pre></div>
 <p>Les 10 premières lignes de l’enquête sont affichées ci-dessous.</p>
-<div class="datatables html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-70b74c1506832bfbf3a0" style="width:100%;height:auto;"></div>
-<script type="application/json" data-for="htmlwidget-70b74c1506832bfbf3a0">{"x":{"filter":"none","vertical":false,"data":[[null,null,null,null,null,null,null,null,null,null],[null,null,null,null,null,null,null,null,null,null],[null,null,null,null,null,null,null,null,null,null],[null,null,null,null,null,null,null,null,null,null],["2018-04-15T00:00:00Z","2018-03-04T00:00:00Z","2018-04-16T00:00:00Z","2018-01-23T00:00:00Z","2018-01-09T00:00:00Z","2018-03-07T00:00:00Z","2018-02-18T00:00:00Z","2018-04-12T00:00:00Z","2018-04-17T00:00:00Z","2018-01-05T00:00:00Z"],[null,null,null,null,null,null,null,null,null,null],["village_1","village_1","village_10","village_5","village_3","village_8","other","village_7","village_4","village_2"],[null,null,null,null,null,null,null,null,null,null],[1,1,10,5,3,8,11,7,4,2],[9,1,15,6,18,14,17,16,13,14],[null,null,null,null,null,null,null,null,null,null],[null,null,null,null,null,null,null,null,null,null],[null,null,null,null,null,null,null,null,null,null],["yes","no","no","yes","no","yes","no","yes","yes","yes"],[null,"no_benefit","neg_experience",null,"other",null,"no_benefit",null,null,null],[null,null,null,null,null,null,null,null,null,null],[6,null,null,8,null,5,null,6,5,5],["female",null,null,"female",null,"male",null,"male","male","female"],[26,null,null,3,null,22,null,33,96,18],[null,null,null,36,null,null,null,null,null,null],[null,null,null,null,null,null,null,null,null,null],["no",null,null,"no",null,"yes",null,"yes","yes","yes"],["yes",null,null,null,null,"yes",null,"no","no","no"],["secondary",null,null,null,null,"secondary",null,null,null,null],["no",null,null,"no",null,"yes",null,"no","yes","yes"],[null,null,null,null,null,"yes",null,null,"no","no"],["yes",null,null,null,null,null,null,null,null,"yes"],["no",null,null,"no",null,"yes",null,"yes","no","yes"],["yes",null,null,"no",null,"no",null,"no","yes","yes"],["no",null,null,null,null,null,null,null,"no","no"],[null,null,null,null,null,null,null,null,null,null],["yes",null,null,"no",null,"no",null,"yes","no","no"],["no",null,null,null,null,null,null,"no",null,null],[null,null,null,null,null,null,null,null,null,null],[null,null,null,null,null,null,null,null,null,null],[null,null,null,null,null,null,null,null,null,null],[null,null,null,null,null,null,null,null,null,null],["no","no","no","no","no","no","no","no","yes","no"],[null,null,null,null,null,null,null,null,"no",null],[null,null,null,null,null,null,null,null,null,null],[null,null,null,null,null,null,null,null,"dont_know",null],[null,null,null,null,null,null,null,null,null,null],["yes",null,null,"yes",null,"no",null,"yes","no","no"],[null,null,null,null,null,null,null,null,null,null],[null,null,null,null,null,null,null,null,null,null],["sexual",null,null,"sexual",null,null,null,"shot",null,null],["0",null,null,"0",null,null,null,"0",null,null],["1",null,null,"1",null,null,null,"0",null,null],["0",null,null,"0",null,null,null,"1",null,null],["0",null,null,"0",null,null,null,"0",null,null],["0",null,null,"0",null,null,null,"0",null,null],["0",null,null,"0",null,null,null,"0",null,null],[9,1,183,83,58,146,205,130,72,33],[1,1,1,1,1,1,1,1,1,1],["9_1","1_1","183_1","83_1","58_1","146_1","205_1","130_1","72_1","33_1"]],"container":"<table class=\"white-space : nowrap\">\n  <thead>\n    <tr>\n      <th>start<\/th>\n      <th>end<\/th>\n      <th>today<\/th>\n      <th>deviceid<\/th>\n      <th>date<\/th>\n      <th>team_number<\/th>\n      <th>village_name<\/th>\n      <th>village_other<\/th>\n      <th>cluster_number<\/th>\n      <th>household_number<\/th>\n      <th>households_building<\/th>\n      <th>random_hh<\/th>\n      <th>random_hh_note<\/th>\n      <th>consent<\/th>\n      <th>no_consent_reason<\/th>\n      <th>no_consent_other<\/th>\n      <th>member_number<\/th>\n      <th>sex<\/th>\n      <th>age_years<\/th>\n      <th>age_months_calc<\/th>\n      <th>age_months<\/th>\n      <th>bednet<\/th>\n      <th>read_write<\/th>\n      <th>education_level<\/th>\n      <th>measles_vaccination<\/th>\n      <th>vaccination_card<\/th>\n      <th>pregnant<\/th>\n      <th>malaria_treatment<\/th>\n      <th>arrived<\/th>\n      <th>remember_arrival<\/th>\n      <th>arrived_date<\/th>\n      <th>left<\/th>\n      <th>remember_departure<\/th>\n      <th>left_date<\/th>\n      <th>born<\/th>\n      <th>remember_dob<\/th>\n      <th>birthday_date<\/th>\n      <th>died<\/th>\n      <th>remember_death<\/th>\n      <th>death_date<\/th>\n      <th>cause<\/th>\n      <th>cause_other<\/th>\n      <th>violent_episode<\/th>\n      <th>violent_episodes_number<\/th>\n      <th>violence_nature_other<\/th>\n      <th>violence_nature<\/th>\n      <th>violence_nature/beaten<\/th>\n      <th>violence_nature/sexual<\/th>\n      <th>violence_nature/shot<\/th>\n      <th>violence_nature/detained_kidnapped<\/th>\n      <th>violence_nature/other<\/th>\n      <th>violence_nature/no_response<\/th>\n      <th>index<\/th>\n      <th>index_y<\/th>\n      <th>uid<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"pageLength":5,"scrollX":true,"columnDefs":[{"className":"dt-right","targets":[8,9,16,18,19,20,52,53]}],"order":[],"autoWidth":false,"orderClasses":false,"lengthMenu":[5,10,25,50,100]},"selection":{"mode":"multiple","selected":null,"target":"row","selectable":null}},"evals":[],"jsHooks":[]}</script><p>Nous voulons également importer les données sur la population d’échantillonnage afin de pouvoir produire des pondérations appropriées. Ces données peuvent se présenter sous différents formats. Cependant, nous vous suggérons de les présenter comme suit (vous pouvez simplement les saisir dans un excel).</p>
+<div class="datatables html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-15015a6251ce201e28dc" style="width:100%;height:auto;"></div>
+<script type="application/json" data-for="htmlwidget-15015a6251ce201e28dc">{"x":{"filter":"none","vertical":false,"data":[[null,null,null,null,null,null,null,null,null,null],[null,null,null,null,null,null,null,null,null,null],[null,null,null,null,null,null,null,null,null,null],[null,null,null,null,null,null,null,null,null,null],["2018-04-15T00:00:00Z","2018-03-04T00:00:00Z","2018-04-16T00:00:00Z","2018-01-23T00:00:00Z","2018-01-09T00:00:00Z","2018-03-07T00:00:00Z","2018-02-18T00:00:00Z","2018-04-12T00:00:00Z","2018-04-17T00:00:00Z","2018-01-05T00:00:00Z"],[null,null,null,null,null,null,null,null,null,null],["village_1","village_1","village_10","village_5","village_3","village_8","other","village_7","village_4","village_2"],[null,null,null,null,null,null,null,null,null,null],[1,1,10,5,3,8,11,7,4,2],[9,1,15,6,18,14,17,16,13,14],[null,null,null,null,null,null,null,null,null,null],[null,null,null,null,null,null,null,null,null,null],[null,null,null,null,null,null,null,null,null,null],["yes","no","no","yes","no","yes","no","yes","yes","yes"],[null,"no_benefit","neg_experience",null,"other",null,"no_benefit",null,null,null],[null,null,null,null,null,null,null,null,null,null],[6,null,null,8,null,5,null,6,5,5],["female",null,null,"female",null,"male",null,"male","male","female"],[26,null,null,3,null,22,null,33,96,18],[null,null,null,36,null,null,null,null,null,null],[null,null,null,null,null,null,null,null,null,null],["no",null,null,"no",null,"yes",null,"yes","yes","yes"],["yes",null,null,null,null,"yes",null,"no","no","no"],["secondary",null,null,null,null,"secondary",null,null,null,null],["no",null,null,"no",null,"yes",null,"no","yes","yes"],[null,null,null,null,null,"yes",null,null,"no","no"],["yes",null,null,null,null,null,null,null,null,"yes"],["no",null,null,"no",null,"yes",null,"yes","no","yes"],["yes",null,null,"no",null,"no",null,"no","yes","yes"],["no",null,null,null,null,null,null,null,"no","no"],[null,null,null,null,null,null,null,null,null,null],["yes",null,null,"no",null,"no",null,"yes","no","no"],["no",null,null,null,null,null,null,"no",null,null],[null,null,null,null,null,null,null,null,null,null],[null,null,null,null,null,null,null,null,null,null],[null,null,null,null,null,null,null,null,null,null],[null,null,null,null,null,null,null,null,null,null],["no","no","no","no","no","no","no","no","yes","no"],[null,null,null,null,null,null,null,null,"no",null],[null,null,null,null,null,null,null,null,null,null],[null,null,null,null,null,null,null,null,"dont_know",null],[null,null,null,null,null,null,null,null,null,null],["yes",null,null,"yes",null,"no",null,"yes","no","no"],[null,null,null,null,null,null,null,null,null,null],[null,null,null,null,null,null,null,null,null,null],["sexual",null,null,"sexual",null,null,null,"shot",null,null],["0",null,null,"0",null,null,null,"0",null,null],["1",null,null,"1",null,null,null,"0",null,null],["0",null,null,"0",null,null,null,"1",null,null],["0",null,null,"0",null,null,null,"0",null,null],["0",null,null,"0",null,null,null,"0",null,null],["0",null,null,"0",null,null,null,"0",null,null],[9,1,183,83,58,146,205,130,72,33],[1,1,1,1,1,1,1,1,1,1],["9_1","1_1","183_1","83_1","58_1","146_1","205_1","130_1","72_1","33_1"]],"container":"<table class=\"white-space : nowrap\">\n  <thead>\n    <tr>\n      <th>start<\/th>\n      <th>end<\/th>\n      <th>today<\/th>\n      <th>deviceid<\/th>\n      <th>date<\/th>\n      <th>team_number<\/th>\n      <th>village_name<\/th>\n      <th>village_other<\/th>\n      <th>cluster_number<\/th>\n      <th>household_number<\/th>\n      <th>households_building<\/th>\n      <th>random_hh<\/th>\n      <th>random_hh_note<\/th>\n      <th>consent<\/th>\n      <th>no_consent_reason<\/th>\n      <th>no_consent_other<\/th>\n      <th>member_number<\/th>\n      <th>sex<\/th>\n      <th>age_years<\/th>\n      <th>age_months_calc<\/th>\n      <th>age_months<\/th>\n      <th>bednet<\/th>\n      <th>read_write<\/th>\n      <th>education_level<\/th>\n      <th>measles_vaccination<\/th>\n      <th>vaccination_card<\/th>\n      <th>pregnant<\/th>\n      <th>malaria_treatment<\/th>\n      <th>arrived<\/th>\n      <th>remember_arrival<\/th>\n      <th>arrived_date<\/th>\n      <th>left<\/th>\n      <th>remember_departure<\/th>\n      <th>left_date<\/th>\n      <th>born<\/th>\n      <th>remember_dob<\/th>\n      <th>birthday_date<\/th>\n      <th>died<\/th>\n      <th>remember_death<\/th>\n      <th>death_date<\/th>\n      <th>cause<\/th>\n      <th>cause_other<\/th>\n      <th>violent_episode<\/th>\n      <th>violent_episodes_number<\/th>\n      <th>violence_nature_other<\/th>\n      <th>violence_nature<\/th>\n      <th>violence_nature/beaten<\/th>\n      <th>violence_nature/sexual<\/th>\n      <th>violence_nature/shot<\/th>\n      <th>violence_nature/detained_kidnapped<\/th>\n      <th>violence_nature/other<\/th>\n      <th>violence_nature/no_response<\/th>\n      <th>index<\/th>\n      <th>index_y<\/th>\n      <th>uid<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"pageLength":5,"scrollX":true,"columnDefs":[{"className":"dt-right","targets":[8,9,16,18,19,20,52,53]}],"order":[],"autoWidth":false,"orderClasses":false,"lengthMenu":[5,10,25,50,100]},"selection":{"mode":"multiple","selected":null,"target":"row","selectable":null}},"evals":[],"jsHooks":[]}</script><p>Nous voulons également importer les données sur la population d’échantillonnage afin de pouvoir produire des pondérations appropriées. Ces données peuvent se présenter sous différents formats. Cependant, nous vous suggérons de les présenter comme suit (vous pouvez simplement les saisir dans un excel).</p>
 <div class="sourceCode" id="cb1235"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Importez les données de la population</span></span>
 <span><span class="va">population</span> <span class="op">&lt;-</span> <span class="fu">rio</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/rio/man/import.html">import</a></span><span class="op">(</span><span class="st">"population.xlsx"</span><span class="op">)</span></span></code></pre></div>
 <p>Les 10 premières lignes de l’enquête sont affichées ci-dessous.</p>
-<div class="datatables html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-71c7921d54047e27c311" style="width:100%;height:auto;"></div>
-<script type="application/json" data-for="htmlwidget-71c7921d54047e27c311">{"x":{"filter":"none","vertical":false,"data":[["0-2","3-14","15-29","30-44","45+","0-2","3-14","15-29","30-44","45+"],["male","male","male","male","male","female","female","female","female","female"],[0.034,0.1811,0.138,0.0808,0.0661,0.034,0.1811,0.138,0.0808,0.0661],[340,1811,1380,808,661,340,1811,1380,808,661],["district_a","district_a","district_a","district_a","district_a","district_a","district_a","district_a","district_a","district_a"]],"container":"<table class=\"white-space : nowrap\">\n  <thead>\n    <tr>\n      <th>age_group<\/th>\n      <th>sex<\/th>\n      <th>proportions<\/th>\n      <th>population<\/th>\n      <th>health_district<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"pageLength":5,"scrollX":true,"columnDefs":[{"className":"dt-right","targets":[2,3]}],"order":[],"autoWidth":false,"orderClasses":false,"lengthMenu":[5,10,25,50,100]},"selection":{"mode":"multiple","selected":null,"target":"row","selectable":null}},"evals":[],"jsHooks":[]}</script><p>Pour les enquêtes en grappes, vous pouvez souhaiter ajouter des poids d’enquête au niveau de la grappe. Vous pouvez lire ces données comme ci-dessus.
+<div class="datatables html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-81eea48b3b8e85fe7731" style="width:100%;height:auto;"></div>
+<script type="application/json" data-for="htmlwidget-81eea48b3b8e85fe7731">{"x":{"filter":"none","vertical":false,"data":[["0-2","3-14","15-29","30-44","45+","0-2","3-14","15-29","30-44","45+"],["male","male","male","male","male","female","female","female","female","female"],[0.034,0.1811,0.138,0.0808,0.0661,0.034,0.1811,0.138,0.0808,0.0661],[340,1811,1380,808,661,340,1811,1380,808,661],["district_a","district_a","district_a","district_a","district_a","district_a","district_a","district_a","district_a","district_a"]],"container":"<table class=\"white-space : nowrap\">\n  <thead>\n    <tr>\n      <th>age_group<\/th>\n      <th>sex<\/th>\n      <th>proportions<\/th>\n      <th>population<\/th>\n      <th>health_district<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"pageLength":5,"scrollX":true,"columnDefs":[{"className":"dt-right","targets":[2,3]}],"order":[],"autoWidth":false,"orderClasses":false,"lengthMenu":[5,10,25,50,100]},"selection":{"mode":"multiple","selected":null,"target":"row","selectable":null}},"evals":[],"jsHooks":[]}</script><p>Pour les enquêtes en grappes, vous pouvez souhaiter ajouter des poids d’enquête au niveau de la grappe. Vous pouvez lire ces données comme ci-dessus.
 Alternativement, s’il n’y a que quelques comptages, ils peuvent être entrés comme suit dans un tibble. Dans tous les cas, vous aurez besoin d’avoir une colonne avec un identifiant de grappe qui correspondant à vos données d’enquête, et une autre colonne avec le nombre de ménages dans chaque grappe.</p>
 <div class="sourceCode" id="cb1236"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co">## définir le nombre de ménages dans chaque cluster</span></span>
@@ -272,9 +273,9 @@ Alternativement, s’il n’y a que quelques comptages, ils peuvent être entré
 <!-- ======================================================= -->
 </div>
 </div>
-<div id="données-denquête" class="section level2" number="25.3">
+<div id="données-denquête" class="section level2" number="26.3">
 <h2>
-<span class="header-section-number">25.3</span> Données d’enquête<a class="anchor" aria-label="anchor" href="#donn%C3%A9es-denqu%C3%AAte"><i class="fas fa-link"></i></a>
+<span class="header-section-number">26.3</span> Données d’enquête<a class="anchor" aria-label="anchor" href="#donn%C3%A9es-denqu%C3%AAte"><i class="fas fa-link"></i></a>
 </h2>
 <p>Il existe de nombreux plans d’échantillonnage différents qui peuvent être utilisés pour les enquêtes. Ici, nous allons démontrer le code pour :
 - Stratifié
@@ -296,9 +297,9 @@ Cela créera de nouvelles lignes pour le ménage avec chaque individu correspond
 <span>     <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>uid <span class="op">=</span> <span class="fu"><a href="https://stringr.tidyverse.org/reference/str_glue.html">str_glue</a></span><span class="op">(</span><span class="st">"{index}_{index_y}"</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <!-- ======================================================= -->
 </div>
-<div id="temps-dobservation" class="section level2" number="25.4">
+<div id="temps-dobservation" class="section level2" number="26.4">
 <h2>
-<span class="header-section-number">25.4</span> Temps d’observation<a class="anchor" aria-label="anchor" href="#temps-dobservation"><i class="fas fa-link"></i></a>
+<span class="header-section-number">26.4</span> Temps d’observation<a class="anchor" aria-label="anchor" href="#temps-dobservation"><i class="fas fa-link"></i></a>
 </h2>
 <p>Pour les enquêtes de mortalité, nous voulons maintenant savoir combien de temps chaque individu a été présent dans l’emplacement afin de pouvoir calculer un taux de mortalité approprié pour notre période d’intérêt. Ceci n’est pas pertinent pour toutes les enquêtes, mais particulièrement pour les enquêtes de mortalité, car elles sont fréquemment menées auprès de populations mobiles ou déplacées.</p>
 <p>Pour ce faire, nous définissons d’abord notre période d’intérêt, également connue sous le nom de période de rappel (c’est-à-dire le moment où l’enquête est menée). Nous pouvons ensuite utiliser cette période pour définir des dates inappropriées comme manquantes, c’est-à-dire que si des décès sont signalés en dehors de la période d’intérêt.</p>
@@ -379,9 +380,9 @@ Soit la fin de votre période de rappel, soit une date antérieure à la fin du 
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>obstime <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/numeric.html">as.numeric</a></span><span class="op">(</span><span class="va">enddate</span> <span class="op">-</span> <span class="va">startdate</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <!-- ======================================================= -->
 </div>
-<div id="pondération" class="section level2" number="25.5">
+<div id="pondération" class="section level2" number="26.5">
 <h2>
-<span class="header-section-number">25.5</span> Pondération<a class="anchor" aria-label="anchor" href="#pond%C3%A9ration"><i class="fas fa-link"></i></a>
+<span class="header-section-number">26.5</span> Pondération<a class="anchor" aria-label="anchor" href="#pond%C3%A9ration"><i class="fas fa-link"></i></a>
 </h2>
 <p>Il est important d’éliminer les observations erronées avant d’ajouter les poids de l’enquête. Par exemple, si vous avez des observations avec un temps d’observation négatif, vous devrez les vérifier (vous pouvez le faire avec la fonction <code><a href="https://r4epi.github.io/epikit/reference/find_date_cause.html">assert_positive_timespan()</a></code> de <strong>sitrep</strong>. Une autre chose est si vous voulez supprimer les lignes vides (par exemple avec <code>drop_na(uid)</code>) ou supprimer les doublons (voir la section du manuel sur la <a href="cleaning_data.html#deduplication">déduplication</a> pour plus de détails). Ceux qui n’ont pas de consentement doivent aussi être supprimés.</p>
 <p>Dans cet exemple, nous filtrons les cas que nous voulons supprimer et les stockons dans un cadre de données séparé - de cette façon, nous pouvons décrire ceux qui ont été exclus de l’enquête. Nous utilisons ensuite la fonction <code><a href="https://dplyr.tidyverse.org/reference/filter-joins.html">anti_join()</a></code> de <strong>dplyr</strong> pour supprimer ces cas exclus de nos données d’enquête.</p>
@@ -434,9 +435,9 @@ Soit la fin de votre période de rappel, soit une date antérieure à la fin du 
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>surv_weight_cluster_strata <span class="op">=</span> <span class="va">surv_weight_strata</span> <span class="op">*</span> <span class="va">surv_weight_cluster</span><span class="op">)</span></span></code></pre></div>
 <!-- ======================================================= -->
 </div>
-<div id="objets-de-conception-denquête" class="section level2" number="25.6">
+<div id="objets-de-conception-denquête" class="section level2" number="26.6">
 <h2>
-<span class="header-section-number">25.6</span> Objets de conception d’enquête<a class="anchor" aria-label="anchor" href="#objets-de-conception-denqu%C3%AAte"><i class="fas fa-link"></i></a>
+<span class="header-section-number">26.6</span> Objets de conception d’enquête<a class="anchor" aria-label="anchor" href="#objets-de-conception-denqu%C3%AAte"><i class="fas fa-link"></i></a>
 </h2>
 <p>Créez un objet d’enquête en fonction de la conception de votre étude. Utilisé de la même manière que les cadres de données pour calculer les proportions de poids, etc. Assurez-vous que toutes les variables nécessaires sont créées avant cela.</p>
 <p>Il y a quatre options, commentez celles que vous n’utilisez pas :
@@ -446,9 +447,9 @@ Soit la fin de votre période de rappel, soit une date antérieure à la fin du 
 - Grappe stratifiée</p>
 <p>Pour ce modèle, nous supposerons que nous regroupons les enquêtes dans deux strates distinctes (districts sanitaires A et B). Pour obtenir des estimations globales, nous devons donc combiner les poids des grappes et des strates.</p>
 <p>Comme nous l’avons mentionné précédemment, il existe deux paquets disponibles pour ce faire. Le classique est <strong>survey</strong> et il existe un paquetage appelé <strong>srvyr</strong> qui crée des objets et des fonctions adaptés à tidyverse. Nous ferons la démonstration des deux, mais notez que la plupart du code de ce chapitre utilisera des objets basés sur <strong>srvyr</strong>. La seule exception est que le paquet <strong>gtsummary</strong> n’accepte que les objets <strong>survey</strong>.</p>
-<div id="paquet-survey" class="section level3" number="25.6.1">
+<div id="paquet-survey" class="section level3" number="26.6.1">
 <h3>
-<span class="header-section-number">25.6.1</span> Paquet **Survey<a class="anchor" aria-label="anchor" href="#paquet-survey"><i class="fas fa-link"></i></a>
+<span class="header-section-number">26.6.1</span> Paquet **Survey<a class="anchor" aria-label="anchor" href="#paquet-survey"><i class="fas fa-link"></i></a>
 </h3>
 <p>Le paquet <strong>survey</strong> utilise effectivement le codage <strong>base</strong> <em>R</em>, et il n’est donc pas possible d’utiliser les pipes (<code>%&gt;%</code>) ou d’autres syntaxes <strong>dplyr</strong>. Avec le paquetage <strong>survey</strong>, nous utilisons la fonction <code>svydesign()</code> pour définir un objet d’enquête avec les clusters, les poids et les strates appropriés.</p>
 <p><span style="color : black ;"><strong><em>NOTE:</em></strong> nous devons utiliser le tilde (<code>~</code>) devant les variables, ceci parce que le package utilise la syntaxe <strong>base</strong> <em>R</em> d’affectation des variables basée sur des formules. </span></p>
@@ -481,9 +482,9 @@ Soit la fin de votre période de rappel, soit une date antérieure à la fin du 
 <span>                   data <span class="op">=</span> <span class="va">survey_data</span> <span class="co"># doit spécifier l'ensemble de données</span></span>
 <span>                  <span class="op">)</span></span></code></pre></div>
 </div>
-<div id="paquet-srvyr" class="section level3" number="25.6.2">
+<div id="paquet-srvyr" class="section level3" number="26.6.2">
 <h3>
-<span class="header-section-number">25.6.2</span> Paquet **Srvyr<a class="anchor" aria-label="anchor" href="#paquet-srvyr"><i class="fas fa-link"></i></a>
+<span class="header-section-number">26.6.2</span> Paquet **Srvyr<a class="anchor" aria-label="anchor" href="#paquet-srvyr"><i class="fas fa-link"></i></a>
 </h3>
 <p>Avec le paquet <strong>srvyr</strong>, nous pouvons utiliser la fonction <code>as_survey_design()</code>, qui a les mêmes arguments que ci-dessus, mais autorise les tubes (<code>%&gt;%</code>), et nous n’avons donc pas besoin d’utiliser le tilde (<code>%&gt;%</code>).</p>
 <div class="sourceCode" id="cb1244"><pre class="downlit sourceCode r">
@@ -515,9 +516,9 @@ Soit la fin de votre période de rappel, soit une date antérieure à la fin du 
 <!-- ======================================================= -->
 </div>
 </div>
-<div id="analyse-descriptive-1" class="section level2" number="25.7">
+<div id="analyse-descriptive-1" class="section level2" number="26.7">
 <h2>
-<span class="header-section-number">25.7</span> Analyse descriptive<a class="anchor" aria-label="anchor" href="#analyse-descriptive-1"><i class="fas fa-link"></i></a>
+<span class="header-section-number">26.7</span> Analyse descriptive<a class="anchor" aria-label="anchor" href="#analyse-descriptive-1"><i class="fas fa-link"></i></a>
 </h2>
 <p>L’analyse descriptive et la visualisation de base sont traitées en détail dans d’autres chapitres du manuel, nous ne nous y attarderons donc pas ici. Pour plus de détails, voir les chapitres sur les <a href="descriptive_tables.html#descriptive_tables">tableaux descriptifs</a>, <a href="stats_test.html#stats_test">les tests statistiques</a>, <a href="tables_presentation.html#tables_presentation">les tableaux de présentation</a>, [les bases du ggplot] (#ggplot_basics) et <a href="rmarkdown.html#rmarkdown">rapports R markdown</a>.</p>
 <p>Dans cette section, nous allons nous concentrer sur la manière d’étudier le biais dans votre échantillon et de le visualiser. Nous nous pencherons également sur la visualisation du flux de population dans le cadre d’une enquête à l’aide de diagrammes alluviaux/sankey.</p>
@@ -528,9 +529,9 @@ Soit la fin de votre période de rappel, soit une date antérieure à la fin du 
 <li>Nombre d’individus exclus et les raisons de cette exclusion</li>
 <li>Nombre médian (fourchette) de ménages par grappe et d’individus par ménage.</li>
 </ul>
-<div id="biais-déchantillonnage" class="section level3" number="25.7.1">
+<div id="biais-déchantillonnage" class="section level3" number="26.7.1">
 <h3>
-<span class="header-section-number">25.7.1</span> Biais d’échantillonnage<a class="anchor" aria-label="anchor" href="#biais-d%C3%A9chantillonnage"><i class="fas fa-link"></i></a>
+<span class="header-section-number">26.7.1</span> Biais d’échantillonnage<a class="anchor" aria-label="anchor" href="#biais-d%C3%A9chantillonnage"><i class="fas fa-link"></i></a>
 </h3>
 <p>Comparez les proportions dans chaque groupe d’âge entre votre échantillon et la population source. Ceci est important pour pouvoir mettre en évidence un éventuel biais d’échantillonnage. Vous pouvez également répéter cette opération en examinant les distributions par sexe.</p>
 <p>Notez que ces p-values ne sont qu’indicatives, et qu’une discussion descriptive (ou une visualisation avec les pyramides d’âge ci-dessous) des distributions dans votre échantillon d’étude par rapport à la population source est plus importante que le test binomial lui-même. Cela est dû au fait que l’augmentation de la taille de l’échantillon conduira le plus souvent à des différences qui peuvent ne pas être pertinentes après la pondération de vos données.</p>
@@ -593,9 +594,9 @@ Soit la fin de votre période de rappel, soit une date antérieure à la fin du 
 ## # ℹ abbreviated names: ¹​`Population étudiée (%)`, ²​`Population source (n)`
 ## # ℹ 2 more variables: `Population source (%)` &lt;dbl&gt;, `P-value` &lt;chr&gt;</code></pre>
 </div>
-<div id="pyramides-démographiques" class="section level3" number="25.7.2">
+<div id="pyramides-démographiques" class="section level3" number="26.7.2">
 <h3>
-<span class="header-section-number">25.7.2</span> Pyramides démographiques<a class="anchor" aria-label="anchor" href="#pyramides-d%C3%A9mographiques"><i class="fas fa-link"></i></a>
+<span class="header-section-number">26.7.2</span> Pyramides démographiques<a class="anchor" aria-label="anchor" href="#pyramides-d%C3%A9mographiques"><i class="fas fa-link"></i></a>
 </h3>
 <p>Les pyramides démographiques (ou âge-sexe) sont un moyen facile de visualiser la distribution dans la population de votre enquête. Il est également intéressant de créer des <a href="descriptive_tables.html#descriptive_tables">tableaux descriptifs</a> et le sexe par strates d’enquête. Nous allons démontrer l’utilisation du paquet <strong>apyramide</strong> car il permet de pondérées en utilisant notre objet de conception d’enquête créé ci-dessus. Autres options pour créer <a href="age_pyramid.html#age_pyramid">pyramides démographiques</a> sont traitées en détail dans ce chapitre du manuel. Nous utiliserons également une fonction wrapper de <strong>apyramid</strong> appelée <code><a href="https://rdrr.io/pkg/apyramid/man/age_pyramid.html">age_pyramid()</a></code> qui permet de gagner quelque lignes de code pour produire un graphique avec des proportions.</p>
 <p>Comme pour le test binomial formel de différence, vu plus haut dans la section sur le biais d’échantillonnage, nous sommes intéressés ici à visualiser si notre population échantillonnée est sensiblement différente de la population source et si la pondération corrige cette différence. Pour ce faire, nous allons utiliser le paquet <strong>patchwork</strong> pour montrer nos visualisations <strong>ggplot</strong> côte à côte ; pour plus de détails, voir la section sur la combinaison de tracés dans le chapitre du manuel <a href="ggplot_tips.html#ggplot_tips">Astuces de ggplot</a> du manuel. Nous allons visualiser notre population source, notre population d’enquête non pondérée et notre population d’enquête pondérée. Vous pouvez également envisager de visualiser chaque strate de votre enquête, pars exemple ici, en utilisant l’argument <code>stack_by = "health_district"</code> (voir <code>?plot_age_pyramid</code> pour plus de détails).</p>
@@ -705,9 +706,9 @@ Soit la fin de votre période de rappel, soit une date antérieure à la fin du 
 <span>       <span class="op">)</span></span></code></pre></div>
 <div class="inline-figure"><img src="_main_files/figure-html/weighted_age_pyramid-1.png" width="1440"></div>
 </div>
-<div id="diagramme-alluvialsankey" class="section level3" number="25.7.3">
+<div id="diagramme-alluvialsankey" class="section level3" number="26.7.3">
 <h3>
-<span class="header-section-number">25.7.3</span> Diagramme alluvial/sankey<a class="anchor" aria-label="anchor" href="#diagramme-alluvialsankey"><i class="fas fa-link"></i></a>
+<span class="header-section-number">26.7.3</span> Diagramme alluvial/sankey<a class="anchor" aria-label="anchor" href="#diagramme-alluvialsankey"><i class="fas fa-link"></i></a>
 </h3>
 <p>La visualisation des points de départ et des résultats pour les individus peut être très utile pour obtenir une vue d’ensemble. L’application est évidente pour les populations mobiles, mais il existe de nombreuses autres applications telles que les cohortes ou toute autre situation
 où il y a des transitions d’états pour les individus. Ces diagrammes ont plusieurs noms différents, y compris alluvial, sankey et ensembles parallèles - les détails sont dans le chapitre du manuel consacré aux <a href="diagrams.html#diagrams">diagrammes et graphiques</a>.</p>
@@ -738,14 +739,14 @@ où il y a des transitions d’états pour les individus. Ces diagrammes ont plu
 <!-- ======================================================= -->
 </div>
 </div>
-<div id="proportions-pondérées" class="section level2" number="25.8">
+<div id="proportions-pondérées" class="section level2" number="26.8">
 <h2>
-<span class="header-section-number">25.8</span> Proportions pondérées<a class="anchor" aria-label="anchor" href="#proportions-pond%C3%A9r%C3%A9es"><i class="fas fa-link"></i></a>
+<span class="header-section-number">26.8</span> Proportions pondérées<a class="anchor" aria-label="anchor" href="#proportions-pond%C3%A9r%C3%A9es"><i class="fas fa-link"></i></a>
 </h2>
 <p>Cette section détaillera comment produire des tableaux pour les effectifs et les proportions pondérés, avec les intervalles de confiance associés et l’effet de plan. Il existe quatre options différentes utilisant les fonctions des paquets suivants : <strong>survey</strong>, <strong>srvyr</strong>, <strong>sitrep</strong> et <strong>gtsummary</strong>. Pour un codage minimal permettant de produire un tableau standard de style épidémiologique, nous recommandons la fonction <strong>sitrep</strong> - qui est un wrapper pour le code <strong>srvyr</strong> ; notez cependant que ce n’est pas encore sur CRAN et que cela peut changer dans le futur. Autrement, le code <strong>survey</strong> est susceptible d’être le plus stable à long terme, alors que <strong>srvyr</strong> s’intégrera le mieux dans les flux de travail de tidyverse. Bien que les fonctions <strong>gtsummary</strong> ont beaucoup de potentiel, elles semblent expérimentales et incomplètes au moment de la rédaction.</p>
-<div id="paquet-survey-1" class="section level3" number="25.8.1">
+<div id="paquet-survey-1" class="section level3" number="26.8.1">
 <h3>
-<span class="header-section-number">25.8.1</span> Paquet **Survey<a class="anchor" aria-label="anchor" href="#paquet-survey-1"><i class="fas fa-link"></i></a>
+<span class="header-section-number">26.8.1</span> Paquet **Survey<a class="anchor" aria-label="anchor" href="#paquet-survey-1"><i class="fas fa-link"></i></a>
 </h3>
 <p>Nous pouvons utiliser la fonction <code>svyciprop()</code> de <strong>survey</strong> pour obtenir des proportions pondérées et les intervalles de confiance à 95% qui les accompagnent. Il est intéressant de noter que <code>svyprop()</code> ne semble accepter que les variables comprises entre 0 et 1 (ou VRAI/FAUX), donc les variables catégorielles ne fonctionneront pas.</p>
 <p><span style="color : black ;"><strong><em>NOTE:</em></strong> Les fonctions de <strong>survey</strong> acceptent également les objets de conception <strong>srvyr</strong>, mais ici nous avons utilisé l’objet de conception <strong>survey</strong> juste pour la cohérence </span>.</p>
@@ -821,9 +822,9 @@ où il y a des transitions d’états pour les individus. Ces diagrammes ont plu
 ## 2     died  76213.0        5.1   2.1   12.1           3.8
 ## 3  arrived 761799.0       51.4  40.9   61.7           3.9</code></pre>
 </div>
-<div id="paquet-srvyr-1" class="section level3" number="25.8.2">
+<div id="paquet-srvyr-1" class="section level3" number="26.8.2">
 <h3>
-<span class="header-section-number">25.8.2</span> Paquet **Srvyr<a class="anchor" aria-label="anchor" href="#paquet-srvyr-1"><i class="fas fa-link"></i></a>
+<span class="header-section-number">26.8.2</span> Paquet **Srvyr<a class="anchor" aria-label="anchor" href="#paquet-srvyr-1"><i class="fas fa-link"></i></a>
 </h3>
 <p>Avec <strong>srvyr</strong>, nous pouvons utiliser la syntaxe <strong>dplyr</strong> pour créer une table. Notez que la méthode fonction <code>survey_mean()</code> est utilisée et que l’argument de proportion est spécifié, ainsi que également que la même fonction est utilisée pour calculer l’effet de plan. Ceci est dû au fait que <strong>srvyr</strong> englobe les deux fonctions du paquetage <strong>survey</strong>, <code>svyciprop()</code> et <code>svymean()</code>, qui sont utilisées dans la section ci-dessus.</p>
 <p><span style="color : black ;"><strong><em>NOTE:</em></strong> Il ne semble pas non plus possible d’obtenir des proportions à partir de variables catégorielles en utilisant <strong>srvyr</strong>, si vous en avez besoin, consultez la section ci-dessous utilisant <strong>sitrep</strong> </span>.</p>
@@ -892,9 +893,9 @@ où il y a des transitions d’états pour les individus. Ces diagrammes ont plu
 ## 2 died      76213.  5.14      2.08      12.1      3.76
 ## 3 arrived  761799. 51.4      40.9       61.7      3.93</code></pre>
 </div>
-<div id="paquet-sitrep" class="section level3" number="25.8.3">
+<div id="paquet-sitrep" class="section level3" number="26.8.3">
 <h3>
-<span class="header-section-number">25.8.3</span> Paquet **Sitrep<a class="anchor" aria-label="anchor" href="#paquet-sitrep"><i class="fas fa-link"></i></a>
+<span class="header-section-number">26.8.3</span> Paquet **Sitrep<a class="anchor" aria-label="anchor" href="#paquet-sitrep"><i class="fas fa-link"></i></a>
 </h3>
 <p>La fonction <code><a href="https://R4EPI.github.io/epitabulate/reference/tab_functions.html">tab_survey()</a></code> de <strong>sitrep</strong> est une enveloppe pour <strong>srvyr</strong>, vous permettant de créer des tableaux pondérés avec un codage minimal. Elle vous permet également de calculer proportions pondérées pour les variables catégorielles.</p>
 <div class="sourceCode" id="cb1261"><pre class="downlit sourceCode r">
@@ -919,9 +920,9 @@ où il y a des transitions d’états pour les individus. Ces diagrammes ont plu
 ## 8 education_level primary    102609.  2.37 25.4% (16.2-37.3)
 ## 9 education_level secondary  130201.  6.68 32.2% (16.5-53.3)</code></pre>
 </div>
-<div id="paquet-gtsummary" class="section level3" number="25.8.4">
+<div id="paquet-gtsummary" class="section level3" number="26.8.4">
 <h3>
-<span class="header-section-number">25.8.4</span> Paquet **Gtsummary<a class="anchor" aria-label="anchor" href="#paquet-gtsummary"><i class="fas fa-link"></i></a>
+<span class="header-section-number">26.8.4</span> Paquet **Gtsummary<a class="anchor" aria-label="anchor" href="#paquet-gtsummary"><i class="fas fa-link"></i></a>
 </h3>
 <p>Avec <strong>gtsummary</strong>, il ne semble pas y avoir de fonctions intégrées pour ajouter des intervalles de confiance ou l’effet de plan. Ici nous montrons comment définir une fonction pour ajouter des intervalles de confiance et ensuite ajouter des intervalles de confiance à une table <strong>gtsummary</strong> créée en utilisant la fonction <code>tbl_svysummary()</code>.</p>
 <div class="sourceCode" id="cb1264"><pre class="downlit sourceCode r">
@@ -952,23 +953,23 @@ où il y a des transitions d’états pour les individus. Ces diagrammes ont plu
 <span>      <span class="va">add_stat_1</span> <span class="op">~</span> <span class="st">"**95%CI**"</span></span>
 <span>    <span class="op">)</span></span>
 <span>    <span class="op">)</span></span></code></pre></div>
-<div id="wzyvhwdoca" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#wzyvhwdoca table {
+<div id="nppirthwve" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#nppirthwve table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#wzyvhwdoca thead, #wzyvhwdoca tbody, #wzyvhwdoca tfoot, #wzyvhwdoca tr, #wzyvhwdoca td, #wzyvhwdoca th {
+#nppirthwve thead, #nppirthwve tbody, #nppirthwve tfoot, #nppirthwve tr, #nppirthwve td, #nppirthwve th {
   border-style: none;
 }
 
-#wzyvhwdoca p {
+#nppirthwve p {
   margin: 0;
   padding: 0;
 }
 
-#wzyvhwdoca .gt_table {
+#nppirthwve .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -994,12 +995,12 @@ où il y a des transitions d’états pour les individus. Ces diagrammes ont plu
   border-left-color: #D3D3D3;
 }
 
-#wzyvhwdoca .gt_caption {
+#nppirthwve .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#wzyvhwdoca .gt_title {
+#nppirthwve .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -1011,7 +1012,7 @@ où il y a des transitions d’états pour les individus. Ces diagrammes ont plu
   border-bottom-width: 0;
 }
 
-#wzyvhwdoca .gt_subtitle {
+#nppirthwve .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -1023,7 +1024,7 @@ où il y a des transitions d’états pour les individus. Ces diagrammes ont plu
   border-top-width: 0;
 }
 
-#wzyvhwdoca .gt_heading {
+#nppirthwve .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -1035,13 +1036,13 @@ où il y a des transitions d’états pour les individus. Ces diagrammes ont plu
   border-right-color: #D3D3D3;
 }
 
-#wzyvhwdoca .gt_bottom_border {
+#nppirthwve .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#wzyvhwdoca .gt_col_headings {
+#nppirthwve .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1056,7 +1057,7 @@ où il y a des transitions d’états pour les individus. Ces diagrammes ont plu
   border-right-color: #D3D3D3;
 }
 
-#wzyvhwdoca .gt_col_heading {
+#nppirthwve .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1076,7 +1077,7 @@ où il y a des transitions d’états pour les individus. Ces diagrammes ont plu
   overflow-x: hidden;
 }
 
-#wzyvhwdoca .gt_column_spanner_outer {
+#nppirthwve .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1088,15 +1089,15 @@ où il y a des transitions d’états pour les individus. Ces diagrammes ont plu
   padding-right: 4px;
 }
 
-#wzyvhwdoca .gt_column_spanner_outer:first-child {
+#nppirthwve .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#wzyvhwdoca .gt_column_spanner_outer:last-child {
+#nppirthwve .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#wzyvhwdoca .gt_column_spanner {
+#nppirthwve .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -1108,11 +1109,11 @@ où il y a des transitions d’états pour les individus. Ces diagrammes ont plu
   width: 100%;
 }
 
-#wzyvhwdoca .gt_spanner_row {
+#nppirthwve .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#wzyvhwdoca .gt_group_heading {
+#nppirthwve .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1138,7 +1139,7 @@ où il y a des transitions d’états pour les individus. Ces diagrammes ont plu
   text-align: left;
 }
 
-#wzyvhwdoca .gt_empty_group_heading {
+#nppirthwve .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -1153,15 +1154,15 @@ où il y a des transitions d’états pour les individus. Ces diagrammes ont plu
   vertical-align: middle;
 }
 
-#wzyvhwdoca .gt_from_md > :first-child {
+#nppirthwve .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#wzyvhwdoca .gt_from_md > :last-child {
+#nppirthwve .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#wzyvhwdoca .gt_row {
+#nppirthwve .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1180,7 +1181,7 @@ où il y a des transitions d’états pour les individus. Ces diagrammes ont plu
   overflow-x: hidden;
 }
 
-#wzyvhwdoca .gt_stub {
+#nppirthwve .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1193,7 +1194,7 @@ où il y a des transitions d’états pour les individus. Ces diagrammes ont plu
   padding-right: 5px;
 }
 
-#wzyvhwdoca .gt_stub_row_group {
+#nppirthwve .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1207,15 +1208,15 @@ où il y a des transitions d’états pour les individus. Ces diagrammes ont plu
   vertical-align: top;
 }
 
-#wzyvhwdoca .gt_row_group_first td {
+#nppirthwve .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#wzyvhwdoca .gt_row_group_first th {
+#nppirthwve .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#wzyvhwdoca .gt_summary_row {
+#nppirthwve .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1225,16 +1226,16 @@ où il y a des transitions d’états pour les individus. Ces diagrammes ont plu
   padding-right: 5px;
 }
 
-#wzyvhwdoca .gt_first_summary_row {
+#nppirthwve .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#wzyvhwdoca .gt_first_summary_row.thick {
+#nppirthwve .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#wzyvhwdoca .gt_last_summary_row {
+#nppirthwve .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1244,7 +1245,7 @@ où il y a des transitions d’états pour les individus. Ces diagrammes ont plu
   border-bottom-color: #D3D3D3;
 }
 
-#wzyvhwdoca .gt_grand_summary_row {
+#nppirthwve .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1254,7 +1255,7 @@ où il y a des transitions d’états pour les individus. Ces diagrammes ont plu
   padding-right: 5px;
 }
 
-#wzyvhwdoca .gt_first_grand_summary_row {
+#nppirthwve .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1264,7 +1265,7 @@ où il y a des transitions d’états pour les individus. Ces diagrammes ont plu
   border-top-color: #D3D3D3;
 }
 
-#wzyvhwdoca .gt_last_grand_summary_row_top {
+#nppirthwve .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1274,11 +1275,11 @@ où il y a des transitions d’états pour les individus. Ces diagrammes ont plu
   border-bottom-color: #D3D3D3;
 }
 
-#wzyvhwdoca .gt_striped {
+#nppirthwve .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#wzyvhwdoca .gt_table_body {
+#nppirthwve .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1287,7 +1288,7 @@ où il y a des transitions d’états pour les individus. Ces diagrammes ont plu
   border-bottom-color: #D3D3D3;
 }
 
-#wzyvhwdoca .gt_footnotes {
+#nppirthwve .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1301,7 +1302,7 @@ où il y a des transitions d’états pour les individus. Ces diagrammes ont plu
   border-right-color: #D3D3D3;
 }
 
-#wzyvhwdoca .gt_footnote {
+#nppirthwve .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -1310,7 +1311,7 @@ où il y a des transitions d’états pour les individus. Ces diagrammes ont plu
   padding-right: 5px;
 }
 
-#wzyvhwdoca .gt_sourcenotes {
+#nppirthwve .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1324,7 +1325,7 @@ où il y a des transitions d’états pour les individus. Ces diagrammes ont plu
   border-right-color: #D3D3D3;
 }
 
-#wzyvhwdoca .gt_sourcenote {
+#nppirthwve .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -1332,63 +1333,63 @@ où il y a des transitions d’états pour les individus. Ces diagrammes ont plu
   padding-right: 5px;
 }
 
-#wzyvhwdoca .gt_left {
+#nppirthwve .gt_left {
   text-align: left;
 }
 
-#wzyvhwdoca .gt_center {
+#nppirthwve .gt_center {
   text-align: center;
 }
 
-#wzyvhwdoca .gt_right {
+#nppirthwve .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#wzyvhwdoca .gt_font_normal {
+#nppirthwve .gt_font_normal {
   font-weight: normal;
 }
 
-#wzyvhwdoca .gt_font_bold {
+#nppirthwve .gt_font_bold {
   font-weight: bold;
 }
 
-#wzyvhwdoca .gt_font_italic {
+#nppirthwve .gt_font_italic {
   font-style: italic;
 }
 
-#wzyvhwdoca .gt_super {
+#nppirthwve .gt_super {
   font-size: 65%;
 }
 
-#wzyvhwdoca .gt_footnote_marks {
+#nppirthwve .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#wzyvhwdoca .gt_asterisk {
+#nppirthwve .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#wzyvhwdoca .gt_indent_1 {
+#nppirthwve .gt_indent_1 {
   text-indent: 5px;
 }
 
-#wzyvhwdoca .gt_indent_2 {
+#nppirthwve .gt_indent_2 {
   text-indent: 10px;
 }
 
-#wzyvhwdoca .gt_indent_3 {
+#nppirthwve .gt_indent_3 {
   text-indent: 15px;
 }
 
-#wzyvhwdoca .gt_indent_4 {
+#nppirthwve .gt_indent_4 {
   text-indent: 20px;
 }
 
-#wzyvhwdoca .gt_indent_5 {
+#nppirthwve .gt_indent_5 {
   text-indent: 25px;
 }
 </style>
@@ -1430,14 +1431,14 @@ où il y a des transitions d’états pour les individus. Ces diagrammes ont plu
 <!-- ======================================================= -->
 </div>
 </div>
-<div id="ratios-pondérés" class="section level2" number="25.9">
+<div id="ratios-pondérés" class="section level2" number="26.9">
 <h2>
-<span class="header-section-number">25.9</span> Ratios pondérés<a class="anchor" aria-label="anchor" href="#ratios-pond%C3%A9r%C3%A9s"><i class="fas fa-link"></i></a>
+<span class="header-section-number">26.9</span> Ratios pondérés<a class="anchor" aria-label="anchor" href="#ratios-pond%C3%A9r%C3%A9s"><i class="fas fa-link"></i></a>
 </h2>
 <p>De même, pour les ratios pondérés (comme pour les ratios de mortalité), vous pouvez utiliser le paquetage <strong>survey</strong> ou le paquet <strong>srvyr</strong>. Vous pouvez également écrire des fonctions (similaires à celles ci-dessus) pour itérer sur plusieurs variables. Vous pourriez également créer une fonction pour <strong>gtsummary</strong> comme ci-dessus mais actuellement, elle n’a pas de fonctionnalité intégrée.</p>
-<div id="paquet-survey-2" class="section level3" number="25.9.1">
+<div id="paquet-survey-2" class="section level3" number="26.9.1">
 <h3>
-<span class="header-section-number">25.9.1</span> Paquet **Survey<a class="anchor" aria-label="anchor" href="#paquet-survey-2"><i class="fas fa-link"></i></a>
+<span class="header-section-number">26.9.1</span> Paquet **Survey<a class="anchor" aria-label="anchor" href="#paquet-survey-2"><i class="fas fa-link"></i></a>
 </h3>
 <div class="sourceCode" id="cb1265"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">ratio</span> <span class="op">&lt;-</span> <span class="fu">svyratio</span><span class="op">(</span><span class="op">~</span><span class="va">died</span>, </span>
@@ -1453,9 +1454,9 @@ où il y a des transitions d’états pour les individus. Ces diagrammes ont plu
 <pre><code>##       obstime    2.5 %   97.5 %
 ## died 5.981922 1.194294 10.76955</code></pre>
 </div>
-<div id="paquet-srvyr-paquet" class="section level3" number="25.9.2">
+<div id="paquet-srvyr-paquet" class="section level3" number="26.9.2">
 <h3>
-<span class="header-section-number">25.9.2</span> <strong>Paquet SRVYR</strong> (paquet)<a class="anchor" aria-label="anchor" href="#paquet-srvyr-paquet"><i class="fas fa-link"></i></a>
+<span class="header-section-number">26.9.2</span> <strong>Paquet SRVYR</strong> (paquet)<a class="anchor" aria-label="anchor" href="#paquet-srvyr-paquet"><i class="fas fa-link"></i></a>
 </h3>
 <div class="sourceCode" id="cb1267"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">survey_design</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
@@ -1473,9 +1474,9 @@ où il y a des transitions d’états pour les individus. Ces diagrammes ont plu
 <!-- ======================================================= -->
 </div>
 </div>
-<div id="ressources-12" class="section level2" number="25.10">
+<div id="ressources-12" class="section level2" number="26.10">
 <h2>
-<span class="header-section-number">25.10</span> Ressources<a class="anchor" aria-label="anchor" href="#ressources-12"><i class="fas fa-link"></i></a>
+<span class="header-section-number">26.10</span> Ressources<a class="anchor" aria-label="anchor" href="#ressources-12"><i class="fas fa-link"></i></a>
 </h2>
 <p><a href="https://stats.idre.ucla.edu/r/seminars/survey-data-analysis-with-r/">Page des statistiques de l’UCLA</a></p>
 <p><a href="http://asdfree.com/">Analyse des données d’enquête gratuite</a></p>
@@ -1486,51 +1487,51 @@ où il y a des transitions d’états pour les individus. Ces diagrammes ont plu
 </div>
 </div>
   <div class="chapter-nav">
-<div class="prev"><a href="contact_tracing.html"><span class="header-section-number">24</span> Suivi des contacts</a></div>
-<div class="next"><a href="survival_analysis.html"><span class="header-section-number">26</span> Analyse de survie</a></div>
+<div class="prev"><a href="contact_tracing.html"><span class="header-section-number">25</span> Suivi des contacts</a></div>
+<div class="next"><a href="survival_analysis.html"><span class="header-section-number">27</span> Analyse de survie</a></div>
 </div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
     <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
       <ul class="nav navbar-nav">
-<li><a class="nav-link" href="#survey_analysis"><span class="header-section-number">25</span> Analyse d’enquête</a></li>
-<li><a class="nav-link" href="#aper%C3%A7u-2"><span class="header-section-number">25.1</span> Aperçu</a></li>
+<li><a class="nav-link" href="#survey_analysis"><span class="header-section-number">26</span> Analyse d’enquête</a></li>
+<li><a class="nav-link" href="#aper%C3%A7u-2"><span class="header-section-number">26.1</span> Aperçu</a></li>
 <li>
-<a class="nav-link" href="#pr%C3%A9paration-9"><span class="header-section-number">25.2</span> Préparation</a><ul class="nav navbar-nav">
+<a class="nav-link" href="#pr%C3%A9paration-9"><span class="header-section-number">26.2</span> Préparation</a><ul class="nav navbar-nav">
 <li><a class="nav-link" href="#paquets-1">Paquets</a></li>
 <li><a class="nav-link" href="#charger-les-donn%C3%A9es">Charger les données</a></li>
 <li><a class="nav-link" href="#nettoyer-les-donn%C3%A9es-2">Nettoyer les données</a></li>
 </ul>
 </li>
-<li><a class="nav-link" href="#donn%C3%A9es-denqu%C3%AAte"><span class="header-section-number">25.3</span> Données d’enquête</a></li>
-<li><a class="nav-link" href="#temps-dobservation"><span class="header-section-number">25.4</span> Temps d’observation</a></li>
-<li><a class="nav-link" href="#pond%C3%A9ration"><span class="header-section-number">25.5</span> Pondération</a></li>
+<li><a class="nav-link" href="#donn%C3%A9es-denqu%C3%AAte"><span class="header-section-number">26.3</span> Données d’enquête</a></li>
+<li><a class="nav-link" href="#temps-dobservation"><span class="header-section-number">26.4</span> Temps d’observation</a></li>
+<li><a class="nav-link" href="#pond%C3%A9ration"><span class="header-section-number">26.5</span> Pondération</a></li>
 <li>
-<a class="nav-link" href="#objets-de-conception-denqu%C3%AAte"><span class="header-section-number">25.6</span> Objets de conception d’enquête</a><ul class="nav navbar-nav">
-<li><a class="nav-link" href="#paquet-survey"><span class="header-section-number">25.6.1</span> Paquet **Survey</a></li>
-<li><a class="nav-link" href="#paquet-srvyr"><span class="header-section-number">25.6.2</span> Paquet **Srvyr</a></li>
+<a class="nav-link" href="#objets-de-conception-denqu%C3%AAte"><span class="header-section-number">26.6</span> Objets de conception d’enquête</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#paquet-survey"><span class="header-section-number">26.6.1</span> Paquet **Survey</a></li>
+<li><a class="nav-link" href="#paquet-srvyr"><span class="header-section-number">26.6.2</span> Paquet **Srvyr</a></li>
 </ul>
 </li>
 <li>
-<a class="nav-link" href="#analyse-descriptive-1"><span class="header-section-number">25.7</span> Analyse descriptive</a><ul class="nav navbar-nav">
-<li><a class="nav-link" href="#biais-d%C3%A9chantillonnage"><span class="header-section-number">25.7.1</span> Biais d’échantillonnage</a></li>
-<li><a class="nav-link" href="#pyramides-d%C3%A9mographiques"><span class="header-section-number">25.7.2</span> Pyramides démographiques</a></li>
-<li><a class="nav-link" href="#diagramme-alluvialsankey"><span class="header-section-number">25.7.3</span> Diagramme alluvial/sankey</a></li>
+<a class="nav-link" href="#analyse-descriptive-1"><span class="header-section-number">26.7</span> Analyse descriptive</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#biais-d%C3%A9chantillonnage"><span class="header-section-number">26.7.1</span> Biais d’échantillonnage</a></li>
+<li><a class="nav-link" href="#pyramides-d%C3%A9mographiques"><span class="header-section-number">26.7.2</span> Pyramides démographiques</a></li>
+<li><a class="nav-link" href="#diagramme-alluvialsankey"><span class="header-section-number">26.7.3</span> Diagramme alluvial/sankey</a></li>
 </ul>
 </li>
 <li>
-<a class="nav-link" href="#proportions-pond%C3%A9r%C3%A9es"><span class="header-section-number">25.8</span> Proportions pondérées</a><ul class="nav navbar-nav">
-<li><a class="nav-link" href="#paquet-survey-1"><span class="header-section-number">25.8.1</span> Paquet **Survey</a></li>
-<li><a class="nav-link" href="#paquet-srvyr-1"><span class="header-section-number">25.8.2</span> Paquet **Srvyr</a></li>
-<li><a class="nav-link" href="#paquet-sitrep"><span class="header-section-number">25.8.3</span> Paquet **Sitrep</a></li>
-<li><a class="nav-link" href="#paquet-gtsummary"><span class="header-section-number">25.8.4</span> Paquet **Gtsummary</a></li>
+<a class="nav-link" href="#proportions-pond%C3%A9r%C3%A9es"><span class="header-section-number">26.8</span> Proportions pondérées</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#paquet-survey-1"><span class="header-section-number">26.8.1</span> Paquet **Survey</a></li>
+<li><a class="nav-link" href="#paquet-srvyr-1"><span class="header-section-number">26.8.2</span> Paquet **Srvyr</a></li>
+<li><a class="nav-link" href="#paquet-sitrep"><span class="header-section-number">26.8.3</span> Paquet **Sitrep</a></li>
+<li><a class="nav-link" href="#paquet-gtsummary"><span class="header-section-number">26.8.4</span> Paquet **Gtsummary</a></li>
 </ul>
 </li>
 <li>
-<a class="nav-link" href="#ratios-pond%C3%A9r%C3%A9s"><span class="header-section-number">25.9</span> Ratios pondérés</a><ul class="nav navbar-nav">
-<li><a class="nav-link" href="#paquet-survey-2"><span class="header-section-number">25.9.1</span> Paquet **Survey</a></li>
-<li><a class="nav-link" href="#paquet-srvyr-paquet"><span class="header-section-number">25.9.2</span> Paquet SRVYR (paquet)</a></li>
+<a class="nav-link" href="#ratios-pond%C3%A9r%C3%A9s"><span class="header-section-number">26.9</span> Ratios pondérés</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#paquet-survey-2"><span class="header-section-number">26.9.1</span> Paquet **Survey</a></li>
+<li><a class="nav-link" href="#paquet-srvyr-paquet"><span class="header-section-number">26.9.2</span> Paquet SRVYR (paquet)</a></li>
 </ul>
 </li>
-<li><a class="nav-link" href="#ressources-12"><span class="header-section-number">25.10</span> Ressources</a></li>
+<li><a class="nav-link" href="#ressources-12"><span class="header-section-number">26.10</span> Ressources</a></li>
 </ul>
 
       <div class="book-extra">
