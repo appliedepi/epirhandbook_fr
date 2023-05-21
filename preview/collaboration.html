@@ -1,0 +1,816 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>8 Contrôle de version et collaboration avec Git et Github | Le Epi R Handbook</title>
+<meta name="author" content="the handbook team">
+<meta name="description" content="Ce chapitre présente un aperçu de l’utilisation de Git pour collaborer avec d’autres personnes. Des tutoriels plus complets peuvent être en bas de page dans la section Ressources.  8.1 Qu’est-ce...">
+<meta name="generator" content="bookdown 0.34 with bs4_book()">
+<meta property="og:title" content="8 Contrôle de version et collaboration avec Git et Github | Le Epi R Handbook">
+<meta property="og:type" content="book">
+<meta property="og:description" content="Ce chapitre présente un aperçu de l’utilisation de Git pour collaborer avec d’autres personnes. Des tutoriels plus complets peuvent être en bas de page dans la section Ressources.  8.1 Qu’est-ce...">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="8 Contrôle de version et collaboration avec Git et Github | Le Epi R Handbook">
+<meta name="twitter:description" content="Ce chapitre présente un aperçu de l’utilisation de Git pour collaborer avec d’autres personnes. Des tutoriels plus complets peuvent être en bas de page dans la section Ressources.  8.1 Qu’est-ce...">
+<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
+<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.4.2/transition.js"></script><script src="libs/bs3compat-0.4.2/tabs.js"></script><script src="libs/bs3compat-0.4.2/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="libs/htmlwidgets-1.6.2/htmlwidgets.js"></script><script src="libs/plotly-binding-4.10.1/plotly.js"></script><script src="libs/typedarray-0.1/typedarray.min.js"></script><link href="libs/crosstalk-1.2.0/css/crosstalk.min.css" rel="stylesheet">
+<script src="libs/crosstalk-1.2.0/js/crosstalk.min.js"></script><link href="libs/plotly-htmlwidgets-css-2.11.1/plotly-htmlwidgets.css" rel="stylesheet">
+<script src="libs/plotly-basic-2.11.1/plotly-basic-2.11.1.min.js"></script><link href="libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet">
+<script src="libs/datatables-binding-0.28/datatables.js"></script><link href="libs/dt-core-1.13.4/css/jquery.dataTables.min.css" rel="stylesheet">
+<link href="libs/dt-core-1.13.4/css/jquery.dataTables.extra.css" rel="stylesheet">
+<script src="libs/dt-core-1.13.4/js/jquery.dataTables.min.js"></script><link href="libs/nouislider-7.0.10/jquery.nouislider.min.css" rel="stylesheet">
+<script src="libs/nouislider-7.0.10/jquery.nouislider.min.js"></script><link href="libs/selectize-0.12.0/selectize.bootstrap3.css" rel="stylesheet">
+<script src="libs/selectize-0.12.0/selectize.min.js"></script><script src="libs/plotly-main-2.11.1/plotly-latest.min.js"></script><script src="libs/plotly-cartesian-2.11.1/plotly-cartesian-2.11.1.min.js"></script><script src="libs/proj4js-2.3.15/proj4.js"></script><link href="libs/highcharts-9.3.1/css/motion.css" rel="stylesheet">
+<script src="libs/highcharts-9.3.1/highcharts.js"></script><script src="libs/highcharts-9.3.1/highcharts-3d.js"></script><script src="libs/highcharts-9.3.1/highcharts-more.js"></script><script src="libs/highcharts-9.3.1/modules/stock.js"></script><script src="libs/highcharts-9.3.1/modules/map.js"></script><script src="libs/highcharts-9.3.1/modules/data.js"></script><script src="libs/highcharts-9.3.1/modules/exporting.js"></script><script src="libs/highcharts-9.3.1/modules/offline-exporting.js"></script><script src="libs/highcharts-9.3.1/modules/drilldown.js"></script><script src="libs/highcharts-9.3.1/modules/item-series.js"></script><script src="libs/highcharts-9.3.1/modules/overlapping-datalabels.js"></script><script src="libs/highcharts-9.3.1/modules/annotations.js"></script><script src="libs/highcharts-9.3.1/modules/export-data.js"></script><script src="libs/highcharts-9.3.1/modules/funnel.js"></script><script src="libs/highcharts-9.3.1/modules/heatmap.js"></script><script src="libs/highcharts-9.3.1/modules/treemap.js"></script><script src="libs/highcharts-9.3.1/modules/sankey.js"></script><script src="libs/highcharts-9.3.1/modules/dependency-wheel.js"></script><script src="libs/highcharts-9.3.1/modules/organization.js"></script><script src="libs/highcharts-9.3.1/modules/solid-gauge.js"></script><script src="libs/highcharts-9.3.1/modules/streamgraph.js"></script><script src="libs/highcharts-9.3.1/modules/sunburst.js"></script><script src="libs/highcharts-9.3.1/modules/vector.js"></script><script src="libs/highcharts-9.3.1/modules/wordcloud.js"></script><script src="libs/highcharts-9.3.1/modules/xrange.js"></script><script src="libs/highcharts-9.3.1/modules/tilemap.js"></script><script src="libs/highcharts-9.3.1/modules/venn.js"></script><script src="libs/highcharts-9.3.1/modules/gantt.js"></script><script src="libs/highcharts-9.3.1/modules/timeline.js"></script><script src="libs/highcharts-9.3.1/modules/parallel-coordinates.js"></script><script src="libs/highcharts-9.3.1/modules/bullet.js"></script><script src="libs/highcharts-9.3.1/modules/coloraxis.js"></script><script src="libs/highcharts-9.3.1/modules/dumbbell.js"></script><script src="libs/highcharts-9.3.1/modules/lollipop.js"></script><script src="libs/highcharts-9.3.1/modules/series-label.js"></script><script src="libs/highcharts-9.3.1/plugins/motion.js"></script><script src="libs/highcharts-9.3.1/custom/reset.js"></script><script src="libs/highcharts-9.3.1/modules/boost.js"></script><script src="libs/highchart-binding-0.9.4/highchart.js"></script><link href="libs/tabwid-1.1.3/tabwid.css" rel="stylesheet">
+<script src="libs/tabwid-1.1.3/tabwid.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><style type="text/css">
+    
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  </style>
+<link rel="stylesheet" href="style_bs4.css">
+</head>
+<body data-spy="scroll" data-target="#toc">
+
+<div class="container-fluid">
+<div class="row">
+  <header class="col-sm-12 col-lg-3 sidebar sidebar-book"><a class="sr-only sr-only-focusable" href="#content">Skip to main content</a>
+
+    <div class="d-flex align-items-start justify-content-between">
+      <h1>
+        <a href="index.html" title="">Le Epi R Handbook</a>
+      </h1>
+      <button class="btn btn-outline-primary d-lg-none ml-2 mt-1" type="button" data-toggle="collapse" data-target="#main-nav" aria-expanded="true" aria-controls="main-nav"><i class="fas fa-bars"></i><span class="sr-only">Show table of contents</span></button>
+    </div>
+
+    <div id="main-nav" class="collapse-lg">
+      <form role="search">
+        <input id="search" class="form-control" type="search" placeholder="Search" aria-label="Search">
+</form>
+
+      <nav aria-label="Table of contents"><h2>Table of contents</h2>
+        <ul class="book-toc list-unstyled">
+<li><a class="" href="index.html"></a></li>
+<li><a class="" href="interactive_plots.html"><span class="header-section-number">1</span> Graphiques interactifs</a></li>
+<li class="book-part">Reports and dashboards</li>
+<li><a class="" href="rmarkdown.html"><span class="header-section-number">2</span> Production de rapports avec R Markdown</a></li>
+<li><a class="" href="reportfactory.html"><span class="header-section-number">3</span> Organisation des rapports de routine</a></li>
+<li><a class="" href="dashboards.html"><span class="header-section-number">4</span> Tableaux de bord avec R Markdown</a></li>
+<li><a class="" href="shiny.html"><span class="header-section-number">5</span> Tableaux de bord avec Shiny</a></li>
+<li class="book-part">Miscellaneous</li>
+<li><a class="" href="writing_functions.html"><span class="header-section-number">6</span> Fonctions d’écriture</a></li>
+<li><a class="" href="directories.html"><span class="header-section-number">7</span> Interactions avec les répertoires</a></li>
+<li><a class="active" href="collaboration.html"><span class="header-section-number">8</span> Contrôle de version et collaboration avec Git et Github</a></li>
+<li><a class="" href="errors.html"><span class="header-section-number">9</span> Erreurs fréquentes</a></li>
+<li><a class="" href="help.html"><span class="header-section-number">10</span> Obtenir de l’aide</a></li>
+<li><a class="" href="relational-databases.html"><span class="header-section-number">11</span> Relational databases</a></li>
+<li><a class="" href="network_drives.html"><span class="header-section-number">12</span> R sur les lecteurs réseau</a></li>
+<li><a class="" href="data_table.html"><span class="header-section-number">13</span> Tableau de données</a></li>
+<li><a class="" href="advanced-rstudio.html"><span class="header-section-number">14</span> Advanced RStudio</a></li>
+</ul>
+
+        <div class="book-extra">
+          
+        </div>
+      </nav>
+</div>
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="collaboration" class="section level1" number="8">
+<h1>
+<span class="header-section-number">8</span> Contrôle de version et collaboration avec Git et Github<a class="anchor" aria-label="anchor" href="#collaboration"><i class="fas fa-link"></i></a>
+</h1>
+<p>Ce chapitre présente un aperçu de l’utilisation de Git pour collaborer avec d’autres personnes. Des tutoriels plus complets peuvent être en bas de page dans la section Ressources.</p>
+<div id="quest-ce-que-git" class="section level2" number="8.1">
+<h2>
+<span class="header-section-number">8.1</span> Qu’est-ce que Git ?<a class="anchor" aria-label="anchor" href="#quest-ce-que-git"><i class="fas fa-link"></i></a>
+</h2>
+<p>Git est un logiciel de <strong>contrôle de version</strong> qui permet de suivre les modifications dans un dossier. Il peut être utilisé comme l’option “track change” dans Word, LibreOffice ou Google docs, mais pour tous les types de fichiers. C’est l’une des options les plus puissantes et les plus utilisées pour le contrôle de version.</p>
+<p><strong>Pourquoi n’en ai-je jamais entendu parler?</strong>
+Les personnes ayant une formation de développeur
+développeurs apprennent couramment à utiliser un logiciel de contrôle de version (Git,
+Mercurial, Subversion ou autres), peu d’entre nous issus de disciplines
+disciplines quantitatives sont enseignés ces compétences. Par conséquent, la plupart des épidémiologistes n’en
+Par conséquent, la plupart des épidémiologistes n’en ont jamais entendu parler au cours de leurs études, et doivent l’apprendre à la volée.</p>
+<p><strong>Attendez, j’ai entendu parler de Github, c’est la même chose?</strong>
+Pas exactement, mais vous les utilisez souvent ensemble, et nous vous montrerons comment faire. En bref :</p>
+<ul>
+<li><p><strong>Git</strong> est le système de contrôle de version, un logiciel. Vous pouvez l’utiliser
+localement sur votre ordinateur ou pour synchroniser un dossier avec un
+hôte <strong>site web</strong>. Par défaut, on utilise un terminal pour donner à Git
+en ligne de commande.</p></li>
+<li><p>Vous pouvez utiliser un <strong>client/interface Git</strong> pour éviter la ligne de commande et
+et effectuer les mêmes actions (au moins pour les actions simples et super courantes).
+courantes).</p></li>
+<li><p>Si vous souhaitez stocker votre dossier dans un <strong>site web hôte</strong> pour
+collaborer avec d’autres, vous pouvez créer un compte sur Github,
+Gitlab, Bitbucket ou autres.</p></li>
+</ul>
+<p>Ainsi, vous pouvez utiliser le client/interface <strong>Github Desktop</strong>, qui utilise
+<strong>Git</strong> en arrière-plan pour gérer vos fichiers, à la fois localement sur votre
+ordinateur, et à distance sur un serveur <strong>Github</strong>.</p>
+</div>
+<div id="pourquoi-utiliser-le-combo-git-et-github" class="section level2" number="8.2">
+<h2>
+<span class="header-section-number">8.2</span> Pourquoi utiliser le combo Git et Github ?<a class="anchor" aria-label="anchor" href="#pourquoi-utiliser-le-combo-git-et-github"><i class="fas fa-link"></i></a>
+</h2>
+<p>L’utilisation de <strong>Git</strong> facilite :</p>
+<ol style="list-style-type: decimal">
+<li>L’archivage des versions documentées avec des modifications incrémentielles de sorte que vous
+afin que vous puissiez facilement revenir en arrière à n’importe quel état antérieur.</li>
+<li>Avoir des <em>branches</em> parallèles, c’est-à-dire des versions de développement/“de travail” avec
+des moyens structurés pour intégrer les changements après révision</li>
+</ol>
+<p>Cela peut être fait localement sur votre ordinateur, même si vous ne collaborez pas avec d’autres personnes.
+avec d’autres personnes. Avez-vous déjà :</p>
+<ul>
+<li><p>regretté d’avoir supprimé une section du code, pour réaliser deux mois plus tard que mois plus tard que vous en aviez réellement besoin ?</p></li>
+<li><p>revenir sur un projet qui avait été mis en pause et tenter de se rappeler si vous aviez fait cette modification délicate dans l’un des éléments du projet. de vous rappeler si vous aviez fait cette modification délicate dans l’un des modèles ?</p></li>
+<li><p>aviez un fichier <em>model_1.R</em> et un autre fichier <em>model_1_test.R</em> et un fichier
+<em>model_1_not_working.R</em> pour faire des essais ?</p></li>
+<li><p>avait un fichier <em>report.Rmd</em>, un fichier <em>report_full.Rmd</em>, un fichier
+<em>report_true_final.Rmd</em>, un fichier <em>report_final_20210304.Rmd</em>, un fichier
+<em>report_final_20210402.Rmd</em> et maudit vos compétences en archivage ?</p></li>
+</ul>
+<p>Git vous aidera dans tout cela, et vaut la peine d’être appris pour cette seule raison.</p>
+<p>Cependant, il devient encore plus puissant lorsqu’il est utilisé avec un référentiel en ligne
+tel que Github pour soutenir des <strong>projets collaboratifs</strong>. Cela facilite :</p>
+<ul>
+<li><p>la collaboration : d’autres personnes peuvent examiner, commenter, et accepter/refuser des modifications</p></li>
+<li><p>Le partage de votre code, de vos données et de vos résultats, et l’invitation à faire des commentaires
+du public (ou en privé, avec votre équipe)</p></li>
+</ul>
+<p>et évite :</p>
+<ul>
+<li><p>“Oups, j’ai oublié d’envoyer la dernière version et maintenant vous devez
+refaire deux jours de travail sur ce nouveau fichier”.</p></li>
+<li><p>Mina, Henry et Oumar ont tous travaillé en même temps sur un script et doivent
+doivent fusionner manuellement leurs modifications</p></li>
+<li><p>Deux personnes tentent de modifier le même fichier sur Dropbox et Sharepoint
+et cela crée une erreur de synchronisation.</p></li>
+</ul>
+<div id="cela-semble-compliqué-je-ne-suis-pas-un-programmeur" class="section level3 unnumbered">
+<h3>Cela semble compliqué, je ne suis pas un programmeur<a class="anchor" aria-label="anchor" href="#cela-semble-compliqu%C3%A9-je-ne-suis-pas-un-programmeur"><i class="fas fa-link"></i></a>
+</h3>
+<p>Cela peut l’être. Les exemples d’utilisations avancées peuvent être assez effrayants. Cependant, un peu comme R, ou même Excel, vous n’avez pas besoin de devenir un expert pour profiter des avantages de l’outil. L’apprentissage d’un <em>petit nombre de fonctions et de notions</em> vous permet de suivre vos modifications, de synchroniser vos fichiers sur un référentiel en ligne et de collaborer avec vos collègues en très peu de temps.</p>
+<p>En raison de la courbe d’apprentissage, le contexte d’urgence n’est peut-être pas le meilleur moment pour apprendre ces outils. Mais l’apprentissage peut se faire par étapes. Une fois que vous aurez acquis quelques notions, votre flux de travail peut être assez efficace et rapide. Si vous ne travaillez pas sur un projet où la collaboration avec des personnes peut-etre Git n’est pas une nécessité, mais <strong>c’est en fait un bon moment pour devenir l’utiliser</strong> en solo avant de vous lancer dans la collaboration.</p>
+</div>
+</div>
+<div id="installation" class="section level2" number="8.3">
+<h2>
+<span class="header-section-number">8.3</span> Installation<a class="anchor" aria-label="anchor" href="#installation"><i class="fas fa-link"></i></a>
+</h2>
+<div id="installer-git" class="section level3 unnumbered">
+<h3>Installer Git<a class="anchor" aria-label="anchor" href="#installer-git"><i class="fas fa-link"></i></a>
+</h3>
+<p><em>Git</em> est le moteur qui se cache derrière les coulisses de votre ordinateur, qui suit
+les changements, les branches (versions), les fusions et les retours en arrière. Vous pouvez d’abord
+installer <em>Git</em> de le lien ici: <a href="https://git-scm.com/downloads" class="uri">https://git-scm.com/downloads</a>.</p>
+</div>
+<div id="installer-une-interface-facultatif-mais-recommandé" class="section level3 unnumbered">
+<h3>Installer une interface (facultatif mais recommandé)<a class="anchor" aria-label="anchor" href="#installer-une-interface-facultatif-mais-recommand%C3%A9"><i class="fas fa-link"></i></a>
+</h3>
+<p>Git possède son propre langage de commandes, qui peuvent être tapées dans un terminal de ligne de commande. Cependant, il existe de nombreux clients/interfaces et en tant que non-développeur, dans votre utilisation quotidienne, vous aurez rarement <em>besoin</em> d’interagir directement avec Git.
+L’interface Git fournit généralement des outils de visualisation agréables pour les modifications de fichiers ou les branches.</p>
+<p>De nombreuses options existent, sur tous les systèmes d’exploitation, de plus simples aux plus complexes. Parmi les bonnes options pour les débutants, citons le volet Git de RStudio et le <a href="https://desktop.github.com/">Github Desktop</a>, que nous présenterons dans ce chapitre. Les options intermédiaires (plus puissantes, mais plus complexes) comprennent Source Tree, Gitkracken, Smart Git et d’autres programmes.</p>
+<p>Trouvez un explication rapide sur les <a href="-%09https:/happygitwithr.com/git-client.html#git-client">clients Git</a>.</p>
+<p><em>Remarque : comme les interfaces utilisent toutes Git en interne, vous pouvez en essayer plusieurs, passer de l’une à l’autre en fonction de vos besoins.</em></p>
+<p>Comme indiqué ci-dessous, vous aurez occasionnellement avoir besoin d’écrire des commandes Git dans un terminal tel que le volet terminal de RStudio (un onglet adjacent à la Console R) ou le terminal Git Bash.</p>
+</div>
+<div id="compte-github" class="section level3 unnumbered">
+<h3>Compte Github<a class="anchor" aria-label="anchor" href="#compte-github"><i class="fas fa-link"></i></a>
+</h3>
+<p>Créez un compte gratuit sur <a href="github.com">github.com</a>.</p>
+<p>Il se peut que l’on vous propose de configurer une authentification à deux facteurs avec une application sur votre téléphone. Pour en savoir plus, consultez le document Github <a href="https://docs.github.com/en/github/authenticating-to-github/securing-your-account-with-two-factor-authentication-2fa">help documents</a>.</p>
+<p>Si vous utilisez Github Desktop, vous pouvez entrer vos informations d’identification Gitub après l’installation en suivant ces <a href="https://docs.github.com/en/desktop/installing-and-configuring-github-desktop/authenticating-to-github">étapes</a>. Si vous ne le faites pas, les informations d’identification vous seront demandées ultérieurement lorsque vous tenterez de cloner un projet à partir de Github.</p>
+</div>
+</div>
+<div id="vocabulaire-concepts-et-fonctions-de-base" class="section level2" number="8.4">
+<h2>
+<span class="header-section-number">8.4</span> Vocabulaire, concepts et fonctions de base<a class="anchor" aria-label="anchor" href="#vocabulaire-concepts-et-fonctions-de-base"><i class="fas fa-link"></i></a>
+</h2>
+<p>Comme lors de l’apprentissage de R, il y a un peu de vocabulaire à retenir pour comprendre Git. Voici les <a href="https://www.freecodecamp.org/news/an-introduction-to-git-for-absolute-beginners-86fa1d32ff71/">bases pour vous aider à démarrer</a>/ <a href="learngitbranching.js.org">tutoriel interactif</a>. Dans les prochaines sections, nous montrerons comment utiliser les interfaces.</p>
+<div id="référentiel" class="section level3 unnumbered">
+<h3>Référentiel<a class="anchor" aria-label="anchor" href="#r%C3%A9f%C3%A9rentiel"><i class="fas fa-link"></i></a>
+</h3>
+<p>Un <em>référentiel</em> Git (“<em>repo</em>”) est un dossier qui contient tous les sous-dossiers et fichiers de votre projet (données, code, images, etc.) et l’historique de leurs révisions. Lorsque vous commencez à suivre les changements dans le dépôt, Git créera un dossier caché qui contient toutes les informations de suivi. Un référentiel Git typique est votre dossier <em>R Project</em> (voir la page du manuel sur les <a href="#r_projects">Projets R</a>).</p>
+<p>Nous allons montrer comment créer (<em>initialiser</em>) un dépôt Gitub, Github Desktop ou Rstudio dans les sections suivantes.</p>
+</div>
+<div id="commits" class="section level3 unnumbered">
+<h3>Commits<a class="anchor" aria-label="anchor" href="#commits"><i class="fas fa-link"></i></a>
+</h3>
+<p>Un <em>commit</em> est un <strong>snapshot</strong> du projet à un moment donné. Lorsque vous apportez un changement au projet, vous faites un nouveau commit pour suivre les modifications (le delta) apportées à vos fichiers. Par exemple, vous avez peut-être édité quelques lignes de code et mis à jour une jeu de données associé. Une fois que vos modifications sont enregistrées, vous pouvez regrouper ces changements en un seul “commit”.</p>
+<p>Chaque commit a un ID unique (un <em>hash</em>). À des fins de contrôle de version, vous pouvez revenir en arrière dans votre projet en vous basant sur les commits, pars les garder relativement petits et cohérents. Vous joindrez également une brève description des modifications appelée “message de validation”.</p>
+<p><em>Modifications organisées</em> ? Mettre en scène les changements, c’est les ajouter à la <em>zone de mise en scène</em> en préparation pour le prochain commit. L’idée est que vous pouvez finement décider quels changements inclure dans un commit. Par exemple, si vous avez travaillé sur la spécification d’un modèle dans un
+un autre script, il serait judicieux d’avoir deux commits différents (ce serait plus facile au cas où vous voudriez annuler les changements sur la figure mais pas sur le modèle).</p>
+</div>
+<div id="branches" class="section level3 unnumbered">
+<h3>Branches<a class="anchor" aria-label="anchor" href="#branches"><i class="fas fa-link"></i></a>
+</h3>
+<p>Une branche représente une <em>ligne indépendante</em> de changements dans votre repo, une version parallèle et alternative des fichiers de votre projet.</p>
+<p>Les branches sont utiles pour tester les modifications avant qu’elles soient incorporées dans la branche <em>principale</em>, qui est généralement la version principale/finale/“live” de votre projet. Lorsque vous avez fini d’expérimenter sur une branche, vous pouvez apporter les changements dans votre branche <em>principle</em>, en la <em>fusionnant</em>, ou la supprimer, si les changements n’ont pas été couronnés de succès.</p>
+<p><em>Note : vous n’avez pas besoin de collaborer avec d’autres personnes pour utiliser les branches, ni d’avoir un référentiel en ligne distant.</em></p>
+</div>
+<div id="dépôts-locaux-et-distants" class="section level3 unnumbered">
+<h3>Dépôts locaux et distants<a class="anchor" aria-label="anchor" href="#d%C3%A9p%C3%B4ts-locaux-et-distants"><i class="fas fa-link"></i></a>
+</h3>
+<p><em>Cloner</em> consiste à créer une copie d’un dépôt Git à un autre endroit.</p>
+<p>Par exemple, vous pouvez <em>cloner</em> un dépôt en ligne <em>de</em> Github localement sur votre ordinateur, ou commencer par un dépôt local et le cloner en ligne en ligne <em>sur</em> Github.</p>
+<p>Lorsque vous avez cloné un référentiel, les fichiers du projet existent à deux endroits :</p>
+<ul>
+<li><p>le référentiel <em>LOCAL</em> sur votre ordinateur physique. C’est là que vous apportez les modifications réelles aux fichiers/codes.</p></li>
+<li><p>le référentiel <em>ROMPU</em>, en ligne : les versions de vos fichiers de projet dans le dépôt Github (ou sur tout autre hébergeur).</p></li>
+</ul>
+<p>Pour synchroniser ces dépôts, nous allons utiliser d’autres fonctions. En effet , contrairement à Sharepoint, Dropbox ou autre logiciel de synchronisation, Git ne met pas automatiquement à jour votre dépôt local en fonction de ce qui est en ligne,ou vice-versa. C’est vous qui choisissez quand et comment synchroniser.</p>
+<ul>
+<li><p><code>git fetch</code> télécharge les nouvelles modifications depuis le dépôt distant mais ne modifie pas votre dépôt local. Pensez-y comme une vérification de l’état du dépôt distant.</p></li>
+<li><p><code>git pull</code> télécharge les nouvelles modifications depuis les dépôts distants et met à jour votre dépôt local.</p></li>
+<li><p>Lorsque vous avez fait un ou plusieurs commits localement, vous pouvez utiliser <code>git push</code> pour faire les commits vers le dépôt distant. Ceci envoie vos modifications sur Github afin que d’autres personnes puissent les voir et les tirer s’ils le souhaitent.</p></li>
+</ul>
+</div>
+</div>
+<div id="démarrer-créer-un-nouveau-dépôt" class="section level2" number="8.5">
+<h2>
+<span class="header-section-number">8.5</span> Démarrer : créer un nouveau dépôt<a class="anchor" aria-label="anchor" href="#d%C3%A9marrer-cr%C3%A9er-un-nouveau-d%C3%A9p%C3%B4t"><i class="fas fa-link"></i></a>
+</h2>
+<p>Il y a plusieurs façons de créer de nouveaux dépôts. Vous pouvez le faire à partir de la console, de Github, ou d’une interface.</p>
+<p>Deux approches générales sont possibles :</p>
+<ul>
+<li>Créer un nouveau projet R à partir d’un dépôt Github existant ou nouveau. (<em>préféré pour les débutants</em>), ou bien</li>
+<li>Créer un dépôt Github pour un projet R existant.</li>
+</ul>
+<div id="fichiers-de-démarrage" class="section level3 unnumbered">
+<h3>Fichiers de démarrage<a class="anchor" aria-label="anchor" href="#fichiers-de-d%C3%A9marrage"><i class="fas fa-link"></i></a>
+</h3>
+<p>Lorsque vous créez un nouveau référentiel, vous pouvez éventuellement créer tous les fichiers ci-dessous, ou vous pouvez les ajouter à votre référentiel à un stade ultérieur. Ils se trouvent généralement dans le dossier “racine” du référentiel.</p>
+<ul>
+<li><p>Un fichier <em>README</em> est un fichier que quelqu’un peut lire pour comprendre pourquoi votre projet existe et ce qu’il doit savoir pour l’utiliser. Il sera vide au début, mais vous pouvez le compléter plus tard.</p></li>
+<li><p>Un fichier <em>.gitignore</em> est un fichier texte dont chaque ligne contient des dossiers ou fichiers que Git devrait ignorer (ne pas suivre les modifications). Lisez plus sur ce sujet et voir des exemples <a href="https://www.freecodecamp.org/news/gitignore-what-is-it-and-how-to-add-to-repo/">ici</a>.</p></li>
+<li><p>Vous pouvez choisir une <em>licence</em> pour votre travail, afin que les autres personnes sachent sous quelles conditions elles peuvent utiliser ou reproduire votre travail. Pour de plus amples informations, consultez la page <a href="https://creativecommons.org/licenses/">Creative Commons licenses</a>.</p></li>
+</ul>
+</div>
+<div id="créer-un-nouveau-référentiel-dans-github" class="section level3 unnumbered">
+<h3>Créer un nouveau référentiel dans Github<a class="anchor" aria-label="anchor" href="#cr%C3%A9er-un-nouveau-r%C3%A9f%C3%A9rentiel-dans-github"><i class="fas fa-link"></i></a>
+</h3>
+<p>Pour créer un nouveau dépôt, connectez-vous à Github et cherchez le bouton vert. Ce dépôt vide peut être cloné localement sur votre ordinateur (voir la section suivante).</p>
+<div class="inline-figure"><img src="images/github_new.png" width="276" style="display: block; margin: auto;"></div>
+<p>Vous devez choisir si vous voulez que votre dépôt soit <strong>public</strong> (visible par tout le monde sur Internet) ou <strong>privé</strong> (seulement visible pour ceux qui ont la permission a acceder le dépôt). Cela a des implications importantes si vos données sont sensibles. Si votre référentiel est privé, vous rencontrerez certains quotas dans des circonstances particulières, par exemple si vous utilisez les <em>actions</em> de Github pour exécuter automatiquement votre code dans le nuage.</p>
+</div>
+<div id="clone-à-partir-dun-dépôt-github" class="section level3 unnumbered">
+<h3>Clone à partir d’un dépôt Github<a class="anchor" aria-label="anchor" href="#clone-%C3%A0-partir-dun-d%C3%A9p%C3%B4t-github"><i class="fas fa-link"></i></a>
+</h3>
+<p>Vous pouvez <em>cloner</em> un référentiel Github existant pour créer un nouveau projet R local sur votre ordinateur.</p>
+<p>Le dépôt Github peut être un dépôt qui existe déjà et contient du contenu, ou un dépôt vide que vous venez de créer. Dans ce dernier cas, vous créez essentiellement le repo Github et le projet local R en même temps (voir les instructions ci-dessus).</p>
+<p><em>Remarque</em> : si vous n’avez pas de droits de contribution sur un dépôt Github, il est possible de d’abord “<em>forker</em>” (creer une copie) le dépôt vers votre profil, et ensuite de procéder aux autres actions. La bifurcation est expliquée à la fin de ce chapitre, mais nous vous recommandons de lire les autres sections en premier.</p>
+<p>Etape 1 : Naviguez dans Github jusqu’au dépôt, cliquez sur le bouton vert “<strong>Code</strong>”. et copier <strong>l’URL HTTPS clone</strong> (voir image ci-dessous)</p>
+<div class="inline-figure"><img src="images/github_clone.png" width="100%" height="100%" style="display: block; margin: auto;"></div>
+<p>L’étape suivante peut être effectuée dans n’importe quelle interface. Nous allons illustrer avec Rstudio et le bureau Github.</p>
+<div id="dans-rstudio" class="section level4 unnumbered">
+<h4>Dans Rstudio<a class="anchor" aria-label="anchor" href="#dans-rstudio"><i class="fas fa-link"></i></a>
+</h4>
+<p>Dans RStudio, démarrez un nouveau projet R en cliquant sur <em>Fichier &gt; Nouveau projet &gt; Contrôle de version &gt; Git</em>.</p>
+<ul>
+<li>Lorsque vous êtes invité à saisir l’“URL du dépôt”, collez l’URL HTTPS de Github.</li>
+<li>Attribuez au projet R un nom court et informatif.</li>
+<li>Choisissez l’endroit où le nouveau projet R sera enregistré localement.</li>
+<li>Cochez “Ouvrir dans une nouvelle session” et cliquez sur “Créer un projet”.</li>
+</ul>
+<p>Vous êtes maintenant dans un nouveau projet RStudio local qui est un clone du dépôt Github. Ce projet local et le dépôt Github sont maintenant liés.</p>
+</div>
+<div id="dans-le-bureau-de-github" class="section level4 unnumbered">
+<h4>Dans le bureau de Github<a class="anchor" aria-label="anchor" href="#dans-le-bureau-de-github"><i class="fas fa-link"></i></a>
+</h4>
+<ul>
+<li><p>Cliquez sur <em>Fichier &gt; Cloner un référentiel</em>.</p></li>
+<li><p>Sélectionnez l’onglet URL</p></li>
+<li><p>Collez l’URL HTTPS de Github dans la première case.</p></li>
+<li><p>Sélectionnez le dossier dans lequel vous voulez avoir votre dépôt local.</p></li>
+<li><p>Cliquez sur “CLONE”.</p></li>
+</ul>
+<div class="inline-figure"><img src="images/github_clone_desktop.png" width="100%" height="100%" style="display: block; margin: auto;"></div>
+</div>
+</div>
+<div id="nouveau-repo-github-à-partir-dun-projet-r-existant" class="section level3 unnumbered">
+<h3>Nouveau repo Github à partir d’un projet R existant<a class="anchor" aria-label="anchor" href="#nouveau-repo-github-%C3%A0-partir-dun-projet-r-existant"><i class="fas fa-link"></i></a>
+</h3>
+<p>Un autre scénario de configuration est que vous avez un projet R existant avec du contenu, et que vous voulez créer un dépôt Github pour celui-ci.</p>
+<ol style="list-style-type: decimal">
+<li>Créez un nouveau dépôt Github vide pour le projet (cf. instructions ci-dessus).</li>
+<li>Clonez ce dépôt localement (voir les instructions HTTPS ci-dessus).</li>
+<li>Copiez tout le contenu de votre projet R (codes, données, etc.) dans ce nouveau dépôt local vide (utilisez le copier-coller, par exemple).</li>
+<li>Ouvrez votre nouveau projet dans RStudio, et allez dans le volet Git. Les nouveaux fichiers devraient s’enregistrer comme des modifications de fichiers, désormais suivies par Git. Par conséquent, vous pouvez regrouper ces modifications sous forme de <em>commit</em> et les <em>pousser</em> (<strong>push</strong>) vers Github. Une fois <em>poussé</em> (<em>pushed</em>), le dépôt sur Github reflétera tous les fichiers.</li>
+</ol>
+<p>Voir la section sur le flux de travail Github ci-dessous pour plus de détails sur ce processus.</p>
+</div>
+<div id="a-quoi-cela-ressemble-t-il-maintenant" class="section level3 unnumbered">
+<h3>A quoi cela ressemble-t-il maintenant ?<a class="anchor" aria-label="anchor" href="#a-quoi-cela-ressemble-t-il-maintenant"><i class="fas fa-link"></i></a>
+</h3>
+<div id="dans-rstudio-1" class="section level4 unnumbered">
+<h4>Dans RStudio<a class="anchor" aria-label="anchor" href="#dans-rstudio-1"><i class="fas fa-link"></i></a>
+</h4>
+<p>Une fois que vous avez cloné un dépôt Github vers un nouveau projet R, vous voyez maintenant dans RStudio un onglet “Git”. Cet onglet apparaît dans le même volet de RStudio que votre environnement R :</p>
+<div class="inline-figure"><img src="images/Git_console.png" width="75%" height="75%" style="display: block; margin: auto;"></div>
+<p>Veuillez noter les boutons encerclés dans l’image ci-dessus, puisqu’ils seront référencés plus tard (de gauche à droite) :</p>
+<ul>
+<li>Bouton pour <em>commettre</em> (<em>commit</em>) les modifications du fichier sauvegardé dans la branche locale (cela ouvrira une nouvelle fenêtre)</li>
+<li>Flèche bleue pour <em>tirer</em> (<em>pull</em>, mettre à jour votre version locale de la branche avec avec les changements effectués sur la version distante/Github de cette branche)</li>
+<li>Flèche verte pour <em>pousser</em> (<em>push</em>, envoyer tous les commits/modifications de votre version version locale de la branche vers la version distante/Github de cette branche)</li>
+<li>L’onglet Git dans RStudio</li>
+<li>Bouton pour créer une NOUVELLE branche en utilisant comme base la branche locale affichée. <em>Vous voulez presque toujours créer une branche à partir de la branche principale (après la première extraction).</em>
+</li>
+<li>La branche dans laquelle vous travaillez actuellement</li>
+<li>Les modifications que vous avez apportées au code ou à d’autres fichiers apparaissent ci-dessous</li>
+</ul>
+</div>
+<div id="dans-github-desktop" class="section level4 unnumbered">
+<h4>dans Github Desktop<a class="anchor" aria-label="anchor" href="#dans-github-desktop"><i class="fas fa-link"></i></a>
+</h4>
+<p>Github Desktop est une application indépendante qui vous permet de gérer tous vos dépôts. Lorsque vous l’ouvrez, l’interface vous permet de choisir le dépôt sur lequel vous souhaitez travailler, puis d’effectuer les actions Git à partir de là.</p>
+<div class="inline-figure"><img src="images/github_desktop_interface.png" width="75%" height="75%" style="display: block; margin: auto;"></div>
+</div>
+</div>
+<div id="flux-de-travail-git-github" class="section level3" number="8.5.1">
+<h3>
+<span class="header-section-number">8.5.1</span> Flux de travail Git + Github<a class="anchor" aria-label="anchor" href="#flux-de-travail-git-github"><i class="fas fa-link"></i></a>
+</h3>
+</div>
+<div id="aperçu-du-processus" class="section level3 unnumbered">
+<h3>Aperçu du processus<a class="anchor" aria-label="anchor" href="#aper%C3%A7u-du-processus"><i class="fas fa-link"></i></a>
+</h3>
+<p>Une fois que vous avez terminé la configuration (décrite ci-dessus), vous aurez un Github qui est connecté (<em>cloné</em>) à un projet R local. La branche <em>principale</em> (créée par défaut) est la version dite “live” de <em>tous</em> les fichiers. Lorsque vous voulez faire des modifications, il est bon de créer une pratique de créer une <em>nouvelle branche</em> à partir de la branche <em>principale</em> (comme “créer une copie”). Il s’agit d’un flux de travail typique de Git, car la création d’une branche est facile et rapide.</p>
+<p>Un flux de travail typique est le suivant :</p>
+<ol style="list-style-type: decimal">
+<li><p>Assurez-vous que votre dépôt local est à jour, mettez-le à jour si ce n’est pas</p></li>
+<li><p>Allez sur la branche sur laquelle vous travailliez précédemment, ou créez une nouvelle branche</p></li>
+<li><p>Travaillez sur les fichiers localement sur votre ordinateur, faites un ou plusieurs commits à cette branche</p></li>
+<li><p>Mettre à jour la version distante de la branche avec vos modifications (push)</p></li>
+<li><p>Lorsque vous êtes satisfait de votre branche, vous pouvez fusionner la version en ligne de la branche de travail avec la branche “principale” afin de créer une nouvelle branche.</p></li>
+</ol>
+<p>Les autres membres de l’équipe peuvent faire la même chose avec leurs propres branches, ou peut contribuer des commits dans votre branche de travail aussi.</p>
+<p>Nous détaillons ci-dessous le processus, étape par étape.</p>
+<p>Voici un schéma que nous avons développé - il se présente sous la forme d’un tableau à double sens, ce qui devrait aider les épidémiologistes à comprendre.</p>
+<div class="inline-figure"><img src="images/github_table.png" width="100%" height="150%" style="display: block; margin: auto;"></div>
+<p>Voici <a href="https://build5nines.com/introduction-to-git-version-control-workflow/">un autre diagramme</a>.</p>
+<p>*Note : jusqu’à récemment, le terme de branche “master” était utilisé, mais on parle maintenant de branche “principale” (“master”).</p>
+<div class="inline-figure"><img src="images/GitHub-Flow.png" width="100%" height="100%" style="display: block; margin: auto;"></div>
+<p>Image <a href="https://build5nines.com/introduction-to-git-version-control-workflow/">source</a></p>
+</div>
+</div>
+<div id="créer-une-nouvelle-branche" class="section level2" number="8.6">
+<h2>
+<span class="header-section-number">8.6</span> Créer une nouvelle branche<a class="anchor" aria-label="anchor" href="#cr%C3%A9er-une-nouvelle-branche"><i class="fas fa-link"></i></a>
+</h2>
+<p>Lorsque vous sélectionnez une branche sur laquelle travailler, <strong>Git réinitialise votre répertoire de travail comme il était la dernière fois que vous étiez sur cette branche</strong>.</p>
+<div id="dans-le-volet-git-de-rstudio" class="section level3 unnumbered">
+<h3>Dans le volet Git de Rstudio<a class="anchor" aria-label="anchor" href="#dans-le-volet-git-de-rstudio"><i class="fas fa-link"></i></a>
+</h3>
+<p>Assurez-vous que vous êtes dans la branche “principale”, puis cliquez sur l’icône violette pour créer une nouvelle branche (voir image ci-dessus).</p>
+<ul>
+<li>Vous serez invité à nommer votre branche avec un nom descriptif en un mot (vous pouvez utiliser des caractères de soulignement si nécessaire).</li>
+<li>Vous verrez que, localement, vous êtes toujours dans le même projet R, mais que vous ne travaillez plus sur la branche “principale”.</li>
+<li>Une fois créée, la nouvelle branche apparaîtra également sur le site Github comme une branche.</li>
+</ul>
+<p>Vous pouvez visualiser les branches dans le volet Git de Rstudio après avoir cliqué sur “Historique” (“History”).</p>
+<div class="inline-figure"><img src="images/github_rstudio_branchs.png" width="100%" height="100%" style="display: block; margin: auto;"></div>
+</div>
+<div id="dans-le-bureau-de-github-1" class="section level3 unnumbered">
+<h3>Dans le bureau de Github<a class="anchor" aria-label="anchor" href="#dans-le-bureau-de-github-1"><i class="fas fa-link"></i></a>
+</h3>
+<p>Le processus est très similaire, il vous est demandé de donner un nom à votre branche.Ensuite, il vous sera demandé de “Publier votre branche sur Github” pour que la nouvelle branche apparaisse également dans le dépôt distant.</p>
+<div class="inline-figure"><img src="images/github_desktop_new_branch.png" width="100%" height="100%" style="display: block; margin: auto;"></div>
+</div>
+<div id="dans-la-console" class="section level3 unnumbered">
+<h3>Dans la console<a class="anchor" aria-label="anchor" href="#dans-la-console"><i class="fas fa-link"></i></a>
+</h3>
+<p>Ce qui se passe en réalité dans les coulisses est que vous créez une nouvelle branche avec <code>git branch</code>, puis vous allez dans la branche avec <code>git checkout</code> ( <em>i.e.</em> dites à Git que vos prochains commits se feront là). Dans votre dépôt git :</p>
+<div class="sourceCode" id="cb163"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb163-1"><a href="collaboration.html#cb163-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> branch my-new-branch <span class="co"># Créez la nouvelle branche</span></span>
+<span id="cb163-2"><a href="collaboration.html#cb163-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> checkout my-new-branch <span class="co"># Aller sur la branche</span></span>
+<span id="cb163-3"><a href="collaboration.html#cb163-3" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> checkout <span class="at">-b</span> ma-nouvelle-branche <span class="co"># Les deux à la fois (raccourci)</span></span></code></pre></div>
+<p>Pour plus d’informations sur l’utilisation de la console, voir la section sur les Commandes Git à la fin.</p>
+</div>
+</div>
+<div id="valider-les-changements" class="section level2" number="8.7">
+<h2>
+<span class="header-section-number">8.7</span> Valider les changements<a class="anchor" aria-label="anchor" href="#valider-les-changements"><i class="fas fa-link"></i></a>
+</h2>
+<p>Vous pouvez maintenant modifier le code, ajouter de nouveaux fichiers, mettre à jour les ensembles de données, etc.</p>
+<p>Chacune de vos modifications est suivie, <em>une fois que le fichier respectif est sauvegardé</em>. Les fichiers modifiés apparaîtront dans l’onglet Git de RStudio, dans Github Desktop, ou en utilisant la commande <code>git status</code> dans le terminal (voir ci-dessous).</p>
+<p>Chaque fois que vous effectuez des modifications substantielles (par exemple, l’ajout ou la mise à jour d’une section de code), faites une pause et <em>committez</em> ces changements. Pensez à un commit comme un “partie” de changements liés à un objectif commun. Vous pouvez toujours continuer à réviser un fichier après y avoir apporté des modifications.</p>
+<p><em>Conseil sur les commits</em> : en général, il est préférable de faire de petits commits, qui peuvent être facilement annulées si un problème survient, pour commiter ensemble des modifications liées à un objectif commun. Pour y parvenir, vous trouverez que <em>vous devez commiter souvent</em>. Au début, vous allez probablement oublier de commiter souvent, mais ensuite l’habitude s’installe.</p>
+<div id="dans-rstudio-2" class="section level3 unnumbered">
+<h3>Dans Rstudio<a class="anchor" aria-label="anchor" href="#dans-rstudio-2"><i class="fas fa-link"></i></a>
+</h3>
+<p>L’exemple ci-dessous montre que, depuis le dernier commit, le script R Markdown “collaboration.Rmd” a été modifié, et plusieurs images PNG ont été ajoutées.</p>
+<div class="inline-figure"><img src="images/github_tracking2.png" width="232" style="display: block; margin: auto;"></div>
+<p>Vous vous demandez peut-être ce que représentent les carrés jaunes, bleus, verts et rouges à côté de les noms de fichiers. Voici un instantané de la <a href="https://www.rstudio.com/wp-content/uploads/2016/01/rstudio-IDE-cheatsheet.pdf">feuille de route RStudio cheatsheet</a> qui explique leur signification. Notez que les changements avec des ” ?” jaunes peuvent toujours être mises en scène, validées et poussées.</p>
+<div class="inline-figure"><img src="images/github_tracking.png" width="90" style="display: block; margin: auto;"></div>
+<ul>
+<li><p>Cliquez sur le bouton “Commit” dans l’onglet Git, ce qui ouvrira une nouvelle fenêtre (voir ci-dessous).</p></li>
+<li><p>Cliquez sur le nom d’un fichier dans le cadre supérieur gauche.</p></li>
+<li><p>Passez en revue les modifications que vous avez apportées à ce fichier (surlignées en vert ou en rouge ci-dessous).</p></li>
+<li><p>“Mettez en scène” le fichier, ce qui inclura ces modifications dans le commit. Faites en cochant la case à côté du nom du fichier. Alternativement, vous pouvez mettre en surbrillance plusieurs noms de fichiers, puis cliquer sur “Stage”.</p></li>
+<li><p>Rédigez un message de validation court mais descriptif (obligatoire).</p></li>
+<li><p>Appuyez sur le bouton “Commit”. Une boîte de dialogue apparaîtra, indiquant le succès ou un message d’erreur.</p></li>
+</ul>
+<p>Vous pouvez maintenant effectuer d’autres modifications et d’autres livraisons, autant de fois que vous le souhaitez.</p>
+<div class="inline-figure"><img src="images/github_commit.png" width="100%" height="200%" style="display: block; margin: auto;"></div>
+</div>
+<div id="dans-le-bureau-de-github-2" class="section level3 unnumbered">
+<h3>Dans le bureau de Github<a class="anchor" aria-label="anchor" href="#dans-le-bureau-de-github-2"><i class="fas fa-link"></i></a>
+</h3>
+<p>Vous pouvez voir la liste des fichiers qui ont été modifiés sur la gauche. Si vous sélectionnez un fichier texte, vous verrez un résumé des modifications qui ont été apportées dans le volet de droite (cette vue ne fonctionnera pas sur des fichiers plus complexes comme les .docs ou les .xlsx).</p>
+<p>Pour mettre en scène les changements, il suffit de cocher la petite case à côté des noms de fichiers. Lorsque vous avez sélectionné les fichiers que vous voulez ajouter à cette livraison, donnez un nom à la livraison, une description, puis cliquez sur le bouton <strong>commit</strong>.</p>
+<div class="inline-figure"><img src="images/github_desktop_commit.png" width="988" style="display: block; margin: auto;"></div>
+</div>
+<div id="dans-la-console-1" class="section level3 unnumbered">
+<h3>Dans la console<a class="anchor" aria-label="anchor" href="#dans-la-console-1"><i class="fas fa-link"></i></a>
+</h3>
+<p>Les deux fonctions utilisées dans les coulisses sont <code>git add</code> pour sélectionner/établir et <code>git commit</code> pour effectuer la livraison.</p>
+<div class="sourceCode" id="cb164"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb164-1"><a href="collaboration.html#cb164-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> status <span class="co"># voir les changements </span></span>
+<span id="cb164-2"><a href="collaboration.html#cb164-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb164-3"><a href="collaboration.html#cb164-3" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> add new_pages/collaboration.Rmd <span class="co"># sélectionner les fichiers à livrer (= mettre en scène les changements)</span></span>
+<span id="cb164-4"><a href="collaboration.html#cb164-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb164-5"><a href="collaboration.html#cb164-5" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> commit <span class="at">-m</span> <span class="st">"Describe commit from Github Desktop"</span> <span class="co"># livrer les changements avec un message</span></span>
+<span id="cb164-6"><a href="collaboration.html#cb164-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb164-7"><a href="collaboration.html#cb164-7" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> log <span class="co"># affiche les informations sur les commits passés</span></span></code></pre></div>
+</div>
+<div id="modifier-un-commit-précédent" class="section level3 unnumbered">
+<h3>Modifier un commit précédent<a class="anchor" aria-label="anchor" href="#modifier-un-commit-pr%C3%A9c%C3%A9dent"><i class="fas fa-link"></i></a>
+</h3>
+<p>Que se passe-t-il si vous commettez des changements, continuez à travailler et réalisez que vous avez fait des changements qui devraient “appartenir” au commit précédent (à votre avis)? N’ayez crainte ! Vous pouvez ajouter ces changements à votre validation précédente.</p>
+<p>Dans Rstudio, cela devrait être assez évident puisqu’il y a une case “Amend previous commit” sur la même ligne que le bouton COMMIT.</p>
+<p>Pour une raison peu claire, la fonctionnalité n’a pas été implémentée en tant que telle dans Github Desktop, mais il existe une
+moyen de la contourner. Si vous avez validé <strong>mais pas encore poussé</strong> vos changements, un bouton “UNDO” apparaît juste en dessous du bouton COMMIT. Cliquez dessus et il annulera votre validation (mais conservera vos fichiers indexés et votre message de validation). Sauvegardez vos changements, ajoutez de nouveaux fichiers à la livraison si nécessaire et livrez à nouveau.</p>
+<p>Dans la console :</p>
+<div class="sourceCode" id="cb165"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb165-1"><a href="collaboration.html#cb165-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> add [YOUR FILES] <span class="co"># Ajoute vos nouvelles modifications</span></span>
+<span id="cb165-2"><a href="collaboration.html#cb165-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb165-3"><a href="collaboration.html#cb165-3" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> commit <span class="at">--amend</span> <span class="co"># Modifie le commit précédent</span></span>
+<span id="cb165-4"><a href="collaboration.html#cb165-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb165-5"><a href="collaboration.html#cb165-5" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> commit <span class="at">--amend</span> <span class="at">-m</span> <span class="st">"An updated commit message"</span> <span class="co"># Modifie la livraison précédente ET met à jour le message de livraison.</span></span></code></pre></div>
+<p><em>Note : réfléchissez avant de modifier des commits qui sont déjà publics et partagés avec vos collaborateurs</em>.</p>
+</div>
+</div>
+<div id="tirez-et-poussez-les-modifications-vers-github" class="section level2" number="8.8">
+<h2>
+<span class="header-section-number">8.8</span> Tirez et poussez les modifications vers Github<a class="anchor" aria-label="anchor" href="#tirez-et-poussez-les-modifications-vers-github"><i class="fas fa-link"></i></a>
+</h2>
+<p>“D’abord TIREZ, ensuite POUSSER”</p>
+<p>C’est une bonne pratique de <em>aller chercher</em> et de <em>tirez</em> avant de commencer à travailler sur votre projet, afin de mettre à jour la version de la branche sur votre ordinateur local avec toutes les modifications qui ont été apportées dans la version distante/Github.</p>
+<p>TIREZ souvent. N’hésitez pas. <em>Tirez toujours avant de pousser</em>.</p>
+<p>Lorsque vos modifications sont effectuées et validées et que vous êtes satisfait de l’état de votre projet, vous pouvez <em>pousser</em> vos commits vers la version distante/Github de votre branche.</p>
+<p>Rincez et répétez pendant que vous travaillez sur le référentiel.</p>
+<p><strong>Note:</strong> il est beaucoup plus facile de revenir sur des modifications qui ont été commises mais pas poussées (c’est-à-dire qu’elles sont toujours en cours de traitement) que de revenir sur des changements qui ont été poussés vers le dépôt distant (et peut-être déjà extraites par quelqu’un d’autre).</p>
+<div id="dans-rstudio-3" class="section level4 unnumbered">
+<h4>Dans Rstudio<a class="anchor" aria-label="anchor" href="#dans-rstudio-3"><i class="fas fa-link"></i></a>
+</h4>
+<p><em>TIREZ</em> - Cliquez d’abord sur l’icône “Tirez” (flèche vers le bas) qui récupère et tire en même temps.</p>
+<p><em>POUSSER</em> - Cliquez sur l’icône verte “Tirez” (flèche vers le haut). Il peut vous être demandé
+d’entrer votre nom d’utilisateur et votre mot de passe Github.La première fois, vous devrez peut-être entrer deux lignes de commande Git dans le <em>Terminal</em>:</p>
+<ul>
+<li>
+<strong>git config –global utilisateur.email ” <a href="mailto:you@example.com" class="email">you@example.com</a> “</strong> (votre adresse électronique Github
+), et</li>
+<li><strong>git config –global user.name “Votre nom d’utilisateur Github”</strong></li>
+</ul>
+<p>Pour en savoir plus sur la façon de saisir ces commandes, consultez la section ci-dessous sur les commandes Git.</p>
+<p><strong><em>TIP:</em></strong> On vous demande trop souvent de fournir votre mot de passe ? Consultez les chapitres 10 &amp; 11 de ce <a href="https://happygitwithr.com/credential-caching.html#credential-caching">tutoriel</a> pour se connecter à un référentiel en utilisant une clé SSH (plus compliqué).</p>
+</div>
+<div id="dans-le-bureau-de-github-3" class="section level4 unnumbered">
+<h4>Dans le bureau de Github<a class="anchor" aria-label="anchor" href="#dans-le-bureau-de-github-3"><i class="fas fa-link"></i></a>
+</h4>
+<p>Cliquez sur le bouton “Récupérer l’origine” pour vérifier s’il y a de nouveaux commits sur le dépôt distant.</p>
+<div class="inline-figure"><img src="images/github_desktop_fetch_button.png" width="817" style="display: block; margin: auto;"></div>
+<p>Si Git trouve de nouveaux commits sur le dépôt distant, le bouton se se transformera en bouton “Pull”. Comme le même bouton est utilisé pour pousser et tirer, vous ne pouvez pas pousser vos modifications si vous ne tirez pas auparavant.</p>
+<div class="inline-figure"><img src="images/github_desktop_pull_button.png" width="496" style="display: block; margin: auto;"></div>
+<p>Vous pouvez aller dans l’onglet “History” (près de l’onglet “Changes”) pour voir toutes les commits (les vôtres et ceux des autres). C’est un bon moyen de savoir ce que vos collaborateurs ont fait. Vous pouvez lire le message du commit, la description s’il y en a une, et comparer le code des deux fichiers en utilisant le volet <em>diff</em>.</p>
+<div class="inline-figure"><img src="images/github_desktop_history.png" width="993" style="display: block; margin: auto;"></div>
+<p>Une fois que toutes les modifications distantes ont été tirées, et qu’au moins une modification locale a été validée, vous pouvez pousser en cliquant sur le même bouton.</p>
+<div class="inline-figure"><img src="images/github_desktop_push_button.png" width="816" style="display: block; margin: auto;"></div>
+</div>
+<div id="console" class="section level4 unnumbered">
+<h4>Console<a class="anchor" aria-label="anchor" href="#console"><i class="fas fa-link"></i></a>
+</h4>
+<p>Sans surprise, les commandes sont <em>chercher</em> (fetch), <em>tirez</em> (pull) et <em>pousser</em> (push).</p>
+<div class="sourceCode" id="cb166"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb166-1"><a href="collaboration.html#cb166-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> fetch <span class="co"># Y a-t-il de nouveaux commits dans le répertoire distant ?</span></span>
+<span id="cb166-2"><a href="collaboration.html#cb166-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> pull <span class="co"># Apporte les commits distants dans votre branche locale</span></span>
+<span id="cb166-3"><a href="collaboration.html#cb166-3" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> push <span class="co"># Pousse les commits locaux de cette branche vers la branche distante</span></span></code></pre></div>
+</div>
+<div id="je-veux-tirer-mais-jai-du-travail-local" class="section level3 unnumbered">
+<h3>Je veux tirer mais j’ai du travail local<a class="anchor" aria-label="anchor" href="#je-veux-tirer-mais-jai-du-travail-local"><i class="fas fa-link"></i></a>
+</h3>
+<p>Cela peut arriver parfois : vous avez effectué des modifications sur votre dépôt local, mais le dépôt distant a des commits que vous n’avez pas tirés.</p>
+<p>Git refusera de les extraire car cela pourrait écraser vos modifications. Il existe plusieurs stratégies pour conserver vos modifications, bien décrites dans <a href="https://happygitwithr.com/pull-tricky.html">Happy Git with R</a>, parmi lesquelles les deux principales sont :</p>
+<ul>
+<li>livrer vos modifications, récupérer les modifications distantes, les tirer, résoudre les conflits si nécessaire (voir la section ci-dessous), et pousser le tout en ligne</li>
+<li>
+<code>stash</code> vos changements, ce qui les met en quelque sorte de côté, les tirer, les déstocker (restauration), puis commit, résolution des conflits, et push.</li>
+</ul>
+<p>Si les fichiers concernés par les modifications distantes et les fichiers concernés par vos modifications locales ne se chevauchent pas, Git peut résoudre les conflits automatiquement.</p>
+<p>Dans Github Desktop, cela peut être fait avec des boutons. Pour mettre en cache, allez dans <em>Branch &gt; Stash all changes</em>.</p>
+<div class="inline-figure"><img src="images/github_desktop_stash.png" width="922" style="display: block; margin: auto;"></div>
+</div>
+</div>
+<div id="fusionner-la-branche-dans-main" class="section level2" number="8.9">
+<h2>
+<span class="header-section-number">8.9</span> Fusionner la branche dans Main<a class="anchor" aria-label="anchor" href="#fusionner-la-branche-dans-main"><i class="fas fa-link"></i></a>
+</h2>
+<p>Si vous avez fini de faire des changements, vous pouvez commencer le processus de fusionner ces changements dans la branche principale. En fonction de votre situation, cela peut être rapide, ou vous pouvez avoir des étapes délibérées de révision et d’approbation impliquant des coéquipiers.</p>
+<div id="localement-dans-github-desktop" class="section level3 unnumbered">
+<h3>Localement dans Github Desktop<a class="anchor" aria-label="anchor" href="#localement-dans-github-desktop"><i class="fas fa-link"></i></a>
+</h3>
+<p>On peut fusionner des branches localement en utilisant Github Desktop. Tout d’abord, allez dans (checkout) la branche qui sera le destinataire des commits, en d’autres termes, la branche que vous voulez mettre à jour. Ensuite, allez dans le menu <em>Branche &gt; Fusionner en branche actuelle</em> et cliquez. Une boîte vous permet de sélectionner la branche à partir de laquelle vous souhaitez importer.</p>
+<div class="inline-figure"><img src="images/github_desktop_merge.png" width="623" style="display: block; margin: auto;"></div>
+</div>
+<div id="dans-la-console-2" class="section level3 unnumbered">
+<h3>Dans la console<a class="anchor" aria-label="anchor" href="#dans-la-console-2"><i class="fas fa-link"></i></a>
+</h3>
+<p>Revenez d’abord à la branche qui sera le destination des changements. C’est généralement <em>master</em>, mais cela peut être une autre branche si vous le souhaite. Fusionnez votre branche de travail dans master.</p>
+<div class="sourceCode" id="cb167"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb167-1"><a href="collaboration.html#cb167-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> checkout master <span class="co"># Retournez à master (ou à la branche que vous voulez déplacer)</span></span>
+<span id="cb167-2"><a href="collaboration.html#cb167-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> merge this_fancy_new_branch</span></code></pre></div>
+<p><a href="https://git-scm.com/book/en/v2/Git-Branching-Basic-Branching-and-Merging">Cette page</a> montre un exemple plus avancé de branchement et explique un peu ce qui se passe en coulisses.</p>
+</div>
+<div id="dans-github-soumettre-des-demandes-de-pull-tirer" class="section level3 unnumbered">
+<h3>Dans Github : soumettre des demandes de pull (tirer)<a class="anchor" aria-label="anchor" href="#dans-github-soumettre-des-demandes-de-pull-tirer"><i class="fas fa-link"></i></a>
+</h3>
+<p>S’il est tout à fait possible de fusionner deux branches localement, ou sans en informer qui que ce soit, une fusion peut être discutée ou étudiée par plusieurs personnes avant d’être intégrée à la branche master. Pour aider à ce processus, Github propose des fonctionnalités de discussion autour de la fusion : la <strong>pull request</strong>.</p>
+<p>Une pull request (une “PR”) est une demande de fusion d’une branche dans une autre (en d’autres termes, une demande pour que <em>votre branche de travail soit intégrée à la branche “principale”</em>). Une pull request implique généralement plusieurs commits. Une pull request commence généralement une conversation et un processus de révision avant qu’elle soit acceptée et que la branche soit fusionnée. Par exemple, vous pouvez lire les discussions sur les demandes de téléchargement sur le site <a href="https://github.com/tidyverse/dplyr/pulls">dplyr’s github</a>.</p>
+<p>Vous pouvez soumettre une demande de modification (PR) directement à partir du site Web (comme illustré ci-dessous) ou à partir de Github.</p>
+<ul>
+<li>Accéder au dépôt Github (en ligne)</li>
+<li>Affichez l’onglet “demande de retrait” et cliquez sur le bouton “New pull request”.</li>
+<li>Choisissez dans le menu déroulant de fusionner votre branche avec la branche principale.</li>
+<li>Rédigez un commentaire détaillé de la Pull Request et cliquez sur “Create Pull Request”.</li>
+</ul>
+<p>Dans l’image ci-dessous, la branche “forests” a été sélectionnée pour être fusionnée dans “main” :</p>
+<div class="inline-figure"><img src="images/github_pull_request2.png" width="100%" height="150%" style="display: block; margin: auto;"></div>
+<p>Maintenant vous devriez être capable de voir la pull request (image d’exemple ci-dessous) :</p>
+<ul>
+<li>Passez en revue l’onglet “Fichiers modifiés” pour voir comment la branche “principale” changerait si la branche était fusionnée.</li>
+<li>Sur la droite, vous pouvez demander une révision aux membres de votre équipe en marquant leur identifiant Github. Si vous le souhaitez, vous pouvez définir les paramètres du référentiel pour qu’une révision approuvée soit nécessaire afin de fusionner avec la branche master.</li>
+<li>Une fois la demande de retrait est approuvée, un bouton permettant de “Merge pull request” devient actif. Cliquez dessus.</li>
+<li>Une fois terminé, supprimez votre branche comme expliqué ci-dessous.</li>
+</ul>
+<div class="inline-figure"><img src="images/github_pull_request.png" width="100%" height="200%" style="display: block; margin: auto;"></div>
+</div>
+<div id="résolution-des-conflits" class="section level3 unnumbered">
+<h3>Résolution des conflits<a class="anchor" aria-label="anchor" href="#r%C3%A9solution-des-conflits"><i class="fas fa-link"></i></a>
+</h3>
+<p>Lorsque deux personnes modifient la ou les mêmes lignes au même moment, un conflit de fusion se produit. En effet, Git refuse de prendre une décision quant à version à conserver, mais il vous aide à trouver où se trouve le conflit. <strong>NE PANIQUEZ PAS</strong>. La plupart du temps, il est assez simple à résoudre.</p>
+<p>Par exemple, sur Github :</p>
+<div class="inline-figure"><img src="images/github_conflict2.png" width="100%" height="200%" style="display: block; margin: auto;"></div>
+<p>Après que la fusion ait soulevé un conflit, ouvrez le fichier dans votre éditeur préféré. Le conflit sera indiqué par une série de caractères :</p>
+<div class="inline-figure"><img src="images/github_conflict3.png" width="100%" height="200%" style="display: block; margin: auto;"></div>
+<p>Le texte entre <em>&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD</em> et <em>=======</em> provient de votre dépôt local, et celui entre <em>=======</em> et <em>&gt;&gt;&gt;&gt;&gt;&gt;&gt;</em> de l’autre branche (qui peut être origin, main ou toute autre branche de votre choix).</p>
+<p>Vous devez décider quelle version du code vous préférez (ou même écrire une troisième, en incluant les changements des deux côtés si cela est pertinent), effacer le reste et retirer toutes les marques que Git a ajoutées <em>((&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD, =======, &gt;&gt;&gt;&gt;&gt;&gt;&gt; origin/master/your_branch_name</em>).</p>
+<p>Ensuite, sauvegardez le fichier, mettez-le en scène et commitez-le : c’est le commit qui rend la version fusionnée “officielle”. N’oubliez pas de pousser (push) ensuite.</p>
+<p>Plus vous et vos collaborateurs tirent et poussent souvent, plus les conflits seront réduits.</p>
+<p>*Remarque : Si vous vous sentez à l’aise avec la console, il existe des outils plus <a href="https://git-scm.com/book/en/v2/Git-Tools-Advanced-Merging">avancés de fusionner options</a> (par exemple, ignorer les espaces, donner la priorité à un collaborateur, etc.)</p>
+</div>
+<div id="supprimer-votre-branche" class="section level3 unnumbered">
+<h3>Supprimer votre branche<a class="anchor" aria-label="anchor" href="#supprimer-votre-branche"><i class="fas fa-link"></i></a>
+</h3>
+<p>Une fois qu’une branche a été fusionnée dans master et n’est plus nécessaire, vous pouvez la supprimer.</p>
+<div id="github-rstudio" class="section level4" number="8.9.0.1">
+<h4>
+<span class="header-section-number">8.9.0.1</span> Github + Rstudio<a class="anchor" aria-label="anchor" href="#github-rstudio"><i class="fas fa-link"></i></a>
+</h4>
+<p>Allez sur le dépôt sur Github et cliquez sur le bouton pour afficher toutes les branches (à côté de la liste déroulante pour les branches). Trouvez maintenant votre branche et cliquez sur l’icône de la corbeille à côté d’elle. Lisez plus de détails sur la suppression d’une branche <a href="https://docs.github.com/en/free-pro-team@latest/github/collaborating-with-issues-and-pull-requests/creating-and-deleting-branches-within-your-repository#deleting-a-branch">ici</a>.</p>
+<p>Assurez-vous de supprimer également la branche localement sur votre ordinateur. Cela ne se fera pas automatiquement.</p>
+<ul>
+<li>Dans RStudio, assurez-vous que vous êtes dans la branche Main.</li>
+<li>Passez à la saisie de commandes Git dans le “Terminal” de RStudio (l’onglet adjacent à la console R), et tapez : <strong>git branch -d nom_branche</strong>, où “nom_branche” est le nom de la branche à supprimer.</li>
+<li>Rafraîchissez votre onglet Git et la branche devrait avoir disparu.</li>
+</ul>
+</div>
+<div id="dans-github" class="section level4" number="8.9.0.2">
+<h4>
+<span class="header-section-number">8.9.0.2</span> Dans Github<a class="anchor" aria-label="anchor" href="#dans-github"><i class="fas fa-link"></i></a>
+</h4>
+<p>Vérifiez simplement la branche que vous voulez supprimer ce retrouve maintenant dans le menu <em>Branche &gt; Supprimer</em>.</p>
+</div>
+</div>
+<div id="forking" class="section level3 unnumbered">
+<h3>Forking<a class="anchor" aria-label="anchor" href="#forking"><i class="fas fa-link"></i></a>
+</h3>
+<p>Vous pouvez bifurquer d’un projet si vous souhaitez contribuer mais que vous n’avez pas les droits pour le faire, ou si vous voulez simplement le modifier pour votre usage personnel. Une courte description de la bifurcation se trouve <a href="https://guides.github.com/activities/forking/">ici</a>.</p>
+<p>Sur Github, cliquez sur le bouton “Fork” :</p>
+<div class="inline-figure"><img src="images/github_fork_1.png" width="100%" height="200%" style="display: block; margin: auto;"></div>
+<p>Ceci clonera le dépôt original, mais dans votre propre profil. Donc maintenant, il y a deux versions du dépôt <strong>sur Github</strong> : l’original, que vous ne pouvez pas modifier, et la version clonée dans votre profil.</p>
+<p>Ensuite, vous pouvez procéder au clonage de votre version du dépôt en ligne en local sur votre ordinateur, en utilisant l’une des méthodes décrites dans les sections précédentes. Ensuite, vous pouvez créer une nouvelle branche, faire des changements, les livrer et les pousser <em>vers votre dépôt distant</em>.</p>
+<p>Une fois que vous êtes satisfait du résultat, vous pouvez créer une Pull Request à partir de Github ou de Github Desktop pour entamer la conversation avec les propriétaires/mainteneurs du dépôt d’origine.</p>
+<p><strong>Et si vous avez besoin de commits plus récents du dépôt officiel?</strong></p>
+<p>Imaginez que quelqu’un apporte une modification critical au dépôt officiel, que vous voulez inclure dans votre version clonée. Il est possible de synchroniser votre fork avec le dépôt officiel. Cela implique l’utilisation du terminal, mais ce n’est pas trop compliqué. Vous devez surtout vous rappeler que :</p>
+<ul>
+<li>
+<em>upstream</em> = le dépôt officiel, celui que vous n’avez pas pu modifier</li>
+<li>
+<em>origin</em> = votre version du dépôt sur votre profil Github</li>
+</ul>
+<p>Vous pouvez lire <a href="https://docs.github.com/en/github/collaborating-with-issues-and-pull-requests/syncing-a-fork">ce tutoriel</a> ou suivre les instructions ci-dessous :</p>
+<p>Tout d’abord, tapez dans votre terminal Git (à l’intérieur de votre repo) :</p>
+<div class="sourceCode" id="cb168"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb168-1"><a href="collaboration.html#cb168-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> remote <span class="at">-v</span></span></code></pre></div>
+<p>Si vous n’avez pas encore configuré le référentiel amont, vous devriez voir deux lignes, commençant par <em>origin</em>. Elles montrent le dépôt distant vers lequel <code>chercher</code> et <code>pousser</code> pointent. Rappelez-vous, <em>origin</em> est le surnom conventionnel pour votre propre version du dépôt sur Github. Par exemple :</p>
+<div class="inline-figure"><img src="images/github_fork_2.png" width="100%" height="200%" style="display: block; margin: auto;"></div>
+<p>Maintenant, ajoutez un nouveau dépôt distant :</p>
+<div class="sourceCode" id="cb169"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb169-1"><a href="collaboration.html#cb169-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> remote add upstream https://github.com/epirhandbook/Epi_R_handbook.git</span></code></pre></div>
+<p>Ici, l’adresse est l’adresse que Github génère lorsque vous clonez un dépôt (voir la section sur le clonage). Vous aurez maintenant quatre pointeurs distants :</p>
+<div class="inline-figure"><img src="images/github_fork_3.png" width="100%" height="200%" style="display: block; margin: auto;"></div>
+<p>Maintenant que la configuration est faite, chaque fois que vous voulez obtenir les changements de le dépôt original (<em>upstream</em>), il suffit d’aller (<em>checkout</em>) dans la branche la branche que vous voulez mettre à jour et taper :</p>
+<div class="sourceCode" id="cb170"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb170-1"><a href="collaboration.html#cb170-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> fetch upstream <span class="co"># Obtenir les nouveaux commits du dépôt distant</span></span>
+<span id="cb170-2"><a href="collaboration.html#cb170-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> checkout la_branche_que_vous_voulez_mettre_à_jour</span>
+<span id="cb170-3"><a href="collaboration.html#cb170-3" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> merge upstream/the_branch_you_want_to_update <span class="co"># Fusionne la branche amont dans votre branche.</span></span>
+<span id="cb170-4"><a href="collaboration.html#cb170-4" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> push <span class="co"># Mettez à jour votre propre version du dépôt distant.</span></span></code></pre></div>
+<p>S’il y a des conflits, vous devrez les résoudre, comme expliqué dans la section Résoudre les conflits.</p>
+<p><strong>Résumé</strong> : forker est un clonage, mais du côté du serveur Github. Le reste des actions sont des actions typiques du flux de travail de collaboration (cloner, pousser, tirer, commettre, fusionner, soumettre des demandes de tirage…).</p>
+<p><em>Remarque : si la bifurcation est un concept et non une commande Git, elle existe aussi sur d’autres hôtes Web, comme <a href="https://www.atlassian.com/git/tutorials/comparing-workflows/forking-workflow">Bitbucket</a>.</em></p>
+<div class="inline-figure"><img src="images/github_fork_4.png" width="100%" height="200%" style="display: block; margin: auto;"></div>
+</div>
+</div>
+<div id="ce-que-nous-avons-appris" class="section level2" number="8.10">
+<h2>
+<span class="header-section-number">8.10</span> Ce que nous avons appris<a class="anchor" aria-label="anchor" href="#ce-que-nous-avons-appris"><i class="fas fa-link"></i></a>
+</h2>
+<p>Vous avez appris à :</p>
+<ul>
+<li>paramétrer Git pour suivre les modifications dans vos dossiers,<br>
+</li>
+<li>connecter votre référentiel local à un référentiel en ligne distant,</li>
+<li>livrer les changements,<br>
+</li>
+<li>synchroniser vos dépôts local et distant.</li>
+</ul>
+<p>Tout cela devrait vous permettre de démarrer et de répondre à la plupart de vos besoins en tant qu’épidémiologistes. Nous n’avons généralement pas un usage aussi avancé que les développeurs.</p>
+<p>Cependant, sachez que si vous voulez (ou devez) aller plus loin, Git offre plus de puissance pour simplifier l’historique des commits, le retour en arrière d’un ou plusieurs commits, le cherry-pick des commits, etc. Tout cela peut sembler de la pure magie, mais maintenant que vous avez les bases, il est plus facile de s’appuyer dessus.</p>
+<p>Notez que si le volet Git de Rstudio et Github Desktop sont bons pour les débutants / l’utilisation quotidienne dans notre travail, ils n’offrent pas une interface pour certaines des fonctions intermédiaires/avancées de Git. Certaines interfaces plus complètes vous permettent d’en faire plus en pointant et en cliquant (généralement au prix d’une mise en page plus complexe).</p>
+<p>Rappelez-vous que puisque vous pouvez utiliser n’importe quel outil à n’importe quel moment pour suivre votre dépôt, vous pouvez très facilement installer une interface pour l’essayer parfois, ou pour effectuer occasionnellement une tâche complexe moins courante, tout en préférant une interface simplifiée le reste du temps (par exemple en utilisant Github Desktop la plupart du temps, et passer à SourceTree ou Gitbash pour certaines tâches spécifiques).</p>
+<div id="git" class="section level3" number="8.10.1">
+<h3>
+<span class="header-section-number">8.10.1</span> Commandes Git<a class="anchor" aria-label="anchor" href="#git"><i class="fas fa-link"></i></a>
+</h3>
+</div>
+<div id="apprentissage-recommandé" class="section level3 unnumbered">
+<h3>Apprentissage recommandé<a class="anchor" aria-label="anchor" href="#apprentissage-recommand%C3%A9"><i class="fas fa-link"></i></a>
+</h3>
+<p>Pour apprendre les commandes Git à l’aide d’un tutoriel interactif, voir <a href="https://learngitbranching.js.org/">ce site web</a>.</p>
+</div>
+<div id="où-entrer-les-commandes" class="section level3 unnumbered">
+<h3>Où entrer les commandes<a class="anchor" aria-label="anchor" href="#o%C3%B9-entrer-les-commandes"><i class="fas fa-link"></i></a>
+</h3>
+<p>Vous entrez les commandes dans un shell Git.</p>
+<p><em>Option 1</em> Vous pouvez ouvrir un nouveau Terminal dans RStudio. Cet onglet se trouve à côté de la Console R. Si vous ne parvenez pas à y taper du texte, cliquez sur le menu déroulant sous “Terminal” et sélectionnez “Nouveau terminal”. Tapez les dans l’espace clignotant situé devant le symbole du dollar “$”.</p>
+<div class="inline-figure"><img src="images/github_terminal.png" width="100%" height="200%" style="display: block; margin: auto;"></div>
+<p><em>Option 2</em> Vous pouvez également ouvrir un <em>shell</em> (un terminal pour entrer des commandes) en cliquant sur l’icône bleue “gears” dans l’onglet Git (près de l’environnement RStudio). Sélectionnez “Shell” dans le menu déroulant. Une nouvelle fenêtre s’ouvre dans laquelle vous pouvez saisir les commandes après le signe du dollar “$”.</p>
+<p><em>Option 3</em> Cliquez avec le bouton droit de la souris pour ouvrir “Git Bash here”, qui ouvrira le même type de terminal, ou ouvrez <em>Git Bash</em> depuis votre liste d’applications. <a href="https://happygitwithr.com/shell.html">Plus d’informations pour les débutants sur Git Bash</a>, comment le trouver et quelques commandes bash dont vous aurez besoin.</p>
+</div>
+<div id="exemples-de-commandes" class="section level3 unnumbered">
+<h3>Exemples de commandes<a class="anchor" aria-label="anchor" href="#exemples-de-commandes"><i class="fas fa-link"></i></a>
+</h3>
+<p>Nous présentons ci-dessous quelques commandes git courantes. Lorsque vous les utilisez, gardez à l’esprit quelle branche est active (check-out), car cela changera l’action !</p>
+<p>Dans les commandes ci-dessous, <name> représente un nom de branche et <commit_hash> représente l’ID de hachage d’un commit spécifique. <num> représente un nombre. Ne tapez pas les symboles &lt; ou &gt;&gt;.</num></commit_hash></name></p>
+<div class="inline-table"><table class="table table-sm">
+<colgroup>
+<col width="26%">
+<col width="74%">
+</colgroup>
+<thead><tr class="header">
+<th>Commande Git</th>
+<th>Action</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td><code>git branch &lt;name&gt;</code></td>
+<td>Créer une nouvelle branche avec le nom <name></name>
+</td>
+</tr>
+<tr class="even">
+<td><code>git checkout &lt;name&gt;</code></td>
+<td>Bascule de la branche actuelle vers <name><code>. |</code>git checkout -b <name><code>| Raccourci pour créer une nouvelle branche *et* y basculer | |</code>git status<code>| Voir les modifications non suivies | |</code>git add <file><code>| Mettre en scène un fichier | |</code>git commit -m <message><code>Comptabilise les changements actuellement mis en scène dans la branche actuelle avec le message | |</code>git fetch<code>| Récupérer les commits du dépôt distant | |</code>git pull<code>| Extraire les commits du dépôt distant dans la branche actuelle | |</code>git push<code>| Pousse les commits locaux vers le répertoire distant | |</code>git switch<code>| Une alternative à</code>git checkout<code>qui est en train d'être introduite progressivement dans Git | |</code>git merge <name><code>| Fusionner la branche &lt;name&gt; dans la branche courante | |</code>git rebase <name>`</name></name></message></file></name></name>
+</td>
+</tr>
+</tbody>
+</table></div>
+<!-- ======================================================= -->
+</div>
+</div>
+<div id="ressources-6" class="section level2" number="8.11">
+<h2>
+<span class="header-section-number">8.11</span> Ressources<a class="anchor" aria-label="anchor" href="#ressources-6"><i class="fas fa-link"></i></a>
+</h2>
+<p>Une grande partie de cette page a été informée de <a href="https://happygitwithr.com/">ce site “Happy Git with R” site web</a> par Jenny Bryan. Il y a une section très utile qui vous aide à résoudre les erreurs courantes liées à Git et à R.</p>
+<p>Le <a href="https://docs.github.com/en/github">Guide de documentation et de démarrage de Github.com guide</a>.</p>
+<p>La fiche technique de RStudio <a href="https://www.rstudio.com/wp-content/uploads/2016/01/rstudio-IDE-cheatsheet.pdf">“IDE” cheatsheet</a> qui comprend des conseils sur Git avec RStudio.</p>
+<p><a href="https://ohi-science.org/news/github-going-back-in-time" class="uri">https://ohi-science.org/news/github-going-back-in-time</a></p>
+<p><strong>Les commandes Git pour les débutants</strong></p>
+<p>Un <a href="learngitbranching.js.org">tutoriel didacticiel</a> pour apprendre les commandes Git.</p>
+<p><a href="https://www.freecodecamp.org/news/an-introduction-to-git-for-absolute-beginners-86fa1d32ff71/" class="uri">https://www.freecodecamp.org/news/an-introduction-to-git-for-absolute-beginners-86fa1d32ff71/</a> : bon pour apprendre les bases absolues pour suivre les changements dans un dossier sur votre propre ordinateur.</p>
+<p>De beaux schémas pour comprendre les branches : <a href="https://speakerdeck.com/alicebartlett/git-for-humans" class="uri">https://speakerdeck.com/alicebartlett/git-for-humans</a></p>
+<p><strong>Tutoriels couvrant les sujets de base et plus avancés</strong>.</p>
+<p><a href="https://tutorialzine.com/2016/06/learn-git-in-30-minutes" class="uri">https://tutorialzine.com/2016/06/learn-git-in-30-minutes</a></p>
+<p><a href="https://dzone.com/articles/git-tutorial-commands-and-operations-in-git" class="uri">https://dzone.com/articles/git-tutorial-commands-and-operations-in-git</a>
+<a href="https://swcarpentry.github.io/git-novice/" class="uri">https://swcarpentry.github.io/git-novice/</a> (cours court)
+<a href="https://rsjakob.gitbooks.io/git/content/chapter1.html" class="uri">https://rsjakob.gitbooks.io/git/content/chapter1.html</a></p>
+<p>Le <a href="https://git-scm.com/book/en/v2">livre Pro Git</a> est considéré comme une référence officielle. Bien que certains chapitres soient corrects, il est généralement un peu <em>technical</em>. C’est probablement une bonne ressource une fois que vous avez utilisé Git un peu et quand vous voulez apprendre un peu plus précisément ce qui se passe et comment aller plus loin avec Git.</p>
+
+</div>
+</div>
+  <div class="chapter-nav">
+<div class="prev"><a href="directories.html"><span class="header-section-number">7</span> Interactions avec les répertoires</a></div>
+<div class="next"><a href="errors.html"><span class="header-section-number">9</span> Erreurs fréquentes</a></div>
+</div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
+    <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
+      <ul class="nav navbar-nav">
+<li><a class="nav-link" href="#collaboration"><span class="header-section-number">8</span> Contrôle de version et collaboration avec Git et Github</a></li>
+<li><a class="nav-link" href="#quest-ce-que-git"><span class="header-section-number">8.1</span> Qu’est-ce que Git ?</a></li>
+<li>
+<a class="nav-link" href="#pourquoi-utiliser-le-combo-git-et-github"><span class="header-section-number">8.2</span> Pourquoi utiliser le combo Git et Github ?</a><ul class="nav navbar-nav"><li><a class="nav-link" href="#cela-semble-compliqu%C3%A9-je-ne-suis-pas-un-programmeur">Cela semble compliqué, je ne suis pas un programmeur</a></li></ul>
+</li>
+<li>
+<a class="nav-link" href="#installation"><span class="header-section-number">8.3</span> Installation</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#installer-git">Installer Git</a></li>
+<li><a class="nav-link" href="#installer-une-interface-facultatif-mais-recommand%C3%A9">Installer une interface (facultatif mais recommandé)</a></li>
+<li><a class="nav-link" href="#compte-github">Compte Github</a></li>
+</ul>
+</li>
+<li>
+<a class="nav-link" href="#vocabulaire-concepts-et-fonctions-de-base"><span class="header-section-number">8.4</span> Vocabulaire, concepts et fonctions de base</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#r%C3%A9f%C3%A9rentiel">Référentiel</a></li>
+<li><a class="nav-link" href="#commits">Commits</a></li>
+<li><a class="nav-link" href="#branches">Branches</a></li>
+<li><a class="nav-link" href="#d%C3%A9p%C3%B4ts-locaux-et-distants">Dépôts locaux et distants</a></li>
+</ul>
+</li>
+<li>
+<a class="nav-link" href="#d%C3%A9marrer-cr%C3%A9er-un-nouveau-d%C3%A9p%C3%B4t"><span class="header-section-number">8.5</span> Démarrer : créer un nouveau dépôt</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#fichiers-de-d%C3%A9marrage">Fichiers de démarrage</a></li>
+<li><a class="nav-link" href="#cr%C3%A9er-un-nouveau-r%C3%A9f%C3%A9rentiel-dans-github">Créer un nouveau référentiel dans Github</a></li>
+<li><a class="nav-link" href="#clone-%C3%A0-partir-dun-d%C3%A9p%C3%B4t-github">Clone à partir d’un dépôt Github</a></li>
+<li><a class="nav-link" href="#nouveau-repo-github-%C3%A0-partir-dun-projet-r-existant">Nouveau repo Github à partir d’un projet R existant</a></li>
+<li><a class="nav-link" href="#a-quoi-cela-ressemble-t-il-maintenant">A quoi cela ressemble-t-il maintenant ?</a></li>
+<li><a class="nav-link" href="#flux-de-travail-git-github"><span class="header-section-number">8.5.1</span> Flux de travail Git + Github</a></li>
+<li><a class="nav-link" href="#aper%C3%A7u-du-processus">Aperçu du processus</a></li>
+</ul>
+</li>
+<li>
+<a class="nav-link" href="#cr%C3%A9er-une-nouvelle-branche"><span class="header-section-number">8.6</span> Créer une nouvelle branche</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#dans-le-volet-git-de-rstudio">Dans le volet Git de Rstudio</a></li>
+<li><a class="nav-link" href="#dans-le-bureau-de-github-1">Dans le bureau de Github</a></li>
+<li><a class="nav-link" href="#dans-la-console">Dans la console</a></li>
+</ul>
+</li>
+<li>
+<a class="nav-link" href="#valider-les-changements"><span class="header-section-number">8.7</span> Valider les changements</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#dans-rstudio-2">Dans Rstudio</a></li>
+<li><a class="nav-link" href="#dans-le-bureau-de-github-2">Dans le bureau de Github</a></li>
+<li><a class="nav-link" href="#dans-la-console-1">Dans la console</a></li>
+<li><a class="nav-link" href="#modifier-un-commit-pr%C3%A9c%C3%A9dent">Modifier un commit précédent</a></li>
+</ul>
+</li>
+<li>
+<a class="nav-link" href="#tirez-et-poussez-les-modifications-vers-github"><span class="header-section-number">8.8</span> Tirez et poussez les modifications vers Github</a><ul class="nav navbar-nav"><li><a class="nav-link" href="#je-veux-tirer-mais-jai-du-travail-local">Je veux tirer mais j’ai du travail local</a></li></ul>
+</li>
+<li>
+<a class="nav-link" href="#fusionner-la-branche-dans-main"><span class="header-section-number">8.9</span> Fusionner la branche dans Main</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#localement-dans-github-desktop">Localement dans Github Desktop</a></li>
+<li><a class="nav-link" href="#dans-la-console-2">Dans la console</a></li>
+<li><a class="nav-link" href="#dans-github-soumettre-des-demandes-de-pull-tirer">Dans Github : soumettre des demandes de pull (tirer)</a></li>
+<li><a class="nav-link" href="#r%C3%A9solution-des-conflits">Résolution des conflits</a></li>
+<li><a class="nav-link" href="#supprimer-votre-branche">Supprimer votre branche</a></li>
+<li><a class="nav-link" href="#forking">Forking</a></li>
+</ul>
+</li>
+<li>
+<a class="nav-link" href="#ce-que-nous-avons-appris"><span class="header-section-number">8.10</span> Ce que nous avons appris</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#git"><span class="header-section-number">8.10.1</span> Commandes Git</a></li>
+<li><a class="nav-link" href="#apprentissage-recommand%C3%A9">Apprentissage recommandé</a></li>
+<li><a class="nav-link" href="#o%C3%B9-entrer-les-commandes">Où entrer les commandes</a></li>
+<li><a class="nav-link" href="#exemples-de-commandes">Exemples de commandes</a></li>
+</ul>
+</li>
+<li><a class="nav-link" href="#ressources-6"><span class="header-section-number">8.11</span> Ressources</a></li>
+</ul>
+
+      <div class="book-extra">
+        <ul class="list-unstyled">
+          
+        </ul>
+</div>
+    </nav>
+</div>
+
+</div>
+</div> <!-- .container -->
+
+<footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>"<strong>Le Epi R Handbook</strong>" was written by the handbook team. It was last built on 2023-05-21.</p>
+  </div>
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>This book was built by the <a class="text-light" href="https://bookdown.org">bookdown</a> R package.</p>
+  </div>
+
+</div></div>
+</footer>
+</body>
+</html>

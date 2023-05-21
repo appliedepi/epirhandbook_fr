@@ -232,494 +232,667 @@ options(scipen=1, digits=7)
 
 <!--chapter:end:index.Rmd-->
 
-# Taux standardisés {#standardisation}  
-
-Cette page vous montre deux façons de normaliser un résultat, tel que les hospitalisations ou la mortalité, en fonction de caractéristiques telles que l'âge et le sexe. 
-
-* Utilisation du paquet **dsr**
-* Utilisation du paquet **PHEindicatormethods**.  
-
-Nous commençons par démontrer de manière extensive les processus de préparation/nettoyage/jonction des données, car cela est courant lorsqu'on combine des données de population provenant de plusieurs pays, des données de population standard, des décès, etc.  
-
-## Vue d'ensemble  
-
-Il existe deux manières principales de normaliser : la normalisation directe et la normalisation indirecte.
-Supposons que nous voulions normaliser le taux de mortalité par âge et par sexe pour le pays A et le pays B, et comparer les taux normalisés entre ces pays.
-
-* Pour une standardisation directe, vous devrez connaître le nombre de personnes à risque et le nombre de décès pour chaque strate d'âge et de sexe, pour le pays A et le pays B. Une strate dans notre exemple pourrait être les femmes âgées de 15 à 44 ans.  
-* Pour une standardisation indirecte, il suffit de connaître le nombre total de décès et la structure d'âge et de sexe de chaque pays. Cette option est donc envisageable si les taux de mortalité ou les chiffres de population par âge et par sexe ne sont pas disponibles. La standardisation indirecte est en outre préférable en cas de petits effectifs par strate, car les estimations en standardisation directe seraient influencées par une variation d'échantillonnage importante. 
+# Les arbres phylogénétiques {#phylogenetic_trees}
 
 <!-- ======================================================= -->
-## Préparation { }
 
-Pour montrer comment se fait la standardisation, nous allons utiliser des comptages fictifs de population et de décès du pays A et du pays B, par âge (en catégories de 5 ans) et par sexe (femme, homme). Pour que les ensembles de données soient prêts à être utilisés, nous allons effectuer les étapes de préparation suivantes :  
+## Aperçu
 
-1. Charger les paquets  
-2. Charger les jeux de données  
-3. Joignez les données de population et de décès des deux pays.
-4. Pivoter plus longtemps pour qu'il y ait une ligne par strate âge-sexe.
-5. Nettoyez la population de référence (population standard mondiale) et joignez-la aux données du pays.  
+**Les arbres phylogénétiques** sont utilisés pour visualiser et décrire la parenté et l'évolution des organismes à partir de la séquence de leur code génétique.
 
-Dans votre scénario, vos données peuvent se présenter sous un format différent. Peut-être vos données sont-elles présentées par province, ville ou autre zone d'attraction. Vous avez peut-être une ligne pour chaque décès et des informations sur l'âge et le sexe pour chacun (ou une proportion importante) de ces décès. Dans ce cas, consultez les pages sur le [Travailler sur des données groupées](#grouping_data), [Pivoter les données](#pivoting_data), and [Tableaux descriptifs](#descriptive_tables) pour créer un ensemble de données avec des comptes d'événements et de population par strate âge-sexe.  
+On peut les construire à partir de séquences génétiques en utilisant des méthodes basées sur la distance (comme la méthode neighbor-joining) ou les méthodes probabiliste (comme la méthode de maximum de vraisemblance et la méthode Bayesian Markov Chain Monte Carlo). Le séquençage de nouvelle génération (NGS) devient de plus en plus abordable et populaire en santé publique pour caractériser des agents pathogènes à l'origine des maladies infectieuses. Les appareils de séquençage portables réduisent le délai d'exécution et offrent la possibilité de rendre les résultats disponible en temps réel pour les enquêtes sur les épidémies. Les données NGS peuvent être utilisées pour identifier l'origine ou la source d'une souche épidémique ainsi que sa propagation, et pour déterminer la présence de gènes de résistance antimicrobienne. Pour visualiser la parenté génétique entre les échantillons, un arbre phylogénétique est construit.
 
-Nous avons également besoin d'une population de référence, la population standard. Pour les besoins de cet exercice, nous utiliserons la `world_standard_population_by_sex` (population standard mondiale par sexe). La population standard mondiale est basée sur les populations de 46 pays et a été développée en 1960. Il existe de nombreuses populations "standard" - à titre d'exemple, le site web de [NHS Scotland](https://www.opendata.nhs.scot/dataset/standard-populations) est assez informatif sur la population standard européenne, la population standard mondiale et la population standard écossaise. 
+Dans cette page, nous allons apprendre à utiliser le package **ggtree**, qui permet la visualisation combinée d'arbres phylogénétiques avec des données d'échantillons supplémentaires sous la forme de tableaux de données. Cela nous permettra d'observer les tendances et de comprendre la dynamique de l'épidémie.
+
+```{r, phylogenetic_trees_overview_graph, out.width=c('80%'), fig.align='center', fig.show='hold', echo = FALSE}
+
+pacman::p_load(here, ggplot2, dplyr, ape, ggtree, treeio, ggnewscale)
+
+tree <- ape::read.tree(here::here("data", "phylo", "Shigella_tree.txt"))
+
+sample_data <- read.csv(here::here("data","phylo", "sample_data_Shigella_tree.csv"),sep=",", na.strings=c("NA"), head = TRUE, stringsAsFactors=F)
+
+
+ggtree(tree, layout="circular", branch.length='none') %<+% sample_data + # l'operateur %<+% est utilisé pour ajouter à l'arbre votre tableau de données 
+  aes(color=I(Belgium))+ # colore les branches a partir d'une variable de votre tableau de données
+  scale_color_manual(name = "Sample Origin", # nom de votre palette de couleur (qui apparaîtra dans la légende comme ceci)
+                    breaks = c("Yes", "No"), # les différentes options de votre variable
+                   labels = c("NRCSS Belgium", "Other"), # comment vous souhaitez que les différentes options soient désignées dans votre légende, permet de les formater.
+                 values= c("blue", "black"), # la couleur que vous souhaitez attribuer à la variable 
+                 na.value = "black") + # colore les valeurs NA en noir également
+  new_scale_color()+ # permet d'ajouter une palette de couleurs supplémentaire pour une autre variable
+     geom_tippoint(aes(color=Continent), size=1.5)+ # colore le point d'extrémité par continent, vous pouvez changer la forme en ajoutant "shape = "
+scale_color_brewer(name = "Continent",  # nom de la palette de couleurs (qui apparaîtra dans la légende comme ceci)
+                       palette="Set1", # nous utilisons un ensemble de couleurs fournies avec le package brewer
+                   na.value="grey")+ # pour les valeurs NA nous utilisons la couleur grise
+  theme(legend.position= "bottom")
+
+```
 
 <!-- ======================================================= -->
-### Chargement des paquets {.unnumbered}
 
-Ce chunk de code montre le chargement des paquets nécessaires aux analyses. Dans ce manuel, nous mettons l'accent sur `p_load()` de **pacman**, qui installe le paquet si nécessaire *et* le charge pour l'utiliser. Vous pouvez également charger les paquets installés avec `library()` de **base** R. Voir la page sur [bases de R](#rbasics) pour plus d'informations sur les paquets R.  
+## Préparation
 
-```{r}
+### Importation des packages {.unnumbered}
+
+Ces lignes de code importe les packages necessaire pour l'analyse. Dans ce guide, nous mettons l'accent sur `p_load()` de **pacman**, qui installe le package si nécessaire *puis* l'importe pour l'utiliser dans la session de Rstudio. Vous pouvez également charger les packages installés avec `library()` de **base** R. Voir la page sur [bases de R](#rbasics) pour plus d'informations sur les packages en R.
+
+```{r, phylogenetic_trees_loading_packages, warning=FALSE, message=FALSE}
 pacman::p_load(
-     rio, # importer/exporter des données
-     here, # localisation des fichiers
-     tidyverse, # gestion et visualisation des données
-     stringr, # nettoyage des caractères et des chaînes de caractères
-     frailtypack, # nécessaire pour dsr, pour les modèles de frailty
-     dsr, # standardiser les taux
-     PHEindicatormethods) # alternative pour la standardisation des taux
+  rio,             # import/export
+  here,            # gestion des chemins d'accès
+  tidyverse,       # gestion des données + graphiques (ggplot2)
+  ape,             # pour importer and exporter les fichiers phylogénétiques
+  ggtree,          # pour visualiser les fichiers phylogénétiques
+  treeio,          # pour visualiser les fichiers phylogénétiques
+  ggnewscale)      # pour ajouter les palettes de couleurs supplémentaire
+
 ```
 
+### Import data {.unnumbered}
 
-<span style="color : orange ;">**ATTENTION:_** Si vous avez une version plus récente de R, le paquet **dsr** ne peut pas être téléchargé directement avec CRAN. Cependant, il est toujours disponible de l'archive CRAN. Vous pouvez installer et utiliser celui-ci. </span>
+Les données pour cette page peuvent être téléchargées suivant les instructions de la page [Télécharger le manuel et les données](#download_book_data).
 
-Pour les utilisateurs non-Mac :  
+Il existe plusieurs formats différents dans lesquels un arbre phylogénétique peut être enregistré (par exemple, Newick, NEXUS, Phylip). Un format couramment utilisés est celui des fichiers Newick (.nwk), qui est la norme pour représenter les arbres sous une forme facilement exploitable par ordinateur. Cela signifie qu'un arbre entier peut être représenté par un format de chaîne de caractères tel que "((t2:0.04,t1:0.34):0.89,(t5:0.37,(t4:0.03,t3:0.67):0.9):0.59) ; ", énumérant tous les nœuds, les extrémités et leur relation (longueur de branche) les uns avec les autres.
 
-```{r, eval=F} 
-packageurl <- "https://cran.r-project.org/src/contrib/Archive/dsr/dsr_0.2.2.tar.gz"
-install.packages(packageurl, repos=NULL, type="source")
+Note : Il est important de comprendre que le fichier de l'arbre phylogénétique en lui-même ne contient pas de données de séquençage, mais est simplement le résultat des distances génétiques entre les séquences. Nous ne pouvons donc pas extraire les données de séquençage d'un fichier arbre.
+
+Tout d'abord, nous utilisons la fonction read.tree() du package **ape** pour importer un fichier d'arbre phylogénétique de Newick au format .txt, et le enregistrer dans un objet liste de classe "phylo". Si nécessaire, utilisez la fonction `here()` du package **here** pour spécifier le chemin relatif du fichier.
+
+Note : Dans ce cas, l'arbre Newick est enregistré au format .txt pour faciliter sa manipulation et son téléchargement de Github.
+
+```{r, echo=F}
+tree <- ape::read.tree(here::here("data", "phylo", "Shigella_tree.txt"))
 ```
 
-```{r, eval=FALSE}
-# Autre solution qui peut fonctionner
-require(devtools)
-devtools::install_version("dsr", version="0.2.2", repos="http:/cran.us.r.project.org")
+```{r, echo=T, eval=F}
+tree <- ape::read.tree("Shigella_tree.txt")
 ```
 
-Pour les utilisateurs de Mac :  
+Nous inspectons notre objet arbre et voyons qu'il contient 299 pointes (ou échantillons) et 236 nœuds.
 
-```{r, eval=FALSE}
-require(devtools)
-devtools::install_version("dsr", version="0.2.2", repos="https://mac.R-project.org")
+```{r}
+tree
 ```
 
+Ensuite, nous importons un fichier en format .csv contenant des informations supplémentaires pour chaque échantillon séquencé, tel que le sexe, le pays d'origine et les attributs de résistance antimicrobienne, en utilisant la fonction `import()` du package **rio** :
 
+```{r, echo=F}
+sample_data <- import(here("data", "phylo", "sample_data_Shigella_tree.csv"))
+```
 
+```{r, echo=T, eval=F}
+sample_data <- import("sample_data_Shigella_tree.csv")
+```
 
-### Charger les données de la population {.unnumbered}  
+Ci-dessous, vous trouverez les 50 premières lignes de données :
 
-Voir la page [Télécharger le manuel et les données](#download_book_data) pour savoir comment télécharger tous les exemples de données du manuel. Vous pouvez importer les données de la page de normalisation directement dans R depuis notre dépôt Github en exécutant les commandes `import()` suivantes :  
+```{r message=FALSE, echo=F}
+DT::datatable(head(sample_data,50), rownames = FALSE, options = list(pageLength = 5, scrollX=T), class = 'white-space: nowrap' )
+```
+
+### Nettoyer et inspecter {.unnumbered}
+
+Nous nettoyons et inspectons nos données : Pour pouvoir associer les données échantillon à l'arbre phylogénétique, les valeurs de la colonne `Sample_ID` dans le tableau de données `sample_data` doit correspondre aux valeurs `tip.labels` dans le fichier `tree` :
+
+Nous vérifions le format du `tip.labels` dans le fichier `tree` en regardant les 6 premières entrées en utilisant `head()` de **base** R.
+
+```{r, phylogenetic_trees_inspect_sampledata}
+head(tree$tip.label) 
+```
+
+Nous nous assurons également que la première colonne de notre tableau de données `sample_data` est `Sample_ID`. Nous regardons les noms des colonnes de notre jeu de données en utilisant `colnames()` de **base** R.
+
+```{r}
+colnames(sample_data)   
+```
+
+Nous regardons les `Sample_IDs` dans le jeu de données pour nous assurer que le format est le même que dans le `tip.label` (par exemple, les lettres sont en majuscules, pas de soulignement supplémentaire `_` entre les lettres et les chiffres, etc.)
+
+```{r}
+head(sample_data$Sample_ID) # Nous vérifions les 6 premières entrées en utilisant head()
+```
+
+Nous pouvons aussi vérifier si tous les échantillons sont présents dans le fichier `tree` et vice versa en générant un vecteur logique de VRAI ou FAUX là où ils correspondent ou non. Ceux-ci ne sont pas imprimés ici, pour plus de simplicité.
 
 ```{r, eval=F}
-# importer les données démographiques du pays A directement depuis Github
-A_demo <- import("https://github.com/epirhandbook/Epi_R_handbook/raw/master/data/standardization/country_demographics.csv")
+sample_data$Sample_ID %in% tree$tip.label
 
-# importer les décès pour le pays A directement depuis Github
-A_deaths <- import("https://github.com/epirhandbook/Epi_R_handbook/raw/master/data/standardization/deaths_countryA.csv")
+tree$tip.label %in% sample_data$Sample_ID
+```
 
-# Importez les données démographiques pour le pays B directement depuis Github.
-B_demo <- import("https://github.com/epirhandbook/Epi_R_handbook/raw/master/data/standardization/country_demographics_2.csv")
+Nous pouvons utiliser ces vecteurs pour démontrer les ID des échantillons qui ne sont pas sur l'arbre (il n'y en a pas).
 
-# importer les décès pour le pays B directement depuis Github.
-B_deaths <- import("https://github.com/epirhandbook/Epi_R_handbook/raw/master/data/standardization/deaths_countryB.csv")
+```{r}
+sample_data$Sample_ID[!tree$tip.label %in% sample_data$Sample_ID]
+```
 
-# Importez les données démographiques pour le pays B directement depuis Github.
-standard_pop_data <- import("https://github.com/epirhandbook/Epi_R_handbook/raw/master/data/standardization/world_standard_population_by_sex.csv")
+Après inspection, nous pouvons voir que le format de `Sample_ID` dans le dataframe correspond au format des noms d'échantillons dans le `tip.labels`. Ceux-ci n'ont pas besoin d'être triés dans le même ordre pour être appariés.
+
+Voilà on est prêts à partir !
+
+<!-- ======================================================= -->
+
+## Visualisation simple de l'arbre
+
+### Diverses configurations d'arbres {.unnumbered}
+
+**ggtree** offre nombreux formats de configuration d'arbres différents et certains peuvent être plus adéquats que d'autres pour votre usage spécifique. Ci-dessous, vous trouverez quelques illustrations. Pour d'autres options, voir ce [livre en ligne](http://yulab-smu.top/treedata-book/chapter4.html).
+
+Voici quelques exemples des configurations d'arbres :
+
+```{r, phylogenetic_trees_example_formats, out.width=c('50%'), fig.show='hold'}
+
+ggtree(tree)                                            # arbre linéaire simple
+ggtree(tree,  branch.length = "none")                   # arbre linéaire simple avec toutes les pointes alignées 
+ggtree(tree, layout="circular")                         # arbre circulaire simple
+ggtree(tree, layout="circular", branch.length = "none") # arbre circulaire simple avec toutes les pointes alignées 
 
 ```
 
+### Arbre simple plus données échantillons {.unnumbered}
 
-Tout d'abord, nous chargeons les données démographiques (comptage des hommes et des femmes par catégorie d'âge de 5 ans) pour les deux pays que nous allons comparer, le "pays A" et le "pays B".  
+L'opérateur **%\<+%** est utilisé pour connecter le tableau de donnees `sample_data` avec le fichier `arbre`. L'annotation la plus facile de votre arbre est l'ajout des noms des échantillons aux extrémités, ainsi que la coloration des points d'extrémité et si désiré des branches :
 
-```{r, echo=F}
-# Pays A
-A_demo <- rio::import(here::here("data", "standardization", "country_demographics.csv")) %>% 
-     mutate(Country = "A") %>% 
-     select(Country, everything()) %>% # re-arrangement
-     mutate(age_cat5 = str_replace_all(age_cat5, "\\+", "")) # supprimer les symboles +
+Voici un exemple d'arbre circulaire :
+
+```{r, phylogenetic_trees_adding_sampledata, fig.align='center', warning=F, message=F}
+
+ggtree(tree, layout = "circular", branch.length = 'none') %<+% sample_data + # %<+% ajoute le tableau des données l'échantillon à l'arbre
+  aes(color = (Belgium))+                       # colore les branches en fonction d'une variable de votre tableau de données 
+  scale_color_manual(
+    name = "Sample Origin",                      # le nom de votre palette de couleurs (qui apparaîtra dans la légende comme ceci)
+    breaks = c("Yes", "No"),                     # les différentes options de votre variable
+    labels = c("NRCSS Belgium", "Other"),        # comment vous voulez que les différentes options soient nommées dans votre légende, ce qui permet de les formater
+    values = c("blue", "black"),                  # la couleur que vous voulez attribuer à la variable
+    na.value = "black") +                        # colorer les valeurs NA en noir également
+  new_scale_color()+                             # permet d'ajouter une couleur supplémentaire pour une autre variable
+    geom_tippoint(
+      mapping = aes(color = Continent),          # colorer les pointes par continent. Vous pouvez changer la forme en ajoutant "shape = "
+      size = 1.5)+                               # Définit la taille du point à la extremite 
+  scale_color_brewer(
+    name = "Continent",                    # nom de votre palette de couleurs (qui apparaîtra dans la légende comme ceci)
+    palette = "Set1",                      # nous choisissons un ensemble de couleurs fournies avec le package brewer 
+    na.value = "grey") +                    # pour les valeurs NA nous choisissons la couleur grise
+  geom_tiplab(                             # ajoute le nom de l'échantillon à l'extrémité de sa branche
+    color = 'black',                       # (ajoutez autant de lignes de texte que vous souhaitez avec + , mais vous devrez ajuster la valeur du décalage pour les placer les à côté des autres) 
+    offset = 1,
+    size = 1,
+    geom = "text",
+    align = TRUE) +    
+  ggtitle("Phylogenetic tree of Shigella sonnei")+       # titre de votre graphique
+  theme(
+    axis.title.x = element_blank(), # supprime le titre de l'axe x
+    axis.title.y = element_blank(), # supprime le titre de l'axe y
+    legend.title = element_text(    # définit la taille de la police et le format du titre de la légende
+      face = "bold",
+      size = 12),   
+    legend.text=element_text(       # définit la taille de la police et le format du texte de la légende
+      face = "bold",
+      size = 10),  
+    plot.title = element_text(      # définit la taille de la police et le format du titre du graphique
+      size = 12,
+      face = "bold"),  
+    legend.position = "bottom",     # # définit le position du légende
+    legend.box = "vertical",        # # définit le position du légende
+    legend.margin = margin())   
 ```
+
+Vous pouvez exporter le graphique de votre arbre avec `ggsave()` comme vous le feriez avec n'importe quel autre objet ggplot. Écrit de cette façon, `ggsave()` enregistre la dernière image produite dans le chemin de fichier que vous spécifiez. Rappelez-vous que vous pouvez utiliser `here()` et les chemins de fichiers relatifs pour sauvegarder facilement dans des sous-dossiers, etc.
 
 ```{r, eval=F}
-# Pays A
-A_demo <- import("country_demographics.csv")
+ggsave("example_tree_circular_1.png", width = 12, height = 14)
+
 ```
 
-```{r message=FALSE, echo=F}
-DT::datatable(A_demo, rownames = FALSE, options = list(pageLength = 5, scrollX=T), class = 'white-space: nowrap' )
+<!-- ======================================================= -->
+
+## Manipulation de l'arbre
+
+Parfois, vous pouvez avoir un très grand arbre phylogénétique et vous n'êtes intéressé que par une partie de l'arbre. Par exemple, si vous avez produit un arbre incluant des échantillons historiques ou internationaux afin d'obtenir un aperçu de la place de l'ensemble de vos données dans le schema général. Mais ensuite, pour examiner vos données de plus près, vous ne voulez inspecter que cette partie du grand arbre.
+
+Comme le fichier de l'arbre phylogénétique n'est que le résultat de l'analyse des données de séquençage, nous ne pouvons pas manipuler l'ordre des nœuds et des branches dans le fichier lui-même. Ceux-ci ont déjà été déterminés dans une analyse précédente à partir des données de séquençage brutes. Nous sommes cependant en mesure de zoomer sur certaines parties, de cacher certaines parties et même de sous-ensembler une partie de l'arbre.
+
+### Zoomer pour agrandir {.unnumbered}
+
+Si vous ne voulez pas "couper" votre arbre, mais seulement en inspecter une partie de plus près, vous pouvez zoomer pour voir une partie spécifique.
+
+Tout d'abord, nous traçons l'arbre entier au format linéaire et ajoutons des étiquettes numériques à chaque nœud de l'arbre.
+
+```{r, phylogenetic_trees_zoom_in, out.width=c('50%'), fig.show='hold', fig.align='center'}
+
+p <- ggtree(tree,) %<+% sample_data +
+  geom_tiplab(size = 1.5) +                # étiquette les extrémités de toutes les branches avec le nom de l'échantillon dans le fichier de l'arbre
+  geom_text2(
+    mapping = aes(subset = !isTip,
+                  label = node),
+    size = 5,
+    color = "darkred",
+    hjust = 1,
+    vjust = 1)                            # étiquette tous les nœuds de l'arbre
+
+p  # imprime
+
 ```
 
+Pour zoomer sur une branche particulière (qui déborde à droite), utilisez `viewClade()` sur l'objet ggtree `p` et fournissez le numéro du noeud pour obtenir une vue plus détaillée :
 
-```{r, echo=F}
-# Pays B
-B_demo <- rio::import(here::here("data", "standardization", "country_demographics_2.csv")) %>% 
-     mutate(Country = "B") %>% 
-     select(Country, everything()) # réarrangement
+```{r phylogenetic_trees_zoom_in_452, out.width=c('50%'), fig.show='hold', fig.align='center'}
+
+viewClade(p, node = 452)
+
 ```
 
-```{r, eval=F}
-# Pays B
-B_demo <- import("country_demographics_2.csv")
+### Réduire les branches {.unnumbered}
+
+Cependant, nous pouvons vouloir ignorer cette branche et la réduire à ce même noeud (noeud n° 452) en utilisant `collapse()`. Cet arbre est défini comme `p_collapsed`.
+
+```{r phylogenetic_trees_collapse_452, out.width=c('50%'), fig.show='hold', fig.align='center'}
+
+p_collapsed <- collapse(p, node = 452)
+p_collapsed
 ```
 
-```{r message=FALSE, echo=F}
-DT::datatable(B_demo, rownames = FALSE, options = list(pageLength = 5, scrollX=T), class = 'white-space: nowrap' )
-```
-
-
-
-### Chargement du nombre de morts {.unnumbered}  
-
-De manière pratique, nous disposons également du nombre de décès survenus pendant la période qui nous intéresse, par âge et par sexe. Les chiffres de chaque pays sont dans un fichier séparé, comme indiqué ci-dessous.   
-
-```{r, echo=F}
-A_males <- c(224, 257, 251, 245, 334, 245, 154, 189, 334, 342, 565, 432, 543, 432, 245, 543, 234, 354) # pour les hommes du pays A
-B_males <- c(34, 37, 51, 145, 434, 120, 100, 143, 307, 354, 463, 639, 706, 232, 275, 543, 234, 274) # pour les hommes du pays B
-A_females <- c(194, 254, 232, 214, 316, 224, 163, 167, 354, 354, 463, 574, 493, 295, 175, 380, 177, 392) # pour les femmes du pays A
-B_females <- c(54, 24, 32, 154, 276, 254, 123, 164, 254, 354, 453, 654, 435, 354, 165, 432, 287, 395) # pour les femmes du pays B
-
-age_cat5 <- c("0-4", "5-9", "10-14", "15-19", "20-24", "25-29", "30-34", "35-39", "40-44",
-                                                                                "45-49", "50-54", "55-59",
-                                                                                "60-64", "65-69", "70-74",
-                                                                                "75-79", "80-84", "85")
-A_deaths <- data.frame(Country = "A", AgeCat = age_cat5, Male = A_males, Female = A_females)
-B_deaths <- data.frame(Country = "B", AgeCat = age_cat5, Male = B_males, Female = B_females)
-```
-
-Décès dans le pays A
-```{r message=FALSE, echo=F}
-DT::datatable(A_deaths, rownames = FALSE, options = list(pageLength = 5, scrollX=T), class = 'white-space: nowrap' )
-```
-
-Décès dans le pays B
-
-```{r message=FALSE, echo=F}
-DT::datatable(B_deaths, rownames = FALSE, options = list(pageLength = 5, scrollX=T), class = 'white-space: nowrap' )
-```
-
-
-```{r, echo=F}
-rio::export(A_deaths, here::here("data", "standardization", "deaths_countryA.csv"))
-rio::export(B_deaths, here::here("data", "standardization", "deaths_countryB.csv"))
-```
-
-
-
-### Nettoyer les populations et les décès {.unnumbered}  
-
-
-Nous devons joindre et transformer ces données de la manière suivante :  
-
-* Combiner les populations des pays en un seul ensemble de données et faire un pivot "long" pour que chaque strate âge-sexe soit une ligne.  
-* Combiner le nombre de décès par pays dans un ensemble de données et faire pivoter "long" pour que chaque strate âge-sexe soit une ligne.  
-* Joindre les décès aux populations  
-
-Tout d'abord, nous combinons les ensembles de données sur les populations des pays, nous effectuons un pivot plus long et un nettoyage mineur. Voir la page [Pivoter les données](#pivoting_data) pour plus de détails.  
+Pour plus de clarté, lorsque nous imprimons `p_collapsed`, nous ajoutons un `geom_point2()` (un diamant bleu) au noeud de la branche réduite.
 
 ```{r}
-pop_countries <- A_demo %>% # Commencez avec l'ensemble de données du pays A
-     bind_rows(B_demo) %>% # lier les lignes, car les colonnes portent le même nom
-     pivot_longer( # pivot plus long
-          cols = c(m, f), # colonnes à combiner en une seule
-          names_to = "Sex", # nom de la nouvelle colonne contenant la catégorie ("m" ou "f") 
-          values_to = "Population") %>% # nom de la nouvelle colonne contenant les valeurs numériques pivotées
-     mutate(Sex = recode(Sex, # re-code les valeurs pour plus de clarté
-          "m" = "Male",
-          "f" = "Female"))
+p_collapsed + 
+geom_point2(aes(subset = (node == 452)),  # nous attribuons un symbole au nœud réduit
+            size = 5,                     # définir la taille du symbole
+            shape = 23,                   # définir la forme du symbole
+            fill = "steelblue")           # définir la coleur du symbole
 ```
 
-Les données de population combinées ressemblent maintenant à ceci (cliquez pour voir les pays A et B) :  
+### Sous-ensembler un arbre {.unnumbered}
 
-```{r message=FALSE, echo=F}
-DT::datatable(pop_countries, rownames = FALSE, options = list(pageLength = 5, scrollX=T), class = 'white-space: nowrap' )
+Si nous voulons faire un changement plus permanent et créer un nouvel arbre réduit avec lequel travailler, nous pouvons sous-ensembler une partie avec `tree_subset()`. Vous pouvez ensuite le sauvegarder comme un nouveau fichier newick tree ou un fichier .txt.
+
+Tout d'abord, nous inspectons les noeuds de l'arbre et les étiquettes des extrémités afin de décider ce qu'il faut sous-ensembler.
+
+```{r, phylogenetic_trees_subsetting, out.width=c('50%'), fig.show='hold', fig.align='center'}
+ggtree(
+  tree,
+  branch.length = 'none',
+  layout = 'circular') %<+% sample_data +               # nous ajoutons les données de l'échantillon en utilisant l'opérateur %<+%.
+  geom_tiplab(size = 1)+                                # étiqueter les extrémités de toutes les branches avec le nom de l'échantillon dans le fichier arbre
+  geom_text2(
+    mapping = aes(subset = !isTip, label = node),
+    size = 3,
+    color = "darkred") +                                # étiquette tous les noeuds de l'arbre 
+ theme(
+   legend.position = "none",                            # supprime la légende tous ensemble
+   axis.title.x = element_blank(),
+   axis.title.y = element_blank(),
+   plot.title = element_text(size = 12, face="bold"))
 ```
 
-Et maintenant, nous effectuons des opérations similaires sur les deux ensembles de données de décès.
+Maintenant, disons que nous avons décidé de sous-ensembler l'arbre au noeud 528 (ne garder que les pointes dans cette branche après le noeud 528) et nous le sauvegardons comme un nouvel objet `sub_tree1` :
 
 ```{r}
-deaths_countries <- A_deaths %>% # Commencez avec l'ensemble de données des décès du pays A
-     bind_rows(B_deaths) %>% # lier les lignes avec l'ensemble de données B, parce que les colonnes sont nommées de manière identique
-     pivot_longer( # pivot plus long
-          cols = c(Male, Female), # colonne à transformer en une seule
-          names_to = "Sex", # nom de la nouvelle colonne contenant la catégorie ("m" ou "f") 
-          values_to = "Deaths") %>% # nom pour la nouvelle colonne contenant les valeurs numériques pivotées
-     rename(age_cat5 = AgeCat) # renomme pour plus de clarté
+sub_tree1 <- tree_subset(
+  tree,
+  node = 528)                                            # nous sous-ensemblons l'arbre au nœud 528
 ```
 
-Les données de décès ressemblent maintenant à ceci, et contiennent les données des deux pays : 
-
-```{r message=FALSE, echo=F}
-DT::datatable(deaths_countries, rownames = FALSE, options = list(pageLength = 5, scrollX=T), class = 'white-space: nowrap' )
-```
-
-
-Nous joignons maintenant les données de décès et de population sur la base des colonnes communes `Country`, `age_cat5`, et `Sex`. Cela ajoute la colonne `Deaths`.  
+Examinons l'arbre subset tree 1:
 
 ```{r}
-country_data <- pop_countries %>% 
-     left_join(deaths_countries, by = c("Country", "age_cat5", "Sex"))
+ggtree(sub_tree1) +
+  geom_tiplab(size = 3) +
+  ggtitle("Subset tree 1")
 ```
 
-Nous pouvons maintenant classer `Country`, `age_cat5`, et `Sex` comme facteurs et définir l'ordre des niveaux en utilisant la fonction `fct_relevel()` du paquet **forcats**, comme décrit dans la page sur [Facteurs](#factors). Notez que le classement des niveaux des facteurs ne change pas visiblement les données, mais la commande `arrange()` les trie par Pays, catégorie d'âge et sexe.  
-
-```{r, warning=F, message=F}
-country_data <- country_data %>% 
-  mutate(
-    Country = fct_relevel(Country, "A", "B"),
-      
-    Sex = fct_relevel(Sex, "Male", "Female"),
-        
-    age_cat5 = fct_relevel(
-      age_cat5,
-      "0-4", "5-9", "10-14", "15-19",
-      "20-24", "25-29",  "30-34", "35-39",
-      "40-44", "45-49", "50-54", "55-59",
-      "60-64", "65-69", "70-74",
-      "75-79", "80-84", "85")) %>% 
-          
-  arrange(Country, age_cat5, Sex)
-
-```
-
-```{r message=FALSE, echo=F}
-DT::datatable(country_data, rownames = FALSE, options = list(pageLength = 5, scrollX=T), class = 'white-space: nowrap' )
-```
-
-<span style="color : orange ;">**__ATTENTION:_** Si vous avez peu de décès par strate, envisagez d'utiliser des catégories de 10, ou 15 ans, au lieu de catégories de 5 ans pour l'âge.</span>
-
-
-
-
-### Chargement de la population de référence {.unnumbered}  
-
-Enfin, pour la standardisation directe, nous importons la population de référence (la "population standard" mondiale par sexe).
-
-```{r, echo=F}
-# Population de référence
-standard_pop_data <- rio::import(here::here("data", "standardization", "world_standard_population_by_sex.csv")) %>% 
-     rename(age_cat5 = AgeGroup)
-```
-
-```{r, eval=F}
-# Population de référence
-standard_pop_data <- import("world_standard_population_by_sex.csv")
-```
-
-```{r message=FALSE, echo=F}
-DT::datatable(standard_pop_data, rownames = FALSE, options = list(pageLength = 5, scrollX=T), class = 'white-space: nowrap' )
-```
-
-
-
-<!-- ======================================================= -->
-### Nettoyer la population de référence {.unnumbered}
-
-Les valeurs des catégories d'âge dans les cadres de données `country_data` et `standard_pop_data` devront être alignées.  
-
-Actuellement, les valeurs de la colonne `age_cat5` du cadre de données `standard_pop_data` contiennent le mot "years" et "plus", alors que celles du cadre de données `country_data` ne le font pas. Nous devrons faire correspondre les valeurs des catégories d'âge. Nous utilisons `str_replace_all()` du paquet **stringr**, comme décrit dans la page [Caractères et chaînes de caractères](#character_strings), pour remplacer ces motifs par des `""` sans espace.  
-
-De plus, le paquet **dsr** s'attend à ce que dans la population standard, la colonne contenant les comptes soit appelée `"pop"`. Nous renommons donc cette colonne en conséquence.  
+Vous pouvez également effectuer un sous-ensemble basé sur un échantillon particulier, en spécifiant le nombre de noeuds "en arrière" que vous souhaitez inclure. Sous-ensemble la même partie de l'arbre basé sur un échantillon, dans ce cas S17BD07692, en remontant de 9 noeuds et nous le sauvegardons comme un nouvel objet `sub_tree2` :
 
 ```{r}
-# Suppression d'une chaîne spécifique des valeurs de la colonne
-standard_pop_clean <- standard_pop_data %>%
-     mutate(
-          age_cat5 = str_replace_all(age_cat5, "years", ""), # supprime "year" (année)
-          age_cat5 = str_replace_all(age_cat5, "plus", ""), # supprimez "plus".
-          age_cat5 = str_replace_all(age_cat5, " ", "")) %>% # supprime l'espace " ".
-     
-     rename(pop = WorldStandardPopulation) # change le nom de la colonne en "pop", car cela est attendu par le paquet dsr
+sub_tree2 <- tree_subset(
+  tree,
+  "S17BD07692",
+  levels_back = 9) # levels_back définit le nombre de nœuds en arrière de la pointe de l'échantillon que vous voulez atteindre.
 ```
 
-<span style="color : orange ;">**_CAUTION:_** Si vous essayez d'utiliser `str_replace_all()` pour supprimer un *symbole plus*, cela ne fonctionnera pas car c'est un symbole spécial. "Échappez" au spécial en mettant deux barres obliques inverses devant, comme dans `str_replace_call(column, "\\+", "")`. </span>
-
-### Créer un jeu de données avec une population standard {#standard_all}  
-
-Enfin, le package **PHEindicatormethods**, détaillé [ci-dessous](#standard_phe), attend les populations standards jointes aux événements et aux comptages de population du pays. Nous allons donc créer un jeu de données `all_data` à cet effet.  
+Examinons l'arbre subset tree 2:
 
 ```{r}
-all_data <- left_join(country_data, standard_pop_clean, by=c("age_cat5", "Sex"))
+ggtree(sub_tree2) +
+  geom_tiplab(size =3)  +
+  ggtitle("Subset tree 2")
+
 ```
 
-Cet ensemble de données complet ressemble à ceci :  
+Vous pouvez également sauvegarder votre nouvel arbre soit comme un type Newick ou même un fichier texte en utilisant la fonction `write.tree()` du package **ape** :
 
-```{r message=FALSE, echo=F}
-DT::datatable(all_data, rownames = FALSE, options = list(pageLength = 5, scrollX=T), class = 'white-space: nowrap' )
+```{r, eval=F, phylogenetic_trees_write_tree}
+# pour sauvegarder en format .nwk format
+ape::write.tree(sub_tree2, file='data/phylo/Shigella_subtree_2.nwk')
+
+# pour sauvegarder en format .txt format
+ape::write.tree(sub_tree2, file='data/phylo/Shigella_subtree_2.txt')
+
 ```
 
+### Rotation des nœuds dans un arbre {.unnumbered}
 
+Comme mentionné précédemment, nous ne pouvons pas modifier l'ordre des pointes ou des noeuds dans l'arbre, car cela est basé sur leur parenté génétique et ne peut pas être manipulé de manière visuelle. Mais nous pouvons roter des branches autour des nœuds si cela facilite notre visualisation.
 
-<!-- ======================================================= -->
-## **dsr** package { }
- 
-Nous démontrons ci-dessous le calcul et la comparaison de taux directement standardisés à l'aide du package **dsr**. Le package **dsr** vous permet de calculer et de comparer des taux directement standardisés (pas de taux indirectement standardisés !).
-  
-Dans la section Préparation des données, nous avons créé des jeux de données distincts pour le nombre de pays et la population standard :  
+Tout d'abord, nous traçons notre nouveau subset tree 2 avec des étiquettes de nœuds pour choisir le nœud que nous voulons manipuler et nous enregistrons dans un objet ggtree plot `p`.
 
-1) l'objet `country_data`, qui est un tableau de population avec le nombre de population et le nombre de décès par strate par pays  
-2) l'objet `standard_pop_clean`, contenant le nombre de personnes par strate pour notre population de référence, la population standard mondiale.  
+```{r, phylogenetic_trees_rotating_1, out.width=c('50%'), fig.show='hold', fig.align='center'}
 
-Nous utiliserons ces ensembles de données distincts pour l'approche **dsr**.  
-
-
-<!-- ======================================================= -->
-### Taux standardisés {.unnumbered}
-
-Ci-dessous, nous calculons les taux par pays directement standardisés pour l'âge et le sexe. Nous utilisons la fonction `dsr()`. 
-
-A noter - `dsr()` s'attend à un cadre de données pour les populations des pays et le nombre d'événements (décès), **et un autre cadre de données avec la population de référence**. Il s'attend également à ce que dans cette base de données de la population de référence, le nom de la colonne unité-temps soit "pop" (nous nous en sommes assurés dans la section Préparation des données).  
-
-Il y a de nombreux arguments, comme annoté dans le code ci-dessous. Notamment, `event = ` est fixé à la colonne `Deaths`, et le `fu = ` ("follow-up") est fixé à la colonne `Population`. Nous définissons les sous-groupes de comparaison comme la colonne `Country` et nous standardisons sur la base de `age_cat5` et `Sex`. Ces deux dernières colonnes n'ont pas d'argument nommé particulier. Voir `?dsr` pour plus de détails. 
-
-```{r, warning=F, message=F}
-# Calculez les taux par pays directement standardisés pour l'âge et le sexe
-mortality_rate <- dsr::dsr(
-     data = country_data, # spécifier l'objet contenant le nombre de décès par strate
-     event = Deaths, # colonne contenant le nombre de décès par strate 
-     fu = Population, # colonne contenant le nombre de population par strate
-     subgroup = Country, # unités que nous souhaitons comparer
-     age_cat5, # autres colonnes - les taux seront standardisés par celles-ci
-     Sex,
-     refdata = standard_pop_clean, # cadre de données de la population de référence, avec une colonne appelée "pop".
-     method = "gamma", # méthode pour calculer l'IC à 95%.
-     sig = 0,95, # niveau de signification
-     mp = 100000, # nous voulons les taux pour 100.000 habitants
-     decimals = 2) # nombre de décimales)
-
-
-# Imprimez la sortie sous la forme d'un joli tableau HTML
-knitr::kable(mortality_rate) # Afficher le taux de mortalité avant et après la standardisation directe
+p <- ggtree(sub_tree2) +  
+  geom_tiplab(size = 4) +
+  geom_text2(aes(subset=!isTip, label=node), # étiquette tous les nœuds de l'arbre
+             size = 5,
+             color = "darkred", 
+             hjust = 1, 
+             vjust = 1) 
+p
 ```
 
-Ci-dessus, nous voyons que même si le pays A avait un taux de mortalité brut plus faible que le pays B, il a un taux standardisé plus élevé après standardisation directe par âge et par sexe.
+Nous pouvons ensuite manipuler les nœuds en appliquant **ggtree::rotate()** ou **ggtree::flip()** : Note : pour illustrer quels noeuds nous manipulons, nous appliquons d'abord la fonction **geom_hilight()** de **ggtree** pour mettre en évidence les échantillons dans les noeuds qui nous intéressent et nous enregistrons cet objet ggtree plot dans un nouvel objet `p1`.
+
+```{r, phylogenetic_trees_rotating_2, out.width=c('50%'), fig.show='hold', fig.align='center'}
+
+p1 <- p + geom_hilight(  # met en évidence le nœud 39 en bleu, "extend =" nous permet de définir la longueur du bloc de couleur
+  node = 39,
+  fill = "steelblue",
+  extend = 0.0017) +  
+geom_hilight(            # met en évidence le nœud 39 en jaune
+  node = 37,
+  fill = "yellow",
+  extend = 0.0017) +               
+ggtitle("Original tree")
 
 
-
-
-<!-- ======================================================= -->
-### Ratios de taux standardisés {.unnumbered}
-
-```{r,warning=F, message=F}
-# Calculer le RR
-mortality_rr <- dsr::dsrr(
-     data = country_data, # spécifier l'objet contenant le nombre de décès par strate
-     event = Deaths, # colonne contenant le nombre de décès par strate 
-     fu = Population, # colonne contenant le nombre de population par strate
-     subgroup = Country, # unités que nous souhaitons comparer
-     age_cat5,
-     Sex, # caractéristiques sur lesquelles nous aimerions nous standardiser 
-     refdata = standard_pop_clean, # population de référence, avec des chiffres dans la colonne appelée pop
-     refgroup = "B", # référence pour la comparaison
-     estimate = "ratio", # type d'estimation
-     sig = 0.95, # niveau de signification
-     mp = 100000, # nous voulons des taux pour 100.000 habitants
-     decimals = 2) # nombre de décimales
-
-# Imprimer le tableau
-knitr::kable(mortality_rr) 
+p1 # imprime
 ```
 
-Le taux de mortalité standardisé est 1,22 fois plus élevé dans le pays A que dans le pays B (IC 95 % 1.17-1.27).
-
-<!-- ======================================================= -->
-### Différence de taux standardisé {.unnumbered}
-
-```{r, warning=F, message=F}
-# Calculer RD
-mortality_rd <- dsr::dsrr(
-     data = country_data, # spécifier l'objet contenant le nombre de décès par strate
-     event = Deaths, # colonne contenant le nombre de décès par strate 
-     fu = Population, # colonne contenant le nombre de population par strate
-     subgroup = Country, # unités que nous souhaitons comparer
-     age_cat5, # caractéristiques sur lesquelles nous voulons nous standardiser
-     Sex,                        
-     refdata = standard_pop_clean, # population de référence, avec des chiffres dans la colonne appelée pop
-     refgroup = "B", # référence pour la comparaison
-     estimate = "difference", # type d'estimation
-     sig = 0.95, # niveau de signification
-     mp = 100000, # nous voulons des taux pour 100.000 habitants
-     decimals = 2) # nombre de décimales
-
-# Imprimer le tableau
-knitr::kable(mortality_rd) 
-```
-
-Le pays A a 4.24 décès supplémentaires pour 100.000 habitants (IC 95% 3.24-5.24) par rapport au pays A.
-
-
-
-
-
-
-
-<!-- ======================================================= -->
-## **PHEindicatormethods** package {#standard_phe}
-
-Une autre façon de calculer les taux standardisés est avec le paquet **PHEindicatormethods**. Ce package vous permet de calculer les taux standardisés directement et indirectement. Nous allons montrer les deux.  
-
-Cette section utilisera le cadre de données `all_data` créé à la fin de la section Préparation. Ce cadre de données inclut les populations des pays, les événements de décès, et la population de référence standard mondiale. Vous pouvez le visualiser [ici](#standard_all).  
-
-
-
-<!-- ======================================================= -->
-### Taux directement standardisés {.unnumbered}
-
-Ci-dessous, nous regroupons d'abord les données par Pays, puis nous les passons à la fonction `phe_dsr()` pour obtenir les taux directement standardisés par pays.
-
-A noter - la population de référence (standard) peut être fournie comme une **colonne dans le cadre de données spécifique au pays** ou comme un **vecteur séparé**. Si elle est fournie dans le cadre de données spécifique au pays, vous devez définir `stdpoptype = "field"`. Si elle est fournie sous forme de vecteur, définissez `stdpoptype = "vector"`. Dans ce dernier cas, vous devez vous assurer que l'ordre des rangées par strate est similaire dans le cadre de données spécifique au pays et dans la population de référence, car les enregistrements seront appariés par position. Dans notre exemple ci-dessous, nous avons fourni la population de référence sous forme de colonne dans le cadre de données spécifique au pays.
-
-Consultez l'aide de `?phe_dsr` ou les liens dans la section Références pour plus d'informations.  
+Maintenant nous pouvons faire tourner le noeud 37 dans l'objet `p1` de sorte que les échantillons sur le noeud 38 se déplacent vers le haut. Nous enregistrons l'arbre pivoté dans un nouvel objet `p2`.
 
 ```{r}
-# Calculez les taux par pays directement normalisés pour l'âge et le sexe.
-mortality_ds_rate_phe <- all_data %>%
-     group_by(Country) %>%
-     PHEindicatormethods::phe_dsr(
-          x = Deaths, # colonne avec le nombre d'événements observés
-          n = Population, # colonne avec les pops non standard pour chaque strate
-          stdpop = pop, # populations standard pour chaque strate
-          stdpoptype = "field")       # soit "vector" pour un vecteur autonome, soit "field" pour signifier que les populations std sont dans les données.  
+p2 <- ggtree::rotate(p1, 37) + 
+      ggtitle("Rotated Node 37")
 
-# Imprimer le tableau
-knitr::kable(mortality_ds_rate_phe)
+
+p2   # imprime
 ```
 
-<!-- ======================================================= -->
-### Taux standardisés indirectement {#standard_indirect .unnumbered}
-
-Pour la standardisation indirecte, vous avez besoin d'une population de référence avec le nombre de décès et le nombre de population par strate. Dans cet exemple, nous allons calculer les taux pour le pays A *en utilisant le pays B comme population de référence*, car la population de référence `standard_pop_clean` n'inclut pas le nombre de décès par strate. 
-
-Ci-dessous, nous créons d'abord la population de référence du pays B. Ensuite, nous passons les données de mortalité et de population pour le pays A, nous les combinons avec la population de référence, et nous les passons à la fonction `phe_isr()`, pour obtenir des taux indirectement standardisés. Bien sûr, vous pouvez aussi faire l'inverse.
-
-A noter - dans notre exemple ci-dessous, la population de référence est fournie comme un cadre de données séparé. Dans ce cas, nous nous assurons que les vecteurs `x = `, `n = `, `x_ref = ` et `n_ref = ` sont tous ordonnés par les mêmes valeurs de catégorie de standardisation (strate) que celles de notre cadre de données spécifique au pays, puisque les enregistrements seront appariés par position.
-
-Consultez l'aide de `?phe_isr` (maintenant `calculate_ISRate` depuis dec 2022) ou les liens dans la section Références pour plus d'informations.  
+Ou nous pouvons utiliser la commande flip pour faire pivoter le noeud 36 de l'objet `p1` et faire passer le noeud 37 en haut et le noeud 39 en bas. Nous enregistrons l'arbre retourné dans un nouvel objet `p3`.
 
 ```{r}
-# Créez la population de référence
-refpopCountryB <- country_data %>% 
-  filter(Country == "B") 
 
-# Calculer les taux pour le pays A indirectement standardisés par âge et sexe
-mortality_is_rate_phe_A <- country_data %>%
-     filter(Country == "A") %>%
-     PHEindicatormethods::calculate_ISRate( #avant c'etait phe_isr()
-          x = Deaths, # colonne avec le nombre d'événements observés
-          n = Population, # colonne avec les pops non standard pour chaque strate
-          x_ref = refpopCountryB$Deaths, # nombre de décès de référence pour chaque strate
-          n_ref = refpopCountryB$Population) # population de référence pour chaque strate
+p3 <-  flip(p1, 39, 37) +
+      ggtitle("Rotated Node 36")
 
-# Imprimez le tableau
-knitr::kable(mortality_is_rate_phe_A)
+
+p3   # imprime
+```
+
+### Exemple de sous-arbre avec annotation d'échantillon de données {.unnumbered}
+
+Disons que nous investiguons le cluster de cas avec expansion clonale qui s'est produit en 2017 et 2018 au nœud 39 de notre sous-arbre. Nous ajoutons l'année d'isolement de la souche ainsi que l'historique des voyages et la couleur par pays pour voir l'origine d'autres souches étroitement liées :
+
+```{r, phylogenetic_trees_inspect_subset_example, out.width=c('80%'), fig.show='hold', fig.align='center', warning=F, message=F}
+
+ggtree(sub_tree2) %<+% sample_data +     # nous utilisons l'opérateur %<+% pour faire le lien avec le fichier sample_data 
+  geom_tiplab(                          # étiquette les extrémités de toutes les branches avec le nom de l'échantillon dans le fichier arbre
+    size = 2.5,
+    offset = 0.001,
+    align = TRUE) + 
+  theme_tree2()+
+  xlim(0, 0.015)+                       # définir les limites de l'axe x de notre arbre 
+  geom_tippoint(aes(color=Country),     # colorer le point d'extrémité par continent
+                size = 1.5)+ 
+  scale_color_brewer(
+    name = "Country", 
+    palette = "Set1", 
+    na.value = "grey")+
+  geom_tiplab(                          # ajouter l'année d'isolation comme étiquette de texte aux extrémités
+    aes(label = Year),
+    color = 'blue',
+    offset = 0.0045,
+    size = 3,
+    linetype = "blank" ,
+    geom = "text",
+    align = TRUE)+ 
+  geom_tiplab(                          # ajouter l'historique de voyage comme étiquette de texte aux extrémités, en couleur rouge
+    aes(label = Travel_history),
+    color = 'red',
+    offset = 0.006,
+    size = 3,
+    linetype = "blank",
+    geom = "text",
+    align = TRUE)+ 
+  ggtitle("Phylogenetic tree of Belgian S. sonnei strains with travel history")+  # ajouter le titre du graphique
+  xlab("genetic distance (0.001 = 4 nucleotides difference)")+                    # ajouter une étiquette à l'axe x 
+  theme(
+    axis.title.x = element_text(size = 10),
+    axis.title.y = element_blank(),
+    legend.title = element_text(face = "bold", size = 12),
+    legend.text = element_text(face = "bold", size = 10),
+    plot.title = element_text(size = 12, face = "bold"))
+
+```
+
+Notre observation pointe vers un événement d'importation de souches en provenance d'Asie, qui ont ensuite circulé en Belgique au fil des ans et semblent avoir causé notre dernière épidémie.
+
+<!-- ======================================================= -->
+
+## Arbres plus complexes : ajout de cartes thermiques des données de l'échantillon {.unnumbered}
+
+Nous pouvons ajouter des informations plus complexes, telles que la présence catégorielle de gènes de résistance aux antimicrobiens et des valeurs numériques pour la résistance aux antimicrobiens effectivement mesurée sous la forme d'une carte thermique en utilisant la fonction **ggtree::gheatmap()**.
+
+Tout d'abord, nous devons tracer notre arbre (qui peut être linéaire ou circulaire) et le enregistrer dans un nouvel objet ggtree plot `p` : Nous allons utiliser le sub_tree de la partie 3).
+
+```{r, phylogenetic_trees_sampledata_heatmap, out.width=c('60%'), fig.align='center', fig.show='hold'}
+
+p <- ggtree(sub_tree2, branch.length='none', layout='circular') %<+% sample_data +
+  geom_tiplab(size =3) + 
+ theme(
+   legend.position = "none",
+    axis.title.x = element_blank(),
+    axis.title.y = element_blank(),
+    plot.title = element_text(
+      size = 12,
+      face = "bold",
+      hjust = 0.5,
+      vjust = -15))
+p
+
+```
+
+Ensuite, nous préparons nos données. Pour visualiser différentes variables avec de nouveaux schémas de couleurs, nous sous-ensemblons notre dataframe à la variable désirée. Il est important d'ajouter le `Sample_ID` comme rownames sinon il ne pourra pas faire correspondre les données à l'arbre `tip.labels` :
+
+Dans notre exemple, nous voulons examiner le sexe et les mutations qui pourraient conférer une résistance à la Ciprofloxacine, un important antibiotique de première ligne utilisé pour traiter les infections à Shigella.
+
+Nous créons un tableau de données pour le sexe :
+
+```{r, phylogenetic_trees_sampledata_heatmap_data}
+gender <- data.frame("gender" = sample_data[,c("Gender")])
+rownames(gender) <- sample_data$Sample_ID
+```
+
+Nous créons un tableau de données pour les mutations du gène gyrA, qui confèrent une résistance à la ciprofloxacine :
+
+```{r}
+cipR <- data.frame("cipR" = sample_data[,c("gyrA_mutations")])
+rownames(cipR) <- sample_data$Sample_ID
+
+```
+
+Nous créons un tableau de données pour la concentration minimale inhibitrice (CMI) mesurée pour la Ciprofloxacine en provenance du laboratoire :
+
+```{r}
+MIC_Cip <- data.frame("mic_cip" = sample_data[,c("MIC_CIP")])
+rownames(MIC_Cip) <- sample_data$Sample_ID
+```
+
+Nous créons un premier graphique en ajoutant une carte thermique binaire pour le sexe à l'arbre phylogénétique et en la sauvegardant dans un nouvel objet graphique ggtree `h1` :
+
+```{r, phylogenetic_trees_sampledata_heatmap_gender, out.width=c('70%'), fig.show='hold', fig.align='center'}
+
+h1 <-  gheatmap(p, gender,                                 # Nous ajoutons une couche de carte thermique du tableau de données de sexe à notre graphique arbre.
+                offset = 10,                               # l'offset déplace la carte thermique vers la droite,
+                width = 0.10,                              # la largeur définit la largeur de la colonne de la carte thermique,
+                color = NULL,                              # la couleur définit la bordure des colonnes de la carte thermique.
+         colnames = FALSE) +                               # cache les noms des colonnes de la carte thermique
+  scale_fill_manual(name = "Gender",                       # définit le schéma de coloration et la légende pour le sexe
+                    values = c("#00d1b1", "purple"),
+                    breaks = c("Male", "Female"),
+                    labels = c("Male", "Female")) +
+   theme(legend.position = "bottom",
+        legend.title = element_text(size = 12),
+        legend.text = element_text(size = 10),
+        legend.box = "vertical", legend.margin = margin())
+h1
+
+```
+
+Nous ajoutons ensuite des informations sur les mutations du gène gyrA, qui confèrent une résistance à la Ciprofloxacine :
+
+Note : La présence de mutations ponctuelles chromosomiques dans les données WGS a été déterminée au préalable à l'aide de l'outil PointFinder développé par Zankari et al. (voir la référence dans la section des références supplémentaires)
+
+Tout d'abord, nous attribuons un nouveau schéma de couleurs à notre objet de tracé existant `h1` et le sauvegardons dans un nouvel objet `h2`. Cela nous permet de définir et de modifier les couleurs de notre deuxième variable dans la carte thermique.
+
+```{r}
+h2 <- h1 + new_scale_fill() 
+```
+
+Ensuite, nous ajoutons la deuxième couche de carte thermique à `h2` et nous enregistrons les graphiques combinés dans un nouvel objet `h3` :
+
+```{r, phylogenetic_trees_sampledata_heatmap_cip_genes, out.width=c('80%'), fig.show='hold', fig.align='center'}
+
+h3 <- gheatmap(h2, cipR,         # ajoute la deuxième ligne de la carte thermique décrivant les mutations de résistance à la Ciprofloxacine
+               offset = 12, 
+               width = 0.10, 
+               colnames = FALSE) +
+  scale_fill_manual(name = "Ciprofloxacin resistance \n conferring mutation",
+                    values = c("#fe9698","#ea0c92"),
+                    breaks = c( "gyrA D87Y", "gyrA S83L"),
+                    labels = c( "gyrA d87y", "gyrA s83l")) +
+   theme(legend.position = "bottom",
+        legend.title = element_text(size = 12),
+        legend.text = element_text(size = 10),
+        legend.box = "vertical", legend.margin = margin())+
+  guides(fill = guide_legend(nrow = 2,byrow = TRUE))
+h3
+```
+
+Nous répétons le processus ci-dessus, en ajoutant d'abord une nouvelle couche d'échelle de couleurs à notre objet existant `h3`, puis en ajoutant les données continues sur la concentration minimale inhibitrice (CMI) de la Ciprofloxacine pour chaque souche à l'objet résultant `h4` pour produire l'objet final `h5` :
+
+```{r, phylogenetic_trees_sampledata_heatmap_cip_MIC, out.width=c('90%'), fig.show='hold', fig.align='center'}
+# D'abord nous ajoutons le nouveau schéma de coloration :
+h4 <- h3 + new_scale_fill()
+
+# puis nous combinons les deux en une nouvelle graphique :
+h5 <- gheatmap(h4, MIC_Cip,  
+               offset = 14, 
+               width = 0.10,
+                colnames = FALSE)+
+  scale_fill_continuous(name = "MIC for Ciprofloxacin",  # nous définissons ici un schéma de couleurs de gradient pour la variable continue de CMI
+                      low = "yellow", high = "red",
+                      breaks = c(0, 0.50, 1.00),
+                      na.value = "white") +
+   guides(fill = guide_colourbar(barwidth = 5, barheight = 1))+
+   theme(legend.position = "bottom",
+        legend.title = element_text(size = 12),
+        legend.text = element_text(size = 10),
+        legend.box = "vertical", legend.margin = margin())
+h5
+
+```
+
+We can do the same exercise for a linear tree:
+
+```{r, phylogenetic_trees_sampledata_heatmap_linear_1, out.width=c('80%'), fig.show='hold', fig.align='center'}
+
+p <- ggtree(sub_tree2) %<+% sample_data +
+  geom_tiplab(size = 3) + # etiquetter les pointes
+  theme_tree2()+
+  xlab("genetic distance (0.001 = 4 nucleotides difference)")+
+  xlim(0, 0.015)+
+ theme(legend.position = "none",
+      axis.title.y = element_blank(),
+      plot.title = element_text(size = 12, 
+                                face = "bold",
+                                hjust = 0.5,
+                                vjust = -15))
+p
+```
+
+Tout d'abord, nous ajoutons le sexe :
+
+```{r, phylogenetic_trees_sampledata_heatmap_linear_2, out.width=c('80%'), fig.show='hold', fig.align='center'}
+
+h1 <-  gheatmap(p, gender, 
+                offset = 0.003,
+                width = 0.1, 
+                color="black", 
+         colnames = FALSE)+
+  scale_fill_manual(name = "Gender",
+                    values = c("#00d1b1", "purple"),
+                    breaks = c("Male", "Female"),
+                    labels = c("Male", "Female"))+
+   theme(legend.position = "bottom",
+        legend.title = element_text(size = 12),
+        legend.text = element_text(size = 10),
+        legend.box = "vertical", legend.margin = margin())
+h1
+```
+
+Puis nous ajoutons les mutations de résistance à la Ciprofloxacine après avoir ajouté une autre couche de schéma de couleurs :
+
+```{r, phylogenetic_trees_sampledata_heatmap_linear_3, out.width=c('80%'), fig.show='hold', fig.align='center'}
+
+h2 <- h1 + new_scale_fill()
+h3 <- gheatmap(h2, cipR,   
+               offset = 0.004, 
+               width = 0.1,
+               color = "black",
+                colnames = FALSE)+
+  scale_fill_manual(name = "Ciprofloxacin resistance \n conferring mutation",
+                    values = c("#fe9698","#ea0c92"),
+                    breaks = c( "gyrA D87Y", "gyrA S83L"),
+                    labels = c( "gyrA d87y", "gyrA s83l"))+
+   theme(legend.position = "bottom",
+        legend.title = element_text(size = 12),
+        legend.text = element_text(size = 10),
+        legend.box = "vertical", legend.margin = margin())+
+  guides(fill = guide_legend(nrow = 2,byrow = TRUE))
+ h3
+```
+
+On ajoute ensuite la concentration minimale inhibitrice déterminée par le laboratoire (CMI) :
+
+```{r, phylogenetic_trees_sampledata_heatmap_linear_4, out.width=c('80%'), fig.show='hold', fig.align='center'}
+
+h4 <- h3 + new_scale_fill()
+h5 <- gheatmap(h4, MIC_Cip, 
+               offset = 0.005,  
+               width = 0.1,
+               color = "black", 
+                colnames = FALSE)+
+  scale_fill_continuous(name = "MIC for Ciprofloxacin",
+                      low = "yellow", high = "red",
+                      breaks = c(0,0.50,1.00),
+                      na.value = "white")+
+   guides(fill = guide_colourbar(barwidth = 5, barheight = 1))+
+   theme(legend.position = "bottom",
+        legend.title = element_text(size = 10),
+        legend.text = element_text(size = 8),
+        legend.box = "horizontal", legend.margin = margin())+
+  guides(shape = guide_legend(override.aes = list(size = 2)))
+h5
+
 ```
 
 <!-- ======================================================= -->
-## Ressources { }
 
-Si vous souhaitez voir un autre exemple reproductible utilisant **dsr**, veuillez consulter [cette vignette]( https://mran.microsoft.com/snapshot/2020-02-12/web/packages/dsr/vignettes/dsr.html).  
+## Resources
 
-Pour un autre exemple utilisant **PHEindicatormethods**, veuillez vous rendre sur [ce site Web](https://mran.microsoft.com/snapshot/2018-10-22/web/packages/PHEindicatormethods/vignettes/IntroductiontoPHEindicatormethods.html)  
+<http://hydrodictyon.eeb.uconn.edu/eebedia/index.php/Ggtree#> Clade_Colors <https://bioconductor.riken.jp/packages/3.2/bioc/vignettes/ggtree/inst/doc/treeManipulation.html> <https://guangchuangyu.github.io/ggtree-book/chapter-ggtree.html> <https://bioconductor.riken.jp/packages/3.8/bioc/vignettes/ggtree/inst/doc/treeManipulation.html>
 
-Voir les **PHEindicatormethods** [fichier pdf de référence](https://cran.r-project.org/web/packages/PHEindicatormethods/PHEindicatormethods.pdf)  
+Ea Zankari, Rosa Allesøe, Katrine G Joensen, Lina M Cavaco, Ole Lund, Frank M Aarestrup, PointFinder: a novel web tool for WGS-based detection of antimicrobial resistance associated with chromosomal point mutations in bacterial pathogens, Journal of Antimicrobial Chemotherapy, Volume 72, Issue 10, October 2017, Pages 2764--2768, <https://doi.org/10.1093/jac/dkx217>
 ```{r include=FALSE, cache=FALSE}
 
 # clear workspace
@@ -761,1048 +934,5 @@ options(scipen=1, digits=7)
 # opts_chunk$set(list(echo = FALSE, eval = FALSE))
 ```
 
-<!--chapter:end:new_pages/standardization.Rmd-->
-
-# Télécharger le manuel et les données  {#download_book_data}
-
-
-<!-- Note to self: If you want to create a download link to Github, right-click the "View Raw" button on Github, copy the address, and use that in the HTML below. -->
-
-
-
-
-## Télécharger le manuel hors-ligne  {#download_offline}
-
-Vous pouvez télécharger la version hors-ligne de ce manuel en tant que fichier HTML afin de pouvoir le visualiser dans votre navigateur Web même si vous n'avez plus accès à Internet. Si vous envisagez d'utiliser le manuel Epi R hors ligne, voici quelques éléments à prendre en compte :  
-
-* Lorsque vous ouvrez le fichier, le chargement des images et de la table des matières peut prendre une minute ou deux.  
-* Le manuel hors ligne a une mise en page légèrement différente : une très longue page avec la table des matières à gauche. Pour rechercher des termes spécifiques, utilisez Ctrl + F (Cmd + F).  
-* Consultez la page [Paquets conseillés](#suggested_packages) pour vous aider à installer les paquets R appropriés avant de perdre votre connexion à Internet.  
-* Installez notre paquet R **epirhandbook** qui contient toutes les données utilisées dans les exemples (le processus d'installation est décrit ci-dessous).  
-
-**Il y a deux façons de télécharger le manuel :**  
-
-
-
-### Utiliser le lien de téléchargement {.unnumbered}  
-
-Pour un accès rapide, **cliquez à droite** [ce lien](https://github.com/appliedepi/epiRhandbook_fr/blob/master/offline_long/Epi_R_Handbook_offline.html) **et sélectionnez "Enregistrer le lien sous"**.  
-
-Si vous êtes sur un Mac, utilisez Cmd + clic. Si vous êtes sur un téléphone portable, appuyez sur le lien et maintenez-le enfoncé, puis sélectionnez "Enregistrer le lien". Le manuel sera téléchargé sur votre appareil. Si un écran contenant un code HTML brut apparaît, assurez-vous d'avoir suivi les instructions ci-dessus ou essayez l'option 2.  
-
-
-
-### Utiliser notre paquet R {.unnumbered}  
-
-Nous avons développé un paquet R appelé **epirhandbook**. Il comprend une fonction `download_book()` qui télécharge le fichier du guide depuis notre dépôt Github sur votre ordinateur.  
-
-
-Ce package contient également une fonction `get_data()` qui télécharge toutes les données utilisées dans les chapitres sur votre ordinateur.  
-
-
-Exécutez le code suivant pour installer notre paquet R **epirhandbook** à partir du [dépôt Github *appliedepi*](https://github.com/appliedepi/epirhandbook). Ce paquet n'est pas sur le CRAN, donc utilisez la fonction spéciale `p_install_gh()` du paquet **pacman** pour l'installer depuis Github.  
-
-
-```{r, eval=F}
-# installer la dernière version du paquet epirhandbook
-pacman::p_install_gh("appliedepi/epirhandbook")
-```
-
-Maintenant, importer le paquet pour l'utiliser dans votre session R actuelle :  
-
-```{r, eval=F}
-# Importer le paquet pour pouvoir l'utiliser dans la session ouverte
-pacman::p_load(epirhandbook)
-```
-
-Ensuite, exécutez la fonction du paquet `download_book()` (avec des parenthèses vides) pour télécharger le manuel sur votre ordinateur. En supposant que vous êtes dans RStudio, une fenêtre apparaîtra pour vous permettre de sélectionner un emplacement de sauvegarde.  
-
-
-```{r, eval=F}
-# télécharger la version html du manuel localement
-download_book()
-```
-
-
-
-## Télécharger les données
-
-Pour pouvoir reproduire les exemples au fur et à mesure sur votre ordinateur, vous pouvez télécharger les données et les fichiers générés. 
-
-### Utiliser notre paquet R {.unnumbered}  
-
-Une fois le paquet téléchargé et importé dans votre session R (voir section au-dessus) utilisez la fonction `get_data()` du paquet pour obtenir les données d'exemple sur votre ordinateur. Exécutez `get_data("all")` pour obtenir *toutes* les données d'exemple, ou fournissez un nom de fichier spécifique et une extension entre guillemets pour récupérer un seul fichier.  
-
-Techniquement, toutes les données ont déjà été téléchargées avec le paquet, et doivent simplement être transférées dans un dossier de votre ordinateur. Une fenêtre pop-up apparaîtra, vous permettant de sélectionner un emplacement de dossier de sauvegarde. Nous vous suggérons de créer un nouveau dossier "data" car il y a environ 30 fichiers (y compris les données d'exemple et les sorties générées par les exemples).  
-
-
-```{r, eval=F}
-# enregistrer toutes les données dans un dossier sur votre ordinateur
-get_data("all")
-
-# enregistrer les données linelist dans un dossiet sur votre ordinateur
-get_data(file = "linelist_cleaned.rds")
-
-```
-
-
-Une fois que vous avez utilisé `get_data()` pour enregistrer un fichier sur votre ordinateur, vous devrez encore l'importer dans R. Voir la page [Importer et exporter des données](#import_export) pour plus de détails.  
-
-Si vous le souhaitez, vous pouvez consulter toutes les données utilisées dans ce manuel dans le **["dossier données"](https://github.com/appliedepi/epirhandbook_eng/tree/master/data)** de notre dépôt Github.  
-
-
-### Téléchargement manuel {.unnumbered}  
-
-Vous pouvez télécharger les données fichier par fichier à partir de notre dépôt Github via un lien ou une commande R spécifique au fichier. Certains types de fichiers ont un bouton de téléchargement, tandis que d'autres peuvent être téléchargés via une commande R. 
-
-
-#### Liste de cas (linelist) {.unnumbered}
-
-Il s'agit d'une linelist pour une épidémie d'Ebola fictive, développée par notre équipe à partir du jeu de données d'exemple `ebola_sim` du paquet **outbreaks**.  
-
-* <a href='https://github.com/appliedepi/epiRhandbook_fr/tree/master/data/case_linelists/linelist_raw.xlsx' class='download-button'>Cliquer pour télécharger les données brutes (.xlsx)</span></a>. La liste de cas "brute" est une feuille de calcul Excel contenant des données désordonnées. Utilisez-la pour suivre la page [Nettoyer les données et fonctions essentielles](#cleaning_data).  
-
-* <a href='https://github.com/appliedepi/epiRhandbook_fr/tree/master/data/case_linelists/linelist_cleaned.rds' class='download-button'>Cliquer pour télécharger la linelist nettoyée (.rds)</a>. Utilisez ce fichier pour toutes les autres pages de ce manuel qui utilisent la linelist. Un fichier .rds est un type de fichier spécifique à R qui préserve les classes de colonnes. Cela garantit que vous n'aurez qu'un nettoyage minimal à faire après avoir importé les données dans R.  
-
-*Autres fichiers linelist :*  
-
-* <a href='https://github.com/appliedepi/epiRhandbook_fr/tree/master/data/case_linelists/linelist_cleaned.xlsx' class='download-button'>Cliquer pour télécharger la version nettoyée de la linelist sous format Excel</a>
-
-* Une partie de la page sur le nettoyage des données utilise un "dictionnaire de nettoyage" (fichier .csv). Vous pouvez le charger directement dans R en exécutant les commandes suivantes :  
-
-```{r, eval=F}
-pacman::p_load(rio) # installer/importer le paquet **rio**
-
-# importer le fichier directement depuis github
-cleaning_dict <- import("https://github.com/appliedepi/epiRhandbook_fr/tree/master/data/case_linelists/cleaning_dict.csv")
-```
-
-
-#### Cas de paludisme {#data_malaria .unnumbered}  
-
-Ces données sont des comptages fictifs de cas de paludisme par groupe d'âge, établissement et jour. Un fichier .rds est un type de fichier spécifique à R qui préserve les classes de colonnes. Cela garantit que vous n'aurez qu'un nettoyage minimal à faire après avoir importé les données dans R.  
-
-<a href='https://github.com/appliedepi/epiRhandbook_fr/tree/master/data/malaria_facility_count_data.rds' class='download-button'>
-	Click to download
-	<span>les comptages de de cas de paludisme (.rds file)</span>
-</a>
-
-
-#### Données sur l'échelle de Likert {.unnumbered}  
-
-Il s'agit de données fictives issues d'une enquête de type Likert, utilisées dans la page [Pyramides démographiques et échelles de Likert](#age_pyramid). Vous pouvez charger ces données directement dans R en exécutant les commandes suivantes :    
-
-
-```{r, eval=F}
-pacman::p_load(rio)  # installer/importer le paquet **rio**
-
-# importer le fichier directement depuis github
-likert_data <- import("https://github.com/appliedepi/epiRhandbook_fr/tree/master/data/likert_data.csv")
-```
-
-
-#### Flexdashboard {.unnumbered}  
-
-Vous trouverez ci-dessous des liens vers le fichier associé à la page [Tableaux de bord avec R Markdown](#dashboards): 
-
-* Pour télécharger le fichier  RMarkdown (.Rmd) du tableau de bord sur les épidémies, faites un clic droit sur ce [lien](https://github.com/appliedepi/epiRhandbook_fr/tree/master/data/flexdashboard/outbreak_dashboard.Rmd) (Cmd+clic pour Mac) et sélectionnez "Enregistrer le lien sous".  
-* Pour télécharger le tableau de bord HTML, cliquez avec le bouton droit de la souris sur ce [lien](https://github.com/appliedepi/epiRhandbook_fr/tree/master/data/flexdashboard/outbreak_dashboard_test.html). (Cmd + clic pour Mac) et sélectionnez "Enregistrer le lien sous".  
-
-
-#### recherche des contacts {.unnumbered} 
-
-La page [Recherche des contacts](#contact_tracing) présente une analyse des données de recherche des contacts, à l'aide d'exemples de données provenant de [Go.Data](https://github.com/WorldHealthOrganization/godata/tree/master/analytics/r-reporting). Les données utilisées dans cette page peuvent être téléchargées sous forme de fichiers .rds en cliquant sur les liens suivants :  
-
-<a href='https://github.com/WorldHealthOrganization/godata/blob/master/analytics/r-reporting/data/cases_clean.rds?raw=true' class='download-button'>
-	Cliquer pour télécharger
-	<span>les données d'investigation des cas (.rds file)</span>
-</a>
-
-<a href='https://github.com/WorldHealthOrganization/godata/blob/master/analytics/r-reporting/data/contacts_clean.rds?raw=true' class='download-button'>
-	Cliquer pour télécharger
-	<span>les données d'enregistrement des contacts (.rds file)</span>
-</a>
-
-<a href='https://github.com/WorldHealthOrganization/godata/blob/master/analytics/r-reporting/data/followups_clean.rds?raw=true' class='download-button'>
-	Cliquer pour télécharger
-	<span>les données de suivi des contacts (.rds file)</span>
-</a>
-
-
-
-<span style="color: black;">**_NOTE:_** Les données structurées de recherche des contacts provenant d'autres logiciels (par exemple KoBo, DHIS2 Tracker, CommCare) peuvent être organisées differement. Si vous souhaitez contribuer à l'élaboration d'un échantillon de données ou d'un contenu alternatif pour cette page, veuillez [nous contacter](#contact_us).</span> 
-
-<span style="color: darkgreen;">**_TIP:_** Si vous déployez Go.Data et souhaitez vous connecter à l'API de votre instance, consultez la page Importation et exportation, [(section API)](#import_api) et la [Communauté de pratique Go.Data](https://community-godata.who.int/).</span>
-
-
-
-#### SIG {.unnumbered}  
-
-Les fichiers Shapefiles comportent de nombreux sous-fichiers, chacun avec une extension de fichier différente. Un fichier aura l'extension ".shp", mais d'autres peuvent avoir ".dbf", ".prj", etc.  
-
-La page [Notions de base sur les SIG](#gis) fournit des liens vers le site Web *Humanitarian Data Exchange* où vous pouvez télécharger les fichiers de forme directement sous forme de fichiers zippés.  
-
-Par exemple, les données des locations des établissements de santé peuvent être téléchargées [ici](https://data.humdata.org/dataset/hotosm_sierra_leone_health_facilities). Téléchargez "hotosm_sierra_leone_health_facilities_points_shp.zip". Une fois enregistré sur votre ordinateur, décompressez le dossier. Vous verrez plusieurs fichiers avec des extensions différentes (par exemple, ".shp", ".prj", ".shx"); tous ces fichiers doivent être enregistrés dans le même dossier sur votre ordinateur. Ensuite, pour importer dans R, fournissez le chemin et le nom du fichier ".shp" à `st_read()` du paquet **sf** (comme décrit dans la page [Notions de base sur les SIG](#gis)).  
-
-Si vous suivez l'option 1 pour télécharger toutes les données de l'exemple (via notre paquet R **epirhandbook**), tous les shapefiles sont inclus.  
-
-Vous pouvez également télécharger les fichiers Shapefile à partir du dossier "data" du manuel R sur Github (voir le sous-dossier "gis"). Cependant, sachez que vous devrez télécharger *chaque* sous-fichier individuellement sur votre ordinateur. Dans Github, cliquez sur chaque fichier et téléchargez-les en cliquant sur le bouton "Télécharger". Ci-dessous, vous pouvez voir comment le fichier de forme "sle_adm3" se compose de plusieurs fichiers, chacun devant être téléchargé depuis Github. 
-
-```{r out.height = "50%", fig.align = "center", echo=F}
-knitr::include_graphics(here::here("images", "download_shp.png"))
-```
-
-
-#### Arbres phylogénétiques {.unnumbered}  
-
-La page sur les [arbres phylogénétiques](phylogenetic_trees) utilise un fichier Newick pour l'arbre phylogénétique construit à partir du séquençage du génome entier de 299 échantillons de Shigella sonnei et des données d'échantillons correspondantes (converties en fichier texte). Les échantillons belges et les données résultantes sont aimablement fournis par le CNR belge pour Salmonella et Shigella dans le cadre d'un projet mené par un boursier EUPHEM de l'ECDC, et seront également publiés dans un manuscrit. Les données internationales sont disponibles sur des bases de données publiques (ncbi) et ont déjà été publiées.  
-
-
-* Pour télécharger le fichier de l'arbre phylogénétique "Shigella_tree.txt", cliquez avec le bouton droit de la souris sur ce [lien](https://github.com/appliedepi/epiRhandbook_fr/tree/master/data/phylo/Shigella_tree.txt) (Cmd+click for Mac) et sélectionnez "Enregistrer le lien sous". 
-* Pour télécharger le fichier "sample_data_Shigella_tree.csv" contenant des informations supplémentaires sur chaque échantillon, cliquez avec le bouton droit de la souris sur ce [lien](https://github.com/appliedepi/epiRhandbook_fr/tree/master/data/phylo/sample_data_Shigella_tree.csv) (Cmd+clic pour Mac) et sélectionnez "Enregistrer le lien sous".  
-* Pour voir le nouveau sous-arbre créé, cliquez avec le bouton droit de la souris sur ce [lien](https://github.com/appliedepi/epiRhandbook_fr/tree/master/data/phylo/Shigella_subtree_2.txt) (Cmd+clic pour Mac) et sélectionnez "Enregistrer le lien sous". Le fichier .txt sera téléchargé sur votre ordinateur.  
-
-Vous pouvez ensuite importer les fichiers .txt avec `read.tree()` du paquet **ape**, comme expliqué dans le chapitre concerné.
-
-
-```{r, eval=F}
-ape::read.tree("Shigella_tree.txt")
-```
-
-
-#### Standardization {.unnumbered} 
-
-Pour la page sur la [standardisation des données](#standardisation), vous pouvez charger les données directement depuis notre dépôt Github sur internet dans votre session R avec les commandes suivantes :  
-
-
-```{r, eval=F}
-# installer/importer le paquet **rio**
-pacman::p_load(rio) 
-
-##############
-# Pays A
-##############
-# import des données démographiques du pays depuis github
-A_demo <- import("https://github.com/appliedepi/epiRhandbook_fr/tree/master/data/standardization/country_demographics.csv")
-
-# import des données de mortalité du pays depuis github
-A_deaths <- import("https://github.com/appliedepi/epiRhandbook_fr/tree/master/data/standardization/deaths_countryA.csv")
-
-
-
-##############
-# Pays B
-##############
-# import des données démographiques du pays depuis github
-B_demo <- import("https://github.com/appliedepi/epiRhandbook_fr/tree/master/data/standardization/country_demographics_2.csv")
-
-# import des données de mortalité du pays depuis github
-B_deaths <- import("https://github.com/appliedepi/epiRhandbook_fr/tree/master/data/standardization/deaths_countryB.csv")
-
-
-###############
-# Population de référence
-###############
-# import depuis Github
-standard_pop_data <- import("https://github.com/appliedepi/epiRhandbook_fr/tree/master/data/standardization/world_standard_population_by_sex.csv")
-```
-
-
-
-#### Séries temporelles et détection des épidémies {#data_outbreak .unnumbered}  
-
-Voir la page sur [les séries temporelles et la détection des épidémies](#time_series). Nous utilisons les cas de campylobacter rapportés en Allemagne de 2002 à 2011, tels que disponibles dans le paquet R **surveillance**. (*note* cet ensemble de données a été adapté de l'original, en ce sens que 3 mois de données ont été supprimés à partir de la fin de 2011 à des fins de démonstration).
-
-
-<a href='https://github.com/appliedepi/epiRhandbook_fr/tree/master/data/time_series/campylobacter_germany.xlsx' class='download-button'>
-	Cliquer pour télécharger
-	<span> Campylobacter en Allemagne (.xlsx)</span>
-</a>
-
-Nous utilisons également les données climatiques de l'Allemagne entre 2002 et 2011 (température en degrés Celsius et précipitations en millimètres). Ces données ont été téléchargées à partir d'un jeu de données dérivé des données produites par le satellite Copernicus (UE) à l'aide du paquet **ecmwfr**. Vous devrez télécharger toutes ces données et les importer avec `stars::read_stars()` comme expliqué dans la page sur les séries temporelles.  
-
-
-<a href='https://github.com/appliedepi/epiRhandbook_fr/tree/master/data/time_series/weather/germany_weather2002.nc' class='download-button'>
-	Cliquer pour télécharger
-	<span> Climat Allemagne 2002 (.nc file)</span>
-</a> 
-
-<a href='https://github.com/appliedepi/epiRhandbook_fr/tree/master/data/time_series/weather/germany_weather2003.nc' class='download-button'>
-	Cliquer pour télécharger
-	<span> Climat Allemagne 2003 (.nc file)</span>
-</a> 
-
-<a href='https://github.com/appliedepi/epiRhandbook_fr/tree/master/data/time_series/weather/germany_weather2004.nc' class='download-button'>
-	Cliquer pour télécharger
-	<span> Climat Allemagne 2004 (.nc file)</span>
-</a> 
-
-<a href='https://github.com/appliedepi/epiRhandbook_fr/tree/master/data/time_series/weather/germany_weather2005.nc' class='download-button'>
-	Cliquer pour télécharger
-	<span> Climat Allemagne 2005 (.nc file)</span>
-</a> 
-
-<a href='https://github.com/appliedepi/epiRhandbook_fr/tree/master/data/time_series/weather/germany_weather2006.nc' class='download-button'>
-	Cliquer pour télécharger
-	<span> Climat Allemagne 2006 (.nc file)</span>
-</a> 
-
-<a href='https://github.com/appliedepi/epiRhandbook_fr/tree/master/data/time_series/weather/germany_weather2007.nc' class='download-button'>
-	Cliquer pour télécharger
-	<span> Climat Allemagne 2007 (.nc file)</span>
-</a> 
-
-<a href='https://github.com/appliedepi/epiRhandbook_fr/tree/master/data/time_series/weather/germany_weather2008.nc' class='download-button'>
-	Cliquer pour télécharger
-	<span> Climat Allemagne 2008 (.nc file)</span>
-</a> 
-
-<a href='https://github.com/appliedepi/epiRhandbook_fr/tree/master/data/time_series/weather/germany_weather2009.nc' class='download-button'>
-	Cliquer pour télécharger
-	<span> Climat Allemagne 2009 (.nc file)</span>
-</a> 
-
-<a href='https://github.com/appliedepi/epiRhandbook_fr/tree/master/data/time_series/weather/germany_weather2010.nc' class='download-button'>
-	Cliquer pour télécharger
-	<span> Climat Allemagne 2010 (.nc file)</span>
-</a> 
-
-<a href='https://github.com/appliedepi/epiRhandbook_fr/tree/master/data/time_series/weather/germany_weather2011.nc' class='download-button'>
-	Cliquer pour télécharger
-	<span> Climat Allemagne 2011 (.nc file)</span>
-</a>
-
-
-
-#### Analyse d'enquêtes {#data_survey .unnumbered}  
-
-Pour la page [analyse d'enquête](#survey_analysis), nous utilisons des données d'enquêtes de mortalité fictives basées sur les modèles d'enquête MSF OCA. Ces données fictives ont été générées dans le cadre du projet ["R4Epis"](https://r4epis.netlify.app/).
-
-<a href='https://github.com/appliedepi/epiRhandbook_fr/tree/master/data/surveys/survey_data.xlsx' class='download-button'>
-	Cliquer pour télécharger
-	<span> Données d'enquête fictives (.xlsx)</span>
-</a>
-
-<a href='https://github.com/appliedepi/epiRhandbook_fr/tree/master/data/surveys/survey_dict.xlsx' class='download-button'>
-	Cliquer pour télécharger
-	<span> Données d'enquête fictives (dictionnaire) (.xlsx)</span>
-</a>
-
-<a href='https://github.com/appliedepi/epiRhandbook_fr/tree/master/data/surveys/population.xlsx' class='download-button'>
-	Cliquer pour télécharger
-	<span> Données d'enquête fictives (données de population) (.xlsx)</span>
-</a>
-
-
-
-
-#### Shiny {#data_shiny .unnumbered}  
-
-La page sur les [tableaux de bord avec Shiny](#shiny) illustre la construction d'une application simple pour afficher les données sur le paludisme.  
-
-Pour télécharger les fichiers R qui produisent l'app Shiny :  
-
-Vous pouvez <a href='https://github.com/appliedepi/epiRhandbook_fr/tree/master/data/malaria_app/app.R' class='download-button'>
-	cliquer ici pour télécharger le fichier app.R<span> qui contient à la fois le code de l'interface utilisateur et du serveur pour l'application Shiny.</span></a>.
-
-Vous pouvez <a href='https://github.com/appliedepi/epirhandbook_eng/blob/master/data/malaria_app/data/facility_count_data.rds' class='download-button'>
-	cliquer ici pour télécharger le fichier facility_count_data.rds<span></a> qui contient les données sur le paludisme pour l'application Shiny. Notez que vous devrez peut-être l'enregistrer dans un dossier "data" pour que les chemins de fichier here() fonctionnent correctement.  
-
-Vous pouvez <a href='https://github.com/appliedepi/epirhandbook_eng/blob/master/data/malaria_app/global.R' class='download-button'>
-	cliquer ici pour télécharger le fichier global.R<span></a> qui doit être exécuté avant l'ouverture de l'app, comme expliqué dans la page.
-	
-Vous pouvez <a href='https://github.com/appliedepi/epiRhandbook_fr/tree/master/data/malaria_app/funcs/plot_epicurve.R' class='download-button'>
-	cliquer ici pour télécharger le fichier plot_epicurve.R<span></a> dont l'exécution est lancée par le script global.R. Notez que vous devrez peut-être le stocker dans un dossier "funcs" pour que les chemins de fichier here() fonctionnent correctement.
-
-
-
-```{r include=FALSE, cache=FALSE}
-
-# clear workspace
-rm(list = ls(all = TRUE))
-
-# clear all packages except base
-#lapply(names(sessionInfo()$loadedOnly), require, character.only = TRUE)
-#invisible(lapply(paste0('package:', names(sessionInfo()$otherPkgs)), detach, character.only=TRUE, unload=TRUE, force=TRUE))
-
-# to ensure that tidyverse packages prevail
-filter <- dplyr::filter
-select <- dplyr::select
-summarise <- dplyr::summarise
-summary <- base::summary
-incidence <- incidence2::incidence
-
-#load core packages
-pacman::p_load(
-     rio,
-     here,
-     DT,
-     stringr,
-     lubridate,
-     tidyverse
-)
-
-# import the cleaned ebola linelist
-linelist <- rio::import(here::here("data", "case_linelists", "linelist_cleaned.rds"))
-
-# import the count data - facility level
-#count_data <- rio::import(here::here("data", "facility_count_data.rds"))
-
-# Settings
-
-options(scipen=1, digits=7)
-
-# print only text (not code)
-# library(knitr)
-# opts_chunk$set(list(echo = FALSE, eval = FALSE))
-```
-
-<!--chapter:end:new_pages/data_used.Rmd-->
-
-
-# Chaînes de transmission {#transmission_chains}
-
-
-<!-- ======================================================= -->
-## Aperçu { }
-
-L'outil principal pour manipuler, analyser, et visualiser les chaînes de transmission et les données de recherche de contact est le paquet **epicontacts**, développé par [RECON](https://www.repidemicsconsortium.org/). Essayez le graphique interactif ci-dessous en passant la souris sur les noeuds pour obtenir plus d'informations et en cliquant dessus pour surligner les cas descendants.
-
-```{r out.width=c('25%', '25%'), fig.show='hold', echo=F}
-
-## installer la version de développement de epicontacts
-if(
-  !"epicontacts" %in% rownames(installed.packages()) |
-  packageVersion("epicontacts") != "1.2.0"
-) remotes::install_github("reconhub/epicontacts@timeline")
-
-## installer et charger les paquets
-pacman::p_load(tidyverse, epicontacts, magrittr, here, webshot, visNetwork)
-
-## charger la liste de diffusion
-linelist <- rio::import(here::here("data", "case_linelists", "linelist_cleaned.rds")) %>%
-  filter(!duplicated(case_id))
-
-## générer des contacts
-contacts <- linelist %>%
-  transmute(
-    from = infector,
-    to = case_id,
-    location = sample(c("Community", "Nosocomial"), n(), TRUE),
-    duration = sample.int(10, n(), TRUE)
-  ) %>%
-  drop_na(from)
-
-## générer des epicontacts
-epic <- epicontacts::make_epicontacts(
-  linelist = linelist,
-  contacts = contacts, 
-  directed = TRUE
-)
-
-## objet subset
-epic %<>% subset(
-  node_attribute = list(date_onset = c(as.Date(c("2014-06-01", "2014-07-01"))))
-) %>%
-  thin("contacts")
-
-## Graphique avec la date d'apparition en axe x
-plot(
-  epic,
-  x_axis = "date_onset",
-  label = FALSE,
-  node_color = "outcome",
-  col_pal = c(Death = "firebrick", Recover = "green"),
-  node_shape = "gender",
-  shapes = c(f = "female", m = "male"),
-  unlinked_pos = "bottom",
-  date_labels = "%b %d %Y",
-  node_size = 35,
-  font_size = 20,
-  arrow_size = 0.5,
-  height = 800,
-  width = 700,
-  edge_linetype = "location",
-  legend_width = 0.15,
-  highlight_downstream = TRUE,
-  selector = FALSE
-)
-
-```
-
-<!-- ======================================================= -->
-## Préparation { }
-
-### Charger les paquets {.unnumbered}  
-
-Commencez par charger les paquets standards nécessaires à l'importation et à la manipulation des données. Dans ce manuel, nous mettons l'accent sur `p_load()` de **pacman**, qui installe le paquet si nécessaire *et* le charge pour l'utiliser. Vous pouvez également charger des paquets avec `library()` de **base** R. Voir la page sur [bases de R](#rbasics) pour plus d'informations sur les paquets R.  
- 
-	
-```{r transmission_chains_packages, eval = FALSE}
-pacman::p_load(
-   rio, # Importation de fichiers
-   here, # Localisation de fichiers
-   tidyverse, # Gestion des données + graphiques ggplot2
-   remotes # Installation de paquets depuis github
-)
-```
-	
-Vous aurez besoin de la version de développement de **epicontacts**, qui peut être installée de github en utilisant la fonction `p_install_github()` de **pacman**. Vous n'avez besoin d'exécuter cette commande ci-dessous qu'une seule fois, et pas à chaque fois que vous utilisez le paquet (par la suite, vous pouvez utiliser `p_load()` comme d'habitude).
-
-```{r transmission_chains_epicontacts_install, eval = FALSE}
-pacman::p_install_gh("reconhub/epicontacts@timeline")
-```
-
-
-### Importer les données {.unnumbered}
-
-Nous importons le jeu de données des cas d'une épidémie d'Ebola simulée. Si vous souhaitez télécharger les données pour suivre le code, consultez les instructions de la page [Télécharger le manuel et les données](#download_book_data). Le jeu de données est importé à l'aide de la fonction `import()` du paquet **rio**. Voir la page [Importation et exportation](#import_export) pour connaître les différentes methodes d'importer des données.
-
-```{r, echo=F}
-# Importez la linelist dans R
-linelist <- rio::import(here::here("data", "case_linelists", "linelist_cleaned.rds"))
-```
-
-```{r, eval=F}
-# Importez la liste de cas
-linelist <- import("linelist_cleaned.xlsx")
-```
-
-Les 50 premières lignes de la linelist sont affichées ci-dessous. Les colonnes `case_id`, `generation`, `infector`, et `source` sont particulièrement intéressantes.  
-
-```{r, message=FALSE, echo=F}
-# affiche les données de la liste de diffusion sous forme de tableau
-DT::datatable(head(linelist, 50), rownames = FALSE, filter="top", options = list(pageLength = 5, scrollX=T), class = 'white-space: nowrap' )
-```
-
-
-### Création d'un objet epicontacts {.unnumbered}
-
-Nous devons ensuite créer un objet **epicontacts**, qui nécessite deux types de données:
-
-* une linelist documentant les cas où les colonnes sont des variables et les lignes correspondent à des cas uniques.
-* une liste de bords définissant les liens entre les cas sur la base de leurs identifiants uniques (il peut s'agir de contacts,
-  des événements de transmission, etc.)
-
-Comme nous avons déjà une linelist, il nous suffit de créer une liste de bord entre les cas, plus précisément entre leurs ID. Nous pouvons extraire les liens de transmission de la linelist en liant la colonne `infector` avec la colonne `case_id`. A ce stade, nous pouvons également ajouter des "propriétés de bords", c'est-à-dire toute variable décrivant le lien entre les deux cas, mais pas les cas eux-mêmes. Pour illustration, nous allons ajouter une variable `location` décrivant l'emplacement de l'événement de transmission, et une variable `duration` (durée) décrivant la durée du contact en jours.
-
-Dans le code ci-dessous, la fonction `transmute` de le paquet **dplyr** est similaire à `mutate`, sauf qu'elle ne conserve que les colonnes que nous avons spécifiées dans la fonction. La fonction `drop_na` enlevera toutes les lignes où les colonnes spécifiées ont une valeur `NA`. Dans ce cas, nous ne voulons conserver que les lignes où l'infecteur est connu.
-
-```{r transmission_chains_create_contacts,}
-## générer des contacts
-contacts <- linelist %>%
-  transmute(
-    infector = infector,
-    case_id = case_id,
-    location = sample(c("Community", "Nosocomial"), n(), TRUE),
-    duration = sample.int(10, n(), TRUE)
-  ) %>%
-  drop_na(infector)
-```
-
-Nous pouvons maintenant créer l'objet **epicontacts** en utilisant la fonction `make_epicontacts` . Nous devons spécifier quelle colonne de la linelist correspond à l'identifiant unique du cas, ainsi que les colonnes des contacts qui pointent vers les identifiants uniques des cas impliqués dans chaque lien. Ces liens sont directionnels en le sens que l'infection va _de_ l'infecteur _à_ le cas, les arguments `from` et `to` en conséquence. Nous définissons donc l'argument `directed` (direction) à `TRUE` (VRAI), ce qui affectera les opérations futures.
-
-```{r transmission_chains_create_epicontacts,}
-## générer un objet epicontacts
-epic <- make_epicontacts(
-  linelist = linelist,
-  contacts = contacts,
-  id = "case_id",
-  from = "infector",
-  to = "case_id",
-  directed = TRUE
-)
-```
-En examinant les objets **epicontacts**, on peut voir que la colonne `case_id` de la linelist a été renommée à `id` et que les colonnes `case_id` et `infector` des contacts ont été renommées à `from` et `to`. Cela garantit la cohérence dans le traitement, visualisation et analyse de l'objet **epicontacts**.
-
-```{r transmission_chains_view_epicontacts,}
-## visualiser l'objet epicontacts
-epic
-```
-
-<!-- ======================================================= -->
-## Manipulation { }
-
-### Sous-ensemble {.unnumbered}
-
-La méthode `subset()` pour les objets `epicontacts` permet, entre autres, de filtrer les réseaux en fonction des propriétés de la linelinst ("attributs de noeuds") et de la jeu de données de contacts ("attributs de bords").Ces valeurs doivent être passées comme des listes nommées à l'argument respectif. Par exemple, dans le code ci-dessous, nous ne gardons dans la linelist que les cas masculins qui ont une date d'infection entre avril et juillet 2014 (les dates sont spécifiées en tant que plages) et des liens de transmission qui ont eu lieu dans l'hôpital.
-
-```{r transmission_chains_subset_nodes,}
-sub_attributes <- subset(
-  epic,
-  node_attribute = list(
-    gender = "m",
-    date_infection = as.Date(c("2014-04-01", "2014-07-01"))
-  ), 
-  edge_attribute = list(location = "Nosocomial")
-)
-sub_attributes
-```
-
-Nous pouvons utiliser la fonction `thin` pour filtrer la linelist afin d'inclure les cas trouvés dans les contacts en définissant l'argument `what = "linelist"`, ou pour filtrer les contacts pour inclure les cas qui sont trouvés dans la linelist en définissant l'argument `what = "contacts"`. Dans le code ci-dessous, nous filtrons davantage l'objet **epicontacts** pour ne garder que les liens de transmission impliquant les cas masculins infectés entre avril et juillet que nous avons filtrés ci-dessus. Nous pouvons voir que seulement deux liens de transmission correspondent à cette spécification.
-
-```{r transmission_chains_thin,}
-sub_attributes <- thin(sub_attributes, what = "contacts")
-nrow(sub_attributes$contacts)
-```
-
-Les réseaux peuvent être élagués pour n'inclure que les composants qui sont connectés à certains noeuds. L'argument `cluster_id`
-prend un vecteur d'identifiants de cas et renvoie la linelist des individus qui sont liés, directement ou indirectement, à ces IDs. Dans le code ci-dessous, nous pouvons voir qu'un total de 13 cas de la linelist sont impliqués dans les clusters contenant `2ae019` et `71577a`.
-
-```{r}
-sub_id <- subset(epic, cluster_id = c("2ae019", "71577a"))
-nrow(sub_id$linelist)
-```
-
-La méthode `subset()` pour les objets `epicontacts` permet aussi de filtrer par la taille des cluster en utilisant les arguments `cs`, `cs_min` et `cs_max`. Dans le code ci-dessous, nous gardons seulement les cas liés à des clusters de 10 cas ou plus, et nous pouvons voir que 271 cas de la linelist sont impliqués dans de tels clusters.
-    
-```{r}   
-sub_cs <- subset(epic, cs_min = 10)
-nrow(sub_cs$linelist)
-```
-
-### Accéder les IDs {.unnumbered}
-
-La fonction `get_id()` récupère les informations sur les IDs des cas dans les
-données, et peut être paramétrée comme la suite:
-
-- **linelist** : IDs dans les données de la linelist
-- **contacts** : IDs dans la jeu de données des contacts ("from" et "to" combinés)
-- **from** : IDs dans la colonne "from" de la base de données des contacts.
-- **to** : IDs dans la colonne "to" du jeu de données des contacts
-- **all** : IDs qui apparaissent n'importe où dans l'un ou l'autre des jeu de données.
-- **common** : IDs qui apparaissent à la fois dans la jeu de données des contacts et dans la linelist.
-    
-Par exemple, quels sont les dix premiers ID dans la jeu de données des contacts ?
-```{r transmission_chains_get_ids,}
-contacts_ids <- get_id(epic, "contacts")
-head(contacts_ids, n = 10)
-```
-
-Combien d'identifiants sont trouvés à la fois dans la linelist et dans les contacts ?
-```{r transmission_chains_get_both,}
-length(get_id(epic, "common"))
-```
-
-<!-- ======================================================= -->
-## Visualisation { }
-
-### Graphique de base {.unnumbered}
-
-Toutes les visualisations des objets **epicontacts** sont gérées par la fonction `plot`. Nous allons d'abord filtrer l'objet **epicontacts** pour n'inclure que les cas ayant une date d'apparition en juin 2014, en utilisant la fonction `subset`, et filtrer seulement les contacts liés à ces cas à l'aide de la fonction `thin`.
-	
-```{r transmission_chains_basic_plot_sub,}
-## sous-ensemble objet epicontacts
-sub <- epic %>%
-  subset(
-    node_attribute = list(date_onset = c(as.Date(c("2014-06-30", "2014-06-01"))))
-  ) %>%
- thin("contacts")
-```
-
-Nous pouvons ensuite créer le graphique interactif de base très simplement comme suit :
-
-```{r transmission_chains_basic_plot,}
-## tracer l'objet epicontacts
-plot(
-  sub,
-  width = 700,
-  height = 700
-)
-```
-
-Vous pouvez déplacer les noeuds en les faisant glisser, les survoler pour obtenir plus d'informations et cliquer dessus pour subligner les cas connectés.
-
-Il existe un grand nombre d'arguments pour modifier ce graphique. Nous allons couvrir les principaux ici, mais consultez la documentation via `?vis_epicontacts` (la fonction appelée lors de l'utilisation de `plot` sur un objet **epicontacts**) pour obtenir une description complète des arguments de la fonction.
-
-#### Visualiser les attributs des noeuds {.unnumbered}
-
-La couleur, la forme et la taille d'un noeud peuvent être associées à une colonne specifiée de la linelist, en utilisant les arguments `node_color`, `node_shape` et `node_size`. Ceci est similaire à la syntaxe `aes` de **ggplot2**. 
-
-Les couleurs, formes et tailles spécifiques des noeuds peuvent être spécifiées comme suit :
-
-* **Couleurs** via l'argument `col_pal`, soit en fournissant une liste de noms pour la spécification manuelle de chaque couleur comme fait ci-dessous, ou en fournissant une fonction de palette de couleurs, telle que `colorRampPalette(c("black", "red", "orange"))` fournira un gradient de couleurs entre les trois spécifiées.
-
-* **Shapes** en passant une liste nommée à l'argument `shapes`, et en spécifiant une forme pour chaque élément unique dans la colonne de la linelist spécifiée avec l'argument `node_shape`. Voir `codeawesome` pour les formes disponibles.
-
-* **Taille** en passant une gamme de taille des noeuds à l'argument `size_range`.
-
-Voici un exemple, où la couleur représente le résultat, la forme le sexe et la taille l'âge :
-
-```{r transmission_chains_node_attribute,}
-plot(
-  sub, 
-  node_color = "outcome",
-  node_shape = "gender",
-  node_size = "age",
-  col_pal = c(Death = "firebrick", Recover = "green"),
-  shapes = c(f = "female", m = "male"),
-  size_range = c(40, 60),
-  height = 700,
-  width = 700
-)
-```
-
-#### Visualisation des attributs de bords {.unnumbered}
-
-La couleur, la largeur et le type de ligne de le bords peuvent être associés à une colonne du jeu de données contacts en utilisant les arguments `edge_color`, `edge_width` et `edge_linetype`, comme la suite:
-
-* **Couleurs** via l'argument `edge_col_pal`, de la même manière que pour `col_pal`.
-
-* **Largeurs** en passant une gamme de taille des noeuds à l'argument `width_range`.
-
-Voici un exemple :
-
-```{r transmission_chains_edge_attribute,}
-
-plot(
-  sub, 
-  node_color = "outcome",
-  node_shape = "gender",
-  node_size = "age",
-  col_pal = c(Death = "firebrick", Recover = "green"),
-  shapes = c(f = "female", m = "male"),
-  size_range = c(40, 60),
-  edge_color = 'location',
-  edge_linetype = 'location',
-  edge_width = 'duration',
-  #edge_col_pal = c(Community = "orange", Nosocomial = "violet"),
-  width_range = c(1, 3),
-  height = 700,
-  width = 700
-)
-
-```
-
-### Axe temporel {.unnumbered}
-
-Nous pouvons également visualiser le réseau selon un axe temporel en faisant correspondre l'argument `x_axis` à une colonne de la linelist. Dans l'exemple ci-dessous, l'axe des x représente la date d'apparition des symptômes. Nous avons également spécifié l'argument `arrow_size` pour nous assurer que les flèches ne sont pas trop grandes, et nous avons défini `label = FALSE` pour rendre la figure moins encombrée.
-
-```{r transmission_chains_x_axis,}
-plot(
-  sub,
-  x_axis = "date_onset",
-  node_color = "outcome",
-  col_pal = c(Death = "firebrick", Recover = "green"),
-  arrow_size = 0.5,
-  node_size = 13,
-  label = FALSE,
-  height = 700,
-  width = 700
-)
-```
-
-Il existe un grand nombre d'arguments supplémentaires pour spécifier d'avantage la façon dont ce réseau est visualisé le long d'un axe temporel, que vous pouvez vérifier via `?vis_temporal_interactive` (la fonction appelée lors de l'utilisation de `plot` sur un objet **epicontacts** avec `x_axis` spécifié). Nous allons voir quelques examples ci-dessous.
-
-#### Spécifier la forme de l'arbre de transmission {.unnumbered}
-
-Il y a deux formes principales que l'arbre de transmission peut prendre, spécifiées en utilisant l'argument `network_shape`. La première est une forme `branchée` comme indiqué ci-dessus, où un bord droite relie deux noeuds connectes. C'est la représentation la plus intuitive mais elle peut donner lieu à des bords qui se chevauchent dans un réseau dense. La deuxième forme est le `rectangle`, qui produit un arbre ressemblant à une phylogénie. Par exemple :
-
-```{r transmission_chains_rectangle,}
-plot(
-  sub,
-  x_axis = "date_onset",
-  network_shape = "rectangle",
-  node_color = "outcome",
-  col_pal = c(Death = "firebrick", Recover = "green"),
-  arrow_size = 0.5,
-  node_size = 13,
-  label = FALSE,
-  height = 700,
-  width = 700
-)
-```
-
-On peut assigner à chaque noud de cas une position verticale unique en modifiant l'argument `position_dodge`. La position des cas non liés (c'est-à-dire sans contacts signalés) est spécifiée à l'aide de l'argument `unlinked_pos`.
-
-```{r transmission_chains_dodge,}
-plot(
-  sub,
-  x_axis = "date_onset",
-  network_shape = "rectangle",
-  node_color = "outcome",
-  col_pal = c(Death = "firebrick", Recover = "green"),
-  position_dodge = TRUE,
-  unlinked_pos = "bottom",
-  arrow_size = 0.5,
-  node_size = 13,
-  label = FALSE,
-  hieght = 700,
-  width = 700
-)
-```
-
-La position du noeud parent par rapport aux noeuds enfants peut être spécifiée en utilisant l'argument `parent_pos`. L'option par défaut est de placer le noeud parent au milieu, mais il peut être placé en bas (`parent_pos = 'bottom'`) ou en haut (`parent_pos = 'top'`).
-
-```{r transmission_chains_parent_pos,}
-plot(
-  sub,
-  x_axis = "date_onset",
-  network_shape = "rectangle",
-  node_color = "outcome",
-  col_pal = c(Death = "firebrick", Recover = "green"),
-  parent_pos = "top",
-  arrow_size = 0.5,
-  node_size = 13,
-  label = FALSE,
-  height = 700,
-  width = 700
-)
-```
-
-#### Enregistrement des graphiques et des figures {.unnumbered}
-
-Vous pouvez enregistrer un graphique sous forme de fichier html interactif et autonome avec la fonction `visSave` du paquet **VisNetwork** :
-
-```{r transmission_chaînes_save, eval=F}
-
-plot(
-  sub,
-  x_axis = "date_onset",
-  network_shape = "rectangle",
-  node_color = "outcome",
-  col_pal = c(Death = "firebrick", Recover = "green"),
-  parent_pos = "top",
-  arrow_size = 0.5,
-  node_size = 13,
-  label = FALSE,
-  height = 700,
-  width = 700
-) %>%
-  visNetwork::visSave("network.html")
-
-```
-
-L'enregistrement de ces sorties de réseau sous forme d'image est malheureusement moins facile et nécessite d'enregistrer le fichier en tant que html et ensuite de faire une capture d'écran utilisant le paquet `webshot`. Dans le code ci-dessous, nous convertissons le fichier html sauvegardé ci-dessus en un PNG :
-
-```{r transmission_chains_webshot, eval=F}
-webshot(url = "network.html", file = "network.png")
-```
-
-### Ligne chronologique {.unnumbered}
-
-Vous pouvez également ajouter les chronologie de cas sur le réseau, qui sont représentées sur l'axe des x de chaque cas. Ceci peut être utilisé pour visualiser localisations des cas, par exemple, ou le temps jusqu'au résultat. Pour générer une ligne chronologique, nous devons créer un dataframe d'au moins trois colonnes indiquant l'ID du cas, la date de début de l'"événement" et la date de fin de l'"événement". Vous pouvez également ajouter n'importe quel nombre d'autres colonnes qui peuvent ensuite être mappées aux noeuds et aux bords. Dans le code ci-dessous, nous générons une ligne chronologique allant de la date de l'apparition des symptômes à la date du résultat. Nous conservons les variables de résultat et d'hôpital que nous utilisons pour définir la forme et la couleur des noeuds. Notez que vous pouvez avoir plus qu'une ligne/événement chronologique par cas, par exemple si un cas a etait transféré entre plusieurs hôpitaux.
-
-```{r transmission_chains_create_timeline,}
-
-## générer une ligne chronologique
-timeline <- linelist %>%
-  transmute(
-    id = case_id,
-    start = date_onset,
-    end = date_outcome,
-    outcome = outcome,
-    hospital = hospital
-  )
-
-```
-
-Nous passons ensuite l'élément chronologique à l'argument `timeline`. Nous pouvons faire correspondre les attributs de la ligne chronologique aux couleurs, formesm et tailles des noeuds de la même manière que celle définie dans les sections précédentes, sauf que nous avons _deux_ noeuds: le noeud de début et de fin de chaque ligne chronologique qui ont des arguments distincts. Par exemple, `tl_start_node_color` définit quelle colonne de la ligne chronologique est mappée à la couleur du noeud de départ, tandis que `tl_end_node_shape` définit quelle colonne de la ligne chronologique est utilise pour la forme du noeud final. Nous pouvons également faire correspondre la couleur, la largeur, le type de ligne et les étiquettes de _bord_ de la ligne chronologique via les arguments `tl_edge_*`. 
-
-Voir `?vis_temporal_interactive` (la fonction appelée de plot() avec un objet **epicontacts**) pour plus de détails. Chaque argument est également annoté dans le code ci-dessous :
-
-```{r transmission_chains_vis_timeline,}
-
-## définir les formes
-shapes <- c(
-  f = "female",
-  m = "male",
-  Death = "user-times",
-  Recover = "heartbeat",
-  "NA" = "question-circle"
-)
-
-## définir les couleurs
-colours <- c(
-  Death = "firebrick",
-  Recover = "green",
-  "NA" = "grey"
-)
-
-## faire un graphique
-plot(
-  sub,
-  ## coordonnée x maximale de la date d'apparition de la maladie
-  x_axis = "date_onset",
-  ## utiliser une forme de réseau rectangulaire
-  network_shape = "rectangle",
-  ## mappe les formes de noeuds de cas à la colonne de sexe
-  node_shape = "gender",
-  ## nous ne voulons pas mapper la couleur des noeuds à aucune colonne, cela est important car la valeur par défaut est de mapper à l'id du noeud, ce qui va perturber le schéma de couleurs
-  node_color = NULL,
-  ## définir la taille du noeud de cas à 30 (comme il ne s'agit pas d'un caractère, node_size n'est pas mappée à une colonne mais interprétée comme la taille réelle du noeud)
-  node_size = 30,
-  ## définir la largeur du lien de transmission à 4 (comme il ne s'agit pas d'un caractère, edge_width n'est pas affectée à une colonne mais interprétée comme la largeur réelle du bord)
-  edge_width = 4,
-  ## fournir l'objet ligne chronologique
-  timeline = timeline,
-  ## mappe la forme du noeud de fin à la colonne de résultat dans l'objet de ligne chronologique
-  tl_end_node_shape = "outcome",
-  ## définir la taille du noeud final à 15 (comme il ne s'agit pas d'un caractère, cet argument n'est pas associé à la colonne des résultats dans l'objet ligne  chronologique).
-  tl_end_node_size = 15,
-  ## mappez la couleur du bord de la ligne de temps à la colonne de l'hôpital
-  tl_edge_color = "hospital",
-  ## Définir la largeur du bord de la ligne de temps à 2 (comme il ne s'agit pas d'un caractère, cet argument n'est pas associé à la colonne de l'hôpital).
-  tl_edge_width = 2,
-  ## mappez les étiquettes des bords à la variable hospital
-  tl_edge_label = "hospital",
-  ## spécifier la forme pour chaque attribut de noeud (défini ci-dessus)
-  shapes = shapes,
-  ## spécifier la palette de couleurs (définie ci-dessus)
-  col_pal = colours,
-  ## définir la taille de la flèche à 0.5
-  arrow_size = 0.5,
-  ## utiliser deux colonnes dans la légende
-  legend_ncol = 2,
-  ## définir la taille de la police
-  font_size = 15,
-  ## définir le formatage des dates
-  date_labels = c("%d %b %Y"),
-  ## ne pas tracer les étiquettes d'identification sous les noeuds
-  label = FALSE,
-  ## spécifier la hauteur
-  height = 1000,
-  ## spécifier la largeur
-  width = 1200,
-  ## assurez-vous que chaque noeud de cas a une coordonnée y unique, ceci est très important
-  ## lors de l'utilisation de lignes chronologiques, sinon les lignes chronologiques se chevauchant de différents cas
-  position_dodge = TRUE
-)
-
-```
-
-<!-- ======================================================= -->
-## Analyse { }
-
-### Résumé {.unnumbered}
-
-Nous pouvons obtenir un aperçu de certaines propriétés du réseau en utilisant la fonction `summary`.
-
-```{r transmission_chains_summarise_epicontacts,}
-## résumer l'objet epicontacts
-summary(epic)
-```
-
-Par exemple, nous pouvons voir que seulement 57% des contacts ont les deux cas dans la linelist ; cela signifie que nous ne disposons pas de données de le linelist sur un nombre significatif de cas impliqués dans ces chaînes de transmission.
-
-### Caractéristiques par paires {.unnumbered}
-
-La fonction `get_pairwise()` permet de traiter les variables de la linelist en fonction de chaque paire dans l'ensemble de données de contact. Dans l'exemple suivant, la date d'apparition de la maladie est extraite de la liste de lignes afin de calculer la différence entre la date d'apparition de la maladie pour chaque paire dans l'ensemble de données de contact. La valeur produite par cette comparaison représente l' **intervalle de série (si)**.
-
-```{r transmission_chains_pairwise,}
-si <- get_pairwise(epic, "date_onset")   
-summary(si)
-tibble(si = si) %>%
-  ggplot(aes(si)) +
-  geom_histogram() +
-  labs(
-    x = "Intervalle de série",
-    y = "Fréquence"
-  )
-```
-
-La fonction `get_pairwise()` va interpréter la classe de la colonne utilisée pour la comparaison, et adaptera sa méthode de comparaison des valeurs en conséquence. Pour les nombres et les dates (comme l'exemple **si** ci-dessus), la fonction va soustraire les valeurs. Lorsqu'elle est appliquée à des colonnes qui sont des caractères ou des catégories,
-`get_pairwise()` collera les valeurs ensemble. Comme la fonction permet également un traitement arbitraire (voir l'argument "f"), ces combinaisons discrètes peuvent être facilement mises en tableau et analysées.
-    
-```{r transmission_chains_pairwise_2,}
-head(get_pairwise(epic, "gender"), n = 10)
-get_pairwise(epic, "gender", f = table)
-fisher.test(get_pairwise(epic, "gender", f = table))
-```
-
-Ici, nous voyons une association significative entre les liens de transmission et le sexe.
-
-### Identifier les clusters {.unnumbered}
-
-La fonction `get_clusters()` peut être utilisée pour identifier les composants connectés dans un objet `epicontacts`. Tout d'abord, nous l'utilisons pour récupérer un `data.frame` contenant les informations sur les clusters :
-
-```{r transmission_chains_cluster,}
-clust <- get_clusters(epic, output = "data.frame")
-table(clust$cluster_size)
-ggplot(clust, aes(cluster_size)) +
-  geom_bar() +
-  labs(
-    x = "Taille des clusters",
-    y = "Fréquence"
-  )
-```
-
-Examinons les plus grands clusters. Pour cela, nous ajoutons des informations sur les clusters à l'objet `epicontacts`, puis nous le sous-ensemblons pour ne garder que les plus grands clusters :
-
-```{r transmission_chains_cluster_2,}
-epic <- get_clusters(epic)
-max_size <- max(epic$linelist$cluster_size)
-plot(subset(epic, cs = max_size))
-```
-
-### Calcul des degrés {.unnumbered}
-
-Le degré d'un noeud correspond à son nombre de bords ou de connexions avec d'autres noeuds. `get_degree()` fournit une méthode simple pour calculer cette valeur pour les objets `epicontacts`. Un degré élevé dans ce contexte indique un individu qui était en contact avec beaucoup d'autres personnes. L'argument `type` indique que nous souhaitons compter à la fois le degré d'entrée et le degré de sortie, l'argument `only_linelist` indique que nous voulons calculer le degré pour les cas de la linelist.
-
-```{r transmission_chains_degree,}
-deg_both <- get_degree(epic, type = "both", only_linelist = TRUE)
-```
-
-Quels sont les individus qui ont les dix plus grands contacts ?
-
-```{r}
-head(sort(deg_both, decreasing = TRUE), 10)
-```
-
-Quel est le nombre moyen de contacts ?
-
-```{r}
-mean(deg_both)
-```
-
-<!-- ======================================================= -->
-## Ressources { }
-
-Le site pour le paquet [epicontacts](https://www.repidemicsconsortium.org/epicontacts/index.html) fournit une vue d'ensemble des fonctions du paquet et contient quelques vignettes plus approfondies.
-
-La page [github](http://github.com/reconhub/epicontacts) peut être utilisée pour soulever des
-problèmes et demander des fonctionnalités. 
-
-```{r include=FALSE, cache=FALSE}
-
-# clear workspace
-rm(list = ls(all = TRUE))
-
-# clear all packages except base
-#lapply(names(sessionInfo()$loadedOnly), require, character.only = TRUE)
-#invisible(lapply(paste0('package:', names(sessionInfo()$otherPkgs)), detach, character.only=TRUE, unload=TRUE, force=TRUE))
-
-# to ensure that tidyverse packages prevail
-filter <- dplyr::filter
-select <- dplyr::select
-summarise <- dplyr::summarise
-summary <- base::summary
-incidence <- incidence2::incidence
-
-#load core packages
-pacman::p_load(
-     rio,
-     here,
-     DT,
-     stringr,
-     lubridate,
-     tidyverse
-)
-
-# import the cleaned ebola linelist
-linelist <- rio::import(here::here("data", "case_linelists", "linelist_cleaned.rds"))
-
-# import the count data - facility level
-#count_data <- rio::import(here::here("data", "facility_count_data.rds"))
-
-# Settings
-
-options(scipen=1, digits=7)
-
-# print only text (not code)
-# library(knitr)
-# opts_chunk$set(list(echo = FALSE, eval = FALSE))
-```
-
-<!--chapter:end:new_pages/transmission_chains.Rmd-->
+<!--chapter:end:new_pages/phylogenetic_trees.Rmd-->
 

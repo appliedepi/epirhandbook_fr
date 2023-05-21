@@ -1,0 +1,679 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>1 Les arbres phylogénétiques | Le Epi R Handbook</title>
+<meta name="author" content="the handbook team">
+<meta name="description" content="1.1 Aperçu Les arbres phylogénétiques sont utilisés pour visualiser et décrire la parenté et l’évolution des organismes à partir de la séquence de leur code génétique. On peut les construire à...">
+<meta name="generator" content="bookdown 0.34 with bs4_book()">
+<meta property="og:title" content="1 Les arbres phylogénétiques | Le Epi R Handbook">
+<meta property="og:type" content="book">
+<meta property="og:description" content="1.1 Aperçu Les arbres phylogénétiques sont utilisés pour visualiser et décrire la parenté et l’évolution des organismes à partir de la séquence de leur code génétique. On peut les construire à...">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="1 Les arbres phylogénétiques | Le Epi R Handbook">
+<meta name="twitter:description" content="1.1 Aperçu Les arbres phylogénétiques sont utilisés pour visualiser et décrire la parenté et l’évolution des organismes à partir de la séquence de leur code génétique. On peut les construire à...">
+<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
+<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.4.2/transition.js"></script><script src="libs/bs3compat-0.4.2/tabs.js"></script><script src="libs/bs3compat-0.4.2/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="libs/htmlwidgets-1.6.2/htmlwidgets.js"></script><link href="libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet">
+<script src="libs/datatables-binding-0.28/datatables.js"></script><link href="libs/dt-core-1.13.4/css/jquery.dataTables.min.css" rel="stylesheet">
+<link href="libs/dt-core-1.13.4/css/jquery.dataTables.extra.css" rel="stylesheet">
+<script src="libs/dt-core-1.13.4/js/jquery.dataTables.min.js"></script><link href="libs/crosstalk-1.2.0/css/crosstalk.min.css" rel="stylesheet">
+<script src="libs/crosstalk-1.2.0/js/crosstalk.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><style type="text/css">
+    
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  </style>
+<link rel="stylesheet" href="style_bs4.css">
+</head>
+<body data-spy="scroll" data-target="#toc">
+
+<div class="container-fluid">
+<div class="row">
+  <header class="col-sm-12 col-lg-3 sidebar sidebar-book"><a class="sr-only sr-only-focusable" href="#content">Skip to main content</a>
+
+    <div class="d-flex align-items-start justify-content-between">
+      <h1>
+        <a href="index.html" title="">Le Epi R Handbook</a>
+      </h1>
+      <button class="btn btn-outline-primary d-lg-none ml-2 mt-1" type="button" data-toggle="collapse" data-target="#main-nav" aria-expanded="true" aria-controls="main-nav"><i class="fas fa-bars"></i><span class="sr-only">Show table of contents</span></button>
+    </div>
+
+    <div id="main-nav" class="collapse-lg">
+      <form role="search">
+        <input id="search" class="form-control" type="search" placeholder="Search" aria-label="Search">
+</form>
+
+      <nav aria-label="Table of contents"><h2>Table of contents</h2>
+        <ul class="book-toc list-unstyled">
+<li><a class="" href="index.html"></a></li>
+<li><a class="active" href="phylogenetic_trees.html"><span class="header-section-number">1</span> Les arbres phylogénétiques</a></li>
+</ul>
+
+        <div class="book-extra">
+          
+        </div>
+      </nav>
+</div>
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="phylogenetic_trees" class="section level1" number="1">
+<h1>
+<span class="header-section-number">1</span> Les arbres phylogénétiques<a class="anchor" aria-label="anchor" href="#phylogenetic_trees"><i class="fas fa-link"></i></a>
+</h1>
+<!-- ======================================================= -->
+<div id="aperçu" class="section level2" number="1.1">
+<h2>
+<span class="header-section-number">1.1</span> Aperçu<a class="anchor" aria-label="anchor" href="#aper%C3%A7u"><i class="fas fa-link"></i></a>
+</h2>
+<p><strong>Les arbres phylogénétiques</strong> sont utilisés pour visualiser et décrire la parenté et l’évolution des organismes à partir de la séquence de leur code génétique.</p>
+<p>On peut les construire à partir de séquences génétiques en utilisant des méthodes basées sur la distance (comme la méthode neighbor-joining) ou les méthodes probabiliste (comme la méthode de maximum de vraisemblance et la méthode Bayesian Markov Chain Monte Carlo). Le séquençage de nouvelle génération (NGS) devient de plus en plus abordable et populaire en santé publique pour caractériser des agents pathogènes à l’origine des maladies infectieuses. Les appareils de séquençage portables réduisent le délai d’exécution et offrent la possibilité de rendre les résultats disponible en temps réel pour les enquêtes sur les épidémies. Les données NGS peuvent être utilisées pour identifier l’origine ou la source d’une souche épidémique ainsi que sa propagation, et pour déterminer la présence de gènes de résistance antimicrobienne. Pour visualiser la parenté génétique entre les échantillons, un arbre phylogénétique est construit.</p>
+<p>Dans cette page, nous allons apprendre à utiliser le package <strong>ggtree</strong>, qui permet la visualisation combinée d’arbres phylogénétiques avec des données d’échantillons supplémentaires sous la forme de tableaux de données. Cela nous permettra d’observer les tendances et de comprendre la dynamique de l’épidémie.</p>
+<div class="inline-figure"><img src="_main_files/figure-html/phylogenetic_trees_overview_graph-1.png" width="80%" style="display: block; margin: auto;"></div>
+<!-- ======================================================= -->
+</div>
+<div id="préparation" class="section level2" number="1.2">
+<h2>
+<span class="header-section-number">1.2</span> Préparation<a class="anchor" aria-label="anchor" href="#pr%C3%A9paration"><i class="fas fa-link"></i></a>
+</h2>
+<div id="importation-des-packages" class="section level3 unnumbered">
+<h3>Importation des packages<a class="anchor" aria-label="anchor" href="#importation-des-packages"><i class="fas fa-link"></i></a>
+</h3>
+<p>Ces lignes de code importe les packages necessaire pour l’analyse. Dans ce guide, nous mettons l’accent sur <code>p_load()</code> de <strong>pacman</strong>, qui installe le package si nécessaire <em>puis</em> l’importe pour l’utiliser dans la session de Rstudio. Vous pouvez également charger les packages installés avec <code><a href="https://rdrr.io/r/base/library.html">library()</a></code> de <strong>base</strong> R. Voir la page sur <a href="#rbasics">bases de R</a> pour plus d’informations sur les packages en R.</p>
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu">pacman</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/pacman/man/p_load.html">p_load</a></span><span class="op">(</span></span>
+<span>  <span class="va">rio</span>,             <span class="co"># import/export</span></span>
+<span>  <span class="va">here</span>,            <span class="co"># gestion des chemins d'accès</span></span>
+<span>  <span class="va">tidyverse</span>,       <span class="co"># gestion des données + graphiques (ggplot2)</span></span>
+<span>  <span class="va">ape</span>,             <span class="co"># pour importer and exporter les fichiers phylogénétiques</span></span>
+<span>  <span class="va">ggtree</span>,          <span class="co"># pour visualiser les fichiers phylogénétiques</span></span>
+<span>  <span class="va">treeio</span>,          <span class="co"># pour visualiser les fichiers phylogénétiques</span></span>
+<span>  <span class="va">ggnewscale</span><span class="op">)</span>      <span class="co"># pour ajouter les palettes de couleurs supplémentaire</span></span></code></pre></div>
+</div>
+<div id="import-data" class="section level3 unnumbered">
+<h3>Import data<a class="anchor" aria-label="anchor" href="#import-data"><i class="fas fa-link"></i></a>
+</h3>
+<p>Les données pour cette page peuvent être téléchargées suivant les instructions de la page <a href="#download_book_data">Télécharger le manuel et les données</a>.</p>
+<p>Il existe plusieurs formats différents dans lesquels un arbre phylogénétique peut être enregistré (par exemple, Newick, NEXUS, Phylip). Un format couramment utilisés est celui des fichiers Newick (.nwk), qui est la norme pour représenter les arbres sous une forme facilement exploitable par ordinateur. Cela signifie qu’un arbre entier peut être représenté par un format de chaîne de caractères tel que “((t2:0.04,t1:0.34):0.89,(t5:0.37,(t4:0.03,t3:0.67):0.9):0.59) ;”, énumérant tous les nœuds, les extrémités et leur relation (longueur de branche) les uns avec les autres.</p>
+<p>Note : Il est important de comprendre que le fichier de l’arbre phylogénétique en lui-même ne contient pas de données de séquençage, mais est simplement le résultat des distances génétiques entre les séquences. Nous ne pouvons donc pas extraire les données de séquençage d’un fichier arbre.</p>
+<p>Tout d’abord, nous utilisons la fonction read.tree() du package <strong>ape</strong> pour importer un fichier d’arbre phylogénétique de Newick au format .txt, et le enregistrer dans un objet liste de classe “phylo”. Si nécessaire, utilisez la fonction <code>here()</code> du package <strong>here</strong> pour spécifier le chemin relatif du fichier.</p>
+<p>Note : Dans ce cas, l’arbre Newick est enregistré au format .txt pour faciliter sa manipulation et son téléchargement de Github.</p>
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">tree</span> <span class="op">&lt;-</span> <span class="fu">ape</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/ape/man/read.tree.html">read.tree</a></span><span class="op">(</span><span class="st">"Shigella_tree.txt"</span><span class="op">)</span></span></code></pre></div>
+<p>Nous inspectons notre objet arbre et voyons qu’il contient 299 pointes (ou échantillons) et 236 nœuds.</p>
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">tree</span></span></code></pre></div>
+<pre><code>## 
+## Phylogenetic tree with 299 tips and 236 internal nodes.
+## 
+## Tip labels:
+##   SRR5006072, SRR4192106, S18BD07865, S18BD00489, S17BD08906, S17BD05939, ...
+## Node labels:
+##   17, 29, 100, 67, 100, 100, ...
+## 
+## Rooted; includes branch lengths.</code></pre>
+<p>Ensuite, nous importons un fichier en format .csv contenant des informations supplémentaires pour chaque échantillon séquencé, tel que le sexe, le pays d’origine et les attributs de résistance antimicrobienne, en utilisant la fonction <code>import()</code> du package <strong>rio</strong> :</p>
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">sample_data</span> <span class="op">&lt;-</span> <span class="fu">import</span><span class="op">(</span><span class="st">"sample_data_Shigella_tree.csv"</span><span class="op">)</span></span></code></pre></div>
+<p>Ci-dessous, vous trouverez les 50 premières lignes de données :</p>
+<div class="datatables html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-7e64bbbc08a446f83361" style="width:100%;height:auto;"></div>
+<script type="application/json" data-for="htmlwidget-7e64bbbc08a446f83361">{"x":{"filter":"none","vertical":false,"data":[["S17BD05944","S15BD07413","S18BD07247","S19BD07384","S18BD07338","S18BD02657","S19BD06884","S16BD02574","S16BD04069","S17BD08170","S15BD07250","S17BD07935","S17BD00384","S19BD06034","S17BD08948","S17BD04542","S17BD07399","S17BD08233","S19BD07381","S17BD07961","S18BD09176","S19BD07393","S18BD02580","S17BD02526","S17BD06833","S18BD01024","S18BD03411","S18BD09515","S17BD07332","S18BD06598","S17BD02164","S19BD06386","S19BD06283","S19BD06285","S19BD05221","S18BD06749","S17BD02088","S17BD07692","S14BD03573","S17BD01135","S19BD06689","S15BD06969","S18BD01106","S17BD00525","S19BD07036","S18BD06401","S18BD06486","S17BD06426","S17BD05916","S18BD07708"],["Sonnei","Sonnei","Sonnei","Sonnei","Sonnei","Sonnei","Sonnei","Sonnei","Sonnei","Sonnei","Sonnei","Sonnei","Sonnei","Sonnei","Sonnei","Sonnei","Sonnei","Sonnei","Sonnei","Sonnei","Sonnei","Sonnei","Sonnei","Sonnei","Sonnei","Sonnei","Sonnei","Sonnei","Sonnei","Sonnei","Sonnei","Sonnei","Sonnei","Sonnei","Sonnei","Sonnei","Sonnei","Sonnei","Sonnei","Sonnei","Sonnei","Sonnei","Sonnei","Sonnei","Sonnei","Sonnei","Sonnei","Sonnei","Sonnei","Sonnei"],["Belgium","Belgium","Belgium","Belgium","Belgium","Belgium","Belgium","Belgium","Belgium","Belgium","Belgium","Belgium","Belgium","Belgium","Belgium","Belgium","Belgium","Belgium","Belgium","Belgium","Belgium","Belgium","Belgium","Belgium","Belgium","Belgium","Belgium","Belgium","Belgium","Belgium","Belgium","Belgium","Belgium","Belgium","Belgium","Belgium","Belgium","Belgium","Belgium","Belgium","Belgium","Belgium","Belgium","Belgium","Belgium","Belgium","Belgium","Belgium","Belgium","Belgium"],["Europe","Europe","Europe","Europe","Europe","Europe","Europe","Europe","Europe","Europe","Europe","Europe","Europe","Europe","Europe","Europe","Europe","Europe","Europe","Europe","Europe","Europe","Europe","Europe","Europe","Europe","Europe","Europe","Europe","Europe","Europe","Europe","Europe","Europe","Europe","Europe","Europe","Europe","Europe","Europe","Europe","Europe","Europe","Europe","Europe","Europe","Europe","Europe","Europe","Europe"],[null,"Georgia",null,"Morocco",null,null,null,"Thailand",null,null,null,null,null,null,null,"Iran",null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Morocco","France","Turkey","Egypt","Tunisia","Congo",null,null,null,null,null,null,null,null,null,null,"Egypt",null,null],["2017","2015","2018","2019","2018","2018","2019","2016","2016","2017","2015","2017","2017","2019","2017","2017","2017","2017","2019","2017","2018","2019","2018","2017","2017","2018","2018","2018","2017","2018","2017","2019","2019","2019","2019","2018","2017","2017","2014","2017","2019","2015","2018","2017","2019","2018","2018","2017","2017","2018"],["Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes"],["NRC BEL","NRC BEL","NRC BEL","NRC BEL","NRC BEL","NRC BEL","NRC BEL","NRC BEL","NRC BEL","NRC BEL","NRC BEL","NRC BEL","NRC BEL","NRC BEL","NRC BEL","NRC BEL","NRC BEL","NRC BEL","NRC BEL","NRC BEL","NRC BEL","NRC BEL","NRC BEL","NRC BEL","NRC BEL","NRC BEL","NRC BEL","NRC BEL","NRC BEL","NRC BEL","NRC BEL","NRC BEL","NRC BEL","NRC BEL","NRC BEL","NRC BEL","NRC BEL","NRC BEL","NRC BEL","NRC BEL","NRC BEL","NRC BEL","NRC BEL","NRC BEL","NRC BEL","NRC BEL","NRC BEL","NRC BEL","NRC BEL","NRC BEL"],[null,"Male","Female","Female","Male","Male","Male","Male","Male","Male","Female",null,"Male","Male","Female","Male","Male","Female","Female","Male","Male","Male","Male","Female","Male","Female","Female","Male","Female","Male","Female","Female","Female","Female","Female","Female","Male","Male",null,"female","Male","Female","Male","Male","Male","Male","Male","Male","Male","Female"],[null,null,null,null,null,"gyrA D87Y","gyrA D87Y","gyrA D87Y","gyrA D87Y",null,null,"gyrA D87Y",null,null,"gyrA D87Y",null,null,null,null,null,null,null,null,null,null,"gyrA D87Y","gyrA S83L",null,null,null,null,null,null,null,null,null,null,"gyrA D87Y","gyrA D87Y",null,null,null,"gyrA D87Y",null,null,null,null,null,null,null],[null,null,null,null,null,"mphA","mphA",null,null,null,null,"mphA",null,null,"mphA",null,null,null,null,null,null,null,null,null,null,"mphA","mphA",null,null,null,null,null,null,null,"mphA/ermB",null,null,"mphA",null,null,null,null,"mphA",null,null,null,null,null,null,null],[8,0,16,8,8,64,64,0,0,64,0,64,8,8,64,8,8,8,8,8,8,16,8,8,8,64,64,8,8,8,8,8,8,2,64,8,8,64,0,8,8,0,64,8,4,8,8,8,8,8],[0.25,0,0.03,0.02,0.02,0.5,0.5,0,0,8,0,0.5,0.02,0.02,0.5,0.25,0.02,0.02,0.02,0.02,0.02,0.12,0.02,0.02,0.02,0.5,0.25,0.03,0.02,0.02,0.02,0.02,0.02,0.02,0.02,0.02,0.02,1,0,0.02,0.02,0,0.5,0.02,0.02,4,0.02,0.02,0.25,0.02]],"container":"<table class=\"white-space: nowrap\">\n  <thead>\n    <tr>\n      <th>Sample_ID<\/th>\n      <th>serotype<\/th>\n      <th>Country<\/th>\n      <th>Continent<\/th>\n      <th>Travel_history<\/th>\n      <th>Year<\/th>\n      <th>Belgium<\/th>\n      <th>Source<\/th>\n      <th>Gender<\/th>\n      <th>gyrA_mutations<\/th>\n      <th>macrolide_resistance_genes<\/th>\n      <th>MIC_AZM<\/th>\n      <th>MIC_CIP<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"pageLength":5,"scrollX":true,"columnDefs":[{"className":"dt-right","targets":[11,12]}],"order":[],"autoWidth":false,"orderClasses":false,"lengthMenu":[5,10,25,50,100]},"selection":{"mode":"multiple","selected":null,"target":"row","selectable":null}},"evals":[],"jsHooks":[]}</script>
+</div>
+<div id="nettoyer-et-inspecter" class="section level3 unnumbered">
+<h3>Nettoyer et inspecter<a class="anchor" aria-label="anchor" href="#nettoyer-et-inspecter"><i class="fas fa-link"></i></a>
+</h3>
+<p>Nous nettoyons et inspectons nos données : Pour pouvoir associer les données échantillon à l’arbre phylogénétique, les valeurs de la colonne <code>Sample_ID</code> dans le tableau de données <code>sample_data</code> doit correspondre aux valeurs <code>tip.labels</code> dans le fichier <code>tree</code> :</p>
+<p>Nous vérifions le format du <code>tip.labels</code> dans le fichier <code>tree</code> en regardant les 6 premières entrées en utilisant <code><a href="https://rdrr.io/r/utils/head.html">head()</a></code> de <strong>base</strong> R.</p>
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">tree</span><span class="op">$</span><span class="va">tip.label</span><span class="op">)</span> </span></code></pre></div>
+<pre><code>## [1] "SRR5006072" "SRR4192106" "S18BD07865" "S18BD00489" "S17BD08906" "S17BD05939"</code></pre>
+<p>Nous nous assurons également que la première colonne de notre tableau de données <code>sample_data</code> est <code>Sample_ID</code>. Nous regardons les noms des colonnes de notre jeu de données en utilisant <code><a href="https://rdrr.io/r/base/colnames.html">colnames()</a></code> de <strong>base</strong> R.</p>
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/colnames.html">colnames</a></span><span class="op">(</span><span class="va">sample_data</span><span class="op">)</span>   </span></code></pre></div>
+<pre><code>##  [1] "Sample_ID"                  "serotype"                  
+##  [3] "Country"                    "Continent"                 
+##  [5] "Travel_history"             "Year"                      
+##  [7] "Belgium"                    "Source"                    
+##  [9] "Gender"                     "gyrA_mutations"            
+## [11] "macrolide_resistance_genes" "MIC_AZM"                   
+## [13] "MIC_CIP"</code></pre>
+<p>Nous regardons les <code>Sample_IDs</code> dans le jeu de données pour nous assurer que le format est le même que dans le <code>tip.label</code> (par exemple, les lettres sont en majuscules, pas de soulignement supplémentaire <code>_</code> entre les lettres et les chiffres, etc.)</p>
+<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">sample_data</span><span class="op">$</span><span class="va">Sample_ID</span><span class="op">)</span> <span class="co"># Nous vérifions les 6 premières entrées en utilisant head()</span></span></code></pre></div>
+<pre><code>## [1] "S17BD05944" "S15BD07413" "S18BD07247" "S19BD07384" "S18BD07338" "S18BD02657"</code></pre>
+<p>Nous pouvons aussi vérifier si tous les échantillons sont présents dans le fichier <code>tree</code> et vice versa en générant un vecteur logique de VRAI ou FAUX là où ils correspondent ou non. Ceux-ci ne sont pas imprimés ici, pour plus de simplicité.</p>
+<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">sample_data</span><span class="op">$</span><span class="va">Sample_ID</span> <span class="op"><a href="https://rdrr.io/r/base/match.html">%in%</a></span> <span class="va">tree</span><span class="op">$</span><span class="va">tip.label</span></span>
+<span></span>
+<span><span class="va">tree</span><span class="op">$</span><span class="va">tip.label</span> <span class="op"><a href="https://rdrr.io/r/base/match.html">%in%</a></span> <span class="va">sample_data</span><span class="op">$</span><span class="va">Sample_ID</span></span></code></pre></div>
+<p>Nous pouvons utiliser ces vecteurs pour démontrer les ID des échantillons qui ne sont pas sur l’arbre (il n’y en a pas).</p>
+<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">sample_data</span><span class="op">$</span><span class="va">Sample_ID</span><span class="op">[</span><span class="op">!</span><span class="va">tree</span><span class="op">$</span><span class="va">tip.label</span> <span class="op"><a href="https://rdrr.io/r/base/match.html">%in%</a></span> <span class="va">sample_data</span><span class="op">$</span><span class="va">Sample_ID</span><span class="op">]</span></span></code></pre></div>
+<pre><code>## character(0)</code></pre>
+<p>Après inspection, nous pouvons voir que le format de <code>Sample_ID</code> dans le dataframe correspond au format des noms d’échantillons dans le <code>tip.labels</code>. Ceux-ci n’ont pas besoin d’être triés dans le même ordre pour être appariés.</p>
+<p>Voilà on est prêts à partir !</p>
+<!-- ======================================================= -->
+</div>
+</div>
+<div id="visualisation-simple-de-larbre" class="section level2" number="1.3">
+<h2>
+<span class="header-section-number">1.3</span> Visualisation simple de l’arbre<a class="anchor" aria-label="anchor" href="#visualisation-simple-de-larbre"><i class="fas fa-link"></i></a>
+</h2>
+<div id="diverses-configurations-darbres" class="section level3 unnumbered">
+<h3>Diverses configurations d’arbres<a class="anchor" aria-label="anchor" href="#diverses-configurations-darbres"><i class="fas fa-link"></i></a>
+</h3>
+<p><strong>ggtree</strong> offre nombreux formats de configuration d’arbres différents et certains peuvent être plus adéquats que d’autres pour votre usage spécifique. Ci-dessous, vous trouverez quelques illustrations. Pour d’autres options, voir ce <a href="http://yulab-smu.top/treedata-book/chapter4.html">livre en ligne</a>.</p>
+<p>Voici quelques exemples des configurations d’arbres :</p>
+<div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu">ggtree</span><span class="op">(</span><span class="va">tree</span><span class="op">)</span>                                            <span class="co"># arbre linéaire simple</span></span>
+<span><span class="fu">ggtree</span><span class="op">(</span><span class="va">tree</span>,  branch.length <span class="op">=</span> <span class="st">"none"</span><span class="op">)</span>                   <span class="co"># arbre linéaire simple avec toutes les pointes alignées </span></span>
+<span><span class="fu">ggtree</span><span class="op">(</span><span class="va">tree</span>, layout<span class="op">=</span><span class="st">"circular"</span><span class="op">)</span>                         <span class="co"># arbre circulaire simple</span></span>
+<span><span class="fu">ggtree</span><span class="op">(</span><span class="va">tree</span>, layout<span class="op">=</span><span class="st">"circular"</span>, branch.length <span class="op">=</span> <span class="st">"none"</span><span class="op">)</span> <span class="co"># arbre circulaire simple avec toutes les pointes alignées </span></span></code></pre></div>
+<p><img src="_main_files/figure-html/phylogenetic_trees_example_formats-1.png" width="50%"><img src="_main_files/figure-html/phylogenetic_trees_example_formats-2.png" width="50%"><img src="_main_files/figure-html/phylogenetic_trees_example_formats-3.png" width="50%"><img src="_main_files/figure-html/phylogenetic_trees_example_formats-4.png" width="50%"></p>
+</div>
+<div id="arbre-simple-plus-données-échantillons" class="section level3 unnumbered">
+<h3>Arbre simple plus données échantillons<a class="anchor" aria-label="anchor" href="#arbre-simple-plus-donn%C3%A9es-%C3%A9chantillons"><i class="fas fa-link"></i></a>
+</h3>
+<p>L’opérateur <strong>%&lt;+%</strong> est utilisé pour connecter le tableau de donnees <code>sample_data</code> avec le fichier <code>arbre</code>. L’annotation la plus facile de votre arbre est l’ajout des noms des échantillons aux extrémités, ainsi que la coloration des points d’extrémité et si désiré des branches :</p>
+<p>Voici un exemple d’arbre circulaire :</p>
+<div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu">ggtree</span><span class="op">(</span><span class="va">tree</span>, layout <span class="op">=</span> <span class="st">"circular"</span>, branch.length <span class="op">=</span> <span class="st">'none'</span><span class="op">)</span> <span class="op">%&lt;+%</span> <span class="va">sample_data</span> <span class="op">+</span> <span class="co"># %&lt;+% ajoute le tableau des données l'échantillon à l'arbre</span></span>
+<span>  <span class="fu">aes</span><span class="op">(</span>color <span class="op">=</span> <span class="op">(</span><span class="va">Belgium</span><span class="op">)</span><span class="op">)</span><span class="op">+</span>                       <span class="co"># colore les branches en fonction d'une variable de votre tableau de données </span></span>
+<span>  <span class="fu">scale_color_manual</span><span class="op">(</span></span>
+<span>    name <span class="op">=</span> <span class="st">"Sample Origin"</span>,                      <span class="co"># le nom de votre palette de couleurs (qui apparaîtra dans la légende comme ceci)</span></span>
+<span>    breaks <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Yes"</span>, <span class="st">"No"</span><span class="op">)</span>,                     <span class="co"># les différentes options de votre variable</span></span>
+<span>    labels <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"NRCSS Belgium"</span>, <span class="st">"Other"</span><span class="op">)</span>,        <span class="co"># comment vous voulez que les différentes options soient nommées dans votre légende, ce qui permet de les formater</span></span>
+<span>    values <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"blue"</span>, <span class="st">"black"</span><span class="op">)</span>,                  <span class="co"># la couleur que vous voulez attribuer à la variable</span></span>
+<span>    na.value <span class="op">=</span> <span class="st">"black"</span><span class="op">)</span> <span class="op">+</span>                        <span class="co"># colorer les valeurs NA en noir également</span></span>
+<span>  <span class="fu">new_scale_color</span><span class="op">(</span><span class="op">)</span><span class="op">+</span>                             <span class="co"># permet d'ajouter une couleur supplémentaire pour une autre variable</span></span>
+<span>    <span class="fu">geom_tippoint</span><span class="op">(</span></span>
+<span>      mapping <span class="op">=</span> <span class="fu">aes</span><span class="op">(</span>color <span class="op">=</span> <span class="va">Continent</span><span class="op">)</span>,          <span class="co"># colorer les pointes par continent. Vous pouvez changer la forme en ajoutant "shape = "</span></span>
+<span>      size <span class="op">=</span> <span class="fl">1.5</span><span class="op">)</span><span class="op">+</span>                               <span class="co"># Définit la taille du point à la extremite </span></span>
+<span>  <span class="fu">scale_color_brewer</span><span class="op">(</span></span>
+<span>    name <span class="op">=</span> <span class="st">"Continent"</span>,                    <span class="co"># nom de votre palette de couleurs (qui apparaîtra dans la légende comme ceci)</span></span>
+<span>    palette <span class="op">=</span> <span class="st">"Set1"</span>,                      <span class="co"># nous choisissons un ensemble de couleurs fournies avec le package brewer </span></span>
+<span>    na.value <span class="op">=</span> <span class="st">"grey"</span><span class="op">)</span> <span class="op">+</span>                    <span class="co"># pour les valeurs NA nous choisissons la couleur grise</span></span>
+<span>  <span class="fu">geom_tiplab</span><span class="op">(</span>                             <span class="co"># ajoute le nom de l'échantillon à l'extrémité de sa branche</span></span>
+<span>    color <span class="op">=</span> <span class="st">'black'</span>,                       <span class="co"># (ajoutez autant de lignes de texte que vous souhaitez avec + , mais vous devrez ajuster la valeur du décalage pour les placer les à côté des autres) </span></span>
+<span>    offset <span class="op">=</span> <span class="fl">1</span>,</span>
+<span>    size <span class="op">=</span> <span class="fl">1</span>,</span>
+<span>    geom <span class="op">=</span> <span class="st">"text"</span>,</span>
+<span>    align <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span> <span class="op">+</span>    </span>
+<span>  <span class="fu">ggtitle</span><span class="op">(</span><span class="st">"Phylogenetic tree of Shigella sonnei"</span><span class="op">)</span><span class="op">+</span>       <span class="co"># titre de votre graphique</span></span>
+<span>  <span class="fu">theme</span><span class="op">(</span></span>
+<span>    axis.title.x <span class="op">=</span> <span class="fu">element_blank</span><span class="op">(</span><span class="op">)</span>, <span class="co"># supprime le titre de l'axe x</span></span>
+<span>    axis.title.y <span class="op">=</span> <span class="fu">element_blank</span><span class="op">(</span><span class="op">)</span>, <span class="co"># supprime le titre de l'axe y</span></span>
+<span>    legend.title <span class="op">=</span> <span class="fu">element_text</span><span class="op">(</span>    <span class="co"># définit la taille de la police et le format du titre de la légende</span></span>
+<span>      face <span class="op">=</span> <span class="st">"bold"</span>,</span>
+<span>      size <span class="op">=</span> <span class="fl">12</span><span class="op">)</span>,   </span>
+<span>    legend.text<span class="op">=</span><span class="fu">element_text</span><span class="op">(</span>       <span class="co"># définit la taille de la police et le format du texte de la légende</span></span>
+<span>      face <span class="op">=</span> <span class="st">"bold"</span>,</span>
+<span>      size <span class="op">=</span> <span class="fl">10</span><span class="op">)</span>,  </span>
+<span>    plot.title <span class="op">=</span> <span class="fu">element_text</span><span class="op">(</span>      <span class="co"># définit la taille de la police et le format du titre du graphique</span></span>
+<span>      size <span class="op">=</span> <span class="fl">12</span>,</span>
+<span>      face <span class="op">=</span> <span class="st">"bold"</span><span class="op">)</span>,  </span>
+<span>    legend.position <span class="op">=</span> <span class="st">"bottom"</span>,     <span class="co"># # définit le position du légende</span></span>
+<span>    legend.box <span class="op">=</span> <span class="st">"vertical"</span>,        <span class="co"># # définit le position du légende</span></span>
+<span>    legend.margin <span class="op">=</span> <span class="fu">margin</span><span class="op">(</span><span class="op">)</span><span class="op">)</span>   </span></code></pre></div>
+<div class="inline-figure"><img src="_main_files/figure-html/phylogenetic_trees_adding_sampledata-1.png" width="672" style="display: block; margin: auto;"></div>
+<p>Vous pouvez exporter le graphique de votre arbre avec <code>ggsave()</code> comme vous le feriez avec n’importe quel autre objet ggplot. Écrit de cette façon, <code>ggsave()</code> enregistre la dernière image produite dans le chemin de fichier que vous spécifiez. Rappelez-vous que vous pouvez utiliser <code>here()</code> et les chemins de fichiers relatifs pour sauvegarder facilement dans des sous-dossiers, etc.</p>
+<div class="sourceCode" id="cb17"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu">ggsave</span><span class="op">(</span><span class="st">"example_tree_circular_1.png"</span>, width <span class="op">=</span> <span class="fl">12</span>, height <span class="op">=</span> <span class="fl">14</span><span class="op">)</span></span></code></pre></div>
+<!-- ======================================================= -->
+</div>
+</div>
+<div id="manipulation-de-larbre" class="section level2" number="1.4">
+<h2>
+<span class="header-section-number">1.4</span> Manipulation de l’arbre<a class="anchor" aria-label="anchor" href="#manipulation-de-larbre"><i class="fas fa-link"></i></a>
+</h2>
+<p>Parfois, vous pouvez avoir un très grand arbre phylogénétique et vous n’êtes intéressé que par une partie de l’arbre. Par exemple, si vous avez produit un arbre incluant des échantillons historiques ou internationaux afin d’obtenir un aperçu de la place de l’ensemble de vos données dans le schema général. Mais ensuite, pour examiner vos données de plus près, vous ne voulez inspecter que cette partie du grand arbre.</p>
+<p>Comme le fichier de l’arbre phylogénétique n’est que le résultat de l’analyse des données de séquençage, nous ne pouvons pas manipuler l’ordre des nœuds et des branches dans le fichier lui-même. Ceux-ci ont déjà été déterminés dans une analyse précédente à partir des données de séquençage brutes. Nous sommes cependant en mesure de zoomer sur certaines parties, de cacher certaines parties et même de sous-ensembler une partie de l’arbre.</p>
+<div id="zoomer-pour-agrandir" class="section level3 unnumbered">
+<h3>Zoomer pour agrandir<a class="anchor" aria-label="anchor" href="#zoomer-pour-agrandir"><i class="fas fa-link"></i></a>
+</h3>
+<p>Si vous ne voulez pas “couper” votre arbre, mais seulement en inspecter une partie de plus près, vous pouvez zoomer pour voir une partie spécifique.</p>
+<p>Tout d’abord, nous traçons l’arbre entier au format linéaire et ajoutons des étiquettes numériques à chaque nœud de l’arbre.</p>
+<div class="sourceCode" id="cb18"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">p</span> <span class="op">&lt;-</span> <span class="fu">ggtree</span><span class="op">(</span><span class="va">tree</span>,<span class="op">)</span> <span class="op">%&lt;+%</span> <span class="va">sample_data</span> <span class="op">+</span></span>
+<span>  <span class="fu">geom_tiplab</span><span class="op">(</span>size <span class="op">=</span> <span class="fl">1.5</span><span class="op">)</span> <span class="op">+</span>                <span class="co"># étiquette les extrémités de toutes les branches avec le nom de l'échantillon dans le fichier de l'arbre</span></span>
+<span>  <span class="fu">geom_text2</span><span class="op">(</span></span>
+<span>    mapping <span class="op">=</span> <span class="fu">aes</span><span class="op">(</span>subset <span class="op">=</span> <span class="op">!</span><span class="va">isTip</span>,</span>
+<span>                  label <span class="op">=</span> <span class="va">node</span><span class="op">)</span>,</span>
+<span>    size <span class="op">=</span> <span class="fl">5</span>,</span>
+<span>    color <span class="op">=</span> <span class="st">"darkred"</span>,</span>
+<span>    hjust <span class="op">=</span> <span class="fl">1</span>,</span>
+<span>    vjust <span class="op">=</span> <span class="fl">1</span><span class="op">)</span>                            <span class="co"># étiquette tous les nœuds de l'arbre</span></span>
+<span></span>
+<span><span class="va">p</span>  <span class="co"># imprime</span></span></code></pre></div>
+<div class="inline-figure"><img src="_main_files/figure-html/phylogenetic_trees_zoom_in-1.png" width="50%" style="display: block; margin: auto;"></div>
+<p>Pour zoomer sur une branche particulière (qui déborde à droite), utilisez <code>viewClade()</code> sur l’objet ggtree <code>p</code> et fournissez le numéro du noeud pour obtenir une vue plus détaillée :</p>
+<div class="sourceCode" id="cb19"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu">viewClade</span><span class="op">(</span><span class="va">p</span>, node <span class="op">=</span> <span class="fl">452</span><span class="op">)</span></span></code></pre></div>
+<div class="inline-figure"><img src="_main_files/figure-html/phylogenetic_trees_zoom_in_452-1.png" width="50%" style="display: block; margin: auto;"></div>
+</div>
+<div id="réduire-les-branches" class="section level3 unnumbered">
+<h3>Réduire les branches<a class="anchor" aria-label="anchor" href="#r%C3%A9duire-les-branches"><i class="fas fa-link"></i></a>
+</h3>
+<p>Cependant, nous pouvons vouloir ignorer cette branche et la réduire à ce même noeud (noeud n° 452) en utilisant <code>collapse()</code>. Cet arbre est défini comme <code>p_collapsed</code>.</p>
+<div class="sourceCode" id="cb20"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">p_collapsed</span> <span class="op">&lt;-</span> <span class="fu">collapse</span><span class="op">(</span><span class="va">p</span>, node <span class="op">=</span> <span class="fl">452</span><span class="op">)</span></span>
+<span><span class="va">p_collapsed</span></span></code></pre></div>
+<div class="inline-figure"><img src="_main_files/figure-html/phylogenetic_trees_collapse_452-1.png" width="50%" style="display: block; margin: auto;"></div>
+<p>Pour plus de clarté, lorsque nous imprimons <code>p_collapsed</code>, nous ajoutons un <code>geom_point2()</code> (un diamant bleu) au noeud de la branche réduite.</p>
+<div class="sourceCode" id="cb21"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">p_collapsed</span> <span class="op">+</span> </span>
+<span><span class="fu">geom_point2</span><span class="op">(</span><span class="fu">aes</span><span class="op">(</span>subset <span class="op">=</span> <span class="op">(</span><span class="va">node</span> <span class="op">==</span> <span class="fl">452</span><span class="op">)</span><span class="op">)</span>,  <span class="co"># nous attribuons un symbole au nœud réduit</span></span>
+<span>            size <span class="op">=</span> <span class="fl">5</span>,                     <span class="co"># définir la taille du symbole</span></span>
+<span>            shape <span class="op">=</span> <span class="fl">23</span>,                   <span class="co"># définir la forme du symbole</span></span>
+<span>            fill <span class="op">=</span> <span class="st">"steelblue"</span><span class="op">)</span>           <span class="co"># définir la coleur du symbole</span></span></code></pre></div>
+<div class="inline-figure"><img src="_main_files/figure-html/unnamed-chunk-15-1.png" width="672"></div>
+</div>
+<div id="sous-ensembler-un-arbre" class="section level3 unnumbered">
+<h3>Sous-ensembler un arbre<a class="anchor" aria-label="anchor" href="#sous-ensembler-un-arbre"><i class="fas fa-link"></i></a>
+</h3>
+<p>Si nous voulons faire un changement plus permanent et créer un nouvel arbre réduit avec lequel travailler, nous pouvons sous-ensembler une partie avec <code>tree_subset()</code>. Vous pouvez ensuite le sauvegarder comme un nouveau fichier newick tree ou un fichier .txt.</p>
+<p>Tout d’abord, nous inspectons les noeuds de l’arbre et les étiquettes des extrémités afin de décider ce qu’il faut sous-ensembler.</p>
+<div class="sourceCode" id="cb22"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu">ggtree</span><span class="op">(</span></span>
+<span>  <span class="va">tree</span>,</span>
+<span>  branch.length <span class="op">=</span> <span class="st">'none'</span>,</span>
+<span>  layout <span class="op">=</span> <span class="st">'circular'</span><span class="op">)</span> <span class="op">%&lt;+%</span> <span class="va">sample_data</span> <span class="op">+</span>               <span class="co"># nous ajoutons les données de l'échantillon en utilisant l'opérateur %&lt;+%.</span></span>
+<span>  <span class="fu">geom_tiplab</span><span class="op">(</span>size <span class="op">=</span> <span class="fl">1</span><span class="op">)</span><span class="op">+</span>                                <span class="co"># étiqueter les extrémités de toutes les branches avec le nom de l'échantillon dans le fichier arbre</span></span>
+<span>  <span class="fu">geom_text2</span><span class="op">(</span></span>
+<span>    mapping <span class="op">=</span> <span class="fu">aes</span><span class="op">(</span>subset <span class="op">=</span> <span class="op">!</span><span class="va">isTip</span>, label <span class="op">=</span> <span class="va">node</span><span class="op">)</span>,</span>
+<span>    size <span class="op">=</span> <span class="fl">3</span>,</span>
+<span>    color <span class="op">=</span> <span class="st">"darkred"</span><span class="op">)</span> <span class="op">+</span>                                <span class="co"># étiquette tous les noeuds de l'arbre </span></span>
+<span> <span class="fu">theme</span><span class="op">(</span></span>
+<span>   legend.position <span class="op">=</span> <span class="st">"none"</span>,                            <span class="co"># supprime la légende tous ensemble</span></span>
+<span>   axis.title.x <span class="op">=</span> <span class="fu">element_blank</span><span class="op">(</span><span class="op">)</span>,</span>
+<span>   axis.title.y <span class="op">=</span> <span class="fu">element_blank</span><span class="op">(</span><span class="op">)</span>,</span>
+<span>   plot.title <span class="op">=</span> <span class="fu">element_text</span><span class="op">(</span>size <span class="op">=</span> <span class="fl">12</span>, face<span class="op">=</span><span class="st">"bold"</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<div class="inline-figure"><img src="_main_files/figure-html/phylogenetic_trees_subsetting-1.png" width="50%" style="display: block; margin: auto;"></div>
+<p>Maintenant, disons que nous avons décidé de sous-ensembler l’arbre au noeud 528 (ne garder que les pointes dans cette branche après le noeud 528) et nous le sauvegardons comme un nouvel objet <code>sub_tree1</code> :</p>
+<div class="sourceCode" id="cb23"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">sub_tree1</span> <span class="op">&lt;-</span> <span class="fu">tree_subset</span><span class="op">(</span></span>
+<span>  <span class="va">tree</span>,</span>
+<span>  node <span class="op">=</span> <span class="fl">528</span><span class="op">)</span>                                            <span class="co"># nous sous-ensemblons l'arbre au nœud 528</span></span></code></pre></div>
+<p>Examinons l’arbre subset tree 1:</p>
+<div class="sourceCode" id="cb24"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu">ggtree</span><span class="op">(</span><span class="va">sub_tree1</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu">geom_tiplab</span><span class="op">(</span>size <span class="op">=</span> <span class="fl">3</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu">ggtitle</span><span class="op">(</span><span class="st">"Subset tree 1"</span><span class="op">)</span></span></code></pre></div>
+<div class="inline-figure"><img src="_main_files/figure-html/unnamed-chunk-17-1.png" width="672"></div>
+<p>Vous pouvez également effectuer un sous-ensemble basé sur un échantillon particulier, en spécifiant le nombre de noeuds “en arrière” que vous souhaitez inclure. Sous-ensemble la même partie de l’arbre basé sur un échantillon, dans ce cas S17BD07692, en remontant de 9 noeuds et nous le sauvegardons comme un nouvel objet <code>sub_tree2</code> :</p>
+<div class="sourceCode" id="cb25"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">sub_tree2</span> <span class="op">&lt;-</span> <span class="fu">tree_subset</span><span class="op">(</span></span>
+<span>  <span class="va">tree</span>,</span>
+<span>  <span class="st">"S17BD07692"</span>,</span>
+<span>  levels_back <span class="op">=</span> <span class="fl">9</span><span class="op">)</span> <span class="co"># levels_back définit le nombre de nœuds en arrière de la pointe de l'échantillon que vous voulez atteindre.</span></span></code></pre></div>
+<p>Examinons l’arbre subset tree 2:</p>
+<div class="sourceCode" id="cb26"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu">ggtree</span><span class="op">(</span><span class="va">sub_tree2</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu">geom_tiplab</span><span class="op">(</span>size <span class="op">=</span><span class="fl">3</span><span class="op">)</span>  <span class="op">+</span></span>
+<span>  <span class="fu">ggtitle</span><span class="op">(</span><span class="st">"Subset tree 2"</span><span class="op">)</span></span></code></pre></div>
+<div class="inline-figure"><img src="_main_files/figure-html/unnamed-chunk-19-1.png" width="672"></div>
+<p>Vous pouvez également sauvegarder votre nouvel arbre soit comme un type Newick ou même un fichier texte en utilisant la fonction <code>write.tree()</code> du package <strong>ape</strong> :</p>
+<div class="sourceCode" id="cb27"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># pour sauvegarder en format .nwk format</span></span>
+<span><span class="fu">ape</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/ape/man/write.tree.html">write.tree</a></span><span class="op">(</span><span class="va">sub_tree2</span>, file<span class="op">=</span><span class="st">'data/phylo/Shigella_subtree_2.nwk'</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># pour sauvegarder en format .txt format</span></span>
+<span><span class="fu">ape</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/ape/man/write.tree.html">write.tree</a></span><span class="op">(</span><span class="va">sub_tree2</span>, file<span class="op">=</span><span class="st">'data/phylo/Shigella_subtree_2.txt'</span><span class="op">)</span></span></code></pre></div>
+</div>
+<div id="rotation-des-nœuds-dans-un-arbre" class="section level3 unnumbered">
+<h3>Rotation des nœuds dans un arbre<a class="anchor" aria-label="anchor" href="#rotation-des-n%C5%93uds-dans-un-arbre"><i class="fas fa-link"></i></a>
+</h3>
+<p>Comme mentionné précédemment, nous ne pouvons pas modifier l’ordre des pointes ou des noeuds dans l’arbre, car cela est basé sur leur parenté génétique et ne peut pas être manipulé de manière visuelle. Mais nous pouvons roter des branches autour des nœuds si cela facilite notre visualisation.</p>
+<p>Tout d’abord, nous traçons notre nouveau subset tree 2 avec des étiquettes de nœuds pour choisir le nœud que nous voulons manipuler et nous enregistrons dans un objet ggtree plot <code>p</code>.</p>
+<div class="sourceCode" id="cb28"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">p</span> <span class="op">&lt;-</span> <span class="fu">ggtree</span><span class="op">(</span><span class="va">sub_tree2</span><span class="op">)</span> <span class="op">+</span>  </span>
+<span>  <span class="fu">geom_tiplab</span><span class="op">(</span>size <span class="op">=</span> <span class="fl">4</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu">geom_text2</span><span class="op">(</span><span class="fu">aes</span><span class="op">(</span>subset<span class="op">=</span><span class="op">!</span><span class="va">isTip</span>, label<span class="op">=</span><span class="va">node</span><span class="op">)</span>, <span class="co"># étiquette tous les nœuds de l'arbre</span></span>
+<span>             size <span class="op">=</span> <span class="fl">5</span>,</span>
+<span>             color <span class="op">=</span> <span class="st">"darkred"</span>, </span>
+<span>             hjust <span class="op">=</span> <span class="fl">1</span>, </span>
+<span>             vjust <span class="op">=</span> <span class="fl">1</span><span class="op">)</span> </span>
+<span><span class="va">p</span></span></code></pre></div>
+<div class="inline-figure"><img src="_main_files/figure-html/phylogenetic_trees_rotating_1-1.png" width="50%" style="display: block; margin: auto;"></div>
+<p>Nous pouvons ensuite manipuler les nœuds en appliquant <strong>ggtree::rotate()</strong> ou <strong>ggtree::flip()</strong> : Note : pour illustrer quels noeuds nous manipulons, nous appliquons d’abord la fonction <strong>geom_hilight()</strong> de <strong>ggtree</strong> pour mettre en évidence les échantillons dans les noeuds qui nous intéressent et nous enregistrons cet objet ggtree plot dans un nouvel objet <code>p1</code>.</p>
+<div class="sourceCode" id="cb29"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">p1</span> <span class="op">&lt;-</span> <span class="va">p</span> <span class="op">+</span> <span class="fu">geom_hilight</span><span class="op">(</span>  <span class="co"># met en évidence le nœud 39 en bleu, "extend =" nous permet de définir la longueur du bloc de couleur</span></span>
+<span>  node <span class="op">=</span> <span class="fl">39</span>,</span>
+<span>  fill <span class="op">=</span> <span class="st">"steelblue"</span>,</span>
+<span>  extend <span class="op">=</span> <span class="fl">0.0017</span><span class="op">)</span> <span class="op">+</span>  </span>
+<span><span class="fu">geom_hilight</span><span class="op">(</span>            <span class="co"># met en évidence le nœud 39 en jaune</span></span>
+<span>  node <span class="op">=</span> <span class="fl">37</span>,</span>
+<span>  fill <span class="op">=</span> <span class="st">"yellow"</span>,</span>
+<span>  extend <span class="op">=</span> <span class="fl">0.0017</span><span class="op">)</span> <span class="op">+</span>               </span>
+<span><span class="fu">ggtitle</span><span class="op">(</span><span class="st">"Original tree"</span><span class="op">)</span></span>
+<span></span>
+<span></span>
+<span><span class="va">p1</span> <span class="co"># imprime</span></span></code></pre></div>
+<div class="inline-figure"><img src="_main_files/figure-html/phylogenetic_trees_rotating_2-1.png" width="50%" style="display: block; margin: auto;"></div>
+<p>Maintenant nous pouvons faire tourner le noeud 37 dans l’objet <code>p1</code> de sorte que les échantillons sur le noeud 38 se déplacent vers le haut. Nous enregistrons l’arbre pivoté dans un nouvel objet <code>p2</code>.</p>
+<div class="sourceCode" id="cb30"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">p2</span> <span class="op">&lt;-</span> <span class="fu">ggtree</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/ggtree/man/rotate.html">rotate</a></span><span class="op">(</span><span class="va">p1</span>, <span class="fl">37</span><span class="op">)</span> <span class="op">+</span> </span>
+<span>      <span class="fu">ggtitle</span><span class="op">(</span><span class="st">"Rotated Node 37"</span><span class="op">)</span></span>
+<span></span>
+<span></span>
+<span><span class="va">p2</span>   <span class="co"># imprime</span></span></code></pre></div>
+<div class="inline-figure"><img src="_main_files/figure-html/unnamed-chunk-20-1.png" width="672"></div>
+<p>Ou nous pouvons utiliser la commande flip pour faire pivoter le noeud 36 de l’objet <code>p1</code> et faire passer le noeud 37 en haut et le noeud 39 en bas. Nous enregistrons l’arbre retourné dans un nouvel objet <code>p3</code>.</p>
+<div class="sourceCode" id="cb31"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">p3</span> <span class="op">&lt;-</span>  <span class="fu">flip</span><span class="op">(</span><span class="va">p1</span>, <span class="fl">39</span>, <span class="fl">37</span><span class="op">)</span> <span class="op">+</span></span>
+<span>      <span class="fu">ggtitle</span><span class="op">(</span><span class="st">"Rotated Node 36"</span><span class="op">)</span></span>
+<span></span>
+<span></span>
+<span><span class="va">p3</span>   <span class="co"># imprime</span></span></code></pre></div>
+<div class="inline-figure"><img src="_main_files/figure-html/unnamed-chunk-21-1.png" width="672"></div>
+</div>
+<div id="exemple-de-sous-arbre-avec-annotation-déchantillon-de-données" class="section level3 unnumbered">
+<h3>Exemple de sous-arbre avec annotation d’échantillon de données<a class="anchor" aria-label="anchor" href="#exemple-de-sous-arbre-avec-annotation-d%C3%A9chantillon-de-donn%C3%A9es"><i class="fas fa-link"></i></a>
+</h3>
+<p>Disons que nous investiguons le cluster de cas avec expansion clonale qui s’est produit en 2017 et 2018 au nœud 39 de notre sous-arbre. Nous ajoutons l’année d’isolement de la souche ainsi que l’historique des voyages et la couleur par pays pour voir l’origine d’autres souches étroitement liées :</p>
+<div class="sourceCode" id="cb32"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu">ggtree</span><span class="op">(</span><span class="va">sub_tree2</span><span class="op">)</span> <span class="op">%&lt;+%</span> <span class="va">sample_data</span> <span class="op">+</span>     <span class="co"># nous utilisons l'opérateur %&lt;+% pour faire le lien avec le fichier sample_data </span></span>
+<span>  <span class="fu">geom_tiplab</span><span class="op">(</span>                          <span class="co"># étiquette les extrémités de toutes les branches avec le nom de l'échantillon dans le fichier arbre</span></span>
+<span>    size <span class="op">=</span> <span class="fl">2.5</span>,</span>
+<span>    offset <span class="op">=</span> <span class="fl">0.001</span>,</span>
+<span>    align <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span> <span class="op">+</span> </span>
+<span>  <span class="fu">theme_tree2</span><span class="op">(</span><span class="op">)</span><span class="op">+</span></span>
+<span>  <span class="fu">xlim</span><span class="op">(</span><span class="fl">0</span>, <span class="fl">0.015</span><span class="op">)</span><span class="op">+</span>                       <span class="co"># définir les limites de l'axe x de notre arbre </span></span>
+<span>  <span class="fu">geom_tippoint</span><span class="op">(</span><span class="fu">aes</span><span class="op">(</span>color<span class="op">=</span><span class="va">Country</span><span class="op">)</span>,     <span class="co"># colorer le point d'extrémité par continent</span></span>
+<span>                size <span class="op">=</span> <span class="fl">1.5</span><span class="op">)</span><span class="op">+</span> </span>
+<span>  <span class="fu">scale_color_brewer</span><span class="op">(</span></span>
+<span>    name <span class="op">=</span> <span class="st">"Country"</span>, </span>
+<span>    palette <span class="op">=</span> <span class="st">"Set1"</span>, </span>
+<span>    na.value <span class="op">=</span> <span class="st">"grey"</span><span class="op">)</span><span class="op">+</span></span>
+<span>  <span class="fu">geom_tiplab</span><span class="op">(</span>                          <span class="co"># ajouter l'année d'isolation comme étiquette de texte aux extrémités</span></span>
+<span>    <span class="fu">aes</span><span class="op">(</span>label <span class="op">=</span> <span class="va">Year</span><span class="op">)</span>,</span>
+<span>    color <span class="op">=</span> <span class="st">'blue'</span>,</span>
+<span>    offset <span class="op">=</span> <span class="fl">0.0045</span>,</span>
+<span>    size <span class="op">=</span> <span class="fl">3</span>,</span>
+<span>    linetype <span class="op">=</span> <span class="st">"blank"</span> ,</span>
+<span>    geom <span class="op">=</span> <span class="st">"text"</span>,</span>
+<span>    align <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">+</span> </span>
+<span>  <span class="fu">geom_tiplab</span><span class="op">(</span>                          <span class="co"># ajouter l'historique de voyage comme étiquette de texte aux extrémités, en couleur rouge</span></span>
+<span>    <span class="fu">aes</span><span class="op">(</span>label <span class="op">=</span> <span class="va">Travel_history</span><span class="op">)</span>,</span>
+<span>    color <span class="op">=</span> <span class="st">'red'</span>,</span>
+<span>    offset <span class="op">=</span> <span class="fl">0.006</span>,</span>
+<span>    size <span class="op">=</span> <span class="fl">3</span>,</span>
+<span>    linetype <span class="op">=</span> <span class="st">"blank"</span>,</span>
+<span>    geom <span class="op">=</span> <span class="st">"text"</span>,</span>
+<span>    align <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">+</span> </span>
+<span>  <span class="fu">ggtitle</span><span class="op">(</span><span class="st">"Phylogenetic tree of Belgian S. sonnei strains with travel history"</span><span class="op">)</span><span class="op">+</span>  <span class="co"># ajouter le titre du graphique</span></span>
+<span>  <span class="fu">xlab</span><span class="op">(</span><span class="st">"genetic distance (0.001 = 4 nucleotides difference)"</span><span class="op">)</span><span class="op">+</span>                    <span class="co"># ajouter une étiquette à l'axe x </span></span>
+<span>  <span class="fu">theme</span><span class="op">(</span></span>
+<span>    axis.title.x <span class="op">=</span> <span class="fu">element_text</span><span class="op">(</span>size <span class="op">=</span> <span class="fl">10</span><span class="op">)</span>,</span>
+<span>    axis.title.y <span class="op">=</span> <span class="fu">element_blank</span><span class="op">(</span><span class="op">)</span>,</span>
+<span>    legend.title <span class="op">=</span> <span class="fu">element_text</span><span class="op">(</span>face <span class="op">=</span> <span class="st">"bold"</span>, size <span class="op">=</span> <span class="fl">12</span><span class="op">)</span>,</span>
+<span>    legend.text <span class="op">=</span> <span class="fu">element_text</span><span class="op">(</span>face <span class="op">=</span> <span class="st">"bold"</span>, size <span class="op">=</span> <span class="fl">10</span><span class="op">)</span>,</span>
+<span>    plot.title <span class="op">=</span> <span class="fu">element_text</span><span class="op">(</span>size <span class="op">=</span> <span class="fl">12</span>, face <span class="op">=</span> <span class="st">"bold"</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<div class="inline-figure"><img src="_main_files/figure-html/phylogenetic_trees_inspect_subset_example-1.png" width="80%" style="display: block; margin: auto;"></div>
+<p>Notre observation pointe vers un événement d’importation de souches en provenance d’Asie, qui ont ensuite circulé en Belgique au fil des ans et semblent avoir causé notre dernière épidémie.</p>
+<!-- ======================================================= -->
+</div>
+</div>
+<div id="arbres-plus-complexes-ajout-de-cartes-thermiques-des-données-de-léchantillon" class="section level2 unnumbered">
+<h2>Arbres plus complexes : ajout de cartes thermiques des données de l’échantillon<a class="anchor" aria-label="anchor" href="#arbres-plus-complexes-ajout-de-cartes-thermiques-des-donn%C3%A9es-de-l%C3%A9chantillon"><i class="fas fa-link"></i></a>
+</h2>
+<p>Nous pouvons ajouter des informations plus complexes, telles que la présence catégorielle de gènes de résistance aux antimicrobiens et des valeurs numériques pour la résistance aux antimicrobiens effectivement mesurée sous la forme d’une carte thermique en utilisant la fonction <strong>ggtree::gheatmap()</strong>.</p>
+<p>Tout d’abord, nous devons tracer notre arbre (qui peut être linéaire ou circulaire) et le enregistrer dans un nouvel objet ggtree plot <code>p</code> : Nous allons utiliser le sub_tree de la partie 3).</p>
+<div class="sourceCode" id="cb33"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">p</span> <span class="op">&lt;-</span> <span class="fu">ggtree</span><span class="op">(</span><span class="va">sub_tree2</span>, branch.length<span class="op">=</span><span class="st">'none'</span>, layout<span class="op">=</span><span class="st">'circular'</span><span class="op">)</span> <span class="op">%&lt;+%</span> <span class="va">sample_data</span> <span class="op">+</span></span>
+<span>  <span class="fu">geom_tiplab</span><span class="op">(</span>size <span class="op">=</span><span class="fl">3</span><span class="op">)</span> <span class="op">+</span> </span>
+<span> <span class="fu">theme</span><span class="op">(</span></span>
+<span>   legend.position <span class="op">=</span> <span class="st">"none"</span>,</span>
+<span>    axis.title.x <span class="op">=</span> <span class="fu">element_blank</span><span class="op">(</span><span class="op">)</span>,</span>
+<span>    axis.title.y <span class="op">=</span> <span class="fu">element_blank</span><span class="op">(</span><span class="op">)</span>,</span>
+<span>    plot.title <span class="op">=</span> <span class="fu">element_text</span><span class="op">(</span></span>
+<span>      size <span class="op">=</span> <span class="fl">12</span>,</span>
+<span>      face <span class="op">=</span> <span class="st">"bold"</span>,</span>
+<span>      hjust <span class="op">=</span> <span class="fl">0.5</span>,</span>
+<span>      vjust <span class="op">=</span> <span class="op">-</span><span class="fl">15</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="va">p</span></span></code></pre></div>
+<div class="inline-figure"><img src="_main_files/figure-html/phylogenetic_trees_sampledata_heatmap-1.png" width="60%" style="display: block; margin: auto;"></div>
+<p>Ensuite, nous préparons nos données. Pour visualiser différentes variables avec de nouveaux schémas de couleurs, nous sous-ensemblons notre dataframe à la variable désirée. Il est important d’ajouter le <code>Sample_ID</code> comme rownames sinon il ne pourra pas faire correspondre les données à l’arbre <code>tip.labels</code> :</p>
+<p>Dans notre exemple, nous voulons examiner le sexe et les mutations qui pourraient conférer une résistance à la Ciprofloxacine, un important antibiotique de première ligne utilisé pour traiter les infections à Shigella.</p>
+<p>Nous créons un tableau de données pour le sexe :</p>
+<div class="sourceCode" id="cb34"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">gender</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span><span class="st">"gender"</span> <span class="op">=</span> <span class="va">sample_data</span><span class="op">[</span>,<span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Gender"</span><span class="op">)</span><span class="op">]</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/colnames.html">rownames</a></span><span class="op">(</span><span class="va">gender</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="va">sample_data</span><span class="op">$</span><span class="va">Sample_ID</span></span></code></pre></div>
+<p>Nous créons un tableau de données pour les mutations du gène gyrA, qui confèrent une résistance à la ciprofloxacine :</p>
+<div class="sourceCode" id="cb35"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">cipR</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span><span class="st">"cipR"</span> <span class="op">=</span> <span class="va">sample_data</span><span class="op">[</span>,<span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"gyrA_mutations"</span><span class="op">)</span><span class="op">]</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/colnames.html">rownames</a></span><span class="op">(</span><span class="va">cipR</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="va">sample_data</span><span class="op">$</span><span class="va">Sample_ID</span></span></code></pre></div>
+<p>Nous créons un tableau de données pour la concentration minimale inhibitrice (CMI) mesurée pour la Ciprofloxacine en provenance du laboratoire :</p>
+<div class="sourceCode" id="cb36"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">MIC_Cip</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span><span class="st">"mic_cip"</span> <span class="op">=</span> <span class="va">sample_data</span><span class="op">[</span>,<span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"MIC_CIP"</span><span class="op">)</span><span class="op">]</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/colnames.html">rownames</a></span><span class="op">(</span><span class="va">MIC_Cip</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="va">sample_data</span><span class="op">$</span><span class="va">Sample_ID</span></span></code></pre></div>
+<p>Nous créons un premier graphique en ajoutant une carte thermique binaire pour le sexe à l’arbre phylogénétique et en la sauvegardant dans un nouvel objet graphique ggtree <code>h1</code> :</p>
+<div class="sourceCode" id="cb37"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">h1</span> <span class="op">&lt;-</span>  <span class="fu">gheatmap</span><span class="op">(</span><span class="va">p</span>, <span class="va">gender</span>,                                 <span class="co"># Nous ajoutons une couche de carte thermique du tableau de données de sexe à notre graphique arbre.</span></span>
+<span>                offset <span class="op">=</span> <span class="fl">10</span>,                               <span class="co"># l'offset déplace la carte thermique vers la droite,</span></span>
+<span>                width <span class="op">=</span> <span class="fl">0.10</span>,                              <span class="co"># la largeur définit la largeur de la colonne de la carte thermique,</span></span>
+<span>                color <span class="op">=</span> <span class="cn">NULL</span>,                              <span class="co"># la couleur définit la bordure des colonnes de la carte thermique.</span></span>
+<span>         colnames <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span> <span class="op">+</span>                               <span class="co"># cache les noms des colonnes de la carte thermique</span></span>
+<span>  <span class="fu">scale_fill_manual</span><span class="op">(</span>name <span class="op">=</span> <span class="st">"Gender"</span>,                       <span class="co"># définit le schéma de coloration et la légende pour le sexe</span></span>
+<span>                    values <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"#00d1b1"</span>, <span class="st">"purple"</span><span class="op">)</span>,</span>
+<span>                    breaks <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Male"</span>, <span class="st">"Female"</span><span class="op">)</span>,</span>
+<span>                    labels <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Male"</span>, <span class="st">"Female"</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>   <span class="fu">theme</span><span class="op">(</span>legend.position <span class="op">=</span> <span class="st">"bottom"</span>,</span>
+<span>        legend.title <span class="op">=</span> <span class="fu">element_text</span><span class="op">(</span>size <span class="op">=</span> <span class="fl">12</span><span class="op">)</span>,</span>
+<span>        legend.text <span class="op">=</span> <span class="fu">element_text</span><span class="op">(</span>size <span class="op">=</span> <span class="fl">10</span><span class="op">)</span>,</span>
+<span>        legend.box <span class="op">=</span> <span class="st">"vertical"</span>, legend.margin <span class="op">=</span> <span class="fu">margin</span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<pre><code>## Scale for y is already present.
+## Adding another scale for y, which will replace the existing scale.
+## Scale for fill is already present.
+## Adding another scale for fill, which will replace the existing scale.</code></pre>
+<div class="sourceCode" id="cb39"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">h1</span></span></code></pre></div>
+<div class="inline-figure"><img src="_main_files/figure-html/phylogenetic_trees_sampledata_heatmap_gender-1.png" width="70%" style="display: block; margin: auto;"></div>
+<p>Nous ajoutons ensuite des informations sur les mutations du gène gyrA, qui confèrent une résistance à la Ciprofloxacine :</p>
+<p>Note : La présence de mutations ponctuelles chromosomiques dans les données WGS a été déterminée au préalable à l’aide de l’outil PointFinder développé par Zankari et al. (voir la référence dans la section des références supplémentaires)</p>
+<p>Tout d’abord, nous attribuons un nouveau schéma de couleurs à notre objet de tracé existant <code>h1</code> et le sauvegardons dans un nouvel objet <code>h2</code>. Cela nous permet de définir et de modifier les couleurs de notre deuxième variable dans la carte thermique.</p>
+<div class="sourceCode" id="cb40"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">h2</span> <span class="op">&lt;-</span> <span class="va">h1</span> <span class="op">+</span> <span class="fu">new_scale_fill</span><span class="op">(</span><span class="op">)</span> </span></code></pre></div>
+<p>Ensuite, nous ajoutons la deuxième couche de carte thermique à <code>h2</code> et nous enregistrons les graphiques combinés dans un nouvel objet <code>h3</code> :</p>
+<div class="sourceCode" id="cb41"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">h3</span> <span class="op">&lt;-</span> <span class="fu">gheatmap</span><span class="op">(</span><span class="va">h2</span>, <span class="va">cipR</span>,         <span class="co"># ajoute la deuxième ligne de la carte thermique décrivant les mutations de résistance à la Ciprofloxacine</span></span>
+<span>               offset <span class="op">=</span> <span class="fl">12</span>, </span>
+<span>               width <span class="op">=</span> <span class="fl">0.10</span>, </span>
+<span>               colnames <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu">scale_fill_manual</span><span class="op">(</span>name <span class="op">=</span> <span class="st">"Ciprofloxacin resistance \n conferring mutation"</span>,</span>
+<span>                    values <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"#fe9698"</span>,<span class="st">"#ea0c92"</span><span class="op">)</span>,</span>
+<span>                    breaks <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span> <span class="st">"gyrA D87Y"</span>, <span class="st">"gyrA S83L"</span><span class="op">)</span>,</span>
+<span>                    labels <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span> <span class="st">"gyrA d87y"</span>, <span class="st">"gyrA s83l"</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>   <span class="fu">theme</span><span class="op">(</span>legend.position <span class="op">=</span> <span class="st">"bottom"</span>,</span>
+<span>        legend.title <span class="op">=</span> <span class="fu">element_text</span><span class="op">(</span>size <span class="op">=</span> <span class="fl">12</span><span class="op">)</span>,</span>
+<span>        legend.text <span class="op">=</span> <span class="fu">element_text</span><span class="op">(</span>size <span class="op">=</span> <span class="fl">10</span><span class="op">)</span>,</span>
+<span>        legend.box <span class="op">=</span> <span class="st">"vertical"</span>, legend.margin <span class="op">=</span> <span class="fu">margin</span><span class="op">(</span><span class="op">)</span><span class="op">)</span><span class="op">+</span></span>
+<span>  <span class="fu">guides</span><span class="op">(</span>fill <span class="op">=</span> <span class="fu">guide_legend</span><span class="op">(</span>nrow <span class="op">=</span> <span class="fl">2</span>,byrow <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<pre><code>## Scale for y is already present.
+## Adding another scale for y, which will replace the existing scale.
+## Scale for fill is already present.
+## Adding another scale for fill, which will replace the existing scale.</code></pre>
+<div class="sourceCode" id="cb43"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">h3</span></span></code></pre></div>
+<div class="inline-figure"><img src="_main_files/figure-html/phylogenetic_trees_sampledata_heatmap_cip_genes-1.png" width="80%" style="display: block; margin: auto;"></div>
+<p>Nous répétons le processus ci-dessus, en ajoutant d’abord une nouvelle couche d’échelle de couleurs à notre objet existant <code>h3</code>, puis en ajoutant les données continues sur la concentration minimale inhibitrice (CMI) de la Ciprofloxacine pour chaque souche à l’objet résultant <code>h4</code> pour produire l’objet final <code>h5</code> :</p>
+<div class="sourceCode" id="cb44"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># D'abord nous ajoutons le nouveau schéma de coloration :</span></span>
+<span><span class="va">h4</span> <span class="op">&lt;-</span> <span class="va">h3</span> <span class="op">+</span> <span class="fu">new_scale_fill</span><span class="op">(</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># puis nous combinons les deux en une nouvelle graphique :</span></span>
+<span><span class="va">h5</span> <span class="op">&lt;-</span> <span class="fu">gheatmap</span><span class="op">(</span><span class="va">h4</span>, <span class="va">MIC_Cip</span>,  </span>
+<span>               offset <span class="op">=</span> <span class="fl">14</span>, </span>
+<span>               width <span class="op">=</span> <span class="fl">0.10</span>,</span>
+<span>                colnames <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span><span class="op">+</span></span>
+<span>  <span class="fu">scale_fill_continuous</span><span class="op">(</span>name <span class="op">=</span> <span class="st">"MIC for Ciprofloxacin"</span>,  <span class="co"># nous définissons ici un schéma de couleurs de gradient pour la variable continue de CMI</span></span>
+<span>                      low <span class="op">=</span> <span class="st">"yellow"</span>, high <span class="op">=</span> <span class="st">"red"</span>,</span>
+<span>                      breaks <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">0.50</span>, <span class="fl">1.00</span><span class="op">)</span>,</span>
+<span>                      na.value <span class="op">=</span> <span class="st">"white"</span><span class="op">)</span> <span class="op">+</span></span>
+<span>   <span class="fu">guides</span><span class="op">(</span>fill <span class="op">=</span> <span class="fu">guide_colourbar</span><span class="op">(</span>barwidth <span class="op">=</span> <span class="fl">5</span>, barheight <span class="op">=</span> <span class="fl">1</span><span class="op">)</span><span class="op">)</span><span class="op">+</span></span>
+<span>   <span class="fu">theme</span><span class="op">(</span>legend.position <span class="op">=</span> <span class="st">"bottom"</span>,</span>
+<span>        legend.title <span class="op">=</span> <span class="fu">element_text</span><span class="op">(</span>size <span class="op">=</span> <span class="fl">12</span><span class="op">)</span>,</span>
+<span>        legend.text <span class="op">=</span> <span class="fu">element_text</span><span class="op">(</span>size <span class="op">=</span> <span class="fl">10</span><span class="op">)</span>,</span>
+<span>        legend.box <span class="op">=</span> <span class="st">"vertical"</span>, legend.margin <span class="op">=</span> <span class="fu">margin</span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<pre><code>## Scale for y is already present.
+## Adding another scale for y, which will replace the existing scale.
+## Scale for fill is already present.
+## Adding another scale for fill, which will replace the existing scale.</code></pre>
+<div class="sourceCode" id="cb46"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">h5</span></span></code></pre></div>
+<div class="inline-figure"><img src="_main_files/figure-html/phylogenetic_trees_sampledata_heatmap_cip_MIC-1.png" width="90%" style="display: block; margin: auto;"></div>
+<p>We can do the same exercise for a linear tree:</p>
+<div class="sourceCode" id="cb47"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">p</span> <span class="op">&lt;-</span> <span class="fu">ggtree</span><span class="op">(</span><span class="va">sub_tree2</span><span class="op">)</span> <span class="op">%&lt;+%</span> <span class="va">sample_data</span> <span class="op">+</span></span>
+<span>  <span class="fu">geom_tiplab</span><span class="op">(</span>size <span class="op">=</span> <span class="fl">3</span><span class="op">)</span> <span class="op">+</span> <span class="co"># etiquetter les pointes</span></span>
+<span>  <span class="fu">theme_tree2</span><span class="op">(</span><span class="op">)</span><span class="op">+</span></span>
+<span>  <span class="fu">xlab</span><span class="op">(</span><span class="st">"genetic distance (0.001 = 4 nucleotides difference)"</span><span class="op">)</span><span class="op">+</span></span>
+<span>  <span class="fu">xlim</span><span class="op">(</span><span class="fl">0</span>, <span class="fl">0.015</span><span class="op">)</span><span class="op">+</span></span>
+<span> <span class="fu">theme</span><span class="op">(</span>legend.position <span class="op">=</span> <span class="st">"none"</span>,</span>
+<span>      axis.title.y <span class="op">=</span> <span class="fu">element_blank</span><span class="op">(</span><span class="op">)</span>,</span>
+<span>      plot.title <span class="op">=</span> <span class="fu">element_text</span><span class="op">(</span>size <span class="op">=</span> <span class="fl">12</span>, </span>
+<span>                                face <span class="op">=</span> <span class="st">"bold"</span>,</span>
+<span>                                hjust <span class="op">=</span> <span class="fl">0.5</span>,</span>
+<span>                                vjust <span class="op">=</span> <span class="op">-</span><span class="fl">15</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="va">p</span></span></code></pre></div>
+<div class="inline-figure"><img src="_main_files/figure-html/phylogenetic_trees_sampledata_heatmap_linear_1-1.png" width="80%" style="display: block; margin: auto;"></div>
+<p>Tout d’abord, nous ajoutons le sexe :</p>
+<div class="sourceCode" id="cb48"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">h1</span> <span class="op">&lt;-</span>  <span class="fu">gheatmap</span><span class="op">(</span><span class="va">p</span>, <span class="va">gender</span>, </span>
+<span>                offset <span class="op">=</span> <span class="fl">0.003</span>,</span>
+<span>                width <span class="op">=</span> <span class="fl">0.1</span>, </span>
+<span>                color<span class="op">=</span><span class="st">"black"</span>, </span>
+<span>         colnames <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span><span class="op">+</span></span>
+<span>  <span class="fu">scale_fill_manual</span><span class="op">(</span>name <span class="op">=</span> <span class="st">"Gender"</span>,</span>
+<span>                    values <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"#00d1b1"</span>, <span class="st">"purple"</span><span class="op">)</span>,</span>
+<span>                    breaks <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Male"</span>, <span class="st">"Female"</span><span class="op">)</span>,</span>
+<span>                    labels <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Male"</span>, <span class="st">"Female"</span><span class="op">)</span><span class="op">)</span><span class="op">+</span></span>
+<span>   <span class="fu">theme</span><span class="op">(</span>legend.position <span class="op">=</span> <span class="st">"bottom"</span>,</span>
+<span>        legend.title <span class="op">=</span> <span class="fu">element_text</span><span class="op">(</span>size <span class="op">=</span> <span class="fl">12</span><span class="op">)</span>,</span>
+<span>        legend.text <span class="op">=</span> <span class="fu">element_text</span><span class="op">(</span>size <span class="op">=</span> <span class="fl">10</span><span class="op">)</span>,</span>
+<span>        legend.box <span class="op">=</span> <span class="st">"vertical"</span>, legend.margin <span class="op">=</span> <span class="fu">margin</span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<pre><code>## Scale for y is already present.
+## Adding another scale for y, which will replace the existing scale.
+## Scale for fill is already present.
+## Adding another scale for fill, which will replace the existing scale.</code></pre>
+<div class="sourceCode" id="cb50"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">h1</span></span></code></pre></div>
+<div class="inline-figure"><img src="_main_files/figure-html/phylogenetic_trees_sampledata_heatmap_linear_2-1.png" width="80%" style="display: block; margin: auto;"></div>
+<p>Puis nous ajoutons les mutations de résistance à la Ciprofloxacine après avoir ajouté une autre couche de schéma de couleurs :</p>
+<div class="sourceCode" id="cb51"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">h2</span> <span class="op">&lt;-</span> <span class="va">h1</span> <span class="op">+</span> <span class="fu">new_scale_fill</span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="va">h3</span> <span class="op">&lt;-</span> <span class="fu">gheatmap</span><span class="op">(</span><span class="va">h2</span>, <span class="va">cipR</span>,   </span>
+<span>               offset <span class="op">=</span> <span class="fl">0.004</span>, </span>
+<span>               width <span class="op">=</span> <span class="fl">0.1</span>,</span>
+<span>               color <span class="op">=</span> <span class="st">"black"</span>,</span>
+<span>                colnames <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span><span class="op">+</span></span>
+<span>  <span class="fu">scale_fill_manual</span><span class="op">(</span>name <span class="op">=</span> <span class="st">"Ciprofloxacin resistance \n conferring mutation"</span>,</span>
+<span>                    values <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"#fe9698"</span>,<span class="st">"#ea0c92"</span><span class="op">)</span>,</span>
+<span>                    breaks <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span> <span class="st">"gyrA D87Y"</span>, <span class="st">"gyrA S83L"</span><span class="op">)</span>,</span>
+<span>                    labels <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span> <span class="st">"gyrA d87y"</span>, <span class="st">"gyrA s83l"</span><span class="op">)</span><span class="op">)</span><span class="op">+</span></span>
+<span>   <span class="fu">theme</span><span class="op">(</span>legend.position <span class="op">=</span> <span class="st">"bottom"</span>,</span>
+<span>        legend.title <span class="op">=</span> <span class="fu">element_text</span><span class="op">(</span>size <span class="op">=</span> <span class="fl">12</span><span class="op">)</span>,</span>
+<span>        legend.text <span class="op">=</span> <span class="fu">element_text</span><span class="op">(</span>size <span class="op">=</span> <span class="fl">10</span><span class="op">)</span>,</span>
+<span>        legend.box <span class="op">=</span> <span class="st">"vertical"</span>, legend.margin <span class="op">=</span> <span class="fu">margin</span><span class="op">(</span><span class="op">)</span><span class="op">)</span><span class="op">+</span></span>
+<span>  <span class="fu">guides</span><span class="op">(</span>fill <span class="op">=</span> <span class="fu">guide_legend</span><span class="op">(</span>nrow <span class="op">=</span> <span class="fl">2</span>,byrow <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<pre><code>## Scale for y is already present.
+## Adding another scale for y, which will replace the existing scale.
+## Scale for fill is already present.
+## Adding another scale for fill, which will replace the existing scale.</code></pre>
+<div class="sourceCode" id="cb53"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span> <span class="va">h3</span></span></code></pre></div>
+<div class="inline-figure"><img src="_main_files/figure-html/phylogenetic_trees_sampledata_heatmap_linear_3-1.png" width="80%" style="display: block; margin: auto;"></div>
+<p>On ajoute ensuite la concentration minimale inhibitrice déterminée par le laboratoire (CMI) :</p>
+<div class="sourceCode" id="cb54"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">h4</span> <span class="op">&lt;-</span> <span class="va">h3</span> <span class="op">+</span> <span class="fu">new_scale_fill</span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="va">h5</span> <span class="op">&lt;-</span> <span class="fu">gheatmap</span><span class="op">(</span><span class="va">h4</span>, <span class="va">MIC_Cip</span>, </span>
+<span>               offset <span class="op">=</span> <span class="fl">0.005</span>,  </span>
+<span>               width <span class="op">=</span> <span class="fl">0.1</span>,</span>
+<span>               color <span class="op">=</span> <span class="st">"black"</span>, </span>
+<span>                colnames <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span><span class="op">+</span></span>
+<span>  <span class="fu">scale_fill_continuous</span><span class="op">(</span>name <span class="op">=</span> <span class="st">"MIC for Ciprofloxacin"</span>,</span>
+<span>                      low <span class="op">=</span> <span class="st">"yellow"</span>, high <span class="op">=</span> <span class="st">"red"</span>,</span>
+<span>                      breaks <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0</span>,<span class="fl">0.50</span>,<span class="fl">1.00</span><span class="op">)</span>,</span>
+<span>                      na.value <span class="op">=</span> <span class="st">"white"</span><span class="op">)</span><span class="op">+</span></span>
+<span>   <span class="fu">guides</span><span class="op">(</span>fill <span class="op">=</span> <span class="fu">guide_colourbar</span><span class="op">(</span>barwidth <span class="op">=</span> <span class="fl">5</span>, barheight <span class="op">=</span> <span class="fl">1</span><span class="op">)</span><span class="op">)</span><span class="op">+</span></span>
+<span>   <span class="fu">theme</span><span class="op">(</span>legend.position <span class="op">=</span> <span class="st">"bottom"</span>,</span>
+<span>        legend.title <span class="op">=</span> <span class="fu">element_text</span><span class="op">(</span>size <span class="op">=</span> <span class="fl">10</span><span class="op">)</span>,</span>
+<span>        legend.text <span class="op">=</span> <span class="fu">element_text</span><span class="op">(</span>size <span class="op">=</span> <span class="fl">8</span><span class="op">)</span>,</span>
+<span>        legend.box <span class="op">=</span> <span class="st">"horizontal"</span>, legend.margin <span class="op">=</span> <span class="fu">margin</span><span class="op">(</span><span class="op">)</span><span class="op">)</span><span class="op">+</span></span>
+<span>  <span class="fu">guides</span><span class="op">(</span>shape <span class="op">=</span> <span class="fu">guide_legend</span><span class="op">(</span>override.aes <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>size <span class="op">=</span> <span class="fl">2</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<pre><code>## Scale for y is already present.
+## Adding another scale for y, which will replace the existing scale.
+## Scale for fill is already present.
+## Adding another scale for fill, which will replace the existing scale.</code></pre>
+<div class="sourceCode" id="cb56"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">h5</span></span></code></pre></div>
+<div class="inline-figure"><img src="_main_files/figure-html/phylogenetic_trees_sampledata_heatmap_linear_4-1.png" width="80%" style="display: block; margin: auto;"></div>
+<!-- ======================================================= -->
+</div>
+<div id="resources" class="section level2" number="1.5">
+<h2>
+<span class="header-section-number">1.5</span> Resources<a class="anchor" aria-label="anchor" href="#resources"><i class="fas fa-link"></i></a>
+</h2>
+<p><a href="http://hydrodictyon.eeb.uconn.edu/eebedia/index.php/Ggtree#" class="uri">http://hydrodictyon.eeb.uconn.edu/eebedia/index.php/Ggtree#</a> Clade_Colors <a href="https://bioconductor.riken.jp/packages/3.2/bioc/vignettes/ggtree/inst/doc/treeManipulation.html" class="uri">https://bioconductor.riken.jp/packages/3.2/bioc/vignettes/ggtree/inst/doc/treeManipulation.html</a> <a href="https://guangchuangyu.github.io/ggtree-book/chapter-ggtree.html" class="uri">https://guangchuangyu.github.io/ggtree-book/chapter-ggtree.html</a> <a href="https://bioconductor.riken.jp/packages/3.8/bioc/vignettes/ggtree/inst/doc/treeManipulation.html" class="uri">https://bioconductor.riken.jp/packages/3.8/bioc/vignettes/ggtree/inst/doc/treeManipulation.html</a></p>
+<p>Ea Zankari, Rosa Allesøe, Katrine G Joensen, Lina M Cavaco, Ole Lund, Frank M Aarestrup, PointFinder: a novel web tool for WGS-based detection of antimicrobial resistance associated with chromosomal point mutations in bacterial pathogens, Journal of Antimicrobial Chemotherapy, Volume 72, Issue 10, October 2017, Pages 2764–2768, <a href="https://doi.org/10.1093/jac/dkx217" class="uri">https://doi.org/10.1093/jac/dkx217</a></p>
+
+</div>
+</div>
+  <div class="chapter-nav">
+<div class="prev"><a href="index.html"></a></div>
+<div class="empty"></div>
+</div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
+    <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
+      <ul class="nav navbar-nav">
+<li><a class="nav-link" href="#phylogenetic_trees"><span class="header-section-number">1</span> Les arbres phylogénétiques</a></li>
+<li><a class="nav-link" href="#aper%C3%A7u"><span class="header-section-number">1.1</span> Aperçu</a></li>
+<li>
+<a class="nav-link" href="#pr%C3%A9paration"><span class="header-section-number">1.2</span> Préparation</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#importation-des-packages">Importation des packages</a></li>
+<li><a class="nav-link" href="#import-data">Import data</a></li>
+<li><a class="nav-link" href="#nettoyer-et-inspecter">Nettoyer et inspecter</a></li>
+</ul>
+</li>
+<li>
+<a class="nav-link" href="#visualisation-simple-de-larbre"><span class="header-section-number">1.3</span> Visualisation simple de l’arbre</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#diverses-configurations-darbres">Diverses configurations d’arbres</a></li>
+<li><a class="nav-link" href="#arbre-simple-plus-donn%C3%A9es-%C3%A9chantillons">Arbre simple plus données échantillons</a></li>
+</ul>
+</li>
+<li>
+<a class="nav-link" href="#manipulation-de-larbre"><span class="header-section-number">1.4</span> Manipulation de l’arbre</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#zoomer-pour-agrandir">Zoomer pour agrandir</a></li>
+<li><a class="nav-link" href="#r%C3%A9duire-les-branches">Réduire les branches</a></li>
+<li><a class="nav-link" href="#sous-ensembler-un-arbre">Sous-ensembler un arbre</a></li>
+<li><a class="nav-link" href="#rotation-des-n%C5%93uds-dans-un-arbre">Rotation des nœuds dans un arbre</a></li>
+<li><a class="nav-link" href="#exemple-de-sous-arbre-avec-annotation-d%C3%A9chantillon-de-donn%C3%A9es">Exemple de sous-arbre avec annotation d’échantillon de données</a></li>
+</ul>
+</li>
+<li><a class="nav-link" href="#arbres-plus-complexes-ajout-de-cartes-thermiques-des-donn%C3%A9es-de-l%C3%A9chantillon">Arbres plus complexes : ajout de cartes thermiques des données de l’échantillon</a></li>
+<li><a class="nav-link" href="#resources"><span class="header-section-number">1.5</span> Resources</a></li>
+</ul>
+
+      <div class="book-extra">
+        <ul class="list-unstyled">
+          
+        </ul>
+</div>
+    </nav>
+</div>
+
+</div>
+</div> <!-- .container -->
+
+<footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>"<strong>Le Epi R Handbook</strong>" was written by the handbook team. It was last built on 2023-05-21.</p>
+  </div>
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>This book was built by the <a class="text-light" href="https://bookdown.org">bookdown</a> R package.</p>
+  </div>
+
+</div></div>
+</footer>
+</body>
+</html>
