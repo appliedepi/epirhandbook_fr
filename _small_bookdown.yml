@@ -24,7 +24,9 @@ rmd_files: [
    # ABOUT BOOK
  #  "new_pages/cat_about_book.Rmd"           # start of new section
  # "new_pages/editorial_style.Rmd" ,         # editorial style
-  "new_pages/basics.Rmd",                # data used
+  "new_pages/standardization.Rmd",                # data used
+  "new_pages/data_used.Rmd",                # data used
+  "new_pages/transmission_chains.Rmd",                # data used
 
 ]
 
