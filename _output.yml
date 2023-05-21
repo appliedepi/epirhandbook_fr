@@ -1,6 +1,6 @@
 bookdown::gitbook:
-  #includes:
-    #in_header: [ga_script.html]
+  includes:
+    in_header: [google_tag.html]
   config:
     toc:
       collapse: subsection
