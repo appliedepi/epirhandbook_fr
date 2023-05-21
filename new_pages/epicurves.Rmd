@@ -519,7 +519,7 @@ Pour en savoir plus sur les légendes et les échelles, consultez la page [ggplo
 
 
 
-### Bars side-by-side {.unnumbered} (barres côte à côte)  
+### Barres côte à côte {.unnumbered}  
 
 L'affichage côte à côte des barres de groupe (par opposition à l'empilement) est spécifié dans `geom_histogram()` avec `position = "dodge"` placé en dehors de `aes()`.  
 
