@@ -1,0 +1,9 @@
+tab:unnamed-chunk-147
+tab:unnamed-chunk-648
+part-à-propos-de-ce-livre
+part-les-bases-de-r
+part-gestion-des-données
+part-analyse
+part-visualisation-des-données
+part-rapports-et-tableaux-de-bord
+part-autres-sujets
