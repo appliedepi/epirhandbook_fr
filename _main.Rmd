@@ -232,7 +232,7 @@ options(scipen=1, digits=7)
 
 <!--chapter:end:index.Rmd-->
 
-# (PART) About this book {.unnumbered}
+# (PART) À propos de ce livre {.unnumbered}
 ```{r include=FALSE, cache=FALSE}
 
 # clear workspace
@@ -874,7 +874,7 @@ options(scipen=1, digits=7)
 
 <!--chapter:end:new_pages/data_used.Rmd-->
 
-# (PART) Basics {.unnumbered}
+# (PART) Les bases de R {.unnumbered}
 ```{r include=FALSE, cache=FALSE}
 
 # clear workspace
@@ -3106,13 +3106,14 @@ Parcourez vos données dans une nouvelle fenêtre en ouvrant la fenêtre de l'Ex
 
 **SAS**                          | **R**  
 -------------------------------- | ---------------------------------------------
-Aucune procédure spéciale n'est nécessaire pour créer une variable. Les nouvelles variables sont créées simplement en tapant le nom de la nouvelle variable, suivi d'un signe égal, puis d'une expression pour la valeur. Générez de nouvelles variables en utilisant la fonction `mutate()`. Voir la page [Nettoyage des données et fonctions de base](#cleaning_data) pour plus de détails sur toutes les fonctions **dplyr** ci-dessous.
+Les colonnes de l'ensemble de données sont souvent appelées "variables"|On parle plus souvent de "colonnes" ou parfois de "vecteurs" ou de "variables" 
+Aucune procédure spéciale n'est nécessaire pour créer une variable.Les nouvelles variables sont créées simplement en tapant le nom de la nouvelle variable, suivi d'un signe égal, puis d'une expression pour la valeur.|Générez de nouvelles variables en utilisant la fonction `mutate()`. Voir la page [Nettoyage des données et fonctions de base](#cleaning_data) pour plus de détails sur toutes les fonctions **dplyr** ci-dessous.
 Les variables sont renommées en utilisant `rename *ancien_nom=nouveau_nom*`|Les colonnes peuvent être renommées à l'aide de la fonction `rename(nouveau_nom = ancien_nom)`
 Les variables sont conservées en utilisant `**keep**=nom_variable`|Les colonnes peuvent être sélectionnées en utilisant la fonction `select()` avec le nom de la colonne entre parenthèses.
 Les variables sont supprimées à l'aide de la fonction `**drop**=nom_variable`|Les colonnes peuvent être supprimées à l'aide de la fonction `select()` avec le nom de la colonne entre parenthèses après le signe moins.
-Les variables factorielles peuvent être étiquetées dans l'étape de données (Data Step) en utilisant l'instruction `Label`. L'étiquetage des valeurs peut être fait en convertissant la colonne en classe factorielle et en spécifiant les niveaux. Voir la page sur les [Facteurs](#factors). Les noms de colonnes ne sont généralement pas étiquetés.
-Les enregistrements sont sélectionnés à l'aide des instructions `Where` ou `If` dans l'étape de données (Data Step). Les enregistrements sont sélectionnés à l'aide de la fonction `filter()` avec plusieurs conditions de sélection séparées soit par un opérateur AND (&), soit par une virgule. 
-Les ensembles de données sont combinés en utilisant l'instruction `Merge` dans l'étape Data Step. Les jeux de données à fusionner doivent d'abord être triés à l'aide de la procédure `Proc Sort`. Le package `**dplyr** offre quelques fonctions pour fusionner les jeux de données. Voir la page [Joindre des données](#joining_matching) pour plus de détails.
+Les variables factorielles peuvent être étiquetées dans l'étape de données (Data Step) en utilisant l'instruction `Label`.|L'étiquetage des valeurs peut être fait en convertissant la colonne en classe factorielle et en spécifiant les niveaux. Voir la page sur les [Facteurs](#factors). Les noms de colonnes ne sont généralement pas étiquetés.
+Les enregistrements sont sélectionnés à l'aide des instructions `Where` ou `If` dans l'étape de données (Data Step).|Les enregistrements sont sélectionnés à l'aide de la fonction `filter()` avec plusieurs conditions de sélection séparées soit par l'opérateur pour ET (en anglais AND,&), soit par une virgule. 
+Les ensembles de données sont combinés en utilisant l'instruction `Merge` dans l'étape Data Step. Les jeux de données à fusionner doivent d'abord être triés à l'aide de la procédure `Proc Sort`.|Le package `**dplyr** offre quelques fonctions pour fusionner les jeux de données. Voir la page [Joindre des données](#joining_matching) pour plus de détails.
 
 **Analyse descriptive**  
 
@@ -4348,7 +4349,7 @@ Voici un tableau tiré de la [vignette](https://cran.r-project.org/web/packages/
 | SAS                                 | .sas7bdat               | haven                | haven          | Oui                  |
 | SPSS                                | .sav                    | haven                | haven          | Oui                  |
 | Stata                               | .dta                    | haven                | haven          | Oui                  |
-| SAS                                 | XPORT                   | .xpt                 | haven          | haven                |
+| SAS                                 | XPORT                   | .xpt                 | haven          | Oui                  |
 | SPSS Portable                       | .por                    | haven                |                | Oui                  |
 | Excel                               | .xls                    | readxl               |                | Oui                  |
 | Excel                               | .xlsx                   | readxl               | openxlsx       | Oui                  |
@@ -4358,7 +4359,7 @@ Voici un tableau tiré de la [vignette](https://cran.r-project.org/web/packages/
 | Epiinfo                             | .rec                    | foreign              |                | Oui                  |
 | Minitab                             | .mtp                    | foreign              |                | Oui                  |
 | Systat                              | .syd                    | foreign              |                | Oui                  |
-| "XBASE"                             | database files          | .dbf                 | foreign        | foreign              |
+| "XBASE"                             | database files          | .dbf                 | foreign        | Oui                  |
 | Weka Attribute-Relation File Format | .arff                   | foreign              | foreign        | Oui                  |
 | Data Interchange Format             | .dif                    | utils                |                | Oui                  |
 | Fortran data                        | pas d'extension reconnue| utils                |                | Oui                  |
@@ -4418,7 +4419,7 @@ options(scipen=1, digits=7)
 
 <!--chapter:end:new_pages/importing.Rmd-->
 
-# (PART) Data Management {.unnumbered}
+# (PART) Gestion des données {.unnumbered}
 ```{r include=FALSE, cache=FALSE}
 
 # clear workspace
@@ -8133,19 +8134,19 @@ La barre oblique inverse `\` est utilisée pour "échapper" à la signification 
 
 Note - Si vous voulez *afficher* une barre oblique inverse, vous devez échapper à sa signification avec *une autre* barre oblique inverse. Ainsi, vous devez écrire deux barres obliques inversées `\\` pour en afficher une.  
 
-**caractères spéciaux " 
+**Caractères spéciaux** 
 
-caractère spécial | Représentation  
------------------ | --------------------------------------------------------------    
-`"\\"` | barre oblique inversée  
-`"\n"` | une nouvelle ligne (newline)   
-`"\""` | guillemets doubles *entre* guillemets doubles  
-`"\""` | guillemets simples *entre guillemets simples  
-`"\`"` | accent grave  
-`"\r"` | retour chariot  
-`"\t"` | tabulation  
-`"\v"` | tabulation verticale 
-`"\b"` | retour arriére  
+| Caractère spécial | Représentation                                 |
+|-------------------|------------------------------------------------|    
+| `"\\"`            | barre oblique inversée                         |
+| `"\n"`            | une nouvelle ligne (newline)                   |     
+| `"\""`            | guillemets doubles *entre* guillemets doubles  |  
+| `'\''`            | guillemets simples *entre* guillemets simples  |
+| `` "\`" ``        | accent grave                                   |
+| `"\r"`            | retour chariot                                 |
+| `"\t"`            | tabulation                                     |
+| `"\v"`            | tabulation verticale                           |
+| `"\b"`            | retour arriére                                 |
 
 Exécutez ` ?"'"` dans la console R pour afficher la liste complète de ces caractères spéciaux (elle apparaîtra dans le volet d'aide de RStudio). 
 
@@ -8290,8 +8291,7 @@ L'expression `"[0-9]{1,2}"` correspond à des nombres consécutifs de 1 ou 2 chi
 str_extract_all(pt_note, "[0-9]{1,2}")
 ```
 
-"
-<!-- Cette expression va extraire toutes les phrases (en supposant que la premiére lettre est en majuscule, et que la phrase se termine par un point). Le motif se lit en anglais comme suit : "Une lettre majuscule suivie de quelques lettres minuscules, d'un espace, de quelques lettres, d'un espace, -->".
+<!-- Cette expression va extraire toutes les phrases (en supposant que la premiére lettre est en majuscule, et que la phrase se termine par un point). Le motif se lit en anglais comme suit : "Une lettre majuscule suivie de quelques lettres minuscules, d'un espace, de quelques lettres, d'un espace, -->
 
 <!-- ```{r} -->
 <!-- str_extract_all(pt_note, "[A-Z][a-z]+\\s\\w+\\s\\d{1,2}\\s\\w+\\s*\\w*") -->
@@ -12811,7 +12811,7 @@ options(scipen=1, digits=7)
 
 <!--chapter:end:new_pages/iteration.Rmd-->
 
-# (PART) Analysis {.unnumbered}
+# (PART) Analyse {.unnumbered}
 
 ```{r include=FALSE, cache=FALSE}
 
@@ -12870,13 +12870,13 @@ Chacun de ces packages présente des avantages et des inconvénients dans les do
 
 Plusieurs choix s'offrent à vous lorsque vous produisez des tableaux de synthèse et des tableaux croisés. Parmi les facteurs à prendre en compte, la simplicité du code, les possibilités de personnalisation, la sortie que vous souhaitez obtenir ( affichée sur la console R, en tant que tableau de données, ou en tant que "bonne" image .png/.jpeg/.html), et la facilité de traitement ultérieur. Tenez compte des points ci-dessous pour choisir l'outil adapté à votre situation.
 
--   Utilisez la fonction `tabyl()` de **janitor** pour produire et " personnaliser " des tableaux et des tableaux croisés\
+-   Utilisez la fonction `tabyl()` de **janitor** pour produire et " personnaliser " des tableaux et des tableaux croisés
 
--   Utilisez la fonction `get_summary_stats()` de **rstatix** pour générer facilement des tableaux de données de synthèse de statistiques numériques pour plusieurs colonnes et/ou groupes\
+-   Utilisez la fonction `get_summary_stats()` de **rstatix** pour générer facilement des tableaux de données de synthèse de statistiques numériques pour plusieurs colonnes et/ou groupes
 
--   Utilisez les fonctions `summarise()` et `count()` de **dplyr** pour des statistiques plus complexes, des sorties de tableaux de données ordonnées ou la préparation de données pour `ggplot()`\
+-   Utilisez les fonctions `summarise()` et `count()` de **dplyr** pour des statistiques plus complexes, des sorties de tableaux de données ordonnées ou la préparation de données pour `ggplot()`
 
--   Utilisez la fonction `tbl_summary()` de **gtsummary** pour produire des tableaux détaillés prêts à être publiés\
+-   Utilisez la fonction `tbl_summary()` de **gtsummary** pour produire des tableaux détaillés prêts à être publiés
 
 -   Utilisez la fonction `table()` de **extension/package R base** si vous n'avez pas accès aux packages ci-dessus
 
@@ -12958,7 +12958,7 @@ Vous pouvez utiliser les fonctions **extension/package R base** pour renvoyer de
 summary(linelist$age_years)
 ```
 
-Vous pouvez accéder à une partie spécifique et l'enregistrer avec les crochets d'indexation \[ \] :
+Vous pouvez accéder à une partie spécifique et l'enregistrer avec les crochets d'indexation `[ ]` :
 
 ```{r}
 summary(linelist$age_years)[[2]]            # retourne uniquement le 2ème élément
@@ -13131,8 +13131,8 @@ Consultez la page sur les [Tests statistiques simples](#stats_test) pour obtenir
 
 ### Autres conseils {.unnumbered}
 
--   Incluez l'argument `na.rm = TRUE` pour exclure les valeurs manquantes de tous les calculs ci-dessus.\
--   Si vous appliquez des fonctions d'aide `adorn_*()` à des tables qui n'ont pas été crées par `tabyl()`, vous pouvez spécifier une ou plusieurs colonnes particulières auxquelles les appliquer comme `adorn_percentage(,,,c(cas,décès))` (spécifiez-les au 4ème argument non nommé). La syntaxe n'est pas simple. Pensez à utiliser `summarise()` à la place.\
+-   Incluez l'argument `na.rm = TRUE` pour exclure les valeurs manquantes de tous les calculs ci-dessus.
+-   Si vous appliquez des fonctions d'aide `adorn_*()` à des tables qui n'ont pas été crées par `tabyl()`, vous pouvez spécifier une ou plusieurs colonnes particulières auxquelles les appliquer comme `adorn_percentage(,,,c(cas,décès))` (spécifiez-les au 4ème argument non nommé). La syntaxe n'est pas simple. Pensez à utiliser `summarise()` à la place.
 -   Vous pouvez obtenir plus de détails dans le [janitor page](https://cran.r-project.org/web/packages/janitor/vignettes/janitor.html) et ce [tabyl vignette](https://cran.r-project.org/web/packages/janitor/vignettes/tabyls.html).
 
 ## **dplyr** package
@@ -13244,8 +13244,8 @@ La syntaxe est la même - entre les parenthèses de `summarise()`, vous fourniss
 
 Vous pouvez également utiliser `sum()` pour retourner le nombre de lignes qui répondent à un critère logique. L'expression qu'il contient est comptée si elle vaut `TRUE`. Par exemple :
 
--   `sum(age_years < 18, na.rm=T)`\
--   `sum(gender == "male", na.rm=T)`\
+-   `sum(age_years < 18, na.rm=T)`
+-   `sum(gender == "male", na.rm=T)`
 -   `sum(response %in% c("Likely", "Very Likely"))`
 
 Ci-dessous, les données `linelist` sont résumées pour décrire le délai en jours entre l'apparition des symptômes et l'admission à l'hôpital (colonne `days_onset_hosp`), par hôpital.
@@ -13269,7 +13269,7 @@ Quelques conseils :
 
 -   Utilisez `sum()` avec une instruction logique pour "compter" les lignes qui répondent à certains critères (`==`).
 
--   Notez l'utilisation de `na.rm = TRUE` dans les fonctions mathématiques comme `sum()`, sinon `NA` sera retourné s'il y a des valeurs manquantes \`\`.
+-   Notez l'utilisation de `na.rm = TRUE` dans les fonctions mathématiques comme `sum()`, sinon `NA` sera retourné s'il y a des valeurs manquantes.
 
 -   Utilisez la fonction `percent()` du package **scales** pour convertir facilement en pourcentages.
 
@@ -13283,7 +13283,7 @@ Quelques conseils :
 
 ### Statistiques conditionnelles {.unnumbered}
 
-Vous pouvez souhaiter renvoyer des *statistiques conditionnelles* - par exemple, le maximum de lignes qui répondent à certains critères. Pour ce faire, il suffit de subdiviser la colonne avec des parenthèses "\[ \]". L'exemple ci-dessous renvoie la température maximale pour les patients classés comme ayant ou n'ayant pas de fièvre. Attention cependant - il peut être plus approprié d'ajouter une autre colonne à la commande`group_by()`et`pivot_wider()\` (comme démontré [ci-dessous](#tbls_pivot_wider)).
+Vous pouvez souhaiter renvoyer des *statistiques conditionnelles* - par exemple, le maximum de lignes qui répondent à certains critères. Pour ce faire, il suffit de subdiviser la colonne avec des parenthèses `[ ]`. L'exemple ci-dessous renvoie la température maximale pour les patients classés comme ayant ou n'ayant pas de fièvre. Attention cependant - il peut être plus approprié d'ajouter une autre colonne à la commande`group_by()`et`pivot_wider()` (comme démontré [ci-dessous](#tbls_pivot_wider)).
 
 ```{r}
 linelist %>% 
@@ -13383,7 +13383,7 @@ linelist_agg <- linelist %>%
 linelist_agg
 ```
 
-Pour additionner les valeurs (dans la colonne `n`) par groupe, vous pouvez utiliser `summarise()` mais définissez la nouvelle colonne égale à `sum(n, na.rm=T)`. Pour ajouter un élément de condition à l'opération de somme, vous pouvez utiliser la syntaxe des sous-ensembles \[ \] sur la colonne des comptages.
+Pour additionner les valeurs (dans la colonne `n`) par groupe, vous pouvez utiliser `summarise()` mais définissez la nouvelle colonne égale à `sum(n, na.rm=T)`. Pour ajouter un élément de condition à l'opération de somme, vous pouvez utiliser la syntaxe des sous-ensembles `[ ]` sur la colonne des comptages.
 
 ```{r}
 linelist_agg %>% 
@@ -13398,7 +13398,7 @@ linelist_agg %>%
 
 Vous pouvez utiliser `summarise()` sur plusieurs colonnes en utilisant `across()`. Cela vous facilite la tâche lorsque vous voulez calculer les mêmes statistiques pour plusieurs colonnes. Placez `across()` dans `summarise()` et spécifiez ce qui suit :
 
--   `.cols =` comme un vecteur de noms de colonnes `c()` ou des fonctions d'aide "tidyselect" (expliquées ci-dessous)\`\
+-   `.cols =` comme un vecteur de noms de colonnes `c()` ou des fonctions d'aide "tidyselect" (expliquées ci-dessous)
 -   `.fns =` la fonction à exécuter (sans parenthèses) - vous pouvez en fournir plusieurs dans une `list()`.
 
 Ci-dessous, la fonction `mean()` est appliquée à plusieurs colonnes numériques. Un vecteur de colonnes est nommé explicitement dans `.cols =` et une seule fonction `mean` est spécifiée (sans parenthèses) dans `.fns =`. Tout argument supplémentaire pour la fonction (par exemple `na.rm=TRUE`) est fourni après `.fns =`, séparé par une virgule.
@@ -13425,15 +13425,15 @@ linelist %>%
 
 Voici les fonctions d'aide "tidyselect" que vous pouvez fournir à `.cols =` pour sélectionner des colonnes :
 
--   `everything()` - toutes les autres colonnes non mentionnées\
--   `last_col()` - la dernière colonne\
--   `where()` - applique une fonction à toutes les colonnes et sélectionne celles qui sont VRAIES\
--   `starts_with()` - correspond à un préfixe spécifié. Exemple : `starts_with("date")`\
--   `ends_with()` - correspond à un suffixe spécifié. Exemple : \`ends_with("\_end")\`\`\
--   `contains()` - colonnes contenant une chaîne de caractères. Exemple : `contains("time")`\
--   `matches()` - pour appliquer une expression régulière (regex). Exemple : `contains("[pt]al")`\
--   `num_range()` -
--   `any_of()` - correspond si la colonne est nommée. Utile si le nom peut ne pas exister. Exemple : `any_of(date_onset, date_death, cardiac_arrest)`
+* `everything()`  - toutes les autres colonnes non mentionnées
+* `last_col()`    - la dernière colonne
+* `where()`       - applique une fonction à toutes les colonnes et sélectionne celles qui sont VRAIES
+* `starts_with()` - correspond à un préfixe spécifié. Exemple : `starts_with("date")`
+* `ends_with()`   - correspond à un suffixe spécifié. Exemple : `ends_with("_end")
+* `contains()`    - colonnes contenant une chaîne de caractères. Exemple : `contains("time")`
+* `matches()`     - pour appliquer une expression régulière (regex). Exemple : `contains("[pt]al")`
+* `num_range()`   -
+* `any_of()`      - correspond si la colonne est nommée. Utile si le nom peut ne pas exister. Exemple : `any_of(date_onset, date_death, cardiac_arrest)`
 
 Par exemple, pour retourner la moyenne de chaque colonne numérique, utilisez `where()` et fournissez la fonction `as.numeric()` (sans parenthèses). Tout cela reste dans la commande `across()`.
 
@@ -13450,7 +13450,7 @@ linelist %>%
 
 Si vous préférez votre tableau en format "large", vous pouvez le transformer en utilisant la fonction **tidyr** `pivot_wider()`. Vous devrez probablement renommer les colonnes avec `rename()`. Pour plus d'informations, consultez la page sur [le pivotement des données](#pivoting_data).
 
-L'exemple ci-dessous commence avec la table "longue" `age_by_outcome` de la \[section proportions\](#tbl_dplyr_prop). Nous le créons à nouveau et le présentons à l'impression, pour plus de clarté :
+L'exemple ci-dessous commence avec la table "longue" `age_by_outcome` de la [section proportions](#tbl_dplyr_prop). Nous le créons à nouveau et le présentons à l'impression, pour plus de clarté :
 
 ```{r}
 age_by_outcome <- linelist %>%                  # commencez par la linelist
@@ -13679,13 +13679,13 @@ linelist %>%
 
 Nous allons maintenant expliquer le fonctionnement de la fonction et la manière de procéder aux ajustements. Les principaux arguments sont détaillés ci-dessous :
 
-**`by =`**\
+**`by =`**
 Vous pouvez stratifier votre tableau par une colonne (par exemple par `outcome`), créant ainsi un tableau à 2 dimensions.
 
-**`statistic =`**\
+**`statistic =`**
 Utilisez une équation pour spécifier les statistiques à afficher et comment les afficher. L'équation comporte deux côtés, séparés par un tilde `~`. Sur le côté droit, entre guillemets, se trouve l'affichage statistique souhaité, et sur la gauche se trouvent les colonnes auxquelles cet affichage s'appliquera.
 
--   Le côté droit de l'équation utilise la syntaxe de `str_glue()` de **stringr** (voir [Caractères et chaînes de caractères](#character_strings)), avec la chaîne d'affichage souhaitée entre guillemets et les statistiques elles-mêmes entre crochets. Vous pouvez inclure des statistiques comme "n" (pour les comptes), "N" (pour le dénominateur), "mean", "median", "sd", "max", "min", les percentiles comme "p##" comme "p25", ou le pourcentage du total comme "p". Voir `?tbl_summary` pour plus de détails.\
+-   Le côté droit de l'équation utilise la syntaxe de `str_glue()` de **stringr** (voir [Caractères et chaînes de caractères](#character_strings)), avec la chaîne d'affichage souhaitée entre guillemets et les statistiques elles-mêmes entre crochets. Vous pouvez inclure des statistiques comme "n" (pour les comptes), "N" (pour le dénominateur), "mean", "median", "sd", "max", "min", les percentiles comme "p##" comme "p25", ou le pourcentage du total comme "p". Voir `?tbl_summary` pour plus de détails.
 -   Pour le côté gauche de l'équation, vous pouvez spécifier les colonnes par leur nom (par exemple, `age` ou `c(age, gender)`) ou en utilisant des aides telles que `all_continuous()`, `all_categorical()`, `contains()`, `starts_with()`, etc.
 
 Un exemple simple d'équation `statistic =` pourrait ressembler à ce qui suit, pour afficher uniquement la moyenne de la colonne `age_years` :
@@ -13697,7 +13697,7 @@ linelist %>%
     statistic = age_years ~ "{mean}") # Impression de la moyenne d'âge
 ```
 
-Une équation un peu plus complexe pourrait ressembler à ""({min}, {max})"\`, incorporant les valeurs max et min entre parenthèses et séparées par une virgule :
+Une équation un peu plus complexe pourrait ressembler à `"({min}, {max})"`, incorporant les valeurs max et min entre parenthèses et séparées par une virgule :
 
 ```{r}
 linelist %>% 
@@ -13708,20 +13708,20 @@ linelist %>%
 
 Vous pouvez également différencier la syntaxe pour des colonnes ou des types de colonnes distincts. Dans l'exemple plus complexe ci-dessous, la valeur fournie à `statistc =` est une **liste** indiquant que pour toutes les colonnes continues, le tableau doit afficher la moyenne avec l'écart-type entre parenthèses, tandis que pour toutes les colonnes catégorielles, il doit afficher le n, le dénominateur et le pourcentage.
 
-**`digits =`**\
+**`digits =`**
 Ajuste les chiffres et les arrondis. En option, il est possible de spécifier que cela ne concerne que les colonnes continues (comme ci-dessous).
 
-**`label =`**\
+**`label =`**
 Ajustez la façon dont le nom de la colonne doit être affiché. Fournissez le nom de la colonne et son étiquette souhaitée, séparés par un tilde. La valeur par défaut est le nom de la colonne.
 
-**`missing_text =`**\
+**`missing_text =`**
 Ajustez la façon dont les valeurs manquantes sont affichées. La valeur par défaut est "Inconnu".
 
-**`type =`**\
+**`type =`**
 Permet de régler le nombre de niveaux de statistiques à afficher. La syntaxe est similaire à `statistic =` en ce sens que vous fournissez une équation avec des colonnes à gauche et une valeur à droite. Voici deux scénarios courants :
 
--   `type = all_categorical() ~ "categorical"` Force les colonnes dichotomiques (par exemple, `fièvre` oui/non) à montrer tous les niveaux au lieu de ne montrer que la ligne "oui"
--   `type = all_continuous() ~ "continuous2"` Permet des statistiques multi-lignes par variable, comme indiqué dans une section ultérieure.
+* `type = all_categorical() ~ "categorical"` Force les colonnes dichotomiques (par exemple, `fièvre` oui/non) à montrer tous les niveaux au lieu de ne montrer que la ligne "oui"
+* `type = all_continuous() ~ "continuous2"` Permet des statistiques multi-lignes par variable, comme indiqué dans une section ultérieure.
 
 Dans l'exemple ci-dessous, chacun de ces arguments est utilisé pour modifier le tableau de synthèse original :
 
@@ -13766,7 +13766,7 @@ Il existe de nombreuses autres façons de modifier ces tableaux, notamment en aj
 
 Vous pouvez utiliser la fonction `table()` pour faire des tableaux et des tableaux croisés de colonnes. Contrairement aux options ci-dessus, vous devez spécifier le tableau de données chaque fois que vous faites référence à un nom de colonne, comme indiqué ci-dessous.
 
-[***CAUTION:*** `Les valeurs`NA`(manquantes) ne seront **pas** affichées en tableau, à moins que vous n'incluiez l'argument`useNA = "always"\` (qui peut également être défini sur "no" ou "ifany").]{style="color: orange;"}
+[***CAUTION:*** Les valeurs `NA`(manquantes) ne seront **pas** affichées en tableau, à moins que vous n'incluiez l'argument `useNA = "always"` (qui peut également être défini sur "no" ou "ifany").]{style="color: orange;"}
 
 [***TIP:*** Vous pouvez utiliser le `%$%` de **magrittr** pour supprimer la répétition des enregistrements de données du tableaux dans les fonctions **base**. Par exemple, on pourrait écrire `linelist %$% table(outcome, useNA = "always")`.]{style="color: darkgreen;"}
 
@@ -13802,9 +13802,9 @@ addmargins(age_by_outcome)
 
 Convertir un objet `table()` directement en tableau de données n'est pas simple. Une approche est démontrée ci-dessous :
 
-1)  Créez la table, \*sans utiliser `useNA = "always"`. A la place, convertissez les valeurs `NA` en "(Missing)" avec `fct_explicit_na()` de **forcats**.\
-2)  Ajoutez les totaux (facultatif) en utilisant \`addmargins()\`\`.
-3)  Passez le tableau dans la fonction R **base** \`as.data.frame.matrix()\`\`.
+1)  Créez la table, *sans* utiliser `useNA = "always"`. A la place, convertissez les valeurs `NA` en "(Missing)" avec `fct_explicit_na()` de **forcats**.
+2)  Ajoutez les totaux (facultatif) en utilisant `addmargins()`.
+3)  Passez le tableau dans la fonction R **base** `as.data.frame.matrix()`.
 4)  Passez le tableau dans la fonction **tibble** `rownames_to_column()`, en spécifiant le nom de la première colonne.
 5)  Affichez, visualisez ou exportez comme vous le souhaitez. Dans cet exemple, nous utilisons `flextable()` du package **flextable** comme décrit dans la page [Tableaux pour la présentation](#tables_presentation). Cela permettra d'afficher dans le volet de visualisation de RStudio une jolie image HTML.
 
@@ -22792,7 +22792,8 @@ options(scipen=1, digits=7)
 
 <!--chapter:end:new_pages/gis.Rmd-->
 
-# (PART) Data Visualization {.unnumbered}
+# (PART) Visualisation des données {.unnumbered}
+
 ```{r include=FALSE, cache=FALSE}
 
 # clear workspace
@@ -31504,7 +31505,7 @@ metrics_plot %>%
 <!-- geoJSON$features <- purrr::map(.x = geoJSON$features, give_id) -->
 <!-- ``` -->
 
-<!-- <!-- ======================================================= --> -->
+<!-- <!-- ======================================================= --> 
 <!-- ### Maps - plot {  } -->
 
 <!-- UNDER CONSTRUCTION -->
@@ -31576,7 +31577,7 @@ options(scipen=1, digits=7)
 
 <!--chapter:end:new_pages/interactive_plots.Rmd-->
 
-# (PART) Reports and dashboards {.unnumbered}
+# (PART) Rapports et tableaux de bord {.unnumbered}
 ```{r include=FALSE, cache=FALSE}
 
 # clear workspace
@@ -34779,7 +34780,7 @@ options(scipen=1, digits=7)
 
 <!--chapter:end:new_pages/shiny_basics.Rmd-->
 
-# (PART) Miscellaneous {.unnumbered}
+# (PART) Autres sujets {.unnumbered}
 ```{r include=FALSE, cache=FALSE}
 
 # clear workspace

@@ -7,7 +7,7 @@
 <title>9 Manipuler les dates | Le Epi R Handbook</title>
 <meta name="author" content="the handbook team">
 <meta name="description" content="Travailler avec des dates dans R demande plus d’attention que de travailler avec d’autres classes d’objets. Nous vous proposons ci-dessous quelques outils et exemples pour rendre ce processus...">
-<meta name="generator" content="bookdown 0.34 with bs4_book()">
+<meta name="generator" content="bookdown 0.33 with bs4_book()">
 <meta property="og:title" content="9 Manipuler les dates | Le Epi R Handbook">
 <meta property="og:type" content="book">
 <meta property="og:description" content="Travailler avec des dates dans R demande plus d’attention que de travailler avec d’autres classes d’objets. Nous vous proposons ci-dessous quelques outils et exemples pour rendre ce processus...">
@@ -18,9 +18,9 @@
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
 <script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.4.2/transition.js"></script><script src="libs/bs3compat-0.4.2/tabs.js"></script><script src="libs/bs3compat-0.4.2/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
 <script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="libs/htmlwidgets-1.6.2/htmlwidgets.js"></script><link href="libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet">
-<script src="libs/datatables-binding-0.28/datatables.js"></script><link href="libs/dt-core-1.13.4/css/jquery.dataTables.min.css" rel="stylesheet">
-<link href="libs/dt-core-1.13.4/css/jquery.dataTables.extra.css" rel="stylesheet">
-<script src="libs/dt-core-1.13.4/js/jquery.dataTables.min.js"></script><link href="libs/nouislider-7.0.10/jquery.nouislider.min.css" rel="stylesheet">
+<script src="libs/datatables-binding-0.27/datatables.js"></script><link href="libs/dt-core-1.12.1/css/jquery.dataTables.min.css" rel="stylesheet">
+<link href="libs/dt-core-1.12.1/css/jquery.dataTables.extra.css" rel="stylesheet">
+<script src="libs/dt-core-1.12.1/js/jquery.dataTables.min.js"></script><link href="libs/nouislider-7.0.10/jquery.nouislider.min.css" rel="stylesheet">
 <script src="libs/nouislider-7.0.10/jquery.nouislider.min.js"></script><link href="libs/selectize-0.12.0/selectize.bootstrap3.css" rel="stylesheet">
 <script src="libs/selectize-0.12.0/selectize.min.js"></script><link href="libs/crosstalk-1.2.0/css/crosstalk.min.css" rel="stylesheet">
 <script src="libs/crosstalk-1.2.0/js/crosstalk.min.js"></script><script src="libs/kePrint-0.0.1/kePrint.js"></script><link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet">
@@ -29,7 +29,7 @@
 <script src="libs/leaflet-1.3.1/leaflet.js"></script><link href="libs/leafletfix-1.0.0/leafletfix.css" rel="stylesheet">
 <script src="libs/proj4-2.6.2/proj4.min.js"></script><script src="libs/Proj4Leaflet-1.0.1/proj4leaflet.js"></script><link href="libs/rstudio_leaflet-1.3.1/rstudio_leaflet.css" rel="stylesheet">
 <script src="libs/leaflet-binding-2.1.2/leaflet.js"></script><script src="libs/leaflet-providers-1.9.0/leaflet-providers_1.9.0.js"></script><script src="libs/leaflet-providers-plugin-2.1.2/leaflet-providers-plugin.js"></script><script src="libs/viz-1.8.2/viz.js"></script><link href="libs/DiagrammeR-styles-0.2/styles.css" rel="stylesheet">
-<script src="libs/grViz-binding-1.0.10/grViz.js"></script><script src="libs/d3-4.5.0/d3.min.js"></script><script src="libs/sankey-1/sankey.js"></script><script src="libs/sankeyNetwork-binding-0.4/sankeyNetwork.js"></script><script src="libs/plotly-binding-4.10.1/plotly.js"></script><script src="libs/typedarray-0.1/typedarray.min.js"></script><link href="libs/plotly-htmlwidgets-css-2.11.1/plotly-htmlwidgets.css" rel="stylesheet">
+<script src="libs/grViz-binding-1.0.9/grViz.js"></script><script src="libs/d3-4.5.0/d3.min.js"></script><script src="libs/sankey-1/sankey.js"></script><script src="libs/sankeyNetwork-binding-0.4/sankeyNetwork.js"></script><script src="libs/plotly-binding-4.10.1/plotly.js"></script><script src="libs/typedarray-0.1/typedarray.min.js"></script><link href="libs/plotly-htmlwidgets-css-2.11.1/plotly-htmlwidgets.css" rel="stylesheet">
 <script src="libs/plotly-main-2.11.1/plotly-latest.min.js"></script><link href="libs/vis-9.1.0/vis-network.min.css" rel="stylesheet">
 <script src="libs/vis-9.1.0/vis-network.min.js"></script><script src="libs/visNetwork-binding-2.1.2/visNetwork.js"></script><link href="libs/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet">
 <script src="libs/plotly-basic-2.11.1/plotly-basic-2.11.1.min.js"></script><script src="libs/plotly-cartesian-2.11.1/plotly-cartesian-2.11.1.min.js"></script><script src="libs/proj4js-2.3.15/proj4.js"></script><link href="libs/highcharts-9.3.1/css/motion.css" rel="stylesheet">
@@ -44,7 +44,7 @@
 <body>
 <div class="alert alert-info alert-dismissible">
       <a href="#" class="close" data-dismiss="alert" aria-label="close">×</a>
-      <strong>Tu as besoin d'aide pour apprendre R?</strong> Inscris-toi au <a href="https://www.appliedepi.org/live/" class="alert-link">cours d'introduction à R</a> d'Applied Epi, essaie nos <a href="https://www.appliedepi.org/tutorial/" class="alert-link">tutoriels R gratuits</a>, publie dans notre <a href="https://community.appliedepi.org/" class="alert-link">forum de questions et réponses</a>, ou demande notre <a href="mailto:contact@appliedepi.org" class="alert-link">assistance R</a>.
+      <strong>Besoin d'aide pour apprendre R ?</strong> Inscrivez-vous au <a href="https://www.appliedepi.org/live/" class="alert-link">cours d'introduction à R d'Applied Epi</a>, essayez nos <a href="https://www.appliedepi.org/tutorial/" class="alert-link">tutoriels R gratuits</a>, postez dans notre forum de <a href="https://community.appliedepi.org/" class="alert-link">questions et réponses de la communauté</a>, ou demandez-nous des informations sur <a href="mailto:contact@appliedepi.org" class="alert-link">notre service d'assistance R</a>.
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><style type="text/css">
     
@@ -70,16 +70,16 @@
       <nav aria-label="Table of contents"><h2>Table of contents</h2>
         <ul class="book-toc list-unstyled">
 <li><a class="" href="index.html"></a></li>
-<li class="book-part">About this book</li>
+<li class="book-part">À propos de ce livre</li>
 <li><a class="" href="editorial_notes.html"><span class="header-section-number">1</span> Notes techniques et choix éditoriaux</a></li>
 <li><a class="" href="download_book_data.html"><span class="header-section-number">2</span> Télécharger le manuel et les données</a></li>
-<li class="book-part">Basics</li>
+<li class="book-part">Les bases de R</li>
 <li><a class="" href="rbasics.html"><span class="header-section-number">3</span> R - les bases</a></li>
 <li><a class="" href="transition_to_r.html"><span class="header-section-number">4</span> Transition vers R</a></li>
 <li><a class="" href="suggested_packages.html"><span class="header-section-number">5</span> Paquets conseillés</a></li>
 <li><a class="" href="r_projects.html"><span class="header-section-number">6</span> Projets R</a></li>
 <li><a class="" href="import_export.html"><span class="header-section-number">7</span> Importer et exporter des données</a></li>
-<li class="book-part">Data Management</li>
+<li class="book-part">Gestion des données</li>
 <li><a class="" href="cleaning_data.html"><span class="header-section-number">8</span> Nettoyage de données et fonctions essentielles</a></li>
 <li><a class="active" href="working_dates.html"><span class="header-section-number">9</span> Manipuler les dates</a></li>
 <li><a class="" href="character_strings.html"><span class="header-section-number">10</span> Caractères et chaînes de caractères</a></li>
@@ -89,7 +89,7 @@
 <li><a class="" href="joining_matching.html"><span class="header-section-number">14</span> Joindre des données</a></li>
 <li><a class="" href="deduplication.html"><span class="header-section-number">15</span> De-duplication</a></li>
 <li><a class="" href="iteration.html"><span class="header-section-number">16</span> Itération, boucles et listes</a></li>
-<li class="book-part">Analysis</li>
+<li class="book-part">Analyse</li>
 <li><a class="" href="descriptive_tables.html"><span class="header-section-number">17</span> Tableaux descriptifs</a></li>
 <li><a class="" href="stats_test.html"><span class="header-section-number">18</span> Tests statistiques simples</a></li>
 <li><a class="" href="regression.html"><span class="header-section-number">19</span> Régression univariée et multivariable</a></li>
@@ -102,7 +102,7 @@
 <li><a class="" href="survey_analysis.html"><span class="header-section-number">26</span> Analyse d’enquête</a></li>
 <li><a class="" href="survival_analysis.html"><span class="header-section-number">27</span> Analyse de survie</a></li>
 <li><a class="" href="gis.html"><span class="header-section-number">28</span> GIS basics</a></li>
-<li class="book-part">Data Visualization</li>
+<li class="book-part">Visualisation des données</li>
 <li><a class="" href="tables_presentation.html"><span class="header-section-number">29</span> Présenter avec des tables</a></li>
 <li><a class="" href="ggplot_basics.html"><span class="header-section-number">30</span> Les bases de ggplot</a></li>
 <li><a class="" href="ggplot_tips.html"><span class="header-section-number">31</span> Trucs et Astuces avec ggplot</a></li>
@@ -114,12 +114,12 @@
 <li><a class="" href="transmission_chains.html"><span class="header-section-number">37</span> Chaînes de transmission</a></li>
 <li><a class="" href="phylogenetic_trees.html"><span class="header-section-number">38</span> Les arbres phylogénétiques</a></li>
 <li><a class="" href="interactive_plots.html"><span class="header-section-number">39</span> Graphiques interactifs</a></li>
-<li class="book-part">Reports and dashboards</li>
+<li class="book-part">Rapports et tableaux de bord</li>
 <li><a class="" href="rmarkdown.html"><span class="header-section-number">40</span> Production de rapports avec R Markdown</a></li>
 <li><a class="" href="reportfactory.html"><span class="header-section-number">41</span> Organisation des rapports de routine</a></li>
 <li><a class="" href="dashboards.html"><span class="header-section-number">42</span> Tableaux de bord avec R Markdown</a></li>
 <li><a class="" href="shiny.html"><span class="header-section-number">43</span> Tableaux de bord avec Shiny</a></li>
-<li class="book-part">Miscellaneous</li>
+<li class="book-part">Autres sujets</li>
 <li><a class="" href="writing_functions.html"><span class="header-section-number">44</span> Fonctions d’écriture</a></li>
 <li><a class="" href="directories.html"><span class="header-section-number">45</span> Interactions avec les répertoires</a></li>
 <li><a class="" href="collaboration.html"><span class="header-section-number">46</span> Contrôle de version et collaboration avec Git et Github</a></li>
@@ -185,11 +185,11 @@
 <div class="sourceCode" id="cb311"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># obtenir la date du système - il s'agit d'une classe DATE</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/Sys.time.html">Sys.Date</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
-<pre><code>## [1] "2023-05-21"</code></pre>
+<pre><code>## [1] "2023-05-24"</code></pre>
 <div class="sourceCode" id="cb313"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># obtenir l'heure du système - il s'agit d'une classe DATETIME</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/Sys.time.html">Sys.time</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
-<pre><code>## [1] "2023-05-21 16:49:10 CEST"</code></pre>
+<pre><code>## [1] "2023-05-24 16:32:28 BST"</code></pre>
 <p>Avec le paquet <strong>lubridate</strong>, la date et l’heure du système peuvent aussi être retournées avec <code><a href="https://lubridate.tidyverse.org/reference/now.html">today()</a></code> et <code><a href="https://lubridate.tidyverse.org/reference/now.html">now()</a></code>, respectivement. <code><a href="https://lubridate.tidyverse.org/reference/date.html">date()</a></code> renvoie la date et l’heure actuelles avec les noms des jours de la semaine et du mois.</p>
 <!-- ======================================================= -->
 </div>
@@ -558,19 +558,19 @@
 <div class="sourceCode" id="cb371"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># date du jour, avec formatage</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/format.html">format</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/Sys.time.html">Sys.Date</a></span><span class="op">(</span><span class="op">)</span>, format <span class="op">=</span> <span class="st">"%d %B %Y"</span><span class="op">)</span></span></code></pre></div>
-<pre><code>## [1] "21 May 2023"</code></pre>
+<pre><code>## [1] "24 May 2023"</code></pre>
 <div class="sourceCode" id="cb373"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># moyen simple d'obtenir la date et l'heure complètes (formatage par défaut)</span></span>
 <span><span class="fu"><a href="https://lubridate.tidyverse.org/reference/date.html">date</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
-<pre><code>## [1] "Sun May 21 16:49:11 2023"</code></pre>
+<pre><code>## [1] "Wed May 24 16:32:29 2023"</code></pre>
 <div class="sourceCode" id="cb375"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># formatage de la date, de l'heure et du fuseau horaire combinés ensemble avec la fonction str_glue()</span></span>
 <span><span class="fu"><a href="https://stringr.tidyverse.org/reference/str_glue.html">str_glue</a></span><span class="op">(</span><span class="st">"{format(Sys.Date(), format = '%A, %B %d %Y, %z %Z, ')}{format(Sys.time(), format = '%H:%M:%S')}"</span><span class="op">)</span></span></code></pre></div>
-<pre><code>## Sunday, May 21 2023, +0000 UTC, 16:49:11</code></pre>
+<pre><code>## Wednesday, May 24 2023, +0000 UTC, 16:32:29</code></pre>
 <div class="sourceCode" id="cb377"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co">#Utilisation du formatage pour afficher les semaines</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/format.html">format</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/Sys.time.html">Sys.Date</a></span><span class="op">(</span><span class="op">)</span>, <span class="st">"%Y Week %W"</span><span class="op">)</span></span></code></pre></div>
-<pre><code>## [1] "2023 Week 20"</code></pre>
+<pre><code>## [1] "2023 Week 21"</code></pre>
 <p>Notez que si vous utilisez la fonction <code><a href="https://stringr.tidyverse.org/reference/str_glue.html">str_glue()</a></code>, sachez qu’à l’intérieur des guillemets doubles ” vous ne devez utiliser que des guillemets simples (comme ci-dessus).</p>
 </div>
 <div id="mois-année" class="section level3 unnumbered">
@@ -586,10 +586,8 @@
 <span><span class="co"># imprimer le tableau</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/table.html">table</a></span><span class="op">(</span><span class="va">test_zoo</span><span class="op">$</span><span class="va">yearmon</span><span class="op">)</span></span></code></pre></div>
 <pre><code>## 
-## Apr 2014 May 2014 Jun 2014 Jul 2014 Aug 2014 Sep 2014 Oct 2014 Nov 2014 Dec 2014 
-##        7       64      100      226      528     1070     1112      763      562 
-## Jan 2015 Feb 2015 Mar 2015 Apr 2015 
-##      431      306      277      186</code></pre>
+## Apr 2014 May 2014 Jun 2014 Jul 2014 Aug 2014 Sep 2014 Oct 2014 Nov 2014 Dec 2014 Jan 2015 Feb 2015 Mar 2015 Apr 2015 
+##        7       64      100      226      528     1070     1112      763      562      431      306      277      186</code></pre>
 <p>En revanche, vous pouvez voir comment la seule utilisation de <code><a href="https://rdrr.io/r/base/format.html">format()</a></code> permet d’obtenir le format d’affichage souhaité, mais pas l’ordre correct.</p>
 <div class="sourceCode" id="cb381"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># créer une nouvelle colonne</span></span>
@@ -599,10 +597,8 @@
 <span><span class="co"># imprimer le tableau</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/table.html">table</a></span><span class="op">(</span><span class="va">test_format</span><span class="op">$</span><span class="va">yearmon</span><span class="op">)</span></span></code></pre></div>
 <pre><code>## 
-## Apr 2014 Apr 2015 Aug 2014 Dec 2014 Feb 2015 Jan 2015 Jul 2014 Jun 2014 Mar 2015 
-##        7      186      528      562      306      431      226      100      277 
-## May 2014 Nov 2014 Oct 2014 Sep 2014 
-##       64      763     1112     1070</code></pre>
+## Apr 2014 Apr 2015 Aug 2014 Dec 2014 Feb 2015 Jan 2015 Jul 2014 Jun 2014 Mar 2015 May 2014 Nov 2014 Oct 2014 Sep 2014 
+##        7      186      528      562      306      431      226      100      277       64      763     1112     1070</code></pre>
 <p>Note : si vous travaillez dans un <code><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot()</a></code> et vous voulez ajuster la façon dont les dates sont <em>affichées</em> uniquement, il peut être suffisant de fournir un format strptime à l’argument <code>date_labels =</code> dans <code><a href="https://ggplot2.tidyverse.org/reference/scale_date.html">scale_x_date()</a></code> - vous pouvez utiliser <code>"%b %Y"</code> ou <code>"%Y %b"</code>. Consultez la page <a href="ggplot_tips.html#ggplot_tips">Astuces de ggplot</a> pour une explication plus approfondie.</p>
 <p>Alternativement, le paquet <strong>zoo</strong> posséde la fonction <code>as.yearqtr()</code>, et vous pouvez utiliser <code>scale_x_yearmon()</code> lorsque vous utilisez <code><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot()</a></code> pour ajuster la façon dont les dates sont <em>affichées</em> sur le graphique.</p>
 <!-- ======================================================= -->
@@ -647,8 +643,8 @@
 <span>      by <span class="op">=</span> <span class="st">"week"</span><span class="op">)</span>,                   <span class="co"># agrégé par semaines</span></span>
 <span>    fill <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>n <span class="op">=</span> <span class="fl">0</span><span class="op">)</span><span class="op">)</span>             <span class="co"># Remplir les NA dans la colonne des comptes n avec 0</span></span></code></pre></div>
 <p>Voici les premiéres lignes du jeu de données résultant :</p>
-<div class="datatables html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-ed347c6ec5787a4c400a" style="width:100%;height:auto;"></div>
-<script type="application/json" data-for="htmlwidget-ed347c6ec5787a4c400a">{"x":{"filter":"none","vertical":false,"data":[["2014-04-06","2014-04-13","2014-04-20","2014-04-27","2014-05-04","2014-05-11","2014-05-18","2014-05-25","2014-06-01","2014-06-08","2014-06-15","2014-06-22","2014-06-29","2014-07-06","2014-07-13","2014-07-20","2014-07-27","2014-08-03","2014-08-10","2014-08-17"],[1,1,4,4,12,14,14,21,21,18,30,23,31,35,55,58,80,86,114,122]],"container":"<table class=\"white-space: nowrap\">\n  <thead>\n    <tr>\n      <th>weekly_cases<\/th>\n      <th>n<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"pageLength":5,"scrollX":true,"columnDefs":[{"className":"dt-right","targets":1}],"order":[],"autoWidth":false,"orderClasses":false,"lengthMenu":[5,10,25,50,100]},"selection":{"mode":"multiple","selected":null,"target":"row","selectable":null}},"evals":[],"jsHooks":[]}</script>
+<div class="datatables html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-5303f18aed3306c1c096" style="width:100%;height:auto;"></div>
+<script type="application/json" data-for="htmlwidget-5303f18aed3306c1c096">{"x":{"filter":"none","vertical":false,"data":[["2014-04-06","2014-04-13","2014-04-20","2014-04-27","2014-05-04","2014-05-11","2014-05-18","2014-05-25","2014-06-01","2014-06-08","2014-06-15","2014-06-22","2014-06-29","2014-07-06","2014-07-13","2014-07-20","2014-07-27","2014-08-03","2014-08-10","2014-08-17"],[1,1,4,4,12,14,14,21,21,18,30,23,31,35,55,58,80,86,114,122]],"container":"<table class=\"white-space: nowrap\">\n  <thead>\n    <tr>\n      <th>weekly_cases<\/th>\n      <th>n<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"pageLength":5,"scrollX":true,"columnDefs":[{"className":"dt-right","targets":1}],"order":[],"autoWidth":false,"orderClasses":false,"lengthMenu":[5,10,25,50,100]},"selection":{"mode":"multiple","selected":null,"target":"row","selectable":null}},"evals":[],"jsHooks":[]}</script>
 </div>
 <div id="différentes-méthodes-pour-les-epiweeks" class="section level3 unnumbered">
 <h3>différentes méthodes pour les epiweeks<a class="anchor" aria-label="anchor" href="#diff%C3%A9rentes-m%C3%A9thodes-pour-les-epiweeks"><i class="fas fa-link"></i></a>
@@ -671,7 +667,7 @@
 <code class="sourceCode R"><span><span class="co"># Assignez l'heure actuelle à une colonne </span></span>
 <span><span class="va">time_now</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/Sys.time.html">Sys.time</a></span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="va">time_now</span></span></code></pre></div>
-<pre><code>## [1] "2023-05-21 16:49:12 CEST"</code></pre>
+<pre><code>## [1] "2023-05-24 16:32:29 BST"</code></pre>
 <div class="sourceCode" id="cb386"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># utilisez with_tz() pour affecter un nouveau fuseau horaire à la colonne, tout en CHANGEANT l'heure de l'horloge</span></span>
 <span><span class="va">time_london_real</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://lubridate.tidyverse.org/reference/with_tz.html">with_tz</a></span><span class="op">(</span><span class="va">time_now</span>, <span class="st">"Europe/London"</span><span class="op">)</span></span>
@@ -684,7 +680,7 @@
 <span><span class="co"># il y aura une différence dans les heures </span></span>
 <span><span class="co"># (le nombre d'heures de différence entre le fuseau horaire de l'ordinateur et l'heure de Londres)</span></span>
 <span><span class="va">time_london_real</span> <span class="op">-</span> <span class="va">time_london_local</span></span></code></pre></div>
-<pre><code>## Time difference of -1 hours</code></pre>
+<pre><code>## Time difference of 0 secs</code></pre>
 <p>Cela peut sembler largement abstrait, et n’est souvent pas nécessaire si l’utilisateur ne travaille pas sur plusieurs fuseaux horaires.</p>
 <!-- ======================================================= -->
 </div>
@@ -694,8 +690,8 @@
 </h2>
 <p><code><a href="https://dplyr.tidyverse.org/reference/lead-lag.html">lead()</a></code> et <code><a href="https://dplyr.tidyverse.org/reference/lead-lag.html">lag()</a></code> sont des fonctions du paquet <strong>dplyr</strong> qui aident à trouver les valeurs précédentes (décalées) ou suivantes (en avance) dans un vecteur - généralement pour un vecteur numérique ou de date. Ces fonctions sont utiles pour calculer les changements/différences entre les unités de temps.</p>
 <p>Supposons que vous vouliez calculer la différence de cas entre la semaine en cours et la semaine précédente. Les données sont initialement fournies en nombre de cas hebdomadaires, comme indiqué ci-dessous.</p>
-<div class="datatables html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-386a54c8f99fee1b5caf" style="width:100%;height:auto;"></div>
-<script type="application/json" data-for="htmlwidget-386a54c8f99fee1b5caf">{"x":{"filter":"none","vertical":false,"data":[["2019-06-23","2019-06-30","2019-07-07","2019-07-14","2019-07-21","2019-07-28","2019-08-04","2019-08-11","2019-08-18","2019-08-25","2019-09-01","2019-09-08","2019-09-15","2019-09-22","2019-09-29","2019-10-06","2019-10-13","2019-10-20","2019-10-27","2019-11-03","2019-11-10","2019-11-17","2019-11-24","2019-12-01","2019-12-08","2019-12-15","2019-12-22","2019-12-29"],[0,25,59,90,65,79,41,47,31,32,28,28,76,41,70,90,124,278,371,329,177,69,77,97,100,39,19,0]],"container":"<table class=\"white-space: nowrap\">\n  <thead>\n    <tr>\n      <th>week_start<\/th>\n      <th>cases_wk<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"pageLength":5,"scrollX":true,"columnDefs":[{"className":"dt-right","targets":1}],"order":[],"autoWidth":false,"orderClasses":false,"lengthMenu":[5,10,25,50,100]},"selection":{"mode":"multiple","selected":null,"target":"row","selectable":null}},"evals":[],"jsHooks":[]}</script><p><strong>Lorsque vous utilisez <code><a href="https://dplyr.tidyverse.org/reference/lead-lag.html">lag()</a></code> ou <code><a href="https://dplyr.tidyverse.org/reference/lead-lag.html">lead()</a></code>, l’ordre des lignes dans le dataframe est très important ! - Faites attention à ce que vos dates/chiffres soient ascendants ou descendants</strong>.</p>
+<div class="datatables html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-04c0463fb49e9d5bbc22" style="width:100%;height:auto;"></div>
+<script type="application/json" data-for="htmlwidget-04c0463fb49e9d5bbc22">{"x":{"filter":"none","vertical":false,"data":[["2019-06-23","2019-06-30","2019-07-07","2019-07-14","2019-07-21","2019-07-28","2019-08-04","2019-08-11","2019-08-18","2019-08-25","2019-09-01","2019-09-08","2019-09-15","2019-09-22","2019-09-29","2019-10-06","2019-10-13","2019-10-20","2019-10-27","2019-11-03","2019-11-10","2019-11-17","2019-11-24","2019-12-01","2019-12-08","2019-12-15","2019-12-22","2019-12-29"],[0,25,59,90,65,79,41,47,31,32,28,28,76,41,70,90,124,278,371,329,177,69,77,97,100,39,19,0]],"container":"<table class=\"white-space: nowrap\">\n  <thead>\n    <tr>\n      <th>week_start<\/th>\n      <th>cases_wk<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"pageLength":5,"scrollX":true,"columnDefs":[{"className":"dt-right","targets":1}],"order":[],"autoWidth":false,"orderClasses":false,"lengthMenu":[5,10,25,50,100]},"selection":{"mode":"multiple","selected":null,"target":"row","selectable":null}},"evals":[],"jsHooks":[]}</script><p><strong>Lorsque vous utilisez <code><a href="https://dplyr.tidyverse.org/reference/lead-lag.html">lag()</a></code> ou <code><a href="https://dplyr.tidyverse.org/reference/lead-lag.html">lead()</a></code>, l’ordre des lignes dans le dataframe est très important ! - Faites attention à ce que vos dates/chiffres soient ascendants ou descendants</strong>.</p>
 <p>La premiére étape consiste à créer une nouvelle colonne contenant la valeur de la semaine précédente (décalée).</p>
 <ul>
 <li>Contrôlez le nombre d’unités en arriére/en avant avec <code>n =</code> (doit être un integer non-négatif)<br>
@@ -707,14 +703,14 @@
 <div class="sourceCode" id="cb388"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">counts</span> <span class="op">&lt;-</span> <span class="va">counts</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>cases_prev_wk <span class="op">=</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/lead-lag.html">lag</a></span><span class="op">(</span><span class="va">cases_wk</span>, n <span class="op">=</span> <span class="fl">1</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
-<div class="datatables html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-1e1647b84d38894db6e5" style="width:100%;height:auto;"></div>
-<script type="application/json" data-for="htmlwidget-1e1647b84d38894db6e5">{"x":{"filter":"none","vertical":false,"data":[["2019-06-23","2019-06-30","2019-07-07","2019-07-14","2019-07-21","2019-07-28","2019-08-04","2019-08-11","2019-08-18","2019-08-25","2019-09-01","2019-09-08","2019-09-15","2019-09-22","2019-09-29","2019-10-06","2019-10-13","2019-10-20","2019-10-27","2019-11-03","2019-11-10","2019-11-17","2019-11-24","2019-12-01","2019-12-08","2019-12-15","2019-12-22","2019-12-29"],[0,25,59,90,65,79,41,47,31,32,28,28,76,41,70,90,124,278,371,329,177,69,77,97,100,39,19,0],[null,0,25,59,90,65,79,41,47,31,32,28,28,76,41,70,90,124,278,371,329,177,69,77,97,100,39,19]],"container":"<table class=\"white-space: nowrap\">\n  <thead>\n    <tr>\n      <th>week_start<\/th>\n      <th>cases_wk<\/th>\n      <th>cases_prev_wk<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"pageLength":5,"scrollX":true,"columnDefs":[{"className":"dt-right","targets":[1,2]}],"order":[],"autoWidth":false,"orderClasses":false,"lengthMenu":[5,10,25,50,100]},"selection":{"mode":"multiple","selected":null,"target":"row","selectable":null}},"evals":[],"jsHooks":[]}</script><p>L’étape suivante consiste à créer une nouvelle colonne qui est la différence entre les deux colonnes de cas :</p>
+<div class="datatables html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-7a901956dd789073e317" style="width:100%;height:auto;"></div>
+<script type="application/json" data-for="htmlwidget-7a901956dd789073e317">{"x":{"filter":"none","vertical":false,"data":[["2019-06-23","2019-06-30","2019-07-07","2019-07-14","2019-07-21","2019-07-28","2019-08-04","2019-08-11","2019-08-18","2019-08-25","2019-09-01","2019-09-08","2019-09-15","2019-09-22","2019-09-29","2019-10-06","2019-10-13","2019-10-20","2019-10-27","2019-11-03","2019-11-10","2019-11-17","2019-11-24","2019-12-01","2019-12-08","2019-12-15","2019-12-22","2019-12-29"],[0,25,59,90,65,79,41,47,31,32,28,28,76,41,70,90,124,278,371,329,177,69,77,97,100,39,19,0],[null,0,25,59,90,65,79,41,47,31,32,28,28,76,41,70,90,124,278,371,329,177,69,77,97,100,39,19]],"container":"<table class=\"white-space: nowrap\">\n  <thead>\n    <tr>\n      <th>week_start<\/th>\n      <th>cases_wk<\/th>\n      <th>cases_prev_wk<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"pageLength":5,"scrollX":true,"columnDefs":[{"className":"dt-right","targets":[1,2]}],"order":[],"autoWidth":false,"orderClasses":false,"lengthMenu":[5,10,25,50,100]},"selection":{"mode":"multiple","selected":null,"target":"row","selectable":null}},"evals":[],"jsHooks":[]}</script><p>L’étape suivante consiste à créer une nouvelle colonne qui est la différence entre les deux colonnes de cas :</p>
 <div class="sourceCode" id="cb389"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">counts</span> <span class="op">&lt;-</span> <span class="va">counts</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>cases_prev_wk <span class="op">=</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/lead-lag.html">lag</a></span><span class="op">(</span><span class="va">cases_wk</span>, n <span class="op">=</span> <span class="fl">1</span><span class="op">)</span>,</span>
 <span>         case_diff <span class="op">=</span> <span class="va">cases_wk</span> <span class="op">-</span> <span class="va">cases_prev_wk</span><span class="op">)</span></span></code></pre></div>
-<div class="datatables html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-bc7aef3597baa50ddd62" style="width:100%;height:auto;"></div>
-<script type="application/json" data-for="htmlwidget-bc7aef3597baa50ddd62">{"x":{"filter":"none","vertical":false,"data":[["2019-06-23","2019-06-30","2019-07-07","2019-07-14","2019-07-21","2019-07-28","2019-08-04","2019-08-11","2019-08-18","2019-08-25","2019-09-01","2019-09-08","2019-09-15","2019-09-22","2019-09-29","2019-10-06","2019-10-13","2019-10-20","2019-10-27","2019-11-03","2019-11-10","2019-11-17","2019-11-24","2019-12-01","2019-12-08","2019-12-15","2019-12-22","2019-12-29"],[0,25,59,90,65,79,41,47,31,32,28,28,76,41,70,90,124,278,371,329,177,69,77,97,100,39,19,0],[null,0,25,59,90,65,79,41,47,31,32,28,28,76,41,70,90,124,278,371,329,177,69,77,97,100,39,19],[null,25,34,31,-25,14,-38,6,-16,1,-4,0,48,-35,29,20,34,154,93,-42,-152,-108,8,20,3,-61,-20,-19]],"container":"<table class=\"white-space: nowrap\">\n  <thead>\n    <tr>\n      <th>week_start<\/th>\n      <th>cases_wk<\/th>\n      <th>cases_prev_wk<\/th>\n      <th>case_diff<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"pageLength":5,"scrollX":true,"columnDefs":[{"className":"dt-right","targets":[1,2,3]}],"order":[],"autoWidth":false,"orderClasses":false,"lengthMenu":[5,10,25,50,100]},"selection":{"mode":"multiple","selected":null,"target":"row","selectable":null}},"evals":[],"jsHooks":[]}</script><p>Vous pouvez en savoir plus sur <code><a href="https://dplyr.tidyverse.org/reference/lead-lag.html">lead()</a></code> et <code><a href="https://dplyr.tidyverse.org/reference/lead-lag.html">lag()</a></code> dans la documentation <a href="https://dplyr.tidyverse.org/reference/lead-lag.html">ici</a> ou en entrant <code><a href="https://dplyr.tidyverse.org/reference/lead-lag.html">?lag</a></code> dans votre console.</p>
+<div class="datatables html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-cdd3bf40f2bb6e94e42b" style="width:100%;height:auto;"></div>
+<script type="application/json" data-for="htmlwidget-cdd3bf40f2bb6e94e42b">{"x":{"filter":"none","vertical":false,"data":[["2019-06-23","2019-06-30","2019-07-07","2019-07-14","2019-07-21","2019-07-28","2019-08-04","2019-08-11","2019-08-18","2019-08-25","2019-09-01","2019-09-08","2019-09-15","2019-09-22","2019-09-29","2019-10-06","2019-10-13","2019-10-20","2019-10-27","2019-11-03","2019-11-10","2019-11-17","2019-11-24","2019-12-01","2019-12-08","2019-12-15","2019-12-22","2019-12-29"],[0,25,59,90,65,79,41,47,31,32,28,28,76,41,70,90,124,278,371,329,177,69,77,97,100,39,19,0],[null,0,25,59,90,65,79,41,47,31,32,28,28,76,41,70,90,124,278,371,329,177,69,77,97,100,39,19],[null,25,34,31,-25,14,-38,6,-16,1,-4,0,48,-35,29,20,34,154,93,-42,-152,-108,8,20,3,-61,-20,-19]],"container":"<table class=\"white-space: nowrap\">\n  <thead>\n    <tr>\n      <th>week_start<\/th>\n      <th>cases_wk<\/th>\n      <th>cases_prev_wk<\/th>\n      <th>case_diff<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"pageLength":5,"scrollX":true,"columnDefs":[{"className":"dt-right","targets":[1,2,3]}],"order":[],"autoWidth":false,"orderClasses":false,"lengthMenu":[5,10,25,50,100]},"selection":{"mode":"multiple","selected":null,"target":"row","selectable":null}},"evals":[],"jsHooks":[]}</script><p>Vous pouvez en savoir plus sur <code><a href="https://dplyr.tidyverse.org/reference/lead-lag.html">lead()</a></code> et <code><a href="https://dplyr.tidyverse.org/reference/lead-lag.html">lag()</a></code> dans la documentation <a href="https://dplyr.tidyverse.org/reference/lead-lag.html">ici</a> ou en entrant <code><a href="https://dplyr.tidyverse.org/reference/lead-lag.html">?lag</a></code> dans votre console.</p>
 <!-- ======================================================= -->
 </div>
 <div id="ressources-2" class="section level2" number="9.12">
@@ -796,7 +792,7 @@ R for Data Science page on <a href="https://r4ds.had.co.nz/dates-and-times.html"
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Le Epi R Handbook</strong>" was written by the handbook team. It was last built on 2023-05-21.</p>
+    <p>"<strong>Le Epi R Handbook</strong>" was written by the handbook team. It was last built on 2023-05-24.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

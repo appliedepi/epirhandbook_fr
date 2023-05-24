@@ -7,7 +7,7 @@
 <title>46 Contrôle de version et collaboration avec Git et Github | Le Epi R Handbook</title>
 <meta name="author" content="the handbook team">
 <meta name="description" content="Ce chapitre présente un aperçu de l’utilisation de Git pour collaborer avec d’autres personnes. Des tutoriels plus complets peuvent être en bas de page dans la section Ressources.  46.1 Qu’est-ce...">
-<meta name="generator" content="bookdown 0.34 with bs4_book()">
+<meta name="generator" content="bookdown 0.33 with bs4_book()">
 <meta property="og:title" content="46 Contrôle de version et collaboration avec Git et Github | Le Epi R Handbook">
 <meta property="og:type" content="book">
 <meta property="og:description" content="Ce chapitre présente un aperçu de l’utilisation de Git pour collaborer avec d’autres personnes. Des tutoriels plus complets peuvent être en bas de page dans la section Ressources.  46.1 Qu’est-ce...">
@@ -18,9 +18,9 @@
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
 <script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.4.2/transition.js"></script><script src="libs/bs3compat-0.4.2/tabs.js"></script><script src="libs/bs3compat-0.4.2/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
 <script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="libs/htmlwidgets-1.6.2/htmlwidgets.js"></script><link href="libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet">
-<script src="libs/datatables-binding-0.28/datatables.js"></script><link href="libs/dt-core-1.13.4/css/jquery.dataTables.min.css" rel="stylesheet">
-<link href="libs/dt-core-1.13.4/css/jquery.dataTables.extra.css" rel="stylesheet">
-<script src="libs/dt-core-1.13.4/js/jquery.dataTables.min.js"></script><link href="libs/nouislider-7.0.10/jquery.nouislider.min.css" rel="stylesheet">
+<script src="libs/datatables-binding-0.27/datatables.js"></script><link href="libs/dt-core-1.12.1/css/jquery.dataTables.min.css" rel="stylesheet">
+<link href="libs/dt-core-1.12.1/css/jquery.dataTables.extra.css" rel="stylesheet">
+<script src="libs/dt-core-1.12.1/js/jquery.dataTables.min.js"></script><link href="libs/nouislider-7.0.10/jquery.nouislider.min.css" rel="stylesheet">
 <script src="libs/nouislider-7.0.10/jquery.nouislider.min.js"></script><link href="libs/selectize-0.12.0/selectize.bootstrap3.css" rel="stylesheet">
 <script src="libs/selectize-0.12.0/selectize.min.js"></script><link href="libs/crosstalk-1.2.0/css/crosstalk.min.css" rel="stylesheet">
 <script src="libs/crosstalk-1.2.0/js/crosstalk.min.js"></script><script src="libs/kePrint-0.0.1/kePrint.js"></script><link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet">
@@ -29,7 +29,7 @@
 <script src="libs/leaflet-1.3.1/leaflet.js"></script><link href="libs/leafletfix-1.0.0/leafletfix.css" rel="stylesheet">
 <script src="libs/proj4-2.6.2/proj4.min.js"></script><script src="libs/Proj4Leaflet-1.0.1/proj4leaflet.js"></script><link href="libs/rstudio_leaflet-1.3.1/rstudio_leaflet.css" rel="stylesheet">
 <script src="libs/leaflet-binding-2.1.2/leaflet.js"></script><script src="libs/leaflet-providers-1.9.0/leaflet-providers_1.9.0.js"></script><script src="libs/leaflet-providers-plugin-2.1.2/leaflet-providers-plugin.js"></script><script src="libs/viz-1.8.2/viz.js"></script><link href="libs/DiagrammeR-styles-0.2/styles.css" rel="stylesheet">
-<script src="libs/grViz-binding-1.0.10/grViz.js"></script><script src="libs/d3-4.5.0/d3.min.js"></script><script src="libs/sankey-1/sankey.js"></script><script src="libs/sankeyNetwork-binding-0.4/sankeyNetwork.js"></script><script src="libs/plotly-binding-4.10.1/plotly.js"></script><script src="libs/typedarray-0.1/typedarray.min.js"></script><link href="libs/plotly-htmlwidgets-css-2.11.1/plotly-htmlwidgets.css" rel="stylesheet">
+<script src="libs/grViz-binding-1.0.9/grViz.js"></script><script src="libs/d3-4.5.0/d3.min.js"></script><script src="libs/sankey-1/sankey.js"></script><script src="libs/sankeyNetwork-binding-0.4/sankeyNetwork.js"></script><script src="libs/plotly-binding-4.10.1/plotly.js"></script><script src="libs/typedarray-0.1/typedarray.min.js"></script><link href="libs/plotly-htmlwidgets-css-2.11.1/plotly-htmlwidgets.css" rel="stylesheet">
 <script src="libs/plotly-main-2.11.1/plotly-latest.min.js"></script><link href="libs/vis-9.1.0/vis-network.min.css" rel="stylesheet">
 <script src="libs/vis-9.1.0/vis-network.min.js"></script><script src="libs/visNetwork-binding-2.1.2/visNetwork.js"></script><link href="libs/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet">
 <script src="libs/plotly-basic-2.11.1/plotly-basic-2.11.1.min.js"></script><script src="libs/plotly-cartesian-2.11.1/plotly-cartesian-2.11.1.min.js"></script><script src="libs/proj4js-2.3.15/proj4.js"></script><link href="libs/highcharts-9.3.1/css/motion.css" rel="stylesheet">
@@ -44,7 +44,7 @@
 <body>
 <div class="alert alert-info alert-dismissible">
       <a href="#" class="close" data-dismiss="alert" aria-label="close">×</a>
-      <strong>Tu as besoin d'aide pour apprendre R?</strong> Inscris-toi au <a href="https://www.appliedepi.org/live/" class="alert-link">cours d'introduction à R</a> d'Applied Epi, essaie nos <a href="https://www.appliedepi.org/tutorial/" class="alert-link">tutoriels R gratuits</a>, publie dans notre <a href="https://community.appliedepi.org/" class="alert-link">forum de questions et réponses</a>, ou demande notre <a href="mailto:contact@appliedepi.org" class="alert-link">assistance R</a>.
+      <strong>Besoin d'aide pour apprendre R ?</strong> Inscrivez-vous au <a href="https://www.appliedepi.org/live/" class="alert-link">cours d'introduction à R d'Applied Epi</a>, essayez nos <a href="https://www.appliedepi.org/tutorial/" class="alert-link">tutoriels R gratuits</a>, postez dans notre forum de <a href="https://community.appliedepi.org/" class="alert-link">questions et réponses de la communauté</a>, ou demandez-nous des informations sur <a href="mailto:contact@appliedepi.org" class="alert-link">notre service d'assistance R</a>.
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><style type="text/css">
     
@@ -70,16 +70,16 @@
       <nav aria-label="Table of contents"><h2>Table of contents</h2>
         <ul class="book-toc list-unstyled">
 <li><a class="" href="index.html"></a></li>
-<li class="book-part">About this book</li>
+<li class="book-part">À propos de ce livre</li>
 <li><a class="" href="editorial_notes.html"><span class="header-section-number">1</span> Notes techniques et choix éditoriaux</a></li>
 <li><a class="" href="download_book_data.html"><span class="header-section-number">2</span> Télécharger le manuel et les données</a></li>
-<li class="book-part">Basics</li>
+<li class="book-part">Les bases de R</li>
 <li><a class="" href="rbasics.html"><span class="header-section-number">3</span> R - les bases</a></li>
 <li><a class="" href="transition_to_r.html"><span class="header-section-number">4</span> Transition vers R</a></li>
 <li><a class="" href="suggested_packages.html"><span class="header-section-number">5</span> Paquets conseillés</a></li>
 <li><a class="" href="r_projects.html"><span class="header-section-number">6</span> Projets R</a></li>
 <li><a class="" href="import_export.html"><span class="header-section-number">7</span> Importer et exporter des données</a></li>
-<li class="book-part">Data Management</li>
+<li class="book-part">Gestion des données</li>
 <li><a class="" href="cleaning_data.html"><span class="header-section-number">8</span> Nettoyage de données et fonctions essentielles</a></li>
 <li><a class="" href="working_dates.html"><span class="header-section-number">9</span> Manipuler les dates</a></li>
 <li><a class="" href="character_strings.html"><span class="header-section-number">10</span> Caractères et chaînes de caractères</a></li>
@@ -89,7 +89,7 @@
 <li><a class="" href="joining_matching.html"><span class="header-section-number">14</span> Joindre des données</a></li>
 <li><a class="" href="deduplication.html"><span class="header-section-number">15</span> De-duplication</a></li>
 <li><a class="" href="iteration.html"><span class="header-section-number">16</span> Itération, boucles et listes</a></li>
-<li class="book-part">Analysis</li>
+<li class="book-part">Analyse</li>
 <li><a class="" href="descriptive_tables.html"><span class="header-section-number">17</span> Tableaux descriptifs</a></li>
 <li><a class="" href="stats_test.html"><span class="header-section-number">18</span> Tests statistiques simples</a></li>
 <li><a class="" href="regression.html"><span class="header-section-number">19</span> Régression univariée et multivariable</a></li>
@@ -102,7 +102,7 @@
 <li><a class="" href="survey_analysis.html"><span class="header-section-number">26</span> Analyse d’enquête</a></li>
 <li><a class="" href="survival_analysis.html"><span class="header-section-number">27</span> Analyse de survie</a></li>
 <li><a class="" href="gis.html"><span class="header-section-number">28</span> GIS basics</a></li>
-<li class="book-part">Data Visualization</li>
+<li class="book-part">Visualisation des données</li>
 <li><a class="" href="tables_presentation.html"><span class="header-section-number">29</span> Présenter avec des tables</a></li>
 <li><a class="" href="ggplot_basics.html"><span class="header-section-number">30</span> Les bases de ggplot</a></li>
 <li><a class="" href="ggplot_tips.html"><span class="header-section-number">31</span> Trucs et Astuces avec ggplot</a></li>
@@ -114,12 +114,12 @@
 <li><a class="" href="transmission_chains.html"><span class="header-section-number">37</span> Chaînes de transmission</a></li>
 <li><a class="" href="phylogenetic_trees.html"><span class="header-section-number">38</span> Les arbres phylogénétiques</a></li>
 <li><a class="" href="interactive_plots.html"><span class="header-section-number">39</span> Graphiques interactifs</a></li>
-<li class="book-part">Reports and dashboards</li>
+<li class="book-part">Rapports et tableaux de bord</li>
 <li><a class="" href="rmarkdown.html"><span class="header-section-number">40</span> Production de rapports avec R Markdown</a></li>
 <li><a class="" href="reportfactory.html"><span class="header-section-number">41</span> Organisation des rapports de routine</a></li>
 <li><a class="" href="dashboards.html"><span class="header-section-number">42</span> Tableaux de bord avec R Markdown</a></li>
 <li><a class="" href="shiny.html"><span class="header-section-number">43</span> Tableaux de bord avec Shiny</a></li>
-<li class="book-part">Miscellaneous</li>
+<li class="book-part">Autres sujets</li>
 <li><a class="" href="writing_functions.html"><span class="header-section-number">44</span> Fonctions d’écriture</a></li>
 <li><a class="" href="directories.html"><span class="header-section-number">45</span> Interactions avec les répertoires</a></li>
 <li><a class="active" href="collaboration.html"><span class="header-section-number">46</span> Contrôle de version et collaboration avec Git et Github</a></li>
@@ -441,9 +441,9 @@ un autre script, il serait judicieux d’avoir deux commits différents (ce sera
 <h3>Dans la console<a class="anchor" aria-label="anchor" href="#dans-la-console"><i class="fas fa-link"></i></a>
 </h3>
 <p>Ce qui se passe en réalité dans les coulisses est que vous créez une nouvelle branche avec <code>git branch</code>, puis vous allez dans la branche avec <code>git checkout</code> ( <em>i.e.</em> dites à Git que vos prochains commits se feront là). Dans votre dépôt git :</p>
-<div class="sourceCode" id="cb1914"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb1914-1"><a href="collaboration.html#cb1914-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> branch my-new-branch <span class="co"># Créez la nouvelle branche</span></span>
-<span id="cb1914-2"><a href="collaboration.html#cb1914-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> checkout my-new-branch <span class="co"># Aller sur la branche</span></span>
-<span id="cb1914-3"><a href="collaboration.html#cb1914-3" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> checkout <span class="at">-b</span> ma-nouvelle-branche <span class="co"># Les deux à la fois (raccourci)</span></span></code></pre></div>
+<div class="sourceCode" id="cb1919"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb1919-1"><a href="collaboration.html#cb1919-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> branch my-new-branch <span class="co"># Créez la nouvelle branche</span></span>
+<span id="cb1919-2"><a href="collaboration.html#cb1919-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> checkout my-new-branch <span class="co"># Aller sur la branche</span></span>
+<span id="cb1919-3"><a href="collaboration.html#cb1919-3" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> checkout <span class="at">-b</span> ma-nouvelle-branche <span class="co"># Les deux à la fois (raccourci)</span></span></code></pre></div>
 <p>Pour plus d’informations sur l’utilisation de la console, voir la section sur les Commandes Git à la fin.</p>
 </div>
 </div>
@@ -484,13 +484,13 @@ un autre script, il serait judicieux d’avoir deux commits différents (ce sera
 <h3>Dans la console<a class="anchor" aria-label="anchor" href="#dans-la-console-1"><i class="fas fa-link"></i></a>
 </h3>
 <p>Les deux fonctions utilisées dans les coulisses sont <code>git add</code> pour sélectionner/établir et <code>git commit</code> pour effectuer la livraison.</p>
-<div class="sourceCode" id="cb1915"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb1915-1"><a href="collaboration.html#cb1915-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> status <span class="co"># voir les changements </span></span>
-<span id="cb1915-2"><a href="collaboration.html#cb1915-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1915-3"><a href="collaboration.html#cb1915-3" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> add new_pages/collaboration.Rmd <span class="co"># sélectionner les fichiers à livrer (= mettre en scène les changements)</span></span>
-<span id="cb1915-4"><a href="collaboration.html#cb1915-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1915-5"><a href="collaboration.html#cb1915-5" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> commit <span class="at">-m</span> <span class="st">"Describe commit from Github Desktop"</span> <span class="co"># livrer les changements avec un message</span></span>
-<span id="cb1915-6"><a href="collaboration.html#cb1915-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1915-7"><a href="collaboration.html#cb1915-7" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> log <span class="co"># affiche les informations sur les commits passés</span></span></code></pre></div>
+<div class="sourceCode" id="cb1920"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb1920-1"><a href="collaboration.html#cb1920-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> status <span class="co"># voir les changements </span></span>
+<span id="cb1920-2"><a href="collaboration.html#cb1920-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1920-3"><a href="collaboration.html#cb1920-3" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> add new_pages/collaboration.Rmd <span class="co"># sélectionner les fichiers à livrer (= mettre en scène les changements)</span></span>
+<span id="cb1920-4"><a href="collaboration.html#cb1920-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1920-5"><a href="collaboration.html#cb1920-5" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> commit <span class="at">-m</span> <span class="st">"Describe commit from Github Desktop"</span> <span class="co"># livrer les changements avec un message</span></span>
+<span id="cb1920-6"><a href="collaboration.html#cb1920-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1920-7"><a href="collaboration.html#cb1920-7" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> log <span class="co"># affiche les informations sur les commits passés</span></span></code></pre></div>
 </div>
 <div id="modifier-un-commit-précédent" class="section level3 unnumbered">
 <h3>Modifier un commit précédent<a class="anchor" aria-label="anchor" href="#modifier-un-commit-pr%C3%A9c%C3%A9dent"><i class="fas fa-link"></i></a>
@@ -500,11 +500,11 @@ un autre script, il serait judicieux d’avoir deux commits différents (ce sera
 <p>Pour une raison peu claire, la fonctionnalité n’a pas été implémentée en tant que telle dans Github Desktop, mais il existe une
 moyen de la contourner. Si vous avez validé <strong>mais pas encore poussé</strong> vos changements, un bouton “UNDO” apparaît juste en dessous du bouton COMMIT. Cliquez dessus et il annulera votre validation (mais conservera vos fichiers indexés et votre message de validation). Sauvegardez vos changements, ajoutez de nouveaux fichiers à la livraison si nécessaire et livrez à nouveau.</p>
 <p>Dans la console :</p>
-<div class="sourceCode" id="cb1916"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb1916-1"><a href="collaboration.html#cb1916-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> add [YOUR FILES] <span class="co"># Ajoute vos nouvelles modifications</span></span>
-<span id="cb1916-2"><a href="collaboration.html#cb1916-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1916-3"><a href="collaboration.html#cb1916-3" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> commit <span class="at">--amend</span> <span class="co"># Modifie le commit précédent</span></span>
-<span id="cb1916-4"><a href="collaboration.html#cb1916-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1916-5"><a href="collaboration.html#cb1916-5" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> commit <span class="at">--amend</span> <span class="at">-m</span> <span class="st">"An updated commit message"</span> <span class="co"># Modifie la livraison précédente ET met à jour le message de livraison.</span></span></code></pre></div>
+<div class="sourceCode" id="cb1921"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb1921-1"><a href="collaboration.html#cb1921-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> add [YOUR FILES] <span class="co"># Ajoute vos nouvelles modifications</span></span>
+<span id="cb1921-2"><a href="collaboration.html#cb1921-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1921-3"><a href="collaboration.html#cb1921-3" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> commit <span class="at">--amend</span> <span class="co"># Modifie le commit précédent</span></span>
+<span id="cb1921-4"><a href="collaboration.html#cb1921-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1921-5"><a href="collaboration.html#cb1921-5" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> commit <span class="at">--amend</span> <span class="at">-m</span> <span class="st">"An updated commit message"</span> <span class="co"># Modifie la livraison précédente ET met à jour le message de livraison.</span></span></code></pre></div>
 <p><em>Note : réfléchissez avant de modifier des commits qui sont déjà publics et partagés avec vos collaborateurs</em>.</p>
 </div>
 </div>
@@ -549,9 +549,9 @@ d’entrer votre nom d’utilisateur et votre mot de passe Github.La première f
 <h4>Console<a class="anchor" aria-label="anchor" href="#console"><i class="fas fa-link"></i></a>
 </h4>
 <p>Sans surprise, les commandes sont <em>chercher</em> (fetch), <em>tirez</em> (pull) et <em>pousser</em> (push).</p>
-<div class="sourceCode" id="cb1917"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb1917-1"><a href="collaboration.html#cb1917-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> fetch <span class="co"># Y a-t-il de nouveaux commits dans le répertoire distant ?</span></span>
-<span id="cb1917-2"><a href="collaboration.html#cb1917-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> pull <span class="co"># Apporte les commits distants dans votre branche locale</span></span>
-<span id="cb1917-3"><a href="collaboration.html#cb1917-3" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> push <span class="co"># Pousse les commits locaux de cette branche vers la branche distante</span></span></code></pre></div>
+<div class="sourceCode" id="cb1922"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb1922-1"><a href="collaboration.html#cb1922-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> fetch <span class="co"># Y a-t-il de nouveaux commits dans le répertoire distant ?</span></span>
+<span id="cb1922-2"><a href="collaboration.html#cb1922-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> pull <span class="co"># Apporte les commits distants dans votre branche locale</span></span>
+<span id="cb1922-3"><a href="collaboration.html#cb1922-3" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> push <span class="co"># Pousse les commits locaux de cette branche vers la branche distante</span></span></code></pre></div>
 </div>
 <div id="je-veux-tirer-mais-jai-du-travail-local" class="section level3 unnumbered">
 <h3>Je veux tirer mais j’ai du travail local<a class="anchor" aria-label="anchor" href="#je-veux-tirer-mais-jai-du-travail-local"><i class="fas fa-link"></i></a>
@@ -583,8 +583,8 @@ d’entrer votre nom d’utilisateur et votre mot de passe Github.La première f
 <h3>Dans la console<a class="anchor" aria-label="anchor" href="#dans-la-console-2"><i class="fas fa-link"></i></a>
 </h3>
 <p>Revenez d’abord à la branche qui sera le destination des changements. C’est généralement <em>master</em>, mais cela peut être une autre branche si vous le souhaite. Fusionnez votre branche de travail dans master.</p>
-<div class="sourceCode" id="cb1918"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb1918-1"><a href="collaboration.html#cb1918-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> checkout master <span class="co"># Retournez à master (ou à la branche que vous voulez déplacer)</span></span>
-<span id="cb1918-2"><a href="collaboration.html#cb1918-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> merge this_fancy_new_branch</span></code></pre></div>
+<div class="sourceCode" id="cb1923"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb1923-1"><a href="collaboration.html#cb1923-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> checkout master <span class="co"># Retournez à master (ou à la branche que vous voulez déplacer)</span></span>
+<span id="cb1923-2"><a href="collaboration.html#cb1923-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> merge this_fancy_new_branch</span></code></pre></div>
 <p><a href="https://git-scm.com/book/en/v2/Git-Branching-Basic-Branching-and-Merging">Cette page</a> montre un exemple plus avancé de branchement et explique un peu ce qui se passe en coulisses.</p>
 </div>
 <div id="dans-github-soumettre-des-demandes-de-pull-tirer" class="section level3 unnumbered">
@@ -666,18 +666,18 @@ d’entrer votre nom d’utilisateur et votre mot de passe Github.La première f
 </ul>
 <p>Vous pouvez lire <a href="https://docs.github.com/en/github/collaborating-with-issues-and-pull-requests/syncing-a-fork">ce tutoriel</a> ou suivre les instructions ci-dessous :</p>
 <p>Tout d’abord, tapez dans votre terminal Git (à l’intérieur de votre repo) :</p>
-<div class="sourceCode" id="cb1919"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb1919-1"><a href="collaboration.html#cb1919-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> remote <span class="at">-v</span></span></code></pre></div>
+<div class="sourceCode" id="cb1924"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb1924-1"><a href="collaboration.html#cb1924-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> remote <span class="at">-v</span></span></code></pre></div>
 <p>Si vous n’avez pas encore configuré le référentiel amont, vous devriez voir deux lignes, commençant par <em>origin</em>. Elles montrent le dépôt distant vers lequel <code>chercher</code> et <code>pousser</code> pointent. Rappelez-vous, <em>origin</em> est le surnom conventionnel pour votre propre version du dépôt sur Github. Par exemple :</p>
 <div class="inline-figure"><img src="images/github_fork_2.png" width="100%" height="200%" style="display: block; margin: auto;"></div>
 <p>Maintenant, ajoutez un nouveau dépôt distant :</p>
-<div class="sourceCode" id="cb1920"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb1920-1"><a href="collaboration.html#cb1920-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> remote add upstream https://github.com/epirhandbook/Epi_R_handbook.git</span></code></pre></div>
+<div class="sourceCode" id="cb1925"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb1925-1"><a href="collaboration.html#cb1925-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> remote add upstream https://github.com/epirhandbook/Epi_R_handbook.git</span></code></pre></div>
 <p>Ici, l’adresse est l’adresse que Github génère lorsque vous clonez un dépôt (voir la section sur le clonage). Vous aurez maintenant quatre pointeurs distants :</p>
 <div class="inline-figure"><img src="images/github_fork_3.png" width="100%" height="200%" style="display: block; margin: auto;"></div>
 <p>Maintenant que la configuration est faite, chaque fois que vous voulez obtenir les changements de le dépôt original (<em>upstream</em>), il suffit d’aller (<em>checkout</em>) dans la branche la branche que vous voulez mettre à jour et taper :</p>
-<div class="sourceCode" id="cb1921"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb1921-1"><a href="collaboration.html#cb1921-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> fetch upstream <span class="co"># Obtenir les nouveaux commits du dépôt distant</span></span>
-<span id="cb1921-2"><a href="collaboration.html#cb1921-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> checkout la_branche_que_vous_voulez_mettre_à_jour</span>
-<span id="cb1921-3"><a href="collaboration.html#cb1921-3" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> merge upstream/the_branch_you_want_to_update <span class="co"># Fusionne la branche amont dans votre branche.</span></span>
-<span id="cb1921-4"><a href="collaboration.html#cb1921-4" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> push <span class="co"># Mettez à jour votre propre version du dépôt distant.</span></span></code></pre></div>
+<div class="sourceCode" id="cb1926"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb1926-1"><a href="collaboration.html#cb1926-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> fetch upstream <span class="co"># Obtenir les nouveaux commits du dépôt distant</span></span>
+<span id="cb1926-2"><a href="collaboration.html#cb1926-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> checkout la_branche_que_vous_voulez_mettre_à_jour</span>
+<span id="cb1926-3"><a href="collaboration.html#cb1926-3" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> merge upstream/the_branch_you_want_to_update <span class="co"># Fusionne la branche amont dans votre branche.</span></span>
+<span id="cb1926-4"><a href="collaboration.html#cb1926-4" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> push <span class="co"># Mettez à jour votre propre version du dépôt distant.</span></span></code></pre></div>
 <p>S’il y a des conflits, vous devrez les résoudre, comme expliqué dans la section Résoudre les conflits.</p>
 <p><strong>Résumé</strong> : forker est un clonage, mais du côté du serveur Github. Le reste des actions sont des actions typiques du flux de travail de collaboration (cloner, pousser, tirer, commettre, fusionner, soumettre des demandes de tirage…).</p>
 <p><em>Remarque : si la bifurcation est un concept et non une commande Git, elle existe aussi sur d’autres hôtes Web, comme <a href="https://www.atlassian.com/git/tutorials/comparing-workflows/forking-workflow">Bitbucket</a>.</em></p>
@@ -861,7 +861,7 @@ d’entrer votre nom d’utilisateur et votre mot de passe Github.La première f
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Le Epi R Handbook</strong>" was written by the handbook team. It was last built on 2023-05-21.</p>
+    <p>"<strong>Le Epi R Handbook</strong>" was written by the handbook team. It was last built on 2023-05-24.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">
