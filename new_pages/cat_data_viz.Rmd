@@ -1,1 +1,2 @@
-# (PART) Data Visualization {.unnumbered}
+# (PART) Visualisation des données {.unnumbered}
+

@@ -1,1 +1,1 @@
-# (PART) Basics {.unnumbered}
+# (PART) Les bases de R {.unnumbered}
