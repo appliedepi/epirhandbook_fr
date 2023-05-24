@@ -801,7 +801,7 @@ Voici un tableau tiré de la [vignette](https://cran.r-project.org/web/packages/
 | SAS                                 | .sas7bdat               | haven                | haven          | Oui                  |
 | SPSS                                | .sav                    | haven                | haven          | Oui                  |
 | Stata                               | .dta                    | haven                | haven          | Oui                  |
-| SAS                                 | XPORT                   | .xpt                 | haven          | haven                |
+| SAS                                 | XPORT                   | .xpt                 | haven          | Oui                  |
 | SPSS Portable                       | .por                    | haven                |                | Oui                  |
 | Excel                               | .xls                    | readxl               |                | Oui                  |
 | Excel                               | .xlsx                   | readxl               | openxlsx       | Oui                  |
@@ -811,7 +811,7 @@ Voici un tableau tiré de la [vignette](https://cran.r-project.org/web/packages/
 | Epiinfo                             | .rec                    | foreign              |                | Oui                  |
 | Minitab                             | .mtp                    | foreign              |                | Oui                  |
 | Systat                              | .syd                    | foreign              |                | Oui                  |
-| "XBASE"                             | database files          | .dbf                 | foreign        | foreign              |
+| "XBASE"                             | database files          | .dbf                 | foreign        | Oui                  |
 | Weka Attribute-Relation File Format | .arff                   | foreign              | foreign        | Oui                  |
 | Data Interchange Format             | .dif                    | utils                |                | Oui                  |
 | Fortran data                        | pas d'extension reconnue| utils                |                | Oui                  |

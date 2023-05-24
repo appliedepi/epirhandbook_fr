@@ -887,19 +887,19 @@ La barre oblique inverse `\` est utilisée pour "échapper" à la signification 
 
 Note - Si vous voulez *afficher* une barre oblique inverse, vous devez échapper à sa signification avec *une autre* barre oblique inverse. Ainsi, vous devez écrire deux barres obliques inversées `\\` pour en afficher une.  
 
-**caractères spéciaux " 
+**Caractères spéciaux** 
 
-caractère spécial | Représentation  
------------------ | --------------------------------------------------------------    
-`"\\"` | barre oblique inversée  
-`"\n"` | une nouvelle ligne (newline)   
-`"\""` | guillemets doubles *entre* guillemets doubles  
-`"\""` | guillemets simples *entre guillemets simples  
-`"\`"` | accent grave  
-`"\r"` | retour chariot  
-`"\t"` | tabulation  
-`"\v"` | tabulation verticale 
-`"\b"` | retour arriére  
+| Caractère spécial | Représentation                                 |
+|-------------------|------------------------------------------------|    
+| `"\\"`            | barre oblique inversée                         |
+| `"\n"`            | une nouvelle ligne (newline)                   |     
+| `"\""`            | guillemets doubles *entre* guillemets doubles  |  
+| `'\''`            | guillemets simples *entre* guillemets simples  |
+| `` "\`" ``        | accent grave                                   |
+| `"\r"`            | retour chariot                                 |
+| `"\t"`            | tabulation                                     |
+| `"\v"`            | tabulation verticale                           |
+| `"\b"`            | retour arriére                                 |
 
 Exécutez ` ?"'"` dans la console R pour afficher la liste complète de ces caractères spéciaux (elle apparaîtra dans le volet d'aide de RStudio). 
 
@@ -1044,8 +1044,7 @@ L'expression `"[0-9]{1,2}"` correspond à des nombres consécutifs de 1 ou 2 chi
 str_extract_all(pt_note, "[0-9]{1,2}")
 ```
 
-"
-<!-- Cette expression va extraire toutes les phrases (en supposant que la premiére lettre est en majuscule, et que la phrase se termine par un point). Le motif se lit en anglais comme suit : "Une lettre majuscule suivie de quelques lettres minuscules, d'un espace, de quelques lettres, d'un espace, -->".
+<!-- Cette expression va extraire toutes les phrases (en supposant que la premiére lettre est en majuscule, et que la phrase se termine par un point). Le motif se lit en anglais comme suit : "Une lettre majuscule suivie de quelques lettres minuscules, d'un espace, de quelques lettres, d'un espace, -->
 
 <!-- ```{r} -->
 <!-- str_extract_all(pt_note, "[A-Z][a-z]+\\s\\w+\\s\\d{1,2}\\s\\w+\\s*\\w*") -->
