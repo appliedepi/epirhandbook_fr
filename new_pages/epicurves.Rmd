@@ -164,7 +164,7 @@ Pour produire une épicurve avec `ggplot()`, il y a trois éléments principaux 
 * Des thèmes pour l'apparence du graphique, y compris les titres, les étiquettes, les légendes, etc.
 
 
-### spécifier les cas en bacs {.unnumbered}  
+### Spécifier les cas en bacs {.unnumbered}  
 
 Nous montrons ici comment spécifier la façon dont les cas seront agrégés dans des cases d'histogramme ("barres"). Il est important de reconnaétre que l'agrégation des cas dans les cases de l'histogramme n'est **pas** nécessairement les mêmes intervalles que les dates qui apparaîtront sur l'axe des abscisses. 
 
@@ -789,7 +789,7 @@ ggplot(central_data) +
 
 
 
-### données agrégées {.unnumbered} 
+### Données agrégées {.unnumbered} 
 
 Souvent, au lieu d'une liste de lignes, vous commencez par des comptages agrégés d'établissements, de districts, etc. Vous pouvez faire une épicurve avec `ggplot()` mais le code sera légérement différent. Cette section va utiliser le jeu de données `count_data` qui a été importé plus tôt, dans la section de préparation des données. Ce jeu de données est la `linelist` agrégée au nombre de jours d'hospitalisation. Les 50 premiéres lignes sont affichôes ci-dessous.  
 
@@ -1348,20 +1348,21 @@ ggplot(central_data) +
   # histogram
   geom_histogram(
     mapping = aes(x = date_onset),
-    breaks = weekly_breaks_central,   # pre-defined date vector - see top of ggplot section
-    closed = "left",                  # count cases from start of breakpoint
+    breaks = weekly_breaks_central,   
+    closed = "left",                  
     color = "darkblue",
     fill = "lightblue") +
 
-  # y-axis scale as before 
+  # y-axis 
   scale_y_continuous(expand = c(0,0))+
   
-  # x-axis scale sets efficient date labels
+  # x-axis
   scale_x_date(
-    expand = c(0,0),                      # remove excess x-axis space below and after case bars
-    labels = scales::label_date_short())+ # auto efficient date labels
+    expand = c(0,0),                      
+    date_breaks = "1 month", 
+    labels = scales::label_date_short())+ # étiquettes de date efficaces
   
-  # labels and theme
+  # extra
   labs(
     title = "Using label_date_short()\nTo make automatic and efficient date labels",
     x = "Week of symptom onset",

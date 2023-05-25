@@ -7,7 +7,7 @@
 <title>8 Nettoyage de données et fonctions essentielles | Le Epi R Handbook</title>
 <meta name="author" content="the handbook team">
 <meta name="description" content="Cette page présente les étapes courantes du processus de “nettoyage” d’un jeu de données, et apporte également des explications sur l’utilisation de nombreuses fonctions essentielles dans le...">
-<meta name="generator" content="bookdown 0.33 with bs4_book()">
+<meta name="generator" content="bookdown 0.34 with bs4_book()">
 <meta property="og:title" content="8 Nettoyage de données et fonctions essentielles | Le Epi R Handbook">
 <meta property="og:type" content="book">
 <meta property="og:description" content="Cette page présente les étapes courantes du processus de “nettoyage” d’un jeu de données, et apporte également des explications sur l’utilisation de nombreuses fonctions essentielles dans le...">
@@ -18,9 +18,9 @@
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
 <script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.4.2/transition.js"></script><script src="libs/bs3compat-0.4.2/tabs.js"></script><script src="libs/bs3compat-0.4.2/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
 <script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="libs/htmlwidgets-1.6.2/htmlwidgets.js"></script><link href="libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet">
-<script src="libs/datatables-binding-0.27/datatables.js"></script><link href="libs/dt-core-1.12.1/css/jquery.dataTables.min.css" rel="stylesheet">
-<link href="libs/dt-core-1.12.1/css/jquery.dataTables.extra.css" rel="stylesheet">
-<script src="libs/dt-core-1.12.1/js/jquery.dataTables.min.js"></script><link href="libs/nouislider-7.0.10/jquery.nouislider.min.css" rel="stylesheet">
+<script src="libs/datatables-binding-0.28/datatables.js"></script><link href="libs/dt-core-1.13.4/css/jquery.dataTables.min.css" rel="stylesheet">
+<link href="libs/dt-core-1.13.4/css/jquery.dataTables.extra.css" rel="stylesheet">
+<script src="libs/dt-core-1.13.4/js/jquery.dataTables.min.js"></script><link href="libs/nouislider-7.0.10/jquery.nouislider.min.css" rel="stylesheet">
 <script src="libs/nouislider-7.0.10/jquery.nouislider.min.js"></script><link href="libs/selectize-0.12.0/selectize.bootstrap3.css" rel="stylesheet">
 <script src="libs/selectize-0.12.0/selectize.min.js"></script><link href="libs/crosstalk-1.2.0/css/crosstalk.min.css" rel="stylesheet">
 <script src="libs/crosstalk-1.2.0/js/crosstalk.min.js"></script><script src="libs/kePrint-0.0.1/kePrint.js"></script><link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet">
@@ -29,7 +29,7 @@
 <script src="libs/leaflet-1.3.1/leaflet.js"></script><link href="libs/leafletfix-1.0.0/leafletfix.css" rel="stylesheet">
 <script src="libs/proj4-2.6.2/proj4.min.js"></script><script src="libs/Proj4Leaflet-1.0.1/proj4leaflet.js"></script><link href="libs/rstudio_leaflet-1.3.1/rstudio_leaflet.css" rel="stylesheet">
 <script src="libs/leaflet-binding-2.1.2/leaflet.js"></script><script src="libs/leaflet-providers-1.9.0/leaflet-providers_1.9.0.js"></script><script src="libs/leaflet-providers-plugin-2.1.2/leaflet-providers-plugin.js"></script><script src="libs/viz-1.8.2/viz.js"></script><link href="libs/DiagrammeR-styles-0.2/styles.css" rel="stylesheet">
-<script src="libs/grViz-binding-1.0.9/grViz.js"></script><script src="libs/d3-4.5.0/d3.min.js"></script><script src="libs/sankey-1/sankey.js"></script><script src="libs/sankeyNetwork-binding-0.4/sankeyNetwork.js"></script><script src="libs/plotly-binding-4.10.1/plotly.js"></script><script src="libs/typedarray-0.1/typedarray.min.js"></script><link href="libs/plotly-htmlwidgets-css-2.11.1/plotly-htmlwidgets.css" rel="stylesheet">
+<script src="libs/grViz-binding-1.0.10/grViz.js"></script><script src="libs/d3-4.5.0/d3.min.js"></script><script src="libs/sankey-1/sankey.js"></script><script src="libs/sankeyNetwork-binding-0.4/sankeyNetwork.js"></script><script src="libs/plotly-binding-4.10.1/plotly.js"></script><script src="libs/typedarray-0.1/typedarray.min.js"></script><link href="libs/plotly-htmlwidgets-css-2.11.1/plotly-htmlwidgets.css" rel="stylesheet">
 <script src="libs/plotly-main-2.11.1/plotly-latest.min.js"></script><link href="libs/vis-9.1.0/vis-network.min.css" rel="stylesheet">
 <script src="libs/vis-9.1.0/vis-network.min.js"></script><script src="libs/visNetwork-binding-2.1.2/visNetwork.js"></script><link href="libs/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet">
 <script src="libs/plotly-basic-2.11.1/plotly-basic-2.11.1.min.js"></script><script src="libs/plotly-cartesian-2.11.1/plotly-cartesian-2.11.1.min.js"></script><script src="libs/proj4js-2.3.15/proj4.js"></script><link href="libs/highcharts-9.3.1/css/motion.css" rel="stylesheet">
@@ -334,8 +334,8 @@
 <div class="sourceCode" id="cb175"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">linelist_raw</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/rio/man/import.html">import</a></span><span class="op">(</span><span class="st">"linelist.xlsx"</span><span class="op">)</span></span></code></pre></div>
 <p>Vous pouvez visualiser les 50 premières lignes du dataframe ci-dessous. Remarque : la fonction de <strong>base</strong> de R <code>head(n)</code> vous permet de visualiser uniquement les <code>n</code> premières lignes dans la console R.</p>
-<div class="datatables html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-d7e10248ae744bf12ac2" style="width:100%;height:auto;"></div>
-<script type="application/json" data-for="htmlwidget-d7e10248ae744bf12ac2">{"x":{"filter":"none","vertical":false,"data":[["5fe599","8689b7","11f8ea","b8812a","893f25","be99c8","07e3e8","369449","f393b4","1389ca","2978ac","57a565","fc15ef","2eaa9a","bbfa93","c97dd9","f50e8a","3a7673","7f5a01","ddddee","99e8fa","567136","9371a9","bc2adf","403057","8bd1e8","f327be","42e1a9","90e5fe","959170","8ebf6e","e56412","6d788e","a47529","67be4e","da8ecb","148f18","2cb9a5","f5c142","70a9fe","3ad520","062638","c76676","baacc1","497372","23e499","38cc4a","3789ee","c71dcd","6b70f0"],[4,4,2,3,3,3,4,4,4,4,4,4,6,5,6,9,10,8,7,6,7,6,8,6,10,8,6,12,5,8,7,9,11,5,8,5,6,11,7,9,7,8,9,12,13,9,8,10,8,7],["2014-05-08T00:00:00Z",null,null,"2014-05-04T00:00:00Z","2014-05-18T00:00:00Z","2014-05-03T00:00:00Z","2014-05-22T00:00:00Z","2014-05-28T00:00:00Z",null,null,"2014-05-30T00:00:00Z","2014-05-28T00:00:00Z","2014-06-14T00:00:00Z","2014-06-07T00:00:00Z","2014-06-09T00:00:00Z",null,null,null,"2014-06-23T00:00:00Z","2014-06-18T00:00:00Z","2014-06-24T00:00:00Z",null,null,"2014-07-03T00:00:00Z",null,"2014-07-10T00:00:00Z","2014-06-14T00:00:00Z",null,"2014-06-18T00:00:00Z","2014-06-29T00:00:00Z","2014-07-02T00:00:00Z","2014-07-12T00:00:00Z","2014-07-12T00:00:00Z","2014-06-13T00:00:00Z","2014-07-15T00:00:00Z","2014-06-20T00:00:00Z",null,null,"2014-07-20T00:00:00Z",null,"2014-07-12T00:00:00Z","2014-07-19T00:00:00Z","2014-07-18T00:00:00Z","2014-07-18T00:00:00Z","2014-07-27T00:00:00Z",null,"2014-07-19T00:00:00Z","2014-07-26T00:00:00Z","2014-07-24T00:00:00Z",null],["2014-05-13","2014-05-13","2014-05-16","2014-05-18","2014-05-21","2014-05-22","2014-05-27","2014-06-02","2014-06-05","2014-06-05","2014-06-06","2014-06-13","2014-06-16","2014-06-17","2014-06-18","2014-06-19","2014-06-22","2014-06-23","2014-06-25","2014-06-26","2014-06-28","2014-07-02","2014-07-08","2014-07-09","2014-07-09","2014-07-10","2014-07-12","2014-07-12","2014-07-13","2014-07-13","2014-07-14","2014-07-15","2014-07-16","2014-07-17","2014-07-17","2014-07-18","2014-07-19","2014-07-22","2014-07-22","2014-07-24","2014-07-24","2014-07-25","2014-07-25","2014-07-27","2014-07-29","2014-07-30",null,"2014-08-01","2014-08-02","2014-08-03"],["2014-05-15T00:00:00Z","2014-05-14T00:00:00Z","2014-05-18T00:00:00Z","2014-05-20T00:00:00Z","2014-05-22T00:00:00Z","2014-05-23T00:00:00Z","2014-05-29T00:00:00Z","2014-06-03T00:00:00Z","2014-06-06T00:00:00Z","2014-06-07T00:00:00Z","2014-06-08T00:00:00Z","2014-06-15T00:00:00Z","2014-06-17T00:00:00Z","2014-06-17T00:00:00Z","2014-06-20T00:00:00Z","2014-06-19T00:00:00Z","2014-06-23T00:00:00Z","2014-06-24T00:00:00Z","2014-06-27T00:00:00Z","2014-06-28T00:00:00Z","2014-06-29T00:00:00Z","2014-07-03T00:00:00Z","2014-07-09T00:00:00Z","2014-07-09T00:00:00Z","2014-07-11T00:00:00Z","2014-07-11T00:00:00Z","2014-07-13T00:00:00Z","2014-07-14T00:00:00Z","2014-07-14T00:00:00Z","2014-07-13T00:00:00Z","2014-07-14T00:00:00Z","2014-07-17T00:00:00Z","2014-07-17T00:00:00Z","2014-07-18T00:00:00Z","2014-07-19T00:00:00Z","2014-07-20T00:00:00Z","2014-07-20T00:00:00Z","2014-07-22T00:00:00Z","2014-07-24T00:00:00Z","2014-07-26T00:00:00Z","2014-07-24T00:00:00Z","2014-07-27T00:00:00Z","2014-07-25T00:00:00Z","2014-07-27T00:00:00Z","2014-07-31T00:00:00Z","2014-08-01T00:00:00Z","2014-08-03T00:00:00Z","2014-08-02T00:00:00Z","2014-08-02T00:00:00Z","2014-08-04T00:00:00Z"],[null,"2014-05-18T00:00:00Z","2014-05-30T00:00:00Z",null,"2014-05-29T00:00:00Z","2014-05-24T00:00:00Z","2014-06-01T00:00:00Z","2014-06-07T00:00:00Z","2014-06-18T00:00:00Z","2014-06-09T00:00:00Z","2014-06-15T00:00:00Z",null,"2014-07-09T00:00:00Z",null,"2014-06-30T00:00:00Z","2014-07-11T00:00:00Z","2014-07-01T00:00:00Z","2014-06-25T00:00:00Z","2014-07-06T00:00:00Z","2014-07-02T00:00:00Z","2014-07-09T00:00:00Z","2014-07-07T00:00:00Z","2014-07-20T00:00:00Z",null,"2014-07-22T00:00:00Z","2014-07-16T00:00:00Z","2014-07-14T00:00:00Z","2014-07-20T00:00:00Z","2014-07-16T00:00:00Z","2014-07-19T00:00:00Z","2014-07-27T00:00:00Z","2014-07-19T00:00:00Z",null,"2014-07-26T00:00:00Z","2014-08-14T00:00:00Z","2014-08-01T00:00:00Z","2014-07-23T00:00:00Z","2014-08-28T00:00:00Z","2014-07-28T00:00:00Z","2014-07-19T00:00:00Z",null,"2014-08-03T00:00:00Z",null,null,null,"2014-08-06T00:00:00Z","2014-08-21T00:00:00Z","2014-09-13T00:00:00Z","2014-08-04T00:00:00Z",null],[null,"Recover","Recover",null,"Recover","Recover","Recover","Death","Recover","Death","Death","Death","Recover","Recover",null,"Recover",null,null,"Death","Death","Recover",null,null,null,"Death",null,"Death","Death",null,"Death","Recover","Death","Recover","Death","Recover",null,"Death","Recover","Recover","Death",null,null,"Death","Death","Death","Death","Recover",null,"Death","Death"],["m","f","m","f","m","f","f","f","m","f","m","m","m","f","f","m","f","f","f","f","m","m","f","m","f","m","m","f","m","f","f","f","m","m","f","m","f","f","f","m","f","m","f","m","m","f","m","f","m","m"],["Other",null,"St. Mark's Maternity Hospital (SMMH)","Port Hospital","Military Hospital","Port Hospital",null,null,null,null,"Port Hospital","Military Hospital",null,null,"Other","Port Hospital","Port Hospital","Port Hospital",null,"Other","Port Hospital","Port Hospital","St. Mark's Maternity Hospital (SMMH)",null,"Other",null,"St. Marks Maternity Hopital (SMMH)","Military Hospital","Port Hospital","Central Hospital","Military Hospital","Central Hospital",null,"Military Hospital","Other",null,null,"Port Hospital","Port Hospital","Port Hospital",null,"Central Hospital","Military Hospital","Other","Other","Other",null,"St. Mark's Maternity Hospital (SMMH)","St. Mark's Maternity Hospital (SMMH)",null],[-13.2157351064963,-13.2152339775486,-13.212910703914,-13.2363711169728,-13.2228638912441,-13.222625321098,-13.2331547837254,-13.2320975453153,-13.2225511595637,-13.2572163655863,-13.2206286746001,-13.253989309478,-13.2385127873491,-13.209391925612,-13.2157278814899,-13.2243437095992,-13.2336087079551,-13.21422143145,-13.2339681355349,-13.2535640411465,-13.2250089377786,-13.2160657166043,-13.2680671272333,-13.2266742923612,-13.2160179088168,-13.2482584611565,-13.2156319199566,-13.2142410663192,-13.2614879104088,-13.2452992638476,-13.2630592726116,-13.2343341712241,-13.2199077448676,-13.2227293309912,-13.2343062806506,-13.218781651651,-13.2483677722899,-13.2097478342339,-13.2680867723786,-13.2587535457526,-13.262635786914,-13.2697246824573,-13.2209026809759,-13.2330734719715,-13.2680923666905,-13.2547212675054,-13.2573683214693,-13.2137356012883,-13.2175973322257,-13.2486407324245],[8.46897295100924,8.45171855856465,8.46481700596819,8.4754761613651,8.46082377490923,8.46183062600728,8.46272931462646,8.46144367534271,8.46191259217774,8.47292327643506,8.48401630165138,8.45837125340844,8.47761705512509,8.47570184950483,8.47779946878972,8.47145134147474,8.47804840685363,8.48528034195779,8.46957530395867,8.45957352078114,8.47404889511544,8.48802917129884,8.473437335922,8.48408263734462,8.46242233645879,8.47026822126572,8.46398447480533,8.4641347894342,8.45623094629607,8.48334624336805,8.47493999153642,8.47832062438022,8.4693933891765,8.48480589906514,8.47121232619015,8.48438437371817,8.48466158574339,8.47714159984428,8.46238127010609,8.45568597813113,8.4632880274758,8.47940722413856,8.46353857052336,8.46178968158864,8.47508713872833,8.45825808128071,8.4532568143863,8.4732571907655,8.47911586641933,8.48480340615605],["f547d6",null,null,"f90f5f","11f8ea","aec8ec","893f25","133ee7",null,null,"996f3a","133ee7","37a6f6","9f6884","4802b1",null,null,null,"a75c7f","8e104d","ab634e",null,null,"b799eb",null,"5d9e4d","a15e13",null,"ea3740","beb26e","567136","894024","36e2e7","a2086d","7baf73","eb2277",null,null,"d6584f",null,"312ecf","52ea64","cfd79c","d145b7","174288",null,"53608c","3b096b","f5c142",null],["other",null,null,"other","other","other","other","other",null,null,"other","other","other","other","other",null,null,null,"other","other","other",null,null,"other",null,"other","other",null,"other","funeral","other","funeral","other","other","other","funeral",null,null,"other",null,"other","other","other","other","other",null,"funeral","other","other",null],["2","3","56","18","3","16","16","0","61","27","12","42","19","7","7","13","35","17","11","11","19","54","14","28","6","3","31","6","67","14","10","21","20","45","1","12","3","15","20","36","7","13","14","3","10","1","0","20","26","14"],["years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years"],[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50],[27,25,91,41,36,56,47,0,86,69,67,84,68,44,34,66,78,47,53,47,71,86,53,69,38,46,68,37,100,56,50,57,65,72,29,69,37,48,54,71,47,61,47,35,53,16,13,59,69,67],[48,59,238,135,71,116,87,11,226,174,112,186,174,90,91,152,214,137,117,131,150,241,131,161,80,69,188,66,233,142,110,182,164,214,26,157,39,154,133,168,100,125,123,67,134,31,36,125,183,169],[22,22,21,23,23,21,21,22,22,22,22,22,22,21,23,22,23,21,22,23,21,23,21,24,23,22,24,23,20,24,24,20,24,21,22,21,23,22,23,23,23,22,23,22,22,22,23,22,22,22],["no",null,null,"no","no","no",null,"no","no","no","no","no","no","no","no","no","no","no",null,"no","no","no","no","no",null,"no","no","no",null,null,"no","no",null,"no","no",null,null,"no","no",null,"no","no",null,"no","no","no","no","no","no",null],["no",null,null,"no","no","no",null,"no","no","no","no","no","no","no","no","no","yes","no",null,"no","no","no","yes","no",null,"no","no","yes",null,null,"no","no",null,"no","no",null,null,"no","no",null,"no","no",null,"no","yes","no","no","no","no",null],["yes",null,null,"no","yes","yes",null,"yes","yes","yes","yes","yes","yes","yes","yes","yes","yes","yes",null,"yes","yes","yes","yes","yes",null,"yes","yes","yes",null,null,"yes","yes",null,"yes","yes",null,null,"yes","yes",null,"yes","yes",null,"yes","yes","yes","yes","yes","no",null],["no",null,null,"no","no","no",null,"no","no","no","no","no","no","no","no","yes","no","no",null,"no","no","no","no","no",null,"no","no","no",null,null,"no","no",null,"no","no",null,null,"yes","yes",null,"no","no",null,"no","no","no","no","no","no",null],["yes",null,null,"no","yes","yes",null,"yes","yes","no","yes","no","no","no","yes","no","no","no",null,"no","yes","no","no","no",null,"no","no","no",null,null,"no","yes",null,"yes","yes",null,null,"yes","yes",null,"yes","yes",null,"yes","yes","no","yes","yes","yes",null],[36.8,36.9,36.9,36.8,36.9,37.6,37.3,37,36.4,35.9,36.5,36.9,36.5,37.1,36.5,37.3,37,38,38,36,37,36.7,36.9,36.5,37,36.5,37.6,36.6,36.6,36.2,36.4,37.1,37.5,37.5,37.4,36.9,36.4,37.3,37,37.8,36.5,37.5,36.7,37,37.3,36.6,36.5,36.6,37.6,36.8],[null,"09:36","16:48","11:22","12:60","14:13","14:33","09:25","11:16","10:55","16:03","11:14","12:42","11:06","09:10","08:45",null,"15:41","13:34","18:58","12:43","16:33","14:29","07:18","08:11","16:32","16:17","07:32","17:45",null,"13:24","14:43","02:33","11:36","17:28","16:27",null,"20:49",null,"11:38","14:25","13:42","21:22","13:33","19:06","17:14","20:09",null,"10:23","09:09"],["a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a"],["b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b"]],"container":"<table class=\"white-space: nowrap\">\n  <thead>\n    <tr>\n      <th>case_id<\/th>\n      <th>generation<\/th>\n      <th>infection date<\/th>\n      <th>date onset<\/th>\n      <th>hosp date<\/th>\n      <th>date_of_outcome<\/th>\n      <th>outcome<\/th>\n      <th>gender<\/th>\n      <th>hospital<\/th>\n      <th>lon<\/th>\n      <th>lat<\/th>\n      <th>infector<\/th>\n      <th>source<\/th>\n      <th>age<\/th>\n      <th>age_unit<\/th>\n      <th>row_num<\/th>\n      <th>wt_kg<\/th>\n      <th>ht_cm<\/th>\n      <th>ct_blood<\/th>\n      <th>fever<\/th>\n      <th>chills<\/th>\n      <th>cough<\/th>\n      <th>aches<\/th>\n      <th>vomit<\/th>\n      <th>temp<\/th>\n      <th>time_admission<\/th>\n      <th>merged_header<\/th>\n      <th>...28<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"pageLength":5,"scrollX":true,"columnDefs":[{"className":"dt-right","targets":[1,9,10,15,16,17,18,24]}],"order":[],"autoWidth":false,"orderClasses":false,"lengthMenu":[5,10,25,50,100]},"selection":{"mode":"multiple","selected":null,"target":"row","selectable":null}},"evals":[],"jsHooks":[]}</script>
+<div class="datatables html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-6f2a1ec9286fb60ecae5" style="width:100%;height:auto;"></div>
+<script type="application/json" data-for="htmlwidget-6f2a1ec9286fb60ecae5">{"x":{"filter":"none","vertical":false,"data":[["5fe599","8689b7","11f8ea","b8812a","893f25","be99c8","07e3e8","369449","f393b4","1389ca","2978ac","57a565","fc15ef","2eaa9a","bbfa93","c97dd9","f50e8a","3a7673","7f5a01","ddddee","99e8fa","567136","9371a9","bc2adf","403057","8bd1e8","f327be","42e1a9","90e5fe","959170","8ebf6e","e56412","6d788e","a47529","67be4e","da8ecb","148f18","2cb9a5","f5c142","70a9fe","3ad520","062638","c76676","baacc1","497372","23e499","38cc4a","3789ee","c71dcd","6b70f0"],[4,4,2,3,3,3,4,4,4,4,4,4,6,5,6,9,10,8,7,6,7,6,8,6,10,8,6,12,5,8,7,9,11,5,8,5,6,11,7,9,7,8,9,12,13,9,8,10,8,7],["2014-05-08T00:00:00Z",null,null,"2014-05-04T00:00:00Z","2014-05-18T00:00:00Z","2014-05-03T00:00:00Z","2014-05-22T00:00:00Z","2014-05-28T00:00:00Z",null,null,"2014-05-30T00:00:00Z","2014-05-28T00:00:00Z","2014-06-14T00:00:00Z","2014-06-07T00:00:00Z","2014-06-09T00:00:00Z",null,null,null,"2014-06-23T00:00:00Z","2014-06-18T00:00:00Z","2014-06-24T00:00:00Z",null,null,"2014-07-03T00:00:00Z",null,"2014-07-10T00:00:00Z","2014-06-14T00:00:00Z",null,"2014-06-18T00:00:00Z","2014-06-29T00:00:00Z","2014-07-02T00:00:00Z","2014-07-12T00:00:00Z","2014-07-12T00:00:00Z","2014-06-13T00:00:00Z","2014-07-15T00:00:00Z","2014-06-20T00:00:00Z",null,null,"2014-07-20T00:00:00Z",null,"2014-07-12T00:00:00Z","2014-07-19T00:00:00Z","2014-07-18T00:00:00Z","2014-07-18T00:00:00Z","2014-07-27T00:00:00Z",null,"2014-07-19T00:00:00Z","2014-07-26T00:00:00Z","2014-07-24T00:00:00Z",null],["2014-05-13","2014-05-13","2014-05-16","2014-05-18","2014-05-21","2014-05-22","2014-05-27","2014-06-02","2014-06-05","2014-06-05","2014-06-06","2014-06-13","2014-06-16","2014-06-17","2014-06-18","2014-06-19","2014-06-22","2014-06-23","2014-06-25","2014-06-26","2014-06-28","2014-07-02","2014-07-08","2014-07-09","2014-07-09","2014-07-10","2014-07-12","2014-07-12","2014-07-13","2014-07-13","2014-07-14","2014-07-15","2014-07-16","2014-07-17","2014-07-17","2014-07-18","2014-07-19","2014-07-22","2014-07-22","2014-07-24","2014-07-24","2014-07-25","2014-07-25","2014-07-27","2014-07-29","2014-07-30",null,"2014-08-01","2014-08-02","2014-08-03"],["2014-05-15T00:00:00Z","2014-05-14T00:00:00Z","2014-05-18T00:00:00Z","2014-05-20T00:00:00Z","2014-05-22T00:00:00Z","2014-05-23T00:00:00Z","2014-05-29T00:00:00Z","2014-06-03T00:00:00Z","2014-06-06T00:00:00Z","2014-06-07T00:00:00Z","2014-06-08T00:00:00Z","2014-06-15T00:00:00Z","2014-06-17T00:00:00Z","2014-06-17T00:00:00Z","2014-06-20T00:00:00Z","2014-06-19T00:00:00Z","2014-06-23T00:00:00Z","2014-06-24T00:00:00Z","2014-06-27T00:00:00Z","2014-06-28T00:00:00Z","2014-06-29T00:00:00Z","2014-07-03T00:00:00Z","2014-07-09T00:00:00Z","2014-07-09T00:00:00Z","2014-07-11T00:00:00Z","2014-07-11T00:00:00Z","2014-07-13T00:00:00Z","2014-07-14T00:00:00Z","2014-07-14T00:00:00Z","2014-07-13T00:00:00Z","2014-07-14T00:00:00Z","2014-07-17T00:00:00Z","2014-07-17T00:00:00Z","2014-07-18T00:00:00Z","2014-07-19T00:00:00Z","2014-07-20T00:00:00Z","2014-07-20T00:00:00Z","2014-07-22T00:00:00Z","2014-07-24T00:00:00Z","2014-07-26T00:00:00Z","2014-07-24T00:00:00Z","2014-07-27T00:00:00Z","2014-07-25T00:00:00Z","2014-07-27T00:00:00Z","2014-07-31T00:00:00Z","2014-08-01T00:00:00Z","2014-08-03T00:00:00Z","2014-08-02T00:00:00Z","2014-08-02T00:00:00Z","2014-08-04T00:00:00Z"],[null,"2014-05-18T00:00:00Z","2014-05-30T00:00:00Z",null,"2014-05-29T00:00:00Z","2014-05-24T00:00:00Z","2014-06-01T00:00:00Z","2014-06-07T00:00:00Z","2014-06-18T00:00:00Z","2014-06-09T00:00:00Z","2014-06-15T00:00:00Z",null,"2014-07-09T00:00:00Z",null,"2014-06-30T00:00:00Z","2014-07-11T00:00:00Z","2014-07-01T00:00:00Z","2014-06-25T00:00:00Z","2014-07-06T00:00:00Z","2014-07-02T00:00:00Z","2014-07-09T00:00:00Z","2014-07-07T00:00:00Z","2014-07-20T00:00:00Z",null,"2014-07-22T00:00:00Z","2014-07-16T00:00:00Z","2014-07-14T00:00:00Z","2014-07-20T00:00:00Z","2014-07-16T00:00:00Z","2014-07-19T00:00:00Z","2014-07-27T00:00:00Z","2014-07-19T00:00:00Z",null,"2014-07-26T00:00:00Z","2014-08-14T00:00:00Z","2014-08-01T00:00:00Z","2014-07-23T00:00:00Z","2014-08-28T00:00:00Z","2014-07-28T00:00:00Z","2014-07-19T00:00:00Z",null,"2014-08-03T00:00:00Z",null,null,null,"2014-08-06T00:00:00Z","2014-08-21T00:00:00Z","2014-09-13T00:00:00Z","2014-08-04T00:00:00Z",null],[null,"Recover","Recover",null,"Recover","Recover","Recover","Death","Recover","Death","Death","Death","Recover","Recover",null,"Recover",null,null,"Death","Death","Recover",null,null,null,"Death",null,"Death","Death",null,"Death","Recover","Death","Recover","Death","Recover",null,"Death","Recover","Recover","Death",null,null,"Death","Death","Death","Death","Recover",null,"Death","Death"],["m","f","m","f","m","f","f","f","m","f","m","m","m","f","f","m","f","f","f","f","m","m","f","m","f","m","m","f","m","f","f","f","m","m","f","m","f","f","f","m","f","m","f","m","m","f","m","f","m","m"],["Other",null,"St. Mark's Maternity Hospital (SMMH)","Port Hospital","Military Hospital","Port Hospital",null,null,null,null,"Port Hospital","Military Hospital",null,null,"Other","Port Hospital","Port Hospital","Port Hospital",null,"Other","Port Hospital","Port Hospital","St. Mark's Maternity Hospital (SMMH)",null,"Other",null,"St. Marks Maternity Hopital (SMMH)","Military Hospital","Port Hospital","Central Hospital","Military Hospital","Central Hospital",null,"Military Hospital","Other",null,null,"Port Hospital","Port Hospital","Port Hospital",null,"Central Hospital","Military Hospital","Other","Other","Other",null,"St. Mark's Maternity Hospital (SMMH)","St. Mark's Maternity Hospital (SMMH)",null],[-13.2157351064963,-13.2152339775486,-13.212910703914,-13.2363711169728,-13.2228638912441,-13.222625321098,-13.2331547837254,-13.2320975453153,-13.2225511595637,-13.2572163655863,-13.2206286746001,-13.253989309478,-13.2385127873491,-13.209391925612,-13.2157278814899,-13.2243437095992,-13.2336087079551,-13.21422143145,-13.2339681355349,-13.2535640411465,-13.2250089377786,-13.2160657166043,-13.2680671272333,-13.2266742923612,-13.2160179088168,-13.2482584611565,-13.2156319199566,-13.2142410663192,-13.2614879104088,-13.2452992638476,-13.2630592726116,-13.2343341712241,-13.2199077448676,-13.2227293309912,-13.2343062806506,-13.218781651651,-13.2483677722899,-13.2097478342339,-13.2680867723786,-13.2587535457526,-13.262635786914,-13.2697246824573,-13.2209026809759,-13.2330734719715,-13.2680923666905,-13.2547212675054,-13.2573683214693,-13.2137356012883,-13.2175973322257,-13.2486407324245],[8.46897295100924,8.45171855856465,8.46481700596819,8.4754761613651,8.46082377490923,8.46183062600728,8.46272931462646,8.46144367534271,8.46191259217774,8.47292327643506,8.48401630165138,8.45837125340844,8.47761705512509,8.47570184950483,8.47779946878972,8.47145134147474,8.47804840685363,8.48528034195779,8.46957530395867,8.45957352078114,8.47404889511544,8.48802917129884,8.473437335922,8.48408263734462,8.46242233645879,8.47026822126572,8.46398447480533,8.4641347894342,8.45623094629607,8.48334624336805,8.47493999153642,8.47832062438022,8.4693933891765,8.48480589906514,8.47121232619015,8.48438437371817,8.48466158574339,8.47714159984428,8.46238127010609,8.45568597813113,8.4632880274758,8.47940722413856,8.46353857052336,8.46178968158864,8.47508713872833,8.45825808128071,8.4532568143863,8.4732571907655,8.47911586641933,8.48480340615605],["f547d6",null,null,"f90f5f","11f8ea","aec8ec","893f25","133ee7",null,null,"996f3a","133ee7","37a6f6","9f6884","4802b1",null,null,null,"a75c7f","8e104d","ab634e",null,null,"b799eb",null,"5d9e4d","a15e13",null,"ea3740","beb26e","567136","894024","36e2e7","a2086d","7baf73","eb2277",null,null,"d6584f",null,"312ecf","52ea64","cfd79c","d145b7","174288",null,"53608c","3b096b","f5c142",null],["other",null,null,"other","other","other","other","other",null,null,"other","other","other","other","other",null,null,null,"other","other","other",null,null,"other",null,"other","other",null,"other","funeral","other","funeral","other","other","other","funeral",null,null,"other",null,"other","other","other","other","other",null,"funeral","other","other",null],["2","3","56","18","3","16","16","0","61","27","12","42","19","7","7","13","35","17","11","11","19","54","14","28","6","3","31","6","67","14","10","21","20","45","1","12","3","15","20","36","7","13","14","3","10","1","0","20","26","14"],["years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years"],[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50],[27,25,91,41,36,56,47,0,86,69,67,84,68,44,34,66,78,47,53,47,71,86,53,69,38,46,68,37,100,56,50,57,65,72,29,69,37,48,54,71,47,61,47,35,53,16,13,59,69,67],[48,59,238,135,71,116,87,11,226,174,112,186,174,90,91,152,214,137,117,131,150,241,131,161,80,69,188,66,233,142,110,182,164,214,26,157,39,154,133,168,100,125,123,67,134,31,36,125,183,169],[22,22,21,23,23,21,21,22,22,22,22,22,22,21,23,22,23,21,22,23,21,23,21,24,23,22,24,23,20,24,24,20,24,21,22,21,23,22,23,23,23,22,23,22,22,22,23,22,22,22],["no",null,null,"no","no","no",null,"no","no","no","no","no","no","no","no","no","no","no",null,"no","no","no","no","no",null,"no","no","no",null,null,"no","no",null,"no","no",null,null,"no","no",null,"no","no",null,"no","no","no","no","no","no",null],["no",null,null,"no","no","no",null,"no","no","no","no","no","no","no","no","no","yes","no",null,"no","no","no","yes","no",null,"no","no","yes",null,null,"no","no",null,"no","no",null,null,"no","no",null,"no","no",null,"no","yes","no","no","no","no",null],["yes",null,null,"no","yes","yes",null,"yes","yes","yes","yes","yes","yes","yes","yes","yes","yes","yes",null,"yes","yes","yes","yes","yes",null,"yes","yes","yes",null,null,"yes","yes",null,"yes","yes",null,null,"yes","yes",null,"yes","yes",null,"yes","yes","yes","yes","yes","no",null],["no",null,null,"no","no","no",null,"no","no","no","no","no","no","no","no","yes","no","no",null,"no","no","no","no","no",null,"no","no","no",null,null,"no","no",null,"no","no",null,null,"yes","yes",null,"no","no",null,"no","no","no","no","no","no",null],["yes",null,null,"no","yes","yes",null,"yes","yes","no","yes","no","no","no","yes","no","no","no",null,"no","yes","no","no","no",null,"no","no","no",null,null,"no","yes",null,"yes","yes",null,null,"yes","yes",null,"yes","yes",null,"yes","yes","no","yes","yes","yes",null],[36.8,36.9,36.9,36.8,36.9,37.6,37.3,37,36.4,35.9,36.5,36.9,36.5,37.1,36.5,37.3,37,38,38,36,37,36.7,36.9,36.5,37,36.5,37.6,36.6,36.6,36.2,36.4,37.1,37.5,37.5,37.4,36.9,36.4,37.3,37,37.8,36.5,37.5,36.7,37,37.3,36.6,36.5,36.6,37.6,36.8],[null,"09:36","16:48","11:22","12:60","14:13","14:33","09:25","11:16","10:55","16:03","11:14","12:42","11:06","09:10","08:45",null,"15:41","13:34","18:58","12:43","16:33","14:29","07:18","08:11","16:32","16:17","07:32","17:45",null,"13:24","14:43","02:33","11:36","17:28","16:27",null,"20:49",null,"11:38","14:25","13:42","21:22","13:33","19:06","17:14","20:09",null,"10:23","09:09"],["a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a"],["b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b"]],"container":"<table class=\"white-space: nowrap\">\n  <thead>\n    <tr>\n      <th>case_id<\/th>\n      <th>generation<\/th>\n      <th>infection date<\/th>\n      <th>date onset<\/th>\n      <th>hosp date<\/th>\n      <th>date_of_outcome<\/th>\n      <th>outcome<\/th>\n      <th>gender<\/th>\n      <th>hospital<\/th>\n      <th>lon<\/th>\n      <th>lat<\/th>\n      <th>infector<\/th>\n      <th>source<\/th>\n      <th>age<\/th>\n      <th>age_unit<\/th>\n      <th>row_num<\/th>\n      <th>wt_kg<\/th>\n      <th>ht_cm<\/th>\n      <th>ct_blood<\/th>\n      <th>fever<\/th>\n      <th>chills<\/th>\n      <th>cough<\/th>\n      <th>aches<\/th>\n      <th>vomit<\/th>\n      <th>temp<\/th>\n      <th>time_admission<\/th>\n      <th>merged_header<\/th>\n      <th>...28<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"pageLength":5,"scrollX":true,"columnDefs":[{"className":"dt-right","targets":[1,9,10,15,16,17,18,24]}],"order":[],"autoWidth":false,"orderClasses":false,"lengthMenu":[5,10,25,50,100]}},"evals":[],"jsHooks":[]}</script>
 </div>
 <div id="vue-densemble" class="section level3 unnumbered">
 <h3>Vue d’ensemble<a class="anchor" aria-label="anchor" href="#vue-densemble"><i class="fas fa-link"></i></a>
@@ -343,950 +343,419 @@
 <p>Vous pouvez utiliser la fonction <code>skim()</code> du package <strong>skimr</strong> pour obtenir une vue d’ensemble du dataframe (voir la page sur les <a href="descriptive_tables.html#descriptive_tables">Tableaux descriptifs</a> pour plus d’informations). Les colonnes sont résumées par classe/type, telles que “chaîne de caractère”, “numérique”… Note : “POSIXct” est un type de classe de date brute (voir <a href="working_dates.html#working_dates">Working with dates</a>).</p>
 <div class="sourceCode" id="cb176"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu">skimr</span><span class="fu">::</span><span class="fu"><a href="https://docs.ropensci.org/skimr/reference/skim.html">skim</a></span><span class="op">(</span><span class="va">linelist_raw</span><span class="op">)</span></span></code></pre></div>
-<div class="inline-table"><table style="width: auto;" class="table table-condensed">
+<div class="inline-table"><table class="table table-sm">
 <caption>
-<span id="tab:unnamed-chunk-147">Table 8.1: </span>Data summary
-</caption>
+<span id="tab:unnamed-chunk-147">Table 8.1: </span>Data summary</caption>
 <tbody>
-<tr>
-<td style="text-align:left;">
-Name
-</td>
-<td style="text-align:left;">
-linelist_raw
-</td>
+<tr class="odd">
+<td align="left">Name</td>
+<td align="left">linelist_raw</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-Number of rows
-</td>
-<td style="text-align:left;">
-6611
-</td>
+<tr class="even">
+<td align="left">Number of rows</td>
+<td align="left">6611</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-Number of columns
-</td>
-<td style="text-align:left;">
-28
-</td>
+<tr class="odd">
+<td align="left">Number of columns</td>
+<td align="left">28</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-_______________________
-</td>
-<td style="text-align:left;">
-</td>
+<tr class="even">
+<td align="left">_______________________</td>
+<td align="left"></td>
 </tr>
-<tr>
-<td style="text-align:left;">
-Column type frequency:
-</td>
-<td style="text-align:left;">
-</td>
+<tr class="odd">
+<td align="left">Column type frequency:</td>
+<td align="left"></td>
 </tr>
-<tr>
-<td style="text-align:left;">
-character
-</td>
-<td style="text-align:left;">
-17
-</td>
+<tr class="even">
+<td align="left">character</td>
+<td align="left">17</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-numeric
-</td>
-<td style="text-align:left;">
-8
-</td>
+<tr class="odd">
+<td align="left">numeric</td>
+<td align="left">8</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-POSIXct
-</td>
-<td style="text-align:left;">
-3
-</td>
+<tr class="even">
+<td align="left">POSIXct</td>
+<td align="left">3</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-________________________
-</td>
-<td style="text-align:left;">
-</td>
+<tr class="odd">
+<td align="left">________________________</td>
+<td align="left"></td>
 </tr>
-<tr>
-<td style="text-align:left;">
-Group variables
-</td>
-<td style="text-align:left;">
-None
-</td>
+<tr class="even">
+<td align="left">Group variables</td>
+<td align="left">None</td>
 </tr>
 </tbody>
 </table></div>
 <p><strong>Variable type: character</strong></p>
-<div class="inline-table"><table class="table table-sm">
-<thead><tr>
-<th style="text-align:left;">
-skim_variable
-</th>
-<th style="text-align:right;">
-n_missing
-</th>
-<th style="text-align:right;">
-complete_rate
-</th>
-<th style="text-align:right;">
-min
-</th>
-<th style="text-align:right;">
-max
-</th>
-<th style="text-align:right;">
-empty
-</th>
-<th style="text-align:right;">
-n_unique
-</th>
-<th style="text-align:right;">
-whitespace
-</th>
+<div class="inline-table"><table style="width:100%;" class="table table-sm">
+<colgroup>
+<col width="20%">
+<col width="13%">
+<col width="19%">
+<col width="5%">
+<col width="5%">
+<col width="8%">
+<col width="12%">
+<col width="15%">
+</colgroup>
+<thead><tr class="header">
+<th align="left">skim_variable</th>
+<th align="right">n_missing</th>
+<th align="right">complete_rate</th>
+<th align="right">min</th>
+<th align="right">max</th>
+<th align="right">empty</th>
+<th align="right">n_unique</th>
+<th align="right">whitespace</th>
 </tr></thead>
 <tbody>
-<tr>
-<td style="text-align:left;">
-case_id
-</td>
-<td style="text-align:right;">
-137
-</td>
-<td style="text-align:right;">
-0.98
-</td>
-<td style="text-align:right;">
-6
-</td>
-<td style="text-align:right;">
-6
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-5888
-</td>
-<td style="text-align:right;">
-0
-</td>
+<tr class="odd">
+<td align="left">case_id</td>
+<td align="right">137</td>
+<td align="right">0.98</td>
+<td align="right">6</td>
+<td align="right">6</td>
+<td align="right">0</td>
+<td align="right">5888</td>
+<td align="right">0</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-date onset
-</td>
-<td style="text-align:right;">
-293
-</td>
-<td style="text-align:right;">
-0.96
-</td>
-<td style="text-align:right;">
-10
-</td>
-<td style="text-align:right;">
-10
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-580
-</td>
-<td style="text-align:right;">
-0
-</td>
+<tr class="even">
+<td align="left">date onset</td>
+<td align="right">293</td>
+<td align="right">0.96</td>
+<td align="right">10</td>
+<td align="right">10</td>
+<td align="right">0</td>
+<td align="right">580</td>
+<td align="right">0</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-outcome
-</td>
-<td style="text-align:right;">
-1500
-</td>
-<td style="text-align:right;">
-0.77
-</td>
-<td style="text-align:right;">
-5
-</td>
-<td style="text-align:right;">
-7
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-2
-</td>
-<td style="text-align:right;">
-0
-</td>
+<tr class="odd">
+<td align="left">outcome</td>
+<td align="right">1500</td>
+<td align="right">0.77</td>
+<td align="right">5</td>
+<td align="right">7</td>
+<td align="right">0</td>
+<td align="right">2</td>
+<td align="right">0</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-gender
-</td>
-<td style="text-align:right;">
-324
-</td>
-<td style="text-align:right;">
-0.95
-</td>
-<td style="text-align:right;">
-1
-</td>
-<td style="text-align:right;">
-1
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-2
-</td>
-<td style="text-align:right;">
-0
-</td>
+<tr class="even">
+<td align="left">gender</td>
+<td align="right">324</td>
+<td align="right">0.95</td>
+<td align="right">1</td>
+<td align="right">1</td>
+<td align="right">0</td>
+<td align="right">2</td>
+<td align="right">0</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-hospital
-</td>
-<td style="text-align:right;">
-1512
-</td>
-<td style="text-align:right;">
-0.77
-</td>
-<td style="text-align:right;">
-5
-</td>
-<td style="text-align:right;">
-36
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-13
-</td>
-<td style="text-align:right;">
-0
-</td>
+<tr class="odd">
+<td align="left">hospital</td>
+<td align="right">1512</td>
+<td align="right">0.77</td>
+<td align="right">5</td>
+<td align="right">36</td>
+<td align="right">0</td>
+<td align="right">13</td>
+<td align="right">0</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-infector
-</td>
-<td style="text-align:right;">
-2323
-</td>
-<td style="text-align:right;">
-0.65
-</td>
-<td style="text-align:right;">
-6
-</td>
-<td style="text-align:right;">
-6
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-2697
-</td>
-<td style="text-align:right;">
-0
-</td>
+<tr class="even">
+<td align="left">infector</td>
+<td align="right">2323</td>
+<td align="right">0.65</td>
+<td align="right">6</td>
+<td align="right">6</td>
+<td align="right">0</td>
+<td align="right">2697</td>
+<td align="right">0</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-source
-</td>
-<td style="text-align:right;">
-2323
-</td>
-<td style="text-align:right;">
-0.65
-</td>
-<td style="text-align:right;">
-5
-</td>
-<td style="text-align:right;">
-7
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-2
-</td>
-<td style="text-align:right;">
-0
-</td>
+<tr class="odd">
+<td align="left">source</td>
+<td align="right">2323</td>
+<td align="right">0.65</td>
+<td align="right">5</td>
+<td align="right">7</td>
+<td align="right">0</td>
+<td align="right">2</td>
+<td align="right">0</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-age
-</td>
-<td style="text-align:right;">
-107
-</td>
-<td style="text-align:right;">
-0.98
-</td>
-<td style="text-align:right;">
-1
-</td>
-<td style="text-align:right;">
-2
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-75
-</td>
-<td style="text-align:right;">
-0
-</td>
+<tr class="even">
+<td align="left">age</td>
+<td align="right">107</td>
+<td align="right">0.98</td>
+<td align="right">1</td>
+<td align="right">2</td>
+<td align="right">0</td>
+<td align="right">75</td>
+<td align="right">0</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-age_unit
-</td>
-<td style="text-align:right;">
-7
-</td>
-<td style="text-align:right;">
-1.00
-</td>
-<td style="text-align:right;">
-5
-</td>
-<td style="text-align:right;">
-6
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-2
-</td>
-<td style="text-align:right;">
-0
-</td>
+<tr class="odd">
+<td align="left">age_unit</td>
+<td align="right">7</td>
+<td align="right">1.00</td>
+<td align="right">5</td>
+<td align="right">6</td>
+<td align="right">0</td>
+<td align="right">2</td>
+<td align="right">0</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-fever
-</td>
-<td style="text-align:right;">
-258
-</td>
-<td style="text-align:right;">
-0.96
-</td>
-<td style="text-align:right;">
-2
-</td>
-<td style="text-align:right;">
-3
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-2
-</td>
-<td style="text-align:right;">
-0
-</td>
+<tr class="even">
+<td align="left">fever</td>
+<td align="right">258</td>
+<td align="right">0.96</td>
+<td align="right">2</td>
+<td align="right">3</td>
+<td align="right">0</td>
+<td align="right">2</td>
+<td align="right">0</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-chills
-</td>
-<td style="text-align:right;">
-258
-</td>
-<td style="text-align:right;">
-0.96
-</td>
-<td style="text-align:right;">
-2
-</td>
-<td style="text-align:right;">
-3
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-2
-</td>
-<td style="text-align:right;">
-0
-</td>
+<tr class="odd">
+<td align="left">chills</td>
+<td align="right">258</td>
+<td align="right">0.96</td>
+<td align="right">2</td>
+<td align="right">3</td>
+<td align="right">0</td>
+<td align="right">2</td>
+<td align="right">0</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-cough
-</td>
-<td style="text-align:right;">
-258
-</td>
-<td style="text-align:right;">
-0.96
-</td>
-<td style="text-align:right;">
-2
-</td>
-<td style="text-align:right;">
-3
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-2
-</td>
-<td style="text-align:right;">
-0
-</td>
+<tr class="even">
+<td align="left">cough</td>
+<td align="right">258</td>
+<td align="right">0.96</td>
+<td align="right">2</td>
+<td align="right">3</td>
+<td align="right">0</td>
+<td align="right">2</td>
+<td align="right">0</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-aches
-</td>
-<td style="text-align:right;">
-258
-</td>
-<td style="text-align:right;">
-0.96
-</td>
-<td style="text-align:right;">
-2
-</td>
-<td style="text-align:right;">
-3
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-2
-</td>
-<td style="text-align:right;">
-0
-</td>
+<tr class="odd">
+<td align="left">aches</td>
+<td align="right">258</td>
+<td align="right">0.96</td>
+<td align="right">2</td>
+<td align="right">3</td>
+<td align="right">0</td>
+<td align="right">2</td>
+<td align="right">0</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-vomit
-</td>
-<td style="text-align:right;">
-258
-</td>
-<td style="text-align:right;">
-0.96
-</td>
-<td style="text-align:right;">
-2
-</td>
-<td style="text-align:right;">
-3
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-2
-</td>
-<td style="text-align:right;">
-0
-</td>
+<tr class="even">
+<td align="left">vomit</td>
+<td align="right">258</td>
+<td align="right">0.96</td>
+<td align="right">2</td>
+<td align="right">3</td>
+<td align="right">0</td>
+<td align="right">2</td>
+<td align="right">0</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-time_admission
-</td>
-<td style="text-align:right;">
-844
-</td>
-<td style="text-align:right;">
-0.87
-</td>
-<td style="text-align:right;">
-5
-</td>
-<td style="text-align:right;">
-5
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-1091
-</td>
-<td style="text-align:right;">
-0
-</td>
+<tr class="odd">
+<td align="left">time_admission</td>
+<td align="right">844</td>
+<td align="right">0.87</td>
+<td align="right">5</td>
+<td align="right">5</td>
+<td align="right">0</td>
+<td align="right">1091</td>
+<td align="right">0</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-merged_header
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-1.00
-</td>
-<td style="text-align:right;">
-1
-</td>
-<td style="text-align:right;">
-1
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-1
-</td>
-<td style="text-align:right;">
-0
-</td>
+<tr class="even">
+<td align="left">merged_header</td>
+<td align="right">0</td>
+<td align="right">1.00</td>
+<td align="right">1</td>
+<td align="right">1</td>
+<td align="right">0</td>
+<td align="right">1</td>
+<td align="right">0</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-…28
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-1.00
-</td>
-<td style="text-align:right;">
-1
-</td>
-<td style="text-align:right;">
-1
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-1
-</td>
-<td style="text-align:right;">
-0
-</td>
+<tr class="odd">
+<td align="left">…28</td>
+<td align="right">0</td>
+<td align="right">1.00</td>
+<td align="right">1</td>
+<td align="right">1</td>
+<td align="right">0</td>
+<td align="right">1</td>
+<td align="right">0</td>
 </tr>
 </tbody>
 </table></div>
 <p><strong>Variable type: numeric</strong></p>
 <div class="inline-table"><table class="table table-sm">
-<thead><tr>
-<th style="text-align:left;">
-skim_variable
-</th>
-<th style="text-align:right;">
-n_missing
-</th>
-<th style="text-align:right;">
-complete_rate
-</th>
-<th style="text-align:right;">
-mean
-</th>
-<th style="text-align:right;">
-sd
-</th>
-<th style="text-align:right;">
-p0
-</th>
-<th style="text-align:right;">
-p25
-</th>
-<th style="text-align:right;">
-p50
-</th>
-<th style="text-align:right;">
-p75
-</th>
-<th style="text-align:right;">
-p100
-</th>
+<colgroup>
+<col width="15%">
+<col width="10%">
+<col width="15%">
+<col width="8%">
+<col width="8%">
+<col width="7%">
+<col width="8%">
+<col width="8%">
+<col width="8%">
+<col width="8%">
+</colgroup>
+<thead><tr class="header">
+<th align="left">skim_variable</th>
+<th align="right">n_missing</th>
+<th align="right">complete_rate</th>
+<th align="right">mean</th>
+<th align="right">sd</th>
+<th align="right">p0</th>
+<th align="right">p25</th>
+<th align="right">p50</th>
+<th align="right">p75</th>
+<th align="right">p100</th>
 </tr></thead>
 <tbody>
-<tr>
-<td style="text-align:left;">
-generation
-</td>
-<td style="text-align:right;">
-7
-</td>
-<td style="text-align:right;">
-1.00
-</td>
-<td style="text-align:right;">
-16.60
-</td>
-<td style="text-align:right;">
-5.71
-</td>
-<td style="text-align:right;">
-0.00
-</td>
-<td style="text-align:right;">
-13.00
-</td>
-<td style="text-align:right;">
-16.00
-</td>
-<td style="text-align:right;">
-20.00
-</td>
-<td style="text-align:right;">
-37.00
-</td>
+<tr class="odd">
+<td align="left">generation</td>
+<td align="right">7</td>
+<td align="right">1.00</td>
+<td align="right">16.60</td>
+<td align="right">5.71</td>
+<td align="right">0.00</td>
+<td align="right">13.00</td>
+<td align="right">16.00</td>
+<td align="right">20.00</td>
+<td align="right">37.00</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-lon
-</td>
-<td style="text-align:right;">
-7
-</td>
-<td style="text-align:right;">
-1.00
-</td>
-<td style="text-align:right;">
--13.23
-</td>
-<td style="text-align:right;">
-0.02
-</td>
-<td style="text-align:right;">
--13.27
-</td>
-<td style="text-align:right;">
--13.25
-</td>
-<td style="text-align:right;">
--13.23
-</td>
-<td style="text-align:right;">
--13.22
-</td>
-<td style="text-align:right;">
--13.21
-</td>
+<tr class="even">
+<td align="left">lon</td>
+<td align="right">7</td>
+<td align="right">1.00</td>
+<td align="right">-13.23</td>
+<td align="right">0.02</td>
+<td align="right">-13.27</td>
+<td align="right">-13.25</td>
+<td align="right">-13.23</td>
+<td align="right">-13.22</td>
+<td align="right">-13.21</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-lat
-</td>
-<td style="text-align:right;">
-7
-</td>
-<td style="text-align:right;">
-1.00
-</td>
-<td style="text-align:right;">
-8.47
-</td>
-<td style="text-align:right;">
-0.01
-</td>
-<td style="text-align:right;">
-8.45
-</td>
-<td style="text-align:right;">
-8.46
-</td>
-<td style="text-align:right;">
-8.47
-</td>
-<td style="text-align:right;">
-8.48
-</td>
-<td style="text-align:right;">
-8.49
-</td>
+<tr class="odd">
+<td align="left">lat</td>
+<td align="right">7</td>
+<td align="right">1.00</td>
+<td align="right">8.47</td>
+<td align="right">0.01</td>
+<td align="right">8.45</td>
+<td align="right">8.46</td>
+<td align="right">8.47</td>
+<td align="right">8.48</td>
+<td align="right">8.49</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-row_num
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-1.00
-</td>
-<td style="text-align:right;">
-3240.91
-</td>
-<td style="text-align:right;">
-1857.83
-</td>
-<td style="text-align:right;">
-1.00
-</td>
-<td style="text-align:right;">
-1647.50
-</td>
-<td style="text-align:right;">
-3241.00
-</td>
-<td style="text-align:right;">
-4836.50
-</td>
-<td style="text-align:right;">
-6481.00
-</td>
+<tr class="even">
+<td align="left">row_num</td>
+<td align="right">0</td>
+<td align="right">1.00</td>
+<td align="right">3240.91</td>
+<td align="right">1857.83</td>
+<td align="right">1.00</td>
+<td align="right">1647.50</td>
+<td align="right">3241.00</td>
+<td align="right">4836.50</td>
+<td align="right">6481.00</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-wt_kg
-</td>
-<td style="text-align:right;">
-7
-</td>
-<td style="text-align:right;">
-1.00
-</td>
-<td style="text-align:right;">
-52.69
-</td>
-<td style="text-align:right;">
-18.59
-</td>
-<td style="text-align:right;">
--11.00
-</td>
-<td style="text-align:right;">
-41.00
-</td>
-<td style="text-align:right;">
-54.00
-</td>
-<td style="text-align:right;">
-66.00
-</td>
-<td style="text-align:right;">
-111.00
-</td>
+<tr class="odd">
+<td align="left">wt_kg</td>
+<td align="right">7</td>
+<td align="right">1.00</td>
+<td align="right">52.69</td>
+<td align="right">18.59</td>
+<td align="right">-11.00</td>
+<td align="right">41.00</td>
+<td align="right">54.00</td>
+<td align="right">66.00</td>
+<td align="right">111.00</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-ht_cm
-</td>
-<td style="text-align:right;">
-7
-</td>
-<td style="text-align:right;">
-1.00
-</td>
-<td style="text-align:right;">
-125.25
-</td>
-<td style="text-align:right;">
-49.57
-</td>
-<td style="text-align:right;">
-4.00
-</td>
-<td style="text-align:right;">
-91.00
-</td>
-<td style="text-align:right;">
-130.00
-</td>
-<td style="text-align:right;">
-159.00
-</td>
-<td style="text-align:right;">
-295.00
-</td>
+<tr class="even">
+<td align="left">ht_cm</td>
+<td align="right">7</td>
+<td align="right">1.00</td>
+<td align="right">125.25</td>
+<td align="right">49.57</td>
+<td align="right">4.00</td>
+<td align="right">91.00</td>
+<td align="right">130.00</td>
+<td align="right">159.00</td>
+<td align="right">295.00</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-ct_blood
-</td>
-<td style="text-align:right;">
-7
-</td>
-<td style="text-align:right;">
-1.00
-</td>
-<td style="text-align:right;">
-21.26
-</td>
-<td style="text-align:right;">
-1.67
-</td>
-<td style="text-align:right;">
-16.00
-</td>
-<td style="text-align:right;">
-20.00
-</td>
-<td style="text-align:right;">
-22.00
-</td>
-<td style="text-align:right;">
-22.00
-</td>
-<td style="text-align:right;">
-26.00
-</td>
+<tr class="odd">
+<td align="left">ct_blood</td>
+<td align="right">7</td>
+<td align="right">1.00</td>
+<td align="right">21.26</td>
+<td align="right">1.67</td>
+<td align="right">16.00</td>
+<td align="right">20.00</td>
+<td align="right">22.00</td>
+<td align="right">22.00</td>
+<td align="right">26.00</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-temp
-</td>
-<td style="text-align:right;">
-158
-</td>
-<td style="text-align:right;">
-0.98
-</td>
-<td style="text-align:right;">
-38.60
-</td>
-<td style="text-align:right;">
-0.95
-</td>
-<td style="text-align:right;">
-35.20
-</td>
-<td style="text-align:right;">
-38.30
-</td>
-<td style="text-align:right;">
-38.80
-</td>
-<td style="text-align:right;">
-39.20
-</td>
-<td style="text-align:right;">
-40.80
-</td>
+<tr class="even">
+<td align="left">temp</td>
+<td align="right">158</td>
+<td align="right">0.98</td>
+<td align="right">38.60</td>
+<td align="right">0.95</td>
+<td align="right">35.20</td>
+<td align="right">38.30</td>
+<td align="right">38.80</td>
+<td align="right">39.20</td>
+<td align="right">40.80</td>
 </tr>
 </tbody>
 </table></div>
 <p><strong>Variable type: POSIXct</strong></p>
 <div class="inline-table"><table class="table table-sm">
-<thead><tr>
-<th style="text-align:left;">
-skim_variable
-</th>
-<th style="text-align:right;">
-n_missing
-</th>
-<th style="text-align:right;">
-complete_rate
-</th>
-<th style="text-align:left;">
-min
-</th>
-<th style="text-align:left;">
-max
-</th>
-<th style="text-align:left;">
-median
-</th>
-<th style="text-align:right;">
-n_unique
-</th>
+<colgroup>
+<col width="19%">
+<col width="12%">
+<col width="17%">
+<col width="13%">
+<col width="13%">
+<col width="13%">
+<col width="10%">
+</colgroup>
+<thead><tr class="header">
+<th align="left">skim_variable</th>
+<th align="right">n_missing</th>
+<th align="right">complete_rate</th>
+<th align="left">min</th>
+<th align="left">max</th>
+<th align="left">median</th>
+<th align="right">n_unique</th>
 </tr></thead>
 <tbody>
-<tr>
-<td style="text-align:left;">
-infection date
-</td>
-<td style="text-align:right;">
-2322
-</td>
-<td style="text-align:right;">
-0.65
-</td>
-<td style="text-align:left;">
-2012-04-09
-</td>
-<td style="text-align:left;">
-2015-04-27
-</td>
-<td style="text-align:left;">
-2014-10-04
-</td>
-<td style="text-align:right;">
-538
-</td>
+<tr class="odd">
+<td align="left">infection date</td>
+<td align="right">2322</td>
+<td align="right">0.65</td>
+<td align="left">2012-04-09</td>
+<td align="left">2015-04-27</td>
+<td align="left">2014-10-04</td>
+<td align="right">538</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-hosp date
-</td>
-<td style="text-align:right;">
-7
-</td>
-<td style="text-align:right;">
-1.00
-</td>
-<td style="text-align:left;">
-2012-04-20
-</td>
-<td style="text-align:left;">
-2015-04-30
-</td>
-<td style="text-align:left;">
-2014-10-15
-</td>
-<td style="text-align:right;">
-570
-</td>
+<tr class="even">
+<td align="left">hosp date</td>
+<td align="right">7</td>
+<td align="right">1.00</td>
+<td align="left">2012-04-20</td>
+<td align="left">2015-04-30</td>
+<td align="left">2014-10-15</td>
+<td align="right">570</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-date_of_outcome
-</td>
-<td style="text-align:right;">
-1068
-</td>
-<td style="text-align:right;">
-0.84
-</td>
-<td style="text-align:left;">
-2012-05-14
-</td>
-<td style="text-align:left;">
-2015-06-04
-</td>
-<td style="text-align:left;">
-2014-10-26
-</td>
-<td style="text-align:right;">
-575
-</td>
+<tr class="odd">
+<td align="left">date_of_outcome</td>
+<td align="right">1068</td>
+<td align="right">0.84</td>
+<td align="left">2012-05-14</td>
+<td align="left">2015-06-04</td>
+<td align="left">2014-10-26</td>
+<td align="right">575</td>
 </tr>
 </tbody>
 </table></div>
@@ -1319,10 +788,12 @@ date_of_outcome
 </ul>
 <div class="sourceCode" id="cb177"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/names.html">names</a></span><span class="op">(</span><span class="va">linelist_raw</span><span class="op">)</span></span></code></pre></div>
-<pre><code>##  [1] "case_id"         "generation"      "infection date"  "date onset"      "hosp date"       "date_of_outcome" "outcome"         "gender"         
-##  [9] "hospital"        "lon"             "lat"             "infector"        "source"          "age"             "age_unit"        "row_num"        
-## [17] "wt_kg"           "ht_cm"           "ct_blood"        "fever"           "chills"          "cough"           "aches"           "vomit"          
-## [25] "temp"            "time_admission"  "merged_header"   "...28"</code></pre>
+<pre><code>##  [1] "case_id"         "generation"      "infection date"  "date onset"      "hosp date"      
+##  [6] "date_of_outcome" "outcome"         "gender"          "hospital"        "lon"            
+## [11] "lat"             "infector"        "source"          "age"             "age_unit"       
+## [16] "row_num"         "wt_kg"           "ht_cm"           "ct_blood"        "fever"          
+## [21] "chills"          "cough"           "aches"           "vomit"           "temp"           
+## [26] "time_admission"  "merged_header"   "...28"</code></pre>
 <p><span style="color : black ;"><strong><em>REMARQUE:</em></strong> Pour faire référence à un nom de colonne qui comprend des espaces, entourez le nom de contre-tirets, par exemple : linelist$<code>`'\x60infection date\x60'`</code>. Notez que sur votre clavier, le contre-tiret (`) est différent du guillemet simple (’).</span></p>
 <div id="labels" class="section level3 unnumbered">
 <h3>Labels<a class="anchor" aria-label="anchor" href="#labels"><i class="fas fa-link"></i></a>
@@ -1351,10 +822,12 @@ date_of_outcome
 <span></span>
 <span><span class="co"># voir les nouveaux noms de colonnes</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/names.html">names</a></span><span class="op">(</span><span class="va">linelist</span><span class="op">)</span></span></code></pre></div>
-<pre><code>##  [1] "case_id"         "generation"      "infection_date"  "date_onset"      "hosp_date"       "date_of_outcome" "outcome"         "gender"         
-##  [9] "hospital"        "lon"             "lat"             "infector"        "source"          "age"             "age_unit"        "row_num"        
-## [17] "wt_kg"           "ht_cm"           "ct_blood"        "fever"           "chills"          "cough"           "aches"           "vomit"          
-## [25] "temp"            "time_admission"  "merged_header"   "x28"</code></pre>
+<pre><code>##  [1] "case_id"         "generation"      "infection_date"  "date_onset"      "hosp_date"      
+##  [6] "date_of_outcome" "outcome"         "gender"          "hospital"        "lon"            
+## [11] "lat"             "infector"        "source"          "age"             "age_unit"       
+## [16] "row_num"         "wt_kg"           "ht_cm"           "ct_blood"        "fever"          
+## [21] "chills"          "cough"           "aches"           "vomit"           "temp"           
+## [26] "time_admission"  "merged_header"   "x28"</code></pre>
 <p><span style="color: black;"><strong><em>NOTE:</em></strong> le dernier nom de colonne “…28” est changé pour devenir “x28”.</span></p>
 </div>
 <div id="nettoyage-manuel-des-noms" class="section level3 unnumbered">
@@ -1376,10 +849,12 @@ date_of_outcome
 <span>           date_hospitalisation <span class="op">=</span> <span class="va">hosp_date</span>,</span>
 <span>           date_outcome         <span class="op">=</span> <span class="va">date_of_outcome</span><span class="op">)</span></span></code></pre></div>
 <p>Vous pouvez maintenant voir que les noms des colonnes ont été modifiés :</p>
-<pre><code>##  [1] "case_id"              "generation"           "date_infection"       "date_onset"           "date_hospitalisation" "date_outcome"        
-##  [7] "outcome"              "gender"               "hospital"             "lon"                  "lat"                  "infector"            
-## [13] "source"               "age"                  "age_unit"             "row_num"              "wt_kg"                "ht_cm"               
-## [19] "ct_blood"             "fever"                "chills"               "cough"                "aches"                "vomit"               
+<pre><code>##  [1] "case_id"              "generation"           "date_infection"       "date_onset"          
+##  [5] "date_hospitalisation" "date_outcome"         "outcome"              "gender"              
+##  [9] "hospital"             "lon"                  "lat"                  "infector"            
+## [13] "source"               "age"                  "age_unit"             "row_num"             
+## [17] "wt_kg"                "ht_cm"                "ct_blood"             "fever"               
+## [21] "chills"               "cough"                "aches"                "vomit"               
 ## [25] "temp"                 "time_admission"       "merged_header"        "x28"</code></pre>
 <div id="renommer-par-la-position-des-colonnes" class="section level4 unnumbered">
 <h4>Renommer par la position des colonnes<a class="anchor" aria-label="anchor" href="#renommer-par-la-position-des-colonnes"><i class="fas fa-link"></i></a>
@@ -1441,10 +916,12 @@ date_of_outcome
 <p><strong>Voici TOUS les noms de colonnes dans la liste de lignes à ce stade de la chaîne de nettoyage :</strong>.</p>
 <div class="sourceCode" id="cb186"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/names.html">names</a></span><span class="op">(</span><span class="va">linelist</span><span class="op">)</span></span></code></pre></div>
-<pre><code>##  [1] "case_id"              "generation"           "date_infection"       "date_onset"           "date_hospitalisation" "date_outcome"        
-##  [7] "outcome"              "gender"               "hospital"             "lon"                  "lat"                  "infector"            
-## [13] "source"               "age"                  "age_unit"             "row_num"              "wt_kg"                "ht_cm"               
-## [19] "ct_blood"             "fever"                "chills"               "cough"                "aches"                "vomit"               
+<pre><code>##  [1] "case_id"              "generation"           "date_infection"       "date_onset"          
+##  [5] "date_hospitalisation" "date_outcome"         "outcome"              "gender"              
+##  [9] "hospital"             "lon"                  "lat"                  "infector"            
+## [13] "source"               "age"                  "age_unit"             "row_num"             
+## [17] "wt_kg"                "ht_cm"                "ct_blood"             "fever"               
+## [21] "chills"               "cough"                "aches"                "vomit"               
 ## [25] "temp"                 "time_admission"       "merged_header"        "x28"</code></pre>
 <div id="conserver-des-colonnes" class="section level3 unnumbered">
 <h3>Conserver des colonnes<a class="anchor" aria-label="anchor" href="#conserver-des-colonnes"><i class="fas fa-link"></i></a>
@@ -1468,10 +945,12 @@ date_of_outcome
 <span><span class="va">linelist</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">date_onset</span>, <span class="va">date_hospitalisation</span>, <span class="fu"><a href="https://tidyselect.r-lib.org/reference/everything.html">everything</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
 <span>  <span class="fu"><a href="https://rdrr.io/r/base/names.html">names</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
-<pre><code>##  [1] "date_onset"           "date_hospitalisation" "case_id"              "generation"           "date_infection"       "date_outcome"        
-##  [7] "outcome"              "gender"               "hospital"             "lon"                  "lat"                  "infector"            
-## [13] "source"               "age"                  "age_unit"             "row_num"              "wt_kg"                "ht_cm"               
-## [19] "ct_blood"             "fever"                "chills"               "cough"                "aches"                "vomit"               
+<pre><code>##  [1] "date_onset"           "date_hospitalisation" "case_id"              "generation"          
+##  [5] "date_infection"       "date_outcome"         "outcome"              "gender"              
+##  [9] "hospital"             "lon"                  "lat"                  "infector"            
+## [13] "source"               "age"                  "age_unit"             "row_num"             
+## [17] "wt_kg"                "ht_cm"                "ct_blood"             "fever"               
+## [21] "chills"               "cough"                "aches"                "vomit"               
 ## [25] "temp"                 "time_admission"       "merged_header"        "x28"</code></pre>
 <p>Voici d’autres fonctions d’aide “tidyselect” qui fonctionnent également <em>dans</em> les fonctions <strong>dplyr</strong> comme <code><a href="https://dplyr.tidyverse.org/reference/select.html">select()</a></code>, <code><a href="https://dplyr.tidyverse.org/reference/across.html">across()</a></code>, et <code><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarise()</a></code> :</p>
 <ul>
@@ -1529,7 +1008,8 @@ date_of_outcome
 <span><span class="va">linelist</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="fu"><a href="https://tidyselect.r-lib.org/reference/where.html">where</a></span><span class="op">(</span><span class="va">is.numeric</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
 <span>  <span class="fu"><a href="https://rdrr.io/r/base/names.html">names</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
-<pre><code>## [1] "generation" "lon"        "lat"        "row_num"    "wt_kg"      "ht_cm"      "ct_blood"   "temp"</code></pre>
+<pre><code>## [1] "generation" "lon"        "lat"        "row_num"    "wt_kg"      "ht_cm"      "ct_blood"  
+## [8] "temp"</code></pre>
 <p>Utilisez <code><a href="https://tidyselect.r-lib.org/reference/starts_with.html">contains()</a></code> pour ne sélectionner que les colonnes dont le nom contient une chaîne de caractères donnée. <code><a href="https://tidyselect.r-lib.org/reference/starts_with.html">ends_with()</a></code> et <code><a href="https://tidyselect.r-lib.org/reference/starts_with.html">starts_with()</a></code> apportent plus de nuances.</p>
 <div class="sourceCode" id="cb194"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Selectionner des colonnes qui contiennent une caractere defini</span></span>
@@ -1561,10 +1041,12 @@ date_of_outcome
 <code class="sourceCode R"><span><span class="va">linelist</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="op">-</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="va">date_onset</span>, <span class="va">fever</span><span class="op">:</span><span class="va">vomit</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="co">#supprimer la colonne date_onset et tout les colonnes allant de fever à vomit</span></span>
 <span>  <span class="fu"><a href="https://rdrr.io/r/base/names.html">names</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
-<pre><code>##  [1] "case_id"              "generation"           "date_infection"       "date_hospitalisation" "date_outcome"         "outcome"             
-##  [7] "gender"               "hospital"             "lon"                  "lat"                  "infector"             "source"              
-## [13] "age"                  "age_unit"             "row_num"              "wt_kg"                "ht_cm"                "ct_blood"            
-## [19] "temp"                 "time_admission"       "merged_header"        "x28"</code></pre>
+<pre><code>##  [1] "case_id"              "generation"           "date_infection"       "date_hospitalisation"
+##  [5] "date_outcome"         "outcome"              "gender"               "hospital"            
+##  [9] "lon"                  "lat"                  "infector"             "source"              
+## [13] "age"                  "age_unit"             "row_num"              "wt_kg"               
+## [17] "ht_cm"                "ct_blood"             "temp"                 "time_admission"      
+## [21] "merged_header"        "x28"</code></pre>
 <p>Vous pouvez également supprimer une colonne en utilisant la syntaxe R <strong>base</strong>, en la définissant comme <code>NULL</code>. Par exemple :</p>
 <div class="sourceCode" id="cb202"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">linelist</span><span class="op">$</span><span class="va">date_onset</span> <span class="op">&lt;-</span> <span class="cn">NULL</span>   </span>
@@ -1693,8 +1175,8 @@ date_of_outcome
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">case_id</span>, <span class="va">hospital</span>, <span class="va">date_hospitalisation</span>, <span class="fu"><a href="https://tidyselect.r-lib.org/reference/starts_with.html">contains</a></span><span class="op">(</span><span class="st">"new"</span><span class="op">)</span><span class="op">)</span>        </span>
 <span><span class="co"># montrer seulement les nouveaux colonnes  pour besoin de demonstration</span></span></code></pre></div>
 <p>Examinez les nouvelles colonnes. À des fins de démonstration, seules les nouvelles colonnes et les colonnes utilisées pour les créer sont affichées :</p>
-<div class="datatables html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-964e699653440d5074a3" style="width:100%;height:auto;"></div>
-<script type="application/json" data-for="htmlwidget-964e699653440d5074a3">{"x":{"filter":"none","vertical":false,"data":[["5fe599","8689b7","11f8ea","b8812a","893f25","be99c8","07e3e8","369449","f393b4","1389ca","2978ac","57a565","fc15ef","2eaa9a","bbfa93","c97dd9","f50e8a","3a7673","7f5a01","ddddee","99e8fa","567136","9371a9","bc2adf","403057","8bd1e8","f327be","42e1a9","90e5fe","959170","8ebf6e","e56412","6d788e","a47529","67be4e","da8ecb","148f18","2cb9a5","f5c142","70a9fe","3ad520","062638","c76676","baacc1","497372","23e499","38cc4a","3789ee","c71dcd","6b70f0"],["Other",null,"St. Mark's Maternity Hospital (SMMH)","Port Hospital","Military Hospital","Port Hospital",null,null,null,null,"Port Hospital","Military Hospital",null,null,"Other","Port Hospital","Port Hospital","Port Hospital",null,"Other","Port Hospital","Port Hospital","St. Mark's Maternity Hospital (SMMH)",null,"Other",null,"St. Marks Maternity Hopital (SMMH)","Military Hospital","Port Hospital","Central Hospital","Military Hospital","Central Hospital",null,"Military Hospital","Other",null,null,"Port Hospital","Port Hospital","Port Hospital",null,"Central Hospital","Military Hospital","Other","Other","Other",null,"St. Mark's Maternity Hospital (SMMH)","St. Mark's Maternity Hospital (SMMH)",null],["2014-05-15T00:00:00Z","2014-05-14T00:00:00Z","2014-05-18T00:00:00Z","2014-05-20T00:00:00Z","2014-05-22T00:00:00Z","2014-05-23T00:00:00Z","2014-05-29T00:00:00Z","2014-06-03T00:00:00Z","2014-06-06T00:00:00Z","2014-06-07T00:00:00Z","2014-06-08T00:00:00Z","2014-06-15T00:00:00Z","2014-06-17T00:00:00Z","2014-06-17T00:00:00Z","2014-06-20T00:00:00Z","2014-06-19T00:00:00Z","2014-06-23T00:00:00Z","2014-06-24T00:00:00Z","2014-06-27T00:00:00Z","2014-06-28T00:00:00Z","2014-06-29T00:00:00Z","2014-07-03T00:00:00Z","2014-07-09T00:00:00Z","2014-07-09T00:00:00Z","2014-07-11T00:00:00Z","2014-07-11T00:00:00Z","2014-07-13T00:00:00Z","2014-07-14T00:00:00Z","2014-07-14T00:00:00Z","2014-07-13T00:00:00Z","2014-07-14T00:00:00Z","2014-07-17T00:00:00Z","2014-07-17T00:00:00Z","2014-07-18T00:00:00Z","2014-07-19T00:00:00Z","2014-07-20T00:00:00Z","2014-07-20T00:00:00Z","2014-07-22T00:00:00Z","2014-07-24T00:00:00Z","2014-07-26T00:00:00Z","2014-07-24T00:00:00Z","2014-07-27T00:00:00Z","2014-07-25T00:00:00Z","2014-07-27T00:00:00Z","2014-07-31T00:00:00Z","2014-08-01T00:00:00Z","2014-08-03T00:00:00Z","2014-08-02T00:00:00Z","2014-08-02T00:00:00Z","2014-08-04T00:00:00Z"],["5fe599","8689b7","11f8ea","b8812a","893f25","be99c8","07e3e8","369449","f393b4","1389ca","2978ac","57a565","fc15ef","2eaa9a","bbfa93","c97dd9","f50e8a","3a7673","7f5a01","ddddee","99e8fa","567136","9371a9","bc2adf","403057","8bd1e8","f327be","42e1a9","90e5fe","959170","8ebf6e","e56412","6d788e","a47529","67be4e","da8ecb","148f18","2cb9a5","f5c142","70a9fe","3ad520","062638","c76676","baacc1","497372","23e499","38cc4a","3789ee","c71dcd","6b70f0"],[12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12],["Other on (2014-05-15)","NA on (2014-05-14)","St. Mark's Maternity Hospital (SMMH) on (2014-05-18)","Port Hospital on (2014-05-20)","Military Hospital on (2014-05-22)","Port Hospital on (2014-05-23)","NA on (2014-05-29)","NA on (2014-06-03)","NA on (2014-06-06)","NA on (2014-06-07)","Port Hospital on (2014-06-08)","Military Hospital on (2014-06-15)","NA on (2014-06-17)","NA on (2014-06-17)","Other on (2014-06-20)","Port Hospital on (2014-06-19)","Port Hospital on (2014-06-23)","Port Hospital on (2014-06-24)","NA on (2014-06-27)","Other on (2014-06-28)","Port Hospital on (2014-06-29)","Port Hospital on (2014-07-03)","St. Mark's Maternity Hospital (SMMH) on (2014-07-09)","NA on (2014-07-09)","Other on (2014-07-11)","NA on (2014-07-11)","St. Marks Maternity Hopital (SMMH) on (2014-07-13)","Military Hospital on (2014-07-14)","Port Hospital on (2014-07-14)","Central Hospital on (2014-07-13)","Military Hospital on (2014-07-14)","Central Hospital on (2014-07-17)","NA on (2014-07-17)","Military Hospital on (2014-07-18)","Other on (2014-07-19)","NA on (2014-07-20)","NA on (2014-07-20)","Port Hospital on (2014-07-22)","Port Hospital on (2014-07-24)","Port Hospital on (2014-07-26)","NA on (2014-07-24)","Central Hospital on (2014-07-27)","Military Hospital on (2014-07-25)","Other on (2014-07-27)","Other on (2014-07-31)","Other on (2014-08-01)","NA on (2014-08-03)","St. Mark's Maternity Hospital (SMMH) on (2014-08-02)","St. Mark's Maternity Hospital (SMMH) on (2014-08-02)","NA on (2014-08-04)"]],"container":"<table class=\"white-space: nowrap\">\n  <thead>\n    <tr>\n      <th>case_id<\/th>\n      <th>hospital<\/th>\n      <th>date_hospitalisation<\/th>\n      <th>new_var_dup<\/th>\n      <th>new_var_static<\/th>\n      <th>new_var_paste<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"pageLength":5,"scrollX":true,"columnDefs":[{"className":"dt-right","targets":4}],"order":[],"autoWidth":false,"orderClasses":false,"lengthMenu":[5,10,25,50,100]},"selection":{"mode":"multiple","selected":null,"target":"row","selectable":null}},"evals":[],"jsHooks":[]}</script><p><span style="color: darkgreen;"><strong><em>CONSEILS:</em></strong> Une variante de <code><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate()</a></code> est la fonction <code><a href="https://dplyr.tidyverse.org/reference/transmute.html">transmute()</a></code>. Cette fonction ajoute une nouvelle colonne comme <code><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate()</a></code>, mais supprime également toutes les autres colonnes que vous ne mentionnez pas entre ses parenthèses..</span></p>
+<div class="datatables html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-ccea48433a0302699bf7" style="width:100%;height:auto;"></div>
+<script type="application/json" data-for="htmlwidget-ccea48433a0302699bf7">{"x":{"filter":"none","vertical":false,"data":[["5fe599","8689b7","11f8ea","b8812a","893f25","be99c8","07e3e8","369449","f393b4","1389ca","2978ac","57a565","fc15ef","2eaa9a","bbfa93","c97dd9","f50e8a","3a7673","7f5a01","ddddee","99e8fa","567136","9371a9","bc2adf","403057","8bd1e8","f327be","42e1a9","90e5fe","959170","8ebf6e","e56412","6d788e","a47529","67be4e","da8ecb","148f18","2cb9a5","f5c142","70a9fe","3ad520","062638","c76676","baacc1","497372","23e499","38cc4a","3789ee","c71dcd","6b70f0"],["Other",null,"St. Mark's Maternity Hospital (SMMH)","Port Hospital","Military Hospital","Port Hospital",null,null,null,null,"Port Hospital","Military Hospital",null,null,"Other","Port Hospital","Port Hospital","Port Hospital",null,"Other","Port Hospital","Port Hospital","St. Mark's Maternity Hospital (SMMH)",null,"Other",null,"St. Marks Maternity Hopital (SMMH)","Military Hospital","Port Hospital","Central Hospital","Military Hospital","Central Hospital",null,"Military Hospital","Other",null,null,"Port Hospital","Port Hospital","Port Hospital",null,"Central Hospital","Military Hospital","Other","Other","Other",null,"St. Mark's Maternity Hospital (SMMH)","St. Mark's Maternity Hospital (SMMH)",null],["2014-05-15T00:00:00Z","2014-05-14T00:00:00Z","2014-05-18T00:00:00Z","2014-05-20T00:00:00Z","2014-05-22T00:00:00Z","2014-05-23T00:00:00Z","2014-05-29T00:00:00Z","2014-06-03T00:00:00Z","2014-06-06T00:00:00Z","2014-06-07T00:00:00Z","2014-06-08T00:00:00Z","2014-06-15T00:00:00Z","2014-06-17T00:00:00Z","2014-06-17T00:00:00Z","2014-06-20T00:00:00Z","2014-06-19T00:00:00Z","2014-06-23T00:00:00Z","2014-06-24T00:00:00Z","2014-06-27T00:00:00Z","2014-06-28T00:00:00Z","2014-06-29T00:00:00Z","2014-07-03T00:00:00Z","2014-07-09T00:00:00Z","2014-07-09T00:00:00Z","2014-07-11T00:00:00Z","2014-07-11T00:00:00Z","2014-07-13T00:00:00Z","2014-07-14T00:00:00Z","2014-07-14T00:00:00Z","2014-07-13T00:00:00Z","2014-07-14T00:00:00Z","2014-07-17T00:00:00Z","2014-07-17T00:00:00Z","2014-07-18T00:00:00Z","2014-07-19T00:00:00Z","2014-07-20T00:00:00Z","2014-07-20T00:00:00Z","2014-07-22T00:00:00Z","2014-07-24T00:00:00Z","2014-07-26T00:00:00Z","2014-07-24T00:00:00Z","2014-07-27T00:00:00Z","2014-07-25T00:00:00Z","2014-07-27T00:00:00Z","2014-07-31T00:00:00Z","2014-08-01T00:00:00Z","2014-08-03T00:00:00Z","2014-08-02T00:00:00Z","2014-08-02T00:00:00Z","2014-08-04T00:00:00Z"],["5fe599","8689b7","11f8ea","b8812a","893f25","be99c8","07e3e8","369449","f393b4","1389ca","2978ac","57a565","fc15ef","2eaa9a","bbfa93","c97dd9","f50e8a","3a7673","7f5a01","ddddee","99e8fa","567136","9371a9","bc2adf","403057","8bd1e8","f327be","42e1a9","90e5fe","959170","8ebf6e","e56412","6d788e","a47529","67be4e","da8ecb","148f18","2cb9a5","f5c142","70a9fe","3ad520","062638","c76676","baacc1","497372","23e499","38cc4a","3789ee","c71dcd","6b70f0"],[12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12],["Other on (2014-05-15)","NA on (2014-05-14)","St. Mark's Maternity Hospital (SMMH) on (2014-05-18)","Port Hospital on (2014-05-20)","Military Hospital on (2014-05-22)","Port Hospital on (2014-05-23)","NA on (2014-05-29)","NA on (2014-06-03)","NA on (2014-06-06)","NA on (2014-06-07)","Port Hospital on (2014-06-08)","Military Hospital on (2014-06-15)","NA on (2014-06-17)","NA on (2014-06-17)","Other on (2014-06-20)","Port Hospital on (2014-06-19)","Port Hospital on (2014-06-23)","Port Hospital on (2014-06-24)","NA on (2014-06-27)","Other on (2014-06-28)","Port Hospital on (2014-06-29)","Port Hospital on (2014-07-03)","St. Mark's Maternity Hospital (SMMH) on (2014-07-09)","NA on (2014-07-09)","Other on (2014-07-11)","NA on (2014-07-11)","St. Marks Maternity Hopital (SMMH) on (2014-07-13)","Military Hospital on (2014-07-14)","Port Hospital on (2014-07-14)","Central Hospital on (2014-07-13)","Military Hospital on (2014-07-14)","Central Hospital on (2014-07-17)","NA on (2014-07-17)","Military Hospital on (2014-07-18)","Other on (2014-07-19)","NA on (2014-07-20)","NA on (2014-07-20)","Port Hospital on (2014-07-22)","Port Hospital on (2014-07-24)","Port Hospital on (2014-07-26)","NA on (2014-07-24)","Central Hospital on (2014-07-27)","Military Hospital on (2014-07-25)","Other on (2014-07-27)","Other on (2014-07-31)","Other on (2014-08-01)","NA on (2014-08-03)","St. Mark's Maternity Hospital (SMMH) on (2014-08-02)","St. Mark's Maternity Hospital (SMMH) on (2014-08-02)","NA on (2014-08-04)"]],"container":"<table class=\"white-space: nowrap\">\n  <thead>\n    <tr>\n      <th>case_id<\/th>\n      <th>hospital<\/th>\n      <th>date_hospitalisation<\/th>\n      <th>new_var_dup<\/th>\n      <th>new_var_static<\/th>\n      <th>new_var_paste<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"pageLength":5,"scrollX":true,"columnDefs":[{"className":"dt-right","targets":4}],"order":[],"autoWidth":false,"orderClasses":false,"lengthMenu":[5,10,25,50,100]}},"evals":[],"jsHooks":[]}</script><p><span style="color: darkgreen;"><strong><em>CONSEILS:</em></strong> Une variante de <code><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate()</a></code> est la fonction <code><a href="https://dplyr.tidyverse.org/reference/transmute.html">transmute()</a></code>. Cette fonction ajoute une nouvelle colonne comme <code><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate()</a></code>, mais supprime également toutes les autres colonnes que vous ne mentionnez pas entre ses parenthèses..</span></p>
 <div class="sourceCode" id="cb211"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># CACHER POUR LECTEUR</span></span>
 <span><span class="co"># Supprimer les nouveaux colonnes demo créees en haut</span></span>
@@ -1918,12 +1400,18 @@ date_of_outcome
 <div class="sourceCode" id="cb235"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/table.html">table</a></span><span class="op">(</span><span class="va">linelist</span><span class="op">$</span><span class="va">hospital</span>, useNA <span class="op">=</span> <span class="st">"always"</span><span class="op">)</span>  </span></code></pre></div>
 <pre><code>## 
-##                      Central Hopital                     Central Hospital                           Hospital A                           Hospital B 
-##                                   11                                  457                                  290                                  289 
-##                     Military Hopital                    Military Hospital                     Mitylira Hopital                    Mitylira Hospital 
-##                                   32                                  798                                    1                                   79 
-##                                Other                         Port Hopital                        Port Hospital St. Mark's Maternity Hospital (SMMH) 
-##                                  907                                   48                                 1756                                  417 
+##                      Central Hopital                     Central Hospital 
+##                                   11                                  457 
+##                           Hospital A                           Hospital B 
+##                                  290                                  289 
+##                     Military Hopital                    Military Hospital 
+##                                   32                                  798 
+##                     Mitylira Hopital                    Mitylira Hospital 
+##                                    1                                   79 
+##                                Other                         Port Hopital 
+##                                  907                                   48 
+##                        Port Hospital St. Mark's Maternity Hospital (SMMH) 
+##                                 1756                                  417 
 ##   St. Marks Maternity Hopital (SMMH)                                 &lt;NA&gt; 
 ##                                   11                                 1512</code></pre>
 <div class="sourceCode" id="cb237"><pre class="downlit sourceCode r">
@@ -1945,10 +1433,14 @@ date_of_outcome
 <div class="sourceCode" id="cb239"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/table.html">table</a></span><span class="op">(</span><span class="va">linelist</span><span class="op">$</span><span class="va">hospital</span>, useNA <span class="op">=</span> <span class="st">"always"</span><span class="op">)</span></span></code></pre></div>
 <pre><code>## 
-##                     Central Hospital                           Hospital A                           Hospital B                    Military Hospital 
-##                                  468                                  290                                  289                                  910 
-##                                Other                        Port Hospital St. Mark's Maternity Hospital (SMMH)                                 &lt;NA&gt; 
-##                                  907                                 1804                                  428                                 1512</code></pre>
+##                     Central Hospital                           Hospital A 
+##                                  468                                  290 
+##                           Hospital B                    Military Hospital 
+##                                  289                                  910 
+##                                Other                        Port Hospital 
+##                                  907                                 1804 
+## St. Mark's Maternity Hospital (SMMH)                                 &lt;NA&gt; 
+##                                  428                                 1512</code></pre>
 <p><span style="color: darkgreen;"><strong><em>CONSEIL:</em></strong> Le nombre d’espaces avant et après un signe égal n’a pas d’importance. Rendez votre code plus facile à lire en alignant le signe = pour toutes ou la plupart des lignes. En outre, envisagez d’ajouter une ligne de commentaires afin de clarifier pour les futurs lecteurs quel côté est l’ANCIEN et quel côté est le NOUVEAU. </span></p>
 <p><span style="color: darkgreen;"><strong><em>CONSEIL:</em></strong> Parfois, une valeur de caractère <em>vide</em> existe dans un jeu de donnée (non reconnue comme la valeur de R pour les manquants - <code>NA</code>). Vous pouvez référencer cette valeur avec deux guillemets sans espace entre eux (““).</span></p>
 </div>
@@ -2101,8 +1593,8 @@ Vous trouverez plus de détails dans la <a href="https://cran.r-project.org/web/
 <span>          by <span class="op">=</span> <span class="st">"col"</span>, <span class="co"># colonne avec les noms de colonnes (par défaut col 3)</span></span>
 <span>  <span class="op">)</span></span></code></pre></div>
 <p>Maintenant, faites défiler vers la droite pour voir comment les valeurs ont changé - en particulier le <code>genre</code>(de minuscule à majuscule), et toutes les colonnes de symptômes ont été transformées de oui/non à 1/0.</p>
-<div class="datatables html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-8b8a90e0a40e78b37db1" style="width:100%;height:auto;"></div>
-<script type="application/json" data-for="htmlwidget-8b8a90e0a40e78b37db1">{"x":{"filter":"top","vertical":false,"filterHTML":"<tr>\n  <td data-type=\"character\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"number\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n    <div style=\"display: none;position: absolute;width: 200px;opacity: 1\">\n      <div data-min=\"2\" data-max=\"13\"><\/div>\n      <span style=\"float: left;\"><\/span>\n      <span style=\"float: right;\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"date\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n    <div style=\"display: none;position: absolute;width: 200px;opacity: 1\">\n      <div data-min=\"1399075200000\" data-max=\"1406419200000\"><\/div>\n      <span style=\"float: left;\"><\/span>\n      <span style=\"float: right;\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"date\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n    <div style=\"display: none;position: absolute;width: 200px;opacity: 1\">\n      <div data-min=\"1399939200000\" data-max=\"1407024000000\"><\/div>\n      <span style=\"float: left;\"><\/span>\n      <span style=\"float: right;\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"date\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n    <div style=\"display: none;position: absolute;width: 200px;opacity: 1\">\n      <div data-min=\"1400025600000\" data-max=\"1407110400000\"><\/div>\n      <span style=\"float: left;\"><\/span>\n      <span style=\"float: right;\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"date\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n    <div style=\"display: none;position: absolute;width: 200px;opacity: 1\">\n      <div data-min=\"1400371200000\" data-max=\"1410566400000\"><\/div>\n      <span style=\"float: left;\"><\/span>\n      <span style=\"float: right;\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"character\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"character\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"character\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"number\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n    <div style=\"display: none;position: absolute;width: 200px;opacity: 1\">\n      <div data-min=\"-13.2697246824573\" data-max=\"-13.209391925612\" data-scale=\"13\"><\/div>\n      <span style=\"float: left;\"><\/span>\n      <span style=\"float: right;\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"number\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n    <div style=\"display: none;position: absolute;width: 200px;opacity: 1\">\n      <div data-min=\"8.45171855856465\" data-max=\"8.48802917129884\" data-scale=\"14\"><\/div>\n      <span style=\"float: left;\"><\/span>\n      <span style=\"float: right;\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"character\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"character\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"number\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n    <div style=\"display: none;position: absolute;width: 200px;opacity: 1\">\n      <div data-min=\"0\" data-max=\"67\"><\/div>\n      <span style=\"float: left;\"><\/span>\n      <span style=\"float: right;\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"character\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\" disabled=\"\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"number\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n    <div style=\"display: none;position: absolute;width: 200px;opacity: 1\">\n      <div data-min=\"0\" data-max=\"100\"><\/div>\n      <span style=\"float: left;\"><\/span>\n      <span style=\"float: right;\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"number\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n    <div style=\"display: none;position: absolute;width: 200px;opacity: 1\">\n      <div data-min=\"11\" data-max=\"241\"><\/div>\n      <span style=\"float: left;\"><\/span>\n      <span style=\"float: right;\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"number\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n    <div style=\"display: none;position: absolute;width: 200px;opacity: 1\">\n      <div data-min=\"20\" data-max=\"24\"><\/div>\n      <span style=\"float: left;\"><\/span>\n      <span style=\"float: right;\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"character\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"character\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"character\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"character\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"character\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"number\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n    <div style=\"display: none;position: absolute;width: 200px;opacity: 1\">\n      <div data-min=\"35.9\" data-max=\"38\" data-scale=\"1\"><\/div>\n      <span style=\"float: left;\"><\/span>\n      <span style=\"float: right;\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"character\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"number\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n    <div style=\"display: none;position: absolute;width: 200px;opacity: 1\">\n      <div data-min=\"0\" data-max=\"428.994082840237\" data-scale=\"14\"><\/div>\n      <span style=\"float: left;\"><\/span>\n      <span style=\"float: right;\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"number\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n    <div style=\"display: none;position: absolute;width: 200px;opacity: 1\">\n      <div data-min=\"0\" data-max=\"67\"><\/div>\n      <span style=\"float: left;\"><\/span>\n      <span style=\"float: right;\"><\/span>\n    <\/div>\n  <\/td>\n<\/tr>","data":[["5fe599","8689b7","11f8ea","b8812a","893f25","be99c8","07e3e8","369449","f393b4","1389ca","2978ac","57a565","fc15ef","2eaa9a","bbfa93","c97dd9","f50e8a","3a7673","7f5a01","ddddee","99e8fa","567136","9371a9","bc2adf","403057","8bd1e8","f327be","42e1a9","90e5fe","959170","8ebf6e","e56412","6d788e","a47529","67be4e","da8ecb","148f18","2cb9a5","f5c142","70a9fe","3ad520","062638","c76676","baacc1","497372","23e499","38cc4a","3789ee","c71dcd","6b70f0"],[4,4,2,3,3,3,4,4,4,4,4,4,6,5,6,9,10,8,7,6,7,6,8,6,10,8,6,12,5,8,7,9,11,5,8,5,6,11,7,9,7,8,9,12,13,9,8,10,8,7],["2014-05-08",null,null,"2014-05-04","2014-05-18","2014-05-03","2014-05-22","2014-05-28",null,null,"2014-05-30","2014-05-28","2014-06-14","2014-06-07","2014-06-09",null,null,null,"2014-06-23","2014-06-18","2014-06-24",null,null,"2014-07-03",null,"2014-07-10","2014-06-14",null,"2014-06-18","2014-06-29","2014-07-02","2014-07-12","2014-07-12","2014-06-13","2014-07-15","2014-06-20",null,null,"2014-07-20",null,"2014-07-12","2014-07-19","2014-07-18","2014-07-18","2014-07-27",null,"2014-07-19","2014-07-26","2014-07-24",null],["2014-05-13","2014-05-13","2014-05-16","2014-05-18","2014-05-21","2014-05-22","2014-05-27","2014-06-02","2014-06-05","2014-06-05","2014-06-06","2014-06-13","2014-06-16","2014-06-17","2014-06-18","2014-06-19","2014-06-22","2014-06-23","2014-06-25","2014-06-26","2014-06-28","2014-07-02","2014-07-08","2014-07-09","2014-07-09","2014-07-10","2014-07-12","2014-07-12","2014-07-13","2014-07-13","2014-07-14","2014-07-15","2014-07-16","2014-07-17","2014-07-17","2014-07-18","2014-07-19","2014-07-22","2014-07-22","2014-07-24","2014-07-24","2014-07-25","2014-07-25","2014-07-27","2014-07-29","2014-07-30",null,"2014-08-01","2014-08-02","2014-08-03"],["2014-05-15","2014-05-14","2014-05-18","2014-05-20","2014-05-22","2014-05-23","2014-05-29","2014-06-03","2014-06-06","2014-06-07","2014-06-08","2014-06-15","2014-06-17","2014-06-17","2014-06-20","2014-06-19","2014-06-23","2014-06-24","2014-06-27","2014-06-28","2014-06-29","2014-07-03","2014-07-09","2014-07-09","2014-07-11","2014-07-11","2014-07-13","2014-07-14","2014-07-14","2014-07-13","2014-07-14","2014-07-17","2014-07-17","2014-07-18","2014-07-19","2014-07-20","2014-07-20","2014-07-22","2014-07-24","2014-07-26","2014-07-24","2014-07-27","2014-07-25","2014-07-27","2014-07-31","2014-08-01","2014-08-03","2014-08-02","2014-08-02","2014-08-04"],[null,"2014-05-18","2014-05-30",null,"2014-05-29","2014-05-24","2014-06-01","2014-06-07","2014-06-18","2014-06-09","2014-06-15",null,"2014-07-09",null,"2014-06-30","2014-07-11","2014-07-01","2014-06-25","2014-07-06","2014-07-02","2014-07-09","2014-07-07","2014-07-20",null,"2014-07-22","2014-07-16","2014-07-14","2014-07-20","2014-07-16","2014-07-19","2014-07-27","2014-07-19",null,"2014-07-26","2014-08-14","2014-08-01","2014-07-23","2014-08-28","2014-07-28","2014-07-19",null,"2014-08-03",null,null,null,"2014-08-06","2014-08-21","2014-09-13","2014-08-04",null],[null,"Recover","Recover",null,"Recover","Recover","Recover","Death","Recover","Death","Death","Death","Recover","Recover",null,"Recover",null,null,"Death","Death","Recover",null,null,null,"Death",null,"Death","Death",null,"Death","Recover","Death","Recover","Death","Recover",null,"Death","Recover","Recover","Death",null,null,"Death","Death","Death","Death","Recover",null,"Death","Death"],["M","F","M","F","M","F","F","F","M","F","M","M","M","F","F","M","F","F","F","F","M","M","F","M","F","M","M","F","M","F","F","F","M","M","F","M","F","F","F","M","F","M","F","M","M","F","M","F","M","M"],["Other",null,"St. Mark's Maternity Hospital (SMMH)","Port Hospital","Military Hospital","Port Hospital",null,null,null,null,"Port Hospital","Military Hospital",null,null,"Other","Port Hospital","Port Hospital","Port Hospital",null,"Other","Port Hospital","Port Hospital","St. Mark's Maternity Hospital (SMMH)",null,"Other",null,"St. Mark's Maternity Hospital (SMMH)","Military Hospital","Port Hospital","Central Hospital","Military Hospital","Central Hospital",null,"Military Hospital","Other",null,null,"Port Hospital","Port Hospital","Port Hospital",null,"Central Hospital","Military Hospital","Other","Other","Other",null,"St. Mark's Maternity Hospital (SMMH)","St. Mark's Maternity Hospital (SMMH)",null],[-13.2157351064963,-13.2152339775486,-13.212910703914,-13.2363711169728,-13.2228638912441,-13.222625321098,-13.2331547837254,-13.2320975453153,-13.2225511595637,-13.2572163655863,-13.2206286746001,-13.253989309478,-13.2385127873491,-13.209391925612,-13.2157278814899,-13.2243437095992,-13.2336087079551,-13.21422143145,-13.2339681355349,-13.2535640411465,-13.2250089377786,-13.2160657166043,-13.2680671272333,-13.2266742923612,-13.2160179088168,-13.2482584611565,-13.2156319199566,-13.2142410663192,-13.2614879104088,-13.2452992638476,-13.2630592726116,-13.2343341712241,-13.2199077448676,-13.2227293309912,-13.2343062806506,-13.218781651651,-13.2483677722899,-13.2097478342339,-13.2680867723786,-13.2587535457526,-13.262635786914,-13.2697246824573,-13.2209026809759,-13.2330734719715,-13.2680923666905,-13.2547212675054,-13.2573683214693,-13.2137356012883,-13.2175973322257,-13.2486407324245],[8.46897295100924,8.45171855856465,8.46481700596819,8.4754761613651,8.46082377490923,8.46183062600728,8.46272931462646,8.46144367534271,8.46191259217774,8.47292327643506,8.48401630165138,8.45837125340844,8.47761705512509,8.47570184950483,8.47779946878972,8.47145134147474,8.47804840685363,8.48528034195779,8.46957530395867,8.45957352078114,8.47404889511544,8.48802917129884,8.473437335922,8.48408263734462,8.46242233645879,8.47026822126572,8.46398447480533,8.4641347894342,8.45623094629607,8.48334624336805,8.47493999153642,8.47832062438022,8.4693933891765,8.48480589906514,8.47121232619015,8.48438437371817,8.48466158574339,8.47714159984428,8.46238127010609,8.45568597813113,8.4632880274758,8.47940722413856,8.46353857052336,8.46178968158864,8.47508713872833,8.45825808128071,8.4532568143863,8.4732571907655,8.47911586641933,8.48480340615605],["f547d6",null,null,"f90f5f","11f8ea","aec8ec","893f25","133ee7",null,null,"996f3a","133ee7","37a6f6","9f6884","4802b1",null,null,null,"a75c7f","8e104d","ab634e",null,null,"b799eb",null,"5d9e4d","a15e13",null,"ea3740","beb26e","567136","894024","36e2e7","a2086d","7baf73","eb2277",null,null,"d6584f",null,"312ecf","52ea64","cfd79c","d145b7","174288",null,"53608c","3b096b","f5c142",null],["other",null,null,"other","other","other","other","other",null,null,"other","other","other","other","other",null,null,null,"other","other","other",null,null,"other",null,"other","other",null,"other","funeral","other","funeral","other","other","other","funeral",null,null,"other",null,"other","other","other","other","other",null,"funeral","other","other",null],[2,3,56,18,3,16,16,0,61,27,12,42,19,7,7,13,35,17,11,11,19,54,14,28,6,3,31,6,67,14,10,21,20,45,1,12,3,15,20,36,7,13,14,3,10,1,0,20,26,14],["years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years"],[27,25,91,41,36,56,47,0,86,69,67,84,68,44,34,66,78,47,53,47,71,86,53,69,38,46,68,37,100,56,50,57,65,72,29,69,37,48,54,71,47,61,47,35,53,16,13,59,69,67],[48,59,238,135,71,116,87,11,226,174,112,186,174,90,91,152,214,137,117,131,150,241,131,161,80,69,188,66,233,142,110,182,164,214,26,157,39,154,133,168,100,125,123,67,134,31,36,125,183,169],[22,22,21,23,23,21,21,22,22,22,22,22,22,21,23,22,23,21,22,23,21,23,21,24,23,22,24,23,20,24,24,20,24,21,22,21,23,22,23,23,23,22,23,22,22,22,23,22,22,22],["0",null,null,"0","0","0",null,"0","0","0","0","0","0","0","0","0","0","0",null,"0","0","0","0","0",null,"0","0","0",null,null,"0","0",null,"0","0",null,null,"0","0",null,"0","0",null,"0","0","0","0","0","0",null],["0",null,null,"0","0","0",null,"0","0","0","0","0","0","0","0","0","1","0",null,"0","0","0","1","0",null,"0","0","1",null,null,"0","0",null,"0","0",null,null,"0","0",null,"0","0",null,"0","1","0","0","0","0",null],["1",null,null,"0","1","1",null,"1","1","1","1","1","1","1","1","1","1","1",null,"1","1","1","1","1",null,"1","1","1",null,null,"1","1",null,"1","1",null,null,"1","1",null,"1","1",null,"1","1","1","1","1","0",null],["0",null,null,"0","0","0",null,"0","0","0","0","0","0","0","0","1","0","0",null,"0","0","0","0","0",null,"0","0","0",null,null,"0","0",null,"0","0",null,null,"1","1",null,"0","0",null,"0","0","0","0","0","0",null],["1",null,null,"0","1","1",null,"1","1","0","1","0","0","0","1","0","0","0",null,"0","1","0","0","0",null,"0","0","0",null,null,"0","1",null,"1","1",null,null,"1","1",null,"1","1",null,"1","1","0","1","1","1",null],[36.8,36.9,36.9,36.8,36.9,37.6,37.3,37,36.4,35.9,36.5,36.9,36.5,37.1,36.5,37.3,37,38,38,36,37,36.7,36.9,36.5,37,36.5,37.6,36.6,36.6,36.2,36.4,37.1,37.5,37.5,37.4,36.9,36.4,37.3,37,37.8,36.5,37.5,36.7,37,37.3,36.6,36.5,36.6,37.6,36.8],[null,"09:36","16:48","11:22","12:60","14:13","14:33","09:25","11:16","10:55","16:03","11:14","12:42","11:06","09:10","08:45",null,"15:41","13:34","18:58","12:43","16:33","14:29","07:18","08:11","16:32","16:17","07:32","17:45",null,"13:24","14:43","02:33","11:36","17:28","16:27",null,"20:49",null,"11:38","14:25","13:42","21:22","13:33","19:06","17:14","20:09",null,"10:23","09:09"],[117.1875,71.8184429761563,16.0652496292635,22.4965706447188,71.4144019043841,41.6171224732461,62.0953890870657,0,16.8376536925366,22.7903289734443,53.4119897959184,24.2802636142907,22.4600343506408,54.320987654321,41.0578432556455,28.5664819944598,17.0320552013276,25.0412914912888,38.7172182043977,27.3876813705495,31.5555555555556,14.8069075945662,30.8839811199813,26.6193433895297,59.375,96.6183574879227,19.2394748755093,84.9403122130395,18.4199377406104,27.7722674072605,41.3223140495868,17.2080666586161,24.1671624033314,15.7218971089178,428.994082840237,27.9930220292912,243.261012491782,20.2395007589813,30.527446435638,25.15589569161,47,39.04,31.0661643201798,77.9683671196257,29.5165961238583,166.493236212279,100.308641975309,37.76,20.6037803457852,23.458562375267],[2,3,56,18,3,16,16,0,61,27,12,42,19,7,7,13,35,17,11,11,19,54,14,28,6,3,31,6,67,14,10,21,20,45,1,12,3,15,20,36,7,13,14,3,10,1,0,20,26,14]],"container":"<table class=\"white-space: nowrap\">\n  <thead>\n    <tr>\n      <th>case_id<\/th>\n      <th>generation<\/th>\n      <th>date_infection<\/th>\n      <th>date_onset<\/th>\n      <th>date_hospitalisation<\/th>\n      <th>date_outcome<\/th>\n      <th>outcome<\/th>\n      <th>gender<\/th>\n      <th>hospital<\/th>\n      <th>lon<\/th>\n      <th>lat<\/th>\n      <th>infector<\/th>\n      <th>source<\/th>\n      <th>age<\/th>\n      <th>age_unit<\/th>\n      <th>wt_kg<\/th>\n      <th>ht_cm<\/th>\n      <th>ct_blood<\/th>\n      <th>fever<\/th>\n      <th>chills<\/th>\n      <th>cough<\/th>\n      <th>aches<\/th>\n      <th>vomit<\/th>\n      <th>temp<\/th>\n      <th>time_admission<\/th>\n      <th>bmi<\/th>\n      <th>age_years<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"pageLength":5,"scrollX":true,"columnDefs":[{"className":"dt-right","targets":[1,9,10,13,15,16,17,23,25,26]}],"order":[],"autoWidth":false,"orderClasses":false,"orderCellsTop":true,"lengthMenu":[5,10,25,50,100]},"selection":{"mode":"multiple","selected":null,"target":"row","selectable":null}},"evals":[],"jsHooks":[]}</script><p>Notez que les noms de vos colonnes dans le dictionnaire de nettoyage doivent correspondre aux noms <em>à ce stade</em> dans votre script de nettoyage. Voir cette <a href="https://www.repidemicsconsortium.org/linelist/reference/clean_data.html">référence en ligne pour le package linelist</a> pour plus de détails.</p>
+<div class="datatables html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-b25f4b0560ec4824793f" style="width:100%;height:auto;"></div>
+<script type="application/json" data-for="htmlwidget-b25f4b0560ec4824793f">{"x":{"filter":"top","vertical":false,"filterHTML":"<tr>\n  <td data-type=\"character\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"number\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n    <div style=\"display: none;position: absolute;width: 200px;opacity: 1\">\n      <div data-min=\"2\" data-max=\"13\"><\/div>\n      <span style=\"float: left;\"><\/span>\n      <span style=\"float: right;\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"date\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n    <div style=\"display: none;position: absolute;width: 200px;opacity: 1\">\n      <div data-min=\"1399075200000\" data-max=\"1406419200000\"><\/div>\n      <span style=\"float: left;\"><\/span>\n      <span style=\"float: right;\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"date\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n    <div style=\"display: none;position: absolute;width: 200px;opacity: 1\">\n      <div data-min=\"1399939200000\" data-max=\"1407024000000\"><\/div>\n      <span style=\"float: left;\"><\/span>\n      <span style=\"float: right;\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"date\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n    <div style=\"display: none;position: absolute;width: 200px;opacity: 1\">\n      <div data-min=\"1400025600000\" data-max=\"1407110400000\"><\/div>\n      <span style=\"float: left;\"><\/span>\n      <span style=\"float: right;\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"date\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n    <div style=\"display: none;position: absolute;width: 200px;opacity: 1\">\n      <div data-min=\"1400371200000\" data-max=\"1410566400000\"><\/div>\n      <span style=\"float: left;\"><\/span>\n      <span style=\"float: right;\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"character\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"character\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"character\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"number\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n    <div style=\"display: none;position: absolute;width: 200px;opacity: 1\">\n      <div data-min=\"-13.2697246824573\" data-max=\"-13.209391925612\" data-scale=\"13\"><\/div>\n      <span style=\"float: left;\"><\/span>\n      <span style=\"float: right;\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"number\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n    <div style=\"display: none;position: absolute;width: 200px;opacity: 1\">\n      <div data-min=\"8.45171855856465\" data-max=\"8.48802917129884\" data-scale=\"14\"><\/div>\n      <span style=\"float: left;\"><\/span>\n      <span style=\"float: right;\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"character\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"character\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"number\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n    <div style=\"display: none;position: absolute;width: 200px;opacity: 1\">\n      <div data-min=\"0\" data-max=\"67\"><\/div>\n      <span style=\"float: left;\"><\/span>\n      <span style=\"float: right;\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"character\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\" disabled=\"\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"number\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n    <div style=\"display: none;position: absolute;width: 200px;opacity: 1\">\n      <div data-min=\"0\" data-max=\"100\"><\/div>\n      <span style=\"float: left;\"><\/span>\n      <span style=\"float: right;\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"number\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n    <div style=\"display: none;position: absolute;width: 200px;opacity: 1\">\n      <div data-min=\"11\" data-max=\"241\"><\/div>\n      <span style=\"float: left;\"><\/span>\n      <span style=\"float: right;\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"number\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n    <div style=\"display: none;position: absolute;width: 200px;opacity: 1\">\n      <div data-min=\"20\" data-max=\"24\"><\/div>\n      <span style=\"float: left;\"><\/span>\n      <span style=\"float: right;\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"character\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"character\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"character\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"character\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"character\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"number\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n    <div style=\"display: none;position: absolute;width: 200px;opacity: 1\">\n      <div data-min=\"35.9\" data-max=\"38\" data-scale=\"1\"><\/div>\n      <span style=\"float: left;\"><\/span>\n      <span style=\"float: right;\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"character\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"number\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n    <div style=\"display: none;position: absolute;width: 200px;opacity: 1\">\n      <div data-min=\"0\" data-max=\"428.994082840237\" data-scale=\"14\"><\/div>\n      <span style=\"float: left;\"><\/span>\n      <span style=\"float: right;\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"number\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n    <div style=\"display: none;position: absolute;width: 200px;opacity: 1\">\n      <div data-min=\"0\" data-max=\"67\"><\/div>\n      <span style=\"float: left;\"><\/span>\n      <span style=\"float: right;\"><\/span>\n    <\/div>\n  <\/td>\n<\/tr>","data":[["5fe599","8689b7","11f8ea","b8812a","893f25","be99c8","07e3e8","369449","f393b4","1389ca","2978ac","57a565","fc15ef","2eaa9a","bbfa93","c97dd9","f50e8a","3a7673","7f5a01","ddddee","99e8fa","567136","9371a9","bc2adf","403057","8bd1e8","f327be","42e1a9","90e5fe","959170","8ebf6e","e56412","6d788e","a47529","67be4e","da8ecb","148f18","2cb9a5","f5c142","70a9fe","3ad520","062638","c76676","baacc1","497372","23e499","38cc4a","3789ee","c71dcd","6b70f0"],[4,4,2,3,3,3,4,4,4,4,4,4,6,5,6,9,10,8,7,6,7,6,8,6,10,8,6,12,5,8,7,9,11,5,8,5,6,11,7,9,7,8,9,12,13,9,8,10,8,7],["2014-05-08",null,null,"2014-05-04","2014-05-18","2014-05-03","2014-05-22","2014-05-28",null,null,"2014-05-30","2014-05-28","2014-06-14","2014-06-07","2014-06-09",null,null,null,"2014-06-23","2014-06-18","2014-06-24",null,null,"2014-07-03",null,"2014-07-10","2014-06-14",null,"2014-06-18","2014-06-29","2014-07-02","2014-07-12","2014-07-12","2014-06-13","2014-07-15","2014-06-20",null,null,"2014-07-20",null,"2014-07-12","2014-07-19","2014-07-18","2014-07-18","2014-07-27",null,"2014-07-19","2014-07-26","2014-07-24",null],["2014-05-13","2014-05-13","2014-05-16","2014-05-18","2014-05-21","2014-05-22","2014-05-27","2014-06-02","2014-06-05","2014-06-05","2014-06-06","2014-06-13","2014-06-16","2014-06-17","2014-06-18","2014-06-19","2014-06-22","2014-06-23","2014-06-25","2014-06-26","2014-06-28","2014-07-02","2014-07-08","2014-07-09","2014-07-09","2014-07-10","2014-07-12","2014-07-12","2014-07-13","2014-07-13","2014-07-14","2014-07-15","2014-07-16","2014-07-17","2014-07-17","2014-07-18","2014-07-19","2014-07-22","2014-07-22","2014-07-24","2014-07-24","2014-07-25","2014-07-25","2014-07-27","2014-07-29","2014-07-30",null,"2014-08-01","2014-08-02","2014-08-03"],["2014-05-15","2014-05-14","2014-05-18","2014-05-20","2014-05-22","2014-05-23","2014-05-29","2014-06-03","2014-06-06","2014-06-07","2014-06-08","2014-06-15","2014-06-17","2014-06-17","2014-06-20","2014-06-19","2014-06-23","2014-06-24","2014-06-27","2014-06-28","2014-06-29","2014-07-03","2014-07-09","2014-07-09","2014-07-11","2014-07-11","2014-07-13","2014-07-14","2014-07-14","2014-07-13","2014-07-14","2014-07-17","2014-07-17","2014-07-18","2014-07-19","2014-07-20","2014-07-20","2014-07-22","2014-07-24","2014-07-26","2014-07-24","2014-07-27","2014-07-25","2014-07-27","2014-07-31","2014-08-01","2014-08-03","2014-08-02","2014-08-02","2014-08-04"],[null,"2014-05-18","2014-05-30",null,"2014-05-29","2014-05-24","2014-06-01","2014-06-07","2014-06-18","2014-06-09","2014-06-15",null,"2014-07-09",null,"2014-06-30","2014-07-11","2014-07-01","2014-06-25","2014-07-06","2014-07-02","2014-07-09","2014-07-07","2014-07-20",null,"2014-07-22","2014-07-16","2014-07-14","2014-07-20","2014-07-16","2014-07-19","2014-07-27","2014-07-19",null,"2014-07-26","2014-08-14","2014-08-01","2014-07-23","2014-08-28","2014-07-28","2014-07-19",null,"2014-08-03",null,null,null,"2014-08-06","2014-08-21","2014-09-13","2014-08-04",null],[null,"Recover","Recover",null,"Recover","Recover","Recover","Death","Recover","Death","Death","Death","Recover","Recover",null,"Recover",null,null,"Death","Death","Recover",null,null,null,"Death",null,"Death","Death",null,"Death","Recover","Death","Recover","Death","Recover",null,"Death","Recover","Recover","Death",null,null,"Death","Death","Death","Death","Recover",null,"Death","Death"],["M","F","M","F","M","F","F","F","M","F","M","M","M","F","F","M","F","F","F","F","M","M","F","M","F","M","M","F","M","F","F","F","M","M","F","M","F","F","F","M","F","M","F","M","M","F","M","F","M","M"],["Other",null,"St. Mark's Maternity Hospital (SMMH)","Port Hospital","Military Hospital","Port Hospital",null,null,null,null,"Port Hospital","Military Hospital",null,null,"Other","Port Hospital","Port Hospital","Port Hospital",null,"Other","Port Hospital","Port Hospital","St. Mark's Maternity Hospital (SMMH)",null,"Other",null,"St. Mark's Maternity Hospital (SMMH)","Military Hospital","Port Hospital","Central Hospital","Military Hospital","Central Hospital",null,"Military Hospital","Other",null,null,"Port Hospital","Port Hospital","Port Hospital",null,"Central Hospital","Military Hospital","Other","Other","Other",null,"St. Mark's Maternity Hospital (SMMH)","St. Mark's Maternity Hospital (SMMH)",null],[-13.2157351064963,-13.2152339775486,-13.212910703914,-13.2363711169728,-13.2228638912441,-13.222625321098,-13.2331547837254,-13.2320975453153,-13.2225511595637,-13.2572163655863,-13.2206286746001,-13.253989309478,-13.2385127873491,-13.209391925612,-13.2157278814899,-13.2243437095992,-13.2336087079551,-13.21422143145,-13.2339681355349,-13.2535640411465,-13.2250089377786,-13.2160657166043,-13.2680671272333,-13.2266742923612,-13.2160179088168,-13.2482584611565,-13.2156319199566,-13.2142410663192,-13.2614879104088,-13.2452992638476,-13.2630592726116,-13.2343341712241,-13.2199077448676,-13.2227293309912,-13.2343062806506,-13.218781651651,-13.2483677722899,-13.2097478342339,-13.2680867723786,-13.2587535457526,-13.262635786914,-13.2697246824573,-13.2209026809759,-13.2330734719715,-13.2680923666905,-13.2547212675054,-13.2573683214693,-13.2137356012883,-13.2175973322257,-13.2486407324245],[8.46897295100924,8.45171855856465,8.46481700596819,8.4754761613651,8.46082377490923,8.46183062600728,8.46272931462646,8.46144367534271,8.46191259217774,8.47292327643506,8.48401630165138,8.45837125340844,8.47761705512509,8.47570184950483,8.47779946878972,8.47145134147474,8.47804840685363,8.48528034195779,8.46957530395867,8.45957352078114,8.47404889511544,8.48802917129884,8.473437335922,8.48408263734462,8.46242233645879,8.47026822126572,8.46398447480533,8.4641347894342,8.45623094629607,8.48334624336805,8.47493999153642,8.47832062438022,8.4693933891765,8.48480589906514,8.47121232619015,8.48438437371817,8.48466158574339,8.47714159984428,8.46238127010609,8.45568597813113,8.4632880274758,8.47940722413856,8.46353857052336,8.46178968158864,8.47508713872833,8.45825808128071,8.4532568143863,8.4732571907655,8.47911586641933,8.48480340615605],["f547d6",null,null,"f90f5f","11f8ea","aec8ec","893f25","133ee7",null,null,"996f3a","133ee7","37a6f6","9f6884","4802b1",null,null,null,"a75c7f","8e104d","ab634e",null,null,"b799eb",null,"5d9e4d","a15e13",null,"ea3740","beb26e","567136","894024","36e2e7","a2086d","7baf73","eb2277",null,null,"d6584f",null,"312ecf","52ea64","cfd79c","d145b7","174288",null,"53608c","3b096b","f5c142",null],["other",null,null,"other","other","other","other","other",null,null,"other","other","other","other","other",null,null,null,"other","other","other",null,null,"other",null,"other","other",null,"other","funeral","other","funeral","other","other","other","funeral",null,null,"other",null,"other","other","other","other","other",null,"funeral","other","other",null],[2,3,56,18,3,16,16,0,61,27,12,42,19,7,7,13,35,17,11,11,19,54,14,28,6,3,31,6,67,14,10,21,20,45,1,12,3,15,20,36,7,13,14,3,10,1,0,20,26,14],["years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years"],[27,25,91,41,36,56,47,0,86,69,67,84,68,44,34,66,78,47,53,47,71,86,53,69,38,46,68,37,100,56,50,57,65,72,29,69,37,48,54,71,47,61,47,35,53,16,13,59,69,67],[48,59,238,135,71,116,87,11,226,174,112,186,174,90,91,152,214,137,117,131,150,241,131,161,80,69,188,66,233,142,110,182,164,214,26,157,39,154,133,168,100,125,123,67,134,31,36,125,183,169],[22,22,21,23,23,21,21,22,22,22,22,22,22,21,23,22,23,21,22,23,21,23,21,24,23,22,24,23,20,24,24,20,24,21,22,21,23,22,23,23,23,22,23,22,22,22,23,22,22,22],["0",null,null,"0","0","0",null,"0","0","0","0","0","0","0","0","0","0","0",null,"0","0","0","0","0",null,"0","0","0",null,null,"0","0",null,"0","0",null,null,"0","0",null,"0","0",null,"0","0","0","0","0","0",null],["0",null,null,"0","0","0",null,"0","0","0","0","0","0","0","0","0","1","0",null,"0","0","0","1","0",null,"0","0","1",null,null,"0","0",null,"0","0",null,null,"0","0",null,"0","0",null,"0","1","0","0","0","0",null],["1",null,null,"0","1","1",null,"1","1","1","1","1","1","1","1","1","1","1",null,"1","1","1","1","1",null,"1","1","1",null,null,"1","1",null,"1","1",null,null,"1","1",null,"1","1",null,"1","1","1","1","1","0",null],["0",null,null,"0","0","0",null,"0","0","0","0","0","0","0","0","1","0","0",null,"0","0","0","0","0",null,"0","0","0",null,null,"0","0",null,"0","0",null,null,"1","1",null,"0","0",null,"0","0","0","0","0","0",null],["1",null,null,"0","1","1",null,"1","1","0","1","0","0","0","1","0","0","0",null,"0","1","0","0","0",null,"0","0","0",null,null,"0","1",null,"1","1",null,null,"1","1",null,"1","1",null,"1","1","0","1","1","1",null],[36.8,36.9,36.9,36.8,36.9,37.6,37.3,37,36.4,35.9,36.5,36.9,36.5,37.1,36.5,37.3,37,38,38,36,37,36.7,36.9,36.5,37,36.5,37.6,36.6,36.6,36.2,36.4,37.1,37.5,37.5,37.4,36.9,36.4,37.3,37,37.8,36.5,37.5,36.7,37,37.3,36.6,36.5,36.6,37.6,36.8],[null,"09:36","16:48","11:22","12:60","14:13","14:33","09:25","11:16","10:55","16:03","11:14","12:42","11:06","09:10","08:45",null,"15:41","13:34","18:58","12:43","16:33","14:29","07:18","08:11","16:32","16:17","07:32","17:45",null,"13:24","14:43","02:33","11:36","17:28","16:27",null,"20:49",null,"11:38","14:25","13:42","21:22","13:33","19:06","17:14","20:09",null,"10:23","09:09"],[117.1875,71.8184429761563,16.0652496292635,22.4965706447188,71.4144019043841,41.6171224732461,62.0953890870657,0,16.8376536925366,22.7903289734443,53.4119897959184,24.2802636142907,22.4600343506408,54.320987654321,41.0578432556455,28.5664819944598,17.0320552013276,25.0412914912888,38.7172182043977,27.3876813705495,31.5555555555556,14.8069075945662,30.8839811199813,26.6193433895297,59.375,96.6183574879227,19.2394748755093,84.9403122130395,18.4199377406104,27.7722674072605,41.3223140495868,17.2080666586161,24.1671624033314,15.7218971089178,428.994082840237,27.9930220292912,243.261012491782,20.2395007589813,30.527446435638,25.15589569161,47,39.04,31.0661643201798,77.9683671196257,29.5165961238583,166.493236212279,100.308641975309,37.76,20.6037803457852,23.458562375267],[2,3,56,18,3,16,16,0,61,27,12,42,19,7,7,13,35,17,11,11,19,54,14,28,6,3,31,6,67,14,10,21,20,45,1,12,3,15,20,36,7,13,14,3,10,1,0,20,26,14]],"container":"<table class=\"white-space: nowrap\">\n  <thead>\n    <tr>\n      <th>case_id<\/th>\n      <th>generation<\/th>\n      <th>date_infection<\/th>\n      <th>date_onset<\/th>\n      <th>date_hospitalisation<\/th>\n      <th>date_outcome<\/th>\n      <th>outcome<\/th>\n      <th>gender<\/th>\n      <th>hospital<\/th>\n      <th>lon<\/th>\n      <th>lat<\/th>\n      <th>infector<\/th>\n      <th>source<\/th>\n      <th>age<\/th>\n      <th>age_unit<\/th>\n      <th>wt_kg<\/th>\n      <th>ht_cm<\/th>\n      <th>ct_blood<\/th>\n      <th>fever<\/th>\n      <th>chills<\/th>\n      <th>cough<\/th>\n      <th>aches<\/th>\n      <th>vomit<\/th>\n      <th>temp<\/th>\n      <th>time_admission<\/th>\n      <th>bmi<\/th>\n      <th>age_years<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"pageLength":5,"scrollX":true,"columnDefs":[{"className":"dt-right","targets":[1,9,10,13,15,16,17,23,25,26]}],"order":[],"autoWidth":false,"orderClasses":false,"orderCellsTop":true,"lengthMenu":[5,10,25,50,100]}},"evals":[],"jsHooks":[]}</script><p>Notez que les noms de vos colonnes dans le dictionnaire de nettoyage doivent correspondre aux noms <em>à ce stade</em> dans votre script de nettoyage. Voir cette <a href="https://www.repidemicsconsortium.org/linelist/reference/clean_data.html">référence en ligne pour le package linelist</a> pour plus de détails.</p>
 <div id="ajouter-à-la-chaine-de-commande-pipé-2" class="section level4 unnumbered">
 <h4>Ajouter à la chaine de commande pipé<a class="anchor" aria-label="anchor" href="#ajouter-%C3%A0-la-chaine-de-commande-pip%C3%A9-2"><i class="fas fa-link"></i></a>
 </h4>
@@ -2450,16 +1942,23 @@ Vous trouverez plus de détails dans la <a href="https://cran.r-project.org/web/
 <span>      <span class="va">age_cat</span>,</span>
 <span>      na_level <span class="op">=</span> <span class="st">"Missing age"</span><span class="op">)</span>  <span class="co"># you can specify the label</span></span>
 <span>    <span class="co"># on peut specifier les etiquettes</span></span>
-<span>  <span class="op">)</span>    </span>
-<span></span>
-<span><span class="co"># tableau pour voir les effectifs</span></span>
+<span>  <span class="op">)</span>    </span></code></pre></div>
+<pre><code>## Warning: There was 1 warning in `mutate()`.
+## ℹ In argument: `age_cat = fct_explicit_na(age_cat, na_level = "Missing age")`.
+## Caused by warning:
+## ! `fct_explicit_na()` was deprecated in forcats 1.0.0.
+## ℹ Please use `fct_na_value_to_level()` instead.</code></pre>
+<div class="sourceCode" id="cb274"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># tableau pour voir les effectifs</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/table.html">table</a></span><span class="op">(</span><span class="va">linelist</span><span class="op">$</span><span class="va">age_cat</span>, useNA <span class="op">=</span> <span class="st">"always"</span><span class="op">)</span></span></code></pre></div>
 <pre><code>## 
-##         0-4         5-9       10-14       15-19       20-29       30-49       50-69      70-100 Missing age        &lt;NA&gt; 
-##        1227        1223        1048         827        1216         848         105           7         107           0</code></pre>
+##         0-4         5-9       10-14       15-19       20-29       30-49       50-69      70-100 
+##        1227        1223        1048         827        1216         848         105           7 
+## Missing age        &lt;NA&gt; 
+##         107           0</code></pre>
 <p><strong>Créer des seuils de rupture et des étiquettes</strong></p>
 <p>Pour une manière rapide de faire des pauses et de labelliser des vecteurs, utilisez quelque chose comme ci-dessous. Voir la page <a href="rbasics.html#rbasics">Bases de R</a> pour les références sur <code><a href="https://rdrr.io/r/base/seq.html">seq()</a></code> et <code><a href="https://rdrr.io/r/base/rep.html">rep()</a></code>.</p>
-<div class="sourceCode" id="cb274"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb276"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Make break points from 0 to 90 by 5</span></span>
 <span><span class="co"># Crée un vecteur allant de 0 à 90 avec des pas de 5</span></span>
 <span><span class="va">age_seq</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op">(</span>from <span class="op">=</span> <span class="fl">0</span>, to <span class="op">=</span> <span class="fl">90</span>, by <span class="op">=</span> <span class="fl">5</span><span class="op">)</span></span>
@@ -2486,7 +1985,7 @@ Vous trouverez plus de détails dans la <a href="https://cran.r-project.org/web/
 </li>
 <li>Définissez <code>names = FALSE</code> pour obtenir un tableau numérique sans nom.</li>
 </ul>
-<div class="sourceCode" id="cb275"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb277"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/quantile.html">quantile</a></span><span class="op">(</span><span class="va">linelist</span><span class="op">$</span><span class="va">age_years</span>,              <span class="co">#specifier le vecteur numerique sur lequel on travaille</span></span>
 <span>         </span>
 <span>  probs <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">.25</span>, <span class="fl">.50</span>, <span class="fl">.75</span>, <span class="fl">.90</span>, <span class="fl">.95</span><span class="op">)</span>,  <span class="co">#specifier les centiles qui vous interesse</span></span>
@@ -2494,7 +1993,7 @@ Vous trouverez plus de détails dans la <a href="https://cran.r-project.org/web/
 <pre><code>##  0% 25% 50% 75% 90% 95% 
 ##   0   6  13  23  33  41</code></pre>
 <p>Vous pouvez utiliser les résultats de <code><a href="https://rdrr.io/r/stats/quantile.html">quantile()</a></code> comme points de rupture dans <code>age_categories()</code> ou <code><a href="https://rdrr.io/r/base/cut.html">cut()</a></code>. Ci-dessous, nous créons une nouvelle colonne <code>déciles</code> en utilisant <code><a href="https://rdrr.io/r/base/cut.html">cut()</a></code> où les ruptures sont définies en utilisant <code>quantiles()</code> sur <code>age_years</code>. Ci-dessous, nous affichons les résultats en utilisant <code>tabyl()</code> de <strong>janitor</strong> pour que vous puissiez voir les pourcentages (voir la page <a href="descriptive_tables.html#descriptive_tables">Tableaux descriptifs</a>). Notez comment ils ne sont pas exactement 10% dans chaque groupe.</p>
-<div class="sourceCode" id="cb277"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb279"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">linelist</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>                              <span class="co">#commencer avec la donnéé linelist</span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>deciles <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/cut.html">cut</a></span><span class="op">(</span><span class="va">age_years</span>,           <span class="co"># creer un nouveau colonne decile qui represente des classes issues de l'application de cut() sur age_years </span></span>
 <span>    breaks <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/quantile.html">quantile</a></span><span class="op">(</span>                      <span class="co">#definir les seuils  de la fonction cut en utilisant quantile()</span></span>
@@ -2520,7 +2019,7 @@ Vous trouverez plus de détails dans la <a href="https://cran.r-project.org/web/
 <h3>Groupes de taille égale<a class="anchor" aria-label="anchor" href="#groupes-de-taille-%C3%A9gale"><i class="fas fa-link"></i></a>
 </h3>
 <p>Un autre outil pour créer des groupes numériques est la fonction <strong>dplyr</strong> <code><a href="https://dplyr.tidyverse.org/reference/ntile.html">ntile()</a></code>, qui tente de diviser vos données en n <em>groupes de taille égale</em> - <em>mais sachez que contrairement à <code><a href="https://rdrr.io/r/stats/quantile.html">quantile()</a></code>, la même valeur peut apparaître dans plus d’un groupe.</em> Fournissez le tableau numérique et ensuite le nombre de groupes. Les valeurs dans la nouvelle colonne créée sont juste des “numéros” de groupe (par exemple 1 à 10), et non la plage de valeurs elle-même comme lors de l’utilisation de <code><a href="https://rdrr.io/r/base/cut.html">cut()</a></code>.</p>
-<div class="sourceCode" id="cb279"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb281"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># créer des classes avec ntile()</span></span>
 <span><span class="va">ntile_data</span> <span class="op">&lt;-</span> <span class="va">linelist</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>even_groups <span class="op">=</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/ntile.html">ntile</a></span><span class="op">(</span><span class="va">age_years</span>, <span class="fl">10</span><span class="op">)</span><span class="op">)</span></span>
@@ -2544,7 +2043,7 @@ Vous trouverez plus de détails dans la <a href="https://cran.r-project.org/web/
 ## Caused by warning in `min()`:
 ## ! no non-missing arguments to min; returning Inf
 ## ℹ Run `dplyr::last_dplyr_warnings()` to see the 1 remaining warning.</code></pre>
-<div class="sourceCode" id="cb281"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb283"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># combine and print - note that values are present in multiple groups</span></span>
 <span><span class="co">#</span></span>
 <span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html">left_join</a></span><span class="op">(</span><span class="va">ntile_table</span>, <span class="va">ntile_ranges</span>, by <span class="op">=</span> <span class="st">"even_groups"</span><span class="op">)</span></span></code></pre></div>
@@ -2573,7 +2072,7 @@ Vous trouverez plus de détails dans la <a href="https://cran.r-project.org/web/
 <h3>Ajouter à la chaine de commande pipé<a class="anchor" aria-label="anchor" href="#ajouter-%C3%A0-la-chaine-de-commande-pip%C3%A9-3"><i class="fas fa-link"></i></a>
 </h3>
 <p>Ci-dessous, le code pour créer deux colonnes d’âge catégorique est ajouté à la chaîne de nettoyage :</p>
-<div class="sourceCode" id="cb283"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb285"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># NETTOYAGE: enchainement de commandes  'PIPE'  (debute avec la donnée brute  et suivi de  pipe avec les commandes pour le nettoyage)</span></span>
 <span><span class="co">##################################################################################</span></span>
 <span></span>
@@ -2646,7 +2145,7 @@ Vous trouverez plus de détails dans la <a href="https://cran.r-project.org/web/
 <h3>une à une<a class="anchor" aria-label="anchor" href="#une-%C3%A0-une"><i class="fas fa-link"></i></a>
 </h3>
 <p>Ajouter des lignes une par une manuellement est fastidieux mais peut être fait avec <code><a href="https://tibble.tidyverse.org/reference/add_row.html">add_row()</a></code> de <strong>dplyr</strong>. Rappelez-vous que chaque colonne doit contenir des valeurs d’une seule classe (soit caractère, numérique, logique, etc.). Ainsi, l’ajout d’une ligne nécessite de la nuance pour maintenir cela.</p>
-<div class="sourceCode" id="cb284"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb286"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">linelist</span> <span class="op">&lt;-</span> <span class="va">linelist</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
 <span>  <span class="fu"><a href="https://tibble.tidyverse.org/reference/add_row.html">add_row</a></span><span class="op">(</span>row_num <span class="op">=</span> <span class="fl">666</span>,</span>
 <span>          case_id <span class="op">=</span> <span class="st">"abc"</span>,</span>
@@ -2681,7 +2180,7 @@ Vous trouverez plus de détails dans la <a href="https://cran.r-project.org/web/
 <p>Cet exemple simple redéfinit le dataframe <code>linelist</code> comme lui-même, après avoir filtré les lignes pour répondre à une condition logique. **Seules les lignes où l’énoncé logique entre parenthèses est évalué à “VRAI” sont conservées.</p>
 <p>Dans cet exemple, l’instruction logique est <code>gender == "f"</code>, qui demande si la valeur de la colonne <code>gender</code> est égale à “f” (sensible à la casse).</p>
 <p>Avant que le filtre ne soit appliqué, le nombre de lignes dans <code>linelist</code> est <code>nrow(linelist)</code>.</p>
-<div class="sourceCode" id="cb286"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb288"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">linelist</span> <span class="op">&lt;-</span> <span class="va">linelist</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">gender</span> <span class="op">==</span> <span class="st">"f"</span><span class="op">)</span>   <span class="co"># garder unique les lignes ou le est egale à "f"</span></span></code></pre></div>
 <p>Une fois le filtre appliqué, le nombre de lignes dans <code>linelist</code> est <code>linelist %&gt;% filter(gender == "f") %&gt;% nrow()</code>.</p>
@@ -2690,7 +2189,7 @@ Vous trouverez plus de détails dans la <a href="https://cran.r-project.org/web/
 <h3>Filtrer les valeurs manquantes<a class="anchor" aria-label="anchor" href="#filtrer-les-valeurs-manquantes"><i class="fas fa-link"></i></a>
 </h3>
 <p>Il est assez courant de vouloir filtrer les lignes qui ont des valeurs manquantes. Résistez à l’envie d’écrire <code>filter(!is.na(column) &amp; !is.na(column))</code> et utilisez plutôt la fonction <strong>tidyr</strong> qui est spécialement conçue à cet effet : <code><a href="https://tidyr.tidyverse.org/reference/drop_na.html">drop_na()</a></code>. Si elle est exécutée avec des parenthèses vides, elle supprime les lignes avec <em>toutes</em> les valeurs manquantes. Alternativement, vous pouvez fournir des noms de colonnes spécifiques à évaluer pour les valeurs manquantes, ou utiliser les fonctions d’aide “tidyselect” décrites <a href="cleaning_data.html#clean_tidyselect">ci-dessus</a>.</p>
-<div class="sourceCode" id="cb287"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb289"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">linelist</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
 <span>  <span class="fu"><a href="https://tidyr.tidyverse.org/reference/drop_na.html">drop_na</a></span><span class="op">(</span><span class="va">case_id</span>, <span class="va">age_years</span><span class="op">)</span>  <span class="co"># enlever les lignes avec des valeurs manquantes pour les colonnes case_id ou age_years</span></span></code></pre></div>
 <p>Voir la page sur les <a href="missing_data.html#missing_data">Données manquantes</a> pour de nombreuses techniques d’analyse et de gestion des données manquantes dans vos données.</p>
@@ -2700,7 +2199,7 @@ Vous trouverez plus de détails dans la <a href="https://cran.r-project.org/web/
 </h3>
 <p>Dans un cadre de données ou un tibble, chaque ligne aura généralement un “numéro de ligne” qui (vu dans R Viewer) apparaît à gauche de la première colonne. Ce n’est pas en soi une vraie colonne dans les données, mais il peut être utilisé dans une instruction <code><a href="https://dplyr.tidyverse.org/reference/filter.html">filter()</a></code>.</p>
 <p>Pour filtrer sur la base du “numéro de ligne”, vous pouvez utiliser la fonction <strong>dplyr</strong> <code><a href="https://dplyr.tidyverse.org/reference/row_number.html">row_number()</a></code> avec des parenthèses ouvertes dans le cadre d’une instruction de filtrage logique. Souvent, vous utiliserez l’opérateur <code>%in%</code> et une plage de nombres dans le cadre de cette instruction logique, comme indiqué ci-dessous. Pour voir les <em>premières</em> N lignes, vous pouvez également utiliser la fonction spéciale <strong>dplyr</strong> <code><a href="https://rdrr.io/r/utils/head.html">head()</a></code>.</p>
-<div class="sourceCode" id="cb288"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb290"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># montrer les 100 premiere lignes</span></span>
 <span><span class="va">linelist</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="fl">100</span><span class="op">)</span>     <span class="co"># ou utiliser tail() pour voir les n derniers lignes </span></span>
 <span></span>
@@ -2721,7 +2220,7 @@ Vous trouverez plus de détails dans la <a href="https://cran.r-project.org/web/
 <h4>Examiner la donnée<a class="anchor" aria-label="anchor" href="#examiner-la-donn%C3%A9e"><i class="fas fa-link"></i></a>
 </h4>
 <p>Vous trouverez ci-dessous une commande simple en une ligne pour créer un histogramme des dates d’apparition. Notez qu’une deuxième épidémie plus petite, datant de 2012-2013, est également incluse dans cet ensemble de données brutes. **Pour nos analyses, nous voulons supprimer les entrées de cette épidémie antérieure.</p>
-<div class="sourceCode" id="cb289"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb291"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/hist.html">hist</a></span><span class="op">(</span><span class="va">linelist</span><span class="op">$</span><span class="va">date_onset</span>, breaks <span class="op">=</span> <span class="fl">50</span><span class="op">)</span></span></code></pre></div>
 <div class="inline-figure"><img src="_main_files/figure-html/unnamed-chunk-227-1.png" width="50%"></div>
 </div>
@@ -2736,7 +2235,7 @@ Vous trouverez plus de détails dans la <a href="https://cran.r-project.org/web/
 <h4>Concevoir le filtre<a class="anchor" aria-label="anchor" href="#concevoir-le-filtre"><i class="fas fa-link"></i></a>
 </h4>
 <p>Examinez un tableau croisé pour vous assurer que nous excluons uniquement les bonnes lignes :</p>
-<div class="sourceCode" id="cb290"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb292"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/table.html">table</a></span><span class="op">(</span>Hospital  <span class="op">=</span> <span class="va">linelist</span><span class="op">$</span><span class="va">hospital</span>,                     <span class="co"># nom d'hopital</span></span>
 <span>      YearOnset <span class="op">=</span> <span class="fu">lubridate</span><span class="fu">::</span><span class="fu"><a href="https://lubridate.tidyverse.org/reference/year.html">year</a></span><span class="op">(</span><span class="va">linelist</span><span class="op">$</span><span class="va">date_onset</span><span class="op">)</span>,  <span class="co"># annee des dates d'apparition </span></span>
 <span>      useNA     <span class="op">=</span> <span class="st">"always"</span><span class="op">)</span>                              <span class="co"># montrer les valeurs manquantes</span></span></code></pre></div>
@@ -2769,7 +2268,7 @@ Vous trouverez plus de détails dans la <a href="https://cran.r-project.org/web/
 </li>
 </ul>
 <p>Nous commençons avec une linelist de `<code>nrow(linelist)</code>. Voici notre déclaration de filtre :</p>
-<div class="sourceCode" id="cb292"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb294"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">linelist</span> <span class="op">&lt;-</span> <span class="va">linelist</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
 <span>  </span>
 <span> <span class="co"># conserver les lignes où le début de la maladie est postérieur 1 June 2013 OU où le début de la maladie n'a pas de valeur renseignée et où il s'agissait d'un hôpital AUTRE que l'hôpital A ou B.</span></span>
@@ -2778,7 +2277,7 @@ Vous trouverez plus de détails dans la <a href="https://cran.r-project.org/web/
 <span><span class="fu"><a href="https://rdrr.io/r/base/nrow.html">nrow</a></span><span class="op">(</span><span class="va">linelist</span><span class="op">)</span></span></code></pre></div>
 <pre><code>## [1] 6019</code></pre>
 <p>Lorsque nous refaisons le tableau croisé, nous constatons que les hôpitaux A et B sont complètement retirés, ainsi que les 10 cas de l’hôpital du Port de 2012 et 2013, et que toutes les autres valeurs sont les mêmes - exactement comme nous le voulions.</p>
-<div class="sourceCode" id="cb294"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb296"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/table.html">table</a></span><span class="op">(</span>Hospital  <span class="op">=</span> <span class="va">linelist</span><span class="op">$</span><span class="va">hospital</span>,                     <span class="co"># nom de l'hopital</span></span>
 <span>      YearOnset <span class="op">=</span> <span class="fu">lubridate</span><span class="fu">::</span><span class="fu"><a href="https://lubridate.tidyverse.org/reference/year.html">year</a></span><span class="op">(</span><span class="va">linelist</span><span class="op">$</span><span class="va">date_onset</span><span class="op">)</span>,   <span class="co"># année d'apparition de la maladie</span></span>
 <span>      useNA     <span class="op">=</span> <span class="st">"always"</span><span class="op">)</span>                              <span class="co"># montrer les valeurs manquantes</span></span></code></pre></div>
@@ -2799,12 +2298,12 @@ Vous trouverez plus de détails dans la <a href="https://cran.r-project.org/web/
 <h3>Autres complements<a class="anchor" aria-label="anchor" href="#autres-complements"><i class="fas fa-link"></i></a>
 </h3>
 <p>Le filtrage peut également être effectué comme une commande autonome (ne faisant pas partie d’une chaîne de tuyaux). Comme les autres verbes <strong>dplyr</strong>, dans ce cas, le premier argument doit être le jeu de données lui-même.</p>
-<div class="sourceCode" id="cb296"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb298"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># dataframe &lt;- filter(dataframe, condition(s)pour les lignes à garder)</span></span>
 <span></span>
 <span><span class="va">linelist</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">linelist</span>, <span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html">is.na</a></span><span class="op">(</span><span class="va">case_id</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <p>Vous pouvez également utiliser <strong>base</strong> R pour effectuer un sous-ensemble en utilisant des crochets qui reflètent les [lignes, colonnes] que vous souhaitez conserver.</p>
-<div class="sourceCode" id="cb297"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb299"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># dataframe &lt;- dataframe[lignes conditions, colonnes conditions] (vide signifie garder tous les colonnes ou lignes)</span></span>
 <span></span>
 <span><span class="va">linelist</span> <span class="op">&lt;-</span> <span class="va">linelist</span><span class="op">[</span><span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html">is.na</a></span><span class="op">(</span><span class="va">case_id</span><span class="op">)</span>, <span class="op">]</span></span></code></pre></div>
@@ -2814,22 +2313,22 @@ Vous trouverez plus de détails dans la <a href="https://cran.r-project.org/web/
 </h3>
 <p>Souvent, vous voulez examiner rapidement quelques enregistrements, pour seulement quelques colonnes. La fonction R <strong>base</strong> <code><a href="https://rdrr.io/r/utils/View.html">View()</a></code> imprimera un cadre de données pour le visualiser dans votre RStudio.</p>
 <p>Visualisez la liste des lignes dans RStudio :</p>
-<div class="sourceCode" id="cb298"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb300"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/View.html">View</a></span><span class="op">(</span><span class="va">linelist</span><span class="op">)</span></span></code></pre></div>
 <p>Voici deux exemples d’affichage de cellules spécifiques (lignes spécifiques et colonnes spécifiques) :</p>
 <p><strong>Avec les fonctions dplyr <code><a href="https://dplyr.tidyverse.org/reference/filter.html">filter()</a></code> et <code><a href="https://dplyr.tidyverse.org/reference/select.html">select()</a></code>:</strong></p>
 <p>Dans <code><a href="https://rdrr.io/r/utils/View.html">View()</a></code>, passez le jeu de données dans <code><a href="https://dplyr.tidyverse.org/reference/filter.html">filter()</a></code> pour conserver certaines lignes, puis dans <code><a href="https://dplyr.tidyverse.org/reference/select.html">select()</a></code> pour conserver certaines colonnes. Par exemple, pour examiner les dates de début et d’hospitalisation de 3 cas spécifiques :</p>
-<div class="sourceCode" id="cb299"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb301"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/View.html">View</a></span><span class="op">(</span><span class="va">linelist</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>       <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">case_id</span> <span class="op"><a href="https://rdrr.io/r/base/match.html">%in%</a></span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"11f8ea"</span>, <span class="st">"76b97a"</span>, <span class="st">"47a5f5"</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>       <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">date_onset</span>, <span class="va">date_hospitalisation</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <p>Vous pouvez faire la même chose avec la syntaxe <strong>base</strong> de R, en utilisant les crochets `[ ]`` pour le sous-ensemble que vous voulez voir.</p>
-<div class="sourceCode" id="cb300"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb302"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/View.html">View</a></span><span class="op">(</span><span class="va">linelist</span><span class="op">[</span><span class="va">linelist</span><span class="op">$</span><span class="va">case_id</span> <span class="op"><a href="https://rdrr.io/r/base/match.html">%in%</a></span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"11f8ea"</span>, <span class="st">"76b97a"</span>, <span class="st">"47a5f5"</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"date_onset"</span>, <span class="st">"date_hospitalisation"</span><span class="op">)</span><span class="op">]</span><span class="op">)</span></span></code></pre></div>
 <div id="ajouter-à-la-chaine-de-commande-pipé-to-pipé" class="section level4 unnumbered">
 <h4>Ajouter à la chaine de commande pipé to pipé<a class="anchor" aria-label="anchor" href="#ajouter-%C3%A0-la-chaine-de-commande-pip%C3%A9-to-pip%C3%A9"><i class="fas fa-link"></i></a>
 </h4>
-<div class="sourceCode" id="cb301"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb303"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># NETTOYAGE: enchainement de commandes  'PIPE'  (debute avec la donnée brute  et le  pipes avec les commandes pour le nettoyage)</span></span>
 <span><span class="co">##################################################################################</span></span>
 <span></span>
@@ -2910,7 +2409,7 @@ Vous trouverez plus de détails dans la <a href="https://cran.r-project.org/web/
 </h2>
 <p>Si vous voulez effectuer un calcul dans une ligne, vous pouvez utiliser <code><a href="https://dplyr.tidyverse.org/reference/rowwise.html">rowwise()</a></code> de <strong>dplyr</strong>. Voir cette vignette en ligne sur <a href="https://cran.r-project.org/web/packages/dplyr/vignettes/rowwise.html">calculs par ligne</a>.<br>
 Par exemple, ce code applique <code><a href="https://dplyr.tidyverse.org/reference/rowwise.html">rowwise()</a></code> et crée une nouvelle colonne qui additionne le nombre de colonnes de symptômes spécifiées qui ont la valeur “yes”, pour chaque ligne de la linelist. Les colonnes sont spécifiées dans <code><a href="https://rdrr.io/r/base/sum.html">sum()</a></code> par leur nom dans un vecteur <code><a href="https://rdrr.io/r/base/c.html">c()</a></code>. <code><a href="https://dplyr.tidyverse.org/reference/rowwise.html">rowwise()</a></code> est essentiellement un type spécial de <code><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by()</a></code>, il est donc préférable d’utiliser <code><a href="https://dplyr.tidyverse.org/reference/group_by.html">ungroup()</a></code> lorsque vous avez terminé (page sur <a href="grouping_data.html#grouping_data">Travailler sur des données groupées</a>).</p>
-<div class="sourceCode" id="cb302"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb304"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">linelist</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/rowwise.html">rowwise</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>num_symptoms <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="va">fever</span>, <span class="va">chills</span>, <span class="va">cough</span>, <span class="va">aches</span>, <span class="va">vomit</span><span class="op">)</span> <span class="op">==</span> <span class="st">"yes"</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
@@ -2940,7 +2439,7 @@ Par exemple, ce code applique <code><a href="https://dplyr.tidyverse.org/referen
 <li>
 <code><a href="https://dplyr.tidyverse.org/reference/group_by.html">ungroup()</a></code> pour supprimer les effets de <code><a href="https://dplyr.tidyverse.org/reference/rowwise.html">rowwise()</a></code> pour les étapes suivantes.</li>
 </ul>
-<div class="sourceCode" id="cb304"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb306"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">linelist</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/rowwise.html">rowwise</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>num_NA_dates <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html">is.na</a></span><span class="op">(</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/c_across.html">c_across</a></span><span class="op">(</span><span class="fu"><a href="https://tidyselect.r-lib.org/reference/starts_with.html">contains</a></span><span class="op">(</span><span class="st">"date"</span><span class="op">)</span><span class="op">)</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
@@ -2961,7 +2460,7 @@ Par exemple, ce code applique <code><a href="https://dplyr.tidyverse.org/referen
 ## 10            1 NA             2014-06-05 2014-06-07           2014-06-09  
 ## # ℹ 5,878 more rows</code></pre>
 <p>Vous pouvez également fournir d’autres fonctions, telles que <code><a href="https://rdrr.io/r/base/Extremes.html">max()</a></code> pour obtenir la dernière ou la plus récente date pour chaque ligne :</p>
-<div class="sourceCode" id="cb306"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb308"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">linelist</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/rowwise.html">rowwise</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>latest_date <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Extremes.html">max</a></span><span class="op">(</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/c_across.html">c_across</a></span><span class="op">(</span><span class="fu"><a href="https://tidyselect.r-lib.org/reference/starts_with.html">contains</a></span><span class="op">(</span><span class="st">"date"</span><span class="op">)</span><span class="op">)</span>, na.rm<span class="op">=</span><span class="cn">T</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
@@ -2991,7 +2490,7 @@ Par exemple, ce code applique <code><a href="https://dplyr.tidyverse.org/referen
 <p>Par défaut, les colonnes seront triées dans l’ordre “ascendant” (ce qui s’applique aux colonnes numériques et aussi aux colonnes de caractères). Vous pouvez trier une variable dans l’ordre “descendant” en l’entourant de <code><a href="https://dplyr.tidyverse.org/reference/desc.html">desc()</a></code>.</p>
 <p>Le tri des données avec <code><a href="https://dplyr.tidyverse.org/reference/arrange.html">arrange()</a></code> est particulièrement utile lorsque vous créez des <a href="tables_presentation.html#tables_presentation">Tableaux de présentation</a>, lorsque vous utilisez <code><a href="https://dplyr.tidyverse.org/reference/slice.html">slice()</a></code> pour prendre les lignes “supérieures” par groupe, ou lorsque vous définissez l’ordre des niveaux de facteurs par ordre d’apparition.</p>
 <p>Par exemple, pour trier les lignes de notre linelist par <code>hospital</code>, puis par <code>date_onset</code> en ordre décroissant, nous utiliserons :</p>
-<div class="sourceCode" id="cb308"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb310"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">linelist</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
 <span>   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/arrange.html">arrange</a></span><span class="op">(</span><span class="va">hospital</span>, <span class="fu"><a href="https://dplyr.tidyverse.org/reference/desc.html">desc</a></span><span class="op">(</span><span class="va">date_onset</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 
@@ -3101,7 +2600,7 @@ Par exemple, ce code applique <code><a href="https://dplyr.tidyverse.org/referen
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Le Epi R Handbook</strong>" was written by the handbook team. It was last built on 2023-05-24.</p>
+    <p>"<strong>Le Epi R Handbook</strong>" was written by the handbook team. It was last built on 2023-05-25.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

@@ -54,7 +54,7 @@ knitr::include_graphics(here::here("images", "Epi R Handbook Banner French 1500 
 
 **Utilisation** : Ce manuel a été utilisé **plus d'un million de fois par 400 000 personnes** dans le monde entier.
 
-**Objectif:** Servir de manuel de référence rapide du code R (en ligne et **[Télécharger le manuel et les données](#download_book_data)**) avec des exemples centrés sur la tâche qui traitent des problèmes épidémiologiques courants.  
+**Objectif:** Servir de manuel de référence rapide du code R (en ligne et **[hors line](#download_book_data)**) avec des exemples centrés sur la tâche qui traitent des problèmes épidémiologiques courants.  
 
 **Essayez nos [tutoriels interactifs gratuits](https://www.appliedepi.org/tutorial/)** ou notre **[cours d'introduction](https://www.appliedepi.org/live/)** synchrone et virtuel utilisé par les CDC américains, l'OMS et plus de 130 autres agences de santé et programmes de formation à l'épidémiologie sur le terrain dans le monde entier.  
 
@@ -131,7 +131,7 @@ Ce guide n'est **pas** un produit approuvé par une organisation spécifique. Bi
 
 **Illustrations**: Calder Fong  
 
-**Traduction**: Aminata Ndiaye, Anais Legrand, Marie-Amelie Degail-Chabrat, Yves Amevoin, Laura Downham, Lise Grout, Margot Charette, Mathilde Mousset, Noe Guincko, Mor Ndiaye, Elysée Junior, Nerisson Joseph, Bryan Tegomoh, Marcel Woung, Olivia Boyd, Amy Mikhail, Lucie Fournier, Paul-Evans Ehouman, Kelly McCain
+**Traduction**: Aminata Ndiaye, Olivia Boyd, Anais Legrand, Marie-Amelie Degail-Chabrat, Yves Amevoin, Laura Downham, Lise Grout, Margot Charette, Mathilde Mousset, Noe Guincko, Mor Ndiaye, Elysée Junior, Nerisson Joseph, Bryan Tegomoh, Marcel Woung, Amy Mikhail, Lucie Fournier, Paul-Evans Ehouman, Kelly McCain
 
 <!-- **Editor-in-Chief:** Neale Batra  -->
 

@@ -54,7 +54,7 @@ knitr::include_graphics(here::here("images", "Epi R Handbook Banner French 1500 
 
 **Utilisation** : Ce manuel a été utilisé **plus d'un million de fois par 400 000 personnes** dans le monde entier.
 
-**Objectif:** Servir de manuel de référence rapide du code R (en ligne et **[Télécharger le manuel et les données](#download_book_data)**) avec des exemples centrés sur la tâche qui traitent des problèmes épidémiologiques courants.  
+**Objectif:** Servir de manuel de référence rapide du code R (en ligne et **[hors line](#download_book_data)**) avec des exemples centrés sur la tâche qui traitent des problèmes épidémiologiques courants.  
 
 **Essayez nos [tutoriels interactifs gratuits](https://www.appliedepi.org/tutorial/)** ou notre **[cours d'introduction](https://www.appliedepi.org/live/)** synchrone et virtuel utilisé par les CDC américains, l'OMS et plus de 130 autres agences de santé et programmes de formation à l'épidémiologie sur le terrain dans le monde entier.  
 
@@ -131,7 +131,7 @@ Ce guide n'est **pas** un produit approuvé par une organisation spécifique. Bi
 
 **Illustrations**: Calder Fong  
 
-**Traduction**: Aminata Ndiaye, Anais Legrand, Marie-Amelie Degail-Chabrat, Yves Amevoin, Laura Downham, Lise Grout, Margot Charette, Mathilde Mousset, Noe Guincko, Mor Ndiaye, Elysée Junior, Nerisson Joseph, Bryan Tegomoh, Marcel Woung, Olivia Boyd, Amy Mikhail, Lucie Fournier, Paul-Evans Ehouman, Kelly McCain
+**Traduction**: Aminata Ndiaye, Olivia Boyd, Anais Legrand, Marie-Amelie Degail-Chabrat, Yves Amevoin, Laura Downham, Lise Grout, Margot Charette, Mathilde Mousset, Noe Guincko, Mor Ndiaye, Elysée Junior, Nerisson Joseph, Bryan Tegomoh, Marcel Woung, Amy Mikhail, Lucie Fournier, Paul-Evans Ehouman, Kelly McCain
 
 <!-- **Editor-in-Chief:** Neale Batra  -->
 
@@ -25987,7 +25987,7 @@ Pour produire une épicurve avec `ggplot()`, il y a trois éléments principaux 
 * Des thèmes pour l'apparence du graphique, y compris les titres, les étiquettes, les légendes, etc.
 
 
-### spécifier les cas en bacs {.unnumbered}  
+### Spécifier les cas en bacs {.unnumbered}  
 
 Nous montrons ici comment spécifier la façon dont les cas seront agrégés dans des cases d'histogramme ("barres"). Il est important de reconnaétre que l'agrégation des cas dans les cases de l'histogramme n'est **pas** nécessairement les mêmes intervalles que les dates qui apparaîtront sur l'axe des abscisses. 
 
@@ -26612,7 +26612,7 @@ ggplot(central_data) +
 
 
 
-### données agrégées {.unnumbered} 
+### Données agrégées {.unnumbered} 
 
 Souvent, au lieu d'une liste de lignes, vous commencez par des comptages agrégés d'établissements, de districts, etc. Vous pouvez faire une épicurve avec `ggplot()` mais le code sera légérement différent. Cette section va utiliser le jeu de données `count_data` qui a été importé plus tôt, dans la section de préparation des données. Ce jeu de données est la `linelist` agrégée au nombre de jours d'hospitalisation. Les 50 premiéres lignes sont affichôes ci-dessous.  
 
@@ -27171,20 +27171,21 @@ ggplot(central_data) +
   # histogram
   geom_histogram(
     mapping = aes(x = date_onset),
-    breaks = weekly_breaks_central,   # pre-defined date vector - see top of ggplot section
-    closed = "left",                  # count cases from start of breakpoint
+    breaks = weekly_breaks_central,   
+    closed = "left",                  
     color = "darkblue",
     fill = "lightblue") +
 
-  # y-axis scale as before 
+  # y-axis 
   scale_y_continuous(expand = c(0,0))+
   
-  # x-axis scale sets efficient date labels
+  # x-axis
   scale_x_date(
-    expand = c(0,0),                      # remove excess x-axis space below and after case bars
-    labels = scales::label_date_short())+ # auto efficient date labels
+    expand = c(0,0),                      
+    date_breaks = "1 month", 
+    labels = scales::label_date_short())+ # étiquettes de date efficaces
   
-  # labels and theme
+  # extra
   labs(
     title = "Using label_date_short()\nTo make automatic and efficient date labels",
     x = "Week of symptom onset",

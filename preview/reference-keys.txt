@@ -1,7 +1,9 @@
-epidemic_models
-overview
+epicurves
 préparation
-estimation-de-rt
-estimation-des-distributions-de-retard
-projection-de-lincidence
+epicurves-avec-ggplot2
+épidémie-totale-dans-larriére-plan-de-la-facette
+données-provisoires
+étiquettes-de-date-à-plusieurs-niveaux
+double-axe
+incidence-cumulée
 ressources

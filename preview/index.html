@@ -20,10 +20,10 @@
 <script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="libs/htmlwidgets-1.6.2/htmlwidgets.js"></script><link href="libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet">
 <script src="libs/datatables-binding-0.28/datatables.js"></script><link href="libs/dt-core-1.13.4/css/jquery.dataTables.min.css" rel="stylesheet">
 <link href="libs/dt-core-1.13.4/css/jquery.dataTables.extra.css" rel="stylesheet">
-<script src="libs/dt-core-1.13.4/js/jquery.dataTables.min.js"></script><link href="libs/nouislider-7.0.10/jquery.nouislider.min.css" rel="stylesheet">
+<script src="libs/dt-core-1.13.4/js/jquery.dataTables.min.js"></script><link href="libs/crosstalk-1.2.0/css/crosstalk.min.css" rel="stylesheet">
+<script src="libs/crosstalk-1.2.0/js/crosstalk.min.js"></script><link href="libs/nouislider-7.0.10/jquery.nouislider.min.css" rel="stylesheet">
 <script src="libs/nouislider-7.0.10/jquery.nouislider.min.js"></script><link href="libs/selectize-0.12.0/selectize.bootstrap3.css" rel="stylesheet">
-<script src="libs/selectize-0.12.0/selectize.min.js"></script><link href="libs/crosstalk-1.2.0/css/crosstalk.min.css" rel="stylesheet">
-<script src="libs/crosstalk-1.2.0/js/crosstalk.min.js"></script><!-- Global site tag (gtag.js) - Google Analytics --><script async src="https://www.googletagmanager.com/gtag/js?id=G-QXDW878QLX"></script><script>
+<script src="libs/selectize-0.12.0/selectize.min.js"></script><!-- Global site tag (gtag.js) - Google Analytics --><script async src="https://www.googletagmanager.com/gtag/js?id=G-QXDW878QLX"></script><script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
@@ -34,7 +34,7 @@
 <body>
 <div class="alert alert-info alert-dismissible">
       <a href="#" class="close" data-dismiss="alert" aria-label="close">×</a>
-      <strong>Tu as besoin d'aide pour apprendre R?</strong> Inscris-toi au <a href="https://www.appliedepi.org/live/" class="alert-link">cours d'introduction à R</a> d'Applied Epi, essaie nos <a href="https://www.appliedepi.org/tutorial/" class="alert-link">tutoriels R gratuits</a>, publie dans notre <a href="https://community.appliedepi.org/" class="alert-link">forum de questions et réponses</a>, ou demande notre <a href="mailto:contact@appliedepi.org" class="alert-link">assistance R</a>.
+      <strong>Besoin d'aide pour apprendre R ?</strong> Inscrivez-vous au <a href="https://www.appliedepi.org/live/" class="alert-link">cours d'introduction à R d'Applied Epi</a>, essayez nos <a href="https://www.appliedepi.org/tutorial/" class="alert-link">tutoriels R gratuits</a>, postez dans notre forum de <a href="https://community.appliedepi.org/" class="alert-link">questions et réponses de la communauté</a>, ou demandez-nous des informations sur <a href="mailto:contact@appliedepi.org" class="alert-link">notre service d'assistance R</a>.
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><style type="text/css">
     
@@ -60,7 +60,7 @@
       <nav aria-label="Table of contents"><h2>Table of contents</h2>
         <ul class="book-toc list-unstyled">
 <li><a class="active" href="index.html"></a></li>
-<li><a class="" href="epidemic_models.html"><span class="header-section-number">1</span> Modélisation des épidémies</a></li>
+<li><a class="" href="epicurves.html"><span class="header-section-number">1</span> Courbes épidémiques</a></li>
 </ul>
 
         <div class="book-extra">
@@ -70,14 +70,14 @@
 </div>
   </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><!--bookdown:title:end--><!--bookdown:title:start--><div id="section" class="section level1 unnumbered">
 <h1 class="unnumbered"><a class="anchor" aria-label="anchor" href="#section"><i class="fas fa-link"></i></a></h1>
-<div class="inline-figure"><img src="images/Epi%20R%20Handbook%20Banner%20Beige%201500x500.png" width="100%" style="display: block; margin: auto;"></div>
+<div class="inline-figure"><img src="images/Epi%20R%20Handbook%20Banner%20French%201500%20x%20500.png" width="100%" style="display: block; margin: auto;"></div>
 <meta name="description" content="The Epi R Handbook est un manuel de référence sur l'utilisation de R en épidémiologie appliquée et santé publique.">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <!-- <span style="color: red;">**THIS IS A DRAFT.  REVIEWERS GIVE FEEDBACK AT THIS [LINK](https://forms.gle/4RNdRRLGx67xW9yq9)**.</span> --><!-- <span style="color: darkgreen;">**DO YOU LIKE THIS HANDBOOK? SHOULD SOMETHING BE CHANGED? PLEASE TELL US!**</span> --><!-- <form target="_blank" action="https://forms.gle/A5SnRVws7tPD15Js9"> --><!--     <input type="submit" value="FEEDBACK" /> --><!-- </form> --><!-- ======================================================= --><!-- ## An R reference manual for applied epidemiology and public health {.unnumbered} --><!-- <span style="color: brown;">**The Epi R Handbook is an R reference manual for applied epidemiology and public health.**</span> --><!-- ## About this handbook   --><div id="r-pour-lépidémiologie-appliquée-et-la-santé-publique" class="section level2 unnumbered">
 <h2>R pour l’épidémiologie appliquée et la santé publique<a class="anchor" aria-label="anchor" href="#r-pour-l%C3%A9pid%C3%A9miologie-appliqu%C3%A9e-et-la-sant%C3%A9-publique"><i class="fas fa-link"></i></a>
 </h2>
 <p><strong>Utilisation</strong> : Ce manuel a été utilisé <strong>plus d’un million de fois par 400 000 personnes</strong> dans le monde entier.</p>
-<p><strong>Objectif:</strong> Servir de manuel de référence rapide du code R (en ligne et <strong><a href="#download_book_data">Télécharger le manuel et les données</a></strong>) avec des exemples centrés sur la tâche qui traitent des problèmes épidémiologiques courants.</p>
+<p><strong>Objectif:</strong> Servir de manuel de référence rapide du code R (en ligne et <strong><a href="#download_book_data">hors line</a></strong>) avec des exemples centrés sur la tâche qui traitent des problèmes épidémiologiques courants.</p>
 <p><strong>Essayez nos <a href="https://www.appliedepi.org/tutorial/">tutoriels interactifs gratuits</a></strong> ou notre <strong><a href="https://www.appliedepi.org/live/">cours d’introduction</a></strong> synchrone et virtuel utilisé par les CDC américains, l’OMS et plus de 130 autres agences de santé et programmes de formation à l’épidémiologie sur le terrain dans le monde entier.</p>
 <p><strong>Langues:</strong> <a href="https://epirhandbook.com/">Anglais (English)</a>, <a href="https://epirhandbook.com/es/">Espagnol (Español)</a>, <a href="https://epirhandbook.com/vn/">Vietnamien (Tiếng Việt)</a>, <a href="https://epirhandbook.com/jp/">Japonais (日本)</a>, <a href="https://epirhandbook.com/tr/">Turc (Türkçe)</a>, <a href="https://epirhandbook.com/fr/">Francais</a>, <a href="https://epirhandbook.com/pt/">Portugais (Português)</a></p>
 <p><br><span style="color: black;"><strong>Rédigé par des épidémiologistes, pour des épidémiologistes</strong></span></p>
@@ -134,7 +134,7 @@ a column separator --></p>
 <p><strong>Auteurs et autrices</strong>: <a href="https://www.linkedin.com/in/neale-batra/">Neale Batra</a>, <a href="https://github.com/aspina7">Alex Spina</a>, <a href="https://www.linkedin.com/in/paula-bianca-blomquist-53188186/">Paula Blomquist</a>, <a href="https://github.com/finlaycampbell">Finlay Campbell</a>, <a href="https://github.com/henryls1">Henry Laurenson-Schafer</a>, <a href="www.Twitter.com/isaacatflorence">Isaac Florence</a>, <a href="https://www.linkedin.com/in/nataliefischer211/">Natalie Fischer</a>, <a href="https://twitter.com/aminata_fadl">Aminata Ndiaye</a>, <a href="https://www.linkedin.com/in/liza-coyer-86022040/">Liza Coyer</a>, <a href="https://twitter.com/jonny_polonsky">Jonathan Polonsky</a>, <a href="https://ch.linkedin.com/in/yurie-izawa-a1590319">Yurie Izawa</a>, <a href="https://twitter.com/cbailey_58?lang=en">Chris Bailey</a>, <a href="https://www.linkedin.com/in/daniel-molling-4005716a/">Daniel Molling</a>, <a href="https://twitter.com/ishaberry2">Isha Berry</a>, <a href="https://twitter.com/buajitti">Emma Buajitti</a>, <a href="https://mathildemousset.wordpress.com/research/">Mathilde Mousset</a>, <a href="https://www.linkedin.com/in/saramhollis/">Sara Hollis</a>, Wen Lin, Olivia Boyd</p>
 <p><strong>Relecture</strong>: Pat Keating, Annick Lenglet, Margot Charette, Danielly Xavier, Esther Kukielka, Michelle Sloan, Aybüke Koyuncu, Rachel Burke, Kate Kelsey, <a href="https://www.linkedin.com/in/berhe-etsay-5752b1154/">Berhe Etsay</a>, John Rossow, Mackenzie Zendt, James Wright, Laura Haskins, <a href="ffinger.github.io">Flavio Finger</a>, Tim Taylor, <a href="https://www.linkedin.com/in/jaehyoungtlee/">Jae Hyoung Tim Lee</a>, <a href="https://www.linkedin.com/in/brianna-bradley-bb8658155">Brianna Bradley</a>, <a href="https://www.linkedin.com/in/wenanoria">Wayne Enanoria</a>, Manual Albela Miranda, <a href="https://www.linkedin.com/in/molly-mantus-174550150/">Molly Mantus</a>, Pattama Ulrich, Joseph Timothy, Adam Vaughan, Olivia Varsaneux, Lionel Monteiro, Joao Muianga</p>
 <p><strong>Illustrations</strong>: Calder Fong</p>
-<p><strong>Traduction</strong>: Aminata Ndiaye, Anais Legrand, Marie-Amelie Degail-Chabrat, Yves Amevoin, Laura Downham, Lise Grout, Margot Charette, Mathilde Mousset, Noe Guincko, Mor Ndiaye, Elysée Junior, Nerisson Joseph, Bryan Tegomoh, Marcel Woung, Olivia Boyd, Amy Mikhail, Lucie Fournier, Paul-Evans Ehouman, Kelly McCain</p>
+<p><strong>Traduction</strong>: Aminata Ndiaye, Olivia Boyd, Anais Legrand, Marie-Amelie Degail-Chabrat, Yves Amevoin, Laura Downham, Lise Grout, Margot Charette, Mathilde Mousset, Noe Guincko, Mor Ndiaye, Elysée Junior, Nerisson Joseph, Bryan Tegomoh, Marcel Woung, Amy Mikhail, Lucie Fournier, Paul-Evans Ehouman, Kelly McCain</p>
 <!-- **Editor-in-Chief:** Neale Batra  -->
 <!-- **Project core team:** Neale Batra, Alex Spina, Amrish Baidjoe, Pat Keating, Henry Laurenson-Schafer, Finlay Campbell   -->
 <!-- **Authors**: Neale Batra, Alex Spina, Paula Blomquist, Finlay Campbell, Henry Laurenson-Schafer, [Isaac Florence](www.Twitter.com/isaacatflorence), Natalie Fischer, Aminata Ndiaye, Liza Coyer, Jonathan Polonsky, Yurie Izawa, Chris Bailey, Daniel Molling, Isha Berry, Emma Buajitti, Mathilde Mousset, Sara Hollis, Wen Lin   -->
@@ -182,7 +182,7 @@ a column separator --></p>
 </div>
   <div class="chapter-nav">
 <div class="empty"></div>
-<div class="next"><a href="epidemic_models.html"><span class="header-section-number">1</span> Modélisation des épidémies</a></div>
+<div class="next"><a href="epicurves.html"><span class="header-section-number">1</span> Courbes épidémiques</a></div>
 </div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
     <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
       <ul class="nav navbar-nav">
@@ -219,7 +219,7 @@ a column separator --></p>
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Le Epi R Handbook</strong>" was written by the handbook team. It was last built on 2023-05-21.</p>
+    <p>"<strong>Le Epi R Handbook</strong>" was written by the handbook team. It was last built on 2023-05-25.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

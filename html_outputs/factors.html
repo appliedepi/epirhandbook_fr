@@ -7,7 +7,7 @@
 <title>11 Facteurs | Le Epi R Handbook</title>
 <meta name="author" content="the handbook team">
 <meta name="description" content="En R, les facteurs sont une classe de données qui permettent de créer des catégories ordonnées avec un ensemble fixe de valeurs acceptables. En règle générale, vous convertissez une colonne de la...">
-<meta name="generator" content="bookdown 0.33 with bs4_book()">
+<meta name="generator" content="bookdown 0.34 with bs4_book()">
 <meta property="og:title" content="11 Facteurs | Le Epi R Handbook">
 <meta property="og:type" content="book">
 <meta property="og:description" content="En R, les facteurs sont une classe de données qui permettent de créer des catégories ordonnées avec un ensemble fixe de valeurs acceptables. En règle générale, vous convertissez une colonne de la...">
@@ -18,9 +18,9 @@
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
 <script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.4.2/transition.js"></script><script src="libs/bs3compat-0.4.2/tabs.js"></script><script src="libs/bs3compat-0.4.2/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
 <script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="libs/htmlwidgets-1.6.2/htmlwidgets.js"></script><link href="libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet">
-<script src="libs/datatables-binding-0.27/datatables.js"></script><link href="libs/dt-core-1.12.1/css/jquery.dataTables.min.css" rel="stylesheet">
-<link href="libs/dt-core-1.12.1/css/jquery.dataTables.extra.css" rel="stylesheet">
-<script src="libs/dt-core-1.12.1/js/jquery.dataTables.min.js"></script><link href="libs/nouislider-7.0.10/jquery.nouislider.min.css" rel="stylesheet">
+<script src="libs/datatables-binding-0.28/datatables.js"></script><link href="libs/dt-core-1.13.4/css/jquery.dataTables.min.css" rel="stylesheet">
+<link href="libs/dt-core-1.13.4/css/jquery.dataTables.extra.css" rel="stylesheet">
+<script src="libs/dt-core-1.13.4/js/jquery.dataTables.min.js"></script><link href="libs/nouislider-7.0.10/jquery.nouislider.min.css" rel="stylesheet">
 <script src="libs/nouislider-7.0.10/jquery.nouislider.min.js"></script><link href="libs/selectize-0.12.0/selectize.bootstrap3.css" rel="stylesheet">
 <script src="libs/selectize-0.12.0/selectize.min.js"></script><link href="libs/crosstalk-1.2.0/css/crosstalk.min.css" rel="stylesheet">
 <script src="libs/crosstalk-1.2.0/js/crosstalk.min.js"></script><script src="libs/kePrint-0.0.1/kePrint.js"></script><link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet">
@@ -29,7 +29,7 @@
 <script src="libs/leaflet-1.3.1/leaflet.js"></script><link href="libs/leafletfix-1.0.0/leafletfix.css" rel="stylesheet">
 <script src="libs/proj4-2.6.2/proj4.min.js"></script><script src="libs/Proj4Leaflet-1.0.1/proj4leaflet.js"></script><link href="libs/rstudio_leaflet-1.3.1/rstudio_leaflet.css" rel="stylesheet">
 <script src="libs/leaflet-binding-2.1.2/leaflet.js"></script><script src="libs/leaflet-providers-1.9.0/leaflet-providers_1.9.0.js"></script><script src="libs/leaflet-providers-plugin-2.1.2/leaflet-providers-plugin.js"></script><script src="libs/viz-1.8.2/viz.js"></script><link href="libs/DiagrammeR-styles-0.2/styles.css" rel="stylesheet">
-<script src="libs/grViz-binding-1.0.9/grViz.js"></script><script src="libs/d3-4.5.0/d3.min.js"></script><script src="libs/sankey-1/sankey.js"></script><script src="libs/sankeyNetwork-binding-0.4/sankeyNetwork.js"></script><script src="libs/plotly-binding-4.10.1/plotly.js"></script><script src="libs/typedarray-0.1/typedarray.min.js"></script><link href="libs/plotly-htmlwidgets-css-2.11.1/plotly-htmlwidgets.css" rel="stylesheet">
+<script src="libs/grViz-binding-1.0.10/grViz.js"></script><script src="libs/d3-4.5.0/d3.min.js"></script><script src="libs/sankey-1/sankey.js"></script><script src="libs/sankeyNetwork-binding-0.4/sankeyNetwork.js"></script><script src="libs/plotly-binding-4.10.1/plotly.js"></script><script src="libs/typedarray-0.1/typedarray.min.js"></script><link href="libs/plotly-htmlwidgets-css-2.11.1/plotly-htmlwidgets.css" rel="stylesheet">
 <script src="libs/plotly-main-2.11.1/plotly-latest.min.js"></script><link href="libs/vis-9.1.0/vis-network.min.css" rel="stylesheet">
 <script src="libs/vis-9.1.0/vis-network.min.js"></script><script src="libs/visNetwork-binding-2.1.2/visNetwork.js"></script><link href="libs/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet">
 <script src="libs/plotly-basic-2.11.1/plotly-basic-2.11.1.min.js"></script><script src="libs/plotly-cartesian-2.11.1/plotly-cartesian-2.11.1.min.js"></script><script src="libs/proj4js-2.3.15/proj4.js"></script><link href="libs/highcharts-9.3.1/css/motion.css" rel="stylesheet">
@@ -152,7 +152,7 @@
 <h3>Chargement des paquets<a class="anchor" aria-label="anchor" href="#chargement-des-paquets"><i class="fas fa-link"></i></a>
 </h3>
 <p>Ce morceau de code montre le chargement des packages nécessaires aux analyses. Dans ce manuel, nous mettons l’accent sur <code><a href="https://rdrr.io/pkg/pacman/man/p_load.html">p_load()</a></code> de <strong>pacman</strong>, qui installe le package si nécessaire <em>et</em> le charge pour l’utiliser. Vous pouvez également charger les packages installés avec <code><a href="https://rdrr.io/r/base/library.html">library()</a></code> de <strong>base</strong> R. Voir la page sur <a href="rbasics.html#rbasics">R basics</a> pour plus d’informations sur les packages R.</p>
-<div class="sourceCode" id="cb538"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb540"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu">pacman</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/pacman/man/p_load.html">p_load</a></span><span class="op">(</span></span>
 <span>  <span class="va">rio</span>,           <span class="co"># importer/exporter</span></span>
 <span>  <span class="va">here</span>,          <span class="co"># chemin des fichiers</span></span>
@@ -167,7 +167,7 @@
 <h3>Importer données<a class="anchor" aria-label="anchor" href="#importer-donn%C3%A9es"><i class="fas fa-link"></i></a>
 </h3>
 <p>Nous importons le jeu de données des cas d’une épidémie d’Ebola simulée. Si vous voulez suivre, , <a href="https://github.com/epirhandbook/Epi_R_handbook/raw/master/data/case_linelists/linelist_cleaned.rds" class="download-button">cliquer pour telecharger le jeu de données “nettoyé” linelist</a> (as .rds file). Importez vos données avec la fonction <code><a href="https://rdrr.io/pkg/rio/man/import.html">import()</a></code> du package <strong>rio</strong> (elle accepte de nombreux types de fichiers comme .xlsx, .rds, .csv - voir la page <a href="import_export.html#import_export">Importation et exportation</a> pour plus de détails).</p>
-<div class="sourceCode" id="cb539"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb541"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># importer ton jeu de donnée</span></span>
 <span><span class="va">linelist</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/rio/man/import.html">import</a></span><span class="op">(</span><span class="st">"linelist_cleaned.rds"</span><span class="op">)</span></span></code></pre></div>
 </div>
@@ -180,7 +180,7 @@
 <h4>Creation de colonnes<a class="anchor" aria-label="anchor" href="#creation-de-colonnes"><i class="fas fa-link"></i></a>
 </h4>
 <p>Nous utilisons la colonne existante <code>days_onset_hosp</code> (jours entre l’apparition des symptômes et l’admission à l’hôpital) et créons une nouvelle colonne <code>delay_cat</code> en classant chaque ligne dans l’une de plusieurs catégories. Nous faisons cela avec la fonction <strong>dplyr</strong> <code><a href="https://dplyr.tidyverse.org/reference/case_when.html">case_when()</a></code>, qui applique séquentiellement des critères logiques (côté droit) à chaque ligne et renvoie la valeur correspondante côté gauche pour la nouvelle colonne <code>delay_cat</code>. Vous trouverez plus d’informations sur la fonction <code><a href="https://dplyr.tidyverse.org/reference/case_when.html">case_when()</a></code> dans <a href="cleaning_data.html#cleaning_data">Nettoyage des données et des fonctions de base</a>.</p>
-<div class="sourceCode" id="cb540"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb542"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">linelist</span> <span class="op">&lt;-</span> <span class="va">linelist</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>delay_cat <span class="op">=</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/case_when.html">case_when</a></span><span class="op">(</span></span>
 <span>    <span class="co"># critere                                 # nouveau valeur si vrai</span></span>
@@ -194,13 +194,13 @@
 <h4>Ordre des valeurs par defaut<a class="anchor" aria-label="anchor" href="#ordre-des-valeurs-par-defaut"><i class="fas fa-link"></i></a>
 </h4>
 <p>Telle que créée avec <code><a href="https://dplyr.tidyverse.org/reference/case_when.html">case_when()</a></code>, la nouvelle colonne <code>delay_cat</code> est une colonne catégorielle de la classe Character - <em>pas</em> encore un facteur. Ainsi, dans un tableau de fréquence, nous voyons que les valeurs uniques apparaissent dans un ordre alphanumérique par défaut - un ordre qui n’a pas beaucoup de sens intuitif :</p>
-<div class="sourceCode" id="cb541"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb543"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/table.html">table</a></span><span class="op">(</span><span class="va">linelist</span><span class="op">$</span><span class="va">delay_cat</span>, useNA <span class="op">=</span> <span class="st">"always"</span><span class="op">)</span></span></code></pre></div>
 <pre><code>## 
 ##  &lt;2 days  &gt;5 days 2-5 days     &lt;NA&gt; 
 ##     2990      602     2040      256</code></pre>
 <p>De même, si nous réalisons un diagramme à barres, les valeurs apparaissent également dans cet ordre sur l’axe des x (voir la page sur <a href="ggplot_basics.html#ggplot_basics">les bases de ggplot</a> pour en savoir plus sur <strong>ggplot2</strong> - le package de visualisation le plus courant dans R).</p>
-<div class="sourceCode" id="cb543"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb545"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">linelist</span><span class="op">)</span><span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_bar.html">geom_bar</a></span><span class="op">(</span>mapping <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">delay_cat</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <div class="inline-figure"><img src="_main_files/figure-html/unnamed-chunk-369-1.png" width="672"></div>
@@ -214,24 +214,24 @@
 <p>Pour convertir une colonne de caractères ou de chiffres en facteur de classe, vous pouvez utiliser n’importe quelle fonction du package <strong>forcats</strong> (plusieurs sont détaillées <a href="factors.html#fct_adjust">ci-dessous</a>). Elles convertiront en facteur de classe et effectueront ou permettront un certain ordre des niveaux - par exemple, l’utilisation de <code><a href="https://forcats.tidyverse.org/reference/fct_relevel.html">fct_relevel()</a></code> vous permet de spécifier manuellement l’ordre des niveaux. La fonction <code><a href="https://forcats.tidyverse.org/reference/as_factor.html">as_factor()</a></code> convertit simplement la classe sans autres capacités.</p>
 <p>La fonction R <strong>base</strong> <code><a href="https://rdrr.io/r/base/factor.html">factor()</a></code> convertit une colonne en facteur et vous permet de spécifier manuellement l’ordre des niveaux, comme un vecteur de caractères à son argument <code>levels =</code>.</p>
 <p>Ci-dessous, nous utilisons <code><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate()</a></code> et <code><a href="https://forcats.tidyverse.org/reference/fct_relevel.html">fct_relevel()</a></code> pour convertir la colonne <code>delay_cat</code> de la classe caractère à la classe facteur. La colonne <code>delay_cat</code> est créée dans la section <a href="factors.html#fct_newcat">Préparation</a> ci-dessus.</p>
-<div class="sourceCode" id="cb544"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb546"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">linelist</span> <span class="op">&lt;-</span> <span class="va">linelist</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>delay_cat <span class="op">=</span> <span class="fu"><a href="https://forcats.tidyverse.org/reference/fct_relevel.html">fct_relevel</a></span><span class="op">(</span><span class="va">delay_cat</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <p><em>Les “valeurs” uniques de cette colonne sont maintenant considérées comme des “niveaux” du facteur.</em>
 Les niveaux ont un <em>ordre</em>, qui peut être affiché avec la fonction <strong>base</strong> R <code><a href="https://rdrr.io/r/base/levels.html">levels()</a></code>, ou alternativement visualisé dans un tableau de comptage via <code><a href="https://rdrr.io/r/base/table.html">table()</a></code> de <strong>base</strong> R ou <code>tabyl()</code> de <strong>janitor</strong>. Par défaut, l’ordre des niveaux sera alpha-numérique, comme auparavant. Notez que <code>NA</code> n’est pas un niveau de facteur.</p>
-<div class="sourceCode" id="cb545"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb547"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/levels.html">levels</a></span><span class="op">(</span><span class="va">linelist</span><span class="op">$</span><span class="va">delay_cat</span><span class="op">)</span></span></code></pre></div>
 <pre><code>## [1] "&lt;2 days"  "&gt;5 days"  "2-5 days"</code></pre>
 <p>La fonction <code><a href="https://forcats.tidyverse.org/reference/fct_relevel.html">fct_relevel()</a></code> a l’utilité supplémentaire de vous permettre de spécifier manuellement l’ordre des niveaux. Il suffit d’écrire les valeurs des niveaux dans l’ordre, entre guillemets, séparés par des virgules, comme indiqué ci-dessous. Notez que l’orthographe doit correspondre exactement aux valeurs. Si vous voulez créer des niveaux qui n’existent pas dans les données, utilisez plutôt <a href="factors.html#fct_add"><code>fct_expand()</code></a>).</p>
-<div class="sourceCode" id="cb547"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb549"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">linelist</span> <span class="op">&lt;-</span> <span class="va">linelist</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>delay_cat <span class="op">=</span> <span class="fu"><a href="https://forcats.tidyverse.org/reference/fct_relevel.html">fct_relevel</a></span><span class="op">(</span><span class="va">delay_cat</span>, <span class="st">"&lt;2 days"</span>, <span class="st">"2-5 days"</span>, <span class="st">"&gt;5 days"</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <p>Nous pouvons maintenant voir que les niveaux sont ordonnés, comme spécifié dans la commande précédente, dans un ordre raisonnable.</p>
-<div class="sourceCode" id="cb548"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb550"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/levels.html">levels</a></span><span class="op">(</span><span class="va">linelist</span><span class="op">$</span><span class="va">delay_cat</span><span class="op">)</span></span></code></pre></div>
 <pre><code>## [1] "&lt;2 days"  "2-5 days" "&gt;5 days"</code></pre>
 <p>Maintenant, l’ordre de l’intrigue a aussi un sens plus intuitif.</p>
-<div class="sourceCode" id="cb550"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb552"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">linelist</span><span class="op">)</span><span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_bar.html">geom_bar</a></span><span class="op">(</span>mapping <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">delay_cat</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <div class="inline-figure"><img src="_main_files/figure-html/unnamed-chunk-374-1.png" width="672"></div>
@@ -244,7 +244,7 @@ Les niveaux ont un <em>ordre</em>, qui peut être affiché avec la fonction <str
 <h3>Ajouter<a class="anchor" aria-label="anchor" href="#fct_add"><i class="fas fa-link"></i></a>
 </h3>
 <p>Si vous devez ajouter des niveaux à un facteur, vous pouvez le faire avec <code><a href="https://forcats.tidyverse.org/reference/fct_expand.html">fct_expand()</a></code>. Il suffit d’écrire le nom de la colonne suivi des nouveaux niveaux (séparés par des virgules). En tabulant les valeurs, nous pouvons voir les nouveaux niveaux et le nombre de zéros. Vous pouvez utiliser <code><a href="https://rdrr.io/r/base/table.html">table()</a></code> de <strong>base</strong> R, ou <code>tabyl()</code> de <strong>janitor</strong> :</p>
-<div class="sourceCode" id="cb551"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb553"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">linelist</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>delay_cat <span class="op">=</span> <span class="fu"><a href="https://forcats.tidyverse.org/reference/fct_expand.html">fct_expand</a></span><span class="op">(</span><span class="va">delay_cat</span>, <span class="st">"Not admitted to hospital"</span>, <span class="st">"Transfer to other jurisdiction"</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
 <span>  <span class="fu">tabyl</span><span class="op">(</span><span class="va">delay_cat</span><span class="op">)</span>   <span class="co"># afficher le tableau</span></span></code></pre></div>
@@ -261,7 +261,7 @@ Les niveaux ont un <em>ordre</em>, qui peut être affiché avec la fonction <str
 <h3>Enlever<a class="anchor" aria-label="anchor" href="#enlever"><i class="fas fa-link"></i></a>
 </h3>
 <p>Si vous utilisez <code><a href="https://forcats.tidyverse.org/reference/fct_drop.html">fct_drop()</a></code>, les niveaux “inutilisés” avec des comptes nuls seront supprimés de l’ensemble des niveaux. Les niveaux que nous avons ajoutés ci-dessus (“Non admis à l’hôpital”) existent en tant que niveau mais aucune ligne n’a réellement ces valeurs. Ils seront donc supprimés en appliquant <code><a href="https://forcats.tidyverse.org/reference/fct_drop.html">fct_drop()</a></code> à notre colonne de facteurs :</p>
-<div class="sourceCode" id="cb553"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb555"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">linelist</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>delay_cat <span class="op">=</span> <span class="fu"><a href="https://forcats.tidyverse.org/reference/fct_drop.html">fct_drop</a></span><span class="op">(</span><span class="va">delay_cat</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
 <span>  <span class="fu">tabyl</span><span class="op">(</span><span class="va">delay_cat</span><span class="op">)</span></span></code></pre></div>
@@ -295,12 +295,12 @@ Les niveaux ont un <em>ordre</em>, qui peut être affiché avec la fonction <str
 <li>Un niveau et son placement corrigé en utilisant l’argument <code>after =</code>.</li>
 </ul>
 <p>Voici un exemple de redéfinition de la colonne <code>delay_cat</code> (qui est déjà de la classe Factor) et de spécification de tous les niveaux dans l’ordre souhaité.</p>
-<div class="sourceCode" id="cb555"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb557"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># re-define level order</span></span>
 <span><span class="va">linelist</span> <span class="op">&lt;-</span> <span class="va">linelist</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>delay_cat <span class="op">=</span> <span class="fu"><a href="https://forcats.tidyverse.org/reference/fct_relevel.html">fct_relevel</a></span><span class="op">(</span><span class="va">delay_cat</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"&lt;2 days"</span>, <span class="st">"2-5 days"</span>, <span class="st">"&gt;5 days"</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <p>Si vous voulez seulement déplacer un niveau, vous pouvez le spécifier à <code><a href="https://forcats.tidyverse.org/reference/fct_relevel.html">fct_relevel()</a></code> seul et donner un nombre à l’argument <code>after =</code> pour indiquer où dans l’ordre il doit être. Par exemple, la commande ci-dessous déplace “&lt;2 jours” en deuxième position :</p>
-<div class="sourceCode" id="cb556"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb558"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># re-define level order</span></span>
 <span><span class="va">linelist</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>delay_cat <span class="op">=</span> <span class="fu"><a href="https://forcats.tidyverse.org/reference/fct_relevel.html">fct_relevel</a></span><span class="op">(</span><span class="va">delay_cat</span>, <span class="st">"&lt;2 days"</span>, after <span class="op">=</span> <span class="fl">1</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
@@ -311,7 +311,7 @@ Les niveaux ont un <em>ordre</em>, qui peut être affiché avec la fonction <str
 </h3>
 <p>Les commandes <strong>forcats</strong> peuvent être utilisées pour définir l’ordre des niveaux dans le dataframe, ou seulement dans un graphique. En utilisant la commande pour “envelopper” le nom de la colonne <em>dans</em> la commande de traçage <code><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot()</a></code>, vous pouvez inverser/niveler/etc. la transformation ne s’appliquera que dans ce tracé.</p>
 <p>Ci-dessous, deux tracés sont créés avec <code><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot()</a></code> (voir la page <a href="ggplot_basics.html#ggplot_basics">les bases de ggplot</a>). Dans le premier, la colonne <code>delay_cat</code> est mise en correspondance avec l’axe des x du graphique, avec son ordre de niveau par défaut comme dans les données <code>linelist</code>. Dans le second exemple, elle est enveloppée dans <code><a href="https://forcats.tidyverse.org/reference/fct_relevel.html">fct_relevel()</a></code> et l’ordre est modifié dans le graphe.</p>
-<div class="sourceCode" id="cb557"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb559"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Ordre alphanumerique par defaut - pas d'ajustement dans ggplot</span></span>
 <span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">linelist</span><span class="op">)</span><span class="op">+</span></span>
 <span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_bar.html">geom_bar</a></span><span class="op">(</span>mapping <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">delay_cat</span><span class="op">)</span><span class="op">)</span></span>
@@ -333,7 +333,7 @@ Les niveaux ont un <em>ordre</em>, qui peut être affiché avec la fonction <str
 </h3>
 <p>Pour ordonner par fréquence que la valeur apparaît dans les données, utilisez <code><a href="https://forcats.tidyverse.org/reference/fct_inorder.html">fct_infreq()</a></code>. Toute valeur manquante (<code>NA</code>) sera automatiquement incluse à la fin, à moins qu’elle ne soit convertie en un niveau explicite (voir <a href="factors.html#fct_missing">cette section</a>). Vous pouvez inverser l’ordre en enveloppant davantage avec <code><a href="https://forcats.tidyverse.org/reference/fct_rev.html">fct_rev()</a></code>.</p>
 <p>Cette fonction peut être utilisée dans un <code><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot()</a></code>, comme indiqué ci-dessous.</p>
-<div class="sourceCode" id="cb558"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb560"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># ordered by frequency</span></span>
 <span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">linelist</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="fu"><a href="https://forcats.tidyverse.org/reference/fct_inorder.html">fct_infreq</a></span><span class="op">(</span><span class="va">delay_cat</span><span class="op">)</span><span class="op">)</span><span class="op">)</span><span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_bar.html">geom_bar</a></span><span class="op">(</span><span class="op">)</span><span class="op">+</span></span>
@@ -358,7 +358,7 @@ Les niveaux ont un <em>ordre</em>, qui peut être affiché avec la fonction <str
 <p>Vous pouvez utiliser <code><a href="https://forcats.tidyverse.org/reference/fct_reorder.html">fct_reorder()</a></code> pour ordonner les niveaux d’une colonne <em>par une statistique sommaire d’une autre colonne</em>. Visuellement, cela peut donner des graphiques agréables où les barres/points montent ou descendent régulièrement sur le graphique.</p>
 <p>Dans les exemples ci-dessous, l’axe des x est <code>delay_cat</code>, et l’axe des y est la colonne numérique <code>ct_blood</code> (valeur du seuil de cycle). Les box plots montrent la distribution des valeurs CT par groupe <code>delay_cat</code>. Nous voulons ordonner les box plots dans l’ordre croissant de la valeur médiane du groupe.</p>
 <p>Dans le premier exemple ci-dessous, l’ordre par défaut alpha-numérique est utilisé. Vous pouvez voir que les hauteurs des box plots sont mélangées et ne sont pas dans un ordre particulier. Dans le deuxième exemple, la colonne <code>delay_cat</code> (mappée sur l’axe des x) a été enveloppée dans <code><a href="https://forcats.tidyverse.org/reference/fct_reorder.html">fct_reorder()</a></code>, la colonne <code>ct_blood</code> est donnée comme deuxième argument, et “median” est donné comme troisième argument (vous pourriez aussi utiliser “max”, “mean”, “min”, etc). Ainsi, l’ordre des niveaux de <code>delay_cat</code> reflètera maintenant les valeurs médianes croissantes de la valeur médiane de CT de chaque groupe <code>delay_cat</code>. Ceci est reflété dans le deuxième graphique - les box plots ont été réarrangés pour être ascendants. Notez comment <code>NA</code> (manquant) apparaîtra à la fin, à moins d’être converti en un niveau explicite.</p>
-<div class="sourceCode" id="cb559"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb561"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># boxplots ordonnés par les niveaux des facteurs initiaux</span></span>
 <span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">linelist</span><span class="op">)</span><span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_boxplot.html">geom_boxplot</a></span><span class="op">(</span></span>
@@ -389,7 +389,7 @@ Les niveaux ont un <em>ordre</em>, qui peut être affiché avec la fonction <str
 </h3>
 <p>Utilisez <code><a href="https://forcats.tidyverse.org/reference/fct_reorder.html">fct_reorder2()</a></code> pour des tracés de lignes groupées. Il ordonne les niveaux (et donc le <em>légende</em>) pour s’aligner avec l’ordre vertical des lignes à la “fin” du tracé. Techniquement parlant, il “ordonne par les valeurs y associées aux plus grandes valeurs x”.</p>
 <p>Par exemple, si vous avez des lignes montrant le nombre de cas par hôpital au fil du temps, vous pouvez appliquer <code><a href="https://forcats.tidyverse.org/reference/fct_reorder.html">fct_reorder2()</a></code> à l’argument <code>color =</code> dans <code><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes()</a></code>, de sorte que l’ordre vertical des hôpitaux apparaissant dans la légende s’aligne sur l’ordre des lignes à l’extrémité du tracé. Pour en savoir plus, consultez la <a href="https://forcats.tidyverse.org/reference/fct_reorder.html">documentation en ligne</a>.</p>
-<div class="sourceCode" id="cb560"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb562"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">epidemic_data</span> <span class="op">&lt;-</span> <span class="va">linelist</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>         <span class="co"># commencer avec linelist  </span></span>
 <span>    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">date_onset</span> <span class="op">&lt;</span> <span class="fu"><a href="https://rdrr.io/r/base/as.Date.html">as.Date</a></span><span class="op">(</span><span class="st">"2014-09-21"</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>    <span class="co"># point de coupure  la date, pour une meilleur visualisation</span></span>
 <span>    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/count.html">count</a></span><span class="op">(</span>                                            <span class="co"># obtenir le nombre de cas par semaine et par hôpital</span></span>
@@ -414,7 +414,7 @@ Les niveaux ont un <em>ordre</em>, qui peut être affiché avec la fonction <str
 </h2>
 <p>Si vous avez des valeurs <code>NA</code> dans votre colonne de facteurs, vous pouvez facilement les convertir en un niveau nommé tel que “Missing” avec <code><a href="https://forcats.tidyverse.org/reference/fct_explicit_na.html">fct_explicit_na()</a></code>. Les valeurs <code>NA</code> sont converties en “(Missing)” à la fin de l’ordre des niveaux par défaut. Vous pouvez ajuster le nom du niveau avec l’argument <code>na_level =</code>.</p>
 <p>Ci-dessous, cette opération est effectuée sur la colonne <code>delay_cat</code> et un tableau est imprimé avec <code>tabyl()</code> avec <code>NA</code> converti en “Missing delay”.</p>
-<div class="sourceCode" id="cb561"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb563"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">linelist</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>delay_cat <span class="op">=</span> <span class="fu"><a href="https://forcats.tidyverse.org/reference/fct_explicit_na.html">fct_explicit_na</a></span><span class="op">(</span><span class="va">delay_cat</span>, na_level <span class="op">=</span> <span class="st">"Missing delay"</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
 <span>  <span class="fu">tabyl</span><span class="op">(</span><span class="va">delay_cat</span><span class="op">)</span></span></code></pre></div>
@@ -435,11 +435,11 @@ Les niveaux ont un <em>ordre</em>, qui peut être affiché avec la fonction <str
 <p>Cet outil peut aussi être utilisé pour “combiner” des niveaux, en assignant à plusieurs niveaux la même valeur re-codée. Veillez simplement à ne pas perdre d’informations ! Pensez à effectuer ces étapes de combinaison dans une nouvelle colonne (sans écraser la colonne existante).</p>
 <p><code><a href="https://forcats.tidyverse.org/reference/fct_recode.html">fct_recode()</a></code> a une syntaxe différente de celle de <code><a href="https://dplyr.tidyverse.org/reference/recode.html">recode()</a></code>. <code><a href="https://dplyr.tidyverse.org/reference/recode.html">recode()</a></code> utilise <code>OLD = NEW</code>, alors que <code><a href="https://forcats.tidyverse.org/reference/fct_recode.html">fct_recode()</a></code> utilise <code>NEW = OLD</code>.</p>
 <p>Les niveaux actuels de <code>delay_cat</code> sont :</p>
-<div class="sourceCode" id="cb563"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb565"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/levels.html">levels</a></span><span class="op">(</span><span class="va">linelist</span><span class="op">$</span><span class="va">delay_cat</span><span class="op">)</span></span></code></pre></div>
 <pre><code>## [1] "&lt;2 days"  "2-5 days" "&gt;5 days"</code></pre>
 <p>Les nouveaux niveaux sont créés à l’aide de la syntaxe <code>fct_recode(colonne, "nouveau" = "ancien", "nouveau" = "ancien", "nouveau" = "ancien")</code> et imprimés :</p>
-<div class="sourceCode" id="cb565"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb567"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">linelist</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>delay_cat <span class="op">=</span> <span class="fu"><a href="https://forcats.tidyverse.org/reference/fct_recode.html">fct_recode</a></span><span class="op">(</span></span>
 <span>    <span class="va">delay_cat</span>,</span>
@@ -453,7 +453,7 @@ Les niveaux ont un <em>ordre</em>, qui peut être affiché avec la fonction <str
 ##  More than 5 days  602 0.10224185     0.1068892
 ##              &lt;NA&gt;  256 0.04347826            NA</code></pre>
 <p>Ici, ils sont combinés manuellement avec <code><a href="https://forcats.tidyverse.org/reference/fct_recode.html">fct_recode()</a></code>. Notez qu’aucune erreur n’est soulevée lors de la création d’un nouveau niveau “Moins de 5 jours”.</p>
-<div class="sourceCode" id="cb567"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb569"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">linelist</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>delay_cat <span class="op">=</span> <span class="fu"><a href="https://forcats.tidyverse.org/reference/fct_recode.html">fct_recode</a></span><span class="op">(</span></span>
 <span>    <span class="va">delay_cat</span>,</span>
@@ -470,7 +470,7 @@ Les niveaux ont un <em>ordre</em>, qui peut être affiché avec la fonction <str
 <h3>Réduire en “Autre”<a class="anchor" aria-label="anchor" href="#r%C3%A9duire-en-autre"><i class="fas fa-link"></i></a>
 </h3>
 <p>Vous pouvez utiliser <code><a href="https://forcats.tidyverse.org/reference/fct_other.html">fct_other()</a></code> pour assigner manuellement des niveaux de facteurs à un niveau “Autre”. Ci-dessous, tous les niveaux de la colonne <code>hospital</code>, à part “Port Hospital” et “Central Hospital”, sont combinés dans “Other”. Vous pouvez fournir un vecteur pour soit <code>maintenir =</code>, soit <code>drop =</code>. Vous pouvez modifier l’affichage du niveau “Autre” avec <code>other_level =</code>.</p>
-<div class="sourceCode" id="cb569"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb571"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">linelist</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>    </span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>hospital <span class="op">=</span> <span class="fu"><a href="https://forcats.tidyverse.org/reference/fct_other.html">fct_other</a></span><span class="op">(</span>                      <span class="co"># ajuster niveaux</span></span>
 <span>    <span class="va">hospital</span>,</span>
@@ -493,7 +493,7 @@ Les niveaux ont un <em>ordre</em>, qui peut être affiché avec la fonction <str
 <li>Définissez <code>prop =</code> comme étant la proportion de fréquence seuil pour les niveaux au-dessus desquels vous voulez garder. Toutes les autres valeurs seront regroupées dans “Autres”.</li>
 </ul>
 <p>Vous pouvez modifier l’affichage du niveau “Autre” avec <code>other_level =</code>. Ci-dessous, tous les hôpitaux sauf les deux les plus fréquents sont combinés dans “Autre hôpital”.</p>
-<div class="sourceCode" id="cb571"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb573"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">linelist</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>    </span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>hospital <span class="op">=</span> <span class="fu"><a href="https://forcats.tidyverse.org/reference/fct_lump.html">fct_lump</a></span><span class="op">(</span>                      <span class="co"># ajuster niveaux</span></span>
 <span>    <span class="va">hospital</span>,</span>
@@ -514,7 +514,7 @@ Les niveaux ont un <em>ordre</em>, qui peut être affiché avec la fonction <str
 </h3>
 <p>Dans une figure <code><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot()</a></code>, ajoutez simplement l’argument <code>drop = FALSE</code> dans la fonction <code>scale_xxxx()</code> concernée. Tous les niveaux de facteurs seront affichés, qu’ils soient présents ou non dans les données. Si les niveaux de vos colonnes de facteurs sont affichés en utilisant <code>fill =</code>, alors dans scale_fill_discrete() vous incluez <code>drop = FALSE</code>, comme indiqué ci-dessous. Si vos niveaux sont affichés avec <code>x =</code> (sur l’axe des x) <code>color =</code> ou <code>size =</code>, vous devez le fournir à <code><a href="https://ggplot2.tidyverse.org/reference/scale_colour_discrete.html">scale_color_discrete()</a></code> ou <code><a href="https://ggplot2.tidyverse.org/reference/scale_size.html">scale_size_discrete()</a></code> en conséquence.</p>
 <p>Cet exemple est un diagramme à barres empilées de la catégorie d’âge, par hôpital. L’ajout de <code>scale_fill_discrete(drop = FALSE)</code> garantit que tous les groupes d’âge apparaissent dans la légende, même s’ils ne sont pas présents dans les données.</p>
-<div class="sourceCode" id="cb573"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb575"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">linelist</span><span class="op">)</span><span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_bar.html">geom_bar</a></span><span class="op">(</span>mapping <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">hospital</span>, fill <span class="op">=</span> <span class="va">age_cat</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_colour_discrete.html">scale_fill_discrete</a></span><span class="op">(</span>drop <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span><span class="op">+</span>                        <span class="co"># montrer tous les groupes d'âge dans la légende, même ceux qui ne sont pas présents</span></span>
@@ -541,7 +541,7 @@ Veuillez également consulter la page <a href="working_dates.html#working_dates"
 </h3>
 <p>Si votre objectif est de créer des semaines épidémiologiques à afficher dans un graphique, vous pouvez le faire simplement avec la fonction <code><a href="https://lubridate.tidyverse.org/reference/round_date.html">floor_date()</a></code> de <strong>lubridate</strong>, comme expliqué dans la page <a href="grouping_data.html#grouping_data">Regroupement de données</a>. Les valeurs retournées seront de la classe Date avec le format AAAA-MM-JJ. Si vous utilisez cette colonne dans un graphique, les dates seront naturellement ordonnées correctement, et vous n’aurez pas à vous soucier des niveaux ou de la conversion en classe Facteur. Voir l’histogramme <code><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot()</a></code> des dates d’apparition ci-dessous.</p>
 <p>Dans cette approche, vous pouvez ajuster l’affichage des dates sur un axe avec <code><a href="https://ggplot2.tidyverse.org/reference/scale_date.html">scale_x_date()</a></code>. Voir la page sur les <a href="epicurves.html#epicurves">Courbes épidémiques</a> pour plus d’informations. Vous pouvez spécifier un format d’affichage “strptime” à l’argument <code>date_labels =</code> de <code><a href="https://ggplot2.tidyverse.org/reference/scale_date.html">scale_x_date()</a></code>. Ces formats utilisent des caractères de remplacement “%” et sont traités dans la page <a href="working_dates.html#working_dates">Manipuler les dates</a>. Utilisez “%Y” pour représenter une année à 4 chiffres, et “%W” ou “%U” pour représenter le numéro de la semaine (semaines du lundi ou du dimanche respectivement).</p>
-<div class="sourceCode" id="cb574"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb576"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">linelist</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>epiweek_date <span class="op">=</span> <span class="fu"><a href="https://lubridate.tidyverse.org/reference/round_date.html">floor_date</a></span><span class="op">(</span><span class="va">date_onset</span>, <span class="st">"week"</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>  <span class="co"># créer une colonne semaine</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="op">)</span><span class="op">+</span>                                                  <span class="co"># commencer ggplot</span></span>
@@ -560,7 +560,7 @@ Veuillez également consulter la page <a href="working_dates.html#working_dates"
 </ol></li>
 </ol>
 <p>Tout d’abord, utilisez <code><a href="https://rdrr.io/r/base/format.html">format()</a></code> de <strong>base</strong> R pour convertir l’affichage de la date de YYYY-MM-DD en YYYY-Www (voir la page <a href="working_dates.html#working_dates">Manipuler les dates</a>). Dans ce processus, la classe sera convertie en caractère. Ensuite, convertissez le caractère en classe Factor avec <code><a href="https://rdrr.io/r/base/factor.html">factor()</a></code>.</p>
-<div class="sourceCode" id="cb575"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb577"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">linelist</span> <span class="op">&lt;-</span> <span class="va">linelist</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>epiweek_date <span class="op">=</span> <span class="fu"><a href="https://lubridate.tidyverse.org/reference/round_date.html">floor_date</a></span><span class="op">(</span><span class="va">date_onset</span>, <span class="st">"week"</span><span class="op">)</span>,       <span class="co"># creer epiweeks (YYYY-MM-DD)</span></span>
 <span>         epiweek_formatted <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/format.html">format</a></span><span class="op">(</span><span class="va">epiweek_date</span>, <span class="st">"%Y-W%W"</span><span class="op">)</span>,  <span class="co"># Convertir pour afficher (YYYY-WWw)</span></span>
@@ -568,16 +568,19 @@ Veuillez également consulter la page <a href="working_dates.html#working_dates"
 <span></span>
 <span><span class="co"># Afficher les niveaux</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/levels.html">levels</a></span><span class="op">(</span><span class="va">linelist</span><span class="op">$</span><span class="va">epiweek_formatted</span><span class="op">)</span></span></code></pre></div>
-<pre><code>##  [1] "2014-W13" "2014-W14" "2014-W15" "2014-W16" "2014-W17" "2014-W18" "2014-W19" "2014-W20" "2014-W21" "2014-W22" "2014-W23" "2014-W24" "2014-W25" "2014-W26"
-## [15] "2014-W27" "2014-W28" "2014-W29" "2014-W30" "2014-W31" "2014-W32" "2014-W33" "2014-W34" "2014-W35" "2014-W36" "2014-W37" "2014-W38" "2014-W39" "2014-W40"
-## [29] "2014-W41" "2014-W42" "2014-W43" "2014-W44" "2014-W45" "2014-W46" "2014-W47" "2014-W48" "2014-W49" "2014-W50" "2014-W51" "2015-W00" "2015-W01" "2015-W02"
-## [43] "2015-W03" "2015-W04" "2015-W05" "2015-W06" "2015-W07" "2015-W08" "2015-W09" "2015-W10" "2015-W11" "2015-W12" "2015-W13" "2015-W14" "2015-W15" "2015-W16"</code></pre>
+<pre><code>##  [1] "2014-W13" "2014-W14" "2014-W15" "2014-W16" "2014-W17" "2014-W18" "2014-W19" "2014-W20"
+##  [9] "2014-W21" "2014-W22" "2014-W23" "2014-W24" "2014-W25" "2014-W26" "2014-W27" "2014-W28"
+## [17] "2014-W29" "2014-W30" "2014-W31" "2014-W32" "2014-W33" "2014-W34" "2014-W35" "2014-W36"
+## [25] "2014-W37" "2014-W38" "2014-W39" "2014-W40" "2014-W41" "2014-W42" "2014-W43" "2014-W44"
+## [33] "2014-W45" "2014-W46" "2014-W47" "2014-W48" "2014-W49" "2014-W50" "2014-W51" "2015-W00"
+## [41] "2015-W01" "2015-W02" "2015-W03" "2015-W04" "2015-W05" "2015-W06" "2015-W07" "2015-W08"
+## [49] "2015-W09" "2015-W10" "2015-W11" "2015-W12" "2015-W13" "2015-W14" "2015-W15" "2015-W16"</code></pre>
 <p><span style="color: red;"><strong><em>DANGERS:</em></strong> Si vous placez les semaines avant les années (“Www-YYYY”) (“%W-%Y”), l’ordre par défaut des niveaux alphanumériques sera incorrect (par exemple, 01-2015 sera avant 35-2014). Vous pourriez avoir besoin d’ajuster manuellement l’ordre, ce qui serait un processus long et difficile..</span></p>
 <ol start="2" style="list-style-type: decimal">
 <li>
 <em>Pour un affichage rapide par défaut</em>, utilisez le package <strong>aweek</strong> et sa fonction <code>date2week()</code>. Vous pouvez définir le jour <code>week_start =</code>, et si vous définissez <code>factor = TRUE</code> alors la colonne de sortie est un facteur ordonné. En prime, le facteur inclut des niveaux pour <em>toutes</em> les semaines possibles dans l’intervalle - même s’il n’y a pas de cas cette semaine-là.</li>
 </ol>
-<div class="sourceCode" id="cb577"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb579"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">df</span> <span class="op">&lt;-</span> <span class="va">linelist</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>epiweek <span class="op">=</span> <span class="fu">date2week</span><span class="op">(</span><span class="va">date_onset</span>, week_start <span class="op">=</span> <span class="st">"Monday"</span>, factor <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span></span>
 <span></span>
@@ -662,7 +665,7 @@ Veuillez également consulter la page <a href="working_dates.html#working_dates"
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Le Epi R Handbook</strong>" was written by the handbook team. It was last built on 2023-05-24.</p>
+    <p>"<strong>Le Epi R Handbook</strong>" was written by the handbook team. It was last built on 2023-05-25.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">
