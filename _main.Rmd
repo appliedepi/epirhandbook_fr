@@ -25,7 +25,7 @@ documentclass: book
 #  {-}
 
 ```{r, out.width = "100%", fig.align = "center", echo=F}
-knitr::include_graphics(here::here("images", "Epi R Handbook banner beige 1500x500.png"))
+knitr::include_graphics(here::here("images", "Epi R Handbook Banner French 1500 x 500.png"))
 # library(knitr)
 # opts_chunk$set(list(echo = FALSE, eval = FALSE))
 ```
@@ -25858,11 +25858,12 @@ pacman::p_load(
   lubridate,   # travailler avec des dates/epiweeks
   aweek,       # paquet alternatif pour travailler avec les dates/semaines
   #incidence2, # paquet alternatif 
-  i2extras,    # supplément à incidence2
-  stringr,      # recherche et manipulation de chaînes de caractères
-  forcats,      # travail avec des facteurs
-  RColorBrewer, # palettes de couleurs de colorbrewer2.org
-  tidyverse     # gestion des données + graphiques ggplot2
+  #i2extras,    # supplément à incidence2
+  scales,      # fonctions utiles pour les échelles d'axes
+  stringr,     # recherche et manipulation de chaînes de caractères
+  forcats,     # travail avec des facteurs
+  RColorBrewer,# palettes de couleurs de colorbrewer2.org
+  tidyverse    # gestion des données + graphiques ggplot2
 ) 
 ```
 
@@ -26093,8 +26094,9 @@ Ces sorties `seq.Date()` peuvent étre utilisées pour créer les ruptures des c
 **Vous trouverez ci-dessous un exemple de code détaillé pour produire des épicurves hebdomadaires pour les semaines du lundi, avec des barres alignées, des étiquettes de date et des lignes de grille verticales.** Cette section est destinée à l'utilisateur qui a besoin de code rapidement. Pour comprendre en profondeur chaque aspect (thèmes, étiquettes de date, etc.), passez aux sections suivantes. A noter :  
 
 * Les *cassures de l'histogramme* sont définies avec `seq.Date()` comme expliqué ci-dessus pour commencer le lundi avant le premier cas et pour finir le lundi aprés le dernier cas.  
-* L'intervalle des *étiquettes de date* est spécifié par `date_breaks =` dans `scale_x_date()`.  
+* L'intervalle des *étiquettes de date* est spécifié manuellement par `date_breaks =` dans `scale_x_date()`, ou automatiquement par `label = label_date_short()` (paquet **scales**).  
 * L'intervalle des petites lignes verticales entre les étiquettes de date est spécifié par `date_minor_breaks = `.  
+* Nous utilisons `closed = "left"` dans le `geom_histogram()` pour nous assurer que les dates sont comptées dans les bonnes bins.  
 * `expand = c(0,0)` dans les échelles x et y supprime l'espace excédentaire de chaque côte des axes, ce qui garantit également que les étiquettes de date commencent à partir de la premiére barre.  
 
 ```{r, warning=F, message=F}
@@ -26118,6 +26120,8 @@ ggplot(data = central_data) +
     # ruptures de la case de l'histogramme
     breaks = weekly_breaks_central, # pauses des cases de l'histogramme définies précédemment
     
+    closed = "left",  # compter les cas à partir du début du point d'bin
+
     # barres
     color = "darkblue", # couleur des lignes autour des barres
     fill = "lightblue" # couleur de remplissage dans les barres
@@ -26128,7 +26132,8 @@ ggplot(data = central_data) +
     expand = c(0,0), # suppression de l'espace excédentaire sur l'axe des x avant et aprés les barres de cas
     date_breaks = "4 weeks", # les étiquettes de date et les principales lignes de grille verticales apparaissent toutes les 3 semaines du lundi
     date_minor_breaks = "week", # les lignes verticales mineures apparaissent chaque lundi de semaine
-    date_labels = "%a\n%d %b\n%Y")+ # format des étiquettes de date
+    #date_labels = "%a\n%d\n%b\n'%y", # option de formatage manuel des étiquettes de date
+    label = scales::label_date_short())+ # format des étiquettes automatique
   
   # Axe des y
   scale_y_continuous(
@@ -26178,8 +26183,10 @@ scale_x_date(
       by = "week"),
    
     # format des étiquettes de date
-    date_labels = "%a\n%d %b\n%Y")+ # jour, au-dessus abréviation du mois, au-dessus année à 2 chiffres
-
+    #date_labels = "%a\n%d\n%b\n'%y", # option de formatage manuel des étiquettes de date.
+                                      # Jour, au-dessus abréviation du mois, au-dessus
+                                      # année à 2 chiffres
+    label = scales::label_date_short())+ # format des étiquettes automatique
 ```
 
 
@@ -26214,6 +26221,7 @@ ggplot(data = linelist) + # commencer avec linelist (many hospitals)
     breaks = weekly_breaks_all, # séquence de pauses hebdomadaires du lundi pour toute l'épidémie, définie dans le code précédent 
     
     closed = "left", # Compter les cas à partir du début du point d'arrêt
+    
     # Couleur autour des barres
     color = "black")
 ```
@@ -26259,7 +26267,7 @@ ggplot(data = linelist)+ # commencer avec linelist (plusieurs hôpitaux)
 
 Le meilleur moyen d'ajuster l'ordre dans lequel les barres groupées sont empilées est de classer la colonne de groupage en tant que classe Facteur. Vous pouvez alors désigner l'ordre des niveaux de facteurs (et leurs étiquettes d'affichage). Voir la page sur [facteurs](#factors) ou [ggplot tips](#ggplot_tips) pour plus de détails.  
 
-Avant de réaliser le tracé, utilisez la fonction `fct_relevel()` du paquet **forcats** pour convertir la colonne de regroupement en classe facteur et ajuster manuellement l'ordre des niveaux, comme détaillé dans la page sur les [facteurs](#factors).  
+Avant de réaliser le tracé, utilisez la fonction `fct_relevel()` du paquet **forcats** pour convertir la colonne de regroupement en classe facteur et ajuster manuellement l'ordre des niveaux, comme détaillé dans la page sur les [facteurs](#factors). Pour ajuster les niveaux de manière plus avancée, utilisez `fct_lump()`, qui combine automatiquement les petites catégories en une catégorie "Autre".  
 
 ```{r}
 # charger le paquet forcats pour travailler avec les facteurs
@@ -26285,6 +26293,8 @@ ggplot(plot_data) + # Utiliser le NOUVEL ensemble de données avec les hôpitaux
     
     breaks = weekly_breaks_all, # séquence de pauses hebdomadaires du lundi pour toute l'épidémie, définie en haut de la section ggplot
     
+    closed = "left", # Compter les cas à partir du début du point d'arrêt
+
     color = "black")+ # couleur de la bordure autour de chaque barre
     
   # étiquettes de l'axe des x
@@ -26292,7 +26302,7 @@ ggplot(plot_data) + # Utiliser le NOUVEL ensemble de données avec les hôpitaux
     expand = c(0,0), # supprimer l'espace excédentaire sur l'axe des x avant et aprés les barres de cas
     date_breaks = "3 weeks", # les étiquettes apparaissent toutes les 3 semaines du lundi
     date_minor_breaks = "week", # les lignes verticales apparaissent tous les lundis de la semaine
-    date_labels = "%d\n%b\n'%y")+ # format des étiquettes de date
+    label = scales::label_date_short())+ # format des étiquettes de date efficace
   
   # Axe des y
   scale_y_continuous(
@@ -26367,10 +26377,12 @@ ggplot(central_data %>% drop_na(gender))+ # Commencez par les cas de l'hôpital 
                       
   
   # Les étiquettes sur l'axe des x
-  scale_x_date(expand = c(0,0), # supprimer l'espace excédentaire de l'axe des x sous et aprés les barres de cas
-               date_breaks = "3 weeks", # les étiquettes apparaissent toutes les 3 semaines du lundi
-               date_minor_breaks = "week", # les lignes verticales apparaissent tous les lundis de la semaine
-               date_labels = "%d\n%b\n'%y")+ # format des étiquettes de date
+  scale_x_date(
+       expand = c(0,0), # supprimer l'espace excédentaire de l'axe des x sous et aprés les barres de cas
+       date_breaks = "3 weeks", # les étiquettes apparaissent toutes les 3 semaines du lundi
+       date_minor_breaks = "week", # les lignes verticales apparaissent tous les lundis de la semaine
+       label = scales::label_date_short())+ # format des étiquettes de date efficace
+
   
   # Axe des y
   scale_y_continuous(expand = c(0,0))+ # supprime l'espace excédentaire sur l'axe des y entre le bas des barres et les étiquettes
@@ -26427,8 +26439,8 @@ Pour **modifier les étiquettes de date et les lignes de grille**, utilisez `sca
   * Utilisez `date_breaks = ` pour spécifier l'intervalle des étiquettes et des lignes de grille principales (par exemple "jour", "semaine", "3 semaines", "mois" ou "année").
   * Utilisez `date_minor_breaks = ` pour spécifier l'intervalle des lignes verticales mineures (entre les étiquettes de date)  
   * Ajoutez `expand = c(0,0)` pour que les étiquettes commencent à la premiére barre.  
-  * Utilisez `date_labels = ` pour spécifier le format des étiquettes de date - voir la page Dates pour des conseils (utilisez `\n` pour une nouvelle ligne).  
-* **Si les cases de votre histogramme sont des semaines de dimanche** :  
+  * Utilisez `date_labels = ` pour spécifier le format des étiquettes de date avec la syntaxe `strptime` - voir la page Dates pour des conseils (e.g. utilisez `\n` pour une nouvelle ligne), OU utilisez `label = label_date_short()` (du paquet **scales**) pour des étiquettes de date automatiques et efficaces.  
+  * **Si les cases de votre histogramme sont des semaines de dimanche** :  
   * Utilisez `breaks = ` et `minor_breaks = ` en fournissant une séquence de ruptures de date pour chacun d'entre eux.
   * Vous pouvez toujours utiliser `date_labels = ` et `expand = ` pour le formatage comme décrit ci-dessus.  
 
@@ -26458,7 +26470,9 @@ ggplot(central_data) +
     expand = c(0,0), # supprime l'espace excédentaire sur l'axe des x en dessous et aprés les barres de cas
     date_breaks = "3 weeks", # Lundi toutes les 3 semaines
     date_minor_breaks = "week", # lundi semaines
-    date_labels = "%a\n%d\n%b\n'%y")+ # format des étiquettes
+    
+    #date_labels = "%a\n%d\n%b\n'%y", # option de formatage manuel des étiquettes de date
+    label = scales::label_date_short())+ # format des étiquettes automatique
   
   scale_y_continuous(
     expand = c(0,0))+ # suppression de l'espace excédentaire sous l'axe des x, mise à plat
@@ -26482,7 +26496,7 @@ ggplot(central_data) +
     expand = c(0,0), # supprime l'espace excédentaire de l'axe des x sous et aprés les barres de cas
     date_breaks = "months", # 1er du mois
     date_minor_breaks = "week", # semaines de lundi
-    date_labels = "%a\n%d %b\n%Y")+ # format des étiquettes
+    label = scales::label_date_short())+ # format des étiquettes automatique
   
   scale_y_continuous(
     expand = c(0,0)) + # Suppression de l'espace excédentaire sous l'axe des x, mise à plat des données 
@@ -26512,7 +26526,7 @@ ggplot(central_data) +
     expand = c(0,0), # supprime l'espace excédentaire sur l'axe x en dessous et aprés les barres de cas
     date_breaks = "4 weeks", # Lundi toutes les 4 semaines
     date_minor_breaks = "week", # lundi semaines 
-    date_labels = "%a\n%d %b\n%Y")+ # format des étiquettes
+    label = scales::label_date_short())+ # format des étiquettes automatique
   
   scale_y_continuous(
     expand = c(0,0))+ # Suppression de l'espace excédentaire sous l'axe des x, mise à plat des données 
@@ -26541,7 +26555,7 @@ ggplot(central_data) +
     expand = c(0,0), # supprime l'espace excédentaire sur l'axe x en dessous et aprés les barres de cas
     date_breaks = "months", # Lundi toutes les 4 semaines
     date_minor_breaks = "week", # lundi semaines 
-    date_labels = "%b\n%Y")+ # format des étiquettes
+    label = scales::label_date_short())+ # format des étiquettes automatique
   
   scale_y_continuous(
     expand = c(0,0))+ # suppression de l'espace excédentaire sous l'axe des x, mise à plat 
@@ -26573,16 +26587,18 @@ ggplot(central_data) +
   scale_x_date(
     expand = c(0,0),
     # les ruptures de l'étiquette de date et les principales lignes de la grille sont fixées à toutes les 3 semaines, en commençant le dimanche avant le premier cas.
-    breaks = seq.Date(from = floor_date(min(central_data$date_onset, na.rm=T), "week", week_start = 7),
-                      to = ceiling_date(max(central_data$date_onset, na.rm=T), "week", week_start = 7),
-                      by = "3 weeks"),
+    breaks = seq.Date(
+         from = floor_date(min(central_data$date_onset, na.rm=T), "week", week_start = 7),
+         to = ceiling_date(max(central_data$date_onset, na.rm=T), "week", week_start = 7),
+         by = "3 weeks"),
     
     # grilles mineures fixées à la semaine commençant le dimanche avant le premier cas
-    minor_breaks = seq.Date(from = floor_date(min(central_data$date_onset, na.rm=T), "week", week_start = 7),
-                            to = ceiling_date(max(central_data$date_onset, na.rm=T), "week", week_start = 7),
-                            by = "7 days"),
+    minor_breaks = seq.Date(
+         from = floor_date(min(central_data$date_onset, na.rm=T), "week", week_start = 7),
+         to = ceiling_date(max(central_data$date_onset, na.rm=T), "week", week_start = 7),
+         by = "7 days"),
     
-    date_labels = "%a\n%d\n%b\n'%y")+ # format des étiquettes
+    label = scales::label_date_short())+ # format des étiquettes automatique
   
   scale_y_continuous(
     expand = c(0,0))+ # suppression de l'espace excédentaire sous l'axe des x, mise à plat 
@@ -26663,7 +26679,7 @@ ggplot(data = count_data_weekly)+
   scale_x_date(
     date_breaks = "2 months", # étiquettes tous les 2 mois 
     date_minor_breaks = "1 month", # grilles tous les mois
-    date_labels = '%b\n%Y')+ # étiqueté par mois avec l'année en dessous
+    label = scales::label_date_short())+ # format des étiquettes automatique
      
   # Choisissez la palette de couleurs (utilise le paquet RColorBrewer)
   scale_fill_brewer(palette = "Pastel2")+ 
@@ -26734,7 +26750,7 @@ ggplot(data = ll_counts_7day) + # commencer avec le nouvel ensemble de données 
       size = 1) + # largeur de la ligne
     scale_x_date( # échelle de date
       date_breaks = "1 month",
-      date_labels = '%d/%m',
+      label = scales::label_date_short(), # format des étiquettes automatique
       expand = c(0,0)) +
     scale_y_continuous( # échelle de l'axe des y
       expand = c(0,0),
@@ -26811,14 +26827,15 @@ ggplot(central_data) +
     color = "black", # les arguments hors aes() s'appliquent à toutes les données
         
     # ruptures d'histogramme
-    breaks = weekly_breaks_central)+ # vecteur de date prédéfini (voir plus haut dans cette page)
+    breaks = weekly_breaks_central,
+    closed = "left")+ # vecteur de date prédéfini (voir plus haut dans cette page)
                       
   # Les étiquettes sur l'axe des x
   scale_x_date(
     expand = c(0,0), # supprimez l'espace excédentaire sur l'axe des x en dessous et aprés les barres de cas
     date_breaks = "2 months", # les étiquettes apparaissent tous les 2 mois
     date_minor_breaks = "1 month", # les lignes verticales apparaissent tous les 1 mois 
-    date_labels = "%b\n'%y")+ # format des étiquettes de date
+    label = scales::label_date_short())+ # format des étiquettes automatique
   
   # Axe des y
   scale_y_continuous(expand = c(0,0))+ # supprime l'espace excédentaire sur l'axe des y entre le bas des barres et les étiquettes
@@ -26871,7 +26888,8 @@ ggplot(central_data) +
     color = "black", # les arguments hors aes() s'appliquent à toutes les données
     
     # ruptures d'histogramme
-    breaks = weekly_breaks_central)+ # vecteur de dates prédéfini (voir en haut de la section ggplot)                
+    breaks = weekly_breaks_central,
+    closed = "left")+ # vecteur de dates prédéfini (voir en haut de la section ggplot)                
   
   # ajoute une épidémie grise en arriére-plan à chaque facette
   gghighlight::gghighlight()+
@@ -26881,7 +26899,7 @@ ggplot(central_data) +
     expand = c(0,0), # Suppression de l'espace excédentaire sur l'axe des x sous et aprés les barres de cas
     date_breaks = "2 months", # les étiquettes apparaissent tous les 2 mois
     date_minor_breaks = "1 month", # les lignes verticales apparaissent tous les 1 mois 
-    date_labels = "%b\n'%y")+ # format des étiquettes de date
+    label = scales::label_date_short())+ # format des étiquettes automatique
   
   # Axe des y
   scale_y_continuous(expand = c(0,0))+ # supprime l'espace excédentaire de l'axe des y en dessous de 0
@@ -26967,14 +26985,15 @@ ggplot(central_data2) +
         color = "black", # les arguments hors aes() s'appliquent à toutes les données
         
         # ruptures d'histogramme
-        breaks = weekly_breaks_central)+ # vecteur de dates prédéfini (voir en haut de la section ggplot)
+        breaks = weekly_breaks_central, # vecteur de dates prédéfini (voir en haut de la section ggplot)
+        closed = "left")+ 
                      
   # étiquettes sur l'axe des x
   scale_x_date(
     expand = c(0,0), # supprime l'espace excédentaire de l'axe des x sous et aprés les barres de cas
     date_breaks = "2 months", # les étiquettes apparaissent tous les 2 mois
     date_minor_breaks = "1 month", # les lignes verticales apparaissent tous les 1 mois 
-    date_labels = "%b\n'%y")+ # format des étiquettes de date
+    label = scales::label_date_short())+ # format des étiquettes automatique
   
   # Axe des y
   scale_y_continuous(expand = c(0,0))+ # supprime l'espace excédentaire sur l'axe des y entre le bas des barres et les étiquettes
@@ -27049,7 +27068,7 @@ ggplot(central_data) +
     expand = c(0,0), # Suppression de l'espace excédentaire sur l'axe des x sous et aprés les barres de cas
     date_breaks = "1 month", # 1er du mois
     date_minor_breaks = "1 month", # 1er du mois
-    date_labels = "%b\n'%y")+ # format des étiquettes
+    label = scales::label_date_short())+ # format des étiquettes automatique
   
   # étiquettes et theme
   labs(
@@ -27118,6 +27137,7 @@ ggplot(plot_data, aes(x = date_onset, fill = tentative)) +
   # histogramme
   geom_histogram(
     breaks = weekly_breaks_central, # vecteur de données prédéfini, voir en haut de la page ggplot
+    closed = "left",
     color = "black") +
 
   # échelles
@@ -27127,7 +27147,7 @@ ggplot(plot_data, aes(x = date_onset, fill = tentative)) +
     expand = c(0,0), # Supprimez l'espace excédentaire de l'axe des x sous et aprés les barres de cas
     date_breaks = "3 weeks", # Lundi toutes les 3 semaines
     date_minor_breaks = "week", # lundi semaines 
-    date_labels = "%d\n%b\n'%y")+ # format des étiquettes
+    label = scales::label_date_short())+ # format des étiquettes automatique
   
   # étiquettes et theme
   labs(title = "Afficher les jours de déclaration provisoire",
@@ -27141,10 +27161,38 @@ ggplot(plot_data, aes(x = date_onset, fill = tentative)) +
 ## Étiquettes de date à plusieurs niveaux  
 
 Si vous voulez des étiquettes de date à plusieurs niveaux (par exemple, le mois et l'année) *sans dupliquer les niveaux d'étiquette inférieurs*, envisagez l'une des approches ci-dessous :  
+Rappelez-vous - vous pouvez utiliser des outils tels que `\n` *avec* les arguments `date_labels` ou `labels` pour placer des parties de chaque étiquette sur une nouvelle ligne en dessous. Toutefois, les codes ci-dessous vous aident à placer les années ou les mois (par exemple) sur une ligne inférieure *et seulement une fois*.  
 
-Rappelez-vous - vous pouvez utiliser des outils comme `\n` *avec* les arguments `date_labels` ou `labels` pour mettre des parties de chaque étiquette sur une nouvelle ligne en dessous. Cependant, le code ci-dessous vous aide à prendre les années ou les mois (par exemple) sur une ligne inférieure *et seulement une fois*. Quelques notes sur le code ci-dessous :  
+La méthode la plus simple est l'argument `labels =` de `scale_x_date()` à la fonction `label_date_short()` du package **scales** (note : n'oubliez pas d'inclure des parenthèses vides (), comme indiqué ci-dessous). Cette fonction construira automatiquement des étiquettes de date efficaces (pour en savoir plus, cliquez [ici](https://scales.r-lib.org/reference/label_date.html)). Un autre avantage de cette fonction est que les étiquettes s'adaptent automatiquement à l'évolution de vos données dans le temps : de jours, en semaines, en mois et en années.
 
+```{r, warning=F}
+ggplot(central_data) + 
+  
+  # histogram
+  geom_histogram(
+    mapping = aes(x = date_onset),
+    breaks = weekly_breaks_central,   # pre-defined date vector - see top of ggplot section
+    closed = "left",                  # count cases from start of breakpoint
+    color = "darkblue",
+    fill = "lightblue") +
 
+  # y-axis scale as before 
+  scale_y_continuous(expand = c(0,0))+
+  
+  # x-axis scale sets efficient date labels
+  scale_x_date(
+    expand = c(0,0),                      # remove excess x-axis space below and after case bars
+    labels = scales::label_date_short())+ # auto efficient date labels
+  
+  # labels and theme
+  labs(
+    title = "Using label_date_short()\nTo make automatic and efficient date labels",
+    x = "Week of symptom onset",
+    y = "Weekly case indicence")+ 
+  theme_minimal()
+```
+
+Une deuxième option consiste à utiliser le facettage. Ci-dessous :  
 
 * Le nombre de cas est agrégé en semaines pour des raisons esthétiques. Voir la page Epicurves (onglet données agrégées) pour plus de détails.  
 * Une ligne `geom_area()` est utilisée au lieu d'un histogramme, car l'approche par facettes ci-dessous ne fonctionne pas bien avec les histogrammes.  
@@ -27173,28 +27221,6 @@ central_weekly <- linelist %>%
 
 ```{r, warning=F, message=F}
 # tracer avec une bordure de boîte sur l'année
-##############################
-ggplot(central_weekly) +
-  geom_area(aes(x = week, y = n), # faire une ligne, spécifier x et y
-            stat = "identity") + # car la hauteur de la ligne est un nombre compté
-  scale_x_date(date_labels="%b", # le format des étiquettes de date montre le mois 
-               date_breaks="month", # étiquettes de date au 1er de chaque mois
-               expand=c(0,0)) + # suppression de l'espace excédentaire à chaque extrémité
-  scale_y_continuous(
-    expand = c(0,0))+ # Suppression de l'espace excédentaire sous l'axe des x
-  facet_grid(~lubridate::year(week), # facette sur l'année (de la colonne de la classe Date)
-             space="free_x",                
-             scales="free_x", # les axes x s'adaptent à la plage de données (pas "fixe")
-             switch="x") + # étiquettes des facettes (année) en bas de page
-  theme_bw() +
-  theme(strip.placement = "outside", # placement des étiquettes de facettes
-        strip.background = element_rect(fill = NA, # facet labels no fill grey border
-                                        color = "gray50"),
-        panel.spacing = unit(0, "cm"))+ # pas d'espace entre les panneaux de facettes
-  labs(title = "Étiquettes d'année imbriquées, bordure d'étiquette grise")
-
-
-# tracé sans bordure sur l'année
 #################################
 ggplot(central_weekly,
        aes(x = week, y = n)) + # établir x et y pour tout le graphique
@@ -27218,7 +27244,7 @@ ggplot(central_weekly,
           panel.grid.minor.x = element_blank(),          
           panel.border = element_rect(color="grey40"), # bordure grise du PANEL de la facette
           panel.spacing=unit(0, "cm"))+ # Pas d'espace entre les panneaux à facettes
-  labs(title = "Étiquettes annuelles imbriquées - points, ombrées, pas de bordure d'étiquette")
+  labs(title = "Étiquettes annuelles imbriquées - points, ombrées, bordure d'étiquette")
 ```
 
 Les techniques ci-dessus ont été adaptées de [this](https://stackoverflow.com/questions/44616530/axis-labels-on-two-lines-with-nested-x-variables-year-below-months) et [this](https://stackoverflow.com/questions/20571306/multi-row-x-axis-labels-in-ggplot-line-chart) post sur stackoverflow.com.  
@@ -27254,6 +27280,7 @@ plot_cases <- linelist %>%
     mapping = aes(x = date_onset),
     
     # bin breaks chaque semaine en commençant le lundi avant le premier cas, jusqu'au lundi aprés le dernier cas
+    closed = "left",
     breaks = weekly_breaks_all)+ # vecteur prédéfini de dates hebdomadaires (voir en haut de la section ggplot)
         
   # spécifier le début et la fin de l'axe des dates pour l'aligner avec les autres graphiques
