@@ -360,7 +360,7 @@ scale_x_date(
       by = "week"),
    
     # format des étiquettes de date
-    #date_labels = "%a\n%d\n%b\n'%y", # option de formatage manuel des étiquettes de date.
+    #date_labels = "%a\n%d\n%b\n%y", # option de formatage manuel des étiquettes de date.
                                       # Jour, au-dessus abréviation du mois, au-dessus
                                       # année à 2 chiffres
     label = scales::label_date_short())+ # format des étiquettes automatique
