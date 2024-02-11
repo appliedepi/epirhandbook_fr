@@ -58,7 +58,7 @@ knitr::include_graphics(here::here("images", "Epi R Handbook Banner French 1500 
 
 **Essayez nos [tutoriels interactifs gratuits](https://www.appliedepi.org/tutorial/)** ou notre **[cours d'introduction](https://www.appliedepi.org/live/)** synchrone et virtuel utilisé par les CDC américains, l'OMS et plus de 130 autres agences de santé et programmes de formation à l'épidémiologie sur le terrain dans le monde entier.  
 
-**Langues:** [Anglais (English)](https://epirhandbook.com/), [Espagnol (Español)](https://epirhandbook.com/es/), [Vietnamien (Tiếng Việt)](https://epirhandbook.com/vn/), [Japonais (日本)](https://epirhandbook.com/jp/), [Turc (Türkçe)](https://epirhandbook.com/tr/), [Francais](https://epirhandbook.com/fr/), [Portugais (Português)](https://epirhandbook.com/pt/)  
+**Langues:** [Anglais (English)](https://epirhandbook.com/), [Espagnol (Español)](https://epirhandbook.com/es/), [Vietnamien (Tiếng Việt)](https://epirhandbook.com/vn/), [Japonais (日本)](https://epirhandbook.com/jp/), [Turc (Türkçe)](https://epirhandbook.com/tr/), [Francais](https://epirhandbook.com/fr/), [Portugais (Português)](https://epirhandbook.com/pt/), [Russe](https://epirhandbook.com/ru/)  
 
 
 <br>
